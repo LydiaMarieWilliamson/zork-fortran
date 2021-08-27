@@ -5,6 +5,12 @@ the original DEC FORTRAN into something that is palatable to Unix f77.
 See the file "History" for some revision history and credit to those
 whose efforts have made this possible.
 
+Branch Note: this branch of Zork is being used as a starting point
+for translation C using a more up-to-date Fortran-to-C translator;
+and will be subject to a round of major recoding to bring it up to sync
+with our locally-maintained version of both this branch and the C branch.
+Both will be merged.
+
 Checkout the Makefile and adjust it to fit your system.  The only
 things that should really need tweaking are the directory definitions
 and the "-D" defines.  There is an example for both large address
