@@ -240,14 +240,16 @@ C INIT, PAGE 4
 C
 C NOW RESTORE FROM EXISTING INDEX FILE.
 C
-	OPEN(UNIT=1,file='/usr/share/games/dungeon/dindx.dat',
+C	OPEN(UNIT=1,file='/usr/share/games/dungeon/dindx.dat',
+	OPEN(UNIT=1,file='dindx.dat',
      &	status='OLD',FORM='FORMATTED',ACCESS='SEQUENTIAL',ERR=1900)
 	READ(1,130) I,J,K
 C						!GET VERSION.
 	IF((I.NE.VMAJ).OR.(J.NE.VMIN))
      &	GO TO 1925
 
-	OPEN(UNIT=DBCH,file='/usr/share/games/dungeon/dtext.dat',
+C	OPEN(UNIT=DBCH,file='/usr/share/games/dungeon/dtext.dat',
+	OPEN(UNIT=DBCH,file='dtext.dat',
      &	status='OLD',FORM='UNFORMATTED',ACCESS='DIRECT',
      &	recl=76,ERR=1950)
 

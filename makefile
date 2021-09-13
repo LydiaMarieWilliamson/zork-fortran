@@ -1,6 +1,9 @@
-# Makefile for creating dungeon
+## Makefile for creating dungeon
+## 2012/12/04 bkw: modified for use with gnu fortran 4.7.x.
+## 2021/09/13 LMW: modified for use with gfortran 11.2.1 20210728.
 
-# 20121204 bkw: modified for use with gnu fortran 4.7.x
+## The Fortran compiler, suitable for the target system.
+FC = gfortran
 
 ifeq ($(DEBUG),1)
 GDT = gdt.for
@@ -18,7 +21,7 @@ FORS =  actors.for ballop.for clockr.for demons.for\
 	np1.for blkdata.for rtim.for $(GDT)
 
 dungeon: $(FORS)
-	g77 $(FFLAGS) -fbackslash $(DLINE) -o dungeon $(FORS)
+	$(FC) $(FFLAGS) -fbackslash $(DLINE) -o dungeon $(FORS)
 
 clean:
 	rm -f dungeon
