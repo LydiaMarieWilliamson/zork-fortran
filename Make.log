@@ -1,1 +1,86 @@
-/usr/bin/ld: Warning: size of symbol `vers_' changed from 12 to 9 in /tmp/ccZTL7db.o
+gfortran  -fbackslash -fd-lines-as-comments -o dungeon actors.f ballop.f clockr.f demons.f dgame.f dinit.f dmain.f dso1.f dso2.f dso3.f dso4.f dso5.f dso6.f dso7.f dsub.f dverb1.f dverb2.f lightp.f nobjs.f np.f np2.f np3.f nrooms.f objcts.f rooms.f sobjs.f sverbs.f verbs.f villns.f np1.f blkdata.f rtim.f 
+demons.f:258:72:
+
+  258 | 2100    IF(DEF-2) 2200,2300,2400
+      |                                                                           1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+dso7.f:94:16:
+
+   94 |         DATA QMK/'??'/
+      |                       1
+Warning: Initialization string at (1) was truncated to fit the variable (1/2)
+dso7.f:93:17:
+
+   93 |         DATA PICT/'SS','SS','SS','  ','MM'/
+      |                        1
+Warning: Initialization string at (1) was truncated to fit the variable (1/2)
+dso7.f:93:22:
+
+   93 |         DATA PICT/'SS','SS','SS','  ','MM'/
+      |                             1
+Warning: Initialization string at (1) was truncated to fit the variable (1/2)
+dso7.f:93:27:
+
+   93 |         DATA PICT/'SS','SS','SS','  ','MM'/
+      |                                  1
+Warning: Initialization string at (1) was truncated to fit the variable (1/2)
+dso7.f:93:32:
+
+   93 |         DATA PICT/'SS','SS','SS','  ','MM'/
+      |                                       1
+Warning: Initialization string at (1) was truncated to fit the variable (1/2)
+dso7.f:93:37:
+
+   93 |         DATA PICT/'SS','SS','SS','  ','MM'/
+      |                                            1
+Warning: Initialization string at (1) was truncated to fit the variable (1/2)
+np.f:81:72:
+
+   81 |         IF(SPARSE(OUTBUF,OUTLNT,VBFLAG)) 100,200,300
+      |                                                                               1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+np2.f:43:72:
+
+   43 |         IF(OBJ) 1000,200,100
+      |                                                                               1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+np2.f:60:72:
+
+   60 |         IF(NOBJ) 1100,400,300
+      |                                                                               1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+np2.f:76:72:
+
+   76 |         IF(NOBJ) 1100,600,500
+      |                                                                               1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+np3.f:60:72:
+
+   60 |         IF(O2) 3000,500,3000
+      |                                                                               1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+np3.f:62:72:
+
+   62 | 1000    IF(O1) 3000,500,3000
+      |                                                                           1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+np3.f:350:72:
+
+  350 |         IF(ROBJ) 500,50,200
+      |                                                                               1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+sverbs.f:627:72:
+
+  627 | 27300   K=NEWK
+      |                                                                          1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 27300 at (1)
+villns.f:202:72:
+
+  202 |         IF(I) 10,10,450
+      |                                                                               1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+villns.f:256:72:
+
+  256 | 125       IF(OADV(I).EQ.-THIEF) J=500
+      |                                                                            1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 125 at (1)
