@@ -1,0 +1,3 @@
+2021/09/14	The raw translation of the Fortran source into C, using f2c (version 20190311).
+		Common Blocks are translated incorrectly and #include's are inserted in-line.
+		All of that has to be fixed and undone.

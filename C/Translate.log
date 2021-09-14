@@ -1,0 +1,59 @@
+Unused Variables
+────────────────
+Because the original Fortran source ‟D”-commented out the ‟GDB” debug code.
+actors.f:	dflag
+blkdata.f:	dflag
+demons.f:	rlight, rser
+dgame.f:	gdtstr
+dinit.f:	dflag, datarry
+dmain.f:	dflag
+dsub.f:		dflag, dflag
+gdt.f:		dflag
+np1.f:		dflag
+np2.f:		dflag
+np3.f:		dflag
+np.f:		sysbuf, dflag, dflag
+
+Block Data
+──────────
+blkdata.f:	BLOCK DATA
+dmain.f:	BLOCK DATA
+
+Main Program
+────────────
+dmain.f:	dungeo()
+
+Other Functions
+───────────────
+actors.f:	aappli() thiefd()
+ballop.f:	ballop()
+blkdata.f:	foo() foo()
+clockr.f:	cevapp() litint()
+demons.f:	fightd() blow() swordd() infest()
+dgame.f:	game() xendmv() xvehic()
+dinit.f:	init() protct()
+dso1.f:		princr() invent() princo()
+dso2.f:		moveto() score() scrupd()
+dso3.f:		findxt() fwim() yesno()
+dso4.f:		robadv() robrm() winnin() fights() vilstr()
+dso5.f:		gttime() opncls() lit() weight()
+dso6.f:		ghere() mrhere()
+dso7.f:		encryp() cpgoto() cpinfo()
+dsub.f:		rspeak() rspsub() rspsb2() objact() bug() newsta() qhere() qempty() jigsup() oactor() prob() rmdesc() rappli()
+dverb1.f:	take() drop() put() valuac()
+dverb2.f:	savegm() rstrgm() walk() cxappl()
+gdt.f:		gdt()
+lightp.f:	lightp()
+nobjs.f:	nobjs() mirpan()
+np1.f:		sparse()
+np2.f:		getobj() schlst() thisit()
+np3.f:		synmch() unpacks() syneql() takeit() gwim()
+np.f:		rdline() parse() orphan() lex()
+nrooms.f:	rappl2() lookto() ewtell()
+objcts.f:	oappli()
+rooms.f:	rappl1()
+rtim.f:		intime() inirnd() rnd() exit()
+sobjs.f:	sobjs()
+sverbs.f:	sverbs()
+verbs.f:	vappli() clockd()
+villns.f:	trollp() cyclop() thiefp()
