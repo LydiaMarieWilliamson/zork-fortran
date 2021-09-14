@@ -1,5 +1,5 @@
 The results of translation from Fortran into C by f2c.
-Note that the following note (up to layout changes) has been inserted in the translated files:
+The following note (up to layout changes) was inserted into the translated files, but has been moved here:
 
 	Translated by f2c (version 20190311).
 	You must link the resulting object file with libf2c:
@@ -15,7 +15,12 @@ as well as the following include:
 
 	#include "f2c.h"
 
-that may later be directly added here ... and whittled away.
+which has been changed to
+
+	#include "F2C.h"
+
+with the system "f2c.h" directly added here and internalized as "F2C.h", where it will be whittled away.
+The system-dependent part of the original "f2c.h" has already been removed from "F2C.h", since it's not used anywhere.
 
 Unused Variables
 ────────────────
