@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -27,9 +15,7 @@ struct {
 #define rflag_1 rflag_
 
 struct {
-   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls,
-      mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw,
-      mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
+   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
 } rindex_;
 
 #define rindex_1 rindex_
@@ -41,8 +27,7 @@ struct {
 #define star_1 star_
 
 struct {
-   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf,
-      frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
+   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
    integer btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
 
@@ -131,72 +116,72 @@ logical ghere_(integer * obj, integer * rm) {
 
 /* 1000--	STARS ARE ALWAYS HERE */
 
- L1000:
+L1000:
    return ret_val;
 
 /* 2000--	BIRD */
 
- L2000:
+L2000:
    ret_val = *rm >= rindex_1.fore1 && *rm < rindex_1.clear || *rm == rindex_1.mtree;
    return ret_val;
 
 /* 3000--	TREE */
 
- L3000:
+L3000:
    ret_val = *rm >= rindex_1.fore1 && *rm < rindex_1.clear && *rm != rindex_1.fore3;
    return ret_val;
 
 /* 4000--	NORTH WALL */
 
- L4000:
+L4000:
    ret_val = *rm >= rindex_1.bkvw && *rm <= rindex_1.bkbox || *rm == rindex_1.cpuzz;
    return ret_val;
 
 /* 5000--	EAST, SOUTH, WEST WALLS */
 
- L5000:
+L5000:
    ret_val = *rm >= rindex_1.bkvw && *rm < rindex_1.bkbox || *rm == rindex_1.cpuzz;
    return ret_val;
 
 /* 6000--	GLOBAL WATER */
 
- L6000:
+L6000:
    ret_val = (rooms_1.rflag[*rm - 1] & rflag_1.rwater + rflag_1.rfill) != 0;
    return ret_val;
 
 /* 7000--	GLOBAL GUARDIANS */
 
- L7000:
+L7000:
    ret_val = *rm >= rindex_1.mrc && *rm <= rindex_1.mrd || *rm >= rindex_1.mrce && *rm <= rindex_1.mrdw || *rm == rindex_1.inmir;
    return ret_val;
 
 /* 8000--	ROSE/CHANNEL */
 
- L8000:
+L8000:
    ret_val = *rm >= rindex_1.mra && *rm <= rindex_1.mrd || *rm == rindex_1.inmir;
    return ret_val;
 
 /* 9000--	MIRROR */
 /* 9100		PANEL */
 
- L9100:
+L9100:
    if (*rm == rindex_1.fdoor) {
       return ret_val;
    }
 /* 						!PANEL AT FDOOR. */
- L9000:
+L9000:
    ret_val = *rm >= rindex_1.mra && *rm <= rindex_1.mrc || *rm >= rindex_1.mrae && *rm <= rindex_1.mrcw;
    return ret_val;
 
 /* 10000--	MASTER */
 
- L10000:
+L10000:
    ret_val = *rm == rindex_1.fdoor || *rm == rindex_1.ncorr || *rm == rindex_1.parap || *rm == rindex_1.cell;
    return ret_val;
 
 /* 11000--	LADDER */
 
- L11000:
+L11000:
    ret_val = *rm == rindex_1.cpuzz;
    return ret_val;
 
@@ -239,7 +224,7 @@ integer mrhere_(integer * rm) {
 /* RM IS NORTH OR SOUTH OF MIRROR.  IF MIRROR IS N-S OR NOT */
 /* WITHIN ONE ROOM OF RM, LOSE. */
 
- L100:
+L100:
    ret_val = 0;
    if ((i__1 = findex_1.mloc - *rm, abs(i__1)) != 1 || findex_1.mdir % 180 == 0) {
       return ret_val;

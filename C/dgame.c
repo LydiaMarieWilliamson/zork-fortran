@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -91,9 +79,7 @@ struct {
 #define rooms_1 rooms_
 
 struct {
-   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls,
-      mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw,
-      mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
+   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
 } rindex_;
 
 #define rindex_1 rindex_
@@ -112,17 +98,13 @@ struct {
 #define oroom2_1 oroom2_
 
 struct {
-   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt,
-      schbt;
+   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 
 #define oflags_1 oflags_
 
 struct {
-   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw,
-      cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage,
-      spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs,
-      sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
+   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
 
 #define oindex_1 oindex_
@@ -146,16 +128,13 @@ struct {
 #define aindex_1 aindex_
 
 struct {
-   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw,
-      openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw,
-      clmbuw, clmbdw, trntow;
+   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw, openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw, clmbuw, clmbdw, trntow;
 } vindex_;
 
 #define vindex_1 vindex_
 
 struct {
-   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf,
-      frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
+   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
    integer btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
 
@@ -212,8 +191,7 @@ static integer c__2 = 2;
 /* Local variables */
 #define flags ((logical *)&findex_1)
 #define switch__ ((integer *)&findex_1 + 46)
-   extern /* Subroutine */ int rspeak_(integer *), rdline_(char *, integer *,
-      integer *, ftnlen), xendmv_(logical *), valuac_(integer *);
+   extern /* Subroutine */ int rspeak_(integer *), rdline_(char *, integer *, integer *, ftnlen), xendmv_(logical *), valuac_(integer *);
    extern integer oactor_(integer *);
    static logical f;
    static integer i__, j;
@@ -265,7 +243,7 @@ static integer c__2 = 2;
 
 /* NOW LOOP, READING AND EXECUTING COMMANDS. */
 
- L100:
+L100:
    play_1.winner = aindex_1.player;
 /* 						!PLAYER MOVING. */
    play_1.telflg = FALSE_;
@@ -283,10 +261,9 @@ static integer c__2 = 2;
 /* D   GO TO 100 */
 /*                                             !ONWARD. */
 
-/* L200: */
+/*L200: */
    ++state_1.moves;
-   prsvec_1.prswon = parse_(input_1.inbuf, &input_1.inlnt, &c_true, (ftnlen)
-      1);
+   prsvec_1.prswon = parse_(input_1.inbuf, &input_1.inlnt, &c_true, (ftnlen)1);
    if (!prsvec_1.prswon) {
       goto L400;
    }
@@ -300,7 +277,7 @@ static integer c__2 = 2;
       goto L2000;
    }
 /* 						!TELL? */
- L300:
+L300:
    if (prsvec_1.prso == oindex_1.valua || prsvec_1.prso == oindex_1.every) {
       goto L900;
    }
@@ -308,13 +285,13 @@ static integer c__2 = 2;
       goto L400;
    }
 /* 						!VERB OK? */
- L350:
+L350:
    if (!findex_1.echof && play_1.here == rindex_1.echor) {
       goto L1000;
    }
    f = rappli_(&rooms_1.ractio[play_1.here - 1]);
 
- L400:
+L400:
    xendmv_(&play_1.telflg);
 /* 						!DO END OF MOVE. */
    if (!lit_(&play_1.here)) {
@@ -322,7 +299,7 @@ static integer c__2 = 2;
    }
    goto L100;
 
- L900:
+L900:
    valuac_(&oindex_1.valua);
    goto L350;
 /* GAME, PAGE 3 */
@@ -330,7 +307,7 @@ static integer c__2 = 2;
 /* SPECIAL CASE-- ECHO ROOM. */
 /* IF INPUT IS NOT 'ECHO' OR A DIRECTION, JUST ECHO. */
 
- L1000:
+L1000:
    rdline_(input_1.inbuf, &input_1.inlnt, &c__0, (ftnlen) 1);
    ++state_1.moves;
 /* 						!CHARGE FOR MOVES. */
@@ -364,9 +341,8 @@ static integer c__2 = 2;
 /* 						!FORCE NEW INPUT. */
    goto L400;
 
- L1300:
-   prsvec_1.prswon = parse_(input_1.inbuf, &input_1.inlnt, &c_false, (ftnlen)
-      1);
+L1300:
+   prsvec_1.prswon = parse_(input_1.inbuf, &input_1.inlnt, &c_false, (ftnlen)1);
    if (!prsvec_1.prswon || prsvec_1.prsa != vindex_1.walkw) {
       goto L1400;
    }
@@ -375,7 +351,7 @@ static integer c__2 = 2;
    }
 /* 						!VALID EXIT? */
 
- L1400:
+L1400:
    io___15.ciunit = chan_1.outch;
    s_wsfe(&io___15);
    i__1 = input_1.inlnt;
@@ -392,7 +368,7 @@ static integer c__2 = 2;
 /* SPECIAL CASE-- TELL <ACTOR>, NEW COMMAND */
 /* NOTE THAT WE CANNOT BE IN THE ECHO ROOM. */
 
- L2000:
+L2000:
    if ((objcts_1.oflag2[prsvec_1.prso - 1] & oflags_1.actrbt) != 0) {
       goto L2100;
    }
@@ -401,7 +377,7 @@ static integer c__2 = 2;
    goto L350;
 /* 						!VAPPLI SUCCEEDS. */
 
- L2100:
+L2100:
    play_1.winner = oactor_(&prsvec_1.prso);
 /* 						!NEW PLAYER. */
    play_1.here = advs_1.aroom[play_1.winner - 1];
@@ -413,7 +389,7 @@ static integer c__2 = 2;
    if (parse_(input_1.inbuf, &input_1.inlnt, &c_true, (ftnlen) 1)) {
       goto L2150;
    }
- L2700:
+L2700:
    i__ = 341;
 /* 						!FAILS. */
    if (play_1.telflg) {
@@ -421,13 +397,13 @@ static integer c__2 = 2;
    }
 /* 						!GIVE RESPONSE. */
    rspeak_(&i__);
- L2600:
+L2600:
    play_1.winner = aindex_1.player;
 /* 						!RESTORE STATE. */
    play_1.here = advs_1.aroom[play_1.winner - 1];
    goto L350;
 
- L2150:
+L2150:
    if (aappli_(&advs_1.aactio[play_1.winner - 1])) {
       goto L2400;
    }
@@ -443,16 +419,16 @@ static integer c__2 = 2;
       goto L2400;
    }
 /* 						!VERB HANDLE? */
-/* L2350: */
+/*L2350: */
    f = rappli_(&rooms_1.ractio[play_1.here - 1]);
 
- L2400:
+L2400:
    xendmv_(&play_1.telflg);
 /* 						!DO END OF MOVE. */
    goto L2600;
 /* 						!DONE. */
 
- L2900:
+L2900:
    valuac_(&oindex_1.valua);
 /* 						!ALL OR VALUABLES. */
    goto L350;

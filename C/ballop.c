@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -109,17 +97,13 @@ struct {
 #define oroom2_1 oroom2_
 
 struct {
-   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt,
-      schbt;
+   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 
 #define oflags_1 oflags_
 
 struct {
-   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw,
-      cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage,
-      spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs,
-      sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
+   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
 
 #define oindex_1 oindex_
@@ -138,16 +122,13 @@ struct {
 #define cindex_1 cindex_
 
 struct {
-   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw,
-      openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw,
-      clmbuw, clmbdw, trntow;
+   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw, openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw, clmbuw, clmbdw, trntow;
 } vindex_;
 
 #define vindex_1 vindex_
 
 struct {
-   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf,
-      frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
+   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
    integer btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
 
@@ -181,8 +162,7 @@ logical ballop_(integer * arg) {
 /* Local variables */
 #define flags ((logical *)&findex_1)
 #define switch__ ((integer *)&findex_1 + 46)
-   extern /* Subroutine */ int rspeak_(integer *), rspsub_(integer *,
-      integer *), newsta_(integer *, integer *, integer *, integer *, integer *);
+   extern /* Subroutine */ int rspeak_(integer *), rspsub_(integer *, integer *), newsta_(integer *, integer *, integer *, integer *, integer *);
 #define eqc ((integer *)&cevent_1 + 1)
 #define eqo ((integer *)&objcts_1 + 1)
 #define eqr ((integer *)&rooms_1 + 2)
@@ -233,17 +213,17 @@ logical ballop_(integer * arg) {
    rspeak_(&c__543);
 /* 						!NO. */
    goto L100;
- L50:
+L50:
    rspsub_(&c__544, &objcts_1.odesc2[findex_1.binff - 1]);
 /* 						!YES. */
- L100:
+L100:
    if (findex_1.btief != 0) {
       rspeak_(&c__545);
    }
 /* 						!HOOKED? */
    return ret_val;
 
- L200:
+L200:
    if (*arg != 1) {
       goto L500;
    }
@@ -260,7 +240,7 @@ logical ballop_(integer * arg) {
 /* 						!NO, JOKE. */
    return ret_val;
 
- L250:
+L250:
    if (findex_1.btief == 0) {
       goto L275;
    }
@@ -269,7 +249,7 @@ logical ballop_(integer * arg) {
 /* 						!YES, JOKE. */
    return ret_val;
 
- L275:
+L275:
    if (curxt_1.xtype != xpars_1.xnorm) {
       goto L10;
    }
@@ -277,11 +257,11 @@ logical ballop_(integer * arg) {
    if ((rooms_1.rflag[curxt_1.xroom1 - 1] & rflag_1.rmung) == 0) {
       state_1.bloc = curxt_1.xroom1;
    }
- L10:
+L10:
    ret_val = FALSE_;
    return ret_val;
 
- L300:
+L300:
    if (prsvec_1.prsa != vindex_1.takew || prsvec_1.prso != findex_1.binff) {
       goto L350;
    }
@@ -289,14 +269,14 @@ logical ballop_(integer * arg) {
 /* 						!RECEP CONT TOO HOT. */
    return ret_val;
 
- L350:
+L350:
    if (prsvec_1.prsa != vindex_1.putw || prsvec_1.prsi != oindex_1.recep || qempty_(&oindex_1.recep)) {
       goto L10;
    }
    rspeak_(&c__549);
    return ret_val;
 
- L500:
+L500:
    if (prsvec_1.prsa != vindex_1.unboaw || (rooms_1.rflag[play_1.here - 1] & rflag_1.rland) == 0) {
       goto L600;
    }
@@ -306,7 +286,7 @@ logical ballop_(integer * arg) {
 /* 						!HE GOT OUT, START BALLOON. */
    goto L10;
 
- L600:
+L600:
    if (prsvec_1.prsa != vindex_1.burnw || objcts_1.ocan[prsvec_1.prso - 1] != oindex_1.recep) {
       goto L700;
    }
@@ -326,7 +306,7 @@ logical ballop_(integer * arg) {
    rspeak_(&c__551);
    return ret_val;
 
- L700:
+L700:
    if (prsvec_1.prsa == vindex_1.unboaw && findex_1.binff != 0 && (rooms_1.rflag[play_1.here - 1] & rflag_1.rland) != 0) {
       cevent_1.ctick[cindex_1.cevbal - 1] = 3;
    }

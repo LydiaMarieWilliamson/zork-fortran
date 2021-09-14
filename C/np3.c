@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -151,8 +139,7 @@ struct {
 #define state_1 state_
 
 struct {
-   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt,
-      schbt;
+   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 
 #define oflags_1 oflags_
@@ -221,8 +208,7 @@ logical synmch_(void) {
    static integer drive, limit, qprep, sprep, dforce;
 #define objvec ((integer *)&pv_1 + 1)
    extern logical takeit_(integer *, integer *);
-   extern /* Subroutine */ int rspeak_(integer *), orphan_(integer *,
-      integer *, integer *, integer *, integer *);
+   extern /* Subroutine */ int rspeak_(integer *), orphan_(integer *, integer *, integer *, integer *, integer *);
 #define prpvec ((integer *)&pv_1 + 3)
    extern logical syneql_(integer *, integer *, integer *, integer *, integer *);
    extern /* Subroutine */ int unpacks_(integer *, integer *);
@@ -247,7 +233,7 @@ logical synmch_(void) {
    dforce = 0;
 /* 						!NO FORCED DEFAULT. */
    qprep = orphs_1.oflag & orphs_1.oprep;
- L100:
+L100:
    j += 2;
 /* 						!FIND START OF SYNTAX. */
    if (vvoc[j - 1] <= 0 || vvoc[j - 1] >= r50min) {
@@ -258,7 +244,7 @@ logical synmch_(void) {
    ++j;
 /* 						!ADVANCE TO NEXT. */
 
- L200:
+L200:
    unpacks_(&j, &newj);
 /* 						!UNPACK SYNTAX. */
 /* D	IF(DFLAG) PRINT 60,O1,P1,DOBJ,DFL1,DFL2 */
@@ -281,14 +267,14 @@ logical synmch_(void) {
       goto L500;
    }
 /* 						!IF O2=0, SET DFLT. */
- L1000:
+L1000:
    if (pv_1.o1 != 0) {
       goto L3000;
    } else {
       goto L500;
    }
 /* 						!IF O1=0, SET DFLT. */
- L500:
+L500:
    if (qprep == 0 || qprep == sprep) {
       dforce = j;
    }
@@ -296,7 +282,7 @@ logical synmch_(void) {
    if ((syntax_1.vflag & synflg_1.sdriv) != 0) {
       drive = j;
    }
- L3000:
+L3000:
    j = newj;
    if (j < limit) {
       goto L200;
@@ -339,7 +325,7 @@ logical synmch_(void) {
 
 /* ORPHAN FAILS, TRY GWIM. */
 
- L3500:
+L3500:
    pv_1.o1 = gwim_(&syntax_1.dobj, &syntax_1.dfw1, &syntax_1.dfw2);
 /* 						!GET GWIM. */
 /* D	IF(DFLAG) PRINT 30,O1 */
@@ -355,7 +341,7 @@ logical synmch_(void) {
 
 /* TRY TO FILL INDIRECT OBJECT SLOT IF THAT WAS THE PROBLEM. */
 
- L4000:
+L4000:
    if ((syntax_1.vflag & synflg_1.sind) == 0 || pv_1.o2 != 0) {
       goto L6000;
    }
@@ -376,7 +362,7 @@ logical synmch_(void) {
 
 /* TOTAL CHOMP */
 
- L10000:
+L10000:
    rspeak_(&c__601);
 /* 						!CANT DO ANYTHING. */
    return ret_val;
@@ -385,7 +371,7 @@ logical synmch_(void) {
 /* NOW TRY TO TAKE INDIVIDUAL OBJECTS AND */
 /* IN GENERAL CLEAN UP THE PARSE VECTOR. */
 
- L6000:
+L6000:
    if ((syntax_1.vflag & synflg_1.sflip) == 0) {
       goto L5000;
    }
@@ -394,7 +380,7 @@ logical synmch_(void) {
    pv_1.o1 = pv_1.o2;
    pv_1.o2 = j;
 
- L5000:
+L5000:
    prsvec_1.prsa = syntax_1.vflag & synflg_1.svmask;
    prsvec_1.prso = pv_1.o1;
 /* 						!GET DIR OBJ. */
@@ -469,7 +455,7 @@ logical synmch_(void) {
    syntax_1.dobj = objflg_1.vabit + objflg_1.vrbit + objflg_1.vfbit;
    goto L200;
 
- L100:
+L100:
    syntax_1.dobj = vvoc[*j - 1];
 /* 						!NOT STD. */
    syntax_1.dfw1 = vvoc[*j];
@@ -482,7 +468,7 @@ logical synmch_(void) {
 /* 						!YES. */
    syntax_1.dfl2 = syntax_1.dfw2;
 
- L200:
+L200:
    if ((syntax_1.vflag & synflg_1.sind) == 0) {
       return 0;
    }
@@ -541,7 +527,7 @@ logical syneql_(integer * prep, integer * obj, integer * sprep, integer * sfl1, 
    ret_val = *prep == (*sprep & objflg_1.vpmask) && (*sfl1 & objcts_1.oflag1[*obj - 1] | *sfl2 & objcts_1.oflag2[*obj - 1]) != 0;
    return ret_val;
 
- L100:
+L100:
    ret_val = *prep == 0 && *sfl1 == 0 && *sfl2 == 0;
    return ret_val;
 
@@ -576,8 +562,7 @@ logical takeit_(integer * obj, integer * sflag) {
    extern integer schlst_(integer *, integer *, integer *, integer *, integer *, integer *);
    extern /* Subroutine */ int rspeak_(integer *);
    extern integer weight_(integer *, integer *, integer *);
-   extern /* Subroutine */ int newsta_(integer *, integer *, integer *,
-      integer *, integer *), scrupd_(integer *);
+   extern /* Subroutine */ int newsta_(integer *, integer *, integer *, integer *, integer *), scrupd_(integer *);
 
 /* PARSER OUTPUT */
 
@@ -611,7 +596,7 @@ logical takeit_(integer * obj, integer * sflag) {
 /* 						!CANT REACH. */
    return ret_val;
 
- L500:
+L500:
    if ((*sflag & objflg_1.vrbit) == 0) {
       goto L1000;
    }
@@ -643,11 +628,11 @@ logical takeit_(integer * obj, integer * sflag) {
 /* 1000--	IT SHOULD NOT BE IN THE ROOM. */
 /* 2000--	IT CANT BE TAKEN. */
 
- L2000:
+L2000:
    if ((*sflag & objflg_1.vcbit) == 0) {
       goto L4000;
    }
- L1000:
+L1000:
    if (schlst_(&c__0, &c__0, &play_1.here, &c__0, &c__0, obj) <= 0) {
       goto L4000;
    }
@@ -661,7 +646,7 @@ logical takeit_(integer * obj, integer * sflag) {
 /* IF IT IS INSIDE SOMETHING, THE CONTAINER IS OPEN. */
 /* THE FOLLOWING CODE IS LIFTED FROM SUBROUTINE TAKE. */
 
- L3000:
+L3000:
    if (*obj != advs_1.avehic[play_1.winner - 1]) {
       goto L3500;
    }
@@ -669,7 +654,7 @@ logical takeit_(integer * obj, integer * sflag) {
    rspeak_(&c__672);
    return ret_val;
 
- L3500:
+L3500:
    if (x != 0 && objcts_1.oadv[x - 1] == play_1.winner || weight_(&c__0, obj, &play_1.winner) + objcts_1.osize[*obj - 1] <= state_1.mxload) {
       goto L3700;
    }
@@ -677,14 +662,14 @@ logical takeit_(integer * obj, integer * sflag) {
 /* 						!TOO BIG. */
    return ret_val;
 
- L3700:
+L3700:
    newsta_(obj, &c__559, &c__0, &c__0, &play_1.winner);
 /* 						!DO TAKE. */
    objcts_1.oflag2[*obj - 1] |= oflags_1.tchbt;
    scrupd_(&objcts_1.ofval[*obj - 1]);
    objcts_1.ofval[*obj - 1] = 0;
 
- L4000:
+L4000:
    ret_val = TRUE_;
 /* 						!SUCCESS. */
    return ret_val;
@@ -747,13 +732,13 @@ integer gwim_(integer * sflag, integer * sfw1, integer * sfw2) {
    if ((*sflag & objflg_1.vrbit) != 0) {
       goto L100;
    }
- L50:
+L50:
    ret_val = nobj;
    return ret_val;
 
 /* ALSO SEARCH ROOM */
 
- L100:
+L100:
    robj = fwim_(sfw1, sfw2, &play_1.here, &c__0, &c__0, &nocare);
    if (robj < 0) {
       goto L500;
@@ -766,16 +751,15 @@ integer gwim_(integer * sflag, integer * sfw1, integer * sfw2) {
 
 /* ROBJ > 0 */
 
- L200:
-   if (av == 0 || robj == av || (objcts_1.oflag2[robj - 1] & oflags_1.findbt)
-      != 0) {
+L200:
+   if (av == 0 || robj == av || (objcts_1.oflag2[robj - 1] & oflags_1.findbt) != 0) {
       goto L300;
    }
    if (objcts_1.ocan[robj - 1] != av) {
       goto L50;
    }
 /* 						!UNREACHABLE? TRY NOBJ */
- L300:
+L300:
    if (nobj != 0) {
       return ret_val;
    }
@@ -785,7 +769,7 @@ integer gwim_(integer * sflag, integer * sfw1, integer * sfw2) {
    }
 /* 						!IF UNTAKEABLE, RETURN */
    ret_val = robj;
- L500:
+L500:
    return ret_val;
 
 } /* gwim_ */

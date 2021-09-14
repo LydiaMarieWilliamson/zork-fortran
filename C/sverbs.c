@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -111,9 +99,7 @@ struct {
 #define rflag_1 rflag_
 
 struct {
-   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls,
-      mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw,
-      mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
+   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
 } rindex_;
 
 #define rindex_1 rindex_
@@ -156,17 +142,13 @@ struct {
 #define oroom2_1 oroom2_
 
 struct {
-   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt,
-      schbt;
+   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 
 #define oflags_1 oflags_
 
 struct {
-   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw,
-      cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage,
-      spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs,
-      sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
+   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
 
 #define oindex_1 oindex_
@@ -203,16 +185,13 @@ struct {
 #define aindex_1 aindex_
 
 struct {
-   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw,
-      openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw,
-      clmbuw, clmbdw, trntow;
+   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw, openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw, clmbuw, clmbdw, trntow;
 } vindex_;
 
 #define vindex_1 vindex_
 
 struct {
-   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf,
-      frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
+   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
    integer btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
 
@@ -283,10 +262,12 @@ logical sverbs_(integer * ri) {
 
    static integer mxnop = 39;
    static integer mxjoke = 64;
-   static integer jokes[25] = { 4, 5, 3, 304, 305, 306, 307, 308, 309, 310, 311, 312,
+   static integer jokes[25] = {
+      4, 5, 3, 304, 305, 306, 307, 308, 309, 310, 311, 312,
       313, 5314, 5319, 324, 325, 883, 884, 120, 120, 0, 0, 0, 0
    };
-   static integer answer[28] = { 0, 6, 1, 6, 2, 5, 3, 5, 4, 3, 4, 6, 4, 6, 4, 5, 5, 5, 5, 4, 5, 6,
+   static integer answer[28] = {
+      0, 6, 1, 6, 2, 5, 3, 5, 4, 3, 4, 6, 4, 6, 4, 5, 5, 5, 5, 4, 5, 6,
       6, 10, 7, 4, 7, 6
    };
    static char ansstr[1 * 78] =
@@ -317,8 +298,7 @@ logical sverbs_(integer * ri) {
 #define flags ((logical *)&findex_1)
 #define switch__ ((integer *)&findex_1 + 46)
    static integer i__, j;
-   extern /* Subroutine */ int rspeak_(integer *), jigsup_(integer *), newsta_(integer *, integer *, integer *, integer *, integer *), score_(logical *), rspsub_(integer *, integer *), gttime_(integer
-      *);
+   extern /* Subroutine */ int rspeak_(integer *), jigsup_(integer *), newsta_(integer *, integer *, integer *, integer *, integer *), score_(logical *), rspsub_(integer *, integer *), gttime_(integer *);
    static integer k;
    extern integer fights_(integer *, logical *);
    static integer l;
@@ -481,7 +461,7 @@ logical sverbs_(integer * ri) {
 
 /* ALL VERB PROCESSORS RETURN HERE TO DECLARE FAILURE. */
 
-/* L10: */
+/*L10: */
    ret_val = FALSE_;
 /* 						!LOSE. */
    return ret_val;
@@ -489,7 +469,7 @@ logical sverbs_(integer * ri) {
 /* JOKE PROCESSOR. */
 /* FIND PROPER ENTRY IN JOKES, USE IT TO SELECT STRING TO PRINT. */
 
- L100:
+L100:
    i__ = jokes[*ri - mxnop - 1];
 /* 						!GET TABLE ENTRY. */
    j = i__ / 1000;
@@ -505,14 +485,14 @@ logical sverbs_(integer * ri) {
 
 /* V65--	ROOM */
 
- L65000:
+L65000:
    ret_val = rmdesc_(&c__2);
 /* 						!DESCRIBE ROOM ONLY. */
    return ret_val;
 
 /* V66--	OBJECTS */
 
- L66000:
+L66000:
    ret_val = rmdesc_(&c__1);
 /* 						!DESCRIBE OBJ ONLY. */
    if (!play_1.telflg) {
@@ -523,7 +503,7 @@ logical sverbs_(integer * ri) {
 
 /* V67--	RNAME */
 
- L67000:
+L67000:
    i__1 = rooms_1.rdesc2 - play_1.here;
    rspeak_(&i__1);
 /* 						!SHORT ROOM NAME. */
@@ -531,18 +511,18 @@ logical sverbs_(integer * ri) {
 
 /* V68--	RESERVED */
 
- L68000:
+L68000:
    return ret_val;
 
 /* V69--	RESERVED */
 
- L69000:
+L69000:
    return ret_val;
 /* SVERBS, PAGE 3 */
 
 /* V70--	BRIEF.  SET FLAG. */
 
- L1000:
+L1000:
    findex_1.brieff = TRUE_;
 /* 						!BRIEF DESCRIPTIONS. */
    findex_1.superf = FALSE_;
@@ -551,7 +531,7 @@ logical sverbs_(integer * ri) {
 
 /* V71--	VERBOSE.  CLEAR FLAGS. */
 
- L2000:
+L2000:
    findex_1.brieff = FALSE_;
 /* 						!LONG DESCRIPTIONS. */
    findex_1.superf = FALSE_;
@@ -560,14 +540,14 @@ logical sverbs_(integer * ri) {
 
 /* V72--	SUPERBRIEF.  SET FLAG. */
 
- L3000:
+L3000:
    findex_1.superf = TRUE_;
    rspeak_(&c__328);
    return ret_val;
 
 /* V73-- STAY (USED IN ENDGAME). */
 
- L4000:
+L4000:
    if (play_1.winner != aindex_1.amastr) {
       goto L4100;
    }
@@ -578,7 +558,7 @@ logical sverbs_(integer * ri) {
 /* 						!NOT FOLLOWING. */
    return ret_val;
 
- L4100:
+L4100:
    if (play_1.winner == aindex_1.player) {
       rspeak_(&c__664);
    }
@@ -587,7 +567,7 @@ logical sverbs_(integer * ri) {
 
 /* V74--	VERSION.  PRINT INFO. */
 
- L5000:
+L5000:
    io___23.ciunit = chan_1.outch;
    s_wsfe(&io___23);
    do_fio(&c__1, (char *)&vers_1.vmaj, (ftnlen) sizeof(integer));
@@ -599,7 +579,7 @@ logical sverbs_(integer * ri) {
 
 /* V75--	SWIM.  ALWAYS A JOKE. */
 
- L6000:
+L6000:
    i__ = 330;
 /* 						!ASSUME WATER. */
    if ((rooms_1.rflag[play_1.here - 1] & rflag_1.rwater + rflag_1.rfill) == 0) {
@@ -610,7 +590,7 @@ logical sverbs_(integer * ri) {
 
 /* V76--	GERONIMO.  IF IN BARREL, FATAL, ELSE JOKE. */
 
- L7000:
+L7000:
    if (play_1.here == rindex_1.mbarr) {
       goto L7100;
    }
@@ -619,23 +599,22 @@ logical sverbs_(integer * ri) {
 /* 						!NO, JOKE. */
    return ret_val;
 
- L7100:
+L7100:
    jigsup_(&c__335);
 /* 						!OVER FALLS. */
    return ret_val;
 
 /* V77--	SINBAD ET AL.  CHASE CYCLOPS, ELSE JOKE. */
 
- L8000:
-   if (play_1.here == rindex_1.mcycl && qhere_(&oindex_1.cyclo, &play_1.here)
-      ) {
+L8000:
+   if (play_1.here == rindex_1.mcycl && qhere_(&oindex_1.cyclo, &play_1.here)) {
       goto L8100;
    }
    rspeak_(&c__336);
 /* 						!NOT HERE, JOKE. */
    return ret_val;
 
- L8100:
+L8100:
    newsta_(&oindex_1.cyclo, &c__337, &c__0, &c__0, &c__0);
 /* 						!CYCLOPS FLEES. */
    findex_1.cyclof = TRUE_;
@@ -646,7 +625,7 @@ logical sverbs_(integer * ri) {
 
 /* V78--	WELL.  OPEN DOOR, ELSE JOKE. */
 
- L9000:
+L9000:
    if (findex_1.riddlf || play_1.here != rindex_1.riddl) {
       goto L9100;
    }
@@ -656,7 +635,7 @@ logical sverbs_(integer * ri) {
    rspeak_(&c__338);
    return ret_val;
 
- L9100:
+L9100:
    rspeak_(&c__339);
 /* 						!WELL, WHAT? */
    return ret_val;
@@ -664,7 +643,7 @@ logical sverbs_(integer * ri) {
 /* V79--	PRAY.  IF IN TEMP2, POOF */
 /* 						! */
 
- L10000:
+L10000:
    if (play_1.here != rindex_1.temp2) {
       goto L10050;
    }
@@ -673,12 +652,12 @@ logical sverbs_(integer * ri) {
       goto L10100;
    }
 /* 						!FORE1 STILL THERE? */
- L10050:
+L10050:
    rspeak_(&c__340);
 /* 						!JOKE. */
    return ret_val;
 
- L10100:
+L10100:
    f = rmdesc_(&c__3);
 /* 						!MOVED, DESCRIBE. */
    return ret_val;
@@ -686,7 +665,7 @@ logical sverbs_(integer * ri) {
 /* V80--	TREASURE.  IF IN TEMP1, POOF */
 /* 						! */
 
- L11000:
+L11000:
    if (play_1.here != rindex_1.temp1) {
       goto L11050;
    }
@@ -695,7 +674,7 @@ logical sverbs_(integer * ri) {
       goto L10100;
    }
 /* 						!TREASURE ROOM THERE? */
- L11050:
+L11050:
    rspeak_(&c__341);
 /* 						!NOTHING HAPPENS. */
    return ret_val;
@@ -703,7 +682,7 @@ logical sverbs_(integer * ri) {
 /* V81--	TEMPLE.  IF IN TREAS, POOF */
 /* 						! */
 
- L12000:
+L12000:
    if (play_1.here != rindex_1.treas) {
       goto L12050;
    }
@@ -712,14 +691,14 @@ logical sverbs_(integer * ri) {
       goto L10100;
    }
 /* 						!TEMP1 STILL THERE? */
- L12050:
+L12050:
    rspeak_(&c__341);
 /* 						!NOTHING HAPPENS. */
    return ret_val;
 
 /* V82--	BLAST.  USUALLY A JOKE. */
 
- L13000:
+L13000:
    i__ = 342;
 /* 						!DONT UNDERSTAND. */
    if (prsvec_1.prso == oindex_1.safe) {
@@ -731,13 +710,13 @@ logical sverbs_(integer * ri) {
 
 /* V83--	SCORE.  PRINT SCORE. */
 
- L14000:
+L14000:
    score_(&c_false);
    return ret_val;
 
 /* V84--	QUIT.  FINISH OUT THE GAME. */
 
- L15000:
+L15000:
    score_(&c_true);
 /* 						!TELLL SCORE. */
    if (!yesno_(&c__343, &c__0, &c__0)) {
@@ -754,7 +733,7 @@ logical sverbs_(integer * ri) {
 
 /* V85--	FOLLOW (USED IN ENDGAME) */
 
- L16000:
+L16000:
    if (play_1.winner != aindex_1.amastr) {
       return ret_val;
    }
@@ -766,7 +745,7 @@ logical sverbs_(integer * ri) {
 
 /* V86--	WALK THROUGH */
 
- L17000:
+L17000:
    if (screen_1.scolrm == 0 || prsvec_1.prso != oindex_1.scol && (prsvec_1.prso != oindex_1.wnort || play_1.here != rindex_1.bkbox)) {
       goto L17100;
    }
@@ -784,7 +763,7 @@ logical sverbs_(integer * ri) {
 /* 						!DESCRIBE. */
    return ret_val;
 
- L17100:
+L17100:
    if (play_1.here != screen_1.scolac) {
       goto L17300;
    }
@@ -797,7 +776,7 @@ logical sverbs_(integer * ri) {
 /* L17200: */
    }
 
- L17300:
+L17300:
    if ((objcts_1.oflag1[prsvec_1.prso - 1] & oflags_1.takebt) != 0) {
       goto L17400;
    }
@@ -810,7 +789,7 @@ logical sverbs_(integer * ri) {
    rspsub_(&i__, &odo2);
    return ret_val;
 
- L17400:
+L17400:
    i__ = 671;
 /* 						!JOKE. */
    if (objcts_1.oroom[prsvec_1.prso - 1] != 0) {
@@ -820,7 +799,7 @@ logical sverbs_(integer * ri) {
    rspeak_(&i__);
    return ret_val;
 
- L17500:
+L17500:
    prsvec_1.prso = screen_1.scolwl[i__ + 1];
 /* 						!THRU SCOL WALL... */
    for (i__ = 1; i__ <= 8; i__ += 2) {
@@ -842,7 +821,7 @@ logical sverbs_(integer * ri) {
 
 /* V87--	RING.  A JOKE. */
 
- L18000:
+L18000:
    i__ = 359;
 /* 						!CANT RING. */
    if (prsvec_1.prso == oindex_1.bell) {
@@ -855,7 +834,7 @@ logical sverbs_(integer * ri) {
 
 /* V88--	BRUSH.  JOKE WITH OBSCURE TRAP. */
 
- L19000:
+L19000:
    if (prsvec_1.prso == oindex_1.teeth) {
       goto L19100;
    }
@@ -864,7 +843,7 @@ logical sverbs_(integer * ri) {
 /* 						!NO, JOKE. */
    return ret_val;
 
- L19100:
+L19100:
    if (prsvec_1.prsi != 0) {
       goto L19200;
    }
@@ -873,16 +852,15 @@ logical sverbs_(integer * ri) {
 /* 						!NO, JOKE. */
    return ret_val;
 
- L19200:
-   if (prsvec_1.prsi == oindex_1.putty && objcts_1.oadv[oindex_1.putty - 1]
-      == play_1.winner) {
+L19200:
+   if (prsvec_1.prsi == oindex_1.putty && objcts_1.oadv[oindex_1.putty - 1] == play_1.winner) {
       goto L19300;
    }
    rspsub_(&c__364, &odi2);
 /* 						!NO, JOKE. */
    return ret_val;
 
- L19300:
+L19300:
    jigsup_(&c__365);
 /* 						!YES, DEAD */
 /* 						! */
@@ -895,7 +873,7 @@ logical sverbs_(integer * ri) {
 
 /* V89--	DIG.  UNLESS SHOVEL, A JOKE. */
 
- L20000:
+L20000:
    if (prsvec_1.prso == oindex_1.shove) {
       return ret_val;
    }
@@ -910,7 +888,7 @@ logical sverbs_(integer * ri) {
 
 /* V90--	TIME.  PRINT OUT DURATION OF GAME. */
 
- L21000:
+L21000:
    gttime_(&k);
 /* 						!GET PLAY TIME. */
    i__ = k / 60;
@@ -952,7 +930,7 @@ logical sverbs_(integer * ri) {
 
 /* V91--	LEAP.  USUALLY A JOKE, WITH A CATCH. */
 
- L22000:
+L22000:
    if (prsvec_1.prso == 0) {
       goto L22200;
    }
@@ -965,7 +943,7 @@ logical sverbs_(integer * ri) {
 /* 						!NO, JOKE. */
    return ret_val;
 
- L22100:
+L22100:
    if ((objcts_1.oflag2[prsvec_1.prso - 1] & oflags_1.villbt) == 0) {
       goto L22300;
    }
@@ -973,7 +951,7 @@ logical sverbs_(integer * ri) {
 /* 						!CANT JUMP VILLAIN. */
    return ret_val;
 
- L22200:
+L22200:
    if (!findxt_(&xsrch_1.xdown, &play_1.here)) {
       goto L22300;
    }
@@ -981,14 +959,14 @@ logical sverbs_(integer * ri) {
    if (curxt_1.xtype == xpars_1.xno || curxt_1.xtype == xpars_1.xcond && !flags[*xflag - 1]) {
       goto L22400;
    }
- L22300:
+L22300:
    i__1 = rnd_(&c__5) + 314;
    rspeak_(&i__1);
 /* 						!WHEEEE */
 /* 						! */
    return ret_val;
 
- L22400:
+L22400:
    i__1 = rnd_(&c__4) + 449;
    jigsup_(&i__1);
 /* 						!FATAL LEAP. */
@@ -997,16 +975,16 @@ logical sverbs_(integer * ri) {
 
 /* V92--	LOCK. */
 
- L23000:
+L23000:
    if (prsvec_1.prso == oindex_1.grate && play_1.here == rindex_1.mgrat) {
       goto L23200;
    }
- L23100:
+L23100:
    rspeak_(&c__464);
 /* 						!NOT LOCK GRATE. */
    return ret_val;
 
- L23200:
+L23200:
    findex_1.grunlf = FALSE_;
 /* 						!GRATE NOW LOCKED. */
    rspeak_(&c__214);
@@ -1016,7 +994,7 @@ logical sverbs_(integer * ri) {
 
 /* V93--	UNLOCK */
 
- L24000:
+L24000:
    if (prsvec_1.prso != oindex_1.grate || play_1.here != rindex_1.mgrat) {
       goto L23100;
    }
@@ -1028,7 +1006,7 @@ logical sverbs_(integer * ri) {
 /* 						!NO, JOKE. */
    return ret_val;
 
- L24200:
+L24200:
    findex_1.grunlf = TRUE_;
 /* 						!UNLOCK GRATE. */
    rspeak_(&c__217);
@@ -1038,7 +1016,7 @@ logical sverbs_(integer * ri) {
 
 /* V94--	DIAGNOSE. */
 
- L25000:
+L25000:
    i__ = fights_(&play_1.winner, &c_false);
 /* 						!GET FIGHTS STRENGTH. */
    j = advs_1.astren[play_1.winner - 1];
@@ -1081,7 +1059,7 @@ logical sverbs_(integer * ri) {
 
 /* V95--	INCANT */
 
- L26000:
+L26000:
    for (i__ = 1; i__ <= 6; ++i__) {
 /* 						!SET UP PARSE. */
       *(unsigned char *)&pv_1.p1[i__ - 1] = ' ';
@@ -1111,7 +1089,7 @@ logical sverbs_(integer * ri) {
       }
       cp = 1;
       goto L26200;
-    L26150:
+   L26150:
       if (wp == 1) {
          *(unsigned char *)&pv_1.p1[cp - 1] = *(unsigned char *)&input_1.inbuf[i__ - 1];
       }
@@ -1122,11 +1100,11 @@ logical sverbs_(integer * ri) {
 /* Computing MIN */
       i__2 = cp + 1;
       cp = min(i__2, 6);
-    L26200:
+   L26200:
       ;
    }
 
- L26300:
+L26300:
    prsvec_1.prscon = 1;
 /* 						!KILL REST OF LINE. */
    if (*(unsigned char *)&pv_1.p1[0] != ' ') {
@@ -1137,7 +1115,7 @@ logical sverbs_(integer * ri) {
 /* 						!NO, HO HUM. */
    return ret_val;
 
- L26400:
+L26400:
    encryp_(pv_1.p1, ch, (ftnlen) 1, (ftnlen) 1);
 /* 						!COMPUTE RESPONSE. */
    if (*(unsigned char *)&pv_1.p2[0] != ' ') {
@@ -1162,17 +1140,17 @@ logical sverbs_(integer * ri) {
 
    return ret_val;
 
- L26550:
+L26550:
    rspeak_(&c__857);
 /* 						!HE'S GOT ONE ALREADY. */
    return ret_val;
 
- L26575:
+L26575:
    rspeak_(&c__858);
 /* 						!HE'S NOT IN ENDGAME. */
    return ret_val;
 
- L26600:
+L26600:
    if ((rooms_1.rflag[rindex_1.tstrs - 1] & rflag_1.rseen) != 0) {
       goto L26800;
    }
@@ -1190,7 +1168,7 @@ logical sverbs_(integer * ri) {
 /* 						!FORCE START. */
    return ret_val;
 
- L26800:
+L26800:
    rspeak_(&c__855);
 /* 						!TOO LATE. */
    return ret_val;
@@ -1198,7 +1176,7 @@ logical sverbs_(integer * ri) {
 
 /* V96--	ANSWER */
 
- L27000:
+L27000:
    if (prsvec_1.prscon > 1 && play_1.here == rindex_1.fdoor && findex_1.inqstf) {
       goto L27100;
    }
@@ -1207,7 +1185,7 @@ logical sverbs_(integer * ri) {
    prsvec_1.prscon = 1;
    return ret_val;
 
- L27100:
+L27100:
    k = 1;
 /* 						!POINTER INTO ANSSTR. */
    for (j = 1; j <= 28; j += 2) {
@@ -1222,7 +1200,7 @@ logical sverbs_(integer * ri) {
 /* 						!SCAN ANSWER. */
       i__1 = newk - 1;
       for (l = k; l <= i__1; ++l) {
-       L27150:
+      L27150:
          ++i__;
 /* 						!SKIP INPUT BLANKS. */
          if (i__ > input_1.inlnt) {
@@ -1235,11 +1213,11 @@ logical sverbs_(integer * ri) {
          if (*(unsigned char *)&input_1.inbuf[i__ - 1] != *(unsigned char *)&ansstr[l - 1]) {
             goto L27300;
          }
-/* L27200: */
+   /* L27200: */
       }
       goto L27500;
 /* 						!RIGHT ANSWER. */
-    L27300:
+   L27300:
       k = newk;
    }
 
@@ -1256,14 +1234,14 @@ logical sverbs_(integer * ri) {
 /* 						!NO, TRY AGAIN. */
    return ret_val;
 
- L27400:
+L27400:
    rspeak_(&c__826);
 /* 						!ALL OVER. */
    cevent_1.cflag[cindex_1.cevinq - 1] = FALSE_;
 /* 						!LOSE. */
    return ret_val;
 
- L27500:
+L27500:
    prsvec_1.prscon = 1;
 /* 						!KILL REST OF LINE. */
    ++findex_1.corrct;
@@ -1284,7 +1262,7 @@ logical sverbs_(integer * ri) {
    rspeak_(&i__1);
    return ret_val;
 
- L27600:
+L27600:
    rspeak_(&c__827);
 /* 						!QUIZ OVER, */
    cevent_1.cflag[cindex_1.cevinq - 1] = FALSE_;

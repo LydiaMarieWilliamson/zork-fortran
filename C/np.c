@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -103,8 +91,7 @@ static integer c__601 = 601;
 
 /* DECLARATIONS */
 
-/* Subroutine */ int rdline_(char *buffer, integer * length, integer * who,
-   ftnlen buffer_len) {
+/* Subroutine */ int rdline_(char *buffer, integer * length, integer * who, ftnlen buffer_len) {
 /* Format strings */
    static char fmt_50[] = "(\002 >\002,$)";
    static char fmt_100[] = "(78a1)";
@@ -137,7 +124,7 @@ static integer c__601 = 601;
    --buffer;
 
 /* Function Body */
- L5:
+L5:
    switch (*who + 1) {
       case 1:
          goto L90;
@@ -145,12 +132,12 @@ static integer c__601 = 601;
          goto L10;
    }
 /* 						!SEE WHO TO PROMPT FOR. */
- L10:
+L10:
    io___6.ciunit = chan_1.outch;
    s_wsfe(&io___6);
    e_wsfe();
 /* 						!PROMPT FOR GAME. */
- L90:
+L90:
    io___7.ciunit = chan_1.inpch;
    s_rsfe(&io___7);
    do_fio(&c__78, buffer + 1, (ftnlen) 1);
@@ -168,7 +155,7 @@ static integer c__601 = 601;
 /* 	converted to upper case */
 
 /* NO SHELL ESCAPE /+TAA+/ */
- L250:
+L250:
 /* 250	if (buffer(1) .ne. '!') go to 300 */
 /* 	do 275 j=2,length */
 /* 	  sysbuf(j-1:j-1) = buffer(j) */
@@ -177,7 +164,7 @@ static integer c__601 = 601;
 /* 	call system(sysbuf) */
 /* 	go to 5 */
 /* CONVERT TO UPPER CASE */
-/* L300: */
+/*L300: */
    i__1 = *length;
    for (i__ = 1; i__ <= i__1; ++i__) {
       if (*(unsigned char *)&buffer[i__] >= 'a' && *(unsigned char *)&buffer[i__] <= 'z') {
@@ -217,8 +204,7 @@ logical parse_(char *inbuf, integer * inlnt, logical * vbflag, ftnlen inbuf_len)
 #define syn ((integer *)&syntax_1)
 #define pvec ((integer *)&pv_1)
 #define objvec ((integer *)&pv_1 + 1)
-   extern /* Subroutine */ int orphan_(integer *, integer *, integer *,
-      integer *, integer *);
+   extern /* Subroutine */ int orphan_(integer *, integer *, integer *, integer *, integer *);
    extern integer sparse_(integer *, integer *, logical *);
 #define prpvec ((integer *)&pv_1 + 3)
    extern logical synmch_(integer *);
@@ -255,7 +241,7 @@ logical parse_(char *inbuf, integer * inlnt, logical * vbflag, ftnlen inbuf_len)
 
 /* PARSE REQUIRES VALIDATION */
 
- L200:
+L200:
    if (!(*vbflag)) {
       goto L350;
    }
@@ -270,9 +256,9 @@ logical parse_(char *inbuf, integer * inlnt, logical * vbflag, ftnlen inbuf_len)
 
 /* SUCCESSFUL PARSE OR SUCCESSFUL VALIDATION */
 
- L300:
+L300:
    ret_val = TRUE_;
- L350:
+L350:
    orphan_(&c__0, &c__0, &c__0, &c__0, &c__0);
 /* 						!CLEAR ORPHANS. */
 /* D	if(dflag) write(0,*) 'parse good' */
@@ -282,7 +268,7 @@ logical parse_(char *inbuf, integer * inlnt, logical * vbflag, ftnlen inbuf_len)
 
 /* PARSE FAILS, DISALLOW CONTINUATION */
 
- L100:
+L100:
    prsvec_1.prscon = 1;
 /* D	if(dflag) write(0,*) 'parse failed' */
 /* D	IF(DFLAG) PRINT 10,PARSE,PRSA,PRSO,PRSI */
@@ -300,8 +286,7 @@ logical parse_(char *inbuf, integer * inlnt, logical * vbflag, ftnlen inbuf_len)
 
 /* DECLARATIONS */
 
-/* Subroutine */ int orphan_(integer * o1, integer * o2, integer * o3, integer *
-   o4, integer * o5) {
+/* Subroutine */ int orphan_(integer * o1, integer * o2, integer * o3, integer * o4, integer * o5) {
 
    orphs_2.a = *o1;
 /* 						!SET UP NEW ORPHANS. */
@@ -356,13 +341,13 @@ logical lex_(char *inbuf, integer * inlnt, integer * outbuf, integer * op, logic
 /* 						!ASSUME LEX FAILS. */
    *op = -1;
 /* 						!OUTPUT PTR. */
- L50:
+L50:
    *op += 2;
 /* 						!ADV OUTPUT PTR. */
    cp = 0;
 /* 						!CHAR PTR=0. */
 
- L200:
+L200:
    if (prsvec_1.prscon > *inlnt) {
       goto L1000;
    }
@@ -399,7 +384,7 @@ logical lex_(char *inbuf, integer * inlnt, integer * outbuf, integer * op, logic
 
 /* END OF INPUT, SEE IF PARTIAL WORD AVAILABLE. */
 
- L1000:
+L1000:
    if (prsvec_1.prscon > *inlnt) {
       prsvec_1.prscon = 1;
    }
@@ -418,7 +403,7 @@ logical lex_(char *inbuf, integer * inlnt, integer * outbuf, integer * op, logic
 
 /* LEGITIMATE CHARACTERS: LETTER, DIGIT, OR HYPHEN. */
 
- L4000:
+L4000:
    j1 = *(unsigned char *)j - *(unsigned char *)&dlimit[i__ + 1];
 /* D	IF(DFLAG) PRINT 20,J,J1,CP */
 /* D20	FORMAT(' LEX- CHAR= ',A1,2I7) */
@@ -437,15 +422,15 @@ logical lex_(char *inbuf, integer * inlnt, integer * outbuf, integer * op, logic
          goto L4300;
    }
 /* 						!BRANCH ON CHAR. */
- L4100:
+L4100:
    j2 = j1 * 780;
 /* 						!CHAR 1... *780 */
    outbuf[k] = outbuf[k] + j2 + j2;
 /* 						!*1560 (40 ADDED BELOW). */
- L4200:
+L4200:
    outbuf[k] += j1 * 39;
 /* 						!*39 (1 ADDED BELOW). */
- L4300:
+L4300:
    outbuf[k] += j1;
 /* 						!*1. */
    ++cp;
@@ -454,7 +439,7 @@ logical lex_(char *inbuf, integer * inlnt, integer * outbuf, integer * op, logic
 
 /* SPACE */
 
- L6000:
+L6000:
    if (cp == 0) {
       goto L200;
    }

@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -28,8 +16,7 @@ struct {
 #define oroom2_1 oroom2_
 
 struct {
-   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt,
-      schbt;
+   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 
 #define oflags_1 oflags_
@@ -103,10 +90,7 @@ struct {
 #define objflg_1 objflg_
 
 struct {
-   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw,
-      cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage,
-      spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs,
-      sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
+   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
 
 #define oindex_1 oindex_
@@ -126,8 +110,7 @@ struct {
 #define vill_1 vill_
 
 struct {
-   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf,
-      frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
+   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
    integer btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
 
@@ -161,8 +144,7 @@ integer robadv_(integer * adv, integer * nr, integer * nc, integer * na) {
 /* Local variables */
    static integer i__;
 #define eqo ((integer *)&objcts_1 + 1)
-   extern /* Subroutine */ int newsta_(integer *, integer *, integer *,
-      integer *, integer *);
+   extern /* Subroutine */ int newsta_(integer *, integer *, integer *, integer *, integer *);
 
 /* OBJECTS */
 
@@ -176,7 +158,7 @@ integer robadv_(integer * adv, integer * nr, integer * nc, integer * na) {
       newsta_(&i__, &c__0, nr, nc, na);
 /* 						!STEAL OBJECT */
       ++ret_val;
-    L100:
+   L100:
       ;
    }
    return ret_val;
@@ -196,8 +178,7 @@ integer robrm_(integer * rm, integer * pr, integer * nr, integer * nc, integer *
    static integer i__;
 #define eqo ((integer *)&objcts_1 + 1)
    extern logical prob_(integer *, integer *), qhere_(integer *, integer *);
-   extern /* Subroutine */ int newsta_(integer *, integer *, integer *,
-      integer *, integer *);
+   extern /* Subroutine */ int newsta_(integer *, integer *, integer *, integer *, integer *);
    extern integer robadv_(integer *, integer *, integer *, integer *), oactor_(integer *);
 
 /* OBJECTS */
@@ -217,12 +198,12 @@ integer robrm_(integer * rm, integer * pr, integer * nr, integer * nc, integer *
       ++ret_val;
       objcts_1.oflag2[i__ - 1] |= oflags_1.tchbt;
       goto L100;
-    L50:
+   L50:
       if ((objcts_1.oflag2[i__ - 1] & oflags_1.actrbt) != 0) {
          i__2 = oactor_(&i__);
          ret_val += robadv_(&i__2, nr, nc, na);
       }
-    L100:
+   L100:
       ;
    }
    return ret_val;
@@ -298,8 +279,7 @@ integer fights_(integer * h__, logical * flg) {
 
 /* ADVENTURERS */
 
-   ret_val = smin + ((smax - smin) * advs_1.ascore[(20 + (0 + (*h__ - 1 << 2)
-            ) - 20) / 4] + state_1.mxscor / 2) / state_1.mxscor;
+   ret_val = smin + ((smax - smin) * advs_1.ascore[(20 + (0 + (*h__ - 1 << 2)) - 20) / 4] + state_1.mxscor / 2) / state_1.mxscor;
    if (*flg) {
       ret_val += advs_1.astren[*h__ - 1];
    }
@@ -352,7 +332,7 @@ integer vilstr_(integer * v) {
    ret_val = min(ret_val, 2);
 /* 						!NO BETTER THAN 2. */
 
- L100:
+L100:
    i__1 = vill_1.vlnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
 /* 						!SEE IF  BEST WEAPON. */

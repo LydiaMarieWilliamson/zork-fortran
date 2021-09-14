@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -47,10 +35,7 @@ struct {
 #define oroom2_1 oroom2_
 
 struct {
-   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw,
-      cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage,
-      spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs,
-      sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
+   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
 
 #define oindex_1 oindex_
@@ -86,8 +71,7 @@ struct {
 #define chan_1 chan_
 
 struct {
-   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf,
-      frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
+   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
    integer btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
 
@@ -165,7 +149,7 @@ logical moveto_(integer * nr, integer * who) {
 /* 						!CAN'T GO WITHOUT VEHICLE. */
    return ret_val;
 
- L100:
+L100:
    bits = 0;
 /* 						!ASSUME NOWHERE. */
    if (j == oindex_1.rboat) {
@@ -185,7 +169,7 @@ logical moveto_(integer * nr, integer * who) {
       goto L800;
    }
 
- L500:
+L500:
    ret_val = TRUE_;
 /* 						!MOVE SHOULD SUCCEED. */
    if ((rooms_1.rflag[*nr - 1] & rflag_1.rmung) == 0) {
@@ -195,7 +179,7 @@ logical moveto_(integer * nr, integer * who) {
 /* 						!YES, TELL HOW. */
    return ret_val;
 
- L600:
+L600:
    if (*who != aindex_1.player) {
       newsta_(&advs_1.aobj[*who - 1], &c__0, nr, &c__0, &c__0);
    }
@@ -209,7 +193,7 @@ logical moveto_(integer * nr, integer * who) {
    rooms_1.rval[*nr - 1] = 0;
    return ret_val;
 
- L800:
+L800:
    rspsub_(&c__428, &objcts_1.odesc2[j - 1]);
 /* 						!WRONG VEHICLE. */
    return ret_val;
@@ -309,12 +293,12 @@ logical moveto_(integer * nr, integer * who) {
       }
 /* L10: */
    }
- L50:
+L50:
    i__1 = i__ + 484;
    rspeak_(&i__1);
    return 0;
 
- L60:
+L60:
    if (*flg) {
       io___21.ciunit = chan_1.outch;
       s_wsfe(&io___21);
@@ -337,7 +321,7 @@ logical moveto_(integer * nr, integer * who) {
       }
 /* L70: */
    }
- L80:
+L80:
    i__1 = i__ + 786;
    rspeak_(&i__1);
    return 0;
@@ -383,7 +367,7 @@ logical moveto_(integer * nr, integer * who) {
    cevent_1.ctick[cindex_1.cevegh - 1] = 15;
    return 0;
 
- L100:
+L100:
    state_1.egscor += *n;
 /* 						!UPDATE EG SCORE. */
    return 0;

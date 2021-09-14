@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -40,9 +28,7 @@ struct {
 #define rflag_1 rflag_
 
 struct {
-   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls,
-      mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw,
-      mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
+   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
 } rindex_;
 
 #define rindex_1 rindex_
@@ -61,17 +47,13 @@ struct {
 #define oroom2_1 oroom2_
 
 struct {
-   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt,
-      schbt;
+   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 
 #define oflags_1 oflags_
 
 struct {
-   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw,
-      cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage,
-      spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs,
-      sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
+   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
 
 #define oindex_1 oindex_
@@ -134,8 +116,7 @@ struct {
 #define aindex_1 aindex_
 
 struct {
-   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf,
-      frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
+   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
    integer btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
 
@@ -302,7 +283,7 @@ static integer c__293 = 293;
 
 /* CEV1--	CURE CLOCK.  LET PLAYER SLOWLY RECOVER. */
 
- L1000:
+L1000:
 /* Computing MIN */
    i__1 = 0, i__2 = advs_1.astren[aindex_1.player - 1] + 1;
    advs_1.astren[aindex_1.player - 1] = min(i__1, i__2);
@@ -317,7 +298,7 @@ static integer c__293 = 293;
 
 /* CEV2--	MAINT-ROOM WITH LEAK.  RAISE THE WATER LEVEL. */
 
- L2000:
+L2000:
    if (play_1.here == rindex_1.maint) {
       i__1 = findex_1.rvmnt / 2 + 71;
       rspeak_(&i__1);
@@ -342,14 +323,14 @@ static integer c__293 = 293;
 
 /* CEV3--	LANTERN.  DESCRIBE GROWING DIMNESS. */
 
- L3000:
+L3000:
    litint_(&oindex_1.lamp, &findex_1.orlamp, &cindex_1.cevlnt, lmptck, &c__12);
 /* 						!DO LIGHT INTERRUPT. */
    return 0;
 
 /* CEV4--	MATCH.  OUT IT GOES. */
 
- L4000:
+L4000:
    rspeak_(&c__153);
 /* 						!MATCH IS OUT. */
    objcts_1.oflag1[oindex_1.match - 1] &= ~oflags_1.onbt;
@@ -357,7 +338,7 @@ static integer c__293 = 293;
 
 /* CEV5--	CANDLE.  DESCRIBE GROWING DIMNESS. */
 
- L5000:
+L5000:
    litint_(&oindex_1.candl, &findex_1.orcand, &cindex_1.cevcnd, cndtck, &c__10);
 /* 						!DO CANDLE INTERRUPT. */
    return 0;
@@ -365,7 +346,7 @@ static integer c__293 = 293;
 
 /* CEV6--	BALLOON */
 
- L6000:
+L6000:
    cevent_1.ctick[cindex_1.cevbal - 1] = 3;
 /* 						!RESCHEDULE INTERRUPT. */
    f = advs_1.avehic[play_1.winner - 1] == oindex_1.ballo;
@@ -402,7 +383,7 @@ static integer c__293 = 293;
 /* 						!ON LEDGE, DESCRIBE. */
    return 0;
 
- L6200:
+L6200:
    f = moveto_(&state_1.bloc, &play_1.winner);
 /* 						!MOVE HIM. */
    if (findex_1.binff == 0) {
@@ -415,7 +396,7 @@ static integer c__293 = 293;
 /* 						!DESCRIBE. */
    return 0;
 
- L6250:
+L6250:
    newsta_(&oindex_1.ballo, &c__532, &c__0, &c__0, &c__0);
 /* 						!NO, BALLOON & CONTENTS DIE. */
    newsta_(&oindex_1.dball, &c__0, &state_1.bloc, &c__0, &c__0);
@@ -429,7 +410,7 @@ static integer c__293 = 293;
    findex_1.btief = 0;
    return 0;
 
- L6300:
+L6300:
    --state_1.bloc;
 /* 						!NOT IN VAIR1, DESCEND. */
    newsta_(&oindex_1.ballo, &c__0, &state_1.bloc, &c__0, &c__0);
@@ -443,7 +424,7 @@ static integer c__293 = 293;
 /* 						!IF ON LEDGE, DESCRIBE. */
    return 0;
 
- L6400:
+L6400:
    f = moveto_(&state_1.bloc, &play_1.winner);
 /* 						!IN BALLOON, MOVE HIM. */
    rspeak_(&c__534);
@@ -454,7 +435,7 @@ static integer c__293 = 293;
 /* BALLOON IS IN MIDAIR AND IS INFLATED, UP-UP-AND-AWAY */
 /* 						! */
 
- L6500:
+L6500:
    if (state_1.bloc != rindex_1.vair4) {
       goto L6600;
    }
@@ -479,12 +460,12 @@ static integer c__293 = 293;
 /* 						!IF HE CAN SEE, DESCRIBE. */
    return 0;
 
- L6550:
+L6550:
    jigsup_(&c__536);
 /* 						!IN BALLOON AT CRASH, DIE. */
    return 0;
 
- L6600:
+L6600:
    ++state_1.bloc;
 /* 						!NOT AT VAIR4, GO UP. */
    newsta_(&oindex_1.ballo, &c__0, &state_1.bloc, &c__0, &c__0);
@@ -498,7 +479,7 @@ static integer c__293 = 293;
 /* 						!CAN HE SEE IT? */
    return 0;
 
- L6650:
+L6650:
    f = moveto_(&state_1.bloc, &play_1.winner);
 /* 						!MOVE PLAYER. */
    rspeak_(&c__538);
@@ -508,7 +489,7 @@ static integer c__293 = 293;
 
 /* ON LEDGE, GOES TO MIDAIR ROOM WHETHER INFLATED OR NOT. */
 
- L6700:
+L6700:
    state_1.bloc += rindex_1.vair2 - rindex_1.ledg2;
 /* 						!MOVE TO MIDAIR. */
    newsta_(&oindex_1.ballo, &c__0, &state_1.bloc, &c__0, &c__0);
@@ -524,7 +505,7 @@ static integer c__293 = 293;
 /* 						!MATERIALIZE GNOME. */
    return 0;
 
- L6750:
+L6750:
    f = moveto_(&state_1.bloc, &play_1.winner);
 /* 						!MOVE TO NEW ROOM. */
    rspeak_(&c__540);
@@ -534,7 +515,7 @@ static integer c__293 = 293;
 
 /* AT BOTTOM, GO UP IF INFLATED, DO NOTHING IF DEFLATED. */
 
- L6800:
+L6800:
    if (findex_1.binff == 0 || !((objcts_1.oflag2[oindex_1.recep - 1] & oflags_1.openbt) != 0)) {
       return 0;
    }
@@ -552,7 +533,7 @@ static integer c__293 = 293;
 /* 						!IF CAN SEE, DESCRIBE. */
    return 0;
 
- L6850:
+L6850:
    f = moveto_(&state_1.bloc, &play_1.winner);
 /* 						!MOVE PLAYER. */
    rspeak_(&c__542);
@@ -562,7 +543,7 @@ static integer c__293 = 293;
 
 /* CEV7--	BALLOON BURNUP */
 
- L7000:
+L7000:
    i__1 = objcts_1.olnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
 /* 						!FIND BURNING OBJECT */
@@ -573,7 +554,7 @@ static integer c__293 = 293;
    }
    bug_(&c__4, &c__0);
 
- L7200:
+L7200:
    newsta_(&i__, &c__0, &c__0, &c__0, &c__0);
 /* 						!VANISH OBJECT. */
    findex_1.binff = 0;
@@ -586,7 +567,7 @@ static integer c__293 = 293;
 
 /* CEV8--	FUSE FUNCTION */
 
- L8000:
+L8000:
    if (objcts_1.ocan[oindex_1.fuse - 1] != oindex_1.brick) {
       goto L8500;
    }
@@ -614,7 +595,7 @@ static integer c__293 = 293;
 /* 						!DEAD. */
    return 0;
 
- L8100:
+L8100:
    rspeak_(&c__151);
 /* 						!BOOM. */
    state_1.mungrm = br;
@@ -636,12 +617,11 @@ static integer c__293 = 293;
 /* 						!INDICATE SAFE BLOWN. */
    return 0;
 
- L8200:
+L8200:
    i__1 = objcts_1.olnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
 /* 						!BLEW WRONG ROOM. */
-      if (qhere_(&i__, &br) && (objcts_1.oflag1[i__ - 1] & oflags_1.takebt)
-         != 0) {
+      if (qhere_(&i__, &br) && (objcts_1.oflag1[i__ - 1] & oflags_1.takebt) != 0) {
          newsta_(&i__, &c__0, &c__0, &c__0, &c__0);
       }
 /* L8250: */
@@ -660,7 +640,7 @@ static integer c__293 = 293;
    }
    return 0;
 
- L8500:
+L8500:
    if (qhere_(&oindex_1.fuse, &play_1.here) || objcts_1.oadv[oindex_1.fuse - 1] == play_1.winner) {
       rspeak_(&c__152);
    }
@@ -671,7 +651,7 @@ static integer c__293 = 293;
 
 /* CEV9--	LEDGE MUNGE. */
 
- L9000:
+L9000:
    rooms_1.rflag[rindex_1.ledg4 - 1] |= rflag_1.rmung;
    rrand[rindex_1.ledg4 - 1] = 109;
    if (play_1.here == rindex_1.ledg4) {
@@ -682,7 +662,7 @@ static integer c__293 = 293;
 /* 						!NO, NARROW ESCAPE. */
    return 0;
 
- L9100:
+L9100:
    if (advs_1.avehic[play_1.winner - 1] != 0) {
       goto L9200;
    }
@@ -691,7 +671,7 @@ static integer c__293 = 293;
 /* 						!NO, DEAD. */
    return 0;
 
- L9200:
+L9200:
    if (findex_1.btief != 0) {
       goto L9300;
    }
@@ -700,7 +680,7 @@ static integer c__293 = 293;
 /* 						!NO, NO PLACE TO LAND. */
    return 0;
 
- L9300:
+L9300:
    state_1.bloc = rindex_1.vlbot;
 /* 						!YES, CRASH BALLOON. */
    newsta_(&oindex_1.ballo, &c__0, &c__0, &c__0, &c__0);
@@ -717,7 +697,7 @@ static integer c__293 = 293;
 
 /* CEV10--	SAFE MUNG. */
 
- L10000:
+L10000:
    rooms_1.rflag[state_1.mungrm - 1] |= rflag_1.rmung;
    rrand[state_1.mungrm - 1] = 114;
    if (play_1.here == state_1.mungrm) {
@@ -732,7 +712,7 @@ static integer c__293 = 293;
 /* 						!START LEDGE CLOCK. */
    return 0;
 
- L10100:
+L10100:
    i__ = 116;
 /* 						!HE'S DEAD, */
    if ((rooms_1.rflag[play_1.here - 1] & rflag_1.rhouse) != 0) {
@@ -745,7 +725,7 @@ static integer c__293 = 293;
 
 /* CEV11--	VOLCANO GNOME */
 
- L11000:
+L11000:
    if (play_1.here == rindex_1.ledg2 || play_1.here == rindex_1.ledg3 || play_1.here == rindex_1.ledg4 || play_1.here == rindex_1.vlbot) {
       goto L11100;
    }
@@ -754,21 +734,21 @@ static integer c__293 = 293;
 /* 						!NO, WAIT A WHILE. */
    return 0;
 
- L11100:
+L11100:
    newsta_(&oindex_1.gnome, &c__118, &play_1.here, &c__0, &c__0);
 /* 						!YES, MATERIALIZE GNOME. */
    return 0;
 
 /* CEV12--	VOLCANO GNOME DISAPPEARS */
 
- L12000:
+L12000:
    newsta_(&oindex_1.gnome, &c__149, &c__0, &c__0, &c__0);
 /* 						!DISAPPEAR THE GNOME. */
    return 0;
 
 /* CEV13--	BUCKET. */
 
- L13000:
+L13000:
    if (objcts_1.ocan[oindex_1.water - 1] == oindex_1.bucke) {
       newsta_(&oindex_1.water, &c__0, &c__0, &c__0, &c__0);
    }
@@ -776,7 +756,7 @@ static integer c__293 = 293;
 
 /* CEV14--	SPHERE.  IF EXPIRES, HE'S TRAPPED. */
 
- L14000:
+L14000:
    rooms_1.rflag[rindex_1.cager - 1] |= rflag_1.rmung;
    rrand[rindex_1.cager - 1] = 147;
    jigsup_(&c__148);
@@ -785,7 +765,7 @@ static integer c__293 = 293;
 
 /* CEV15--	END GAME HERALD. */
 
- L15000:
+L15000:
    findex_1.endgmf = TRUE_;
 /* 						!WE'RE IN ENDGAME. */
    rspeak_(&c__119);
@@ -795,7 +775,7 @@ static integer c__293 = 293;
 
 /* CEV16--	FOREST MURMURS */
 
- L16000:
+L16000:
    cevent_1.cflag[cindex_1.cevfor - 1] = play_1.here == rindex_1.mtree || play_1.here >= rindex_1.fore1 && play_1.here < rindex_1.clear;
    if (cevent_1.cflag[cindex_1.cevfor - 1] && prob_(&c__10, &c__10)) {
       rspeak_(&c__635);
@@ -804,7 +784,7 @@ static integer c__293 = 293;
 
 /* CEV17--	SCOL ALARM */
 
- L17000:
+L17000:
    if (play_1.here == rindex_1.bktwi) {
       cevent_1.cflag[cindex_1.cevzgi - 1] = TRUE_;
    }
@@ -817,7 +797,7 @@ static integer c__293 = 293;
 
 /* CEV18--	ENTER GNOME OF ZURICH */
 
- L18000:
+L18000:
    cevent_1.cflag[cindex_1.cevzgo - 1] = TRUE_;
 /* 						!EXITS, TOO. */
    newsta_(&oindex_1.zgnom, &c__0, &rindex_1.bktwi, &c__0, &c__0);
@@ -830,7 +810,7 @@ static integer c__293 = 293;
 
 /* CEV19--	EXIT GNOME */
 
- L19000:
+L19000:
    newsta_(&oindex_1.zgnom, &c__0, &c__0, &c__0, &c__0);
 /* 						!VANISH. */
    if (play_1.here == rindex_1.bktwi) {
@@ -842,7 +822,7 @@ static integer c__293 = 293;
 
 /* CEV20--	START OF ENDGAME */
 
- L20000:
+L20000:
    if (findex_1.spellf) {
       goto L20200;
    }
@@ -859,15 +839,14 @@ static integer c__293 = 293;
 /* 						!RESCHEDULE. */
    return 0;
 
- L20100:
+L20100:
    rspeak_(&c__727);
 /* 						!ANNOUNCE. */
- L20200:
+L20200:
    i__1 = objcts_1.olnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
 /* 						!STRIP HIM OF OBJS. */
-      newsta_(&i__, &c__0, &objcts_1.oroom[i__ - 1], &objcts_1.ocan[i__ - 1]
-         , &c__0);
+      newsta_(&i__, &c__0, &objcts_1.oroom[i__ - 1], &objcts_1.ocan[i__ - 1] , &c__0);
 /* L20300: */
    }
    newsta_(&oindex_1.lamp, &c__0, &c__0, &c__0, &aindex_1.player);
@@ -908,7 +887,7 @@ static integer c__293 = 293;
 
 /* CEV21--	MIRROR CLOSES. */
 
- L21000:
+L21000:
    findex_1.mrpshf = FALSE_;
 /* 						!BUTTON IS OUT. */
    findex_1.mropnf = FALSE_;
@@ -925,7 +904,7 @@ static integer c__293 = 293;
 
 /* CEV22--	DOOR CLOSES. */
 
- L22000:
+L22000:
    if (findex_1.wdopnf) {
       rspeak_(&c__730);
    }
@@ -936,7 +915,7 @@ static integer c__293 = 293;
 
 /* CEV23--	INQUISITOR'S QUESTION */
 
- L23000:
+L23000:
    if (advs_1.aroom[aindex_1.player - 1] != rindex_1.fdoor) {
       return 0;
    }
@@ -949,7 +928,7 @@ static integer c__293 = 293;
 
 /* CEV24--	MASTER FOLLOWS */
 
- L24000:
+L24000:
    if (advs_1.aroom[aindex_1.amastr - 1] == play_1.here) {
       return 0;
    }
@@ -964,7 +943,7 @@ static integer c__293 = 293;
    findex_1.follwf = FALSE_;
    return 0;
 
- L24100:
+L24100:
    findex_1.follwf = TRUE_;
 /* 						!FOLLOWING. */
    i__ = 812;
@@ -1000,13 +979,11 @@ static integer c__293 = 293;
 
 /* DECLARATIONS */
 
-/* Subroutine */ int litint_(integer * obj, integer * ctr, integer * cev,
-   integer * ticks, integer * tickln) {
+/* Subroutine */ int litint_(integer * obj, integer * ctr, integer * cev, integer * ticks, integer * tickln) {
 /* Local variables */
 #define eqc ((integer *)&cevent_1 + 1)
 #define eqo ((integer *)&objcts_1 + 1)
-   extern /* Subroutine */ int rspsub_(integer *, integer *), rspeak_(
-      integer *);
+   extern /* Subroutine */ int rspsub_(integer *, integer *), rspeak_(integer *);
 
 /* GAME STATE */
 
@@ -1032,7 +1009,7 @@ static integer c__293 = 293;
    }
    return 0;
 
- L100:
+L100:
    if (objcts_1.oroom[*obj - 1] == play_1.here || objcts_1.oadv[*obj - 1] == play_1.winner) {
       rspeak_(&ticks[*ctr + *tickln / 2]);
    }

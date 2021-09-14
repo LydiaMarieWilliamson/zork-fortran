@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -140,9 +128,7 @@ struct rflag_1_ {
 #define rflag_1 (*(struct rflag_1_ *) &rflag_)
 
 struct rindex_1_ {
-   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls,
-      mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw,
-      mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
+   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
 };
 
 #define rindex_1 (*(struct rindex_1_ *) &rindex_)
@@ -185,17 +171,13 @@ struct {
 #define oroom2_1 oroom2_
 
 struct oflags_1_ {
-   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt,
-      schbt;
+   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 };
 
 #define oflags_1 (*(struct oflags_1_ *) &oflags_)
 
 struct oindex_1_ {
-   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw,
-      cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage,
-      spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs,
-      sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
+   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 };
 
 #define oindex_1 (*(struct oindex_1_ *) &oindex_)
@@ -246,16 +228,13 @@ struct aindex_1_ {
 #define aindex_1 (*(struct aindex_1_ *) &aindex_)
 
 struct vindex_1_ {
-   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw,
-      openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw,
-      clmbuw, clmbdw, trntow;
+   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw, openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw, clmbuw, clmbdw, trntow;
 };
 
 #define vindex_1 (*(struct vindex_1_ *) &vindex_)
 
 struct {
-   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf,
-      frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
+   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
    integer btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
 
@@ -274,13 +253,16 @@ struct {
 struct {
    integer fill_1[3];
    integer e_2[20];
-} screen_ = { { 0 }, 1024, 153, 5120, 154, 3072, 152, 7168, 151, 151, 207,
-3072, 152, 208, 7168, 153, 206, 5120, 154, 205, 1024
+} screen_ = {
+   { 0 },
+   1024, 153, 5120, 154, 3072, 152, 7168, 151, 151, 207,
+   3072, 152, 208, 7168, 153, 206, 5120, 154, 205, 1024
 };
 
 struct {
    integer e_1[88];
-} puzzle_ = { 1024, -8, 2048, -7, 3072, 1, 4096, 9, 5120, 8, 6144, 7,
+} puzzle_ = {
+   1024, -8, 2048, -7, 3072, 1, 4096, 9, 5120, 8, 6144, 7,
    7168, -1, 8192, -9, 205, -8, 206, 8, 207, 1, 208, -1, 1, 1, 1, 1,
    1, 1, 1, 1, 1, 0, -1, 0, 0, -1, 0, 1, 1, -1, 0, 1, 0, -2, 0, 1, 1,
    0, 0, 0, 0, 1, 0, 1, 1, -3, 0, 0, -1, -1, 0, 1, 1, 0, 0, -1, 0,
@@ -302,13 +284,15 @@ struct {
 
 struct {
    integer e_1[12];
-} rflag_ = { 32768, 16384, 8192, 4096, 2048, 1024, 512, 256, 128, 64, 32,
+} rflag_ = {
+   32768, 16384, 8192, 4096, 2048, 1024, 512, 256, 128, 64, 32,
    16
 };
 
 struct {
    integer e_1[86];
-} rindex_ = { 2, 8, 9, 10, 11, 25, 30, 31, 33, 36, 40, 42, 44, 49, 61, 76,
+} rindex_ = {
+   2, 8, 9, 10, 11, 25, 30, 31, 33, 36, 40, 42, 44, 49, 61, 76,
    77, 79, 80, 83, 91, 94, 96, 97, 100, 102, 103, 107, 108, 109,
    101, 112, 113, 114, 120, 119, 121, 122, 126, 127, 128, 129, 130,
    131, 132, 133, 135, 140, 141, 142, 143, 144, 145, 146, 147, 148,
@@ -323,20 +307,23 @@ struct {
 
 struct {
    integer e_1[10];
-} xsrch_ = { 1024, 16384, 10240, 9216, 1024, 5120, 13312, 14336, 3072,
+} xsrch_ = {
+   1024, 16384, 10240, 9216, 1024, 5120, 13312, 14336, 3072,
    7168
 };
 
 struct {
    integer e_1[32];
-} oflags_ = { 32768, 16384, 8192, 4096, 2048, 1024, 512, 256, 128, 64, 32,
+} oflags_ = {
+   32768, 16384, 8192, 4096, 2048, 1024, 512, 256, 128, 64, 32,
    16, 8, 4, 2, 1, 32768, 16384, 8192, 4096, 2048, 1024, 512, 256,
    128, 64, 32, 16, 8, 4, 2, 1
 };
 
 struct {
    integer e_1[121];
-} oindex_ = { 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+} oindex_ = {
+   2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
    20, 21, 23, 30, 26, 33, 34, 35, 36, 39, 42, 45, 46, 47, 48, 51,
    54, 55, 56, 57, 58, 59, 61, 62, 63, 65, 66, 71, 78, 79, 75, 85,
    86, 87, 88, 89, 90, 92, 94, 96, 98, 99, 97, 101, 102, 103, 105,
@@ -349,7 +336,8 @@ struct {
 
 struct {
    integer e_1[24];
-} cindex_ = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
+} cindex_ = {
+   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
    18, 19, 20, 21, 22, 23, 24
 };
 
@@ -363,7 +351,8 @@ struct {
 
 struct {
    integer e_1[70];
-} vindex_ = { 1, 2, 3, 4, 5, 6, 7, 8, 101, 100, 102, 103, 104, 105, 106,
+} vindex_ = {
+   1, 2, 3, 4, 5, 6, 7, 8, 101, 100, 102, 103, 104, 105, 106,
    107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119,
    120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132,
    133, 134, 135, 136, 137, 138, 139, 141, 140, 142, 143, 144, 145,

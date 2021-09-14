@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -91,8 +79,7 @@ struct {
 #define oroom2_1 oroom2_
 
 struct {
-   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt,
-      schbt;
+   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 
 #define oflags_1 oflags_
@@ -116,17 +103,13 @@ struct {
 #define aindex_1 aindex_
 
 struct {
-   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls,
-      mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw,
-      mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
+   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
 } rindex_;
 
 #define rindex_1 rindex_
 
 struct {
-   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw,
-      openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw,
-      clmbuw, clmbdw, trntow;
+   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw, openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw, clmbuw, clmbdw, trntow;
 } vindex_;
 
 #define vindex_1 vindex_
@@ -180,8 +163,7 @@ logical take_(logical * flg) {
 #define prpvec ((integer *)&pv_1 + 3)
    extern /* Subroutine */ int rspeak_(integer *);
    extern integer weight_(integer *, integer *, integer *);
-   extern /* Subroutine */ int newsta_(integer *, integer *, integer *,
-      integer *, integer *), scrupd_(integer *);
+   extern /* Subroutine */ int newsta_(integer *, integer *, integer *, integer *, integer *), scrupd_(integer *);
 
 /* DECLARATIONS */
 
@@ -211,7 +193,7 @@ logical take_(logical * flg) {
 /* 						!YES, LET IT HANDLE. */
    return ret_val;
 
- L100:
+L100:
    x = objcts_1.ocan[prsvec_1.prso - 1];
 /* 						!INSIDE? */
    if (prsvec_1.prso != advs_1.avehic[play_1.winner - 1]) {
@@ -222,7 +204,7 @@ logical take_(logical * flg) {
 /* 						!DUMMY. */
    return ret_val;
 
- L400:
+L400:
    if ((objcts_1.oflag1[prsvec_1.prso - 1] & oflags_1.takebt) != 0) {
       goto L500;
    }
@@ -234,7 +216,7 @@ logical take_(logical * flg) {
 
 /* OBJECT IS TAKEABLE AND IN POSITION TO BE TAKEN. */
 
- L500:
+L500:
    if (x != 0 || qhere_(&prsvec_1.prso, &play_1.here)) {
       goto L600;
    }
@@ -244,16 +226,15 @@ logical take_(logical * flg) {
 /* 						!ALREADY GOT IT? */
    return ret_val;
 
- L600:
-   if (x != 0 && objcts_1.oadv[x - 1] == play_1.winner || weight_(&c__0, &prsvec_1.prso, &play_1.winner) + objcts_1.osize[prsvec_1.prso - 1]
-      <= state_1.mxload) {
+L600:
+   if (x != 0 && objcts_1.oadv[x - 1] == play_1.winner || weight_(&c__0, &prsvec_1.prso, &play_1.winner) + objcts_1.osize[prsvec_1.prso - 1] <= state_1.mxload) {
       goto L700;
    }
    rspeak_(&c__558);
 /* 						!TOO MUCH WEIGHT. */
    return ret_val;
 
- L700:
+L700:
    ret_val = TRUE_;
 /* 						!AT LAST. */
    if (oappli_(&oa, &c__0)) {
@@ -303,8 +284,7 @@ logical drop_(logical * z__) {
    extern logical objact_(integer *);
 #define objvec ((integer *)&pv_1 + 1)
 #define prpvec ((integer *)&pv_1 + 3)
-   extern /* Subroutine */ int rspsub_(integer *, integer *), newsta_(
-      integer *, integer *, integer *, integer *, integer *), scrupd_(integer *), rspeak_(integer *);
+   extern /* Subroutine */ int rspsub_(integer *, integer *), newsta_(integer *, integer *, integer *, integer *, integer *), scrupd_(integer *), rspeak_(integer *);
 
 /* PARSER OUTPUT */
 
@@ -341,12 +321,12 @@ logical drop_(logical * z__) {
 /* 						!CANT REACH. */
    return ret_val;
 
- L200:
+L200:
    if (objcts_1.oadv[prsvec_1.prso - 1] != play_1.winner) {
       goto L1000;
    }
 /* 						!IS HE CARRYING OBJ? */
- L300:
+L300:
    if (advs_1.avehic[play_1.winner - 1] == 0) {
       goto L400;
    }
@@ -360,7 +340,7 @@ logical drop_(logical * z__) {
    return ret_val;
 /* 						!DONE. */
 
- L400:
+L400:
    newsta_(&prsvec_1.prso, &c__0, &play_1.here, &c__0, &c__0);
 /* 						!DROP INTO ROOM. */
    if (play_1.here == rindex_1.mtree) {
@@ -390,7 +370,7 @@ logical drop_(logical * z__) {
    rspsub_(&i__, &objcts_1.odesc2[prsvec_1.prso - 1]);
    return ret_val;
 
- L1000:
+L1000:
    rspeak_(&c__527);
 /* 						!DONT HAVE IT. */
    return ret_val;
@@ -429,8 +409,7 @@ logical put_(logical * flg) {
 #define prpvec ((integer *)&pv_1 + 3)
    extern /* Subroutine */ int rspeak_(integer *);
    extern integer weight_(integer *, integer *, integer *);
-   extern /* Subroutine */ int rspsub_(integer *, integer *), scrupd_(
-      integer *), newsta_(integer *, integer *, integer *, integer *, integer *);
+   extern /* Subroutine */ int rspsub_(integer *, integer *), scrupd_(integer *), newsta_(integer *, integer *, integer *, integer *, integer *);
 
 /* PARSER OUTPUT */
 
@@ -461,7 +440,7 @@ logical put_(logical * flg) {
    ret_val = TRUE_;
    return ret_val;
 
- L200:
+L200:
    if ((objcts_1.oflag2[prsvec_1.prsi - 1] & oflags_1.openbt) != 0 || (objcts_1.oflag1[prsvec_1.prsi - 1] & oflags_1.doorbt + oflags_1.contbt) != 0 || (objcts_1.oflag2[prsvec_1.prsi - 1] & oflags_1.vehbt) != 0) {
       goto L300;
    }
@@ -469,7 +448,7 @@ logical put_(logical * flg) {
 /* 						!CANT PUT IN THAT. */
    return ret_val;
 
- L300:
+L300:
    if ((objcts_1.oflag2[prsvec_1.prsi - 1] & oflags_1.openbt) != 0) {
       goto L400;
    }
@@ -478,7 +457,7 @@ logical put_(logical * flg) {
 /* 						!NO, JOKE */
    return ret_val;
 
- L400:
+L400:
    if (prsvec_1.prso != prsvec_1.prsi) {
       goto L500;
    }
@@ -487,7 +466,7 @@ logical put_(logical * flg) {
 /* 						!YES, JOKE. */
    return ret_val;
 
- L500:
+L500:
    if (objcts_1.ocan[prsvec_1.prso - 1] != prsvec_1.prsi) {
       goto L600;
    }
@@ -496,7 +475,7 @@ logical put_(logical * flg) {
    ret_val = TRUE_;
    return ret_val;
 
- L600:
+L600:
    if (weight_(&c__0, &prsvec_1.prso, &c__0) + weight_(&c__0, &prsvec_1.prsi, &c__0) + objcts_1.osize[prsvec_1.prso - 1] <= objcts_1.ocapac[prsvec_1.prsi - 1]) {
       goto L700;
    }
@@ -506,10 +485,10 @@ logical put_(logical * flg) {
 
 /* NOW SEE IF OBJECT (OR ITS CONTAINER) IS IN ROOM */
 
- L700:
+L700:
    j = prsvec_1.prso;
 /* 						!START SEARCH. */
- L725:
+L725:
    if (qhere_(&j, &play_1.here)) {
       goto L750;
    }
@@ -522,7 +501,7 @@ logical put_(logical * flg) {
    goto L800;
 /* 						!NO, SCH FAILS. */
 
- L750:
+L750:
    svo = prsvec_1.prso;
 /* 						!SAVE PARSER. */
    svi = prsvec_1.prsi;
@@ -539,7 +518,7 @@ logical put_(logical * flg) {
 
 /* NOW SEE IF OBJECT IS ON PERSON. */
 
- L800:
+L800:
    if (objcts_1.ocan[prsvec_1.prso - 1] == 0) {
       goto L1000;
    }
@@ -552,7 +531,7 @@ logical put_(logical * flg) {
 /* 						!LOSE. */
    return ret_val;
 
- L900:
+L900:
    scrupd_(&objcts_1.ofval[prsvec_1.prso - 1]);
 /* 						!SCORE OBJECT. */
    objcts_1.ofval[prsvec_1.prso - 1] = 0;
@@ -560,7 +539,7 @@ logical put_(logical * flg) {
    newsta_(&prsvec_1.prso, &c__0, &c__0, &c__0, &play_1.winner);
 /* 						!TEMPORARILY ON WINNER. */
 
- L1000:
+L1000:
    if (objact_(&x)) {
       return ret_val;
    }
@@ -603,8 +582,7 @@ logical put_(logical * flg) {
    static integer savep, saveh;
 #define objvec ((integer *)&pv_1 + 1)
 #define prpvec ((integer *)&pv_1 + 3)
-   extern /* Subroutine */ int rspsub_(integer *, integer *), rspeak_(
-      integer *);
+   extern /* Subroutine */ int rspsub_(integer *, integer *), rspeak_(integer *);
 
 /* PARSER OUTPUT */
 
@@ -635,7 +613,7 @@ logical put_(logical * flg) {
    saveh = play_1.here;
 /* 						!SAVE HERE. */
 
-/* L100: */
+/*L100: */
    if (prsvec_1.prsa != vindex_1.takew) {
       goto L1000;
    }
@@ -655,12 +633,12 @@ logical put_(logical * flg) {
       if (saveh != play_1.here) {
          return 0;
       }
-    L500:
+   L500:
       ;
    }
    goto L3000;
 
- L1000:
+L1000:
    if (prsvec_1.prsa != vindex_1.dropw) {
       goto L2000;
    }
@@ -676,12 +654,12 @@ logical put_(logical * flg) {
       if (saveh != play_1.here) {
          return 0;
       }
-    L1500:
+   L1500:
       ;
    }
    goto L3000;
 
- L2000:
+L2000:
    if (prsvec_1.prsa != vindex_1.putw) {
       goto L3000;
    }
@@ -698,17 +676,17 @@ logical put_(logical * flg) {
       if (saveh != play_1.here) {
          return 0;
       }
-    L2500:
+   L2500:
       ;
    }
 
- L3000:
+L3000:
    i__ = 581;
    if (savep == *v) {
       i__ = 582;
    }
 /* 						!CHOOSE MESSAGE. */
- L4000:
+L4000:
    if (f) {
       rspeak_(&i__);
    }

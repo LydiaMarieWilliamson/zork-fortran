@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -78,9 +66,7 @@ struct {
 #define rflag_1 rflag_
 
 struct {
-   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls,
-      mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw,
-      mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
+   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
 } rindex_;
 
 #define rindex_1 rindex_
@@ -105,17 +91,13 @@ struct {
 #define oroom2_1 oroom2_
 
 struct {
-   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt,
-      schbt;
+   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 
 #define oflags_1 oflags_
 
 struct {
-   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw,
-      cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage,
-      spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs,
-      sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
+   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
 
 #define oindex_1 oindex_
@@ -152,16 +134,13 @@ struct {
 #define aindex_1 aindex_
 
 struct {
-   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw,
-      openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw,
-      clmbuw, clmbdw, trntow;
+   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw, openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw, clmbuw, clmbdw, trntow;
 } vindex_;
 
 #define vindex_1 vindex_
 
 struct {
-   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf,
-      frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
+   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
    integer btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
 
@@ -227,8 +206,7 @@ logical aappli_(integer * ri) {
 #define flags ((logical *)&findex_1)
 #define switch__ ((integer *)&findex_1 + 46)
    static logical f;
-   extern /* Subroutine */ int newsta_(integer *, integer *, integer *,
-      integer *, integer *), rspeak_(integer *);
+   extern /* Subroutine */ int newsta_(integer *, integer *, integer *, integer *, integer *), rspeak_(integer *);
    static integer i__;
 #define eqa ((integer *)&advs_1 + 1)
 #define eqc ((integer *)&cevent_1 + 1)
@@ -280,13 +258,13 @@ logical aappli_(integer * ri) {
 
 /* COMMON FALSE RETURN. */
 
- L10:
+L10:
    ret_val = FALSE_;
    return ret_val;
 
 /* A1--	ROBOT.  PROCESS MOST COMMANDS GIVEN TO ROBOT. */
 
- L1000:
+L1000:
    if (prsvec_1.prsa != vindex_1.raisew || prsvec_1.prso != oindex_1.rcage) {
       goto L1200;
    }
@@ -308,7 +286,7 @@ logical aappli_(integer * ri) {
    objcts_1.oflag1[oindex_1.spher - 1] |= oflags_1.takebt;
    return ret_val;
 
- L1200:
+L1200:
    if (prsvec_1.prsa != vindex_1.drinkw && prsvec_1.prsa != vindex_1.eatw) {
       goto L1300;
    }
@@ -316,7 +294,7 @@ logical aappli_(integer * ri) {
 /* 						!EAT OR DRINK, JOKE. */
    return ret_val;
 
- L1300:
+L1300:
    if (prsvec_1.prsa != vindex_1.readw) {
       goto L1400;
    }
@@ -325,9 +303,8 @@ logical aappli_(integer * ri) {
 /* 						!JOKE. */
    return ret_val;
 
- L1400:
-   if (prsvec_1.prsa == vindex_1.walkw || prsvec_1.prsa == vindex_1.takew || prsvec_1.prsa == vindex_1.dropw || prsvec_1.prsa == vindex_1.putw || prsvec_1.prsa == vindex_1.pushw || prsvec_1.prsa == vindex_1.throww || prsvec_1.prsa == vindex_1.turnw ||
-      prsvec_1.prsa == vindex_1.leapw) {
+L1400:
+   if (prsvec_1.prsa == vindex_1.walkw || prsvec_1.prsa == vindex_1.takew || prsvec_1.prsa == vindex_1.dropw || prsvec_1.prsa == vindex_1.putw || prsvec_1.prsa == vindex_1.pushw || prsvec_1.prsa == vindex_1.throww || prsvec_1.prsa == vindex_1.turnw || prsvec_1.prsa == vindex_1.leapw) {
       goto L10;
    }
    rspeak_(&c__570);
@@ -337,7 +314,7 @@ logical aappli_(integer * ri) {
 
 /* A2--	MASTER.  PROCESS MOST COMMANDS GIVEN TO MASTER. */
 
- L2000:
+L2000:
    if ((objcts_1.oflag2[oindex_1.qdoor - 1] & oflags_1.openbt) != 0) {
       goto L2100;
    }
@@ -345,7 +322,7 @@ logical aappli_(integer * ri) {
 /* 						!NO MASTER YET. */
    return ret_val;
 
- L2100:
+L2100:
    if (prsvec_1.prsa != vindex_1.walkw) {
       goto L2200;
    }
@@ -358,9 +335,8 @@ logical aappli_(integer * ri) {
    rspeak_(&i__);
    return ret_val;
 
- L2200:
-   if (prsvec_1.prsa == vindex_1.takew || prsvec_1.prsa == vindex_1.dropw || prsvec_1.prsa == vindex_1.putw || prsvec_1.prsa == vindex_1.throww || prsvec_1.prsa == vindex_1.pushw || prsvec_1.prsa == vindex_1.turnw || prsvec_1.prsa == vindex_1.spinw ||
-      prsvec_1.prsa == vindex_1.trntow || prsvec_1.prsa == vindex_1.follow || prsvec_1.prsa == vindex_1.stayw || prsvec_1.prsa == vindex_1.openw || prsvec_1.prsa == vindex_1.closew || prsvec_1.prsa == vindex_1.killw) {
+L2200:
+   if (prsvec_1.prsa == vindex_1.takew || prsvec_1.prsa == vindex_1.dropw || prsvec_1.prsa == vindex_1.putw || prsvec_1.prsa == vindex_1.throww || prsvec_1.prsa == vindex_1.pushw || prsvec_1.prsa == vindex_1.turnw || prsvec_1.prsa == vindex_1.spinw || prsvec_1.prsa == vindex_1.trntow || prsvec_1.prsa == vindex_1.follow || prsvec_1.prsa == vindex_1.stayw || prsvec_1.prsa == vindex_1.openw || prsvec_1.prsa == vindex_1.closew || prsvec_1.prsa == vindex_1.killw) {
       goto L10;
    }
    rspeak_(&c__786);
@@ -403,11 +379,9 @@ logical aappli_(integer * ri) {
 #define flags ((logical *)&findex_1)
 #define switch__ ((integer *)&findex_1 + 46)
    static integer rhere;
-   extern /* Subroutine */ int newsta_(integer *, integer *, integer *,
-      integer *, integer *);
+   extern /* Subroutine */ int newsta_(integer *, integer *, integer *, integer *, integer *);
    extern integer robadv_(integer *, integer *, integer *, integer *), robrm_(integer *, integer *, integer *, integer *, integer *);
-   extern /* Subroutine */ int rspeak_(integer *), rspsub_(integer *,
-      integer *);
+   extern /* Subroutine */ int rspeak_(integer *), rspsub_(integer *, integer *);
 
 /* GAME STATE */
 
@@ -427,7 +401,7 @@ logical aappli_(integer * ri) {
 /* 						!SET UP DETAIL FLAG. */
    once = FALSE_;
 /* 						!INIT FLAG. */
- L1025:
+L1025:
    rhere = objcts_1.oroom[oindex_1.thief - 1];
 /* 						!VISIBLE POS. */
    if (rhere != 0) {
@@ -457,7 +431,7 @@ logical aappli_(integer * ri) {
    if (qhere_(&oindex_1.still, &rindex_1.treas) || objcts_1.oadv[oindex_1.still - 1] == -oindex_1.thief) {
       newsta_(&oindex_1.still, &c__0, &c__0, &oindex_1.thief, &c__0);
    }
- L1050:
+L1050:
    i__1 = -oindex_1.thief;
    i__ = robadv_(&i__1, &hack_1.thfpos, &c__0, &c__0);
 /* 						!DROP VALUABLES. */
@@ -468,7 +442,7 @@ logical aappli_(integer * ri) {
 
 /* THIEF AND WINNER IN SAME ROOM. */
 
- L1100:
+L1100:
    if (hack_1.thfpos == rindex_1.treas) {
       goto L1700;
    }
@@ -496,9 +470,8 @@ logical aappli_(integer * ri) {
 /* 						!THIEF IS ANNOUNCED. */
    return 0;
 
- L1150:
-   if (rhere == 0 || (objcts_1.oflag2[oindex_1.thief - 1] & oflags_1.fitebt)
-      == 0) {
+L1150:
+   if (rhere == 0 || (objcts_1.oflag2[oindex_1.thief - 1] & oflags_1.fitebt) == 0) {
       goto L1200;
    }
    if (winnin_(&oindex_1.thief, &play_1.winner)) {
@@ -513,13 +486,13 @@ logical aappli_(integer * ri) {
    }
    return 0;
 
- L1175:
+L1175:
    if (prob_(&c__90, &c__90)) {
       goto L1700;
    }
 /* 						!90% CHANCE TO STAY. */
 
- L1200:
+L1200:
    if (rhere == 0 || prob_(&c__70, &c__70)) {
       goto L1250;
    }
@@ -531,12 +504,12 @@ logical aappli_(integer * ri) {
    }
    return 0;
 
- L1300:
+L1300:
    if (rhere == 0) {
       goto L1700;
    }
 /* 						!ANNOUNCED.  VISIBLE? */
- L1250:
+L1250:
    if (prob_(&c__70, &c__70)) {
       return 0;
    }
@@ -569,7 +542,7 @@ logical aappli_(integer * ri) {
 
 /* NOT IN ADVENTURERS ROOM. */
 
- L1400:
+L1400:
    newsta_(&oindex_1.thief, &c__0, &c__0, &c__0, &c__0);
 /* 						!VANISH. */
    rhere = 0;
@@ -590,8 +563,7 @@ logical aappli_(integer * ri) {
    i__1 = objcts_1.olnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
 /* 						!BOTH IN MAZE. */
-      if (!qhere_(&i__, &hack_1.thfpos) || prob_(&c__60, &c__60) || (objcts_1.oflag1[i__ - 1] & oflags_1.visibt + oflags_1.takebt)
-         != oflags_1.visibt + oflags_1.takebt) {
+      if (!qhere_(&i__, &hack_1.thfpos) || prob_(&c__60, &c__60) || (objcts_1.oflag1[i__ - 1] & oflags_1.visibt + oflags_1.takebt) != oflags_1.visibt + oflags_1.takebt) {
          goto L1450;
       }
       rspsub_(&c__590, &objcts_1.odesc2[i__ - 1]);
@@ -604,12 +576,12 @@ logical aappli_(integer * ri) {
 /* 						!MOST OF THE TIME. */
       objcts_1.oflag2[i__ - 1] |= oflags_1.tchbt;
       goto L1700;
-    L1450:
+   L1450:
       ;
    }
    goto L1700;
 
- L1500:
+L1500:
    i__1 = objcts_1.olnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
 /* 						!NOT IN MAZE. */
@@ -620,13 +592,13 @@ logical aappli_(integer * ri) {
       newsta_(&i__, &c__0, &c__0, &c__0, &i__2);
       objcts_1.oflag2[i__ - 1] |= oflags_1.tchbt;
       goto L1700;
-    L1550:
+   L1550:
       ;
    }
 
 /* NOW MOVE TO NEW ROOM. */
 
- L1700:
+L1700:
    if (objcts_1.oadv[oindex_1.rope - 1] == -oindex_1.thief) {
       findex_1.domef = FALSE_;
    }
@@ -634,7 +606,7 @@ logical aappli_(integer * ri) {
       goto L1800;
    }
    once = !once;
- L1750:
+L1750:
    --hack_1.thfpos;
 /* 						!NEXT ROOM. */
    if (hack_1.thfpos <= 0) {
@@ -650,7 +622,7 @@ logical aappli_(integer * ri) {
 
 /* ALL DONE. */
 
- L1800:
+L1800:
    if (hack_1.thfpos == rindex_1.treas) {
       return 0;
    }
@@ -662,13 +634,12 @@ logical aappli_(integer * ri) {
    }
    i__1 = objcts_1.olnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
-      if (objcts_1.oadv[i__ - 1] != -oindex_1.thief || prob_(&c__70, &c__70)
-         || objcts_1.otval[i__ - 1] > 0) {
+      if (objcts_1.oadv[i__ - 1] != -oindex_1.thief || prob_(&c__70, &c__70) || objcts_1.otval[i__ - 1] > 0) {
          goto L1850;
       }
       newsta_(&i__, &j, &hack_1.thfpos, &c__0, &c__0);
       j = 0;
-    L1850:
+   L1850:
       ;
    }
    return 0;

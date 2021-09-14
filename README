@@ -29,7 +29,6 @@ This was the last version before INFOCOM went commercial.
 
 Compiling dungeon
 ─────────────────
-
 The makefile will make dungeon.exe from the sources.
 
 You will need:

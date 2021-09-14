@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -121,9 +109,7 @@ struct {
 #define rooms_1 rooms_
 
 struct {
-   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls,
-      mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw,
-      mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
+   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
 } rindex_;
 
 #define rindex_1 rindex_
@@ -148,10 +134,7 @@ struct {
 #define oroom2_1 oroom2_
 
 struct {
-   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw,
-      cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage,
-      spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs,
-      sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
+   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
 
 #define oindex_1 oindex_
@@ -202,8 +185,7 @@ struct {
 #define aindex_1 aindex_
 
 struct {
-   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf,
-      frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
+   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
    integer btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
 
@@ -234,7 +216,8 @@ static integer c__64 = 64;
    static integer cmdmax = 38;
    static char dbgcmd[2 * 38] = "DR" "DO" "DA" "DC" "DX" "DH" "DL" "DV" "DF" "DS" "AF" "HE" "NR" "NT" "NC" "ND" "RR" "RT" "RC" "RD" "TK" "EX" "AR" "AO" "AA" "AC" "AX" "AV" "D2" "DN" "AN" "DM" "DT" "AH" "DP" "PD" "DZ" "AZ";
    static char ldbgcmd[2 * 38] = "dr" "do" "da" "dc" "dx" "dh" "dl" "dv" "df" "ds" "af" "he" "nr" "nt" "nc" "nd" "rr" "rt" "rc" "rd" "tk" "ex" "ar" "ao" "aa" "ac" "ax" "av" "d2" "dn" "an" "dm" "dt" "ah" "dp" "pd" "dz" "az";
-   static integer argtyp[38] = { 2, 2, 2, 2, 2, 0, 0, 2, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+   static integer argtyp[38] = {
+      2, 2, 2, 2, 2, 0, 0, 2, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
       3, 3, 3, 3, 1, 3, 2, 2, 1, 2, 1, 0, 0, 0, 0, 1
    };
 
@@ -303,8 +286,7 @@ static integer c__64 = 64;
 /* Local variables */
 #define flags ((logical *)&findex_1)
 #define switch__ ((integer *)&findex_1 + 46)
-   extern /* Subroutine */ int newsta_(integer *, integer *, integer *,
-      integer *, integer *), rspeak_(integer *);
+   extern /* Subroutine */ int newsta_(integer *, integer *, integer *, integer *, integer *), rspeak_(integer *);
    static integer i__, j, k, l, l1;
    static char cmd[2];
 #define eqa ((integer *)&advs_1 + 1)
@@ -446,7 +428,7 @@ static integer c__64 = 64;
 
 /* HERE TO GET NEXT COMMAND */
 
- L2000:
+L2000:
    io___21.ciunit = chan_1.outch;
    s_wsfe(&io___21);
    e_wsfe();
@@ -473,20 +455,20 @@ static integer c__64 = 64;
       }
 /* L2100: */
    }
- L2200:
+L2200:
    io___25.ciunit = chan_1.outch;
    s_wsfe(&io___25);
    e_wsfe();
 /* 						!NO, LOSE. */
    goto L2000;
 
-/* L230: */
-/* L240: */
-/* L225: */
-/* L235: */
-/* L245: */
+/*L230: */
+/*L240: */
+/*L225: */
+/*L235: */
+/*L245: */
 
- L2300:
+L2300:
    switch (argtyp[i__ - 1] + 1) {
       case 1:
          goto L2400;
@@ -501,7 +483,7 @@ static integer c__64 = 64;
    goto L2200;
 /* 						!ILLEGAL TYPE. */
 
- L2700:
+L2700:
    io___26.ciunit = chan_1.outch;
    s_wsfe(&io___26);
    e_wsfe();
@@ -513,7 +495,7 @@ static integer c__64 = 64;
    e_rsfe();
    goto L2400;
 
- L2600:
+L2600:
    io___30.ciunit = chan_1.outch;
    s_wsfe(&io___30);
    e_wsfe();
@@ -528,7 +510,7 @@ static integer c__64 = 64;
    }
    goto L2400;
 
- L2500:
+L2500:
    io___32.ciunit = chan_1.outch;
    s_wsfe(&io___32);
    e_wsfe();
@@ -537,7 +519,7 @@ static integer c__64 = 64;
    s_rsfe(&io___33);
    do_fio(&c__1, (char *)&j, (ftnlen) sizeof(integer));
    e_rsfe();
- L2400:
+L2400:
    switch (i__) {
       case 1:
          goto L10000;
@@ -622,7 +604,7 @@ static integer c__64 = 64;
 
 /* DR-- DISPLAY ROOMS */
 
- L10000:
+L10000:
    if (!(j > 0 && j <= rooms_1.rlnt && (k > 0 && k <= rooms_1.rlnt) && j <= k)) {
       goto L2200;
    }
@@ -646,7 +628,7 @@ static integer c__64 = 64;
 
 /* DO-- DISPLAY OBJECTS */
 
- L11000:
+L11000:
    if (!(j > 0 && j <= objcts_1.olnt && (k > 0 && k <= objcts_1.olnt) && j <= k)) {
       goto L2200;
    }
@@ -670,9 +652,8 @@ static integer c__64 = 64;
 
 /* DA-- DISPLAY ADVENTURERS */
 
- L12000:
-   if (!(j > 0 && j <= advs_1.alnt && (k > 0 && k <= advs_1.alnt) && j <= k)
-      ) {
+L12000:
+   if (!(j > 0 && j <= advs_1.alnt && (k > 0 && k <= advs_1.alnt) && j <= k)) {
       goto L2200;
    }
 /* 						!ARGS VALID? */
@@ -694,7 +675,7 @@ static integer c__64 = 64;
 
 /* DC-- DISPLAY CLOCK EVENTS */
 
- L13000:
+L13000:
    if (!(j > 0 && j <= cevent_1.clnt && (k > 0 && k <= cevent_1.clnt) && j <= k)) {
       goto L2200;
    }
@@ -718,7 +699,7 @@ static integer c__64 = 64;
 
 /* DX-- DISPLAY EXITS */
 
- L14000:
+L14000:
    if (!(j > 0 && j <= exits_1.xlnt && (k > 0 && k <= exits_1.xlnt) && j <= k)) {
       goto L2200;
    }
@@ -749,7 +730,7 @@ static integer c__64 = 64;
 
 /* DH-- DISPLAY HACKS */
 
- L15000:
+L15000:
    io___46.ciunit = chan_1.outch;
    s_wsfe(&io___46);
    do_fio(&c__1, (char *)&hack_1.thfpos, (ftnlen) sizeof(integer));
@@ -762,7 +743,7 @@ static integer c__64 = 64;
 
 /* DL-- DISPLAY LENGTHS */
 
- L16000:
+L16000:
    io___47.ciunit = chan_1.outch;
    s_wsfe(&io___47);
    do_fio(&c__1, (char *)&rooms_1.rlnt, (ftnlen) sizeof(integer));
@@ -780,9 +761,8 @@ static integer c__64 = 64;
 
 /* DV-- DISPLAY VILLAINS */
 
- L17000:
-   if (!(j > 0 && j <= vill_1.vlnt && (k > 0 && k <= vill_1.vlnt) && j <= k)
-      ) {
+L17000:
+   if (!(j > 0 && j <= vill_1.vlnt && (k > 0 && k <= vill_1.vlnt) && j <= k)) {
       goto L2200;
    }
 /* 						!ARGS VALID? */
@@ -805,7 +785,7 @@ static integer c__64 = 64;
 
 /* DF-- DISPLAY FLAGS */
 
- L18000:
+L18000:
    if (!(j > 0 && j <= fmax && (k > 0 && k <= fmax) && j <= k)) {
       goto L2200;
    }
@@ -823,7 +803,7 @@ static integer c__64 = 64;
 
 /* DS-- DISPLAY STATE */
 
- L19000:
+L19000:
    io___51.ciunit = chan_1.outch;
    s_wsfe(&io___51);
    do_fio(&c__1, (char *)&prsvec_1.prsa, (ftnlen) sizeof(integer));
@@ -864,7 +844,7 @@ static integer c__64 = 64;
 
 /* AF-- ALTER FLAGS */
 
- L20000:
+L20000:
    if (!(j > 0 && j <= fmax)) {
       goto L2200;
    }
@@ -882,7 +862,7 @@ static integer c__64 = 64;
 
 /* 21000-- HELP */
 
- L21000:
+L21000:
    io___57.ciunit = chan_1.outch;
    s_wsfe(&io___57);
    e_wsfe();
@@ -890,7 +870,7 @@ static integer c__64 = 64;
 
 /* NR-- NO ROBBER */
 
- L22000:
+L22000:
    hack_1.thfflg = FALSE_;
 /* 						!DISABLE ROBBER. */
    hack_1.thfact = FALSE_;
@@ -903,7 +883,7 @@ static integer c__64 = 64;
 
 /* NT-- NO TROLL */
 
- L23000:
+L23000:
    findex_1.trollf = TRUE_;
    newsta_(&oindex_1.troll, &c__0, &c__0, &c__0, &c__0);
    io___59.ciunit = chan_1.outch;
@@ -913,7 +893,7 @@ static integer c__64 = 64;
 
 /* NC-- NO CYCLOPS */
 
- L24000:
+L24000:
    findex_1.cyclof = TRUE_;
    newsta_(&oindex_1.cyclo, &c__0, &c__0, &c__0, &c__0);
    io___60.ciunit = chan_1.outch;
@@ -923,7 +903,7 @@ static integer c__64 = 64;
 
 /* ND-- IMMORTALITY MODE */
 
- L25000:
+L25000:
    debug_1.dbgflg = 1;
    io___61.ciunit = chan_1.outch;
    s_wsfe(&io___61);
@@ -932,7 +912,7 @@ static integer c__64 = 64;
 
 /* RR-- RESTORE ROBBER */
 
- L26000:
+L26000:
    hack_1.thfact = TRUE_;
    io___62.ciunit = chan_1.outch;
    s_wsfe(&io___62);
@@ -941,7 +921,7 @@ static integer c__64 = 64;
 
 /* RT-- RESTORE TROLL */
 
- L27000:
+L27000:
    findex_1.trollf = FALSE_;
    newsta_(&oindex_1.troll, &c__0, &rindex_1.mtrol, &c__0, &c__0);
    io___63.ciunit = chan_1.outch;
@@ -951,7 +931,7 @@ static integer c__64 = 64;
 
 /* RC-- RESTORE CYCLOPS */
 
- L28000:
+L28000:
    findex_1.cyclof = FALSE_;
    findex_1.magicf = FALSE_;
    newsta_(&oindex_1.cyclo, &c__0, &rindex_1.mcycl, &c__0, &c__0);
@@ -962,7 +942,7 @@ static integer c__64 = 64;
 
 /* RD-- MORTAL MODE */
 
- L29000:
+L29000:
    debug_1.dbgflg = 0;
    io___65.ciunit = chan_1.outch;
    s_wsfe(&io___65);
@@ -973,7 +953,7 @@ static integer c__64 = 64;
 
 /* TK-- TAKE */
 
- L30000:
+L30000:
    if (!(j > 0 && j <= objcts_1.olnt)) {
       goto L2200;
    }
@@ -988,13 +968,13 @@ static integer c__64 = 64;
 
 /* EX-- GOODBYE */
 
- L31000:
+L31000:
    prsvec_1.prscon = 1;
    return 0;
 
 /* AR--	ALTER ROOM ENTRY */
 
- L32000:
+L32000:
    if (!(j > 0 && j <= rooms_1.rlnt && (k > 0 && k <= c__5))) {
       goto L2200;
    }
@@ -1012,7 +992,7 @@ static integer c__64 = 64;
 
 /* AO-- ALTER OBJECT ENTRY */
 
- L33000:
+L33000:
    if (!(j > 0 && j <= objcts_1.olnt && (k > 0 && k <= c__14))) {
       goto L2200;
    }
@@ -1029,7 +1009,7 @@ static integer c__64 = 64;
 
 /* AA-- ALTER ADVS ENTRY */
 
- L34000:
+L34000:
    if (!(j > 0 && j <= advs_1.alnt && (k > 0 && k <= c__7))) {
       goto L2200;
    }
@@ -1046,7 +1026,7 @@ static integer c__64 = 64;
 
 /* AC-- ALTER CLOCK EVENTS */
 
- L35000:
+L35000:
    if (!(j > 0 && j <= cevent_1.clnt && (k > 0 && k <= c__3))) {
       goto L2200;
    }
@@ -1065,7 +1045,7 @@ static integer c__64 = 64;
    e_rsfe();
    goto L2000;
 
- L35500:
+L35500:
    io___75.ciunit = chan_1.outch;
    s_wsfe(&io___75);
    do_fio(&c__1, (char *)&cevent_1.cflag[j - 1], (ftnlen) sizeof(logical));
@@ -1079,7 +1059,7 @@ static integer c__64 = 64;
 
 /* AX-- ALTER EXITS */
 
- L36000:
+L36000:
    if (!(j > 0 && j <= exits_1.xlnt)) {
       goto L2200;
    }
@@ -1096,7 +1076,7 @@ static integer c__64 = 64;
 
 /* AV-- ALTER VILLAINS */
 
- L37000:
+L37000:
    if (!(j > 0 && j <= vill_1.vlnt && (k > 0 && k <= c__5))) {
       goto L2200;
    }
@@ -1113,7 +1093,7 @@ static integer c__64 = 64;
 
 /* D2-- DISPLAY ROOM2 LIST */
 
- L38000:
+L38000:
    if (!(j > 0 && j <= oroom2_1.r2lnt && (k > 0 && k <= oroom2_1.r2lnt) && j <= k)) {
       goto L2200;
    }
@@ -1131,7 +1111,7 @@ static integer c__64 = 64;
 
 /* DN-- DISPLAY SWITCHES */
 
- L39000:
+L39000:
    if (!(j > 0 && j <= smax && (k > 0 && k <= smax) && j <= k)) {
       goto L2200;
    }
@@ -1149,7 +1129,7 @@ static integer c__64 = 64;
 
 /* AN-- ALTER SWITCHES */
 
- L40000:
+L40000:
    if (!(j > 0 && j <= smax)) {
       goto L2200;
    }
@@ -1166,9 +1146,8 @@ static integer c__64 = 64;
 
 /* DM-- DISPLAY MESSAGES */
 
- L41000:
-   if (!(j > 0 && j <= rmsg_1.mlnt && (k > 0 && k <= rmsg_1.mlnt) && j <= k)
-      ) {
+L41000:
+   if (!(j > 0 && j <= rmsg_1.mlnt && (k > 0 && k <= rmsg_1.mlnt) && j <= k)) {
       goto L2200;
    }
 /* 						!VALID LIMITS? */
@@ -1195,13 +1174,13 @@ static integer c__64 = 64;
 
 /* DT-- DISPLAY TEXT */
 
- L42000:
+L42000:
    rspeak_(&j);
    goto L2000;
 
 /* AH--	ALTER HERE */
 
- L43000:
+L43000:
    io___87.ciunit = chan_1.outch;
    s_wsfe(&io___87);
    do_fio(&c__1, (char *)&play_1.here, (ftnlen) sizeof(integer));
@@ -1215,7 +1194,7 @@ static integer c__64 = 64;
 
 /* DP--	DISPLAY PARSER STATE */
 
- L44000:
+L44000:
    io___89.ciunit = chan_1.outch;
    s_wsfe(&io___89);
    do_fio(&c__5, (char *)&orp[0], (ftnlen) sizeof(integer));
@@ -1227,7 +1206,7 @@ static integer c__64 = 64;
 
 /* PD--	PROGRAM DETAIL DEBUG */
 
- L45000:
+L45000:
    io___90.ciunit = chan_1.outch;
    s_wsfe(&io___90);
    do_fio(&c__1, (char *)&debug_1.prsflg, (ftnlen) sizeof(integer));
@@ -1241,7 +1220,7 @@ static integer c__64 = 64;
 
 /* DZ--	DISPLAY PUZZLE ROOM */
 
- L46000:
+L46000:
    for (i__ = 1; i__ <= 64; i__ += 8) {
 /* 						!DISPLAY PUZZLE */
       io___92.ciunit = chan_1.outch;
@@ -1257,7 +1236,7 @@ static integer c__64 = 64;
 
 /* AZ--	ALTER PUZZLE ROOM */
 
- L47000:
+L47000:
    if (!(j > 0 && j <= c__64)) {
       goto L2200;
    }

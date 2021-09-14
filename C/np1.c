@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -85,10 +73,7 @@ struct {
 #define oroom2_1 oroom2_
 
 struct {
-   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw,
-      cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage,
-      spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs,
-      sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
+   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
 
 #define oindex_1 oindex_
@@ -112,9 +97,7 @@ struct {
 #define aindex_1 aindex_
 
 struct {
-   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw,
-      openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw,
-      clmbuw, clmbdw, trntow;
+   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw, openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw, clmbuw, clmbdw, trntow;
 } vindex_;
 
 #define vindex_1 vindex_
@@ -222,8 +205,7 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
    static integer buzlnt, prplnt, dirlnt;
    extern /* Subroutine */ int rspeak_(integer *);
    extern integer getobj_(integer *, integer *, integer *);
-   extern /* Subroutine */ int rspsub_(integer *, integer *), orphan_(
-      integer *, integer *, integer *, integer *, integer *);
+   extern /* Subroutine */ int rspsub_(integer *, integer *), orphan_(integer *, integer *, integer *, integer *, integer *);
 
 /* PARSER OUTPUT */
 
@@ -294,7 +276,7 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
          if (lbuf1 == buzvoc_1.bvoc[j - 1] && lbuf2 == buzvoc_1.bvoc[j]) {
             goto L1000;
          }
-/* L50: */
+   /* L50: */
       }
 
 /* CHECK FOR ACTION OR DIRECTION */
@@ -305,7 +287,7 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
 /* 						!GOT ACTION ALREADY? */
       j = 1;
 /* 						!CHECK FOR ACTION. */
-    L125:
+   L125:
       if (lbuf1 == vvoc[j - 1] && lbuf2 == vvoc[j]) {
          goto L3000;
       }
@@ -323,7 +305,7 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
       }
 /* 						!TABLE DONE? */
 
-    L75:
+   L75:
       if (pv_1.act != 0 && (vvoc[pv_1.act - 1] != r50wal || prep != 0)) {
          goto L200;
       }
@@ -333,29 +315,29 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
          if (lbuf1 == dirvoc_1.dvoc[j - 1] && lbuf2 == dirvoc_1.dvoc[j]) {
             goto L2000;
          }
-/* L100: */
+   /* L100: */
       }
 
 /* NOT AN ACTION, CHECK FOR PREPOSITION, ADJECTIVE, OR OBJECT. */
 
-    L200:
+   L200:
       i__2 = prplnt;
       for (j = 1; j <= i__2; j += 3) {
 /* 						!LOOK FOR PREPOSITION. */
          if (lbuf1 == prpvoc_1.pvoc[j - 1] && lbuf2 == prpvoc_1.pvoc[j]) {
             goto L4000;
          }
-/* L250: */
+   /* L250: */
       }
 
       j = 1;
 /* 						!LOOK FOR ADJECTIVE. */
-    L300:
+   L300:
       if (lbuf1 == avoc[j - 1] && lbuf2 == avoc[j]) {
          goto L5000;
       }
       ++j;
-    L325:
+   L325:
       ++j;
 /* 						!ADVANCE TO NEXT ENTRY. */
       if (avoc[j - 1] > 0 && avoc[j - 1] < r50min) {
@@ -369,12 +351,12 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
 
       j = 1;
 /* 						!LOOK FOR OBJECT. */
-    L450:
+   L450:
       if (lbuf1 == ovoc[j - 1] && lbuf2 == ovoc[j]) {
          goto L600;
       }
       ++j;
-    L500:
+   L500:
       ++j;
       if (ovoc[j - 1] > 0 && ovoc[j - 1] < r50min) {
          goto L500;
@@ -393,7 +375,7 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
 
 /* OBJECT PROCESSING (CONTINUATION OF DO LOOP ON PREV PAGE) */
 
-    L600:
+   L600:
       obj = getobj_(&j, &adj, &c__0);
 /* 						!IDENTIFY OBJECT. */
 /* D	  IF(DFLAG) PRINT 60,J,OBJ */
@@ -413,7 +395,7 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
       }
 /* 						!IF LE, COULDNT. */
 
-    L650:
+   L650:
       if (prep == 9) {
          goto L8000;
       }
@@ -426,7 +408,7 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
       objvec[pptr - 1] = obj;
 /* 						!STUFF INTO VECTOR. */
       prpvec[pptr - 1] = prep;
-    L700:
+   L700:
       prep = 0;
       adj = 0;
 /* Go to end of do loop (moved "1000 CONTINUE" to end of module, to avoid */
@@ -438,7 +420,7 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
 
 /* 2000--	DIRECTION */
 
-    L2000:
+   L2000:
       prsvec_1.prsa = vindex_1.walkw;
       prsvec_1.prso = dirvoc_1.dvoc[j + 1];
       ret_val = 1;
@@ -448,7 +430,7 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
 
 /* 3000--	ACTION */
 
-    L3000:
+   L3000:
       pv_1.act = j;
       orphs_1.oact = 0;
 /* D	IF(DFLAG) PRINT 20,J */
@@ -458,7 +440,7 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
 
 /* 4000--	PREPOSITION */
 
-    L4000:
+   L4000:
       if (prep != 0) {
          goto L4500;
       }
@@ -468,7 +450,7 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
 /* D30	FORMAT(' SPARSE- PREP AT ',I6) */
       goto L1000;
 
-    L4500:
+   L4500:
       if (*vbflag) {
          rspeak_(&c__616);
       }
@@ -476,7 +458,7 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
 
 /* 5000--	ADJECTIVE */
 
-    L5000:
+   L5000:
       adj = j;
       j = orphs_1.oname & orphs_1.oflag;
 /* D	IF(DFLAG) PRINT 40,ADJ,J */
@@ -488,7 +470,7 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
 
 /* 6000--	UNIDENTIFIABLE OBJECT (INDEX INTO OVOC IS J) */
 
-    L6000:
+   L6000:
       if (obj < 0) {
          goto L6100;
       }
@@ -501,17 +483,16 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
       }
       return ret_val;
 
-    L6100:
+   L6100:
       if (obj != -10000) {
          goto L6200;
       }
       if (*vbflag) {
-         rspsub_(&c__620, &objcts_1.odesc2[advs_1.avehic[play_1.winner - 1]
-               - 1]);
+         rspsub_(&c__620, &objcts_1.odesc2[advs_1.avehic[play_1.winner - 1] - 1]);
       }
       return ret_val;
 
-    L6200:
+   L6200:
       if (*vbflag) {
          rspeak_(&c__619);
       }
@@ -523,7 +504,7 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
 
 /* 7000--	TOO MANY OBJECTS. */
 
-    L7000:
+   L7000:
       if (*vbflag) {
          rspeak_(&c__617);
       }
@@ -531,7 +512,7 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
 
 /* 8000--	RANDOMNESS FOR "OF" WORDS */
 
-    L8000:
+   L8000:
       if (objvec[pptr - 1] == obj) {
          goto L700;
       }
@@ -542,14 +523,14 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
 
 /* End of do-loop. */
 
-    L1000:
+   L1000:
       ;
    }
 /* 						!AT LAST. */
 
 /* NOW SOME MISC CLEANUP -- We fell out of the do-loop */
 
- L1500:
+L1500:
    if (pv_1.act == 0) {
       pv_1.act = orphs_1.oflag & orphs_1.oact;
    }
@@ -580,7 +561,7 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
 
 /* 1750--	RETURN A RESULT */
 
- L1750:
+L1750:
 /* 						!WIN. */
 /* D	IF(DFLAG) PRINT 70,ACT,O1,O2,P1,P2 */
 /* D70	FORMAT(' SPARSE RESULTS- ',5I7) */
@@ -590,7 +571,7 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
 
 /* 9000--	NO ACTION, PUNT */
 
- L9000:
+L9000:
    if (pv_1.o1 == 0) {
       goto L10000;
    }
@@ -604,7 +585,7 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
 
 /* 10000--	TOTAL CHOMP */
 
- L10000:
+L10000:
    if (*vbflag) {
       rspeak_(&c__622);
    }
@@ -614,7 +595,7 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
 /* 11000--	ORPHAN PREPOSITION.  CONDITIONS ARE */
 /* 		O1.NE.0, O2=0, PREP=0, ACT=OACT */
 
- L11000:
+L11000:
    if (orphs_1.oslot != 0) {
       goto L11500;
    }
@@ -623,7 +604,7 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
 /* 						!NO, JUST USE PREP. */
    goto L1750;
 
- L11500:
+L11500:
    pv_1.o2 = pv_1.o1;
 /* 						!YES, USE AS DIRECT OBJ. */
    pv_1.p2 = orphs_1.oprep;
@@ -634,7 +615,7 @@ integer sparse_(integer * lbuf, integer * llnt, logical * vbflag) {
 /* 12000--	TRUE HANGING PREPOSITION. */
 /* 		ORPHAN FOR LATER. */
 
- L12000:
+L12000:
    orphan_(&c_n1, &pv_1.act, &c__0, &prep, &c__0);
 /* 						!ORPHAN PREP. */
    goto L1750;

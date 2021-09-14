@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -78,16 +66,13 @@ struct {
 #define oroom2_1 oroom2_
 
 struct {
-   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt,
-      schbt;
+   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 
 #define oflags_1 oflags_
 
 struct {
-   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw,
-      openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw,
-      clmbuw, clmbdw, trntow;
+   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw, openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw, clmbuw, clmbdw, trntow;
 } vindex_;
 
 #define vindex_1 vindex_
@@ -190,7 +175,7 @@ logical opncls_(integer * obj, integer * so, integer * sc) {
 /* 						!LOSE */
    return ret_val;
 
- L50:
+L50:
    if ((objcts_1.oflag2[*obj - 1] & oflags_1.openbt) != 0) {
       goto L200;
    }
@@ -199,7 +184,7 @@ logical opncls_(integer * obj, integer * so, integer * sc) {
    objcts_1.oflag2[*obj - 1] |= oflags_1.openbt;
    return ret_val;
 
- L100:
+L100:
    if (!((objcts_1.oflag2[*obj - 1] & oflags_1.openbt) != 0)) {
       goto L200;
    }
@@ -208,7 +193,7 @@ logical opncls_(integer * obj, integer * so, integer * sc) {
    objcts_1.oflag2[*obj - 1] &= ~oflags_1.openbt;
    return ret_val;
 
- L200:
+L200:
    i__1 = rnd_(&c__3) + 125;
    rspeak_(&i__1);
 /* 						!DUMMY. */
@@ -271,7 +256,7 @@ logical lit_(integer * rm) {
 
 /* OBJ IN ROOM OR ON ADV IN ROOM */
 
-    L100:
+   L100:
       if ((objcts_1.oflag1[i__ - 1] & oflags_1.onbt) != 0) {
          return ret_val;
       }
@@ -286,9 +271,9 @@ logical lit_(integer * rm) {
          if (objcts_1.ocan[j - 1] == i__ && (objcts_1.oflag1[j - 1] & oflags_1.onbt) != 0) {
             return ret_val;
          }
-/* L500: */
+   /* L500: */
       }
-    L1000:
+   L1000:
       ;
    }
    ret_val = FALSE_;
@@ -328,7 +313,7 @@ integer weight_(integer * rm, integer * cn, integer * ad) {
       }
       j = i__;
 /* 						!SEE IF CONTAINED. */
-    L25:
+   L25:
       j = objcts_1.ocan[j - 1];
 /* 						!GET NEXT LEVEL UP. */
       if (j == 0) {
@@ -338,9 +323,9 @@ integer weight_(integer * rm, integer * cn, integer * ad) {
       if (j != *cn) {
          goto L25;
       }
-    L50:
+   L50:
       ret_val += objcts_1.osize[i__ - 1];
-    L100:
+   L100:
       ;
    }
    return ret_val;

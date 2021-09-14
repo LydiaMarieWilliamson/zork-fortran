@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -85,10 +73,7 @@ struct {
 #define oroom2_1 oroom2_
 
 struct {
-   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw,
-      cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage,
-      spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs,
-      sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
+   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
 
 #define oindex_1 oindex_
@@ -112,9 +97,7 @@ struct {
 #define aindex_1 aindex_
 
 struct {
-   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw,
-      openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw,
-      clmbuw, clmbdw, trntow;
+   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw, openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw, clmbuw, clmbdw, trntow;
 } vindex_;
 
 #define vindex_1 vindex_
@@ -171,13 +154,15 @@ struct objvoc_2_ {
 
 struct {
    integer e_1[20];
-} buzvoc_ = { 2164, 0, 4200, 0, 15160, 0, 1600, 0, 2160, 0, 32325, 0,
+} buzvoc_ = {
+   2164, 0, 4200, 0, 15160, 0, 1600, 0, 2160, 0, 32325, 0,
    29654, 0, 11800, 0, 26335, 5005, 0, 0
 };
 
 struct {
    integer e_1[45];
-} prpvoc_ = { 24885, 28800, 1, 37180, 12800, 2, 34369, 22680, 2, 32338,
+} prpvoc_ = {
+   24885, 28800, 1, 37180, 12800, 2, 34369, 22680, 2, 32338,
    24847, 2, 2400, 0, 3, 32600, 0, 4, 14960, 0, 5, 14979, 14565, 5,
    14980, 0, 5, 7023, 22400, 6, 34240, 0, 7, 34164, 8720, 8, 24240,
    0, 9, 24560, 0, 10, 24246, 0, 11
@@ -185,7 +170,8 @@ struct {
 
 struct {
    integer e_1[75];
-} dirvoc_ = { 22400, 0, 1024, 23018, 32320, 1024, 30400, 0, 5120, 8000, 0,
+} dirvoc_ = {
+   22400, 0, 1024, 23018, 32320, 1024, 30400, 0, 5120, 8000, 0,
    3072, 8059, 32000, 3072, 36800, 0, 7168, 37019, 32000, 7168,
    30600, 0, 4096, 31320, 0, 6144, 22600, 0, 2048, 23320, 0, 8192,
    33600, 0, 9216, 34240, 0, 9216, 6400, 0, 10240, 7023, 22400,
@@ -198,7 +184,8 @@ struct {
 struct {
    integer e_1[405];
    integer fill_2[45];
-} adjvoc_ = { 3935, 37360, 1, 81, 8495, 22681, 1, 13420, 0, 3, 25816,
+} adjvoc_ = {
+   3935, 37360, 1, 81, 8495, 22681, 1, 13420, 0, 3, 25816,
    25818, 3, 35580, 29015, 4, 16044, 8000, 6, 13647, 8000, 8, 8575,
    29335, 8, 122, 32735, 25945, 9, 5285, 2320, 10, 19258, 11400, 12,
    26, 47, 95, 96, 123, 133, 135, 146, 147, 150, 176, 22459, 33000,
@@ -239,7 +226,8 @@ struct {
 struct {
    integer e_1[935];
    integer fill_2[15];
-} vrbvoc_ = { 3929, 8240, 1, 70, 35418, 3819, 1, 71, 31256, 8722, 1, 72,
+} vrbvoc_ = {
+   3929, 8240, 1, 70, 35418, 3819, 1, 71, 31256, 8722, 1, 72,
    31201, 40000, 1, 73, 35418, 30775, 1, 74, 31329, 20800, 3260,
    13000, 36844, 8000, 1, 75, 11418, 24569, 1, 76, 34105, 31165,
    24185, 31165, 1, 77, 37012, 19200, 1, 78, 26321, 40000, 1, 79,
@@ -325,7 +313,8 @@ struct {
 struct {
    integer e_1[1021];
    integer fill_2[29];
-} objvoc_ = { 3247, 0, 1, 25, 100, 30443, 17600, 1, 11258, 19563, 2, 5295,
+} objvoc_ = {
+   3247, 0, 1, 25, 100, 30443, 17600, 1, 11258, 19563, 2, 5295,
    35400, 2, 10215, 6400, 3, 30454, 7329, 3, 20054, 5120, 3, 6774,
    22618, 3, 12054, 17600, 4, 55, 25965, 5000, 4, 143, 186, 30881,
    11200, 4, 5401, 19200, 5, 25972, 8000, 5, 38, 78, 87, 88, 122,

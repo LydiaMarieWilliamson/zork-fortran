@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -154,8 +142,7 @@ struct {
 #define aindex_1 aindex_
 
 struct {
-   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf,
-      frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
+   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
    integer btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
 
@@ -192,16 +179,13 @@ struct {
 #define xsrch_1 xsrch_
 
 struct {
-   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt,
-      schbt;
+   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 
 #define oflags_1 oflags_
 
 struct {
-   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls,
-      mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw,
-      mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
+   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
 } rindex_;
 
 #define rindex_1 rindex_
@@ -213,10 +197,7 @@ struct {
 #define xpars_1 xpars_
 
 struct {
-   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw,
-      cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage,
-      spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs,
-      sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
+   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
 
 #define oindex_1 oindex_
@@ -404,7 +385,7 @@ static integer c__882 = 882;
    rspeak_(&c__597);
    return 0;
 
- L100:
+L100:
    rspeak_(&c__598);
 /* 						!CANT DO IT. */
    return 0;
@@ -581,12 +562,12 @@ static integer c__882 = 882;
    rspeak_(&c__599);
    return 0;
 
- L100:
+L100:
    rspeak_(&c__598);
 /* 						!CANT DO IT. */
    return 0;
 
- L200:
+L200:
    rspeak_(&c__600);
 /* 						!OBSOLETE VERSION */
    cl__1.cerr = 0;
@@ -688,7 +669,7 @@ logical walk_(integer * x) {
 /* 						!DECODE EXIT TYPE. */
    bug_(&c__9, &curxt_1.xtype);
 
- L100:
+L100:
    if (cxappl_(&curxt_1.xactio) != 0) {
       goto L400;
    }
@@ -697,13 +678,13 @@ logical walk_(integer * x) {
       goto L400;
    }
 /* 						!NO, FLAG ON? */
- L200:
+L200:
    jigsup_(&c__523);
 /* 						!BAD EXIT, GRUE */
 /* 						! */
    return ret_val;
 
- L300:
+L300:
    if (cxappl_(&curxt_1.xactio) != 0) {
       goto L400;
    }
@@ -717,12 +698,12 @@ logical walk_(integer * x) {
 /* 						! */
    return ret_val;
 
- L400:
+L400:
    if (lit_(&curxt_1.xroom1)) {
       goto L900;
    }
 /* 						!VALID ROOM, IS IT LIT? */
- L450:
+L450:
    jigsup_(&c__522);
 /* 						!NO, GRUE */
 /* 						! */
@@ -730,12 +711,12 @@ logical walk_(integer * x) {
 
 /* ROOM IS LIT, OR WINNER IS NOT PLAYER (NO GRUE). */
 
- L500:
+L500:
    if (findxt_(&prsvec_1.prso, &play_1.here)) {
       goto L550;
    }
 /* 						!EXIT EXIST? */
- L525:
+L525:
    curxt_1.xstrng = 678;
 /* 						!ASSUME WALL. */
    if (prsvec_1.prso == xsrch_1.xup) {
@@ -754,7 +735,7 @@ logical walk_(integer * x) {
 /* 						!STOP CMD STREAM. */
    return ret_val;
 
- L550:
+L550:
    switch (curxt_1.xtype) {
       case 1:
          goto L900;
@@ -768,7 +749,7 @@ logical walk_(integer * x) {
 /* 						!BRANCH ON EXIT TYPE. */
    bug_(&c__9, &curxt_1.xtype);
 
- L700:
+L700:
    if (cxappl_(&curxt_1.xactio) != 0) {
       goto L900;
    }
@@ -777,7 +758,7 @@ logical walk_(integer * x) {
       goto L900;
    }
 /* 						!NO, FLAG ON? */
- L600:
+L600:
    if (curxt_1.xstrng == 0) {
       goto L525;
    }
@@ -788,7 +769,7 @@ logical walk_(integer * x) {
 /* 						!STOP CMD STREAM. */
    return ret_val;
 
- L800:
+L800:
    if (cxappl_(&curxt_1.xactio) != 0) {
       goto L900;
    }
@@ -806,7 +787,7 @@ logical walk_(integer * x) {
 /* 						!STOP CMD STREAM. */
    return ret_val;
 
- L900:
+L900:
    ret_val = moveto_(&curxt_1.xroom1, &play_1.winner);
 /* 						!MOVE TO ROOM. */
    if (ret_val) {
@@ -923,7 +904,7 @@ integer cxappl_(integer * ri) {
 
 /* C1- COFFIN-CURE */
 
- L1000:
+L1000:
    findex_1.egyptf = objcts_1.oadv[oindex_1.coffi - 1] != play_1.winner;
 /* 						!T IF NO COFFIN. */
    return ret_val;
@@ -931,15 +912,15 @@ integer cxappl_(integer * ri) {
 /* C2- CAROUSEL EXIT */
 /* C5- CAROUSEL OUT */
 
- L2000:
+L2000:
    if (findex_1.caroff) {
       return ret_val;
    }
 /* 						!IF FLIPPED, NOTHING. */
- L2500:
+L2500:
    rspeak_(&c__121);
 /* 						!SPIN THE COMPASS. */
- L5000:
+L5000:
    i__ = xpars_1.xelnt[xpars_1.xcond - 1] * rnd_(&c__8);
 /* 						!CHOOSE RANDOM EXIT. */
    curxt_1.xroom1 = exits_1.travel[rooms_1.rexit[play_1.here - 1] + i__ - 1]
@@ -950,7 +931,7 @@ integer cxappl_(integer * ri) {
 
 /* C3- CHIMNEY FUNCTION */
 
- L3000:
+L3000:
    findex_1.litldf = FALSE_;
 /* 						!ASSUME HEAVY LOAD. */
    j = 0;
@@ -983,7 +964,7 @@ integer cxappl_(integer * ri) {
 /* C4-	FROBOZZ FLAG (MAGNET ROOM, FAKE EXIT) */
 /* C6-	FROBOZZ FLAG (MAGNET ROOM, REAL EXIT) */
 
- L4000:
+L4000:
    if (findex_1.caroff) {
       goto L2500;
    }
@@ -992,7 +973,7 @@ integer cxappl_(integer * ri) {
 /* 						!OTHERWISE, NOT AN EXIT. */
    return ret_val;
 
- L6000:
+L6000:
    if (findex_1.caroff) {
       goto L2500;
    }
@@ -1003,14 +984,14 @@ integer cxappl_(integer * ri) {
 
 /* C7-	FROBOZZ FLAG (BANK ALARM) */
 
- L7000:
+L7000:
    findex_1.frobzf = objcts_1.oroom[oindex_1.bills - 1] != 0 && objcts_1.oroom[oindex_1.portr - 1] != 0;
    return ret_val;
 /* CXAPPL, PAGE 3 */
 
 /* C8-	FROBOZZ FLAG (MRGO) */
 
- L8000:
+L8000:
    findex_1.frobzf = FALSE_;
 /* 						!ASSUME CANT MOVE. */
    if (findex_1.mloc != curxt_1.xroom1) {
@@ -1030,18 +1011,18 @@ integer cxappl_(integer * ri) {
       ++curxt_1.xroom1;
    }
 /* 						!IF SW/NW, CALC WEST. */
- L8100:
+L8100:
    ret_val = curxt_1.xroom1;
    return ret_val;
 
- L8200:
+L8200:
    curxt_1.xstrng = 814;
 /* 						!ASSUME STRUC BLOCKS. */
    if (findex_1.mdir % 180 == 0) {
       return ret_val;
    }
 /* 						!IF MIRROR N-S, DONE. */
- L8300:
+L8300:
    ldir = findex_1.mdir;
 /* 						!SEE WHICH MIRROR. */
    if (prsvec_1.prso == xsrch_1.xsouth) {
@@ -1056,7 +1037,7 @@ integer cxappl_(integer * ri) {
 
 /* C9-	FROBOZZ FLAG (MIRIN) */
 
- L9000:
+L9000:
    if (mrhere_(&play_1.here) != 1) {
       goto L9100;
    }
@@ -1069,7 +1050,7 @@ integer cxappl_(integer * ri) {
 /* 						!ENTER IF OPEN. */
    return ret_val;
 
- L9100:
+L9100:
    findex_1.frobzf = FALSE_;
 /* 						!NOT HERE, */
    curxt_1.xstrng = 817;
@@ -1079,7 +1060,7 @@ integer cxappl_(integer * ri) {
 
 /* C10-	FROBOZZ FLAG (MIRROR EXIT) */
 
- L10000:
+L10000:
    findex_1.frobzf = FALSE_;
 /* 						!ASSUME CANT. */
    ldir = (prsvec_1.prso - xsrch_1.xnorth) / xsrch_1.xnorth * 45;
@@ -1099,11 +1080,11 @@ integer cxappl_(integer * ri) {
       curxt_1.xroom1 = findex_1.mloc - 1;
    }
 /* 						!IF SOUTH. */
- L10100:
+L10100:
    ret_val = curxt_1.xroom1;
    return ret_val;
 
- L10200:
+L10200:
    if (!findex_1.wdopnf || (findex_1.mdir + 180) % 360 != ldir && prsvec_1.prso != xsrch_1.xexit) {
       return ret_val;
    }
@@ -1122,7 +1103,7 @@ integer cxappl_(integer * ri) {
 /* C11-	MAYBE DOOR.  NORMAL MESSAGE IS THAT DOOR IS CLOSED. */
 /* 	BUT IF LCELL.NE.4, DOOR ISNT THERE. */
 
- L11000:
+L11000:
    if (findex_1.lcell != 4) {
       curxt_1.xstrng = 678;
    }
@@ -1131,7 +1112,7 @@ integer cxappl_(integer * ri) {
 
 /* C12-	FROBZF (PUZZLE ROOM MAIN ENTRANCE) */
 
- L12000:
+L12000:
    findex_1.frobzf = TRUE_;
 /* 						!ALWAYS ENTER. */
    findex_1.cphere = 10;
@@ -1140,7 +1121,7 @@ integer cxappl_(integer * ri) {
 
 /* C13-	CPOUTF (PUZZLE ROOM SIZE ENTRANCE) */
 
- L13000:
+L13000:
    findex_1.cphere = 52;
 /* 						!SET SUBSTATE. */
    return ret_val;
@@ -1148,7 +1129,7 @@ integer cxappl_(integer * ri) {
 
 /* C14-	FROBZF (PUZZLE ROOM TRANSITIONS) */
 
- L14000:
+L14000:
    findex_1.frobzf = FALSE_;
 /* 						!ASSSUME LOSE. */
    if (prsvec_1.prso != xsrch_1.xup) {
@@ -1171,7 +1152,7 @@ integer cxappl_(integer * ri) {
 /* 						!LET HIM OUT. */
    return ret_val;
 
- L14100:
+L14100:
    if (findex_1.cphere != 52 || prsvec_1.prso != xsrch_1.xwest || !findex_1.cpoutf) {
       goto L14200;
    }
@@ -1179,7 +1160,7 @@ integer cxappl_(integer * ri) {
 /* 						!YES, LET HIM OUT. */
    return ret_val;
 
- L14200:
+L14200:
    for (i__ = 1; i__ <= 16; i__ += 2) {
 /* 						!LOCATE EXIT. */
       if (prsvec_1.prso == puzzle_1.cpdr[i__ - 1]) {
@@ -1190,7 +1171,7 @@ integer cxappl_(integer * ri) {
    return ret_val;
 /* 						!NO SUCH EXIT. */
 
- L14400:
+L14400:
    j = puzzle_1.cpdr[i__];
 /* 						!GET DIRECTIONAL OFFSET. */
    nxt = findex_1.cphere + j;
@@ -1205,7 +1186,7 @@ integer cxappl_(integer * ri) {
    }
    return ret_val;
 
- L14500:
+L14500:
    cpgoto_(&nxt);
 /* 						!MOVE TO STATE. */
    curxt_1.xroom1 = rindex_1.cpuzz;

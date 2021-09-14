@@ -14,3 +14,5 @@ History
 		This assumes that the f2c library and the include file ‟f2c.h” have been installed
 		The file ‟Compile.log” contains some of the details provided by the first run of ‟make”.
 2021/09/14	The undefined function itime_() has been resolved with a ‟fallback” function ITime_().
+2021/09/14	The ‟f2c.h” file has been internalized as ‟F2C.h”.
+		Additional normalization has been done on the source code layout.

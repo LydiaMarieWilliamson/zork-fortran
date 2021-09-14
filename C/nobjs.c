@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -102,9 +90,7 @@ struct {
 #define rflag_1 rflag_
 
 struct {
-   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls,
-      mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw,
-      mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
+   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
 } rindex_;
 
 #define rindex_1 rindex_
@@ -123,17 +109,13 @@ struct {
 #define oroom2_1 oroom2_
 
 struct {
-   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt,
-      schbt;
+   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 
 #define oflags_1 oflags_
 
 struct {
-   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw,
-      cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage,
-      spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs,
-      sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
+   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
 
 #define oindex_1 oindex_
@@ -184,16 +166,13 @@ struct {
 #define aindex_1 aindex_
 
 struct {
-   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw,
-      openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw,
-      clmbuw, clmbdw, trntow;
+   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw, openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw, clmbuw, clmbdw, trntow;
 } vindex_;
 
 #define vindex_1 vindex_
 
 struct {
-   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf,
-      frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
+   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
    integer btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
 
@@ -286,13 +265,11 @@ logical nobjs_(integer * ri, integer * arg) {
 #define switch__ ((integer *)&findex_1 + 46)
    extern /* Subroutine */ int rspeak_(integer *);
    static integer target;
-   extern /* Subroutine */ int rspsub_(integer *, integer *), newsta_(
-      integer *, integer *, integer *, integer *, integer *);
+   extern /* Subroutine */ int rspsub_(integer *, integer *), newsta_(integer *, integer *, integer *, integer *, integer *);
    static integer i__;
    extern integer mrhere_(integer *);
    static integer j;
-   extern /* Subroutine */ int cpgoto_(integer *), cpinfo_(integer *,
-      integer *), princr_(logical *, integer *);
+   extern /* Subroutine */ int cpgoto_(integer *), cpinfo_(integer *, integer *), princr_(logical *, integer *);
    static integer av, wl;
 #define eqa ((integer *)&advs_1 + 1)
 #define eqc ((integer *)&cevent_1 + 1)
@@ -399,13 +376,13 @@ logical nobjs_(integer * ri, integer * arg) {
 
 /* RETURN HERE TO DECLARE FALSE RESULT */
 
- L10:
+L10:
    ret_val = FALSE_;
    return ret_val;
 
 /* O32--	BILLS */
 
- L1000:
+L1000:
    if (prsvec_1.prsa != vindex_1.eatw) {
       goto L1100;
    }
@@ -414,7 +391,7 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!JOKE. */
    return ret_val;
 
- L1100:
+L1100:
    if (prsvec_1.prsa == vindex_1.burnw) {
       rspeak_(&c__640);
    }
@@ -425,10 +402,10 @@ logical nobjs_(integer * ri, integer * arg) {
 
 /* O33--	SCREEN OF LIGHT */
 
- L2000:
+L2000:
    target = oindex_1.scol;
 /* 						!TARGET IS SCOL. */
- L2100:
+L2100:
    if (prsvec_1.prso != target) {
       goto L2400;
    }
@@ -440,7 +417,7 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!HAND PASSES THRU. */
    return ret_val;
 
- L2200:
+L2200:
    if (prsvec_1.prsa != vindex_1.killw && prsvec_1.prsa != vindex_1.attacw && prsvec_1.prsa != vindex_1.mungw) {
       goto L2400;
    }
@@ -448,7 +425,7 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!PASSES THRU. */
    return ret_val;
 
- L2400:
+L2400:
    if (prsvec_1.prsa != vindex_1.throww || prsvec_1.prsi != target) {
       goto L10;
    }
@@ -466,7 +443,7 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!RESET SCOL ROOM. */
    return ret_val;
 
- L2600:
+L2600:
    if (screen_1.scolrm == 0) {
       goto L2900;
    }
@@ -481,7 +458,7 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!RESET SCOL ROOM. */
    return ret_val;
 
- L2900:
+L2900:
    rspeak_(&c__213);
 /* 						!CANT DO IT. */
    return ret_val;
@@ -489,7 +466,7 @@ logical nobjs_(integer * ri, integer * arg) {
 
 /* O34--	GNOME OF ZURICH */
 
- L3000:
+L3000:
    if (prsvec_1.prsa != vindex_1.givew && prsvec_1.prsa != vindex_1.throww) {
       goto L3200;
    }
@@ -501,7 +478,7 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!NO, GO POP. */
    return ret_val;
 
- L3100:
+L3100:
    newsta_(&prsvec_1.prso, &c__0, &c__0, &c__0, &c__0);
 /* 						!YES, BYE BYE TREASURE. */
    rspsub_(&c__642, &odo2);
@@ -513,7 +490,7 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!NOW IN BANK ENTRANCE. */
    return ret_val;
 
- L3200:
+L3200:
    if (prsvec_1.prsa != vindex_1.attacw && prsvec_1.prsa != vindex_1.killw && prsvec_1.prsa != vindex_1.mungw) {
       goto L3300;
    }
@@ -523,14 +500,14 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!CANCEL EXIT. */
    return ret_val;
 
- L3300:
+L3300:
    rspeak_(&c__644);
 /* 						!GNOME IS IMPATIENT. */
    return ret_val;
 
 /* O35--	EGG */
 
- L4000:
+L4000:
    if (prsvec_1.prsa != vindex_1.openw || prsvec_1.prso != oindex_1.egg) {
       goto L4500;
    }
@@ -542,7 +519,7 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!YES. */
    return ret_val;
 
- L4100:
+L4100:
    if (prsvec_1.prsi != 0) {
       goto L4200;
    }
@@ -551,7 +528,7 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!NO, CANT. */
    return ret_val;
 
- L4200:
+L4200:
    if (prsvec_1.prsi != oindex_1.hands) {
       goto L4300;
    }
@@ -560,7 +537,7 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!NOT RECOMMENDED. */
    return ret_val;
 
- L4300:
+L4300:
    i__ = 652;
 /* 						!MUNG MESSAGE. */
    if ((objcts_1.oflag1[prsvec_1.prsi - 1] & oflags_1.toolbt) != 0 || (objcts_1.oflag2[prsvec_1.prsi - 1] & oflags_1.weapbt) != 0) {
@@ -575,13 +552,13 @@ logical nobjs_(integer * ri, integer * arg) {
    rspsub_(&i__, &odi2);
    return ret_val;
 
- L4500:
+L4500:
    if (prsvec_1.prsa != vindex_1.openw && prsvec_1.prsa != vindex_1.mungw) {
       goto L4800;
    }
    i__ = 655;
 /* 						!YOU BLEW IT. */
- L4600:
+L4600:
    newsta_(&oindex_1.begg, &i__, &objcts_1.oroom[oindex_1.egg - 1], &objcts_1.ocan[oindex_1.egg - 1], &objcts_1.oadv[oindex_1.egg - 1]);
    newsta_(&oindex_1.egg, &c__0, &c__0, &c__0, &c__0);
 /* 						!VANISH EGG. */
@@ -596,12 +573,12 @@ logical nobjs_(integer * ri, integer * arg) {
    objcts_1.otval[oindex_1.bcana - 1] = 1;
    return ret_val;
 
- L4700:
+L4700:
    newsta_(&oindex_1.bcana, &c__0, &c__0, &c__0, &c__0);
 /* 						!NO, VANISH IT. */
    return ret_val;
 
- L4800:
+L4800:
    if (prsvec_1.prsa != vindex_1.dropw || play_1.here != rindex_1.mtree) {
       goto L10;
    }
@@ -619,7 +596,7 @@ logical nobjs_(integer * ri, integer * arg) {
 
 /* O36--	CANARIES, GOOD AND BAD */
 
- L5000:
+L5000:
    if (prsvec_1.prsa != vindex_1.windw) {
       goto L10;
    }
@@ -632,7 +609,7 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!NO, BAD NEWS. */
    return ret_val;
 
- L5100:
+L5100:
    if (!findex_1.singsf && (play_1.here == rindex_1.mtree || play_1.here >= rindex_1.fore1 && play_1.here < rindex_1.clear)) {
       goto L5200;
    }
@@ -640,7 +617,7 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!NO, MEDIOCRE NEWS. */
    return ret_val;
 
- L5200:
+L5200:
    findex_1.singsf = TRUE_;
 /* 						!SANG SONG. */
    i__ = play_1.here;
@@ -653,7 +630,7 @@ logical nobjs_(integer * ri, integer * arg) {
 
 /* O37--	WHITE CLIFFS */
 
- L6000:
+L6000:
    if (prsvec_1.prsa != vindex_1.clmbw && prsvec_1.prsa != vindex_1.clmbuw && prsvec_1.prsa != vindex_1.clmbdw) {
       goto L10;
    }
@@ -663,7 +640,7 @@ logical nobjs_(integer * ri, integer * arg) {
 
 /* O38--	WALL */
 
- L7000:
+L7000:
    if ((i__1 = play_1.here - findex_1.mloc, abs(i__1)) != 1 || mrhere_(&play_1.here) != 0 || prsvec_1.prsa != vindex_1.pushw) {
       goto L7100;
    }
@@ -671,7 +648,7 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!PUSHED MIRROR WALL. */
    return ret_val;
 
- L7100:
+L7100:
    if ((rooms_1.rflag[play_1.here - 1] & rflag_1.rnwall) == 0) {
       goto L10;
    }
@@ -682,7 +659,7 @@ logical nobjs_(integer * ri, integer * arg) {
 
 /* O39--	SONG BIRD GLOBAL */
 
- L8000:
+L8000:
    if (prsvec_1.prsa != vindex_1.findw) {
       goto L8100;
    }
@@ -690,7 +667,7 @@ logical nobjs_(integer * ri, integer * arg) {
    rspeak_(&c__666);
    return ret_val;
 
- L8100:
+L8100:
    if (prsvec_1.prsa != vindex_1.examiw) {
       goto L10;
    }
@@ -700,7 +677,7 @@ logical nobjs_(integer * ri, integer * arg) {
 
 /* O40--	PUZZLE/SCOL WALLS */
 
- L9000:
+L9000:
    if (play_1.here != rindex_1.cpuzz) {
       goto L9500;
    }
@@ -719,7 +696,7 @@ logical nobjs_(integer * ri, integer * arg) {
    bug_(&c__80, &prsvec_1.prso);
 /* 						!WHAT? */
 
- L9200:
+L9200:
    j = puzzle_1.cpwl[i__];
 /* 						!GET DIRECTIONAL OFFSET. */
    nxt = findex_1.cphere + j;
@@ -740,22 +717,22 @@ logical nobjs_(integer * ri, integer * arg) {
    }
 /* 						!PROCESS. */
 
- L9250:
+L9250:
    rspeak_(&c__876);
 /* 						!CLEAR CORRIDOR. */
    return ret_val;
 
- L9300:
+L9300:
    if (puzzle_1.cpvec[nxt + j - 1] == 0) {
       goto L9400;
    }
 /* 						!MOVABLE, ROOM TO MOVE? */
- L9350:
+L9350:
    rspeak_(&c__877);
 /* 						!IMMOVABLE, NO ROOM. */
    return ret_val;
 
- L9400:
+L9400:
    i__ = 878;
 /* 						!ASSUME FIRST PUSH. */
    if (findex_1.cpushf) {
@@ -776,7 +753,7 @@ logical nobjs_(integer * ri, integer * arg) {
    rooms_1.rflag[play_1.here - 1] |= rflag_1.rseen;
    return ret_val;
 
- L9500:
+L9500:
    if (play_1.here != screen_1.scolac) {
       goto L9700;
    }
@@ -791,7 +768,7 @@ logical nobjs_(integer * ri, integer * arg) {
 /* L9600: */
    }
 
- L9700:
+L9700:
    if (play_1.here != rindex_1.bkbox) {
       goto L10;
    }
@@ -802,7 +779,7 @@ logical nobjs_(integer * ri, integer * arg) {
 
 /* O41--	SHORT POLE */
 
- L10000:
+L10000:
    if (prsvec_1.prsa != vindex_1.raisew) {
       goto L10100;
    }
@@ -818,7 +795,7 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!POLE IS RAISED. */
    return ret_val;
 
- L10100:
+L10100:
    if (prsvec_1.prsa != vindex_1.lowerw && prsvec_1.prsa != vindex_1.pushw) {
       goto L10;
    }
@@ -830,7 +807,7 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!CANT DO IT. */
    return ret_val;
 
- L10200:
+L10200:
    if (findex_1.mdir % 180 != 0) {
       goto L10300;
    }
@@ -841,7 +818,7 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!CHANNEL. */
    return ret_val;
 
- L10300:
+L10300:
    if (findex_1.mdir != 270 || findex_1.mloc != rindex_1.mrb) {
       goto L10400;
    }
@@ -850,7 +827,7 @@ logical nobjs_(integer * ri, integer * arg) {
    rspeak_(&c__753);
    return ret_val;
 
- L10400:
+L10400:
    i__1 = findex_1.poleuf + 753;
    rspeak_(&i__1);
 /* 						!POLEUF = 1 OR 2. */
@@ -860,7 +837,7 @@ logical nobjs_(integer * ri, integer * arg) {
 
 /* O42--	MIRROR SWITCH */
 
- L11000:
+L11000:
    if (prsvec_1.prsa != vindex_1.pushw) {
       goto L10;
    }
@@ -883,7 +860,7 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!NOTHING IN BEAM. */
    return ret_val;
 
- L11200:
+L11200:
    cevent_1.cflag[cindex_1.cevmrs - 1] = TRUE_;
 /* 						!MIRROR OPENS. */
    cevent_1.ctick[cindex_1.cevmrs - 1] = 7;
@@ -891,7 +868,7 @@ logical nobjs_(integer * ri, integer * arg) {
    findex_1.mropnf = TRUE_;
    return ret_val;
 
- L11300:
+L11300:
    rspeak_(&c__758);
 /* 						!MIRROR ALREADYOPEN. */
    return ret_val;
@@ -899,7 +876,7 @@ logical nobjs_(integer * ri, integer * arg) {
 
 /* O43--	BEAM FUNCTION */
 
- L12000:
+L12000:
    if (prsvec_1.prsa != vindex_1.takew || prsvec_1.prso != oindex_1.rbeam) {
       goto L12100;
    }
@@ -907,7 +884,7 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!TAKE BEAM, JOKE. */
    return ret_val;
 
- L12100:
+L12100:
    i__ = prsvec_1.prso;
 /* 						!ASSUME BLK WITH DIROBJ. */
    if (prsvec_1.prsa == vindex_1.putw && prsvec_1.prsi == oindex_1.rbeam) {
@@ -917,7 +894,7 @@ logical nobjs_(integer * ri, integer * arg) {
       goto L10;
    }
    i__ = prsvec_1.prsi;
- L12200:
+L12200:
    if (objcts_1.oadv[i__ - 1] != play_1.winner) {
       goto L12300;
    }
@@ -927,7 +904,7 @@ logical nobjs_(integer * ri, integer * arg) {
    rspsub_(&c__760, &objcts_1.odesc2[i__ - 1]);
    return ret_val;
 
- L12300:
+L12300:
    j = 761;
 /* 						!ASSUME NOT IN ROOM. */
    if (qhere_(&j, &play_1.here)) {
@@ -940,7 +917,7 @@ logical nobjs_(integer * ri, integer * arg) {
 
 /* O44--	BRONZE DOOR */
 
- L13000:
+L13000:
    if (play_1.here == rindex_1.ncell || findex_1.lcell == 4 && (play_1.here == rindex_1.cell || play_1.here == rindex_1.scorr)) {
       goto L13100;
    }
@@ -948,20 +925,19 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!DOOR NOT THERE. */
    return ret_val;
 
- L13100:
+L13100:
    if (!opncls_(&oindex_1.odoor, &c__764, &c__765)) {
       goto L10;
    }
 /* 						!OPEN/CLOSE? */
-   if (play_1.here == rindex_1.ncell && (objcts_1.oflag2[oindex_1.odoor - 1]
-         & oflags_1.openbt) != 0) {
+   if (play_1.here == rindex_1.ncell && (objcts_1.oflag2[oindex_1.odoor - 1] & oflags_1.openbt) != 0) {
       rspeak_(&c__766);
    }
    return ret_val;
 
 /* O45--	QUIZ DOOR */
 
- L14000:
+L14000:
    if (prsvec_1.prsa != vindex_1.openw && prsvec_1.prsa != vindex_1.closew) {
       goto L14100;
    }
@@ -969,7 +945,7 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!DOOR WONT MOVE. */
    return ret_val;
 
- L14100:
+L14100:
    if (prsvec_1.prsa != vindex_1.knockw) {
       goto L10;
    }
@@ -994,14 +970,14 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!ASK QUESTION. */
    return ret_val;
 
- L14200:
+L14200:
    rspeak_(&c__798);
 /* 						!NO REPLY. */
    return ret_val;
 
 /* O46--	LOCKED DOOR */
 
- L15000:
+L15000:
    if (prsvec_1.prsa != vindex_1.openw) {
       goto L10;
    }
@@ -1012,7 +988,7 @@ logical nobjs_(integer * ri, integer * arg) {
 
 /* O47--	CELL DOOR */
 
- L16000:
+L16000:
    ret_val = opncls_(&oindex_1.cdoor, &c__779, &c__780);
 /* 						!OPEN/CLOSE? */
    return ret_val;
@@ -1020,7 +996,7 @@ logical nobjs_(integer * ri, integer * arg) {
 
 /* O48--	DIALBUTTON */
 
- L17000:
+L17000:
    if (prsvec_1.prsa != vindex_1.pushw) {
       goto L10;
    }
@@ -1064,18 +1040,18 @@ logical nobjs_(integer * ri, integer * arg) {
    f = moveto_(&rindex_1.ncell, &aindex_1.player);
 /* 						!YES, MOVETO NCELL. */
    goto L17400;
- L17200:
+L17200:
    f = moveto_(&rindex_1.pcell, &aindex_1.player);
 /* 						!NO, MOVETO PCELL. */
 
- L17400:
+L17400:
    findex_1.lcell = findex_1.pnumb;
    return ret_val;
 /* NOBJS, PAGE 10 */
 
 /* O49--	DIAL INDICATOR */
 
- L18000:
+L18000:
    if (prsvec_1.prsa != vindex_1.spinw) {
       goto L18100;
    }
@@ -1087,7 +1063,7 @@ logical nobjs_(integer * ri, integer * arg) {
    rspsub_(&c__797, &i__1);
    return ret_val;
 
- L18100:
+L18100:
    if (prsvec_1.prsa != vindex_1.movew && prsvec_1.prsa != vindex_1.putw && prsvec_1.prsa != vindex_1.trntow) {
       goto L10;
    }
@@ -1099,7 +1075,7 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!MUST SPECIFY. */
    return ret_val;
 
- L18200:
+L18200:
    if (prsvec_1.prsi >= oindex_1.num1 && prsvec_1.prsi <= oindex_1.num8) {
       goto L18300;
    }
@@ -1107,7 +1083,7 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!MUST BE DIGIT. */
    return ret_val;
 
- L18300:
+L18300:
    findex_1.pnumb = prsvec_1.prsi - oindex_1.num1 + 1;
 /* 						!SET UP NEW. */
    i__1 = findex_1.pnumb + 712;
@@ -1116,13 +1092,13 @@ logical nobjs_(integer * ri, integer * arg) {
 
 /* O50--	GLOBAL MIRROR */
 
- L19000:
+L19000:
    ret_val = mirpan_(&c__832, &c_false);
    return ret_val;
 
 /* O51--	GLOBAL PANEL */
 
- L20000:
+L20000:
    if (play_1.here != rindex_1.fdoor) {
       goto L20100;
    }
@@ -1134,13 +1110,13 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!PANEL IN DOOR, NOGO. */
    return ret_val;
 
- L20100:
+L20100:
    ret_val = mirpan_(&c__838, &c_true);
    return ret_val;
 
 /* O52--	PUZZLE ROOM SLIT */
 
- L21000:
+L21000:
    if (prsvec_1.prsa != vindex_1.putw || prsvec_1.prsi != oindex_1.cslit) {
       goto L10;
    }
@@ -1155,7 +1131,7 @@ logical nobjs_(integer * ri, integer * arg) {
    objcts_1.oflag1[oindex_1.stldr - 1] &= ~oflags_1.visibt;
    return ret_val;
 
- L21100:
+L21100:
    if ((objcts_1.oflag1[prsvec_1.prso - 1] & oflags_1.victbt) == 0 && (objcts_1.oflag2[prsvec_1.prso - 1] & oflags_1.villbt) == 0) {
       goto L21200;
    }
@@ -1164,7 +1140,7 @@ logical nobjs_(integer * ri, integer * arg) {
 /* 						!JOKE FOR VILL, VICT. */
    return ret_val;
 
- L21200:
+L21200:
    newsta_(&prsvec_1.prso, &c__0, &c__0, &c__0, &c__0);
 /* 						!KILL OBJECT. */
    rspsub_(&c__864, &odo2);
@@ -1232,7 +1208,7 @@ logical mirpan_(integer * st, logical * pnf) {
 /* 						!NO, LOSE. */
    return ret_val;
 
- L100:
+L100:
    mrbf = 0;
 /* 						!ASSUME MIRROR OK. */
    if (num == 1 && !findex_1.mr1f || num == 2 && !findex_1.mr2f) {
@@ -1246,7 +1222,7 @@ logical mirpan_(integer * st, logical * pnf) {
 /* 						!CANT OPEN OR MOVE. */
    return ret_val;
 
- L200:
+L200:
    if (*pnf || prsvec_1.prsa != vindex_1.lookiw && prsvec_1.prsa != vindex_1.examiw && prsvec_1.prsa != vindex_1.lookw) {
       goto L300;
    }
@@ -1255,7 +1231,7 @@ logical mirpan_(integer * st, logical * pnf) {
 /* 						!LOOK IN MIRROR. */
    return ret_val;
 
- L300:
+L300:
    if (prsvec_1.prsa != vindex_1.mungw) {
       goto L400;
    }
@@ -1271,7 +1247,7 @@ logical mirpan_(integer * st, logical * pnf) {
    }
    return ret_val;
 
- L400:
+L400:
    if (*pnf || mrbf == 0) {
       goto L500;
    }
@@ -1279,7 +1255,7 @@ logical mirpan_(integer * st, logical * pnf) {
    rspeak_(&c__846);
    return ret_val;
 
- L500:
+L500:
    if (prsvec_1.prsa != vindex_1.pushw) {
       goto L600;
    }
@@ -1288,7 +1264,7 @@ logical mirpan_(integer * st, logical * pnf) {
    rspeak_(&i__1);
    return ret_val;
 
- L600:
+L600:
    ret_val = FALSE_;
 /* 						!CANT HANDLE IT. */
    return ret_val;

@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -79,17 +67,13 @@ struct {
 #define oroom2_1 oroom2_
 
 struct {
-   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt,
-      schbt;
+   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 
 #define oflags_1 oflags_
 
 struct {
-   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw,
-      cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage,
-      spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs,
-      sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
+   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
 
 #define oindex_1 oindex_
@@ -108,16 +92,13 @@ struct {
 #define cindex_1 cindex_
 
 struct {
-   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw,
-      openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw,
-      clmbuw, clmbdw, trntow;
+   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw, openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw, clmbuw, clmbdw, trntow;
 } vindex_;
 
 #define vindex_1 vindex_
 
 struct {
-   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf,
-      frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
+   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
    integer btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
 
@@ -152,8 +133,7 @@ logical lightp_(integer * obj) {
 #define flags ((logical *)&findex_1)
 #define switch__ ((integer *)&findex_1 + 46)
    static integer flobts;
-   extern /* Subroutine */ int rspeak_(integer *), newsta_(integer *,
-      integer *, integer *, integer *, integer *);
+   extern /* Subroutine */ int rspeak_(integer *), newsta_(integer *, integer *, integer *, integer *, integer *);
    static integer i__;
 #define eqc ((integer *)&cevent_1 + 1)
    extern /* Subroutine */ int bug_(integer *, integer *);
@@ -198,7 +178,7 @@ logical lightp_(integer * obj) {
    cevent_1.ctick[cindex_1.cevcnd - 1] = 50;
 /* 						!BURNING WHEN SEEN. */
 
- L19100:
+L19100:
    if (prsvec_1.prsi == oindex_1.candl) {
       goto L10;
    }
@@ -219,7 +199,7 @@ logical lightp_(integer * obj) {
    rspeak_(&i__);
    return ret_val;
 
- L19200:
+L19200:
    if (prsvec_1.prsa != vindex_1.burnw && prsvec_1.prsa != vindex_1.trnonw) {
       goto L10;
    }
@@ -230,7 +210,7 @@ logical lightp_(integer * obj) {
 /* 						!CANDLES TOO SHORT. */
    return ret_val;
 
- L19300:
+L19300:
    if (prsvec_1.prsi != 0) {
       goto L19400;
    }
@@ -240,7 +220,7 @@ logical lightp_(integer * obj) {
    prsvec_1.prswon = FALSE_;
    return ret_val;
 
- L19400:
+L19400:
    if (prsvec_1.prsi != oindex_1.match || !((objcts_1.oflag1[oindex_1.match - 1] & oflags_1.onbt) != 0)) {
       goto L19500;
    }
@@ -256,7 +236,7 @@ logical lightp_(integer * obj) {
    rspeak_(&i__);
    return ret_val;
 
- L19500:
+L19500:
    if (prsvec_1.prsi != oindex_1.torch || !((objcts_1.oflag1[oindex_1.torch - 1] & oflags_1.onbt) != 0)) {
       goto L19600;
    }
@@ -268,17 +248,17 @@ logical lightp_(integer * obj) {
 /* 						!NO, VAPORIZE. */
    return ret_val;
 
- L19600:
+L19600:
    rspeak_(&c__519);
 /* 						!CANT LIGHT WITH THAT. */
    return ret_val;
 
- L19700:
+L19700:
    rspeak_(&c__520);
 /* 						!ALREADY ON. */
    return ret_val;
 
- L20000:
+L20000:
    if (*obj != oindex_1.match) {
       bug_(&c__6, obj);
    }
@@ -293,7 +273,7 @@ logical lightp_(integer * obj) {
 /* 						!NO, LOSE. */
    return ret_val;
 
- L20100:
+L20100:
    --findex_1.ormtch;
 /* 						!DECREMENT NO MATCHES. */
    objcts_1.oflag1[oindex_1.match - 1] |= flobts;
@@ -302,7 +282,7 @@ logical lightp_(integer * obj) {
    rspeak_(&c__184);
    return ret_val;
 
- L20500:
+L20500:
    if (prsvec_1.prsa != vindex_1.trnofw || (objcts_1.oflag1[oindex_1.match - 1] & oflags_1.onbt) == 0) {
       goto L10;
    }
@@ -313,7 +293,7 @@ logical lightp_(integer * obj) {
 
 /* HERE FOR FALSE RETURN */
 
- L10:
+L10:
    ret_val = FALSE_;
    return ret_val;
 } /* lightp_ */

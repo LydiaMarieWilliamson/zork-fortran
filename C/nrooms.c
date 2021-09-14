@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -97,9 +85,7 @@ struct {
 #define rflag_1 rflag_
 
 struct {
-   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls,
-      mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw,
-      mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
+   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
 } rindex_;
 
 #define rindex_1 rindex_
@@ -118,17 +104,13 @@ struct {
 #define oroom2_1 oroom2_
 
 struct {
-   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt,
-      schbt;
+   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 
 #define oflags_1 oflags_
 
 struct {
-   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw,
-      cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage,
-      spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs,
-      sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
+   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
 
 #define oindex_1 oindex_
@@ -171,16 +153,13 @@ struct {
 #define aindex_1 aindex_
 
 struct {
-   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw,
-      openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw,
-      clmbuw, clmbdw, trntow;
+   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw, openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw, clmbuw, clmbdw, trntow;
 } vindex_;
 
 #define vindex_1 vindex_
 
 struct {
-   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf,
-      frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
+   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
    integer btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
 
@@ -241,8 +220,7 @@ logical rappl2_(integer * ri) {
 /* Local variables */
 #define flags ((logical *)&findex_1)
 #define switch__ ((integer *)&findex_1 + 46)
-   extern /* Subroutine */ int lookto_(integer *, integer *, integer *,
-      integer *, integer *), jigsup_(integer *), ewtell_(integer *, integer *), rspeak_(integer *);
+   extern /* Subroutine */ int lookto_(integer *, integer *, integer *, integer *, integer *), jigsup_(integer *), ewtell_(integer *, integer *), rspeak_(integer *);
    static integer i__;
    extern /* Subroutine */ int rspsub_(integer *, integer *);
    static integer j;
@@ -339,7 +317,7 @@ logical rappl2_(integer * ri) {
 
 /* R38--	MIRROR D ROOM */
 
- L38000:
+L38000:
    if (prsvec_1.prsa == vindex_1.lookw) {
       lookto_(&rindex_1.fdoor, &rindex_1.mrg, &c__0, &c__682, &c__681);
    }
@@ -347,7 +325,7 @@ logical rappl2_(integer * ri) {
 
 /* R39--	MIRROR G ROOM */
 
- L39000:
+L39000:
    if (prsvec_1.prsa == vindex_1.walkiw) {
       jigsup_(&c__685);
    }
@@ -355,7 +333,7 @@ logical rappl2_(integer * ri) {
 
 /* R40--	MIRROR C ROOM */
 
- L40000:
+L40000:
    if (prsvec_1.prsa == vindex_1.lookw) {
       lookto_(&rindex_1.mrg, &rindex_1.mrb, &c__683, &c__0, &c__681);
    }
@@ -363,7 +341,7 @@ logical rappl2_(integer * ri) {
 
 /* R41--	MIRROR B ROOM */
 
- L41000:
+L41000:
    if (prsvec_1.prsa == vindex_1.lookw) {
       lookto_(&rindex_1.mrc, &rindex_1.mra, &c__0, &c__0, &c__681);
    }
@@ -371,7 +349,7 @@ logical rappl2_(integer * ri) {
 
 /* R42--	MIRROR A ROOM */
 
- L42000:
+L42000:
    if (prsvec_1.prsa == vindex_1.lookw) {
       lookto_(&rindex_1.mrb, &c__0, &c__0, &c__684, &c__681);
    }
@@ -380,7 +358,7 @@ logical rappl2_(integer * ri) {
 
 /* R43--	MIRROR C EAST/WEST */
 
- L43000:
+L43000:
    if (prsvec_1.prsa == vindex_1.lookw) {
       ewtell_(&play_1.here, &c__683);
    }
@@ -388,7 +366,7 @@ logical rappl2_(integer * ri) {
 
 /* R44--	MIRROR B EAST/WEST */
 
- L44000:
+L44000:
    if (prsvec_1.prsa == vindex_1.lookw) {
       ewtell_(&play_1.here, &c__686);
    }
@@ -396,7 +374,7 @@ logical rappl2_(integer * ri) {
 
 /* R45--	MIRROR A EAST/WEST */
 
- L45000:
+L45000:
    if (prsvec_1.prsa == vindex_1.lookw) {
       ewtell_(&play_1.here, &c__687);
    }
@@ -404,7 +382,7 @@ logical rappl2_(integer * ri) {
 
 /* R46--	INSIDE MIRROR */
 
- L46000:
+L46000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -436,7 +414,7 @@ logical rappl2_(integer * ri) {
 
 /* R47--	MIRROR EYE ROOM */
 
- L47000:
+L47000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -451,7 +429,7 @@ logical rappl2_(integer * ri) {
 /* L47100: */
    }
    i__ = 703;
- L47200:
+L47200:
    rspsub_(&i__, &objcts_1.odesc2[j - 1]);
 /* 						!DESCRIBE BEAM. */
    lookto_(&rindex_1.mra, &c__0, &c__0, &c__0, &c__0);
@@ -460,7 +438,7 @@ logical rappl2_(integer * ri) {
 
 /* R48--	INSIDE CRYPT */
 
- L48000:
+L48000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -475,7 +453,7 @@ logical rappl2_(integer * ri) {
 
 /* R49--	SOUTH CORRIDOR */
 
- L49000:
+L49000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -495,7 +473,7 @@ logical rappl2_(integer * ri) {
 
 /* R50--	BEHIND DOOR */
 
- L50000:
+L50000:
    if (prsvec_1.prsa != vindex_1.walkiw) {
       goto L50100;
    }
@@ -505,7 +483,7 @@ logical rappl2_(integer * ri) {
    cevent_1.ctick[cindex_1.cevfol - 1] = -1;
    return ret_val;
 
- L50100:
+L50100:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -521,7 +499,7 @@ logical rappl2_(integer * ri) {
 
 /* R51--	FRONT DOOR */
 
- L51000:
+L51000:
    if (prsvec_1.prsa == vindex_1.walkiw) {
       cevent_1.ctick[cindex_1.cevfol - 1] = 0;
    }
@@ -548,7 +526,7 @@ logical rappl2_(integer * ri) {
 
 /* R52--	NORTH CORRIDOR */
 
- L52000:
+L52000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -563,7 +541,7 @@ logical rappl2_(integer * ri) {
 
 /* R53--	PARAPET */
 
- L53000:
+L53000:
    if (prsvec_1.prsa == vindex_1.lookw) {
       i__1 = findex_1.pnumb + 712;
       rspsub_(&c__712, &i__1);
@@ -572,7 +550,7 @@ logical rappl2_(integer * ri) {
 
 /* R54--	CELL */
 
- L54000:
+L54000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -596,7 +574,7 @@ logical rappl2_(integer * ri) {
 
 /* R55--	PRISON CELL */
 
- L55000:
+L55000:
    if (prsvec_1.prsa == vindex_1.lookw) {
       rspeak_(&c__724);
    }
@@ -605,7 +583,7 @@ logical rappl2_(integer * ri) {
 
 /* R56--	NIRVANA CELL */
 
- L56000:
+L56000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -621,7 +599,7 @@ logical rappl2_(integer * ri) {
 
 /* R57--	NIRVANA AND END OF GAME */
 
- L57000:
+L57000:
    if (prsvec_1.prsa != vindex_1.walkiw) {
       return ret_val;
    }
@@ -633,7 +611,7 @@ logical rappl2_(integer * ri) {
 
 /* R58--	TOMB ROOM */
 
- L58000:
+L58000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -648,7 +626,7 @@ logical rappl2_(integer * ri) {
 
 /* R59--	PUZZLE SIDE ROOM */
 
- L59000:
+L59000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -665,7 +643,7 @@ logical rappl2_(integer * ri) {
 
 /* R60--	PUZZLE ROOM */
 
- L60000:
+L60000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -681,7 +659,7 @@ logical rappl2_(integer * ri) {
    }
    return ret_val;
 
- L60100:
+L60100:
    cpinfo_(&c__880, &findex_1.cphere);
 /* 						!DESCRIBE ROOM. */
    return ret_val;
@@ -705,8 +683,7 @@ logical rappl2_(integer * ri) {
 
 /* DECLARATIONS */
 
-/* Subroutine */ int lookto_(integer * nrm, integer * srm, integer * nt, integer
-   * st, integer * ht) {
+/* Subroutine */ int lookto_(integer * nrm, integer * srm, integer * nt, integer * st, integer * ht) {
 /* System generated locals */
    integer i__1;
 
@@ -754,7 +731,7 @@ logical rappl2_(integer * ri) {
 /* 						!AND NARROW ROOMS. */
    goto L200;
 
- L100:
+L100:
    m1 = mrhere_(&play_1.here);
 /* 						!WHICH MIRROR? */
    mrbf = 0;
@@ -773,7 +750,7 @@ logical rappl2_(integer * ri) {
       rspeak_(&c__851);
    }
 
- L200:
+L200:
    i__ = 0;
 /* 						!ASSUME NO MORE TO DO. */
    if (*nt == 0 && (dir == 0 || dir == 699)) {

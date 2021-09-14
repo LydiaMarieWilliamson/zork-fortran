@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -91,8 +79,7 @@ struct {
 #define oroom2_1 oroom2_
 
 struct {
-   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt,
-      schbt;
+   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 
 #define oflags_1 oflags_
@@ -246,9 +233,8 @@ integer getobj_(integer * oidx, integer * aidx, integer * spcobj) {
       goto L100;
    }
 /* 						!TEST RESULT. */
- L100:
-   if (av == 0 || av == obj || (objcts_1.oflag2[obj - 1] & oflags_1.findbt)
-      != 0) {
+L100:
+   if (av == 0 || av == obj || (objcts_1.oflag2[obj - 1] & oflags_1.findbt) != 0) {
       goto L200;
    }
    if (objcts_1.ocan[obj - 1] == av) {
@@ -258,7 +244,7 @@ integer getobj_(integer * oidx, integer * aidx, integer * spcobj) {
    chomp = TRUE_;
 /* 						!PROBABLY NOT. */
 
- L200:
+L200:
    if (av == 0) {
       goto L400;
    }
@@ -275,7 +261,7 @@ integer getobj_(integer * oidx, integer * aidx, integer * spcobj) {
       goto L300;
    }
 /* 						!TEST RESULT. */
- L300:
+L300:
    chomp = FALSE_;
 /* 						!REACHABLE. */
    if (obj == nobj) {
@@ -288,7 +274,7 @@ integer getobj_(integer * oidx, integer * aidx, integer * spcobj) {
 /* 						!AMB RESULT? */
    obj = nobj;
 
- L400:
+L400:
    nobj = schlst_(oidx, aidx, &c__0, &c__0, &play_1.winner, spcobj);
 /* 						!SEARCH ADVENTURER. */
 /* D	IF(DFLAG) PRINT 30,NOBJ */
@@ -301,20 +287,20 @@ integer getobj_(integer * oidx, integer * aidx, integer * spcobj) {
       goto L500;
    }
 /* 						!TEST RESULT */
- L500:
+L500:
    if (obj != 0) {
       nobj = -nobj;
    }
 /* 						!AMB RESULT? */
- L1100:
+L1100:
    obj = nobj;
 /* 						!RETURN NEW OBJECT. */
- L600:
+L600:
    if (chomp) {
       obj = -10000;
    }
 /* 						!UNREACHABLE. */
- L1000:
+L1000:
    ret_val = obj;
 
    if (ret_val != 0) {
@@ -338,11 +324,11 @@ integer getobj_(integer * oidx, integer * aidx, integer * spcobj) {
       if (ret_val == 0) {
          ret_val = i__;
       }
-    L1200:
+   L1200:
       ;
    }
 
- L1500:
+L1500:
 /* 						!END OF SEARCH. */
 /* D	IF(DFLAG) PRINT 40,GETOBJ */
 /* D40	FORMAT(' SCHLST- RESULT   ',I6) */
@@ -397,7 +383,7 @@ integer schlst_(integer * oidx, integer * aidx, integer * rm, integer * cn, inte
 
 /* IF OPEN OR TRANSPARENT, SEARCH THE OBJECT ITSELF. */
 
-    L200:
+   L200:
       if ((objcts_1.oflag1[i__ - 1] & oflags_1.tranbt) == 0 && (objcts_1.oflag2[i__ - 1] & oflags_1.openbt) == 0) {
          goto L1000;
       }
@@ -416,7 +402,7 @@ integer schlst_(integer * oidx, integer * aidx, integer * rm, integer * cn, inte
          }
          x = objcts_1.ocan[j - 1];
 /* 						!GET CONTAINER. */
-       L300:
+      L300:
          if (x == i__) {
             goto L400;
          }
@@ -432,23 +418,23 @@ integer schlst_(integer * oidx, integer * aidx, integer * rm, integer * cn, inte
 /* 						!GO ANOTHER LEVEL. */
          goto L300;
 
-       L400:
+      L400:
          if (ret_val != 0) {
             goto L2000;
          }
 /* 						!ALREADY GOT ONE? */
          ret_val = j;
 /* 						!NO. */
-       L500:
+      L500:
          ;
       }
 
-    L1000:
+   L1000:
       ;
    }
    return ret_val;
 
- L2000:
+L2000:
    ret_val = -ret_val;
 /* 						!AMB RETURN. */
    return ret_val;
@@ -492,7 +478,7 @@ logical thisit_(integer * oidx, integer * aidx, integer * obj, integer * spcobj)
 /* CHECK FOR OBJECT NAMES */
 
    i__ = *oidx + 1;
- L100:
+L100:
    ++i__;
    if (ovoc[i__ - 1] <= 0 || ovoc[i__ - 1] >= r50min) {
       return ret_val;
@@ -508,7 +494,7 @@ logical thisit_(integer * oidx, integer * aidx, integer * obj, integer * spcobj)
    }
 /* 						!ANY ADJ? */
    i__ = *aidx + 1;
- L200:
+L200:
    ++i__;
    if (avoc[i__ - 1] <= 0 || avoc[i__ - 1] >= r50min) {
       return ret_val;
@@ -519,7 +505,7 @@ logical thisit_(integer * oidx, integer * aidx, integer * obj, integer * spcobj)
    }
 /* 						!IF FAIL, CONT. */
 
- L500:
+L500:
    ret_val = TRUE_;
    return ret_val;
 } /* thisit_ */

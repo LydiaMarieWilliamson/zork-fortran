@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -96,9 +84,7 @@ struct {
 #define rflag_1 rflag_
 
 struct {
-   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls,
-      mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw,
-      mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
+   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
 } rindex_;
 
 #define rindex_1 rindex_
@@ -117,17 +103,13 @@ struct {
 #define oroom2_1 oroom2_
 
 struct {
-   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt,
-      schbt;
+   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 
 #define oflags_1 oflags_
 
 struct {
-   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw,
-      cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage,
-      spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs,
-      sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
+   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
 
 #define oindex_1 oindex_
@@ -178,16 +160,13 @@ struct {
 #define aindex_1 aindex_
 
 struct {
-   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw,
-      openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw,
-      clmbuw, clmbdw, trntow;
+   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw, openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw, clmbuw, clmbdw, trntow;
 } vindex_;
 
 #define vindex_1 vindex_
 
 struct {
-   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf,
-      frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
+   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
    integer btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
 
@@ -268,8 +247,7 @@ logical rappl1_(integer * ri) {
 #define flags ((logical *)&findex_1)
 #define switch__ ((integer *)&findex_1 + 46)
    static integer i__;
-   extern /* Subroutine */ int rspsub_(integer *, integer *), rspeak_(
-      integer *);
+   extern /* Subroutine */ int rspsub_(integer *, integer *), rspeak_(integer *);
    static integer j;
    extern /* Subroutine */ int scrupd_(integer *), jigsup_(integer *), newsta_(integer *, integer *, integer *, integer *, integer *);
 #define eqa ((integer *)&advs_1 + 1)
@@ -409,7 +387,7 @@ logical rappl1_(integer * ri) {
 
 /* R1--	EAST OF HOUSE.  DESCRIPTION DEPENDS ON STATE OF WINDOW */
 
- L1000:
+L1000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -426,7 +404,7 @@ logical rappl1_(integer * ri) {
 
 /* R2--	KITCHEN.  SAME VIEW FROM INSIDE. */
 
- L2000:
+L2000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -444,7 +422,7 @@ logical rappl1_(integer * ri) {
 /* R3--	LIVING ROOM.  DESCRIPTION DEPENDS ON MAGICF (STATE OF */
 /* 	DOOR TO CYCLOPS ROOM), RUG (MOVED OR NOT), DOOR (OPEN OR CLOSED) */
 
- L3000:
+L3000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       goto L3500;
    }
@@ -469,7 +447,7 @@ logical rappl1_(integer * ri) {
 
 /* 	NOT A LOOK WORD.  REEVALUATE TROPHY CASE. */
 
- L3500:
+L3500:
    if (prsvec_1.prsa != vindex_1.takew && (prsvec_1.prsa != vindex_1.putw || prsvec_1.prsi != oindex_1.tcase)) {
       return ret_val;
    }
@@ -480,7 +458,7 @@ logical rappl1_(integer * ri) {
 /* 						!RETAIN RAW SCORE AS WELL. */
       j = i__;
 /* 						!FIND OUT IF IN CASE. */
-    L3550:
+   L3550:
       j = objcts_1.ocan[j - 1];
 /* 						!TRACE OWNERSHIP. */
       if (j == 0) {
@@ -491,7 +469,7 @@ logical rappl1_(integer * ri) {
       }
 /* 						!DO ALL LEVELS. */
       advs_1.ascore[play_1.winner - 1] += objcts_1.otval[i__ - 1];
-    L3600:
+   L3600:
       ;
    }
    scrupd_(&c__0);
@@ -501,7 +479,7 @@ logical rappl1_(integer * ri) {
 
 /* R4--	CELLAR.  SHUT DOOR AND BAR IT IF HE JUST WALKED IN. */
 
- L4000:
+L4000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       goto L4500;
    }
@@ -510,7 +488,7 @@ logical rappl1_(integer * ri) {
 /* 						!DESCRIBE CELLAR. */
    return ret_val;
 
- L4500:
+L4500:
    if (prsvec_1.prsa != vindex_1.walkiw) {
       return ret_val;
    }
@@ -525,7 +503,7 @@ logical rappl1_(integer * ri) {
 
 /* R5--	MAZE11.  DESCRIBE STATE OF GRATING. */
 
- L5000:
+L5000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -548,7 +526,7 @@ logical rappl1_(integer * ri) {
 
 /* R6--	CLEARING.  DESCRIBE CLEARING, MOVE LEAVES. */
 
- L6000:
+L6000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       goto L6500;
    }
@@ -569,7 +547,7 @@ logical rappl1_(integer * ri) {
 /* 						!DESCRIBE GRATE. */
    return ret_val;
 
- L6500:
+L6500:
    if (findex_1.rvclr != 0 || qhere_(&oindex_1.leave, &rindex_1.clear) && (prsvec_1.prsa != vindex_1.movew || prsvec_1.prso != oindex_1.leave)) {
       return ret_val;
    }
@@ -582,7 +560,7 @@ logical rappl1_(integer * ri) {
 
 /* R7--	RESERVOIR SOUTH.  DESCRIPTION DEPENDS ON LOW TIDE FLAG. */
 
- L7000:
+L7000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -601,7 +579,7 @@ logical rappl1_(integer * ri) {
 
 /* R8--	RESERVOIR.  STATE DEPENDS ON LOW TIDE FLAG. */
 
- L8000:
+L8000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -618,7 +596,7 @@ logical rappl1_(integer * ri) {
 
 /* R9--	RESERVOIR NORTH.  ALSO DEPENDS ON LOW TIDE FLAG. */
 
- L9000:
+L9000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -634,7 +612,7 @@ logical rappl1_(integer * ri) {
 
 /* R10--	GLACIER ROOM.  STATE DEPENDS ON MELTED, VANISHED FLAGS. */
 
- L10000:
+L10000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -657,7 +635,7 @@ logical rappl1_(integer * ri) {
 
 /* R11--	FOREST ROOM */
 
- L11000:
+L11000:
    if (prsvec_1.prsa == vindex_1.walkiw) {
       cevent_1.cflag[cindex_1.cevfor - 1] = TRUE_;
    }
@@ -666,7 +644,7 @@ logical rappl1_(integer * ri) {
 
 /* R12--	MIRROR ROOM.  STATE DEPENDS ON MIRROR INTACT. */
 
- L12000:
+L12000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -682,7 +660,7 @@ logical rappl1_(integer * ri) {
 
 /* R13--	CAVE2 ROOM.  BLOW OUT CANDLES WITH 50% PROBABILITY. */
 
- L13000:
+L13000:
    if (prsvec_1.prsa != vindex_1.walkiw) {
       return ret_val;
    }
@@ -699,7 +677,7 @@ logical rappl1_(integer * ri) {
 
 /* R14--	BOOM ROOM.  BLOW HIM UP IF CARRYING FLAMING OBJECT. */
 
- L14000:
+L14000:
    j = objcts_1.odesc2[oindex_1.candl - 1];
 /* 						!ASSUME CANDLE. */
    if (objcts_1.oadv[oindex_1.candl - 1] == play_1.winner && (objcts_1.oflag1[oindex_1.candl - 1] & oflags_1.onbt) != 0) {
@@ -717,7 +695,7 @@ logical rappl1_(integer * ri) {
    return ret_val;
 /* 						!SAFE */
 
- L14100:
+L14100:
    if (prsvec_1.prsa != vindex_1.trnonw) {
       goto L14200;
    }
@@ -728,7 +706,7 @@ logical rappl1_(integer * ri) {
    jigsup_(&c__44);
    return ret_val;
 
- L14200:
+L14200:
    if (prsvec_1.prsa != vindex_1.walkiw) {
       return ret_val;
    }
@@ -741,7 +719,7 @@ logical rappl1_(integer * ri) {
 
 /* R15--	NO-OBJS.  SEE IF EMPTY HANDED, SCORE LIGHT SHAFT. */
 
- L15000:
+L15000:
    findex_1.empthf = TRUE_;
 /* 						!ASSUME TRUE. */
    i__1 = objcts_1.olnt;
@@ -765,7 +743,7 @@ logical rappl1_(integer * ri) {
 
 /* R16--	MACHINE ROOM.  DESCRIBE MACHINE. */
 
- L16000:
+L16000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -782,7 +760,7 @@ logical rappl1_(integer * ri) {
 
 /* R17--	BAT ROOM.  UNLESS CARRYING GARLIC, FLY AWAY WITH ME... */
 
- L17000:
+L17000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       goto L17500;
    }
@@ -795,9 +773,8 @@ logical rappl1_(integer * ri) {
 /* 						!BAT HOLDS NOSE. */
    return ret_val;
 
- L17500:
-   if (prsvec_1.prsa != vindex_1.walkiw || objcts_1.oadv[oindex_1.garli - 1]
-      == play_1.winner) {
+L17500:
+   if (prsvec_1.prsa != vindex_1.walkiw || objcts_1.oadv[oindex_1.garli - 1] == play_1.winner) {
       return ret_val;
    }
    rspeak_(&c__50);
@@ -810,7 +787,7 @@ logical rappl1_(integer * ri) {
 
 /* R18--	DOME ROOM.  STATE DEPENDS ON WHETHER ROPE TIED TO RAILING. */
 
- L18000:
+L18000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       goto L18500;
    }
@@ -823,7 +800,7 @@ logical rappl1_(integer * ri) {
 /* 						!IF ROPE, DESCRIBE. */
    return ret_val;
 
- L18500:
+L18500:
    if (prsvec_1.prsa == vindex_1.leapw) {
       jigsup_(&c__53);
    }
@@ -832,7 +809,7 @@ logical rappl1_(integer * ri) {
 
 /* R19--	TORCH ROOM.  ALSO DEPENDS ON WHETHER ROPE TIED TO RAILING. */
 
- L19000:
+L19000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -847,7 +824,7 @@ logical rappl1_(integer * ri) {
 
 /* R20--	CAROUSEL ROOM.  SPIN HIM OR KILL HIM. */
 
- L20000:
+L20000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       goto L20500;
    }
@@ -860,7 +837,7 @@ logical rappl1_(integer * ri) {
 /* 						!IF NOT FLIPPED, SPIN. */
    return ret_val;
 
- L20500:
+L20500:
    if (prsvec_1.prsa == vindex_1.walkiw && findex_1.carozf) {
       jigsup_(&c__58);
    }
@@ -870,7 +847,7 @@ logical rappl1_(integer * ri) {
 
 /* R21--	LLD ROOM.  HANDLE EXORCISE, DESCRIPTIONS. */
 
- L21000:
+L21000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       goto L21500;
    }
@@ -883,7 +860,7 @@ logical rappl1_(integer * ri) {
 /* 						!IF NOT VANISHED, GHOSTS. */
    return ret_val;
 
- L21500:
+L21500:
    if (prsvec_1.prsa != vindex_1.exorcw) {
       return ret_val;
    }
@@ -895,7 +872,7 @@ logical rappl1_(integer * ri) {
 /* 						!NOT EQUIPPED. */
    return ret_val;
 
- L21600:
+L21600:
    if (qhere_(&oindex_1.ghost, &play_1.here)) {
       goto L21700;
    }
@@ -904,7 +881,7 @@ logical rappl1_(integer * ri) {
 /* 						!NOPE, EXORCISE YOU. */
    return ret_val;
 
- L21700:
+L21700:
    newsta_(&oindex_1.ghost, &c__63, &c__0, &c__0, &c__0);
 /* 						!VANISH GHOST. */
    findex_1.lldf = TRUE_;
@@ -913,7 +890,7 @@ logical rappl1_(integer * ri) {
 
 /* R22--	LLD2-ROOM.  IS HIS HEAD ON A POLE? */
 
- L22000:
+L22000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -928,7 +905,7 @@ logical rappl1_(integer * ri) {
 
 /* R23--	DAM ROOM.  DESCRIBE RESERVOIR, PANEL. */
 
- L23000:
+L23000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -951,7 +928,7 @@ logical rappl1_(integer * ri) {
 
 /* R24--	TREE ROOM */
 
- L24000:
+L24000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -971,7 +948,7 @@ logical rappl1_(integer * ri) {
       i__ = 0;
       rspsub_(&c__502, &objcts_1.odesc2[j - 1]);
 /* 						!DESCRIBE. */
-    L24200:
+   L24200:
       ;
    }
    return ret_val;
@@ -979,7 +956,7 @@ logical rappl1_(integer * ri) {
 
 /* R25--	CYCLOPS-ROOM.  DEPENDS ON CYCLOPS STATE, ASLEEP FLAG, MAGIC FLAG. */
 
- L25000:
+L25000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -1014,7 +991,7 @@ logical rappl1_(integer * ri) {
 
 /* R26--	BANK BOX ROOM. */
 
- L26000:
+L26000:
    if (prsvec_1.prsa != vindex_1.walkiw) {
       return ret_val;
    }
@@ -1031,7 +1008,7 @@ logical rappl1_(integer * ri) {
 
 /* R27--	TREASURE ROOM. */
 
- L27000:
+L27000:
    if (prsvec_1.prsa != vindex_1.walkiw || !hack_1.thfact) {
       return ret_val;
    }
@@ -1057,7 +1034,7 @@ logical rappl1_(integer * ri) {
       j = 83;
 /* 						!FLAG BYEBYE. */
       objcts_1.oflag1[i__ - 1] &= ~oflags_1.visibt;
-    L27200:
+   L27200:
       ;
    }
    rspeak_(&j);
@@ -1066,7 +1043,7 @@ logical rappl1_(integer * ri) {
 
 /* R28--	CLIFF FUNCTION.  SEE IF CARRYING INFLATED BOAT. */
 
- L28000:
+L28000:
    findex_1.deflaf = objcts_1.oadv[oindex_1.rboat - 1] != play_1.winner;
 /* 						!TRUE IF NOT CARRYING. */
    return ret_val;
@@ -1074,7 +1051,7 @@ logical rappl1_(integer * ri) {
 
 /* R29--	RIVR4 ROOM.  PLAY WITH BUOY. */
 
- L29000:
+L29000:
    if (!findex_1.buoyf || objcts_1.oadv[oindex_1.buoy - 1] != play_1.winner) {
       return ret_val;
    }
@@ -1086,7 +1063,7 @@ logical rappl1_(integer * ri) {
 
 /* R30--	OVERFALLS.  DOOM. */
 
- L30000:
+L30000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       jigsup_(&c__85);
    }
@@ -1095,7 +1072,7 @@ logical rappl1_(integer * ri) {
 
 /* R31--	BEACH ROOM.  DIG A HOLE. */
 
- L31000:
+L31000:
    if (prsvec_1.prsa != vindex_1.digw || prsvec_1.prso != oindex_1.shove) {
       return ret_val;
    }
@@ -1116,13 +1093,13 @@ logical rappl1_(integer * ri) {
 /* 						!PROCESS STATE. */
    bug_(&c__2, &findex_1.rvsnd);
 
- L31100:
+L31100:
    i__1 = findex_1.rvsnd + 85;
    rspeak_(&i__1);
 /* 						!1-3... DISCOURAGE HIM. */
    return ret_val;
 
- L31400:
+L31400:
    i__ = 89;
 /* 						!ASSUME DISCOVERY. */
    if ((objcts_1.oflag1[oindex_1.statu - 1] & oflags_1.visibt) != 0) {
@@ -1132,7 +1109,7 @@ logical rappl1_(integer * ri) {
    objcts_1.oflag1[oindex_1.statu - 1] |= oflags_1.visibt;
    return ret_val;
 
- L31500:
+L31500:
    findex_1.rvsnd = 0;
 /* 						!5... SAND COLLAPSES */
    jigsup_(&c__90);
@@ -1141,7 +1118,7 @@ logical rappl1_(integer * ri) {
 
 /* R32--	TCAVE ROOM.  DIG A HOLE IN GUANO. */
 
- L32000:
+L32000:
    if (prsvec_1.prsa != vindex_1.digw || prsvec_1.prso != oindex_1.shove) {
       return ret_val;
    }
@@ -1157,14 +1134,14 @@ logical rappl1_(integer * ri) {
 /* 						!YES, SET NEW STATE. */
    i__ = findex_1.rvgua + 91;
 /* 						!GET NASTY REMARK. */
- L32100:
+L32100:
    rspeak_(&i__);
 /* 						!DESCRIBE. */
    return ret_val;
 
 /* R33--	FALLS ROOM */
 
- L33000:
+L33000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -1184,7 +1161,7 @@ logical rappl1_(integer * ri) {
 
 /* R34--	LEDGE FUNCTION.  LEDGE CAN COLLAPSE. */
 
- L34000:
+L34000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -1202,7 +1179,7 @@ logical rappl1_(integer * ri) {
 
 /* R35--	SAFE ROOM.  STATE DEPENDS ON WHETHER SAFE BLOWN. */
 
- L35000:
+L35000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       return ret_val;
    }
@@ -1221,7 +1198,7 @@ logical rappl1_(integer * ri) {
 
 /* R36--	MAGNET ROOM.  DESCRIBE, CHECK FOR SPINDIZZY DOOM. */
 
- L36000:
+L36000:
    if (prsvec_1.prsa != vindex_1.lookw) {
       goto L36500;
    }
@@ -1230,7 +1207,7 @@ logical rappl1_(integer * ri) {
 /* 						!DESCRIBE. */
    return ret_val;
 
- L36500:
+L36500:
    if (prsvec_1.prsa != vindex_1.walkiw || !findex_1.caroff) {
       return ret_val;
    }
@@ -1243,7 +1220,7 @@ logical rappl1_(integer * ri) {
 /* 						!NO, SPIN HIS COMPASS. */
    return ret_val;
 
- L36600:
+L36600:
    i__ = 58;
 /* 						!SPIN HIS INSIDES. */
    if (play_1.winner != aindex_1.player) {
@@ -1256,7 +1233,7 @@ logical rappl1_(integer * ri) {
 
 /* R37--	CAGE ROOM.  IF SOLVED CAGE, MOVE TO OTHER CAGE ROOM. */
 
- L37000:
+L37000:
    if (findex_1.cagesf) {
       f = moveto_(&rindex_1.cager, &play_1.winner);
    }

@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -96,9 +84,7 @@ struct {
 #define rflag_1 rflag_
 
 struct {
-   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls,
-      mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw,
-      mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
+   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
 } rindex_;
 
 #define rindex_1 rindex_
@@ -117,17 +103,13 @@ struct {
 #define oroom2_1 oroom2_
 
 struct {
-   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt,
-      schbt;
+   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 
 #define oflags_1 oflags_
 
 struct {
-   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw,
-      cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage,
-      spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs,
-      sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
+   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
 
 #define oindex_1 oindex_
@@ -164,16 +146,13 @@ struct {
 #define aindex_1 aindex_
 
 struct {
-   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw,
-      openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw,
-      clmbuw, clmbdw, trntow;
+   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw, openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw, clmbuw, clmbdw, trntow;
 } vindex_;
 
 #define vindex_1 vindex_
 
 struct {
-   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf,
-      frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
+   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
    integer btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
 
@@ -282,8 +261,7 @@ logical oappli_(integer * ri, integer * arg) {
 #define flags ((logical *)&findex_1)
 #define switch__ ((integer *)&findex_1 + 46)
    static integer flobts, i__;
-   extern /* Subroutine */ int rspeak_(integer *), rspsub_(integer *,
-      integer *), newsta_(integer *, integer *, integer *, integer *, integer *), jigsup_(integer *);
+   extern /* Subroutine */ int rspeak_(integer *), rspsub_(integer *, integer *), newsta_(integer *, integer *, integer *, integer *, integer *), jigsup_(integer *);
    extern integer robadv_(integer *, integer *, integer *, integer *), robrm_(integer *, integer *, integer *, integer *, integer *);
    static integer j, x, av, io, ir, iz;
 #define eqa ((integer *)&advs_1 + 1)
@@ -344,7 +322,7 @@ logical oappli_(integer * ri, integer * arg) {
    if (prsvec_1.prso != 0) {
       odo2 = objcts_1.odesc2[prsvec_1.prso - 1];
    }
- L5:
+L5:
    if (prsvec_1.prsi != 0) {
       odi2 = objcts_1.odesc2[prsvec_1.prsi - 1];
    }
@@ -422,13 +400,13 @@ logical oappli_(integer * ri, integer * arg) {
 
 /* RETURN HERE TO DECLARE FALSE RESULT */
 
- L10:
+L10:
    ret_val = FALSE_;
    return ret_val;
 
 /* SIMPLE OBJECTS, PROCESSED EXTERNALLY. */
 
- L100:
+L100:
    if (*ri < 32) {
       ret_val = sobjs_(ri, arg);
    }
@@ -440,7 +418,7 @@ logical oappli_(integer * ri, integer * arg) {
 
 /* O100--	MACHINE FUNCTION */
 
- L2000:
+L2000:
    if (play_1.here != rindex_1.mmach) {
       goto L10;
    }
@@ -451,7 +429,7 @@ logical oappli_(integer * ri, integer * arg) {
 
 /* O101--	WATER FUNCTION */
 
- L5000:
+L5000:
    if (prsvec_1.prsa != vindex_1.fillw) {
       goto L5050;
    }
@@ -465,7 +443,7 @@ logical oappli_(integer * ri, integer * arg) {
    i__ = odi2;
    odi2 = odo2;
    odo2 = i__;
- L5050:
+L5050:
    if (prsvec_1.prso == oindex_1.water || prsvec_1.prso == oindex_1.gwate) {
       goto L5100;
    }
@@ -474,7 +452,7 @@ logical oappli_(integer * ri, integer * arg) {
    return ret_val;
 /* 						!PUNT. */
 
- L5100:
+L5100:
    if (prsvec_1.prsa != vindex_1.takew) {
       goto L5400;
    }
@@ -494,13 +472,13 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!INSIDE, CLOSED, PUNT. */
    return ret_val;
 
- L5200:
+L5200:
    rspeak_(&c__615);
 /* 						!NOT INSIDE OR OPEN, */
    return ret_val;
 /* 						!SLIPS THRU FINGERS. */
 
- L5400:
+L5400:
    if (prsvec_1.prsa != vindex_1.putw) {
       goto L5700;
    }
@@ -519,7 +497,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!VANISH WATER. */
    return ret_val;
 
- L5500:
+L5500:
    if ((objcts_1.oflag2[oindex_1.bottl - 1] & oflags_1.openbt) != 0) {
       goto L5550;
    }
@@ -528,7 +506,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!NO, LOSE. */
    return ret_val;
 
- L5550:
+L5550:
    if (qempty_(&oindex_1.bottl)) {
       goto L5600;
    }
@@ -537,12 +515,12 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!NO, ALREADY FULL. */
    return ret_val;
 
- L5600:
+L5600:
    newsta_(&oindex_1.water, &c__614, &c__0, &oindex_1.bottl, &c__0);
 /* 						!TAKE WATER TO BOTTLE. */
    return ret_val;
 
- L5700:
+L5700:
    if (prsvec_1.prsa != vindex_1.dropw && prsvec_1.prsa != vindex_1.pourw && prsvec_1.prsa != vindex_1.givew) {
       goto L5900;
    }
@@ -554,14 +532,14 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!NO, VANISHES. */
    return ret_val;
 
- L5800:
+L5800:
    newsta_(&oindex_1.water, &c__0, &c__0, &av, &c__0);
 /* 						!WATER INTO VEHICLE. */
    rspsub_(&c__296, &objcts_1.odesc2[av - 1]);
 /* 						!DESCRIBE. */
    return ret_val;
 
- L5900:
+L5900:
    if (prsvec_1.prsa != vindex_1.throww) {
       goto L10;
    }
@@ -573,7 +551,7 @@ logical oappli_(integer * ri, integer * arg) {
 
 /* O102--	LEAF PILE */
 
- L10000:
+L10000:
    if (prsvec_1.prsa != vindex_1.burnw) {
       goto L10500;
    }
@@ -586,14 +564,14 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!NO, BURN IT. */
    return ret_val;
 
- L10100:
+L10100:
    newsta_(&prsvec_1.prso, &c__0, &play_1.here, &c__0, &c__0);
 /* 						!DROP LEAVES. */
    jigsup_(&c__159);
 /* 						!BURN HIM. */
    return ret_val;
 
- L10500:
+L10500:
    if (prsvec_1.prsa != vindex_1.movew) {
       goto L10600;
    }
@@ -602,7 +580,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!DONE. */
    return ret_val;
 
- L10600:
+L10600:
    if (prsvec_1.prsa != vindex_1.lookuw || findex_1.rvclr != 0) {
       goto L10;
    }
@@ -612,14 +590,14 @@ logical oappli_(integer * ri, integer * arg) {
 
 /* O103--	TROLL, DONE EXTERNALLY. */
 
- L11000:
+L11000:
    ret_val = trollp_(arg);
 /* 						!TROLL PROCESSOR. */
    return ret_val;
 
 /* O104--	RUSTY KNIFE. */
 
- L12000:
+L12000:
    if (prsvec_1.prsa != vindex_1.takew) {
       goto L12100;
    }
@@ -630,7 +608,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!PULSE SWORD. */
    goto L10;
 
- L12100:
+L12100:
    if ((prsvec_1.prsa != vindex_1.attacw && prsvec_1.prsa != vindex_1.killw || prsvec_1.prsi != oindex_1.rknif) && (prsvec_1.prsa != vindex_1.swingw && prsvec_1.prsa != vindex_1.throww || prsvec_1.prso != oindex_1.rknif)) {
       goto L10;
    }
@@ -643,7 +621,7 @@ logical oappli_(integer * ri, integer * arg) {
 
 /* O105--	GLACIER */
 
- L15000:
+L15000:
    if (prsvec_1.prsa != vindex_1.throww) {
       goto L15500;
    }
@@ -668,12 +646,12 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!IN DARK? */
    return ret_val;
 
- L15400:
+L15400:
    rspeak_(&c__171);
 /* 						!JOKE IF NOT TORCH. */
    return ret_val;
 
- L15500:
+L15500:
    if (prsvec_1.prsa != vindex_1.meltw || prsvec_1.prso != oindex_1.ice) {
       goto L10;
    }
@@ -684,7 +662,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!CANT MELT WITH THAT. */
    return ret_val;
 
- L15600:
+L15600:
    findex_1.glacmf = TRUE_;
 /* 						!PARTIAL MELT. */
    if (prsvec_1.prsi != oindex_1.torch) {
@@ -695,14 +673,14 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!MUNG TORCH. */
    objcts_1.odesc2[oindex_1.torch - 1] = 173;
    objcts_1.oflag1[oindex_1.torch - 1] &= ~flobts;
- L15700:
+L15700:
    jigsup_(&c__172);
 /* 						!DROWN. */
    return ret_val;
 
 /* O106--	BLACK BOOK */
 
- L18000:
+L18000:
    if (prsvec_1.prsa != vindex_1.openw) {
       goto L18100;
    }
@@ -711,7 +689,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!JOKE. */
    return ret_val;
 
- L18100:
+L18100:
    if (prsvec_1.prsa != vindex_1.closew) {
       goto L18200;
    }
@@ -719,7 +697,7 @@ logical oappli_(integer * ri, integer * arg) {
    rspeak_(&c__181);
    return ret_val;
 
- L18200:
+L18200:
    if (prsvec_1.prsa != vindex_1.burnw) {
       goto L10;
    }
@@ -732,39 +710,39 @@ logical oappli_(integer * ri, integer * arg) {
 
 /* O107--	CANDLES, PROCESSED EXTERNALLY */
 
- L19000:
+L19000:
    ret_val = lightp_(&oindex_1.candl);
    return ret_val;
 
 /* O108--	MATCHES, PROCESSED EXTERNALLY */
 
- L20000:
+L20000:
    ret_val = lightp_(&oindex_1.match);
    return ret_val;
 
 /* O109--	CYCLOPS, PROCESSED EXTERNALLY. */
 
- L22000:
+L22000:
    ret_val = cyclop_(arg);
 /* 						!CYCLOPS */
    return ret_val;
 
 /* O110--	THIEF, PROCESSED EXTERNALLY */
 
- L25000:
+L25000:
    ret_val = thiefp_(arg);
    return ret_val;
 
 /* O111--	WINDOW */
 
- L26000:
+L26000:
    ret_val = opncls_(&oindex_1.windo, &c__208, &c__209);
 /* 						!OPEN/CLS WINDOW. */
    return ret_val;
 
 /* O112--	PILE OF BODIES */
 
- L32000:
+L32000:
    if (prsvec_1.prsa != vindex_1.takew) {
       goto L32500;
    }
@@ -773,7 +751,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!CANT. */
    return ret_val;
 
- L32500:
+L32500:
    if (prsvec_1.prsa != vindex_1.burnw && prsvec_1.prsa != vindex_1.mungw) {
       goto L10;
    }
@@ -790,7 +768,7 @@ logical oappli_(integer * ri, integer * arg) {
 
 /* O113--	VAMPIRE BAT */
 
- L35000:
+L35000:
    rspeak_(&c__50);
 /* 						!TIME TO FLY, JACK. */
    f = moveto_(&bats_1.batdrp[rnd_(&c__9)], &play_1.winner);
@@ -801,7 +779,7 @@ logical oappli_(integer * ri, integer * arg) {
 
 /* O114--	STICK */
 
- L39000:
+L39000:
    if (prsvec_1.prsa != vindex_1.wavew) {
       goto L10;
    }
@@ -817,7 +795,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!NOTHING HAPPENS. */
    return ret_val;
 
- L39200:
+L39200:
    objcts_1.oflag1[oindex_1.pot - 1] |= oflags_1.visibt;
    findex_1.rainbf = !findex_1.rainbf;
 /* 						!COMPLEMENT RAINBOW. */
@@ -831,7 +809,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!DESCRIBE. */
    return ret_val;
 
- L39500:
+L39500:
    findex_1.rainbf = FALSE_;
 /* 						!ON RAINBOW, */
    jigsup_(&c__247);
@@ -840,13 +818,13 @@ logical oappli_(integer * ri, integer * arg) {
 
 /* O115--	BALLOON, HANDLED EXTERNALLY */
 
- L40000:
+L40000:
    ret_val = ballop_(arg);
    return ret_val;
 
 /* O116--	HEADS */
 
- L45000:
+L45000:
    if (prsvec_1.prsa != vindex_1.hellow) {
       goto L45100;
    }
@@ -855,7 +833,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!TRULY BIZARRE. */
    return ret_val;
 
- L45100:
+L45100:
    if (prsvec_1.prsa == vindex_1.readw) {
       goto L10;
    }
@@ -870,7 +848,7 @@ logical oappli_(integer * ri, integer * arg) {
 
 /* O117--	SPHERE */
 
- L47000:
+L47000:
    if (findex_1.cagesf || prsvec_1.prsa != vindex_1.takew) {
       goto L10;
    }
@@ -895,7 +873,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!GET OUT IN 10 OR ELSE. */
    return ret_val;
 
- L47200:
+L47200:
    newsta_(&oindex_1.spher, &c__0, &c__0, &c__0, &c__0);
 /* 						!YOURE DEAD. */
    rooms_1.rflag[rindex_1.cager - 1] |= rflag_1.rmung;
@@ -904,7 +882,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!MUNG PLAYER. */
    return ret_val;
 
- L47500:
+L47500:
    newsta_(&oindex_1.spher, &c__0, &c__0, &c__0, &c__0);
 /* 						!ROBOT TRIED, */
    newsta_(&oindex_1.robot, &c__264, &c__0, &c__0, &c__0);
@@ -915,7 +893,7 @@ logical oappli_(integer * ri, integer * arg) {
 
 /* O118--	GEOMETRICAL BUTTONS */
 
- L48000:
+L48000:
    if (prsvec_1.prsa != vindex_1.pushw) {
       goto L10;
    }
@@ -940,7 +918,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!YOU PUSHED, YOU DIE. */
    return ret_val;
 
- L48100:
+L48100:
    i__ = 267;
    if (findex_1.carozf) {
       i__ = 266;
@@ -950,7 +928,7 @@ logical oappli_(integer * ri, integer * arg) {
    rspeak_(&i__);
    return ret_val;
 
- L48200:
+L48200:
    i__ = 266;
 /* 						!ASSUME NO CHANGE. */
    if (findex_1.carozf) {
@@ -960,7 +938,7 @@ logical oappli_(integer * ri, integer * arg) {
    rspeak_(&i__);
    return ret_val;
 
- L48300:
+L48300:
    findex_1.caroff = !findex_1.caroff;
 /* 						!FLIP CAROUSEL. */
    if (!qhere_(&oindex_1.irbox, &rindex_1.carou)) {
@@ -977,7 +955,7 @@ logical oappli_(integer * ri, integer * arg) {
 
 /* O119--	FLASK FUNCTION */
 
- L49000:
+L49000:
    if (prsvec_1.prsa == vindex_1.openw) {
       goto L49100;
    }
@@ -987,7 +965,7 @@ logical oappli_(integer * ri, integer * arg) {
    }
    newsta_(&oindex_1.flask, &c__270, &c__0, &c__0, &c__0);
 /* 						!KILL FLASK. */
- L49100:
+L49100:
    rooms_1.rflag[play_1.here - 1] |= rflag_1.rmung;
    rrand[play_1.here - 1] = 271;
    jigsup_(&c__272);
@@ -996,7 +974,7 @@ logical oappli_(integer * ri, integer * arg) {
 
 /* O120--	BUCKET FUNCTION */
 
- L50000:
+L50000:
    if (*arg != 2) {
       goto L10;
    }
@@ -1013,14 +991,14 @@ logical oappli_(integer * ri, integer * arg) {
    goto L50900;
 /* 						!FINISH UP. */
 
- L50500:
+L50500:
    if (objcts_1.ocan[oindex_1.water - 1] == oindex_1.bucke || !findex_1.bucktf) {
       goto L10;
    }
    findex_1.bucktf = FALSE_;
    newsta_(&oindex_1.bucke, &c__291, &rindex_1.bwell, &c__0, &c__0);
 /* 						!BUCKET AT BOTTOM. */
- L50900:
+L50900:
    if (av != oindex_1.bucke) {
       return ret_val;
    }
@@ -1034,7 +1012,7 @@ logical oappli_(integer * ri, integer * arg) {
 
 /* O121--	EATME CAKE */
 
- L51000:
+L51000:
    if (prsvec_1.prsa != vindex_1.eatw || prsvec_1.prso != oindex_1.ecake || play_1.here != rindex_1.alice) {
       goto L10;
    }
@@ -1050,7 +1028,7 @@ logical oappli_(integer * ri, integer * arg) {
 
 /* O122--	ICINGS */
 
- L52000:
+L52000:
    if (prsvec_1.prsa != vindex_1.readw) {
       goto L52200;
    }
@@ -1073,7 +1051,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!READ FLASK. */
    return ret_val;
 
- L52200:
+L52200:
    if (prsvec_1.prsa != vindex_1.throww || prsvec_1.prso != oindex_1.rdice || prsvec_1.prsi != oindex_1.pool) {
       goto L52300;
    }
@@ -1082,7 +1060,7 @@ logical oappli_(integer * ri, integer * arg) {
    objcts_1.oflag1[oindex_1.saffr - 1] |= oflags_1.visibt;
    return ret_val;
 
- L52300:
+L52300:
    if (play_1.here != rindex_1.alice && play_1.here != rindex_1.alism && play_1.here != rindex_1.alitr) {
       goto L10;
    }
@@ -1097,7 +1075,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!VANISH ADVENTURER. */
    return ret_val;
 
- L52400:
+L52400:
    if (prsvec_1.prsa != vindex_1.eatw || prsvec_1.prso != oindex_1.blice) {
       goto L10;
    }
@@ -1115,7 +1093,7 @@ logical oappli_(integer * ri, integer * arg) {
 
 /*  Do a size change, common loop used also by code at 51000 */
 
- L52405:
+L52405:
    i__1 = objcts_1.olnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
 /* 						!ENLARGE WORLD. */
@@ -1124,19 +1102,19 @@ logical oappli_(integer * ri, integer * arg) {
       }
       objcts_1.oroom[i__ - 1] = ir;
       objcts_1.osize[i__ - 1] *= iz;
-    L52450:
+   L52450:
       ;
    }
    return ret_val;
 
- L52500:
+L52500:
    jigsup_(&c__284);
 /* 						!ENLARGED IN WRONG ROOM. */
    return ret_val;
 
 /* O123--	BRICK */
 
- L54000:
+L54000:
    if (prsvec_1.prsa != vindex_1.burnw) {
       goto L10;
    }
@@ -1148,7 +1126,7 @@ logical oappli_(integer * ri, integer * arg) {
 
 /* O124--	MYSELF */
 
- L55000:
+L55000:
    if (prsvec_1.prsa != vindex_1.givew) {
       goto L55100;
    }
@@ -1157,7 +1135,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!DONE. */
    return ret_val;
 
- L55100:
+L55100:
    if (prsvec_1.prsa != vindex_1.takew) {
       goto L55200;
    }
@@ -1166,7 +1144,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!JOKE. */
    return ret_val;
 
- L55200:
+L55200:
    if (prsvec_1.prsa != vindex_1.killw && prsvec_1.prsa != vindex_1.mungw) {
       goto L10;
    }
@@ -1177,7 +1155,7 @@ logical oappli_(integer * ri, integer * arg) {
 
 /* O125--	PANELS INSIDE MIRROR */
 
- L56000:
+L56000:
    if (prsvec_1.prsa != vindex_1.pushw) {
       goto L10;
    }
@@ -1196,7 +1174,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!TELL WONT MOVE. */
    return ret_val;
 
- L56100:
+L56100:
    if (findex_1.mloc != rindex_1.mrg) {
       goto L56200;
    }
@@ -1206,7 +1184,7 @@ logical oappli_(integer * ri, integer * arg) {
    jigsup_(&c__685);
    return ret_val;
 
- L56200:
+L56200:
    i__ = 831;
 /* 						!ROTATE L OR R. */
    if (prsvec_1.prso == oindex_1.rdwal || prsvec_1.prso == oindex_1.ylwal) {
@@ -1229,7 +1207,7 @@ logical oappli_(integer * ri, integer * arg) {
 
 /* O126--	ENDS INSIDE MIRROR */
 
- L57000:
+L57000:
    if (prsvec_1.prsa != vindex_1.pushw) {
       goto L10;
    }
@@ -1242,7 +1220,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!NO, WONT BUDGE. */
    return ret_val;
 
- L57100:
+L57100:
    if (prsvec_1.prso != oindex_1.pindr) {
       goto L57300;
    }
@@ -1259,13 +1237,13 @@ logical oappli_(integer * ri, integer * arg) {
    cevent_1.ctick[cindex_1.cevpin - 1] = 5;
    return ret_val;
 
- L57200:
+L57200:
    rspeak_(&c__737);
 /* 						!GDN SEES YOU, DIE. */
    jigsup_(&c__685);
    return ret_val;
 
- L57300:
+L57300:
    nloc = findex_1.mloc - 1;
 /* 						!NEW LOC IF SOUTH. */
    if (findex_1.mdir == 0) {
@@ -1279,7 +1257,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!HAVE REACHED END. */
    return ret_val;
 
- L57400:
+L57400:
    i__ = 699;
 /* 						!ASSUME SOUTH. */
    if (findex_1.mdir == 0) {
@@ -1317,13 +1295,13 @@ logical oappli_(integer * ri, integer * arg) {
    jigsup_(&c__743);
    return ret_val;
 
- L57500:
+L57500:
    rspeak_(&c__741);
 /* 						!POLE UP, DIE. */
    jigsup_(&c__743);
    return ret_val;
 
- L57600:
+L57600:
    rspeak_(&c__744);
 /* 						!DOOR OPEN, DIE. */
    jigsup_(&c__743);
@@ -1332,7 +1310,7 @@ logical oappli_(integer * ri, integer * arg) {
 
 /* O127--	GLOBAL GUARDIANS */
 
- L58000:
+L58000:
    if (prsvec_1.prsa != vindex_1.attacw && prsvec_1.prsa != vindex_1.killw && prsvec_1.prsa != vindex_1.mungw) {
       goto L58100;
    }
@@ -1340,7 +1318,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!LOSE. */
    return ret_val;
 
- L58100:
+L58100:
    if (prsvec_1.prsa != vindex_1.hellow) {
       goto L10;
    }
@@ -1351,7 +1329,7 @@ logical oappli_(integer * ri, integer * arg) {
 
 /* O128--	GLOBAL MASTER */
 
- L59000:
+L59000:
    if (prsvec_1.prsa != vindex_1.attacw && prsvec_1.prsa != vindex_1.killw && prsvec_1.prsa != vindex_1.mungw) {
       goto L59100;
    }
@@ -1359,7 +1337,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!BAD IDEA. */
    return ret_val;
 
- L59100:
+L59100:
    if (prsvec_1.prsa != vindex_1.takew) {
       goto L10;
    }
@@ -1370,7 +1348,7 @@ logical oappli_(integer * ri, integer * arg) {
 
 /* O129--	NUMERAL FIVE (FOR JOKE) */
 
- L60000:
+L60000:
    if (prsvec_1.prsa != vindex_1.takew) {
       goto L10;
    }
@@ -1388,7 +1366,7 @@ logical oappli_(integer * ri, integer * arg) {
 
 /* O130--	CRYPT FUNCTION */
 
- L61000:
+L61000:
    if (!findex_1.endgmf) {
       goto L45000;
    }
@@ -1405,7 +1383,7 @@ logical oappli_(integer * ri, integer * arg) {
    objcts_1.oflag2[oindex_1.tomb - 1] |= oflags_1.openbt;
    return ret_val;
 
- L61100:
+L61100:
    if (prsvec_1.prsa != vindex_1.closew) {
       goto L45000;
    }
@@ -1425,7 +1403,7 @@ logical oappli_(integer * ri, integer * arg) {
 
 /* O131--	GLOBAL LADDER */
 
- L62000:
+L62000:
    if (puzzle_1.cpvec[findex_1.cphere] == -2 || puzzle_1.cpvec[findex_1.cphere - 2] == -3) {
       goto L62100;
    }
@@ -1433,7 +1411,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!NO, LOSE. */
    return ret_val;
 
- L62100:
+L62100:
    if (prsvec_1.prsa == vindex_1.clmbw || prsvec_1.prsa == vindex_1.clmbuw) {
       goto L62200;
    }
@@ -1441,7 +1419,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!CLIMB IT? */
    return ret_val;
 
- L62200:
+L62200:
    if (findex_1.cphere == 10 && puzzle_1.cpvec[findex_1.cphere] == -2) {
       goto L62300;
    }
@@ -1449,7 +1427,7 @@ logical oappli_(integer * ri, integer * arg) {
 /* 						!NO, HIT YOUR HEAD. */
    return ret_val;
 
- L62300:
+L62300:
    f = moveto_(&rindex_1.cpant, &play_1.winner);
 /* 						!TO ANTEROOM. */
    f = rmdesc_(&c__3);

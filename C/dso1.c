@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -47,17 +35,13 @@ struct {
 #define oroom2_1 oroom2_
 
 struct {
-   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt,
-      schbt;
+   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 
 #define oflags_1 oflags_
 
 struct {
-   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw,
-      cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage,
-      spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs,
-      sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
+   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
 
 #define oindex_1 oindex_
@@ -81,8 +65,7 @@ struct {
 #define aindex_1 aindex_
 
 struct {
-   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf,
-      frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
+   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
    integer btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
 
@@ -116,8 +99,7 @@ static integer c__573 = 573;
    extern logical qempty_(integer *);
 #define flags ((logical *)&findex_1)
 #define switch__ ((integer *)&findex_1 + 46)
-   extern /* Subroutine */ int rspeak_(integer *), rspsub_(integer *,
-      integer *), invent_(integer *);
+   extern /* Subroutine */ int rspeak_(integer *), rspsub_(integer *, integer *), invent_(integer *);
    extern integer oactor_(integer *);
    extern /* Subroutine */ int princo_(integer *, integer *);
 
@@ -157,12 +139,12 @@ static integer c__573 = 573;
       goto L500;
 /* DO SHORT DESCRIPTION OF OBJECT. */
 
-    L200:
+   L200:
       rspsub_(&j, &objcts_1.odesc2[i__ - 1]);
 /* 						!YOU CAN SEE IT. */
       j = 502;
 
-    L500:
+   L500:
       ;
    }
 
@@ -193,11 +175,11 @@ static integer c__573 = 573;
       if ((findex_1.brieff || findex_1.superf) && !(*full)) {
          goto L1000;
       }
-    L600:
+   L600:
       princo_(&i__, &j);
 /* 						!PRINT CONTENTS. */
 
-    L1000:
+   L1000:
       ;
    }
    return 0;
@@ -223,8 +205,7 @@ static integer c__573 = 573;
    static integer i__, j;
 #define eqa ((integer *)&advs_1 + 1)
 #define eqo ((integer *)&objcts_1 + 1)
-   extern /* Subroutine */ int rspeak_(integer *), princo_(integer *,
-      integer *);
+   extern /* Subroutine */ int rspeak_(integer *), princo_(integer *, integer *);
    extern logical qempty_(integer *);
    extern /* Subroutine */ int rspsub_(integer *, integer *);
 
@@ -251,7 +232,7 @@ static integer c__573 = 573;
       rspsub_(&i__, &objcts_1.odesc2[advs_1.aobj[*adv - 1] - 1]);
       i__ = 0;
       rspsub_(&c__502, &objcts_1.odesc2[j - 1]);
-    L10:
+   L10:
       ;
    }
 
@@ -265,7 +246,7 @@ static integer c__573 = 573;
 /* 						!NO, TELL HIM. */
    return 0;
 
- L25:
+L25:
    i__1 = objcts_1.olnt;
    for (j = 1; j <= i__1; ++j) {
 /* 						!LOOP. */
@@ -276,7 +257,7 @@ static integer c__573 = 573;
          princo_(&j, &c__573);
       }
 /* 						!IF NOT EMPTY, LIST. */
-    L100:
+   L100:
       ;
    }
    return 0;

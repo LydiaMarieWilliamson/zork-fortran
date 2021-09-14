@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -122,25 +110,19 @@ struct {
 #define rflag_1 rflag_
 
 struct {
-   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls,
-      mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw,
-      mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
+   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
 } rindex_;
 
 #define rindex_1 rindex_
 
 struct {
-   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt,
-      schbt;
+   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 
 #define oflags_1 oflags_
 
 struct {
-   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw,
-      cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage,
-      spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs,
-      sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
+   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
 
 #define oindex_1 oindex_
@@ -164,8 +146,7 @@ struct {
 #define aindex_1 aindex_
 
 struct {
-   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf,
-      frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
+   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
    integer btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
 
@@ -184,9 +165,7 @@ struct {
 #define xsrch_1 xsrch_
 
 struct {
-   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw,
-      openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw,
-      clmbuw, clmbdw, trntow;
+   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw, openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw, clmbuw, clmbdw, trntow;
 } vindex_;
 
 #define vindex_1 vindex_
@@ -313,14 +292,14 @@ static integer c__431 = 431;
    do_uio(&c__1, b1, (ftnlen) 74);
    e_rdue();
 
- L100:
+L100:
    for (i__ = 1; i__ <= 74; ++i__) {
       x1 = (x & 31) + i__;
       *(unsigned char *)&b1[i__ - 1] = (char)(*(unsigned char *)&b1[i__ - 1] ^ x1);
 /* L150: */
    }
 
- L200:
+L200:
    if (y == 0) {
       goto L400;
    }
@@ -333,7 +312,7 @@ static integer c__431 = 431;
 /* L300: */
    }
 
- L400:
+L400:
    for (i__ = 74; i__ >= 1; --i__) {
 /* 						!BACKSCAN FOR BLANKS. */
       if (*(unsigned char *)&b1[i__ - 1] != ' ') {
@@ -342,7 +321,7 @@ static integer c__431 = 431;
 /* L500: */
    }
 
- L600:
+L600:
    io___9.ciunit = chan_1.outch;
    s_wsfe(&io___9);
    i__1 = i__;
@@ -377,7 +356,7 @@ static integer c__431 = 431;
 /* THE IMPLICIT ASSUMPTION HERE IS THAT THE SUBSTITUTABLE STRING */
 /* IS VERY SHORT (i.e. MUCH LESS THAN ONE RECORD). */
 
- L1000:
+L1000:
    k2 = 1;
 /* 						!TO */
    for (k1 = i__ + 1; k1 <= 74; ++k1) {
@@ -397,8 +376,7 @@ static integer c__431 = 431;
    e_rdue();
    for (k1 = 1; k1 <= 74; ++k1) {
       x1 = (y & 31) + k1;
-      *(unsigned char *)&b3[k1 - 1] = (char)(*(unsigned char *)&b3[k1 - 1]
-         ^ x1);
+      *(unsigned char *)&b3[k1 - 1] = (char)(*(unsigned char *)&b3[k1 - 1] ^ x1);
 /* L1150: */
    }
 
@@ -423,7 +401,7 @@ static integer c__431 = 431;
 
 /*   PUT TAIL END OF B1 (NOW IN B2) BACK INTO B1 AFTER SUBSTITUTE STRING: */
 
- L1300:
+L1300:
    k1 = 1;
 /* 						!FROM */
    for (k2 = j + 1; k2 <= 74; ++k2) {
@@ -476,7 +454,7 @@ logical objact_(integer * x) {
    }
 /* 						!YES, LET IT HANDLE. */
 
- L100:
+L100:
    if (prsvec_1.prso == 0) {
       goto L200;
    }
@@ -486,7 +464,7 @@ logical objact_(integer * x) {
    }
 /* 						!YES, LET IT HANDLE. */
 
- L200:
+L200:
    ret_val = FALSE_;
 /* 						!LOSES. */
    return ret_val;
@@ -536,8 +514,7 @@ logical objact_(integer * x) {
 
 /* 	CALL NEWSTA(OBJECT,STRING,NEWROOM,NEWCON,NEWADV) */
 
-/* Subroutine */ int newsta_(integer * o, integer * r__, integer * rm, integer *
-   cn, integer * ad) {
+/* Subroutine */ int newsta_(integer * o, integer * r__, integer * rm, integer * cn, integer * ad) {
 /* Local variables */
 #define eqo ((integer *)&objcts_1 + 1)
    extern /* Subroutine */ int rspeak_(integer *);
@@ -638,8 +615,7 @@ logical qempty_(integer * obj) {
 /* Local variables */
 #define flags ((logical *)&findex_1)
 #define switch__ ((integer *)&findex_1 + 46)
-   extern /* Subroutine */ int rspeak_(integer *), rspsub_(integer *,
-      integer *), newsta_(integer *, integer *, integer *, integer *, integer *), scrupd_(integer *);
+   extern /* Subroutine */ int rspeak_(integer *), rspsub_(integer *, integer *), newsta_(integer *, integer *, integer *, integer *, integer *), scrupd_(integer *);
    static integer nonofl;
    extern /* Subroutine */ int score_(logical *);
    static logical f;
@@ -698,7 +674,7 @@ logical qempty_(integer * obj) {
 /* 						!SEND TO HYPER SPACE. */
    return 0;
 
- L100:
+L100:
    if (findex_1.endgmf) {
       goto L900;
    }
@@ -732,8 +708,7 @@ logical qempty_(integer * obj) {
       newsta_(&oindex_1.coffi, &c__0, &rindex_1.egypt, &c__0, &c__0);
    }
    objcts_1.oflag2[oindex_1.door - 1] &= ~oflags_1.tchbt;
-   objcts_1.oflag1[oindex_1.robot - 1] = (objcts_1.oflag1[oindex_1.robot - 1]
-      | oflags_1.visibt) & ~oflags_1.ndscbt;
+   objcts_1.oflag1[oindex_1.robot - 1] = (objcts_1.oflag1[oindex_1.robot - 1] | oflags_1.visibt) & ~oflags_1.ndscbt;
    if (objcts_1.oroom[oindex_1.lamp - 1] != 0 || objcts_1.oadv[oindex_1.lamp - 1] == play_1.winner) {
       newsta_(&oindex_1.lamp, &c__0, &rindex_1.lroom, &c__0, &c__0);
    }
@@ -758,11 +733,11 @@ logical qempty_(integer * obj) {
       }
 /* 						!MOVE TO RANDOM LOCATIONS. */
       newsta_(&j, &c__0, &rlist[i__ - 1], &c__0, &c__0);
-    L200:
+   L200:
       ;
    }
 
- L400:
+L400:
    i__ = rooms_1.rlnt + 1;
 /* 						!NOW MOVE VALUABLES. */
    nonofl = rflag_1.rair + rflag_1.rwater + rflag_1.rsacrd + rflag_1.rend;
@@ -772,7 +747,7 @@ logical qempty_(integer * obj) {
       if (objcts_1.oadv[j - 1] != play_1.winner || objcts_1.otval[j - 1] == 0) {
          goto L300;
       }
-    L250:
+   L250:
       --i__;
 /* 						!FIND NEXT ROOM. */
       if ((rooms_1.rflag[i__ - 1] & nonofl) != 0) {
@@ -780,7 +755,7 @@ logical qempty_(integer * obj) {
       }
       newsta_(&j, &c__0, &i__, &c__0, &c__0);
 /* 						!YES, MOVE. */
-    L300:
+   L300:
       ;
    }
 
@@ -790,29 +765,29 @@ logical qempty_(integer * obj) {
       if (objcts_1.oadv[j - 1] != play_1.winner) {
          goto L500;
       }
-    L450:
+   L450:
       --i__;
 /* 						!FIND NEXT ROOM. */
       if ((rooms_1.rflag[i__ - 1] & nonofl) != 0) {
          goto L450;
       }
       newsta_(&j, &c__0, &i__, &c__0, &c__0);
-    L500:
+   L500:
       ;
    }
    return 0;
 
 /* CAN'T OR WON'T CONTINUE, CLEAN UP AND EXIT. */
 
- L900:
+L900:
    rspeak_(&c__625);
 /* 						!IN ENDGAME, LOSE. */
    goto L1100;
 
- L1000:
+L1000:
    rspeak_(&c__7);
 /* 						!INVOLUNTARY EXIT. */
- L1100:
+L1100:
    score_(&c_false);
 /* 						!TELL SCORE. */
    cl__1.cerr = 0;
@@ -924,8 +899,7 @@ logical rmdesc_(integer * full) {
    extern logical rappli_(integer *);
 #define prpvec ((integer *)&pv_1 + 3)
 #define switch__ ((integer *)&findex_1 + 46)
-   extern /* Subroutine */ int rspeak_(integer *), rspsub_(integer *,
-      integer *), princr_(logical *, integer *);
+   extern /* Subroutine */ int rspeak_(integer *), rspsub_(integer *, integer *), princr_(logical *, integer *);
 
 /* FULL=	0/1/2/3=	SHORT/OBJ/ROOM/FULL */
 
@@ -961,7 +935,7 @@ logical rmdesc_(integer * full) {
 /* 						!SAVE AND */
    prsvec_1.prso = 0;
 /* 						!CLEAR. */
- L50:
+L50:
    if (play_1.here == advs_1.aroom[aindex_1.player - 1]) {
       goto L100;
    }
@@ -972,7 +946,7 @@ logical rmdesc_(integer * full) {
 /* 						!SET UP WALK IN ACTION. */
    return ret_val;
 
- L100:
+L100:
    if (lit_(&play_1.here)) {
       goto L300;
    }
@@ -982,7 +956,7 @@ logical rmdesc_(integer * full) {
    ret_val = FALSE_;
    return ret_val;
 
- L300:
+L300:
    ra = rooms_1.ractio[play_1.here - 1];
 /* 						!GET ROOM ACTION. */
    if (*full == 1) {
@@ -991,8 +965,7 @@ logical rmdesc_(integer * full) {
 /* 						!OBJ ONLY? */
    i__ = rooms_1.rdesc2 - play_1.here;
 /* 						!ASSUME SHORT DESC. */
-   if (*full == 0 && (findex_1.superf || (rooms_1.rflag[play_1.here - 1] & rflag_1.rseen) != 0 && (findex_1.brieff || prob_(&c__80, &c__80)))
-      ) {
+   if (*full == 0 && (findex_1.superf || (rooms_1.rflag[play_1.here - 1] & rflag_1.rseen) != 0 && (findex_1.brieff || prob_(&c__80, &c__80)))) {
       goto L400;
    }
    i__ = rooms_1.rdesc1[play_1.here - 1];
@@ -1011,15 +984,15 @@ logical rmdesc_(integer * full) {
 /* 						!NOP PARSER. */
    goto L500;
 
- L400:
+L400:
    rspeak_(&i__);
 /* 						!OUTPUT DESCRIPTION. */
- L500:
+L500:
    if (advs_1.avehic[play_1.winner - 1] != 0) {
       rspsub_(&c__431, &objcts_1.odesc2[advs_1.avehic[play_1.winner - 1] - 1]);
    }
 
- L600:
+L600:
    if (*full != 2) {
       L__1 = *full != 0;
       princr_(&L__1, &play_1.here);

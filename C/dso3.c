@@ -1,16 +1,4 @@
-/*  -- translated by f2c (version 20190311).
-   You must link the resulting object file with libf2c:
-	on Microsoft Windows system, link with libf2c.lib;
-	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
-	or, if you install libf2c.a in a standard place, with -lf2c -lm
-	-- in that order, at the end of the command line, as in
-		cc *.o -lf2c -lm
-	Source for libf2c is in /netlib/f2c/libf2c.zip, e.g.,
-
-		http://www.netlib.org/f2c/libf2c.zip
-*/
-
-#include "f2c.h"
+#include "F2C.h"
 
 /* Common Block Declarations */
 
@@ -52,8 +40,7 @@ struct {
 #define oroom2_1 oroom2_
 
 struct {
-   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt,
-      schbt;
+   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 
 #define oflags_1 oflags_
@@ -104,7 +91,7 @@ logical findxt_(integer * dir, integer * rm) {
    }
 /* 						!NO EXITS? */
 
- L100:
+L100:
    i__ = exits_1.travel[xi - 1];
 /* 						!GET ENTRY. */
    curxt_1.xroom1 = i__ & xpars_1.xrmask;
@@ -122,13 +109,13 @@ logical findxt_(integer * dir, integer * rm) {
 /* 						!BRANCH ON ENTRY. */
    bug_(&c__10, &curxt_1.xtype);
 
- L130:
+L130:
    curxt_1.xobj = exits_1.travel[xi + 1] & xpars_1.xrmask;
    curxt_1.xactio = exits_1.travel[xi + 1] / xpars_1.xashft;
- L120:
+L120:
    curxt_1.xstrng = exits_1.travel[xi];
 /* 						!DOOR/CEXIT/NEXIT - STRING. */
- L110:
+L110:
    xi += xpars_1.xelnt[curxt_1.xtype - 1];
 /* 						!ADVANCE TO NEXT ENTRY. */
    if ((i__ & xpars_1.xdmask) == *dir) {
@@ -137,7 +124,7 @@ logical findxt_(integer * dir, integer * rm) {
    if ((i__ & xpars_1.xlflag) == 0) {
       goto L100;
    }
- L1000:
+L1000:
    ret_val = FALSE_;
 /* 						!YES, LOSE. */
    return ret_val;
@@ -187,13 +174,13 @@ integer fwim_(integer * f1, integer * f2, integer * rm, integer * con, integer *
 /* 						!YES, AMBIGUOUS. */
       return ret_val;
 
-    L400:
+   L400:
       ret_val = i__;
 /* 						!NOTE MATCH. */
 
 /* DOES OBJECT CONTAIN A MATCH? */
 
-    L500:
+   L500:
       if ((objcts_1.oflag2[i__ - 1] & oflags_1.openbt) == 0) {
          goto L1000;
       }
@@ -209,12 +196,12 @@ integer fwim_(integer * f1, integer * f2, integer * rm, integer * con, integer *
          ret_val = -ret_val;
          return ret_val;
 
-       L600:
+      L600:
          ret_val = j;
-       L700:
+      L700:
          ;
       }
-    L1000:
+   L1000:
       ;
    }
    return ret_val;
@@ -245,7 +232,7 @@ logical yesno_(integer * q, integer * y, integer * n) {
 /* Fortran I/O blocks */
    static cilist io___9 = { 0, 0, 0, fmt_110, 0 };
 
- L100:
+L100:
    rspeak_(q);
 /* 						!ASK */
    io___9.ciunit = chan_1.inpch;
@@ -263,14 +250,14 @@ logical yesno_(integer * q, integer * y, integer * n) {
 /* 						!SCOLD. */
    goto L100;
 
- L200:
+L200:
    ret_val = TRUE_;
 /* 						!YES, */
    rspeak_(y);
 /* 						!OUT WITH IT. */
    return ret_val;
 
- L300:
+L300:
    ret_val = FALSE_;
 /* 						!NO, */
    rspeak_(n);

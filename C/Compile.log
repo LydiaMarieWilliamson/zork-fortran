@@ -1,7 +1,7 @@
 The results for the first run of ‟Makefile”.
 
-Undefined Functions
-───────────────────
+Undefined Functions (Resolved)
+──────────────────────────────
 rtim.c:		itime_()
 
 // Unlisted Common Blocks
