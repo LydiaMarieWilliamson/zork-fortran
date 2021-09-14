@@ -99,9 +99,6 @@ Void rdline_(char *buffer, int * length, int * who, ftnlen buffer_len) {
 // System generated locals
    int i__1;
 
-// Builtin functions
-   int s_wsfe(cilist *), e_wsfe(void), s_rsfe(cilist *), do_fio(int *, char *, ftnlen), e_rsfe(void);
-
 // Local variables
    static int i__;
 #define orp ((int *)&orphs_1)

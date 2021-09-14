@@ -17,3 +17,4 @@ History
 2021/09/14	The ‟f2c.h” file has been internalized as ‟F2C.h”.
 		Additional normalization has been done on the source code layout.
 2021/09/14	Most of ‟F2C.h” has been nativized to C and eliminated.
+2021/09/14	Move the declarations of ‟built-in” functions (defined in the f2c library) to "F2C.h".

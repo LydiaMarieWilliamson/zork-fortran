@@ -290,9 +290,6 @@ Bool sverbs_(int * ri) {
    Bool ret_val;
    cllist cl__1;
 
-// Builtin functions
-   int s_wsfe(cilist *), do_fio(int *, char *, ftnlen), e_wsfe(void), f_clos(cllist *);
-
 // Local variables
    static Bool f;
 #define flags ((Bool *)&findex_1)

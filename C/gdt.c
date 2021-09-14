@@ -280,9 +280,6 @@ Void gdt_(void) {
 // System generated locals
    int i__1, i__2;
 
-// Builtin functions
-   int s_wsfe(cilist *), e_wsfe(void), s_rsfe(cilist *), do_fio(int *, char *, ftnlen), e_rsfe(void), s_cmp(char *, char *, ftnlen, ftnlen);
-
 // Local variables
 #define flags ((Bool *)&findex_1)
 #define switch__ ((int *)&findex_1 + 46)

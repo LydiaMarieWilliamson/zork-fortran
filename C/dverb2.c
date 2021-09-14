@@ -240,9 +240,6 @@ Void savegm_(void) {
    olist o__1;
    cllist cl__1;
 
-// Builtin functions
-   int f_open(olist *), s_wsue(cilist *), do_uio(int *, char *, ftnlen), e_wsue(void), f_clos(cllist *);
-
 // Local variables
    static int i__;
 #define eqa ((int *)&advs_1 + 1)
@@ -414,9 +411,6 @@ Void rstrgm_(void) {
    int i__1;
    olist o__1;
    cllist cl__1;
-
-// Builtin functions
-   int f_open(olist *), s_rsue(cilist *), do_uio(int *, char *, ftnlen), e_rsue(void), f_clos(cllist *);
 
 // Local variables
    static int i__, j, k;

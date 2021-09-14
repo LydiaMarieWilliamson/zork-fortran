@@ -194,9 +194,6 @@ Void cpinfo_(int * rmk, int * st) {
 // Format strings
    static char fmt_10[] = "(\002       |\002,a2,1x,a2,1x,a2,\002|\002/,\002" " West  |\002,a2,\002 .. \002,a2,\002|  East\002,/\002       |" "\002,a2,1x,a2,1x,a2,\002|\002)";
 
-// Builtin functions
-   int s_wsfe(cilist *), do_fio(int *, char *, ftnlen), e_wsfe(void);
-
 // Local variables
    static int i__, j, k, l;
    static char dgm[1 * 8];

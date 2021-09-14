@@ -185,9 +185,6 @@ Void game_(void) {
 // System generated locals
    int i__1;
 
-// Builtin functions
-   int s_wsfe(cilist *), do_fio(int *, char *, ftnlen), e_wsfe(void);
-
 // Local variables
 #define flags ((Bool *)&findex_1)
 #define switch__ ((int *)&findex_1 + 46)

@@ -425,9 +425,6 @@ int blow_(int * h__, int * v, int * rmk, Bool * hflg, int * out) {
 // System generated locals
    int ret_val, i__1, i__2;
 
-// Builtin functions
-   int s_wsfe(cilist *), do_fio(int *, char *, ftnlen), e_wsfe(void);
-
 // Local variables
    static Bool f;
    static int i__, j, oa, ra, od, mi, dv, def;

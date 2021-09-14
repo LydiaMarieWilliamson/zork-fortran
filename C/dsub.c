@@ -234,9 +234,6 @@ Void rspsb2_(int * n, int * s1, int * s2) {
 // System generated locals
    int i__1;
 
-// Builtin functions
-   int s_rdue(cilist *), do_uio(int *, char *, ftnlen), e_rdue(void), s_wsfe(cilist *), do_fio(int *, char *, ftnlen), e_wsfe(void);
-
 // Local variables
    static int i__, j, x, y, z__;
    static char b1[74], b2[74], b3[74];
@@ -487,9 +484,6 @@ Void bug_(int * a, int * b) {
 // Format strings
    static char fmt_100[] = "(\002 PROGRAM ERROR \002,i2,\002, PARAMETER=" "\002,i6)";
 
-// Builtin functions
-   int s_wsfe(cilist *), do_fio(int *, char *, ftnlen), e_wsfe(void);
-
 // Local variables
    extern Void exit_(void);
 
@@ -608,9 +602,6 @@ Void jigsup_(int * desc) {
 // System generated locals
    int i__1;
    cllist cl__1;
-
-// Builtin functions
-   int f_clos(cllist *);
 
 // Local variables
 #define flags ((Bool *)&findex_1)

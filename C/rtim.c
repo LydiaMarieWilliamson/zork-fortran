@@ -47,9 +47,6 @@ int rnd_(int * maxval) {
 }
 
 Void exit_(void) {
-// Builtin functions
-Void s_stop(char *, ftnlen);
-
 // NO "CALL EXIT" HERE
    s_stop("", (ftnlen) 0);
    return 0;

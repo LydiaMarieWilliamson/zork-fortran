@@ -222,9 +222,6 @@ Bool yesno_(int * q, int * y, int * n) {
 // System generated locals
    Bool ret_val;
 
-// Builtin functions
-   int s_rsfe(cilist *), do_fio(int *, char *, ftnlen), e_rsfe(void);
-
 // Local variables
    static char ans[1];
    extern Void rspeak_(int *);

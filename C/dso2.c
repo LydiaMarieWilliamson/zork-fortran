@@ -225,9 +225,6 @@ Void score_(Bool * flg) {
 // System generated locals
    int i__1;
 
-// Builtin functions
-   int s_wsfe(cilist *), e_wsfe(void), do_fio(int *, char *, ftnlen);
-
 // Local variables
    static int i__, as;
 #define eqa ((int *)&advs_1 + 1)

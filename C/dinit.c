@@ -263,9 +263,6 @@ Bool init_(int * x) {
    olist o__1;
    cllist cl__1;
 
-// Builtin functions
-   int s_wsfe(cilist *), e_wsfe(void), f_open(olist *), s_rsfe(cilist *), do_fio(int *, char *, ftnlen), e_rsfe(void), f_clos(cllist *);
-
 // Local variables
 #define flags ((Bool *)&findex_1)
 #define switch__ ((int *)&findex_1 + 46)
