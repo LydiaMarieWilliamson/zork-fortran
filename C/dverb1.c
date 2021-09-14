@@ -1,207 +1,207 @@
 #include "F2C.h"
 
-/* Common Block Declarations */
+// Common Block Declarations
 
 struct {
-   integer prsa, prsi, prso;
-   logical prswon;
-   integer prscon;
+   int prsa, prsi, prso;
+   Bool prswon;
+   int prscon;
 } prsvec_;
 
 #define prsvec_1 prsvec_
 
 struct {
-   integer oflag, oact, oslot, oprep, oname;
+   int oflag, oact, oslot, oprep, oname;
 } orphs_;
 
 #define orphs_1 orphs_
 
 struct {
-   integer lastit;
+   int lastit;
 } last_;
 
 #define last_1 last_
 
 struct {
-   integer act, o1, o2, p1, p2;
+   int act, o1, o2, p1, p2;
 } pv_;
 
 #define pv_1 pv_
 
 struct {
-   integer vflag, dobj, dfl1, dfl2, dfw1, dfw2, iobj, ifl1, ifl2, ifw1, ifw2;
+   int vflag, dobj, dfl1, dfl2, dfw1, dfw2, iobj, ifl1, ifl2, ifw1, ifw2;
 } syntax_;
 
 #define syntax_1 syntax_
 
 struct {
-   integer sdir, sind, sstd, sflip, sdriv, svmask;
+   int sdir, sind, sstd, sflip, sdriv, svmask;
 } synflg_;
 
 #define synflg_1 synflg_
 
 struct {
-   integer vabit, vrbit, vtbit, vcbit, vebit, vfbit, vpmask;
+   int vabit, vrbit, vtbit, vcbit, vebit, vfbit, vpmask;
 } objflg_;
 
 #define objflg_1 objflg_
 
 struct {
-   integer winner, here;
-   logical telflg;
+   int winner, here;
+   Bool telflg;
 } play_;
 
 #define play_1 play_
 
 struct {
-   integer moves, deaths, rwscor, mxscor, mxload, ltshft, bloc, mungrm, hs, egscor, egmxsc;
+   int moves, deaths, rwscor, mxscor, mxload, ltshft, bloc, mungrm, hs, egscor, egmxsc;
 } state_;
 
 #define state_1 state_
 
 struct {
-   integer mbase, strbit;
+   int mbase, strbit;
 } star_;
 
 #define star_1 star_
 
 struct {
-   integer olnt, odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220]
+   int olnt, odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220]
    , oroom[220], oadv[220], ocan[220], oread[220];
 } objcts_;
 
 #define objcts_1 objcts_
 
 struct {
-   integer r2lnt, oroom2[20], rroom2[20];
+   int r2lnt, oroom2[20], rroom2[20];
 } oroom2_;
 
 #define oroom2_1 oroom2_
 
 struct {
-   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
+   int visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 
 #define oflags_1 oflags_
 
 struct {
-   integer alnt, aroom[4], ascore[4], avehic[4], aobj[4], aactio[4], astren[4], aflag[4];
+   int alnt, aroom[4], ascore[4], avehic[4], aobj[4], aactio[4], astren[4], aflag[4];
 } advs_;
 
 #define advs_1 advs_
 
 struct {
-   integer astag;
+   int astag;
 } aflags_;
 
 #define aflags_1 aflags_
 
 struct {
-   integer player, arobot, amastr;
+   int player, arobot, amastr;
 } aindex_;
 
 #define aindex_1 aindex_
 
 struct {
-   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
+   int whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
 } rindex_;
 
 #define rindex_1 rindex_
 
 struct {
-   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw, openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw, clmbuw, clmbdw, trntow;
+   int cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw, openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw, clmbuw, clmbdw, trntow;
 } vindex_;
 
 #define vindex_1 vindex_
 
-/* Table of constant values */
+// Table of constant values
 
-static integer c__672 = 672;
-static integer c__0 = 0;
-static integer c__5 = 5;
-static integer c__557 = 557;
-static integer c__558 = 558;
-static integer c__559 = 559;
-static integer c__525 = 525;
-static logical c_true = TRUE_;
-static integer c__527 = 527;
-static integer c__560 = 560;
-static integer c__561 = 561;
-static integer c__562 = 562;
-static integer c__563 = 563;
-static integer c__564 = 564;
-static integer c__565 = 565;
-static logical c_false = FALSE_;
-static integer c__566 = 566;
-static integer c__2 = 2;
-static integer c__580 = 580;
+static int c__672 = 672;
+static int c__0 = 0;
+static int c__5 = 5;
+static int c__557 = 557;
+static int c__558 = 558;
+static int c__559 = 559;
+static int c__525 = 525;
+static Bool c_true = true;
+static int c__527 = 527;
+static int c__560 = 560;
+static int c__561 = 561;
+static int c__562 = 562;
+static int c__563 = 563;
+static int c__564 = 564;
+static int c__565 = 565;
+static Bool c_false = false;
+static int c__566 = 566;
+static int c__2 = 2;
+static int c__580 = 580;
 
-/* TAKE-- BASIC TAKE SEQUENCE */
+// TAKE-- BASIC TAKE SEQUENCE
 
-/* COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142 */
-/* ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED */
-/* WRITTEN BY R. M. SUPNIK */
+// COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
+// ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
+// WRITTEN BY R. M. SUPNIK
 
-/* TAKE AN OBJECT (FOR VERBS TAKE, PUT, DROP, READ, ETC.) */
+// TAKE AN OBJECT (FOR VERBS TAKE, PUT, DROP, READ, ETC.)
 
-logical take_(logical * flg) {
-/* System generated locals */
-   integer i__1;
-   logical ret_val;
+Bool take_(Bool * flg) {
+// System generated locals
+   int i__1;
+   Bool ret_val;
 
-/* Local variables */
-   static integer x, oa;
-#define eqa ((integer *)&advs_1 + 1)
-   extern integer rnd_(integer *);
-#define eqo ((integer *)&objcts_1 + 1)
-#define orp ((integer *)&orphs_1)
-#define syn ((integer *)&syntax_1)
-#define pvec ((integer *)&pv_1)
-   extern logical qhere_(integer *, integer *), objact_(integer *);
-#define objvec ((integer *)&pv_1 + 1)
-   extern logical oappli_(integer *, integer *);
-#define prpvec ((integer *)&pv_1 + 3)
-   extern /* Subroutine */ int rspeak_(integer *);
-   extern integer weight_(integer *, integer *, integer *);
-   extern /* Subroutine */ int newsta_(integer *, integer *, integer *, integer *, integer *), scrupd_(integer *);
+// Local variables
+   static int x, oa;
+#define eqa ((int *)&advs_1 + 1)
+   extern int rnd_(int *);
+#define eqo ((int *)&objcts_1 + 1)
+#define orp ((int *)&orphs_1)
+#define syn ((int *)&syntax_1)
+#define pvec ((int *)&pv_1)
+   extern Bool qhere_(int *, int *), objact_(int *);
+#define objvec ((int *)&pv_1 + 1)
+   extern Bool oappli_(int *, int *);
+#define prpvec ((int *)&pv_1 + 3)
+   extern Void rspeak_(int *);
+   extern int weight_(int *, int *, int *);
+   extern Void newsta_(int *, int *, int *, int *, int *), scrupd_(int *);
 
-/* DECLARATIONS */
+// DECLARATIONS
 
-/* PARSER OUTPUT */
+// PARSER OUTPUT
 
-/* PARSER STATE */
+// PARSER STATE
 
-/* GAME STATE */
+// GAME STATE
 
-/* OBJECTS */
+// OBJECTS
 
-/* FUNCTIONS AND DATA */
+// FUNCTIONS AND DATA
 
-/* ADVENTURERS */
+// ADVENTURERS
 
-/* TAKE, PAGE 2 */
+// TAKE, PAGE 2
 
-   ret_val = FALSE_;
-/* 						!ASSUME LOSES. */
+   ret_val = false;
+// 						!ASSUME LOSES.
    oa = objcts_1.oactio[prsvec_1.prso - 1];
-/* 						!GET OBJECT ACTION. */
+// 						!GET OBJECT ACTION.
    if (prsvec_1.prso <= star_1.strbit) {
       goto L100;
    }
-/* 						!STAR? */
+// 						!STAR?
    ret_val = objact_(&x);
-/* 						!YES, LET IT HANDLE. */
+// 						!YES, LET IT HANDLE.
    return ret_val;
 
 L100:
    x = objcts_1.ocan[prsvec_1.prso - 1];
-/* 						!INSIDE? */
+// 						!INSIDE?
    if (prsvec_1.prso != advs_1.avehic[play_1.winner - 1]) {
       goto L400;
    }
-/* 						!HIS VEHICLE? */
+// 						!HIS VEHICLE?
    rspeak_(&c__672);
-/* 						!DUMMY. */
+// 						!DUMMY.
    return ret_val;
 
 L400:
@@ -214,7 +214,7 @@ L400:
    }
    return ret_val;
 
-/* OBJECT IS TAKEABLE AND IN POSITION TO BE TAKEN. */
+// OBJECT IS TAKEABLE AND IN POSITION TO BE TAKEN.
 
 L500:
    if (x != 0 || qhere_(&prsvec_1.prso, &play_1.here)) {
@@ -223,7 +223,7 @@ L500:
    if (objcts_1.oadv[prsvec_1.prso - 1] == play_1.winner) {
       rspeak_(&c__557);
    }
-/* 						!ALREADY GOT IT? */
+// 						!ALREADY GOT IT?
    return ret_val;
 
 L600:
@@ -231,30 +231,30 @@ L600:
       goto L700;
    }
    rspeak_(&c__558);
-/* 						!TOO MUCH WEIGHT. */
+// 						!TOO MUCH WEIGHT.
    return ret_val;
 
 L700:
-   ret_val = TRUE_;
-/* 						!AT LAST. */
+   ret_val = true;
+// 						!AT LAST.
    if (oappli_(&oa, &c__0)) {
       return ret_val;
    }
-/* 						!DID IT HANDLE? */
+// 						!DID IT HANDLE?
    newsta_(&prsvec_1.prso, &c__0, &c__0, &c__0, &play_1.winner);
-/* 						!TAKE OBJECT FOR WINNER. */
+// 						!TAKE OBJECT FOR WINNER.
    objcts_1.oflag2[prsvec_1.prso - 1] |= oflags_1.tchbt;
    scrupd_(&objcts_1.ofval[prsvec_1.prso - 1]);
-/* 						!UPDATE SCORE. */
+// 						!UPDATE SCORE.
    objcts_1.ofval[prsvec_1.prso - 1] = 0;
-/* 						!CANT BE SCORED AGAIN. */
+// 						!CANT BE SCORED AGAIN.
    if (*flg) {
       rspeak_(&c__559);
    }
-/* 						!TELL TAKEN. */
+// 						!TELL TAKEN.
    return ret_val;
 
-} /* take_ */
+}
 
 #undef prpvec
 #undef objvec
@@ -264,100 +264,100 @@ L700:
 #undef eqo
 #undef eqa
 
-/* DROP- DROP VERB PROCESSOR */
+// DROP- DROP VERB PROCESSOR
 
-/* DECLARATIONS */
+// DECLARATIONS
 
-logical drop_(logical * z__) {
-/* System generated locals */
-   logical ret_val;
+Bool drop_(Bool * z__) {
+// System generated locals
+   Bool ret_val;
 
-/* Local variables */
-   static logical f;
-   static integer i__, x;
-#define eqa ((integer *)&advs_1 + 1)
-#define eqo ((integer *)&objcts_1 + 1)
-#define orp ((integer *)&orphs_1)
-   extern logical put_(logical *);
-#define syn ((integer *)&syntax_1)
-#define pvec ((integer *)&pv_1)
-   extern logical objact_(integer *);
-#define objvec ((integer *)&pv_1 + 1)
-#define prpvec ((integer *)&pv_1 + 3)
-   extern /* Subroutine */ int rspsub_(integer *, integer *), newsta_(integer *, integer *, integer *, integer *, integer *), scrupd_(integer *), rspeak_(integer *);
+// Local variables
+   static Bool f;
+   static int i__, x;
+#define eqa ((int *)&advs_1 + 1)
+#define eqo ((int *)&objcts_1 + 1)
+#define orp ((int *)&orphs_1)
+   extern Bool put_(Bool *);
+#define syn ((int *)&syntax_1)
+#define pvec ((int *)&pv_1)
+   extern Bool objact_(int *);
+#define objvec ((int *)&pv_1 + 1)
+#define prpvec ((int *)&pv_1 + 3)
+   extern Void rspsub_(int *, int *), newsta_(int *, int *, int *, int *, int *), scrupd_(int *), rspeak_(int *);
 
-/* PARSER OUTPUT */
+// PARSER OUTPUT
 
-/* PARSER STATE */
+// PARSER STATE
 
-/* ROOMS */
+// ROOMS
 
-/* GAME STATE */
+// GAME STATE
 
-/* OBJECTS */
+// OBJECTS
 
-/* ADVENTURERS */
+// ADVENTURERS
 
-/* DROP, PAGE 2 */
+// DROP, PAGE 2
 
-/* VERBS */
+// VERBS
 
-   ret_val = TRUE_;
-/* 						!ASSUME WINS. */
+   ret_val = true;
+// 						!ASSUME WINS.
    x = objcts_1.ocan[prsvec_1.prso - 1];
-/* 						!GET CONTAINER. */
+// 						!GET CONTAINER.
    if (x == 0) {
       goto L200;
    }
-/* 						!IS IT INSIDE? */
+// 						!IS IT INSIDE?
    if (objcts_1.oadv[x - 1] != play_1.winner) {
       goto L1000;
    }
-/* 						!IS HE CARRYING CON? */
+// 						!IS HE CARRYING CON?
    if ((objcts_1.oflag2[x - 1] & oflags_1.openbt) != 0) {
       goto L300;
    }
    rspsub_(&c__525, &objcts_1.odesc2[x - 1]);
-/* 						!CANT REACH. */
+// 						!CANT REACH.
    return ret_val;
 
 L200:
    if (objcts_1.oadv[prsvec_1.prso - 1] != play_1.winner) {
       goto L1000;
    }
-/* 						!IS HE CARRYING OBJ? */
+// 						!IS HE CARRYING OBJ?
 L300:
    if (advs_1.avehic[play_1.winner - 1] == 0) {
       goto L400;
    }
-/* 						!IS HE IN VEHICLE? */
+// 						!IS HE IN VEHICLE?
    prsvec_1.prsi = advs_1.avehic[play_1.winner - 1];
-/* 						!YES, */
+// 						!YES,
    f = put_(&c_true);
-/* 						!DROP INTO VEHICLE. */
+// 						!DROP INTO VEHICLE.
    prsvec_1.prsi = 0;
-/* 						!DISARM PARSER. */
+// 						!DISARM PARSER.
    return ret_val;
-/* 						!DONE. */
+// 						!DONE.
 
 L400:
    newsta_(&prsvec_1.prso, &c__0, &play_1.here, &c__0, &c__0);
-/* 						!DROP INTO ROOM. */
+// 						!DROP INTO ROOM.
    if (play_1.here == rindex_1.mtree) {
       newsta_(&prsvec_1.prso, &c__0, &rindex_1.fore3, &c__0, &c__0);
    }
    scrupd_(&objcts_1.ofval[prsvec_1.prso - 1]);
-/* 						!SCORE OBJECT. */
+// 						!SCORE OBJECT.
    objcts_1.ofval[prsvec_1.prso - 1] = 0;
-/* 						!CANT BE SCORED AGAIN. */
+// 						!CANT BE SCORED AGAIN.
    objcts_1.oflag2[prsvec_1.prso - 1] |= oflags_1.tchbt;
 
    if (objact_(&x)) {
       return ret_val;
    }
-/* 						!DID IT HANDLE? */
+// 						!DID IT HANDLE?
    i__ = 0;
-/* 						!ASSUME NOTHING TO SAY. */
+// 						!ASSUME NOTHING TO SAY.
    if (prsvec_1.prsa == vindex_1.dropw) {
       i__ = 528;
    }
@@ -372,10 +372,10 @@ L400:
 
 L1000:
    rspeak_(&c__527);
-/* 						!DONT HAVE IT. */
+// 						!DONT HAVE IT.
    return ret_val;
 
-} /* drop_ */
+}
 
 #undef prpvec
 #undef objvec
@@ -385,59 +385,59 @@ L1000:
 #undef eqo
 #undef eqa
 
-/* PUT- PUT VERB PROCESSOR */
+// PUT- PUT VERB PROCESSOR
 
-/* DECLARATIONS */
+// DECLARATIONS
 
-logical put_(logical * flg) {
-/* System generated locals */
-   logical ret_val;
+Bool put_(Bool * flg) {
+// System generated locals
+   Bool ret_val;
 
-/* Local variables */
-   static integer j, x;
-#define eqa ((integer *)&advs_1 + 1)
-#define eqo ((integer *)&objcts_1 + 1)
-#define orp ((integer *)&orphs_1)
-   static integer svi, svo;
-#define syn ((integer *)&syntax_1)
-   extern logical take_(logical *);
-#define pvec ((integer *)&pv_1)
-   extern logical qhere_(integer *, integer *);
-   extern /* Subroutine */ int rspsb2_(integer *, integer *, integer *);
-   extern logical objact_(integer *);
-#define objvec ((integer *)&pv_1 + 1)
-#define prpvec ((integer *)&pv_1 + 3)
-   extern /* Subroutine */ int rspeak_(integer *);
-   extern integer weight_(integer *, integer *, integer *);
-   extern /* Subroutine */ int rspsub_(integer *, integer *), scrupd_(integer *), newsta_(integer *, integer *, integer *, integer *, integer *);
+// Local variables
+   static int j, x;
+#define eqa ((int *)&advs_1 + 1)
+#define eqo ((int *)&objcts_1 + 1)
+#define orp ((int *)&orphs_1)
+   static int svi, svo;
+#define syn ((int *)&syntax_1)
+   extern Bool take_(Bool *);
+#define pvec ((int *)&pv_1)
+   extern Bool qhere_(int *, int *);
+   extern Void rspsb2_(int *, int *, int *);
+   extern Bool objact_(int *);
+#define objvec ((int *)&pv_1 + 1)
+#define prpvec ((int *)&pv_1 + 3)
+   extern Void rspeak_(int *);
+   extern int weight_(int *, int *, int *);
+   extern Void rspsub_(int *, int *), scrupd_(int *), newsta_(int *, int *, int *, int *, int *);
 
-/* PARSER OUTPUT */
+// PARSER OUTPUT
 
-/* PARSER STATE */
+// PARSER STATE
 
-/* MISCELLANEOUS VARIABLES */
+// MISCELLANEOUS VARIABLES
 
-/* GAME STATE */
+// GAME STATE
 
-/* OBJECTS */
+// OBJECTS
 
-/* ADVENTURERS */
+// ADVENTURERS
 
-/* FUNCTIONS AND DATA */
+// FUNCTIONS AND DATA
 
-/* VERBS */
+// VERBS
 
-/* PUT, PAGE 2 */
+// PUT, PAGE 2
 
-   ret_val = FALSE_;
+   ret_val = false;
    if (prsvec_1.prso <= star_1.strbit && prsvec_1.prsi <= star_1.strbit) {
       goto L200;
    }
    if (!objact_(&x)) {
       rspeak_(&c__560);
    }
-/* 						!STAR */
-   ret_val = TRUE_;
+// 						!STAR
+   ret_val = true;
    return ret_val;
 
 L200:
@@ -445,34 +445,34 @@ L200:
       goto L300;
    }
    rspeak_(&c__561);
-/* 						!CANT PUT IN THAT. */
+// 						!CANT PUT IN THAT.
    return ret_val;
 
 L300:
    if ((objcts_1.oflag2[prsvec_1.prsi - 1] & oflags_1.openbt) != 0) {
       goto L400;
    }
-/* 						!IS IT OPEN? */
+// 						!IS IT OPEN?
    rspeak_(&c__562);
-/* 						!NO, JOKE */
+// 						!NO, JOKE
    return ret_val;
 
 L400:
    if (prsvec_1.prso != prsvec_1.prsi) {
       goto L500;
    }
-/* 						!INTO ITSELF? */
+// 						!INTO ITSELF?
    rspeak_(&c__563);
-/* 						!YES, JOKE. */
+// 						!YES, JOKE.
    return ret_val;
 
 L500:
    if (objcts_1.ocan[prsvec_1.prso - 1] != prsvec_1.prsi) {
       goto L600;
    }
-/* 						!ALREADY INSIDE. */
+// 						!ALREADY INSIDE.
    rspsb2_(&c__564, &objcts_1.odesc2[prsvec_1.prso - 1], &objcts_1.odesc2[prsvec_1.prsi - 1]);
-   ret_val = TRUE_;
+   ret_val = true;
    return ret_val;
 
 L600:
@@ -480,76 +480,76 @@ L600:
       goto L700;
    }
    rspeak_(&c__565);
-/* 						!THEN CANT DO IT. */
+// 						!THEN CANT DO IT.
    return ret_val;
 
-/* NOW SEE IF OBJECT (OR ITS CONTAINER) IS IN ROOM */
+// NOW SEE IF OBJECT (OR ITS CONTAINER) IS IN ROOM
 
 L700:
    j = prsvec_1.prso;
-/* 						!START SEARCH. */
+// 						!START SEARCH.
 L725:
    if (qhere_(&j, &play_1.here)) {
       goto L750;
    }
-/* 						!IS IT HERE? */
+// 						!IS IT HERE?
    j = objcts_1.ocan[j - 1];
    if (j != 0) {
       goto L725;
    }
-/* 						!MORE TO DO? */
+// 						!MORE TO DO?
    goto L800;
-/* 						!NO, SCH FAILS. */
+// 						!NO, SCH FAILS.
 
 L750:
    svo = prsvec_1.prso;
-/* 						!SAVE PARSER. */
+// 						!SAVE PARSER.
    svi = prsvec_1.prsi;
    prsvec_1.prsa = vindex_1.takew;
    prsvec_1.prsi = 0;
    if (!take_(&c_false)) {
       return ret_val;
    }
-/* 						!TAKE OBJECT. */
+// 						!TAKE OBJECT.
    prsvec_1.prsa = vindex_1.putw;
    prsvec_1.prso = svo;
    prsvec_1.prsi = svi;
    goto L1000;
 
-/* NOW SEE IF OBJECT IS ON PERSON. */
+// NOW SEE IF OBJECT IS ON PERSON.
 
 L800:
    if (objcts_1.ocan[prsvec_1.prso - 1] == 0) {
       goto L1000;
    }
-/* 						!INSIDE? */
+// 						!INSIDE?
    if ((objcts_1.oflag2[objcts_1.ocan[prsvec_1.prso - 1] - 1] & oflags_1.openbt) != 0) {
       goto L900;
    }
-/* 						!OPEN? */
+// 						!OPEN?
    rspsub_(&c__566, &objcts_1.odesc2[prsvec_1.prso - 1]);
-/* 						!LOSE. */
+// 						!LOSE.
    return ret_val;
 
 L900:
    scrupd_(&objcts_1.ofval[prsvec_1.prso - 1]);
-/* 						!SCORE OBJECT. */
+// 						!SCORE OBJECT.
    objcts_1.ofval[prsvec_1.prso - 1] = 0;
    objcts_1.oflag2[prsvec_1.prso - 1] |= oflags_1.tchbt;
    newsta_(&prsvec_1.prso, &c__0, &c__0, &c__0, &play_1.winner);
-/* 						!TEMPORARILY ON WINNER. */
+// 						!TEMPORARILY ON WINNER.
 
 L1000:
    if (objact_(&x)) {
       return ret_val;
    }
-/* 						!NO, GIVE OBJECT A SHOT. */
+// 						!NO, GIVE OBJECT A SHOT.
    newsta_(&prsvec_1.prso, &c__2, &c__0, &prsvec_1.prsi, &c__0);
-/* 						!CONTAINED INSIDE. */
-   ret_val = TRUE_;
+// 						!CONTAINED INSIDE.
+   ret_val = true;
    return ret_val;
 
-} /* put_ */
+}
 
 #undef prpvec
 #undef objvec
@@ -559,75 +559,75 @@ L1000:
 #undef eqo
 #undef eqa
 
-/* VALUAC- HANDLES VALUABLES/EVERYTHING */
+// VALUAC- HANDLES VALUABLES/EVERYTHING
 
-/* DECLARATIONS */
+// DECLARATIONS
 
-/* Subroutine */ int valuac_(integer * v) {
-/* System generated locals */
-   integer i__1;
+Void valuac_(int * v) {
+// System generated locals
+   int i__1;
 
-/* Local variables */
-   static logical f;
-   static integer i__;
-   static logical f1;
-#define eqo ((integer *)&objcts_1 + 1)
-   extern logical lit_(integer *);
-#define orp ((integer *)&orphs_1)
-   extern logical put_(logical *);
-#define syn ((integer *)&syntax_1)
-   extern logical take_(logical *);
-#define pvec ((integer *)&pv_1)
-   extern logical drop_(logical *), qhere_(integer *, integer *);
-   static integer savep, saveh;
-#define objvec ((integer *)&pv_1 + 1)
-#define prpvec ((integer *)&pv_1 + 3)
-   extern /* Subroutine */ int rspsub_(integer *, integer *), rspeak_(integer *);
+// Local variables
+   static Bool f;
+   static int i__;
+   static Bool f1;
+#define eqo ((int *)&objcts_1 + 1)
+   extern Bool lit_(int *);
+#define orp ((int *)&orphs_1)
+   extern Bool put_(Bool *);
+#define syn ((int *)&syntax_1)
+   extern Bool take_(Bool *);
+#define pvec ((int *)&pv_1)
+   extern Bool drop_(Bool *), qhere_(int *, int *);
+   static int savep, saveh;
+#define objvec ((int *)&pv_1 + 1)
+#define prpvec ((int *)&pv_1 + 3)
+   extern Void rspsub_(int *, int *), rspeak_(int *);
 
-/* PARSER OUTPUT */
+// PARSER OUTPUT
 
-/* PARSER STATE */
+// PARSER STATE
 
-/* GAME STATE */
+// GAME STATE
 
-/* OBJECTS */
+// OBJECTS
 
-/* FUNCTIONS AND DATA */
+// FUNCTIONS AND DATA
 
-/* VERBS */
+// VERBS
 
-/* VALUAC, PAGE 2 */
+// VALUAC, PAGE 2
 
-   f = TRUE_;
-/* 						!ASSUME NO ACTIONS. */
+   f = true;
+// 						!ASSUME NO ACTIONS.
    i__ = 579;
-/* 						!ASSUME NOT LIT. */
+// 						!ASSUME NOT LIT.
    if (!lit_(&play_1.here)) {
       goto L4000;
    }
-/* 						!IF NOT LIT, PUNT. */
+// 						!IF NOT LIT, PUNT.
    i__ = 677;
-/* 						!ASSUME WRONG VERB. */
+// 						!ASSUME WRONG VERB.
    savep = prsvec_1.prso;
-/* 						!SAVE PRSO. */
+// 						!SAVE PRSO.
    saveh = play_1.here;
-/* 						!SAVE HERE. */
+// 						!SAVE HERE.
 
-/*L100: */
+//L100:
    if (prsvec_1.prsa != vindex_1.takew) {
       goto L1000;
    }
-/* 						!TAKE EVERY/VALUA? */
+// 						!TAKE EVERY/VALUA?
    i__1 = objcts_1.olnt;
    for (prsvec_1.prso = 1; prsvec_1.prso <= i__1; ++prsvec_1.prso) {
-/* 						!LOOP THRU OBJECTS. */
+// 						!LOOP THRU OBJECTS.
       if (!qhere_(&prsvec_1.prso, &play_1.here) || (objcts_1.oflag1[prsvec_1.prso - 1] & oflags_1.visibt) == 0 || (objcts_1.oflag2[prsvec_1.prso - 1] & oflags_1.actrbt) != 0 || savep == *v && objcts_1.otval[prsvec_1.prso - 1] <= 0) {
          goto L500;
       }
       if ((objcts_1.oflag1[prsvec_1.prso - 1] & oflags_1.takebt) == 0 && (objcts_1.oflag2[prsvec_1.prso - 1] & oflags_1.trybt) == 0) {
          goto L500;
       }
-      f = FALSE_;
+      f = false;
       rspsub_(&c__580, &objcts_1.odesc2[prsvec_1.prso - 1]);
       f1 = take_(&c_true);
       if (saveh != play_1.here) {
@@ -642,13 +642,13 @@ L1000:
    if (prsvec_1.prsa != vindex_1.dropw) {
       goto L2000;
    }
-/* 						!DROP EVERY/VALUA? */
+// 						!DROP EVERY/VALUA?
    i__1 = objcts_1.olnt;
    for (prsvec_1.prso = 1; prsvec_1.prso <= i__1; ++prsvec_1.prso) {
       if (objcts_1.oadv[prsvec_1.prso - 1] != play_1.winner || savep == *v && objcts_1.otval[prsvec_1.prso - 1] <= 0) {
          goto L1500;
       }
-      f = FALSE_;
+      f = false;
       rspsub_(&c__580, &objcts_1.odesc2[prsvec_1.prso - 1]);
       f1 = drop_(&c_true);
       if (saveh != play_1.here) {
@@ -663,14 +663,14 @@ L2000:
    if (prsvec_1.prsa != vindex_1.putw) {
       goto L3000;
    }
-/* 						!PUT EVERY/VALUA? */
+// 						!PUT EVERY/VALUA?
    i__1 = objcts_1.olnt;
    for (prsvec_1.prso = 1; prsvec_1.prso <= i__1; ++prsvec_1.prso) {
-/* 						!LOOP THRU OBJECTS. */
+// 						!LOOP THRU OBJECTS.
       if (objcts_1.oadv[prsvec_1.prso - 1] != play_1.winner || prsvec_1.prso == prsvec_1.prsi || savep == *v && objcts_1.otval[prsvec_1.prso - 1] <= 0 || (objcts_1.oflag1[prsvec_1.prso - 1] & oflags_1.visibt) == 0) {
          goto L2500;
       }
-      f = FALSE_;
+      f = false;
       rspsub_(&c__580, &objcts_1.odesc2[prsvec_1.prso - 1]);
       f1 = put_(&c_true);
       if (saveh != play_1.here) {
@@ -685,14 +685,14 @@ L3000:
    if (savep == *v) {
       i__ = 582;
    }
-/* 						!CHOOSE MESSAGE. */
+// 						!CHOOSE MESSAGE.
 L4000:
    if (f) {
       rspeak_(&i__);
    }
-/* 						!IF NOTHING, REPORT. */
+// 						!IF NOTHING, REPORT.
    return 0;
-} /* valuac_ */
+}
 
 #undef prpvec
 #undef objvec

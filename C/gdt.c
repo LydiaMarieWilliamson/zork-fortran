@@ -1,227 +1,227 @@
 #include "F2C.h"
 
-/* Common Block Declarations */
+// Common Block Declarations
 
 struct {
-   integer prsa, prsi, prso;
-   logical prswon;
-   integer prscon;
+   int prsa, prsi, prso;
+   Bool prswon;
+   int prscon;
 } prsvec_;
 
 #define prsvec_1 prsvec_
 
 struct {
-   integer oflag, oact, oslot, oprep, oname;
+   int oflag, oact, oslot, oprep, oname;
 } orphs_;
 
 #define orphs_1 orphs_
 
 struct {
-   integer lastit;
+   int lastit;
 } last_;
 
 #define last_1 last_
 
 struct {
-   integer act, o1, o2, p1, p2;
+   int act, o1, o2, p1, p2;
 } pv_;
 
 #define pv_1 pv_
 
 struct {
-   integer vflag, dobj, dfl1, dfl2, dfw1, dfw2, iobj, ifl1, ifl2, ifw1, ifw2;
+   int vflag, dobj, dfl1, dfl2, dfw1, dfw2, iobj, ifl1, ifl2, ifw1, ifw2;
 } syntax_;
 
 #define syntax_1 syntax_
 
 struct {
-   integer sdir, sind, sstd, sflip, sdriv, svmask;
+   int sdir, sind, sstd, sflip, sdriv, svmask;
 } synflg_;
 
 #define synflg_1 synflg_
 
 struct {
-   integer vabit, vrbit, vtbit, vcbit, vebit, vfbit, vpmask;
+   int vabit, vrbit, vtbit, vcbit, vebit, vfbit, vpmask;
 } objflg_;
 
 #define objflg_1 objflg_
 
 struct {
-   integer winner, here;
-   logical telflg;
+   int winner, here;
+   Bool telflg;
 } play_;
 
 #define play_1 play_
 
 struct {
-   integer moves, deaths, rwscor, mxscor, mxload, ltshft, bloc, mungrm, hs, egscor, egmxsc;
+   int moves, deaths, rwscor, mxscor, mxload, ltshft, bloc, mungrm, hs, egscor, egmxsc;
 } state_;
 
 #define state_1 state_
 
 struct {
-   integer fromdr, scolrm, scolac, scoldr[8], scolwl[12];
+   int fromdr, scolrm, scolac, scoldr[8], scolwl[12];
 } screen_;
 
 #define screen_1 screen_
 
 struct {
-   integer cpdr[16], cpwl[8], cpvec[64];
+   int cpdr[16], cpwl[8], cpvec[64];
 } puzzle_;
 
 #define puzzle_1 puzzle_
 
 struct {
-   integer mbase, strbit;
+   int mbase, strbit;
 } star_;
 
 #define star_1 star_
 
 struct {
-   integer inlnt;
+   int inlnt;
    char inbuf[78];
 } input_;
 
 #define input_1 input_
 
 struct {
-   integer inpch, outch, dbch;
+   int inpch, outch, dbch;
 } chan_;
 
 #define chan_1 chan_
 
 struct {
-   integer mlnt, rtext[1820];
+   int mlnt, rtext[1820];
 } rmsg_;
 
 #define rmsg_1 rmsg_
 
 struct {
-   integer dbgflg, prsflg, gdtflg;
+   int dbgflg, prsflg, gdtflg;
 } debug_;
 
 #define debug_1 debug_
 
 struct {
-   integer rlnt, rdesc2, rdesc1[200], rexit[200], ractio[200], rval[200], rflag[200];
+   int rlnt, rdesc2, rdesc1[200], rexit[200], ractio[200], rval[200], rflag[200];
 } rooms_;
 
 #define rooms_1 rooms_
 
 struct {
-   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
+   int whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
 } rindex_;
 
 #define rindex_1 rindex_
 
 struct {
-   integer xlnt, travel[900];
+   int xlnt, travel[900];
 } exits_;
 
 #define exits_1 exits_
 
 struct {
-   integer olnt, odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220]
+   int olnt, odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220]
    , oroom[220], oadv[220], ocan[220], oread[220];
 } objcts_;
 
 #define objcts_1 objcts_
 
 struct {
-   integer r2lnt, oroom2[20], rroom2[20];
+   int r2lnt, oroom2[20], rroom2[20];
 } oroom2_;
 
 #define oroom2_1 oroom2_
 
 struct {
-   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
+   int garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
 
 #define oindex_1 oindex_
 
 struct {
-   integer clnt, ctick[25], cactio[25];
-   logical cflag[25];
+   int clnt, ctick[25], cactio[25];
+   Bool cflag[25];
 } cevent_;
 
 #define cevent_1 cevent_
 
 struct {
-   integer cevcur, cevmnt, cevlnt, cevmat, cevcnd, cevbal, cevbrn, cevfus, cevled, cevsaf, cevvlg, cevgno, cevbuc, cevsph, cevegh, cevfor, cevscl, cevzgi, cevzgo, cevste, cevmrs, cevpin, cevinq, cevfol;
+   int cevcur, cevmnt, cevlnt, cevmat, cevcnd, cevbal, cevbrn, cevfus, cevled, cevsaf, cevvlg, cevgno, cevbuc, cevsph, cevegh, cevfor, cevscl, cevzgi, cevzgo, cevste, cevmrs, cevpin, cevinq, cevfol;
 } cindex_;
 
 #define cindex_1 cindex_
 
 struct {
-   integer thfpos;
-   logical thfflg, thfact, swdact;
-   integer swdsta;
+   int thfpos;
+   Bool thfflg, thfact, swdact;
+   int swdsta;
 } hack_;
 
 #define hack_1 hack_
 
 struct {
-   integer vlnt, villns[4], vprob[4], vopps[4], vbest[4], vmelee[4];
+   int vlnt, villns[4], vprob[4], vopps[4], vbest[4], vmelee[4];
 } vill_;
 
 #define vill_1 vill_
 
 struct {
-   integer alnt, aroom[4], ascore[4], avehic[4], aobj[4], aactio[4], astren[4], aflag[4];
+   int alnt, aroom[4], ascore[4], avehic[4], aobj[4], aactio[4], astren[4], aflag[4];
 } advs_;
 
 #define advs_1 advs_
 
 struct {
-   integer astag;
+   int astag;
 } aflags_;
 
 #define aflags_1 aflags_
 
 struct {
-   integer player, arobot, amastr;
+   int player, arobot, amastr;
 } aindex_;
 
 #define aindex_1 aindex_
 
 struct {
-   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
-   integer btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
+   Bool trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
+   int btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
 
 #define findex_1 findex_
 
-/* Table of constant values */
+// Table of constant values
 
-static integer c__1 = 1;
-static integer c__0 = 0;
-static integer c__5 = 5;
-static integer c__14 = 14;
-static integer c__7 = 7;
-static integer c__3 = 3;
-static integer c__11 = 11;
-static integer c__64 = 64;
+static int c__1 = 1;
+static int c__0 = 0;
+static int c__5 = 5;
+static int c__14 = 14;
+static int c__7 = 7;
+static int c__3 = 3;
+static int c__11 = 11;
+static int c__64 = 64;
 
-/* GDT- GAME DEBUGGING TOOL */
+// GDT- GAME DEBUGGING TOOL
 
-/* COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142 */
-/* ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED */
-/* WRITTEN BY R. M. SUPNIK */
+// COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
+// ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
+// WRITTEN BY R. M. SUPNIK
 
-/* DECLARATIONS */
+// DECLARATIONS
 
-/* Subroutine */ int gdt_(void) {
-/* Initialized data */
+Void gdt_(void) {
+// Initialized data
 
-   static integer cmdmax = 38;
+   static int cmdmax = 38;
    static char dbgcmd[2 * 38] = "DR" "DO" "DA" "DC" "DX" "DH" "DL" "DV" "DF" "DS" "AF" "HE" "NR" "NT" "NC" "ND" "RR" "RT" "RC" "RD" "TK" "EX" "AR" "AO" "AA" "AC" "AX" "AV" "D2" "DN" "AN" "DM" "DT" "AH" "DP" "PD" "DZ" "AZ";
    static char ldbgcmd[2 * 38] = "dr" "do" "da" "dc" "dx" "dh" "dl" "dv" "df" "ds" "af" "he" "nr" "nt" "nc" "nd" "rr" "rt" "rc" "rd" "tk" "ex" "ar" "ao" "aa" "ac" "ax" "av" "d2" "dn" "an" "dm" "dt" "ah" "dp" "pd" "dz" "az";
-   static integer argtyp[38] = {
+   static int argtyp[38] = {
       2, 2, 2, 2, 2, 0, 0, 2, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
       3, 3, 3, 3, 1, 3, 2, 2, 1, 2, 1, 0, 0, 0, 0, 1
    };
 
-/* Format strings */
+// Format strings
    static char fmt_100[] = "(\002 You are not an authorized user.\002)";
    static char fmt_200[] = "(\002 GDT>\002,$)";
    static char fmt_210[] = "(a2)";
@@ -277,32 +277,32 @@ static integer c__64 = 64;
    static char fmt_660[] = "(\002 ORPHS= \002,i7,i7,4i7/\002 PV=    \002,i7" ",4i7/\002 SYN=   \002,6i7/15x,5i7)";
    static char fmt_670[] = "(2x,8i3)";
 
-/* System generated locals */
-   integer i__1, i__2;
+// System generated locals
+   int i__1, i__2;
 
-/* Builtin functions */
-   integer s_wsfe(cilist *), e_wsfe(void), s_rsfe(cilist *), do_fio(integer *, char *, ftnlen), e_rsfe(void), s_cmp(char *, char *, ftnlen, ftnlen);
+// Builtin functions
+   int s_wsfe(cilist *), e_wsfe(void), s_rsfe(cilist *), do_fio(int *, char *, ftnlen), e_rsfe(void), s_cmp(char *, char *, ftnlen, ftnlen);
 
-/* Local variables */
-#define flags ((logical *)&findex_1)
-#define switch__ ((integer *)&findex_1 + 46)
-   extern /* Subroutine */ int newsta_(integer *, integer *, integer *, integer *, integer *), rspeak_(integer *);
-   static integer i__, j, k, l, l1;
+// Local variables
+#define flags ((Bool *)&findex_1)
+#define switch__ ((int *)&findex_1 + 46)
+   extern Void newsta_(int *, int *, int *, int *, int *), rspeak_(int *);
+   static int i__, j, k, l, l1;
    static char cmd[2];
-#define eqa ((integer *)&advs_1 + 1)
-#define eqc ((integer *)&cevent_1 + 1)
-#define eqo ((integer *)&objcts_1 + 1)
-#define eqr ((integer *)&rooms_1 + 2)
-#define eqv ((integer *)&vill_1 + 1)
-#define orp ((integer *)&orphs_1)
-#define syn ((integer *)&syntax_1)
-#define pvec ((integer *)&pv_1)
-   static integer fmax, smax;
-#define rrand ((integer *)&rooms_1 + 602)
-#define objvec ((integer *)&pv_1 + 1)
-#define prpvec ((integer *)&pv_1 + 3)
+#define eqa ((int *)&advs_1 + 1)
+#define eqc ((int *)&cevent_1 + 1)
+#define eqo ((int *)&objcts_1 + 1)
+#define eqr ((int *)&rooms_1 + 2)
+#define eqv ((int *)&vill_1 + 1)
+#define orp ((int *)&orphs_1)
+#define syn ((int *)&syntax_1)
+#define pvec ((int *)&pv_1)
+   static int fmax, smax;
+#define rrand ((int *)&rooms_1 + 602)
+#define objvec ((int *)&pv_1 + 1)
+#define prpvec ((int *)&pv_1 + 3)
 
-/* Fortran I/O blocks */
+// Fortran I/O blocks
    static cilist io___20 = { 0, 0, 0, fmt_100, 0 };
    static cilist io___21 = { 0, 0, 0, fmt_200, 0 };
    static cilist io___22 = { 0, 0, 0, fmt_210, 0 };
@@ -373,100 +373,100 @@ static integer c__64 = 64;
    static cilist io___93 = { 0, 0, 0, fmt_590, 0 };
    static cilist io___94 = { 0, 0, 0, fmt_600, 0 };
 
-/* PARSER OUTPUT */
+// PARSER OUTPUT
 
-/* PARSER STATE */
+// PARSER STATE
 
-/* GAME STATE */
+// GAME STATE
 
-/* SCREEN OF LIGHT */
+// SCREEN OF LIGHT
 
-/* MISCELLANEOUS VARIABLES */
+// MISCELLANEOUS VARIABLES
 
-/* PUZZLE ROOM STATE */
+// PUZZLE ROOM STATE
 
-/* I/O VARIABLES */
+// I/O VARIABLES
 
-/* MESSAGE INDEX */
+// MESSAGE INDEX
 
-/* ROOMS */
+// ROOMS
 
-/* EXITS */
+// EXITS
 
-/* OBJECTS */
+// OBJECTS
 
-/* CLOCK INTERRUPTS */
+// CLOCK INTERRUPTS
 
-/* VILLAINS AND DEMONS */
+// VILLAINS AND DEMONS
 
-/* ADVENTURERS */
+// ADVENTURERS
 
-/* FUNCTIONS AND DATA */
+// FUNCTIONS AND DATA
 
-/* FLAGS */
+// FLAGS
 
-/* GDT, PAGE 2 */
+// GDT, PAGE 2
 
-/* FIRST, VALIDATE THAT THE CALLER IS AN IMPLEMENTER. */
+// FIRST, VALIDATE THAT THE CALLER IS AN IMPLEMENTER.
 
    fmax = 46;
-/* 						!SET ARRAY LIMITS. */
+// 						!SET ARRAY LIMITS.
    smax = 22;
 
    if (debug_1.gdtflg != 0) {
       goto L2000;
    }
-/* 						!IF OK, SKIP. */
+// 						!IF OK, SKIP.
    io___20.ciunit = chan_1.outch;
    s_wsfe(&io___20);
    e_wsfe();
-/* 						!NOT AN IMPLEMENTER. */
+// 						!NOT AN IMPLEMENTER.
    return 0;
-/* 						!BOOT HIM OFF */
+// 						!BOOT HIM OFF
 
-/* GDT, PAGE 2A */
+// GDT, PAGE 2A
 
-/* HERE TO GET NEXT COMMAND */
+// HERE TO GET NEXT COMMAND
 
 L2000:
    io___21.ciunit = chan_1.outch;
    s_wsfe(&io___21);
    e_wsfe();
-/* 						!OUTPUT PROMPT. */
+// 						!OUTPUT PROMPT.
    io___22.ciunit = chan_1.inpch;
    s_rsfe(&io___22);
    do_fio(&c__1, cmd, (ftnlen) 2);
    e_rsfe();
-/* 						!GET COMMAND. */
+// 						!GET COMMAND.
    if (s_cmp(cmd, "  ", (ftnlen) 2, (ftnlen) 2) == 0) {
       goto L2000;
    }
-/* 						!IGNORE BLANKS. */
+// 						!IGNORE BLANKS.
    i__1 = cmdmax;
    for (i__ = 1; i__ <= i__1; ++i__) {
-/* 						!LOOK IT UP. */
+// 						!LOOK IT UP.
       if (s_cmp(cmd, dbgcmd + (i__ - 1 << 1), (ftnlen) 2, (ftnlen) 2) == 0) {
          goto L2300;
       }
-/* 						!FOUND? */
-/* 	  check for lower case command, as well */
+// 						!FOUND?
+// 	  check for lower case command, as well
       if (s_cmp(cmd, ldbgcmd + (i__ - 1 << 1), (ftnlen) 2, (ftnlen) 2) == 0) {
          goto L2300;
       }
-/* L2100: */
+// L2100:
    }
 L2200:
    io___25.ciunit = chan_1.outch;
    s_wsfe(&io___25);
    e_wsfe();
-/* 						!NO, LOSE. */
+// 						!NO, LOSE.
    goto L2000;
 
-/*L230: */
-/*L240: */
-/*L225: */
-/*L235: */
-/*L245: */
+//L230:
+//L240:
+//L225:
+//L235:
+//L245:
 
 L2300:
    switch (argtyp[i__ - 1] + 1) {
@@ -479,19 +479,19 @@ L2300:
       case 4:
          goto L2700;
    }
-/* 						!BRANCH ON ARG TYPE. */
+// 						!BRANCH ON ARG TYPE.
    goto L2200;
-/* 						!ILLEGAL TYPE. */
+// 						!ILLEGAL TYPE.
 
 L2700:
    io___26.ciunit = chan_1.outch;
    s_wsfe(&io___26);
    e_wsfe();
-/* 						!TYPE 3, REQUEST ARRAY COORDS. */
+// 						!TYPE 3, REQUEST ARRAY COORDS.
    io___27.ciunit = chan_1.inpch;
    s_rsfe(&io___27);
-   do_fio(&c__1, (char *)&j, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&k, (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&j, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&k, (ftnlen) sizeof(int));
    e_rsfe();
    goto L2400;
 
@@ -499,11 +499,11 @@ L2600:
    io___30.ciunit = chan_1.outch;
    s_wsfe(&io___30);
    e_wsfe();
-/* 						!TYPE 2, READ BOUNDS. */
+// 						!TYPE 2, READ BOUNDS.
    io___31.ciunit = chan_1.inpch;
    s_rsfe(&io___31);
-   do_fio(&c__1, (char *)&j, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&k, (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&j, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&k, (ftnlen) sizeof(int));
    e_rsfe();
    if (k == 0) {
       k = j;
@@ -514,10 +514,10 @@ L2500:
    io___32.ciunit = chan_1.outch;
    s_wsfe(&io___32);
    e_wsfe();
-/* 						!TYPE 1, READ ENTRY NO. */
+// 						!TYPE 1, READ ENTRY NO.
    io___33.ciunit = chan_1.inpch;
    s_rsfe(&io___33);
-   do_fio(&c__1, (char *)&j, (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&j, (ftnlen) sizeof(int));
    e_rsfe();
 L2400:
    switch (i__) {
@@ -599,64 +599,64 @@ L2400:
          goto L47000;
    }
    goto L2200;
-/* 						!WHAT??? */
-/* GDT, PAGE 3 */
+// 						!WHAT???
+// GDT, PAGE 3
 
-/* DR-- DISPLAY ROOMS */
+// DR-- DISPLAY ROOMS
 
 L10000:
    if (!(j > 0 && j <= rooms_1.rlnt && (k > 0 && k <= rooms_1.rlnt) && j <= k)) {
       goto L2200;
    }
-/* 						!ARGS VALID? */
+// 						!ARGS VALID?
    io___34.ciunit = chan_1.outch;
    s_wsfe(&io___34);
    e_wsfe();
-/* 						!COL HDRS. */
+// 						!COL HDRS.
    i__1 = k;
    for (i__ = j; i__ <= i__1; ++i__) {
       io___35.ciunit = chan_1.outch;
       s_wsfe(&io___35);
-      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(integer));
+      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
       for (l = 1; l <= 5; ++l) {
-         do_fio(&c__1, (char *)&eqr[i__ + l * 200 - 201], (ftnlen) sizeof(integer));
+         do_fio(&c__1, (char *)&eqr[i__ + l * 200 - 201], (ftnlen) sizeof(int));
       }
       e_wsfe();
-/* L10100: */
+// L10100:
    }
    goto L2000;
 
-/* DO-- DISPLAY OBJECTS */
+// DO-- DISPLAY OBJECTS
 
 L11000:
    if (!(j > 0 && j <= objcts_1.olnt && (k > 0 && k <= objcts_1.olnt) && j <= k)) {
       goto L2200;
    }
-/* 						!ARGS VALID? */
+// 						!ARGS VALID?
    io___37.ciunit = chan_1.outch;
    s_wsfe(&io___37);
    e_wsfe();
-/* 						!COL HDRS */
+// 						!COL HDRS
    i__1 = k;
    for (i__ = j; i__ <= i__1; ++i__) {
       io___38.ciunit = chan_1.outch;
       s_wsfe(&io___38);
-      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(integer));
+      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
       for (l = 1; l <= 14; ++l) {
-         do_fio(&c__1, (char *)&eqo[i__ + l * 220 - 221], (ftnlen) sizeof(integer));
+         do_fio(&c__1, (char *)&eqo[i__ + l * 220 - 221], (ftnlen) sizeof(int));
       }
       e_wsfe();
-/* L11100: */
+// L11100:
    }
    goto L2000;
 
-/* DA-- DISPLAY ADVENTURERS */
+// DA-- DISPLAY ADVENTURERS
 
 L12000:
    if (!(j > 0 && j <= advs_1.alnt && (k > 0 && k <= advs_1.alnt) && j <= k)) {
       goto L2200;
    }
-/* 						!ARGS VALID? */
+// 						!ARGS VALID?
    io___39.ciunit = chan_1.outch;
    s_wsfe(&io___39);
    e_wsfe();
@@ -664,22 +664,22 @@ L12000:
    for (i__ = j; i__ <= i__1; ++i__) {
       io___40.ciunit = chan_1.outch;
       s_wsfe(&io___40);
-      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(integer));
+      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
       for (l = 1; l <= 7; ++l) {
-         do_fio(&c__1, (char *)&eqa[i__ + (l << 2) - 5], (ftnlen) sizeof(integer));
+         do_fio(&c__1, (char *)&eqa[i__ + (l << 2) - 5], (ftnlen) sizeof(int));
       }
       e_wsfe();
-/* L12100: */
+// L12100:
    }
    goto L2000;
 
-/* DC-- DISPLAY CLOCK EVENTS */
+// DC-- DISPLAY CLOCK EVENTS
 
 L13000:
    if (!(j > 0 && j <= cevent_1.clnt && (k > 0 && k <= cevent_1.clnt) && j <= k)) {
       goto L2200;
    }
-/* 						!ARGS VALID? */
+// 						!ARGS VALID?
    io___41.ciunit = chan_1.outch;
    s_wsfe(&io___41);
    e_wsfe();
@@ -687,180 +687,180 @@ L13000:
    for (i__ = j; i__ <= i__1; ++i__) {
       io___42.ciunit = chan_1.outch;
       s_wsfe(&io___42);
-      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(integer));
+      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
       for (l = 1; l <= 2; ++l) {
-         do_fio(&c__1, (char *)&eqc[i__ + l * 25 - 26], (ftnlen) sizeof(integer));
+         do_fio(&c__1, (char *)&eqc[i__ + l * 25 - 26], (ftnlen) sizeof(int));
       }
-      do_fio(&c__1, (char *)&cevent_1.cflag[i__ - 1], (ftnlen) sizeof(logical));
+      do_fio(&c__1, (char *)&cevent_1.cflag[i__ - 1], (ftnlen) sizeof(Bool));
       e_wsfe();
-/* L13100: */
+// L13100:
    }
    goto L2000;
 
-/* DX-- DISPLAY EXITS */
+// DX-- DISPLAY EXITS
 
 L14000:
    if (!(j > 0 && j <= exits_1.xlnt && (k > 0 && k <= exits_1.xlnt) && j <= k)) {
       goto L2200;
    }
-/* 						!ARGS VALID? */
+// 						!ARGS VALID?
    io___43.ciunit = chan_1.outch;
    s_wsfe(&io___43);
    e_wsfe();
-/* 						!COL HDRS. */
+// 						!COL HDRS.
    i__1 = k;
    for (i__ = j; i__ <= i__1; i__ += 10) {
-/* 						!TEN PER LINE. */
-/* Computing MIN */
+// 						!TEN PER LINE.
+// Computing MIN
       i__2 = i__ + 9;
       l = min(i__2, k);
-/* 						!COMPUTE END OF LINE. */
+// 						!COMPUTE END OF LINE.
       io___44.ciunit = chan_1.outch;
       s_wsfe(&io___44);
-      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(integer));
-      do_fio(&c__1, (char *)&l, (ftnlen) sizeof(integer));
+      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
+      do_fio(&c__1, (char *)&l, (ftnlen) sizeof(int));
       i__2 = l;
       for (l1 = i__; l1 <= i__2; ++l1) {
-         do_fio(&c__1, (char *)&exits_1.travel[l1 - 1], (ftnlen) sizeof(integer));
+         do_fio(&c__1, (char *)&exits_1.travel[l1 - 1], (ftnlen) sizeof(int));
       }
       e_wsfe();
-/* L14100: */
+// L14100:
    }
    goto L2000;
 
-/* DH-- DISPLAY HACKS */
+// DH-- DISPLAY HACKS
 
 L15000:
    io___46.ciunit = chan_1.outch;
    s_wsfe(&io___46);
-   do_fio(&c__1, (char *)&hack_1.thfpos, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&hack_1.thfflg, (ftnlen) sizeof(logical));
-   do_fio(&c__1, (char *)&hack_1.thfact, (ftnlen) sizeof(logical));
-   do_fio(&c__1, (char *)&hack_1.swdact, (ftnlen) sizeof(logical));
-   do_fio(&c__1, (char *)&hack_1.swdsta, (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&hack_1.thfpos, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&hack_1.thfflg, (ftnlen) sizeof(Bool));
+   do_fio(&c__1, (char *)&hack_1.thfact, (ftnlen) sizeof(Bool));
+   do_fio(&c__1, (char *)&hack_1.swdact, (ftnlen) sizeof(Bool));
+   do_fio(&c__1, (char *)&hack_1.swdsta, (ftnlen) sizeof(int));
    e_wsfe();
    goto L2000;
 
-/* DL-- DISPLAY LENGTHS */
+// DL-- DISPLAY LENGTHS
 
 L16000:
    io___47.ciunit = chan_1.outch;
    s_wsfe(&io___47);
-   do_fio(&c__1, (char *)&rooms_1.rlnt, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&exits_1.xlnt, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&objcts_1.olnt, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&cevent_1.clnt, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&vill_1.vlnt, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&advs_1.alnt, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&rmsg_1.mlnt, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&oroom2_1.r2lnt, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&star_1.mbase, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&star_1.strbit, (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&rooms_1.rlnt, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&exits_1.xlnt, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&objcts_1.olnt, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&cevent_1.clnt, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&vill_1.vlnt, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&advs_1.alnt, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&rmsg_1.mlnt, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&oroom2_1.r2lnt, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&star_1.mbase, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&star_1.strbit, (ftnlen) sizeof(int));
    e_wsfe();
    goto L2000;
 
-/* DV-- DISPLAY VILLAINS */
+// DV-- DISPLAY VILLAINS
 
 L17000:
    if (!(j > 0 && j <= vill_1.vlnt && (k > 0 && k <= vill_1.vlnt) && j <= k)) {
       goto L2200;
    }
-/* 						!ARGS VALID? */
+// 						!ARGS VALID?
    io___48.ciunit = chan_1.outch;
    s_wsfe(&io___48);
    e_wsfe();
-/* 						!COL HDRS */
+// 						!COL HDRS
    i__1 = k;
    for (i__ = j; i__ <= i__1; ++i__) {
       io___49.ciunit = chan_1.outch;
       s_wsfe(&io___49);
-      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(integer));
+      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
       for (l = 1; l <= 5; ++l) {
-         do_fio(&c__1, (char *)&eqv[i__ + (l << 2) - 5], (ftnlen) sizeof(integer));
+         do_fio(&c__1, (char *)&eqv[i__ + (l << 2) - 5], (ftnlen) sizeof(int));
       }
       e_wsfe();
-/* L17100: */
+// L17100:
    }
    goto L2000;
 
-/* DF-- DISPLAY FLAGS */
+// DF-- DISPLAY FLAGS
 
 L18000:
    if (!(j > 0 && j <= fmax && (k > 0 && k <= fmax) && j <= k)) {
       goto L2200;
    }
-/* 						!ARGS VALID? */
+// 						!ARGS VALID?
    i__1 = k;
    for (i__ = j; i__ <= i__1; ++i__) {
       io___50.ciunit = chan_1.outch;
       s_wsfe(&io___50);
-      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(integer));
-      do_fio(&c__1, (char *)&flags[i__ - 1], (ftnlen) sizeof(logical));
+      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
+      do_fio(&c__1, (char *)&flags[i__ - 1], (ftnlen) sizeof(Bool));
       e_wsfe();
-/* L18100: */
+// L18100:
    }
    goto L2000;
 
-/* DS-- DISPLAY STATE */
+// DS-- DISPLAY STATE
 
 L19000:
    io___51.ciunit = chan_1.outch;
    s_wsfe(&io___51);
-   do_fio(&c__1, (char *)&prsvec_1.prsa, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&prsvec_1.prso, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&prsvec_1.prsi, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&prsvec_1.prswon, (ftnlen) sizeof(logical));
-   do_fio(&c__1, (char *)&prsvec_1.prscon, (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&prsvec_1.prsa, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&prsvec_1.prso, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&prsvec_1.prsi, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&prsvec_1.prswon, (ftnlen) sizeof(Bool));
+   do_fio(&c__1, (char *)&prsvec_1.prscon, (ftnlen) sizeof(int));
    e_wsfe();
    io___52.ciunit = chan_1.outch;
    s_wsfe(&io___52);
-   do_fio(&c__1, (char *)&play_1.winner, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&play_1.here, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&play_1.telflg, (ftnlen) sizeof(logical));
+   do_fio(&c__1, (char *)&play_1.winner, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&play_1.here, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&play_1.telflg, (ftnlen) sizeof(Bool));
    e_wsfe();
    io___53.ciunit = chan_1.outch;
    s_wsfe(&io___53);
-   do_fio(&c__1, (char *)&state_1.moves, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&state_1.deaths, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&state_1.rwscor, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&state_1.mxscor, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&state_1.mxload, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&state_1.ltshft, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&state_1.bloc, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&state_1.mungrm, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&state_1.hs, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&state_1.egscor, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&state_1.egmxsc, (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&state_1.moves, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&state_1.deaths, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&state_1.rwscor, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&state_1.mxscor, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&state_1.mxload, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&state_1.ltshft, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&state_1.bloc, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&state_1.mungrm, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&state_1.hs, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&state_1.egscor, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&state_1.egmxsc, (ftnlen) sizeof(int));
    e_wsfe();
    io___54.ciunit = chan_1.outch;
    s_wsfe(&io___54);
-   do_fio(&c__1, (char *)&screen_1.fromdr, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&screen_1.scolrm, (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&screen_1.scolac, (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&screen_1.fromdr, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&screen_1.scolrm, (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&screen_1.scolac, (ftnlen) sizeof(int));
    e_wsfe();
    goto L2000;
 
-/* GDT, PAGE 4 */
+// GDT, PAGE 4
 
-/* AF-- ALTER FLAGS */
+// AF-- ALTER FLAGS
 
 L20000:
    if (!(j > 0 && j <= fmax)) {
       goto L2200;
    }
-/* 						!ENTRY NO VALID? */
+// 						!ENTRY NO VALID?
    io___55.ciunit = chan_1.outch;
    s_wsfe(&io___55);
-   do_fio(&c__1, (char *)&flags[j - 1], (ftnlen) sizeof(logical));
+   do_fio(&c__1, (char *)&flags[j - 1], (ftnlen) sizeof(Bool));
    e_wsfe();
-/* 						!TYPE OLD, GET NEW. */
+// 						!TYPE OLD, GET NEW.
    io___56.ciunit = chan_1.inpch;
    s_rsfe(&io___56);
-   do_fio(&c__1, (char *)&flags[j - 1], (ftnlen) sizeof(logical));
+   do_fio(&c__1, (char *)&flags[j - 1], (ftnlen) sizeof(Bool));
    e_rsfe();
    goto L2000;
 
-/* 21000-- HELP */
+// 21000-- HELP
 
 L21000:
    io___57.ciunit = chan_1.outch;
@@ -868,40 +868,40 @@ L21000:
    e_wsfe();
    goto L2000;
 
-/* NR-- NO ROBBER */
+// NR-- NO ROBBER
 
 L22000:
-   hack_1.thfflg = FALSE_;
-/* 						!DISABLE ROBBER. */
-   hack_1.thfact = FALSE_;
+   hack_1.thfflg = false;
+// 						!DISABLE ROBBER.
+   hack_1.thfact = false;
    newsta_(&oindex_1.thief, &c__0, &c__0, &c__0, &c__0);
-/* 						!VANISH THIEF. */
+// 						!VANISH THIEF.
    io___58.ciunit = chan_1.outch;
    s_wsfe(&io___58);
    e_wsfe();
    goto L2000;
 
-/* NT-- NO TROLL */
+// NT-- NO TROLL
 
 L23000:
-   findex_1.trollf = TRUE_;
+   findex_1.trollf = true;
    newsta_(&oindex_1.troll, &c__0, &c__0, &c__0, &c__0);
    io___59.ciunit = chan_1.outch;
    s_wsfe(&io___59);
    e_wsfe();
    goto L2000;
 
-/* NC-- NO CYCLOPS */
+// NC-- NO CYCLOPS
 
 L24000:
-   findex_1.cyclof = TRUE_;
+   findex_1.cyclof = true;
    newsta_(&oindex_1.cyclo, &c__0, &c__0, &c__0, &c__0);
    io___60.ciunit = chan_1.outch;
    s_wsfe(&io___60);
    e_wsfe();
    goto L2000;
 
-/* ND-- IMMORTALITY MODE */
+// ND-- IMMORTALITY MODE
 
 L25000:
    debug_1.dbgflg = 1;
@@ -910,37 +910,37 @@ L25000:
    e_wsfe();
    goto L2000;
 
-/* RR-- RESTORE ROBBER */
+// RR-- RESTORE ROBBER
 
 L26000:
-   hack_1.thfact = TRUE_;
+   hack_1.thfact = true;
    io___62.ciunit = chan_1.outch;
    s_wsfe(&io___62);
    e_wsfe();
    goto L2000;
 
-/* RT-- RESTORE TROLL */
+// RT-- RESTORE TROLL
 
 L27000:
-   findex_1.trollf = FALSE_;
+   findex_1.trollf = false;
    newsta_(&oindex_1.troll, &c__0, &rindex_1.mtrol, &c__0, &c__0);
    io___63.ciunit = chan_1.outch;
    s_wsfe(&io___63);
    e_wsfe();
    goto L2000;
 
-/* RC-- RESTORE CYCLOPS */
+// RC-- RESTORE CYCLOPS
 
 L28000:
-   findex_1.cyclof = FALSE_;
-   findex_1.magicf = FALSE_;
+   findex_1.cyclof = false;
+   findex_1.magicf = false;
    newsta_(&oindex_1.cyclo, &c__0, &rindex_1.mcycl, &c__0, &c__0);
    io___64.ciunit = chan_1.outch;
    s_wsfe(&io___64);
    e_wsfe();
    goto L2000;
 
-/* RD-- MORTAL MODE */
+// RD-- MORTAL MODE
 
 L29000:
    debug_1.dbgflg = 0;
@@ -949,149 +949,149 @@ L29000:
    e_wsfe();
    goto L2000;
 
-/* GDT, PAGE 5 */
+// GDT, PAGE 5
 
-/* TK-- TAKE */
+// TK-- TAKE
 
 L30000:
    if (!(j > 0 && j <= objcts_1.olnt)) {
       goto L2200;
    }
-/* 						!VALID OBJECT? */
+// 						!VALID OBJECT?
    newsta_(&j, &c__0, &c__0, &c__0, &play_1.winner);
-/* 						!YES, TAKE OBJECT. */
+// 						!YES, TAKE OBJECT.
    io___66.ciunit = chan_1.outch;
    s_wsfe(&io___66);
    e_wsfe();
-/* 						!TELL. */
+// 						!TELL.
    goto L2000;
 
-/* EX-- GOODBYE */
+// EX-- GOODBYE
 
 L31000:
    prsvec_1.prscon = 1;
    return 0;
 
-/* AR--	ALTER ROOM ENTRY */
+// AR--	ALTER ROOM ENTRY
 
 L32000:
    if (!(j > 0 && j <= rooms_1.rlnt && (k > 0 && k <= c__5))) {
       goto L2200;
    }
-/* 						!INDICES VALID? */
+// 						!INDICES VALID?
    io___67.ciunit = chan_1.outch;
    s_wsfe(&io___67);
-   do_fio(&c__1, (char *)&eqr[j + k * 200 - 201], (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&eqr[j + k * 200 - 201], (ftnlen) sizeof(int));
    e_wsfe();
-/* 						!TYPE OLD, GET NEW. */
+// 						!TYPE OLD, GET NEW.
    io___68.ciunit = chan_1.inpch;
    s_rsfe(&io___68);
-   do_fio(&c__1, (char *)&eqr[j + k * 200 - 201], (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&eqr[j + k * 200 - 201], (ftnlen) sizeof(int));
    e_rsfe();
    goto L2000;
 
-/* AO-- ALTER OBJECT ENTRY */
+// AO-- ALTER OBJECT ENTRY
 
 L33000:
    if (!(j > 0 && j <= objcts_1.olnt && (k > 0 && k <= c__14))) {
       goto L2200;
    }
-/* 						!INDICES VALID? */
+// 						!INDICES VALID?
    io___69.ciunit = chan_1.outch;
    s_wsfe(&io___69);
-   do_fio(&c__1, (char *)&eqo[j + k * 220 - 221], (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&eqo[j + k * 220 - 221], (ftnlen) sizeof(int));
    e_wsfe();
    io___70.ciunit = chan_1.inpch;
    s_rsfe(&io___70);
-   do_fio(&c__1, (char *)&eqo[j + k * 220 - 221], (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&eqo[j + k * 220 - 221], (ftnlen) sizeof(int));
    e_rsfe();
    goto L2000;
 
-/* AA-- ALTER ADVS ENTRY */
+// AA-- ALTER ADVS ENTRY
 
 L34000:
    if (!(j > 0 && j <= advs_1.alnt && (k > 0 && k <= c__7))) {
       goto L2200;
    }
-/* 						!INDICES VALID? */
+// 						!INDICES VALID?
    io___71.ciunit = chan_1.outch;
    s_wsfe(&io___71);
-   do_fio(&c__1, (char *)&eqa[j + (k << 2) - 5], (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&eqa[j + (k << 2) - 5], (ftnlen) sizeof(int));
    e_wsfe();
    io___72.ciunit = chan_1.inpch;
    s_rsfe(&io___72);
-   do_fio(&c__1, (char *)&eqa[j + (k << 2) - 5], (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&eqa[j + (k << 2) - 5], (ftnlen) sizeof(int));
    e_rsfe();
    goto L2000;
 
-/* AC-- ALTER CLOCK EVENTS */
+// AC-- ALTER CLOCK EVENTS
 
 L35000:
    if (!(j > 0 && j <= cevent_1.clnt && (k > 0 && k <= c__3))) {
       goto L2200;
    }
-/* 						!INDICES VALID? */
+// 						!INDICES VALID?
    if (k == 3) {
       goto L35500;
    }
-/* 						!FLAGS ENTRY? */
+// 						!FLAGS ENTRY?
    io___73.ciunit = chan_1.outch;
    s_wsfe(&io___73);
-   do_fio(&c__1, (char *)&eqc[j + k * 25 - 26], (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&eqc[j + k * 25 - 26], (ftnlen) sizeof(int));
    e_wsfe();
    io___74.ciunit = chan_1.inpch;
    s_rsfe(&io___74);
-   do_fio(&c__1, (char *)&eqc[j + k * 25 - 26], (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&eqc[j + k * 25 - 26], (ftnlen) sizeof(int));
    e_rsfe();
    goto L2000;
 
 L35500:
    io___75.ciunit = chan_1.outch;
    s_wsfe(&io___75);
-   do_fio(&c__1, (char *)&cevent_1.cflag[j - 1], (ftnlen) sizeof(logical));
+   do_fio(&c__1, (char *)&cevent_1.cflag[j - 1], (ftnlen) sizeof(Bool));
    e_wsfe();
    io___76.ciunit = chan_1.inpch;
    s_rsfe(&io___76);
-   do_fio(&c__1, (char *)&cevent_1.cflag[j - 1], (ftnlen) sizeof(logical));
+   do_fio(&c__1, (char *)&cevent_1.cflag[j - 1], (ftnlen) sizeof(Bool));
    e_rsfe();
    goto L2000;
-/* GDT, PAGE 6 */
+// GDT, PAGE 6
 
-/* AX-- ALTER EXITS */
+// AX-- ALTER EXITS
 
 L36000:
    if (!(j > 0 && j <= exits_1.xlnt)) {
       goto L2200;
    }
-/* 						!ENTRY NO VALID? */
+// 						!ENTRY NO VALID?
    io___77.ciunit = chan_1.outch;
    s_wsfe(&io___77);
-   do_fio(&c__1, (char *)&exits_1.travel[j - 1], (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&exits_1.travel[j - 1], (ftnlen) sizeof(int));
    e_wsfe();
    io___78.ciunit = chan_1.inpch;
    s_rsfe(&io___78);
-   do_fio(&c__1, (char *)&exits_1.travel[j - 1], (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&exits_1.travel[j - 1], (ftnlen) sizeof(int));
    e_rsfe();
    goto L2000;
 
-/* AV-- ALTER VILLAINS */
+// AV-- ALTER VILLAINS
 
 L37000:
    if (!(j > 0 && j <= vill_1.vlnt && (k > 0 && k <= c__5))) {
       goto L2200;
    }
-/* 						!INDICES VALID? */
+// 						!INDICES VALID?
    io___79.ciunit = chan_1.outch;
    s_wsfe(&io___79);
-   do_fio(&c__1, (char *)&eqv[j + (k << 2) - 5], (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&eqv[j + (k << 2) - 5], (ftnlen) sizeof(int));
    e_wsfe();
    io___80.ciunit = chan_1.inpch;
    s_rsfe(&io___80);
-   do_fio(&c__1, (char *)&eqv[j + (k << 2) - 5], (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&eqv[j + (k << 2) - 5], (ftnlen) sizeof(int));
    e_rsfe();
    goto L2000;
 
-/* D2-- DISPLAY ROOM2 LIST */
+// D2-- DISPLAY ROOM2 LIST
 
 L38000:
    if (!(j > 0 && j <= oroom2_1.r2lnt && (k > 0 && k <= oroom2_1.r2lnt) && j <= k)) {
@@ -1101,158 +1101,158 @@ L38000:
    for (i__ = j; i__ <= i__1; ++i__) {
       io___81.ciunit = chan_1.outch;
       s_wsfe(&io___81);
-      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(integer));
-      do_fio(&c__1, (char *)&oroom2_1.rroom2[i__ - 1], (ftnlen) sizeof(integer));
-      do_fio(&c__1, (char *)&oroom2_1.oroom2[i__ - 1], (ftnlen) sizeof(integer));
+      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
+      do_fio(&c__1, (char *)&oroom2_1.rroom2[i__ - 1], (ftnlen) sizeof(int));
+      do_fio(&c__1, (char *)&oroom2_1.oroom2[i__ - 1], (ftnlen) sizeof(int));
       e_wsfe();
-/* L38100: */
+// L38100:
    }
    goto L2000;
 
-/* DN-- DISPLAY SWITCHES */
+// DN-- DISPLAY SWITCHES
 
 L39000:
    if (!(j > 0 && j <= smax && (k > 0 && k <= smax) && j <= k)) {
       goto L2200;
    }
-/* 						!VALID? */
+// 						!VALID?
    i__1 = k;
    for (i__ = j; i__ <= i__1; ++i__) {
       io___82.ciunit = chan_1.outch;
       s_wsfe(&io___82);
-      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(integer));
-      do_fio(&c__1, (char *)&switch__[i__ - 1], (ftnlen) sizeof(integer));
+      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
+      do_fio(&c__1, (char *)&switch__[i__ - 1], (ftnlen) sizeof(int));
       e_wsfe();
-/* L39100: */
+// L39100:
    }
    goto L2000;
 
-/* AN-- ALTER SWITCHES */
+// AN-- ALTER SWITCHES
 
 L40000:
    if (!(j > 0 && j <= smax)) {
       goto L2200;
    }
-/* 						!VALID ENTRY? */
+// 						!VALID ENTRY?
    io___83.ciunit = chan_1.outch;
    s_wsfe(&io___83);
-   do_fio(&c__1, (char *)&switch__[j - 1], (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&switch__[j - 1], (ftnlen) sizeof(int));
    e_wsfe();
    io___84.ciunit = chan_1.inpch;
    s_rsfe(&io___84);
-   do_fio(&c__1, (char *)&switch__[j - 1], (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&switch__[j - 1], (ftnlen) sizeof(int));
    e_rsfe();
    goto L2000;
 
-/* DM-- DISPLAY MESSAGES */
+// DM-- DISPLAY MESSAGES
 
 L41000:
    if (!(j > 0 && j <= rmsg_1.mlnt && (k > 0 && k <= rmsg_1.mlnt) && j <= k)) {
       goto L2200;
    }
-/* 						!VALID LIMITS? */
+// 						!VALID LIMITS?
    io___85.ciunit = chan_1.outch;
    s_wsfe(&io___85);
    e_wsfe();
    i__1 = k;
    for (i__ = j; i__ <= i__1; i__ += 10) {
-/* Computing MIN */
+// Computing MIN
       i__2 = i__ + 9;
       l = min(i__2, k);
       io___86.ciunit = chan_1.outch;
       s_wsfe(&io___86);
-      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(integer));
-      do_fio(&c__1, (char *)&l, (ftnlen) sizeof(integer));
+      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
+      do_fio(&c__1, (char *)&l, (ftnlen) sizeof(int));
       i__2 = l;
       for (l1 = i__; l1 <= i__2; ++l1) {
-         do_fio(&c__1, (char *)&rmsg_1.rtext[l1 - 1], (ftnlen) sizeof(integer));
+         do_fio(&c__1, (char *)&rmsg_1.rtext[l1 - 1], (ftnlen) sizeof(int));
       }
       e_wsfe();
-/* L41100: */
+// L41100:
    }
    goto L2000;
 
-/* DT-- DISPLAY TEXT */
+// DT-- DISPLAY TEXT
 
 L42000:
    rspeak_(&j);
    goto L2000;
 
-/* AH--	ALTER HERE */
+// AH--	ALTER HERE
 
 L43000:
    io___87.ciunit = chan_1.outch;
    s_wsfe(&io___87);
-   do_fio(&c__1, (char *)&play_1.here, (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&play_1.here, (ftnlen) sizeof(int));
    e_wsfe();
    io___88.ciunit = chan_1.inpch;
    s_rsfe(&io___88);
-   do_fio(&c__1, (char *)&play_1.here, (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&play_1.here, (ftnlen) sizeof(int));
    e_rsfe();
    eqa[0] = play_1.here;
    goto L2000;
 
-/* DP--	DISPLAY PARSER STATE */
+// DP--	DISPLAY PARSER STATE
 
 L44000:
    io___89.ciunit = chan_1.outch;
    s_wsfe(&io___89);
-   do_fio(&c__5, (char *)&orp[0], (ftnlen) sizeof(integer));
-   do_fio(&c__1, (char *)&last_1.lastit, (ftnlen) sizeof(integer));
-   do_fio(&c__5, (char *)&pvec[0], (ftnlen) sizeof(integer));
-   do_fio(&c__11, (char *)&syn[0], (ftnlen) sizeof(integer));
+   do_fio(&c__5, (char *)&orp[0], (ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&last_1.lastit, (ftnlen) sizeof(int));
+   do_fio(&c__5, (char *)&pvec[0], (ftnlen) sizeof(int));
+   do_fio(&c__11, (char *)&syn[0], (ftnlen) sizeof(int));
    e_wsfe();
    goto L2000;
 
-/* PD--	PROGRAM DETAIL DEBUG */
+// PD--	PROGRAM DETAIL DEBUG
 
 L45000:
    io___90.ciunit = chan_1.outch;
    s_wsfe(&io___90);
-   do_fio(&c__1, (char *)&debug_1.prsflg, (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&debug_1.prsflg, (ftnlen) sizeof(int));
    e_wsfe();
-/* 						!TYPE OLD, GET NEW. */
+// 						!TYPE OLD, GET NEW.
    io___91.ciunit = chan_1.inpch;
    s_rsfe(&io___91);
-   do_fio(&c__1, (char *)&debug_1.prsflg, (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&debug_1.prsflg, (ftnlen) sizeof(int));
    e_rsfe();
    goto L2000;
 
-/* DZ--	DISPLAY PUZZLE ROOM */
+// DZ--	DISPLAY PUZZLE ROOM
 
 L46000:
    for (i__ = 1; i__ <= 64; i__ += 8) {
-/* 						!DISPLAY PUZZLE */
+// 						!DISPLAY PUZZLE
       io___92.ciunit = chan_1.outch;
       s_wsfe(&io___92);
       i__1 = i__ + 7;
       for (j = i__; j <= i__1; ++j) {
-         do_fio(&c__1, (char *)&puzzle_1.cpvec[j - 1], (ftnlen) sizeof(integer));
+         do_fio(&c__1, (char *)&puzzle_1.cpvec[j - 1], (ftnlen) sizeof(int));
       }
       e_wsfe();
-/* L46100: */
+// L46100:
    }
    goto L2000;
 
-/* AZ--	ALTER PUZZLE ROOM */
+// AZ--	ALTER PUZZLE ROOM
 
 L47000:
    if (!(j > 0 && j <= c__64)) {
       goto L2200;
    }
-/* 						!VALID ENTRY? */
+// 						!VALID ENTRY?
    io___93.ciunit = chan_1.outch;
    s_wsfe(&io___93);
-   do_fio(&c__1, (char *)&puzzle_1.cpvec[j - 1], (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&puzzle_1.cpvec[j - 1], (ftnlen) sizeof(int));
    e_wsfe();
-/* 						!OUTPUT OLD, */
+// 						!OUTPUT OLD,
    io___94.ciunit = chan_1.inpch;
    s_rsfe(&io___94);
-   do_fio(&c__1, (char *)&puzzle_1.cpvec[j - 1], (ftnlen) sizeof(integer));
+   do_fio(&c__1, (char *)&puzzle_1.cpvec[j - 1], (ftnlen) sizeof(int));
    e_rsfe();
    goto L2000;
 
-} /* gdt_ */
+}
 
 #undef prpvec
 #undef objvec

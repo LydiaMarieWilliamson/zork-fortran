@@ -1,321 +1,321 @@
 #include "F2C.h"
 
-/* Common Block Declarations */
+// Common Block Declarations
 
 struct {
-   integer prsa, prsi, prso;
-   logical prswon;
-   integer prscon;
+   int prsa, prsi, prso;
+   Bool prswon;
+   int prscon;
 } prsvec_;
 
 #define prsvec_1 prsvec_
 
 struct {
-   integer oflag, oact, oslot, oprep, oname;
+   int oflag, oact, oslot, oprep, oname;
 } orphs_;
 
 #define orphs_1 orphs_
 
 struct {
-   integer lastit;
+   int lastit;
 } last_;
 
 #define last_1 last_
 
 struct {
-   integer act, o1, o2, p1, p2;
+   int act, o1, o2, p1, p2;
 } pv_;
 
 #define pv_1 pv_
 
 struct {
-   integer vflag, dobj, dfl1, dfl2, dfw1, dfw2, iobj, ifl1, ifl2, ifw1, ifw2;
+   int vflag, dobj, dfl1, dfl2, dfw1, dfw2, iobj, ifl1, ifl2, ifw1, ifw2;
 } syntax_;
 
 #define syntax_1 syntax_
 
 struct {
-   integer sdir, sind, sstd, sflip, sdriv, svmask;
+   int sdir, sind, sstd, sflip, sdriv, svmask;
 } synflg_;
 
 #define synflg_1 synflg_
 
 struct {
-   integer vabit, vrbit, vtbit, vcbit, vebit, vfbit, vpmask;
+   int vabit, vrbit, vtbit, vcbit, vebit, vfbit, vpmask;
 } objflg_;
 
 #define objflg_1 objflg_
 
 struct {
-   integer winner, here;
-   logical telflg;
+   int winner, here;
+   Bool telflg;
 } play_;
 
 #define play_1 play_
 
 struct {
-   integer moves, deaths, rwscor, mxscor, mxload, ltshft, bloc, mungrm, hs, egscor, egmxsc;
+   int moves, deaths, rwscor, mxscor, mxload, ltshft, bloc, mungrm, hs, egscor, egmxsc;
 } state_;
 
 #define state_1 state_
 
 struct {
-   integer batdrp[9];
+   int batdrp[9];
 } bats_;
 
 #define bats_1 bats_
 
 struct {
-   integer cpdr[16], cpwl[8], cpvec[64];
+   int cpdr[16], cpwl[8], cpvec[64];
 } puzzle_;
 
 #define puzzle_1 puzzle_
 
 struct {
-   integer rlnt, rdesc2, rdesc1[200], rexit[200], ractio[200], rval[200], rflag[200];
+   int rlnt, rdesc2, rdesc1[200], rexit[200], ractio[200], rval[200], rflag[200];
 } rooms_;
 
 #define rooms_1 rooms_
 
 struct {
-   integer rseen, rlight, rland, rwater, rair, rsacrd, rfill, rmung, rbuck, rhouse, rnwall, rend;
+   int rseen, rlight, rland, rwater, rair, rsacrd, rfill, rmung, rbuck, rhouse, rnwall, rend;
 } rflag_;
 
 #define rflag_1 rflag_
 
 struct {
-   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
+   int whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
 } rindex_;
 
 #define rindex_1 rindex_
 
 struct {
-   integer olnt, odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220]
+   int olnt, odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220]
    , oroom[220], oadv[220], ocan[220], oread[220];
 } objcts_;
 
 #define objcts_1 objcts_
 
 struct {
-   integer r2lnt, oroom2[20], rroom2[20];
+   int r2lnt, oroom2[20], rroom2[20];
 } oroom2_;
 
 #define oroom2_1 oroom2_
 
 struct {
-   integer visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
+   int visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 
 #define oflags_1 oflags_
 
 struct {
-   integer garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
+   int garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
 
 #define oindex_1 oindex_
 
 struct {
-   integer clnt, ctick[25], cactio[25];
-   logical cflag[25];
+   int clnt, ctick[25], cactio[25];
+   Bool cflag[25];
 } cevent_;
 
 #define cevent_1 cevent_
 
 struct {
-   integer cevcur, cevmnt, cevlnt, cevmat, cevcnd, cevbal, cevbrn, cevfus, cevled, cevsaf, cevvlg, cevgno, cevbuc, cevsph, cevegh, cevfor, cevscl, cevzgi, cevzgo, cevste, cevmrs, cevpin, cevinq, cevfol;
+   int cevcur, cevmnt, cevlnt, cevmat, cevcnd, cevbal, cevbrn, cevfus, cevled, cevsaf, cevvlg, cevgno, cevbuc, cevsph, cevegh, cevfor, cevscl, cevzgi, cevzgo, cevste, cevmrs, cevpin, cevinq, cevfol;
 } cindex_;
 
 #define cindex_1 cindex_
 
 struct {
-   integer alnt, aroom[4], ascore[4], avehic[4], aobj[4], aactio[4], astren[4], aflag[4];
+   int alnt, aroom[4], ascore[4], avehic[4], aobj[4], aactio[4], astren[4], aflag[4];
 } advs_;
 
 #define advs_1 advs_
 
 struct {
-   integer astag;
+   int astag;
 } aflags_;
 
 #define aflags_1 aflags_
 
 struct {
-   integer player, arobot, amastr;
+   int player, arobot, amastr;
 } aindex_;
 
 #define aindex_1 aindex_
 
 struct {
-   integer cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw, openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw, clmbuw, clmbdw, trntow;
+   int cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw, openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw, clmbuw, clmbdw, trntow;
 } vindex_;
 
 #define vindex_1 vindex_
 
 struct {
-   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
-   integer btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
+   Bool trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
+   int btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
 
 #define findex_1 findex_
 
-/* Table of constant values */
+// Table of constant values
 
-static integer c__6 = 6;
-static integer c__123 = 123;
-static integer c__124 = 124;
-static integer c__561 = 561;
-static integer c__525 = 525;
-static integer c__615 = 615;
-static integer c__297 = 297;
-static integer c__0 = 0;
-static integer c__612 = 612;
-static integer c__613 = 613;
-static integer c__614 = 614;
-static integer c__133 = 133;
-static integer c__296 = 296;
-static integer c__132 = 132;
-static integer c__158 = 158;
-static integer c__159 = 159;
-static integer c__2 = 2;
-static integer c__344 = 344;
-static integer c__160 = 160;
-static integer c__161 = 161;
-static integer c__169 = 169;
-static integer c__170 = 170;
-static integer c__171 = 171;
-static integer c__298 = 298;
-static integer c__172 = 172;
-static integer c__180 = 180;
-static integer c__181 = 181;
-static integer c__182 = 182;
-static integer c__208 = 208;
-static integer c__209 = 209;
-static integer c__228 = 228;
-static integer c__229 = 229;
-static integer c__50 = 50;
-static integer c__9 = 9;
-static integer c__244 = 244;
-static integer c__247 = 247;
-static integer c__633 = 633;
-static integer c__260 = 260;
-static integer c__100 = 100;
-static integer c__261 = 261;
-static integer c__263 = 263;
-static integer c__148 = 148;
-static integer c__264 = 264;
-static integer c__265 = 265;
-static integer c__269 = 269;
-static integer c__270 = 270;
-static integer c__272 = 272;
-static integer c__290 = 290;
-static integer c__291 = 291;
-static integer c__273 = 273;
-static integer c__280 = 280;
-static integer c__282 = 282;
-static integer c__283 = 283;
-static integer c__284 = 284;
-static integer c__150 = 150;
-static integer c__286 = 286;
-static integer c__287 = 287;
-static integer c__733 = 733;
-static integer c__685 = 685;
-static integer c__734 = 734;
-static integer c__730 = 730;
-static integer c__735 = 735;
-static integer c__736 = 736;
-static integer c__737 = 737;
-static integer c__738 = 738;
-static integer c__742 = 742;
-static integer c__743 = 743;
-static integer c__741 = 741;
-static integer c__744 = 744;
-static integer c__745 = 745;
-static integer c__746 = 746;
-static integer c__747 = 747;
-static integer c__748 = 748;
-static integer c__419 = 419;
-static integer c__865 = 865;
-static integer c__866 = 866;
-static integer c__867 = 867;
-static integer c__3 = 3;
+static int c__6 = 6;
+static int c__123 = 123;
+static int c__124 = 124;
+static int c__561 = 561;
+static int c__525 = 525;
+static int c__615 = 615;
+static int c__297 = 297;
+static int c__0 = 0;
+static int c__612 = 612;
+static int c__613 = 613;
+static int c__614 = 614;
+static int c__133 = 133;
+static int c__296 = 296;
+static int c__132 = 132;
+static int c__158 = 158;
+static int c__159 = 159;
+static int c__2 = 2;
+static int c__344 = 344;
+static int c__160 = 160;
+static int c__161 = 161;
+static int c__169 = 169;
+static int c__170 = 170;
+static int c__171 = 171;
+static int c__298 = 298;
+static int c__172 = 172;
+static int c__180 = 180;
+static int c__181 = 181;
+static int c__182 = 182;
+static int c__208 = 208;
+static int c__209 = 209;
+static int c__228 = 228;
+static int c__229 = 229;
+static int c__50 = 50;
+static int c__9 = 9;
+static int c__244 = 244;
+static int c__247 = 247;
+static int c__633 = 633;
+static int c__260 = 260;
+static int c__100 = 100;
+static int c__261 = 261;
+static int c__263 = 263;
+static int c__148 = 148;
+static int c__264 = 264;
+static int c__265 = 265;
+static int c__269 = 269;
+static int c__270 = 270;
+static int c__272 = 272;
+static int c__290 = 290;
+static int c__291 = 291;
+static int c__273 = 273;
+static int c__280 = 280;
+static int c__282 = 282;
+static int c__283 = 283;
+static int c__284 = 284;
+static int c__150 = 150;
+static int c__286 = 286;
+static int c__287 = 287;
+static int c__733 = 733;
+static int c__685 = 685;
+static int c__734 = 734;
+static int c__730 = 730;
+static int c__735 = 735;
+static int c__736 = 736;
+static int c__737 = 737;
+static int c__738 = 738;
+static int c__742 = 742;
+static int c__743 = 743;
+static int c__741 = 741;
+static int c__744 = 744;
+static int c__745 = 745;
+static int c__746 = 746;
+static int c__747 = 747;
+static int c__748 = 748;
+static int c__419 = 419;
+static int c__865 = 865;
+static int c__866 = 866;
+static int c__867 = 867;
+static int c__3 = 3;
 
-/* OAPPLI- OBJECT SPECIAL ACTION ROUTINES */
+// OAPPLI- OBJECT SPECIAL ACTION ROUTINES
 
-/* COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142 */
-/* ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED */
-/* WRITTEN BY R. M. SUPNIK */
+// COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
+// ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
+// WRITTEN BY R. M. SUPNIK
 
-/* DECLARATIONS */
+// DECLARATIONS
 
-logical oappli_(integer * ri, integer * arg) {
-/* Initialized data */
+Bool oappli_(int * ri, int * arg) {
+// Initialized data
 
-   static integer mxsmp = 99;
+   static int mxsmp = 99;
 
-/* System generated locals */
-   integer i__1;
-   logical ret_val;
+// System generated locals
+   int i__1;
+   Bool ret_val;
 
-/* Local variables */
-   static logical f;
-#define flags ((logical *)&findex_1)
-#define switch__ ((integer *)&findex_1 + 46)
-   static integer flobts, i__;
-   extern /* Subroutine */ int rspeak_(integer *), rspsub_(integer *, integer *), newsta_(integer *, integer *, integer *, integer *, integer *), jigsup_(integer *);
-   extern integer robadv_(integer *, integer *, integer *, integer *), robrm_(integer *, integer *, integer *, integer *, integer *);
-   static integer j, x, av, io, ir, iz;
-#define eqa ((integer *)&advs_1 + 1)
-#define eqc ((integer *)&cevent_1 + 1)
-   extern /* Subroutine */ int bug_(integer *, integer *);
-   extern integer rnd_(integer *);
-#define eqo ((integer *)&objcts_1 + 1)
-#define eqr ((integer *)&rooms_1 + 2)
-   extern logical lit_(integer *);
-#define orp ((integer *)&orphs_1)
-#define syn ((integer *)&syntax_1)
-   static integer odi2, odo2;
-#define pvec ((integer *)&pv_1)
-   static integer nloc;
-   extern logical qhere_(integer *, integer *);
-#define rrand ((integer *)&rooms_1 + 602)
-   extern logical nobjs_(integer *, integer *), sobjs_(integer *, integer *), clockd_(integer *);
-#define objvec ((integer *)&pv_1 + 1)
-   extern logical ballop_(integer *), rmdesc_(integer *), thiefp_(integer *), lightp_(integer *), cyclop_(integer *), opncls_(integer *, integer *, integer *);
-#define prpvec ((integer *)&pv_1 + 3)
-   extern logical moveto_(integer *, integer *), trollp_(integer *), qempty_(integer *);
+// Local variables
+   static Bool f;
+#define flags ((Bool *)&findex_1)
+#define switch__ ((int *)&findex_1 + 46)
+   static int flobts, i__;
+   extern Void rspeak_(int *), rspsub_(int *, int *), newsta_(int *, int *, int *, int *, int *), jigsup_(int *);
+   extern int robadv_(int *, int *, int *, int *), robrm_(int *, int *, int *, int *, int *);
+   static int j, x, av, io, ir, iz;
+#define eqa ((int *)&advs_1 + 1)
+#define eqc ((int *)&cevent_1 + 1)
+   extern Void bug_(int *, int *);
+   extern int rnd_(int *);
+#define eqo ((int *)&objcts_1 + 1)
+#define eqr ((int *)&rooms_1 + 2)
+   extern Bool lit_(int *);
+#define orp ((int *)&orphs_1)
+#define syn ((int *)&syntax_1)
+   static int odi2, odo2;
+#define pvec ((int *)&pv_1)
+   static int nloc;
+   extern Bool qhere_(int *, int *);
+#define rrand ((int *)&rooms_1 + 602)
+   extern Bool nobjs_(int *, int *), sobjs_(int *, int *), clockd_(int *);
+#define objvec ((int *)&pv_1 + 1)
+   extern Bool ballop_(int *), rmdesc_(int *), thiefp_(int *), lightp_(int *), cyclop_(int *), opncls_(int *, int *, int *);
+#define prpvec ((int *)&pv_1 + 3)
+   extern Bool moveto_(int *, int *), trollp_(int *), qempty_(int *);
 
-/* PARSER OUTPUT */
+// PARSER OUTPUT
 
-/* PARSER STATE */
+// PARSER STATE
 
-/* GAME STATE */
+// GAME STATE
 
-/* PUZZLE ROOM */
+// PUZZLE ROOM
 
-/* ROOMS */
+// ROOMS
 
-/* OBJECTS */
+// OBJECTS
 
-/* CLOCK INTERRUPTS */
+// CLOCK INTERRUPTS
 
-/* ADVENTURERS */
+// ADVENTURERS
 
-/* VERBS */
+// VERBS
 
-/* FUNCTIONS AND DATA */
+// FUNCTIONS AND DATA
 
-/* FLAGS */
+// FLAGS
 
-/* OAPPLI, PAGE 2 */
+// OAPPLI, PAGE 2
 
    if (*ri == 0) {
       goto L10;
    }
-/* 						!ZERO IS FALSE APP. */
+// 						!ZERO IS FALSE APP.
    if (*ri <= mxsmp) {
       goto L100;
    }
-/* 						!SIMPLE OBJECT? */
+// 						!SIMPLE OBJECT?
    if (prsvec_1.prso > 220) {
       goto L5;
    }
@@ -328,7 +328,7 @@ L5:
    }
    av = advs_1.avehic[play_1.winner - 1];
    flobts = oflags_1.flambt + oflags_1.litebt + oflags_1.onbt;
-   ret_val = TRUE_;
+   ret_val = true;
 
    switch (*ri - mxsmp) {
       case 1:
@@ -398,13 +398,13 @@ L5:
    }
    bug_(&c__6, ri);
 
-/* RETURN HERE TO DECLARE FALSE RESULT */
+// RETURN HERE TO DECLARE FALSE RESULT
 
 L10:
-   ret_val = FALSE_;
+   ret_val = false;
    return ret_val;
 
-/* SIMPLE OBJECTS, PROCESSED EXTERNALLY. */
+// SIMPLE OBJECTS, PROCESSED EXTERNALLY.
 
 L100:
    if (*ri < 32) {
@@ -414,32 +414,32 @@ L100:
       ret_val = nobjs_(ri, arg);
    }
    return ret_val;
-/* OAPPLI, PAGE 3 */
+// OAPPLI, PAGE 3
 
-/* O100--	MACHINE FUNCTION */
+// O100--	MACHINE FUNCTION
 
 L2000:
    if (play_1.here != rindex_1.mmach) {
       goto L10;
    }
-/* 						!NOT HERE? F */
+// 						!NOT HERE? F
    ret_val = opncls_(&oindex_1.machi, &c__123, &c__124);
-/* 						!HANDLE OPN/CLS. */
+// 						!HANDLE OPN/CLS.
    return ret_val;
 
-/* O101--	WATER FUNCTION */
+// O101--	WATER FUNCTION
 
 L5000:
    if (prsvec_1.prsa != vindex_1.fillw) {
       goto L5050;
    }
-/* 						!FILL X WITH Y IS */
+// 						!FILL X WITH Y IS
    prsvec_1.prsa = vindex_1.putw;
-/* 						!MADE INTO */
+// 						!MADE INTO
    i__ = prsvec_1.prsi;
    prsvec_1.prsi = prsvec_1.prso;
    prsvec_1.prso = i__;
-/* 						!PUT Y IN X. */
+// 						!PUT Y IN X.
    i__ = odi2;
    odi2 = odo2;
    odo2 = i__;
@@ -448,76 +448,76 @@ L5050:
       goto L5100;
    }
    rspeak_(&c__561);
-/* 						!WATER IS IND OBJ, */
+// 						!WATER IS IND OBJ,
    return ret_val;
-/* 						!PUNT. */
+// 						!PUNT.
 
 L5100:
    if (prsvec_1.prsa != vindex_1.takew) {
       goto L5400;
    }
-/* 						!TAKE WATER? */
+// 						!TAKE WATER?
    if (objcts_1.oadv[oindex_1.bottl - 1] == play_1.winner && objcts_1.ocan[prsvec_1.prso - 1] != oindex_1.bottl) {
       goto L5500;
    }
    if (objcts_1.ocan[prsvec_1.prso - 1] == 0) {
       goto L5200;
    }
-/* 						!INSIDE ANYTHING? */
+// 						!INSIDE ANYTHING?
    if ((objcts_1.oflag2[objcts_1.ocan[prsvec_1.prso - 1] - 1] & oflags_1.openbt) != 0) {
       goto L5200;
    }
-/* 						!YES, OPEN? */
+// 						!YES, OPEN?
    rspsub_(&c__525, &objcts_1.odesc2[objcts_1.ocan[prsvec_1.prso - 1] - 1]);
-/* 						!INSIDE, CLOSED, PUNT. */
+// 						!INSIDE, CLOSED, PUNT.
    return ret_val;
 
 L5200:
    rspeak_(&c__615);
-/* 						!NOT INSIDE OR OPEN, */
+// 						!NOT INSIDE OR OPEN,
    return ret_val;
-/* 						!SLIPS THRU FINGERS. */
+// 						!SLIPS THRU FINGERS.
 
 L5400:
    if (prsvec_1.prsa != vindex_1.putw) {
       goto L5700;
    }
-/* 						!PUT WATER IN X? */
+// 						!PUT WATER IN X?
    if (av != 0 && prsvec_1.prsi == av) {
       goto L5800;
    }
-/* 						!IN VEH? */
+// 						!IN VEH?
    if (prsvec_1.prsi == oindex_1.bottl) {
       goto L5500;
    }
-/* 						!IN BOTTLE? */
+// 						!IN BOTTLE?
    rspsub_(&c__297, &odi2);
-/* 						!WONT GO ELSEWHERE. */
+// 						!WONT GO ELSEWHERE.
    newsta_(&prsvec_1.prso, &c__0, &c__0, &c__0, &c__0);
-/* 						!VANISH WATER. */
+// 						!VANISH WATER.
    return ret_val;
 
 L5500:
    if ((objcts_1.oflag2[oindex_1.bottl - 1] & oflags_1.openbt) != 0) {
       goto L5550;
    }
-/* 						!BOTTLE OPEN? */
+// 						!BOTTLE OPEN?
    rspeak_(&c__612);
-/* 						!NO, LOSE. */
+// 						!NO, LOSE.
    return ret_val;
 
 L5550:
    if (qempty_(&oindex_1.bottl)) {
       goto L5600;
    }
-/* 						!OPEN, EMPTY? */
+// 						!OPEN, EMPTY?
    rspeak_(&c__613);
-/* 						!NO, ALREADY FULL. */
+// 						!NO, ALREADY FULL.
    return ret_val;
 
 L5600:
    newsta_(&oindex_1.water, &c__614, &c__0, &oindex_1.bottl, &c__0);
-/* 						!TAKE WATER TO BOTTLE. */
+// 						!TAKE WATER TO BOTTLE.
    return ret_val;
 
 L5700:
@@ -527,57 +527,57 @@ L5700:
    if (av != 0) {
       goto L5800;
    }
-/* 						!INTO VEHICLE? */
+// 						!INTO VEHICLE?
    newsta_(&prsvec_1.prso, &c__133, &c__0, &c__0, &c__0);
-/* 						!NO, VANISHES. */
+// 						!NO, VANISHES.
    return ret_val;
 
 L5800:
    newsta_(&oindex_1.water, &c__0, &c__0, &av, &c__0);
-/* 						!WATER INTO VEHICLE. */
+// 						!WATER INTO VEHICLE.
    rspsub_(&c__296, &objcts_1.odesc2[av - 1]);
-/* 						!DESCRIBE. */
+// 						!DESCRIBE.
    return ret_val;
 
 L5900:
    if (prsvec_1.prsa != vindex_1.throww) {
       goto L10;
    }
-/* 						!LAST CHANCE, THROW? */
+// 						!LAST CHANCE, THROW?
    newsta_(&prsvec_1.prso, &c__132, &c__0, &c__0, &c__0);
-/* 						!VANISHES. */
+// 						!VANISHES.
    return ret_val;
-/* OAPPLI, PAGE 4 */
+// OAPPLI, PAGE 4
 
-/* O102--	LEAF PILE */
+// O102--	LEAF PILE
 
 L10000:
    if (prsvec_1.prsa != vindex_1.burnw) {
       goto L10500;
    }
-/* 						!BURN? */
+// 						!BURN?
    if (objcts_1.oroom[prsvec_1.prso - 1] == 0) {
       goto L10100;
    }
-/* 						!WAS HE CARRYING? */
+// 						!WAS HE CARRYING?
    newsta_(&prsvec_1.prso, &c__158, &c__0, &c__0, &c__0);
-/* 						!NO, BURN IT. */
+// 						!NO, BURN IT.
    return ret_val;
 
 L10100:
    newsta_(&prsvec_1.prso, &c__0, &play_1.here, &c__0, &c__0);
-/* 						!DROP LEAVES. */
+// 						!DROP LEAVES.
    jigsup_(&c__159);
-/* 						!BURN HIM. */
+// 						!BURN HIM.
    return ret_val;
 
 L10500:
    if (prsvec_1.prsa != vindex_1.movew) {
       goto L10600;
    }
-/* 						!MOVE? */
+// 						!MOVE?
    rspeak_(&c__2);
-/* 						!DONE. */
+// 						!DONE.
    return ret_val;
 
 L10600:
@@ -585,27 +585,27 @@ L10600:
       goto L10;
    }
    rspeak_(&c__344);
-/* 						!LOOK UNDER? */
+// 						!LOOK UNDER?
    return ret_val;
 
-/* O103--	TROLL, DONE EXTERNALLY. */
+// O103--	TROLL, DONE EXTERNALLY.
 
 L11000:
    ret_val = trollp_(arg);
-/* 						!TROLL PROCESSOR. */
+// 						!TROLL PROCESSOR.
    return ret_val;
 
-/* O104--	RUSTY KNIFE. */
+// O104--	RUSTY KNIFE.
 
 L12000:
    if (prsvec_1.prsa != vindex_1.takew) {
       goto L12100;
    }
-/* 						!TAKE? */
+// 						!TAKE?
    if (objcts_1.oadv[oindex_1.sword - 1] == play_1.winner) {
       rspeak_(&c__160);
    }
-/* 						!PULSE SWORD. */
+// 						!PULSE SWORD.
    goto L10;
 
 L12100:
@@ -613,42 +613,42 @@ L12100:
       goto L10;
    }
    newsta_(&oindex_1.rknif, &c__0, &c__0, &c__0, &c__0);
-/* 						!KILL KNIFE. */
+// 						!KILL KNIFE.
    jigsup_(&c__161);
-/* 						!KILL HIM. */
+// 						!KILL HIM.
    return ret_val;
-/* OAPPLI, PAGE 5 */
+// OAPPLI, PAGE 5
 
-/* O105--	GLACIER */
+// O105--	GLACIER
 
 L15000:
    if (prsvec_1.prsa != vindex_1.throww) {
       goto L15500;
    }
-/* 						!THROW? */
+// 						!THROW?
    if (prsvec_1.prso != oindex_1.torch) {
       goto L15400;
    }
-/* 						!TORCH? */
+// 						!TORCH?
    newsta_(&oindex_1.ice, &c__169, &c__0, &c__0, &c__0);
-/* 						!MELT ICE. */
+// 						!MELT ICE.
    objcts_1.odesc1[oindex_1.torch - 1] = 174;
-/* 						!MUNG TORCH. */
+// 						!MUNG TORCH.
    objcts_1.odesc2[oindex_1.torch - 1] = 173;
    objcts_1.oflag1[oindex_1.torch - 1] &= ~flobts;
    newsta_(&oindex_1.torch, &c__0, &rindex_1.strea, &c__0, &c__0);
-/* 						!MOVE TORCH. */
-   findex_1.glacrf = TRUE_;
-/* 						!GLACIER GONE. */
+// 						!MOVE TORCH.
+   findex_1.glacrf = true;
+// 						!GLACIER GONE.
    if (!lit_(&play_1.here)) {
       rspeak_(&c__170);
    }
-/* 						!IN DARK? */
+// 						!IN DARK?
    return ret_val;
 
 L15400:
    rspeak_(&c__171);
-/* 						!JOKE IF NOT TORCH. */
+// 						!JOKE IF NOT TORCH.
    return ret_val;
 
 L15500:
@@ -659,41 +659,41 @@ L15500:
       goto L15600;
    }
    rspsub_(&c__298, &odi2);
-/* 						!CANT MELT WITH THAT. */
+// 						!CANT MELT WITH THAT.
    return ret_val;
 
 L15600:
-   findex_1.glacmf = TRUE_;
-/* 						!PARTIAL MELT. */
+   findex_1.glacmf = true;
+// 						!PARTIAL MELT.
    if (prsvec_1.prsi != oindex_1.torch) {
       goto L15700;
    }
-/* 						!MELT WITH TORCH? */
+// 						!MELT WITH TORCH?
    objcts_1.odesc1[oindex_1.torch - 1] = 174;
-/* 						!MUNG TORCH. */
+// 						!MUNG TORCH.
    objcts_1.odesc2[oindex_1.torch - 1] = 173;
    objcts_1.oflag1[oindex_1.torch - 1] &= ~flobts;
 L15700:
    jigsup_(&c__172);
-/* 						!DROWN. */
+// 						!DROWN.
    return ret_val;
 
-/* O106--	BLACK BOOK */
+// O106--	BLACK BOOK
 
 L18000:
    if (prsvec_1.prsa != vindex_1.openw) {
       goto L18100;
    }
-/* 						!OPEN? */
+// 						!OPEN?
    rspeak_(&c__180);
-/* 						!JOKE. */
+// 						!JOKE.
    return ret_val;
 
 L18100:
    if (prsvec_1.prsa != vindex_1.closew) {
       goto L18200;
    }
-/* 						!CLOSE? */
+// 						!CLOSE?
    rspeak_(&c__181);
    return ret_val;
 
@@ -701,54 +701,54 @@ L18200:
    if (prsvec_1.prsa != vindex_1.burnw) {
       goto L10;
    }
-/* 						!BURN? */
+// 						!BURN?
    newsta_(&prsvec_1.prso, &c__0, &c__0, &c__0, &c__0);
-/* 						!FATAL JOKE. */
+// 						!FATAL JOKE.
    jigsup_(&c__182);
    return ret_val;
-/* OAPPLI, PAGE 6 */
+// OAPPLI, PAGE 6
 
-/* O107--	CANDLES, PROCESSED EXTERNALLY */
+// O107--	CANDLES, PROCESSED EXTERNALLY
 
 L19000:
    ret_val = lightp_(&oindex_1.candl);
    return ret_val;
 
-/* O108--	MATCHES, PROCESSED EXTERNALLY */
+// O108--	MATCHES, PROCESSED EXTERNALLY
 
 L20000:
    ret_val = lightp_(&oindex_1.match);
    return ret_val;
 
-/* O109--	CYCLOPS, PROCESSED EXTERNALLY. */
+// O109--	CYCLOPS, PROCESSED EXTERNALLY.
 
 L22000:
    ret_val = cyclop_(arg);
-/* 						!CYCLOPS */
+// 						!CYCLOPS
    return ret_val;
 
-/* O110--	THIEF, PROCESSED EXTERNALLY */
+// O110--	THIEF, PROCESSED EXTERNALLY
 
 L25000:
    ret_val = thiefp_(arg);
    return ret_val;
 
-/* O111--	WINDOW */
+// O111--	WINDOW
 
 L26000:
    ret_val = opncls_(&oindex_1.windo, &c__208, &c__209);
-/* 						!OPEN/CLS WINDOW. */
+// 						!OPEN/CLS WINDOW.
    return ret_val;
 
-/* O112--	PILE OF BODIES */
+// O112--	PILE OF BODIES
 
 L32000:
    if (prsvec_1.prsa != vindex_1.takew) {
       goto L32500;
    }
-/* 						!TAKE? */
+// 						!TAKE?
    rspeak_(&c__228);
-/* 						!CANT. */
+// 						!CANT.
    return ret_val;
 
 L32500:
@@ -758,152 +758,152 @@ L32500:
    if (findex_1.onpolf) {
       return ret_val;
    }
-/* 						!BURN OR MUNG? */
-   findex_1.onpolf = TRUE_;
-/* 						!SET HEAD ON POLE. */
+// 						!BURN OR MUNG?
+   findex_1.onpolf = true;
+// 						!SET HEAD ON POLE.
    newsta_(&oindex_1.hpole, &c__0, &rindex_1.lld2, &c__0, &c__0);
    jigsup_(&c__229);
-/* 						!BEHEADED. */
+// 						!BEHEADED.
    return ret_val;
 
-/* O113--	VAMPIRE BAT */
+// O113--	VAMPIRE BAT
 
 L35000:
    rspeak_(&c__50);
-/* 						!TIME TO FLY, JACK. */
+// 						!TIME TO FLY, JACK.
    f = moveto_(&bats_1.batdrp[rnd_(&c__9)], &play_1.winner);
-/* 						!SELECT RANDOM DEST. */
+// 						!SELECT RANDOM DEST.
    f = rmdesc_(&c__0);
    return ret_val;
-/* OAPPLI, PAGE 7 */
+// OAPPLI, PAGE 7
 
-/* O114--	STICK */
+// O114--	STICK
 
 L39000:
    if (prsvec_1.prsa != vindex_1.wavew) {
       goto L10;
    }
-/* 						!WAVE? */
+// 						!WAVE?
    if (play_1.here == rindex_1.mrain) {
       goto L39500;
    }
-/* 						!ON RAINBOW? */
+// 						!ON RAINBOW?
    if (play_1.here == rindex_1.pog || play_1.here == rindex_1.falls) {
       goto L39200;
    }
    rspeak_(&c__244);
-/* 						!NOTHING HAPPENS. */
+// 						!NOTHING HAPPENS.
    return ret_val;
 
 L39200:
    objcts_1.oflag1[oindex_1.pot - 1] |= oflags_1.visibt;
    findex_1.rainbf = !findex_1.rainbf;
-/* 						!COMPLEMENT RAINBOW. */
+// 						!COMPLEMENT RAINBOW.
    i__ = 245;
-/* 						!ASSUME OFF. */
+// 						!ASSUME OFF.
    if (findex_1.rainbf) {
       i__ = 246;
    }
-/* 						!IF ON, SOLID. */
+// 						!IF ON, SOLID.
    rspeak_(&i__);
-/* 						!DESCRIBE. */
+// 						!DESCRIBE.
    return ret_val;
 
 L39500:
-   findex_1.rainbf = FALSE_;
-/* 						!ON RAINBOW, */
+   findex_1.rainbf = false;
+// 						!ON RAINBOW,
    jigsup_(&c__247);
-/* 						!TAKE A FALL. */
+// 						!TAKE A FALL.
    return ret_val;
 
-/* O115--	BALLOON, HANDLED EXTERNALLY */
+// O115--	BALLOON, HANDLED EXTERNALLY
 
 L40000:
    ret_val = ballop_(arg);
    return ret_val;
 
-/* O116--	HEADS */
+// O116--	HEADS
 
 L45000:
    if (prsvec_1.prsa != vindex_1.hellow) {
       goto L45100;
    }
-/* 						!HELLO HEADS? */
+// 						!HELLO HEADS?
    rspeak_(&c__633);
-/* 						!TRULY BIZARRE. */
+// 						!TRULY BIZARRE.
    return ret_val;
 
 L45100:
    if (prsvec_1.prsa == vindex_1.readw) {
       goto L10;
    }
-/* 						!READ IS OK. */
+// 						!READ IS OK.
    newsta_(&oindex_1.lcase, &c__260, &rindex_1.lroom, &c__0, &c__0);
-/* 						!MAKE LARGE CASE. */
+// 						!MAKE LARGE CASE.
    i__ = robadv_(&play_1.winner, &c__0, &oindex_1.lcase, &c__0) + robrm_(&play_1.here, &c__100, &c__0, &oindex_1.lcase, &c__0);
    jigsup_(&c__261);
-/* 						!KILL HIM. */
+// 						!KILL HIM.
    return ret_val;
-/* OAPPLI, PAGE 8 */
+// OAPPLI, PAGE 8
 
-/* O117--	SPHERE */
+// O117--	SPHERE
 
 L47000:
    if (findex_1.cagesf || prsvec_1.prsa != vindex_1.takew) {
       goto L10;
    }
-/* 						!TAKE? */
+// 						!TAKE?
    if (play_1.winner != aindex_1.player) {
       goto L47500;
    }
-/* 						!ROBOT TAKE? */
+// 						!ROBOT TAKE?
    rspeak_(&c__263);
-/* 						!NO, DROP CAGE. */
+// 						!NO, DROP CAGE.
    if (objcts_1.oroom[oindex_1.robot - 1] != play_1.here) {
       goto L47200;
    }
-/* 						!ROBOT HERE? */
+// 						!ROBOT HERE?
    f = moveto_(&rindex_1.caged, &play_1.winner);
-/* 						!YES, MOVE INTO CAGE. */
+// 						!YES, MOVE INTO CAGE.
    newsta_(&oindex_1.robot, &c__0, &rindex_1.caged, &c__0, &c__0);
-/* 						!MOVE ROBOT. */
+// 						!MOVE ROBOT.
    advs_1.aroom[aindex_1.arobot - 1] = rindex_1.caged;
    objcts_1.oflag1[oindex_1.robot - 1] |= oflags_1.ndscbt;
    cevent_1.ctick[cindex_1.cevsph - 1] = 10;
-/* 						!GET OUT IN 10 OR ELSE. */
+// 						!GET OUT IN 10 OR ELSE.
    return ret_val;
 
 L47200:
    newsta_(&oindex_1.spher, &c__0, &c__0, &c__0, &c__0);
-/* 						!YOURE DEAD. */
+// 						!YOURE DEAD.
    rooms_1.rflag[rindex_1.cager - 1] |= rflag_1.rmung;
    rrand[rindex_1.cager - 1] = 147;
    jigsup_(&c__148);
-/* 						!MUNG PLAYER. */
+// 						!MUNG PLAYER.
    return ret_val;
 
 L47500:
    newsta_(&oindex_1.spher, &c__0, &c__0, &c__0, &c__0);
-/* 						!ROBOT TRIED, */
+// 						!ROBOT TRIED,
    newsta_(&oindex_1.robot, &c__264, &c__0, &c__0, &c__0);
-/* 						!KILL HIM. */
+// 						!KILL HIM.
    newsta_(&oindex_1.cage, &c__0, &play_1.here, &c__0, &c__0);
-/* 						!INSERT MANGLED CAGE. */
+// 						!INSERT MANGLED CAGE.
    return ret_val;
 
-/* O118--	GEOMETRICAL BUTTONS */
+// O118--	GEOMETRICAL BUTTONS
 
 L48000:
    if (prsvec_1.prsa != vindex_1.pushw) {
       goto L10;
    }
-/* 						!PUSH? */
+// 						!PUSH?
    i__ = prsvec_1.prso - oindex_1.sqbut + 1;
-/* 						!GET BUTTON INDEX. */
+// 						!GET BUTTON INDEX.
    if (i__ <= 0 || i__ >= 4) {
       goto L10;
    }
-/* 						!A BUTTON? */
+// 						!A BUTTON?
    if (play_1.winner != aindex_1.player) {
       switch (i__) {
          case 1:
@@ -915,7 +915,7 @@ L48000:
       }
    }
    jigsup_(&c__265);
-/* 						!YOU PUSHED, YOU DIE. */
+// 						!YOU PUSHED, YOU DIE.
    return ret_val;
 
 L48100:
@@ -923,132 +923,132 @@ L48100:
    if (findex_1.carozf) {
       i__ = 266;
    }
-/* 						!SPEED UP? */
-   findex_1.carozf = TRUE_;
+// 						!SPEED UP?
+   findex_1.carozf = true;
    rspeak_(&i__);
    return ret_val;
 
 L48200:
    i__ = 266;
-/* 						!ASSUME NO CHANGE. */
+// 						!ASSUME NO CHANGE.
    if (findex_1.carozf) {
       i__ = 268;
    }
-   findex_1.carozf = FALSE_;
+   findex_1.carozf = false;
    rspeak_(&i__);
    return ret_val;
 
 L48300:
    findex_1.caroff = !findex_1.caroff;
-/* 						!FLIP CAROUSEL. */
+// 						!FLIP CAROUSEL.
    if (!qhere_(&oindex_1.irbox, &rindex_1.carou)) {
       return ret_val;
    }
-/* 						!IRON BOX IN CAROUSEL? */
+// 						!IRON BOX IN CAROUSEL?
    rspeak_(&c__269);
-/* 						!YES, THUMP. */
+// 						!YES, THUMP.
    objcts_1.oflag1[oindex_1.irbox - 1] ^= oflags_1.visibt;
    if (findex_1.caroff) {
       rooms_1.rflag[rindex_1.carou - 1] &= ~rflag_1.rseen;
    }
    return ret_val;
 
-/* O119--	FLASK FUNCTION */
+// O119--	FLASK FUNCTION
 
 L49000:
    if (prsvec_1.prsa == vindex_1.openw) {
       goto L49100;
    }
-/* 						!OPEN? */
+// 						!OPEN?
    if (prsvec_1.prsa != vindex_1.mungw && prsvec_1.prsa != vindex_1.throww) {
       goto L10;
    }
    newsta_(&oindex_1.flask, &c__270, &c__0, &c__0, &c__0);
-/* 						!KILL FLASK. */
+// 						!KILL FLASK.
 L49100:
    rooms_1.rflag[play_1.here - 1] |= rflag_1.rmung;
    rrand[play_1.here - 1] = 271;
    jigsup_(&c__272);
-/* 						!POISONED. */
+// 						!POISONED.
    return ret_val;
 
-/* O120--	BUCKET FUNCTION */
+// O120--	BUCKET FUNCTION
 
 L50000:
    if (*arg != 2) {
       goto L10;
    }
-/* 						!READOUT? */
+// 						!READOUT?
    if (objcts_1.ocan[oindex_1.water - 1] != oindex_1.bucke || findex_1.bucktf) {
       goto L50500;
    }
-   findex_1.bucktf = TRUE_;
-/* 						!BUCKET AT TOP. */
+   findex_1.bucktf = true;
+// 						!BUCKET AT TOP.
    cevent_1.ctick[cindex_1.cevbuc - 1] = 100;
-/* 						!START COUNTDOWN. */
+// 						!START COUNTDOWN.
    newsta_(&oindex_1.bucke, &c__290, &rindex_1.twell, &c__0, &c__0);
-/* 						!REPOSITION BUCKET. */
+// 						!REPOSITION BUCKET.
    goto L50900;
-/* 						!FINISH UP. */
+// 						!FINISH UP.
 
 L50500:
    if (objcts_1.ocan[oindex_1.water - 1] == oindex_1.bucke || !findex_1.bucktf) {
       goto L10;
    }
-   findex_1.bucktf = FALSE_;
+   findex_1.bucktf = false;
    newsta_(&oindex_1.bucke, &c__291, &rindex_1.bwell, &c__0, &c__0);
-/* 						!BUCKET AT BOTTOM. */
+// 						!BUCKET AT BOTTOM.
 L50900:
    if (av != oindex_1.bucke) {
       return ret_val;
    }
-/* 						!IN BUCKET? */
+// 						!IN BUCKET?
    f = moveto_(&objcts_1.oroom[oindex_1.bucke - 1], &play_1.winner);
-/* 						!MOVE ADVENTURER. */
+// 						!MOVE ADVENTURER.
    f = rmdesc_(&c__0);
-/* 						!DESCRIBE ROOM. */
+// 						!DESCRIBE ROOM.
    return ret_val;
-/* OAPPLI, PAGE 9 */
+// OAPPLI, PAGE 9
 
-/* O121--	EATME CAKE */
+// O121--	EATME CAKE
 
 L51000:
    if (prsvec_1.prsa != vindex_1.eatw || prsvec_1.prso != oindex_1.ecake || play_1.here != rindex_1.alice) {
       goto L10;
    }
    newsta_(&oindex_1.ecake, &c__273, &c__0, &c__0, &c__0);
-/* 						!VANISH CAKE. */
+// 						!VANISH CAKE.
    objcts_1.oflag1[oindex_1.robot - 1] &= ~oflags_1.visibt;
    ret_val = moveto_(&rindex_1.alism, &play_1.winner);
-/* 						!MOVE TO ALICE SMALL. */
+// 						!MOVE TO ALICE SMALL.
    iz = 64;
    ir = rindex_1.alism;
    io = rindex_1.alice;
    goto L52405;
 
-/* O122--	ICINGS */
+// O122--	ICINGS
 
 L52000:
    if (prsvec_1.prsa != vindex_1.readw) {
       goto L52200;
    }
-/* 						!READ? */
+// 						!READ?
    i__ = 274;
-/* 						!CANT READ. */
+// 						!CANT READ.
    if (prsvec_1.prsi != 0) {
       i__ = 275;
    }
-/* 						!THROUGH SOMETHING? */
+// 						!THROUGH SOMETHING?
    if (prsvec_1.prsi == oindex_1.bottl) {
       i__ = 276;
    }
-/* 						!THROUGH BOTTLE? */
+// 						!THROUGH BOTTLE?
    if (prsvec_1.prsi == oindex_1.flask) {
       i__ = prsvec_1.prso - oindex_1.orice + 277;
    }
-/* 						!THROUGH FLASK? */
+// 						!THROUGH FLASK?
    rspeak_(&i__);
-/* 						!READ FLASK. */
+// 						!READ FLASK.
    return ret_val;
 
 L52200:
@@ -1056,7 +1056,7 @@ L52200:
       goto L52300;
    }
    newsta_(&oindex_1.pool, &c__280, &c__0, &c__0, &c__0);
-/* 						!VANISH POOL. */
+// 						!VANISH POOL.
    objcts_1.oflag1[oindex_1.saffr - 1] |= oflags_1.visibt;
    return ret_val;
 
@@ -1068,11 +1068,11 @@ L52300:
       goto L52400;
    }
    newsta_(&oindex_1.orice, &c__0, &c__0, &c__0, &c__0);
-/* 						!VANISH ORANGE ICE. */
+// 						!VANISH ORANGE ICE.
    rooms_1.rflag[play_1.here - 1] |= rflag_1.rmung;
    rrand[play_1.here - 1] = 281;
    jigsup_(&c__282);
-/* 						!VANISH ADVENTURER. */
+// 						!VANISH ADVENTURER.
    return ret_val;
 
 L52400:
@@ -1080,23 +1080,23 @@ L52400:
       goto L10;
    }
    newsta_(&oindex_1.blice, &c__283, &c__0, &c__0, &c__0);
-/* 						!VANISH BLUE ICE. */
+// 						!VANISH BLUE ICE.
    if (play_1.here != rindex_1.alism) {
       goto L52500;
    }
-/* 						!IN REDUCED ROOM? */
+// 						!IN REDUCED ROOM?
    objcts_1.oflag1[oindex_1.robot - 1] |= oflags_1.visibt;
    io = play_1.here;
    ret_val = moveto_(&rindex_1.alice, &play_1.winner);
    iz = 0;
    ir = rindex_1.alice;
 
-/*  Do a size change, common loop used also by code at 51000 */
+//  Do a size change, common loop used also by code at 51000
 
 L52405:
    i__1 = objcts_1.olnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
-/* 						!ENLARGE WORLD. */
+// 						!ENLARGE WORLD.
       if (objcts_1.oroom[i__ - 1] != io || objcts_1.osize[i__ - 1] == 10000) {
          goto L52450;
       }
@@ -1109,39 +1109,39 @@ L52405:
 
 L52500:
    jigsup_(&c__284);
-/* 						!ENLARGED IN WRONG ROOM. */
+// 						!ENLARGED IN WRONG ROOM.
    return ret_val;
 
-/* O123--	BRICK */
+// O123--	BRICK
 
 L54000:
    if (prsvec_1.prsa != vindex_1.burnw) {
       goto L10;
    }
-/* 						!BURN? */
+// 						!BURN?
    jigsup_(&c__150);
-/* 						!BOOM */
-/* 						! */
+// 						!BOOM
+// 						!
    return ret_val;
 
-/* O124--	MYSELF */
+// O124--	MYSELF
 
 L55000:
    if (prsvec_1.prsa != vindex_1.givew) {
       goto L55100;
    }
-/* 						!GIVE? */
+// 						!GIVE?
    newsta_(&prsvec_1.prso, &c__2, &c__0, &c__0, &aindex_1.player);
-/* 						!DONE. */
+// 						!DONE.
    return ret_val;
 
 L55100:
    if (prsvec_1.prsa != vindex_1.takew) {
       goto L55200;
    }
-/* 						!TAKE? */
+// 						!TAKE?
    rspeak_(&c__286);
-/* 						!JOKE. */
+// 						!JOKE.
    return ret_val;
 
 L55200:
@@ -1149,232 +1149,232 @@ L55200:
       goto L10;
    }
    jigsup_(&c__287);
-/* 						!KILL, NO JOKE. */
+// 						!KILL, NO JOKE.
    return ret_val;
-/* OAPPLI, PAGE 10 */
+// OAPPLI, PAGE 10
 
-/* O125--	PANELS INSIDE MIRROR */
+// O125--	PANELS INSIDE MIRROR
 
 L56000:
    if (prsvec_1.prsa != vindex_1.pushw) {
       goto L10;
    }
-/* 						!PUSH? */
+// 						!PUSH?
    if (findex_1.poleuf != 0) {
       goto L56100;
    }
-/* 						!SHORT POLE UP? */
+// 						!SHORT POLE UP?
    i__ = 731;
-/* 						!NO, WONT BUDGE. */
+// 						!NO, WONT BUDGE.
    if (findex_1.mdir % 180 == 0) {
       i__ = 732;
    }
-/* 						!DIFF MSG IF N-S. */
+// 						!DIFF MSG IF N-S.
    rspeak_(&i__);
-/* 						!TELL WONT MOVE. */
+// 						!TELL WONT MOVE.
    return ret_val;
 
 L56100:
    if (findex_1.mloc != rindex_1.mrg) {
       goto L56200;
    }
-/* 						!IN GDN ROOM? */
+// 						!IN GDN ROOM?
    rspeak_(&c__733);
-/* 						!YOU LOSE. */
+// 						!YOU LOSE.
    jigsup_(&c__685);
    return ret_val;
 
 L56200:
    i__ = 831;
-/* 						!ROTATE L OR R. */
+// 						!ROTATE L OR R.
    if (prsvec_1.prso == oindex_1.rdwal || prsvec_1.prso == oindex_1.ylwal) {
       i__ = 830;
    }
    rspeak_(&i__);
-/* 						!TELL DIRECTION. */
+// 						!TELL DIRECTION.
    findex_1.mdir = (findex_1.mdir + 45 + (i__ - 830) * 270) % 360;
-/* 						!CALCULATE NEW DIR. */
+// 						!CALCULATE NEW DIR.
    i__1 = findex_1.mdir / 45 + 695;
    rspsub_(&c__734, &i__1);
-/* 						!TELL NEW DIR. */
+// 						!TELL NEW DIR.
    if (findex_1.wdopnf) {
       rspeak_(&c__730);
    }
-/* 						!IF PANEL OPEN, CLOSE. */
-   findex_1.wdopnf = FALSE_;
+// 						!IF PANEL OPEN, CLOSE.
+   findex_1.wdopnf = false;
    return ret_val;
-/* 						!DONE. */
+// 						!DONE.
 
-/* O126--	ENDS INSIDE MIRROR */
+// O126--	ENDS INSIDE MIRROR
 
 L57000:
    if (prsvec_1.prsa != vindex_1.pushw) {
       goto L10;
    }
-/* 						!PUSH? */
+// 						!PUSH?
    if (findex_1.mdir % 180 == 0) {
       goto L57100;
    }
-/* 						!MIRROR N-S? */
+// 						!MIRROR N-S?
    rspeak_(&c__735);
-/* 						!NO, WONT BUDGE. */
+// 						!NO, WONT BUDGE.
    return ret_val;
 
 L57100:
    if (prsvec_1.prso != oindex_1.pindr) {
       goto L57300;
    }
-/* 						!PUSH PINE WALL? */
+// 						!PUSH PINE WALL?
    if (findex_1.mloc == rindex_1.mrc && findex_1.mdir == 180 || findex_1.mloc == rindex_1.mrd && findex_1.mdir == 0 || findex_1.mloc == rindex_1.mrg) {
       goto L57200;
    }
    rspeak_(&c__736);
-/* 						!NO, OPENS. */
-   findex_1.wdopnf = TRUE_;
-/* 						!INDICATE OPEN. */
-   cevent_1.cflag[cindex_1.cevpin - 1] = TRUE_;
-/* 						!TIME OPENING. */
+// 						!NO, OPENS.
+   findex_1.wdopnf = true;
+// 						!INDICATE OPEN.
+   cevent_1.cflag[cindex_1.cevpin - 1] = true;
+// 						!TIME OPENING.
    cevent_1.ctick[cindex_1.cevpin - 1] = 5;
    return ret_val;
 
 L57200:
    rspeak_(&c__737);
-/* 						!GDN SEES YOU, DIE. */
+// 						!GDN SEES YOU, DIE.
    jigsup_(&c__685);
    return ret_val;
 
 L57300:
    nloc = findex_1.mloc - 1;
-/* 						!NEW LOC IF SOUTH. */
+// 						!NEW LOC IF SOUTH.
    if (findex_1.mdir == 0) {
       nloc = findex_1.mloc + 1;
    }
-/* 						!NEW LOC IF NORTH. */
+// 						!NEW LOC IF NORTH.
    if (nloc >= rindex_1.mra && nloc <= rindex_1.mrd) {
       goto L57400;
    }
    rspeak_(&c__738);
-/* 						!HAVE REACHED END. */
+// 						!HAVE REACHED END.
    return ret_val;
 
 L57400:
    i__ = 699;
-/* 						!ASSUME SOUTH. */
+// 						!ASSUME SOUTH.
    if (findex_1.mdir == 0) {
       i__ = 695;
    }
-/* 						!NORTH. */
+// 						!NORTH.
    j = 739;
-/* 						!ASSUME SMOOTH. */
+// 						!ASSUME SMOOTH.
    if (findex_1.poleuf != 0) {
       j = 740;
    }
-/* 						!POLE UP, WOBBLES. */
+// 						!POLE UP, WOBBLES.
    rspsub_(&j, &i__);
-/* 						!DESCRIBE. */
+// 						!DESCRIBE.
    findex_1.mloc = nloc;
    if (findex_1.mloc != rindex_1.mrg) {
       return ret_val;
    }
-/* 						!NOW IN GDN ROOM? */
+// 						!NOW IN GDN ROOM?
 
    if (findex_1.poleuf != 0) {
       goto L57500;
    }
-/* 						!POLE UP, GDN SEES. */
+// 						!POLE UP, GDN SEES.
    if (findex_1.mropnf || findex_1.wdopnf) {
       goto L57600;
    }
-/* 						!DOOR OPEN, GDN SEES. */
+// 						!DOOR OPEN, GDN SEES.
    if (findex_1.mr1f && findex_1.mr2f) {
       return ret_val;
    }
-/* 						!MIRRORS INTACT, OK. */
+// 						!MIRRORS INTACT, OK.
    rspeak_(&c__742);
-/* 						!MIRRORS BROKEN, DIE. */
+// 						!MIRRORS BROKEN, DIE.
    jigsup_(&c__743);
    return ret_val;
 
 L57500:
    rspeak_(&c__741);
-/* 						!POLE UP, DIE. */
+// 						!POLE UP, DIE.
    jigsup_(&c__743);
    return ret_val;
 
 L57600:
    rspeak_(&c__744);
-/* 						!DOOR OPEN, DIE. */
+// 						!DOOR OPEN, DIE.
    jigsup_(&c__743);
    return ret_val;
-/* OAPPLI, PAGE 11 */
+// OAPPLI, PAGE 11
 
-/* O127--	GLOBAL GUARDIANS */
+// O127--	GLOBAL GUARDIANS
 
 L58000:
    if (prsvec_1.prsa != vindex_1.attacw && prsvec_1.prsa != vindex_1.killw && prsvec_1.prsa != vindex_1.mungw) {
       goto L58100;
    }
    jigsup_(&c__745);
-/* 						!LOSE. */
+// 						!LOSE.
    return ret_val;
 
 L58100:
    if (prsvec_1.prsa != vindex_1.hellow) {
       goto L10;
    }
-/* 						!HELLO? */
+// 						!HELLO?
    rspeak_(&c__746);
-/* 						!NO REPLY. */
+// 						!NO REPLY.
    return ret_val;
 
-/* O128--	GLOBAL MASTER */
+// O128--	GLOBAL MASTER
 
 L59000:
    if (prsvec_1.prsa != vindex_1.attacw && prsvec_1.prsa != vindex_1.killw && prsvec_1.prsa != vindex_1.mungw) {
       goto L59100;
    }
    jigsup_(&c__747);
-/* 						!BAD IDEA. */
+// 						!BAD IDEA.
    return ret_val;
 
 L59100:
    if (prsvec_1.prsa != vindex_1.takew) {
       goto L10;
    }
-/* 						!TAKE? */
+// 						!TAKE?
    rspeak_(&c__748);
-/* 						!JOKE. */
+// 						!JOKE.
    return ret_val;
 
-/* O129--	NUMERAL FIVE (FOR JOKE) */
+// O129--	NUMERAL FIVE (FOR JOKE)
 
 L60000:
    if (prsvec_1.prsa != vindex_1.takew) {
       goto L10;
    }
-/* 						!TAKE FIVE? */
+// 						!TAKE FIVE?
    rspeak_(&c__419);
-/* 						!TIME PASSES. */
+// 						!TIME PASSES.
    for (i__ = 1; i__ <= 3; ++i__) {
-/* 						!WAIT A WHILE. */
+// 						!WAIT A WHILE.
       if (clockd_(&x)) {
          return ret_val;
       }
-/* L60100: */
+// L60100:
    }
    return ret_val;
 
-/* O130--	CRYPT FUNCTION */
+// O130--	CRYPT FUNCTION
 
 L61000:
    if (!findex_1.endgmf) {
       goto L45000;
    }
-/* 						!IF NOT EG, DIE. */
+// 						!IF NOT EG, DIE.
    if (prsvec_1.prsa != vindex_1.openw) {
       goto L61100;
    }
-/* 						!OPEN? */
+// 						!OPEN?
    i__ = 793;
    if ((objcts_1.oflag2[oindex_1.tomb - 1] & oflags_1.openbt) != 0) {
       i__ = 794;
@@ -1387,7 +1387,7 @@ L61100:
    if (prsvec_1.prsa != vindex_1.closew) {
       goto L45000;
    }
-/* 						!CLOSE? */
+// 						!CLOSE?
    i__ = 795;
    if ((objcts_1.oflag2[oindex_1.tomb - 1] & oflags_1.openbt) != 0) {
       i__ = 796;
@@ -1397,18 +1397,18 @@ L61100:
    if (play_1.here == rindex_1.crypt) {
       cevent_1.ctick[cindex_1.cevste - 1] = 3;
    }
-/* 						!IF IN CRYPT, START EG. */
+// 						!IF IN CRYPT, START EG.
    return ret_val;
-/* OAPPLI, PAGE 12 */
+// OAPPLI, PAGE 12
 
-/* O131--	GLOBAL LADDER */
+// O131--	GLOBAL LADDER
 
 L62000:
    if (puzzle_1.cpvec[findex_1.cphere] == -2 || puzzle_1.cpvec[findex_1.cphere - 2] == -3) {
       goto L62100;
    }
    rspeak_(&c__865);
-/* 						!NO, LOSE. */
+// 						!NO, LOSE.
    return ret_val;
 
 L62100:
@@ -1416,7 +1416,7 @@ L62100:
       goto L62200;
    }
    rspeak_(&c__866);
-/* 						!CLIMB IT? */
+// 						!CLIMB IT?
    return ret_val;
 
 L62200:
@@ -1424,17 +1424,17 @@ L62200:
       goto L62300;
    }
    rspeak_(&c__867);
-/* 						!NO, HIT YOUR HEAD. */
+// 						!NO, HIT YOUR HEAD.
    return ret_val;
 
 L62300:
    f = moveto_(&rindex_1.cpant, &play_1.winner);
-/* 						!TO ANTEROOM. */
+// 						!TO ANTEROOM.
    f = rmdesc_(&c__3);
-/* 						!DESCRIBE. */
+// 						!DESCRIBE.
    return ret_val;
 
-} /* oappli_ */
+}
 
 #undef prpvec
 #undef objvec

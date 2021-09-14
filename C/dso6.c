@@ -1,65 +1,65 @@
 #include "F2C.h"
 
-/* Common Block Declarations */
+// Common Block Declarations
 
 struct {
-   integer rlnt, rdesc2, rdesc1[200], rexit[200], ractio[200], rval[200], rflag[200];
+   int rlnt, rdesc2, rdesc1[200], rexit[200], ractio[200], rval[200], rflag[200];
 } rooms_;
 
 #define rooms_1 rooms_
 
 struct {
-   integer rseen, rlight, rland, rwater, rair, rsacrd, rfill, rmung, rbuck, rhouse, rnwall, rend;
+   int rseen, rlight, rland, rwater, rair, rsacrd, rfill, rmung, rbuck, rhouse, rnwall, rend;
 } rflag_;
 
 #define rflag_1 rflag_
 
 struct {
-   integer whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
+   int whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
 } rindex_;
 
 #define rindex_1 rindex_
 
 struct {
-   integer mbase, strbit;
+   int mbase, strbit;
 } star_;
 
 #define star_1 star_
 
 struct {
-   logical trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
-   integer btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
+   Bool trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
+   int btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
 
 #define findex_1 findex_
 
-/* Table of constant values */
+// Table of constant values
 
-static integer c__60 = 60;
+static int c__60 = 60;
 
-/* GHERE--	IS GLOBAL ACTUALLY IN THIS ROOM? */
+// GHERE--	IS GLOBAL ACTUALLY IN THIS ROOM?
 
-/* COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142 */
-/* ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED */
-/* WRITTEN BY R. M. SUPNIK */
+// COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
+// ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
+// WRITTEN BY R. M. SUPNIK
 
-/* DECLARATIONS */
+// DECLARATIONS
 
-logical ghere_(integer * obj, integer * rm) {
-/* System generated locals */
-   logical ret_val;
+Bool ghere_(int * obj, int * rm) {
+// System generated locals
+   Bool ret_val;
 
-/* Local variables */
-   extern /* Subroutine */ int bug_(integer *, integer *);
-#define eqr ((integer *)&rooms_1 + 2)
-#define rrand ((integer *)&rooms_1 + 602)
+// Local variables
+   extern Void bug_(int *, int *);
+#define eqr ((int *)&rooms_1 + 2)
+#define rrand ((int *)&rooms_1 + 602)
 
-/* ROOMS */
+// ROOMS
 
-/* GHERE, PAGE 2 */
+// GHERE, PAGE 2
 
-   ret_val = TRUE_;
-/* 						!ASSUME WINS. */
+   ret_val = true;
+// 						!ASSUME WINS.
    switch (*obj - star_1.strbit) {
       case 1:
          goto L1000;
@@ -114,115 +114,115 @@ logical ghere_(integer * obj, integer * rm) {
    }
    bug_(&c__60, obj);
 
-/* 1000--	STARS ARE ALWAYS HERE */
+// 1000--	STARS ARE ALWAYS HERE
 
 L1000:
    return ret_val;
 
-/* 2000--	BIRD */
+// 2000--	BIRD
 
 L2000:
    ret_val = *rm >= rindex_1.fore1 && *rm < rindex_1.clear || *rm == rindex_1.mtree;
    return ret_val;
 
-/* 3000--	TREE */
+// 3000--	TREE
 
 L3000:
    ret_val = *rm >= rindex_1.fore1 && *rm < rindex_1.clear && *rm != rindex_1.fore3;
    return ret_val;
 
-/* 4000--	NORTH WALL */
+// 4000--	NORTH WALL
 
 L4000:
    ret_val = *rm >= rindex_1.bkvw && *rm <= rindex_1.bkbox || *rm == rindex_1.cpuzz;
    return ret_val;
 
-/* 5000--	EAST, SOUTH, WEST WALLS */
+// 5000--	EAST, SOUTH, WEST WALLS
 
 L5000:
    ret_val = *rm >= rindex_1.bkvw && *rm < rindex_1.bkbox || *rm == rindex_1.cpuzz;
    return ret_val;
 
-/* 6000--	GLOBAL WATER */
+// 6000--	GLOBAL WATER
 
 L6000:
    ret_val = (rooms_1.rflag[*rm - 1] & rflag_1.rwater + rflag_1.rfill) != 0;
    return ret_val;
 
-/* 7000--	GLOBAL GUARDIANS */
+// 7000--	GLOBAL GUARDIANS
 
 L7000:
    ret_val = *rm >= rindex_1.mrc && *rm <= rindex_1.mrd || *rm >= rindex_1.mrce && *rm <= rindex_1.mrdw || *rm == rindex_1.inmir;
    return ret_val;
 
-/* 8000--	ROSE/CHANNEL */
+// 8000--	ROSE/CHANNEL
 
 L8000:
    ret_val = *rm >= rindex_1.mra && *rm <= rindex_1.mrd || *rm == rindex_1.inmir;
    return ret_val;
 
-/* 9000--	MIRROR */
-/* 9100		PANEL */
+// 9000--	MIRROR
+// 9100		PANEL
 
 L9100:
    if (*rm == rindex_1.fdoor) {
       return ret_val;
    }
-/* 						!PANEL AT FDOOR. */
+// 						!PANEL AT FDOOR.
 L9000:
    ret_val = *rm >= rindex_1.mra && *rm <= rindex_1.mrc || *rm >= rindex_1.mrae && *rm <= rindex_1.mrcw;
    return ret_val;
 
-/* 10000--	MASTER */
+// 10000--	MASTER
 
 L10000:
    ret_val = *rm == rindex_1.fdoor || *rm == rindex_1.ncorr || *rm == rindex_1.parap || *rm == rindex_1.cell;
    return ret_val;
 
-/* 11000--	LADDER */
+// 11000--	LADDER
 
 L11000:
    ret_val = *rm == rindex_1.cpuzz;
    return ret_val;
 
-} /* ghere_ */
+}
 
 #undef rrand
 #undef eqr
 
-/* MRHERE--	IS MIRROR HERE? */
+// MRHERE--	IS MIRROR HERE?
 
-/* DECLARATIONS */
+// DECLARATIONS
 
-integer mrhere_(integer * rm) {
-/* System generated locals */
-   integer ret_val, i__1;
+int mrhere_(int * rm) {
+// System generated locals
+   int ret_val, i__1;
 
-/* Local variables */
-#define flags ((logical *)&findex_1)
-#define switch__ ((integer *)&findex_1 + 46)
+// Local variables
+#define flags ((Bool *)&findex_1)
+#define switch__ ((int *)&findex_1 + 46)
 
-/* ROOMS */
+// ROOMS
 
-/* MRHERE, PAGE 2 */
+// MRHERE, PAGE 2
 
-/* FLAGS */
+// FLAGS
 
    if (*rm < rindex_1.mrae || *rm > rindex_1.mrdw) {
       goto L100;
    }
 
-/* RM IS AN E-W ROOM, MIRROR MUST BE N-S (MDIR= 0 OR 180) */
+// RM IS AN E-W ROOM, MIRROR MUST BE N-S (MDIR= 0 OR 180)
 
    ret_val = 1;
-/* 						!ASSUME MIRROR 1 HERE. */
+// 						!ASSUME MIRROR 1 HERE.
    if ((*rm - rindex_1.mrae) % 2 == findex_1.mdir / 180) {
       ret_val = 2;
    }
    return ret_val;
 
-/* RM IS NORTH OR SOUTH OF MIRROR.  IF MIRROR IS N-S OR NOT */
-/* WITHIN ONE ROOM OF RM, LOSE. */
+// RM IS NORTH OR SOUTH OF MIRROR.  IF MIRROR IS N-S OR NOT
+// WITHIN ONE ROOM OF RM, LOSE.
 
 L100:
    ret_val = 0;
@@ -230,14 +230,14 @@ L100:
       return ret_val;
    }
 
-/* RM IS WITHIN ONE OF MLOC, AND MDIR IS E-W */
+// RM IS WITHIN ONE OF MLOC, AND MDIR IS E-W
 
    ret_val = 1;
    if (*rm < findex_1.mloc && findex_1.mdir < 180 || *rm > findex_1.mloc && findex_1.mdir > 180) {
       ret_val = 2;
    }
    return ret_val;
-} /* mrhere_ */
+}
 
 #undef switch__
 #undef flags
