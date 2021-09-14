@@ -21,6 +21,7 @@ which has been changed to
 
 with the system "f2c.h" directly added here and internalized as "F2C.h", where it will be whittled away.
 The system-dependent part of the original "f2c.h" has already been removed from "F2C.h", since it's not used anywhere.
+Most of the ‟Fortran”-isms have also been removed from "F2C.h" and rendered in native C.
 
 Unused Variables
 ────────────────
