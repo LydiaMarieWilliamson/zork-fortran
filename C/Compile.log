@@ -1,0 +1,132 @@
+The results for the first run of ‟Makefile”.
+
+Undefined Functions
+───────────────────
+rtim.c:		itime_()
+
+// Unlisted Common Blocks
+// ━━━━━━━━━━━━━━━━━━━━━━
+star_:		[demons dinit dmain dso6 dverb1 gdt np2 np3 verbs]
+vers_:		[dinit dmain dverb2 sverbs]
+hyper_:		[dinit dmain dso7 nobjs]
+bats_:		[dmain objcts rooms]
+time_:		[dinit dso5 dverb2]
+random_:	[rtim]
+
+// Mixed Common Blocks
+// ━━━━━━━━━━━━━━━━━━━
+// io.h
+// ────
+input_:		dgame dinit dmain dsub gdt np nrooms sverbs
+chan_:		dgame dinit dmain [dso2 dso3 dso7] dsub gdt np nrooms sverbs
+
+// parser.h
+// ────────
+prsvec_:	actors ballop blkdata demons dgame dinit dmain dso4 dso5 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 np nrooms objcts rooms sobjs sverbs verbs villns
+orphs_:		actors ballop blkdata demons dgame dinit dmain dso4 dso5 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 [np] nrooms objcts rooms sobjs sverbs verbs villns
+last_:		actors ballop blkdata demons dgame dinit dmain dso4 dso5 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 np nrooms objcts rooms sobjs sverbs verbs villns
+C
+pv_:		actors ballop blkdata demons dgame dinit dmain dso4 dso5 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 np nrooms objcts rooms sobjs sverbs verbs villns
+syntax_:	actors ballop blkdata demons dgame dinit dmain dso4 dso5 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 np nrooms objcts rooms sobjs sverbs verbs villns
+synflg_:	actors ballop blkdata demons dgame dinit dmain dso4 dso5 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 np nrooms objcts rooms sobjs sverbs verbs villns
+objflg_:	actors ballop blkdata demons dgame dinit dmain dso4 dso5 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 np nrooms objcts rooms sobjs sverbs verbs villns
+
+// puzzle.h
+// ────────
+puzzle_:	dmain [dso7] dverb2 gdt nobjs [objcts]
+
+// screen.h
+// ────────
+screen_:	dinit dmain dsub dverb2 gdt nobjs [rooms] sverbs
+
+// Listed Common Blocks
+// ━━━━━━━━━━━━━━━━━━━━
+// advers.h
+// ────────
+advs_:		actors blkdata clockr demons dgame dinit dmain dso1 dso2 dso4 dso5 dsub dverb1 dverb2 gdt nobjs np1 np2 np3 nrooms objcts rooms sobjs sverbs verbs
+aflags_:	actors blkdata clockr demons dgame dinit dmain dso1 dso2 dso4 dso5 dsub dverb1 dverb2 gdt nobjs np1 np2 np3 nrooms objcts rooms sobjs sverbs verbs
+aindex_:	actors blkdata clockr demons dgame dinit dmain dso1 dso2 dso4 dso5 dsub dverb1 dverb2 gdt nobjs np1 np2 np3 nrooms objcts rooms sobjs sverbs verbs
+
+// clock.h
+// ───────
+cevent_:	actors ballop clockr demons dinit dmain dso2 dverb2 gdt lightp nobjs nrooms objcts rooms sobjs sverbs verbs villns
+cindex_:	actors ballop clockr demons dinit dmain dso2 dverb2 gdt lightp nobjs nrooms objcts rooms sobjs sverbs verbs villns
+
+// curxt.h
+// ───────
+curxt_:		ballop clockr demons dinit dmain dso3 dverb2 sverbs
+
+// debug.h
+// ───────
+debug_:		actors blkdata dinit dmain dsub gdt np1 np2 np3 np
+
+// exits.h
+// ───────
+exits_:		dinit dmain dso3 dverb2 gdt sverbs
+
+// flags.h
+// ───────
+findex_:	actors ballop clockr demons dgame dinit dmain dso1 dso2 dso4 dso6 dso7 dsub dverb2 gdt lightp nobjs nrooms objcts rooms sobjs sverbs villns
+
+// gamestat.h
+// ──────────
+play_:		actors ballop blkdata clockr demons dgame dinit dmain dso1 dso2 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 nrooms objcts rooms sobjs sverbs verbs villns
+
+// mindex.h
+// ────────
+rmsg_:		dinit dsub gdt
+
+// objects.h
+// ─────────
+objcts_:	actors ballop blkdata clockr demons dgame dinit dmain dso1 dso2 dso3 dso4 dso5 dso7 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 nrooms objcts rooms sobjs sverbs verbs villns
+oroom2_:	actors ballop blkdata clockr demons dgame dinit dmain dso1 dso2 dso3 dso4 dso5 dso7 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 nrooms objcts rooms sobjs sverbs verbs villns
+
+// oflags.h
+// ────────
+oflags_:	actors ballop clockr demons dgame dmain dso1 dso3 dso4 dso5 dso7 dsub dverb1 dverb2 lightp nobjs np2 np3 nrooms objcts rooms sobjs sverbs verbs villns
+
+// oindex.h
+// ────────
+oindex_:	actors ballop blkdata clockr demons dgame dinit dmain dso1 dso2 dso4 dsub dverb2 gdt lightp nobjs np1 nrooms objcts rooms sobjs sverbs verbs villns
+
+// rflag.h
+// ───────
+rflag_:		actors ballop clockr dinit dmain dso1 dso2 dso5 dso6 dso7 dsub dverb2 nobjs nrooms objcts rooms sobjs sverbs verbs
+
+// rindex.h
+// ────────
+rindex_:	actors clockr demons dgame dinit dmain dso6 dso7 dsub dverb1 dverb2 gdt nobjs nrooms objcts rooms sobjs sverbs verbs villns
+
+// rooms.h
+// ───────
+rooms_:		actors ballop clockr dgame dinit dmain dso1 dso2 dso3 dso5 dso6 dso7 dsub dverb2 gdt nobjs nrooms objcts rooms sobjs sverbs verbs
+
+// state.h
+// ───────
+state_:		ballop clockr dgame dinit dmain dso2 dso4 dsub dverb1 dverb2 gdt nobjs np3 nrooms objcts rooms sobjs sverbs verbs
+
+// verbs.h
+// ───────
+vindex_:	actors ballop blkdata demons dgame dmain dso5 dsub dverb1 lightp nobjs np1 nrooms objcts rooms sobjs sverbs verbs villns
+
+// villians.h
+// ──────────
+hack_:		actors clockr demons dgame dinit dmain dso4 dverb2 gdt nobjs rooms sobjs villns
+vill_:		actors clockr demons dgame dinit dmain dso4 dverb2 gdt nobjs rooms sobjs villns
+
+// vocab.h
+// ───────
+buzvoc_:	blkdata np1 np2 np3
+prpvoc_:	blkdata np1 np2 np3
+dirvoc_:	blkdata np1 np2 np3
+adjvoc_:	blkdata np1 np2 np3
+vrbvoc_:	blkdata np1 np2 np3
+objvoc_:	blkdata np1 np2 np3
+
+// xpars.h
+// ───────
+xpars_:		ballop dinit dmain dso3 dverb2 sverbs
+
+// xsrch.h
+// ───────
+xsrch_:		actors clockr demons dmain dsub dverb2 np nrooms sverbs verbs
