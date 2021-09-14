@@ -20,13 +20,25 @@ struct {
 
 #define random_1 random_
 
+#if 1
+//(@) Cheat, cheat! We make a ‟fallback” using a hack from the other repository.
+#include <time.h>
+void ITime_(int HMS[3]) {
+   time_t Now; time(&Now);
+   struct tm *HereNow = localtime(&Now);
+   HMS[0] = HereNow->tm_hour, HMS[1] = HereNow->tm_min, HMS[2] = HereNow->tm_sec;
+}
+#else
+extern /* Subroutine */ int itime_(integer *);
+#   define ITime_(HMS) (itime_(HMS))
+#endif
+
 /* Subroutine */ int intime_(integer * hours, integer * minutes, integer *
    seconds) {
-   extern /* Subroutine */ int itime_(integer *);
    static integer tarray[3];
 
 /* 	CALL GETTIM(HOURS, MINUTES, SECONDS, HUNDREDTHS) */
-   itime_(tarray);
+   ITime_(tarray);
    *hours = tarray[0];
    *minutes = tarray[1];
    *seconds = tarray[2];

@@ -1,3 +1,11 @@
+This is a translation in progress into C of the Fortran source code in this archive,
+carried out with the aid of version 20190311 of f2c.
+
+A separate translation to C had been earlier done in 1991, using a less-developed version of f2c.
+It is being used as a guide and cross-check for this translation.
+
+History
+───────
 2021/09/14	The raw translation of the Fortran source into C, using f2c (version 20190311).
 		Common Blocks are translated incorrectly and #include's are inserted in-line.
 		All of that has to be fixed and undone.
@@ -5,3 +13,4 @@
 2021/09/14	A first Makefile has been added.
 		This assumes that the f2c library and the include file ‟f2c.h” have been installed
 		The file ‟Compile.log” contains some of the details provided by the first run of ‟make”.
+2021/09/14	The undefined function itime_() has been resolved with a ‟fallback” function ITime_().
