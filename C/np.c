@@ -2,7 +2,7 @@
 
 // Common Block Declarations
 
-struct {
+extern struct {
    int prsa, prsi, prso;
    Bool prswon;
    int prscon;
@@ -10,7 +10,7 @@ struct {
 
 #define prsvec_1 prsvec_
 
-union {
+extern union {
    struct {
       int oflag, oact, oslot, oprep, oname;
    } _1;
@@ -22,56 +22,56 @@ union {
 #define orphs_1 (orphs_._1)
 #define orphs_2 (orphs_._2)
 
-struct {
+extern struct {
    int lastit;
 } last_;
 
 #define last_1 last_
 
-struct {
+extern struct {
    int act, o1, o2, p1, p2;
 } pv_;
 
 #define pv_1 pv_
 
-struct {
+extern struct {
    int vflag, dobj, dfl1, dfl2, dfw1, dfw2, iobj, ifl1, ifl2, ifw1, ifw2;
 } syntax_;
 
 #define syntax_1 syntax_
 
-struct {
+extern struct {
    int sdir, sind, sstd, sflip, sdriv, svmask;
 } synflg_;
 
 #define synflg_1 synflg_
 
-struct {
+extern struct {
    int vabit, vrbit, vtbit, vcbit, vebit, vfbit, vpmask;
 } objflg_;
 
 #define objflg_1 objflg_
 
-struct {
+extern struct {
    int inlnt;
    char inbuf[78];
 } input_;
 
 #define input_1 input_
 
-struct {
+extern struct {
    int inpch, outch, dbch;
 } chan_;
 
 #define chan_1 chan_
 
-struct {
+extern struct {
    int dbgflg, prsflg, gdtflg;
 } debug_;
 
 #define debug_1 debug_
 
-struct {
+extern struct {
    int xmin, xmax, xdown, xup, xnorth, xsouth, xenter, xexit, xeast, xwest;
 } xsrch_;
 

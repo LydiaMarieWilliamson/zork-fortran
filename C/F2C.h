@@ -1,5 +1,5 @@
-#ifndef OnceOnlyF2C
-#define OnceOnlyF2C
+#ifndef OnceOnlyF2C_h
+#define OnceOnlyF2C_h
 
 // Based on f2c.h: The Standard Fortran to C header file.
 #include <stdbool.h>

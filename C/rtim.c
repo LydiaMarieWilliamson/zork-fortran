@@ -2,7 +2,7 @@
 
 // Common Block Declarations
 
-struct {
+extern struct {
    int seedy;
 } random_;
 

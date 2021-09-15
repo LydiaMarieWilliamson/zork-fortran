@@ -2,7 +2,7 @@
 
 // Common Block Declarations
 
-struct {
+extern struct {
    int prsa, prsi, prso;
    Bool prswon;
    int prscon;
@@ -10,117 +10,117 @@ struct {
 
 #define prsvec_1 prsvec_
 
-struct {
+extern struct {
    int oflag, oact, oslot, oprep, oname;
 } orphs_;
 
 #define orphs_1 orphs_
 
-struct {
+extern struct {
    int lastit;
 } last_;
 
 #define last_1 last_
 
-struct {
+extern struct {
    int act, o1, o2, p1, p2;
 } pv_;
 
 #define pv_1 pv_
 
-struct {
+extern struct {
    int vflag, dobj, dfl1, dfl2, dfw1, dfw2, iobj, ifl1, ifl2, ifw1, ifw2;
 } syntax_;
 
 #define syntax_1 syntax_
 
-struct {
+extern struct {
    int sdir, sind, sstd, sflip, sdriv, svmask;
 } synflg_;
 
 #define synflg_1 synflg_
 
-struct {
+extern struct {
    int vabit, vrbit, vtbit, vcbit, vebit, vfbit, vpmask;
 } objflg_;
 
 #define objflg_1 objflg_
 
-struct {
+extern struct {
    int winner, here;
    Bool telflg;
 } play_;
 
 #define play_1 play_
 
-struct {
+extern struct {
    int dbgflg, prsflg, gdtflg;
 } debug_;
 
 #define debug_1 debug_
 
-struct {
+extern struct {
    int olnt, odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220]
    , oroom[220], oadv[220], ocan[220], oread[220];
 } objcts_;
 
 #define objcts_1 objcts_
 
-struct {
+extern struct {
    int r2lnt, oroom2[20], rroom2[20];
 } oroom2_;
 
 #define oroom2_1 oroom2_
 
-struct {
+extern struct {
    int garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
 
 #define oindex_1 oindex_
 
-struct {
+extern struct {
    int alnt, aroom[4], ascore[4], avehic[4], aobj[4], aactio[4], astren[4], aflag[4];
 } advs_;
 
 #define advs_1 advs_
 
-struct {
+extern struct {
    int astag;
 } aflags_;
 
 #define aflags_1 aflags_
 
-struct {
+extern struct {
    int player, arobot, amastr;
 } aindex_;
 
 #define aindex_1 aindex_
 
-struct {
+extern struct {
    int cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw, openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw, clmbuw, clmbdw, trntow;
 } vindex_;
 
 #define vindex_1 vindex_
 
-struct {
+extern struct {
    int bvoc[20];
 } buzvoc_;
 
 #define buzvoc_1 buzvoc_
 
-struct {
+extern struct {
    int pvoc[45];
 } prpvoc_;
 
 #define prpvoc_1 prpvoc_
 
-struct {
+extern struct {
    int dvoc[75];
 } dirvoc_;
 
 #define dirvoc_1 dirvoc_
 
-union {
+extern union {
    struct {
       int avoc1[184], avoc2[114], avoc3[106], avocnd;
    } _1;
@@ -132,7 +132,7 @@ union {
 #define adjvoc_1 (adjvoc_._1)
 #define adjvoc_2 (adjvoc_._2)
 
-union {
+extern union {
    struct {
       int vvoc1[92], vvoc1a[108], vvoc1b[38], vvoc2[104], vvoc3[136], vvoc4[116], vvoc5[134], vvoc6[117], vvoc7[89], vvocnd;
    } _1;
@@ -144,7 +144,7 @@ union {
 #define vrbvoc_1 (vrbvoc_._1)
 #define vrbvoc_2 (vrbvoc_._2)
 
-union {
+extern union {
    struct {
       int ovoc1[159], ovoc2[144], ovoc3[150], ovoc4[128], ovoc5[111], ovoc6[104], ovoc6a[97], ovoc7[127], ovocnd;
    } _1;

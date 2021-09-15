@@ -1,7 +1,7 @@
 The results for the first run of ‟Makefile”.
 
-Undefined Functions (Resolved)
-──────────────────────────────
+// Undefined Functions (Resolved)
+// ──────────────────────────────
 rtim.c:		itime_()
 
 // Unlisted Common Blocks
@@ -130,3 +130,12 @@ xpars_:		ballop dinit dmain dso3 dverb2 sverbs
 // xsrch.h
 // ───────
 xsrch_:		actors clockr demons dmain dsub dverb2 np nrooms sverbs verbs
+
+The results for the second run of ‟Makefile”.
+
+Duplicate Definitions:
+∙	In blkdata.c, common.c:
+	buzvoc_, prpvoc_, dirvoc_, adjvoc_, vrbvoc_, objvoc_
+∙	In dmain.c, common.c:
+	synflg_, objflg_, screen_, puzzle_, vers_, bats_, hyper_, rflag_, rindex_,
+	xpars_, xsrch_, oflags_, oindex_, cindex_, aflags_, aindex_, vindex_,

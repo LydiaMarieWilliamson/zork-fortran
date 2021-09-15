@@ -2,50 +2,50 @@
 
 // Common Block Declarations
 
-struct {
+extern struct {
    int olnt, odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220]
    , oroom[220], oadv[220], ocan[220], oread[220];
 } objcts_;
 
 #define objcts_1 objcts_
 
-struct {
+extern struct {
    int r2lnt, oroom2[20], rroom2[20];
 } oroom2_;
 
 #define oroom2_1 oroom2_
 
-struct {
+extern struct {
    int visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 
 #define oflags_1 oflags_
 
-struct {
+extern struct {
    int moves, deaths, rwscor, mxscor, mxload, ltshft, bloc, mungrm, hs, egscor, egmxsc;
 } state_;
 
 #define state_1 state_
 
-struct {
+extern struct {
    int alnt, aroom[4], ascore[4], avehic[4], aobj[4], aactio[4], astren[4], aflag[4];
 } advs_;
 
 #define advs_1 advs_
 
-struct {
+extern struct {
    int astag;
 } aflags_;
 
 #define aflags_1 aflags_
 
-struct {
+extern struct {
    int player, arobot, amastr;
 } aindex_;
 
 #define aindex_1 aindex_
 
-struct {
+extern struct {
    int prsa, prsi, prso;
    Bool prswon;
    int prscon;
@@ -53,49 +53,49 @@ struct {
 
 #define prsvec_1 prsvec_
 
-struct {
+extern struct {
    int oflag, oact, oslot, oprep, oname;
 } orphs_;
 
 #define orphs_1 orphs_
 
-struct {
+extern struct {
    int lastit;
 } last_;
 
 #define last_1 last_
 
-struct {
+extern struct {
    int act, o1, o2, p1, p2;
 } pv_;
 
 #define pv_1 pv_
 
-struct {
+extern struct {
    int vflag, dobj, dfl1, dfl2, dfw1, dfw2, iobj, ifl1, ifl2, ifw1, ifw2;
 } syntax_;
 
 #define syntax_1 syntax_
 
-struct {
+extern struct {
    int sdir, sind, sstd, sflip, sdriv, svmask;
 } synflg_;
 
 #define synflg_1 synflg_
 
-struct {
+extern struct {
    int vabit, vrbit, vtbit, vcbit, vebit, vfbit, vpmask;
 } objflg_;
 
 #define objflg_1 objflg_
 
-struct {
+extern struct {
    int garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
 
 #define oindex_1 oindex_
 
-struct {
+extern struct {
    int thfpos;
    Bool thfflg, thfact, swdact;
    int swdsta;
@@ -103,13 +103,13 @@ struct {
 
 #define hack_1 hack_
 
-struct {
+extern struct {
    int vlnt, villns[4], vprob[4], vopps[4], vbest[4], vmelee[4];
 } vill_;
 
 #define vill_1 vill_
 
-struct {
+extern struct {
    Bool trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
    int btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;

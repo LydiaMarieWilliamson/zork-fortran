@@ -2,7 +2,7 @@
 
 // Common Block Declarations
 
-struct {
+extern struct {
    int prsa, prsi, prso;
    Bool prswon;
    int prscon;
@@ -10,25 +10,25 @@ struct {
 
 #define prsvec_1 prsvec_
 
-struct {
+extern struct {
    int oflag, oact, oslot, oprep, oname;
 } orphs_;
 
 #define orphs_1 orphs_
 
-struct {
+extern struct {
    int lastit;
 } last_;
 
 #define last_1 last_
 
-struct {
+extern struct {
    int act, o1, o2, p1, p2;
 } pv_;
 
 #define pv_1 pv_
 
-struct {
+extern struct {
    int vflag, dobj, dfl1, dfl2, dfw1, dfw2, iobj, ifl1, ifl2, ifw1, ifw2;
 } syntax_;
 
@@ -46,14 +46,14 @@ struct objflg_1_ {
 
 #define objflg_1 (*(struct objflg_1_ *) &objflg_)
 
-struct {
+extern struct {
    int winner, here;
    Bool telflg;
 } play_;
 
 #define play_1 play_
 
-struct {
+extern struct {
    int moves, deaths, rwscor, mxscor, mxload, ltshft, bloc, mungrm, hs, egscor, egmxsc;
 } state_;
 
@@ -71,7 +71,7 @@ struct puzzle_1_ {
 
 #define puzzle_1 (*(struct puzzle_1_ *) &puzzle_)
 
-struct {
+extern struct {
    int mbase, strbit;
 } star_;
 
@@ -90,20 +90,20 @@ struct bats_1_ {
 
 #define bats_1 (*(struct bats_1_ *) &bats_)
 
-struct {
+extern struct {
    int inlnt;
    char inbuf[78];
 } input_;
 
 #define input_1 input_
 
-struct {
+extern struct {
    int inpch, outch, dbch;
 } chan_;
 
 #define chan_1 chan_
 
-struct {
+extern struct {
    int dbgflg, prsflg, gdtflg;
 } debug_;
 
@@ -115,7 +115,7 @@ struct hyper_1_ {
 
 #define hyper_1 (*(struct hyper_1_ *) &hyper_)
 
-struct {
+extern struct {
    int rlnt, rdesc2, rdesc1[200], rexit[200], ractio[200], rval[200], rflag[200];
 } rooms_;
 
@@ -133,13 +133,13 @@ struct rindex_1_ {
 
 #define rindex_1 (*(struct rindex_1_ *) &rindex_)
 
-struct {
+extern struct {
    int xlnt, travel[900];
 } exits_;
 
 #define exits_1 exits_
 
-struct {
+extern struct {
    int xtype, xroom1, xstrng, xactio, xobj;
 } curxt_;
 
@@ -157,14 +157,14 @@ struct xsrch_1_ {
 
 #define xsrch_1 (*(struct xsrch_1_ *) &xsrch_)
 
-struct {
+extern struct {
    int olnt, odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220]
    , oroom[220], oadv[220], ocan[220], oread[220];
 } objcts_;
 
 #define objcts_1 objcts_
 
-struct {
+extern struct {
    int r2lnt, oroom2[20], rroom2[20];
 } oroom2_;
 
@@ -182,7 +182,7 @@ struct oindex_1_ {
 
 #define oindex_1 (*(struct oindex_1_ *) &oindex_)
 
-struct {
+extern struct {
    int clnt, ctick[25], cactio[25];
    Bool cflag[25];
 } cevent_;
@@ -195,7 +195,7 @@ struct cindex_1_ {
 
 #define cindex_1 (*(struct cindex_1_ *) &cindex_)
 
-struct {
+extern struct {
    int thfpos;
    Bool thfflg, thfact, swdact;
    int swdsta;
@@ -203,13 +203,13 @@ struct {
 
 #define hack_1 hack_
 
-struct {
+extern struct {
    int vlnt, villns[4], vprob[4], vopps[4], vbest[4], vmelee[4];
 } vill_;
 
 #define vill_1 vill_
 
-struct {
+extern struct {
    int alnt, aroom[4], ascore[4], avehic[4], aobj[4], aactio[4], astren[4], aflag[4];
 } advs_;
 
@@ -233,7 +233,7 @@ struct vindex_1_ {
 
 #define vindex_1 (*(struct vindex_1_ *) &vindex_)
 
-struct {
+extern struct {
    Bool trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
    int btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
