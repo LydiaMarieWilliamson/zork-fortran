@@ -225,7 +225,7 @@ Bool synmch_(void) {
 
    ret_val = false;
 // D	DFLAG=IAND(PRSFLG, 16).NE.0
-/* D	if(DFLAG)write(0,*) 'synflags=',sdir,sind,sstd,sflip,sdriv,svmask */
+// D	if(DFLAG)write(0,*) 'synflags=',sdir,sind,sstd,sflip,sdriv,svmask
    j = pv_1.act;
 // 						!SET UP PTR TO SYNTAX.
    drive = 0;

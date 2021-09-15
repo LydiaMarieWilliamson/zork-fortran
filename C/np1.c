@@ -263,7 +263,7 @@ int sparse_(int * lbuf, int * llnt, Bool * vbflag) {
       lbuf1 = lbuf[i__];
 // 						!GET CURRENT TOKEN.
       lbuf2 = lbuf[i__ + 1];
-/* D	  if(DFLAG) write(0,*) 'lbuf1=',lbuf1,' lbuf2=',lbuf2 */
+// D	  if(DFLAG) write(0,*) 'lbuf1=',lbuf1,' lbuf2=',lbuf2
       if (lbuf1 == 0) {
          goto L1500;
       }
@@ -435,7 +435,7 @@ int sparse_(int * lbuf, int * llnt, Bool * vbflag) {
       orphs_1.oact = 0;
 // D	IF(DFLAG) PRINT 20,J
 // D20	FORMAT(' SPARSE- ACT AT ',I6)
-/* D	if(dflag) write(0,*) 'count=',vvoc(j+2),' vnr=',vvoc(j+3) */
+// D	if(dflag) write(0,*) 'count=',vvoc(j+2),' vnr=',vvoc(j+3)
       goto L1000;
 
 // 4000--	PREPOSITION
@@ -565,7 +565,7 @@ L1750:
 // 						!WIN.
 // D	IF(DFLAG) PRINT 70,ACT,O1,O2,P1,P2
 // D70	FORMAT(' SPARSE RESULTS- ',5I7)
-/* D	if(dflag) write(0,*) 'sparse=',sparse */
+// D	if(dflag) write(0,*) 'sparse=',sparse
    return ret_val;
 // 						!LOSE.
 

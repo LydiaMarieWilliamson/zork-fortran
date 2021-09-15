@@ -366,7 +366,8 @@ struct {
 // ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 // WRITTEN BY R. M. SUPNIK
 
-/* Main program */ int MAIN__(void) {
+// Main program
+int MAIN__(void) {
    static int x;
    extern Void game_(void);
    extern Bool init_(int *);
@@ -424,7 +425,8 @@ struct {
 
 // FLAGS
 
-/* Main program alias */ int dungeo_() {
+// Main program alias
+int dungeo_() {
    MAIN__();
    return 0;
 }

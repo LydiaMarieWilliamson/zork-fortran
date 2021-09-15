@@ -258,7 +258,7 @@ L300:
 L350:
    orphan_(&c__0, &c__0, &c__0, &c__0, &c__0);
 // 						!CLEAR ORPHANS.
-/* D	if(dflag) write(0,*) 'parse good' */
+// D	if(dflag) write(0,*) 'parse good'
 // D	IF(DFLAG) PRINT 10,PARSE,PRSA,PRSO,PRSI
 // D10	FORMAT(' PARSE RESULTS- ',L7,3I7)
    return ret_val;
@@ -267,7 +267,7 @@ L350:
 
 L100:
    prsvec_1.prscon = 1;
-/* D	if(dflag) write(0,*) 'parse failed' */
+// D	if(dflag) write(0,*) 'parse failed'
 // D	IF(DFLAG) PRINT 10,PARSE,PRSA,PRSO,PRSI
    return ret_val;
 
@@ -421,15 +421,15 @@ L4000:
 // 						!BRANCH ON CHAR.
 L4100:
    j2 = j1 * 780;
-/* 						!CHAR 1... *780 */
+// 						!CHAR 1... *780
    outbuf[k] = outbuf[k] + j2 + j2;
-/* 						!*1560 (40 ADDED BELOW). */
+// 						!*1560 (40 ADDED BELOW).
 L4200:
    outbuf[k] += j1 * 39;
-/* 						!*39 (1 ADDED BELOW). */
+// 						!*39 (1 ADDED BELOW).
 L4300:
    outbuf[k] += j1;
-/* 						!*1. */
+// 						!*1.
    ++cp;
    goto L200;
 // 						!GET NEXT CHAR.

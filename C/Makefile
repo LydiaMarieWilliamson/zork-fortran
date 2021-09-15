@@ -18,7 +18,10 @@ LIBS = -lf2c -lm
 GDTFLAG = -DALLOW_GDT
 
 ## Compilation flags
+## Development
 CFLAGS = -g
+## Production
+#CFLAGS = -O2
 
 ## Object files
 OBJ = common.o \
