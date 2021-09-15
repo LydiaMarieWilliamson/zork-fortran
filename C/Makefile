@@ -1,5 +1,9 @@
 ## Makefile for Dungeon/Zork
 
+## The system link command (or else copy).
+#LN=cp
+LN=ln -sf
+
 ## The Dungeon/Zork program provides a ``more'' facility which tries to figure out how many rows the terminal has.
 ## Several mechanisms are supported for determining this; the most common one has been left uncommented.
 ## If you have trouble, especially when linking, you may have to select a different option.
@@ -30,7 +34,17 @@ APP = Zork
 $(APP): $(OBJ)
 	$(CC) $(CFLAGS) -o $(APP) $(OBJ) $(LIBS)
 
+## Temporary expedients.
+dinit.o: dindx.dat dtext.dat
+dindx.dat:
+	$(LN) ../dindx.dat .
+dtext.dat:
+	$(LN) ../dtext.dat .
+undat:
+	rm -f dindx.dat
+	rm -f dtext.dat
+
 clean:
 	rm -f $(OBJ)
-clobber: clean
+clobber: clean undat
 	rm -f $(APP)

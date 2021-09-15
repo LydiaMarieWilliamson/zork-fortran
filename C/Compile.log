@@ -133,7 +133,7 @@ xsrch_:		actors clockr demons dmain dsub dverb2 np nrooms sverbs verbs
 
 The results for the second run of ‟Makefile”.
 
-Duplicate Definitions:
+Duplicate Definitions (Resolved):
 ∙	In blkdata.c, common.c:
 	buzvoc_, prpvoc_, dirvoc_, adjvoc_, vrbvoc_, objvoc_
 ∙	In dmain.c, common.c:

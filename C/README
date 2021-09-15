@@ -19,3 +19,7 @@ History
 2021/09/14	Most of ‟F2C.h” has been nativized to C and eliminated.
 2021/09/14	Move the declarations of ‟built-in” functions (defined in the f2c library) to "F2C.h".
 2021/09/15	Collating the definitions of the common blocks into ‟common.c”.
+2021/09/15	Eliminated the duplicate common block definitions from ‟common.c”.
+		Compilation is now possible, but no baseline has yet been established.
+		Hidden size-dependencies for data I/O exist, which crash the file I/O.
+2021/09/15	Added the data/configuration files d{indx,text}.dat as symbolic links (for now).
