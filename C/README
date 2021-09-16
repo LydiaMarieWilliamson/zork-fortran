@@ -18,6 +18,7 @@ History
 		Additional normalization has been done on the source code layout.
 2021/09/14	Most of ‟F2C.h” has been nativized to C and eliminated.
 2021/09/14	Move the declarations of ‟built-in” functions (defined in the f2c library) to "F2C.h".
+		Further information on the f2c library and utility may be found in https://www.netlib.org/f2c/f2c.pdf.
 2021/09/15	Collating the definitions of the common blocks into ‟common.c”.
 2021/09/15	Eliminated the duplicate common block definitions from ‟common.c”.
 		Compilation is now possible, but no baseline has yet been established.
@@ -30,3 +31,4 @@ History
 		∙	commented out unused parameters.
 		∙	eliminated ‟Void”, after reducing it to ‟void”.
 		No effect on the compile-time or run-time baselines.
+2021/09/16	Encapsulation of the f2c library in F2C.c; as a first step to nativizing and replacing it.

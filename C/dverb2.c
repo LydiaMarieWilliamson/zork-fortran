@@ -237,8 +237,6 @@ static int c__882 = 882;
 void savegm_(void) {
 // System generated locals
    int i__1;
-   olist o__1;
-   cllist cl__1;
 
 // Local variables
    static int i__;
@@ -257,15 +255,6 @@ void savegm_(void) {
 #define switch__ ((int *)&findex_1 + 46)
    extern int gttime_(void);
    extern void rspeak_(int);
-
-// Fortran I/O blocks
-   static cilist io___15 = { 0, 1, 0, 0, 0 };
-   static cilist io___16 = { 0, 1, 0, 0, 0 };
-   static cilist io___17 = { 0, 1, 0, 0, 0 };
-   static cilist io___18 = { 0, 1, 0, 0, 0 };
-   static cilist io___19 = { 0, 1, 0, 0, 0 };
-   static cilist io___20 = { 0, 1, 0, 0, 0 };
-   static cilist io___21 = { 0, 1, 0, 0, 0 };
 
 // PARSER OUTPUT
 
@@ -297,89 +286,77 @@ void savegm_(void) {
 // 						!DISABLE GAME.
 // Note: save file format is different for PDP vs. non-PDP versions
 
-   o__1.oerr = 1;
-   o__1.ounit = 1;
-   o__1.ofnmlen = 9;
-   o__1.ofnm = "dsave.dat";
-   o__1.orl = 0;
-   o__1.osta = "UNKNOWN";
-   o__1.oacc = "SEQUENTIAL";
-   o__1.ofm = "UNFORMATTED";
-   o__1.oblnk = 0;
-   i__1 = f_open(&o__1);
+   i__1 = OpenF(1, "dsave.dat", "UNKNOWN", "SEQUENTIAL", "UNFORMATTED", 0);
    if (i__1 != 0) {
       goto L100;
    }
 
    i__ = gttime_();
 // 						!GET TIME.
-   s_wsue(&io___15);
-   do_uio(&c__1, (char *)&vers_1.vmaj, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&vers_1.vmin, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&vers_1.vedit, (ftnlen) sizeof(int));
-   e_wsue();
-   s_wsue(&io___16);
-   do_uio(&c__1, (char *)&play_1.winner, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&play_1.here, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&hack_1.thfpos, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&play_1.telflg, (ftnlen) sizeof(Bool));
-   do_uio(&c__1, (char *)&hack_1.thfflg, (ftnlen) sizeof(Bool));
-   do_uio(&c__1, (char *)&hack_1.thfact, (ftnlen) sizeof(Bool));
-   do_uio(&c__1, (char *)&hack_1.swdact, (ftnlen) sizeof(Bool));
-   do_uio(&c__1, (char *)&hack_1.swdsta, (ftnlen) sizeof(int));
-   do_uio(&c__64, (char *)&puzzle_1.cpvec[0], (ftnlen) sizeof(int));
-   e_wsue();
-   s_wsue(&io___17);
-   do_uio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&state_1.moves, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&state_1.deaths, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&state_1.rwscor, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&state_1.egscor, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&state_1.mxload, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&state_1.ltshft, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&state_1.bloc, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&state_1.mungrm, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&state_1.hs, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&screen_1.fromdr, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&screen_1.scolrm, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&screen_1.scolac, (ftnlen) sizeof(int));
-   e_wsue();
-   s_wsue(&io___18);
-   do_uio(&c__220, (char *)&objcts_1.odesc1[0], (ftnlen) sizeof(int));
-   do_uio(&c__220, (char *)&objcts_1.odesc2[0], (ftnlen) sizeof(int));
-   do_uio(&c__220, (char *)&objcts_1.oflag1[0], (ftnlen) sizeof(int));
-   do_uio(&c__220, (char *)&objcts_1.oflag2[0], (ftnlen) sizeof(int));
-   do_uio(&c__220, (char *)&objcts_1.ofval[0], (ftnlen) sizeof(int));
-   do_uio(&c__220, (char *)&objcts_1.otval[0], (ftnlen) sizeof(int));
-   do_uio(&c__220, (char *)&objcts_1.osize[0], (ftnlen) sizeof(int));
-   do_uio(&c__220, (char *)&objcts_1.ocapac[0], (ftnlen) sizeof(int));
-   do_uio(&c__220, (char *)&objcts_1.oroom[0], (ftnlen) sizeof(int));
-   do_uio(&c__220, (char *)&objcts_1.oadv[0], (ftnlen) sizeof(int));
-   do_uio(&c__220, (char *)&objcts_1.ocan[0], (ftnlen) sizeof(int));
-   e_wsue();
-   s_wsue(&io___19);
-   do_uio(&c__200, (char *)&rooms_1.rval[0], (ftnlen) sizeof(int));
-   do_uio(&c__200, (char *)&rooms_1.rflag[0], (ftnlen) sizeof(int));
-   e_wsue();
-   s_wsue(&io___20);
-   do_uio(&c__4, (char *)&advs_1.aroom[0], (ftnlen) sizeof(int));
-   do_uio(&c__4, (char *)&advs_1.ascore[0], (ftnlen) sizeof(int));
-   do_uio(&c__4, (char *)&advs_1.avehic[0], (ftnlen) sizeof(int));
-   do_uio(&c__4, (char *)&advs_1.astren[0], (ftnlen) sizeof(int));
-   do_uio(&c__4, (char *)&advs_1.aflag[0], (ftnlen) sizeof(int));
-   e_wsue();
-   s_wsue(&io___21);
-   do_uio(&c__46, (char *)&flags[0], (ftnlen) sizeof(Bool));
-   do_uio(&c__22, (char *)&switch__[0], (ftnlen) sizeof(int));
-   do_uio(&c__4, (char *)&vill_1.vprob[0], (ftnlen) sizeof(int));
-   do_uio(&c__25, (char *)&cevent_1.cflag[0], (ftnlen) sizeof(Bool));
-   do_uio(&c__25, (char *)&cevent_1.ctick[0], (ftnlen) sizeof(int));
-   e_wsue();
+   BegExSU(1, 0, 0);
+   DoUio(1, &vers_1.vmaj, sizeof vers_1.vmaj);
+   DoUio(1, &vers_1.vmin, sizeof vers_1.vmin);
+   DoUio(1, &vers_1.vedit, sizeof vers_1.vedit);
+   EndExSU();
+   BegExSU(1, 0, 0);
+   DoUio(1, &play_1.winner, sizeof play_1.winner);
+   DoUio(1, &play_1.here, sizeof play_1.here);
+   DoUio(1, &hack_1.thfpos, sizeof hack_1.thfpos);
+   DoUio(1, &play_1.telflg, sizeof play_1.telflg);
+   DoUio(1, &hack_1.thfflg, sizeof hack_1.thfflg);
+   DoUio(1, &hack_1.thfact, sizeof hack_1.thfact);
+   DoUio(1, &hack_1.swdact, sizeof hack_1.swdact);
+   DoUio(1, &hack_1.swdsta, sizeof hack_1.swdsta);
+   DoUio(64, puzzle_1.cpvec, sizeof puzzle_1.cpvec[0]);
+   EndExSU();
+   BegExSU(1, 0, 0);
+   DoUio(1, &i__, sizeof i__);
+   DoUio(1, &state_1.moves, sizeof state_1.moves);
+   DoUio(1, &state_1.deaths, sizeof state_1.deaths);
+   DoUio(1, &state_1.rwscor, sizeof state_1.rwscor);
+   DoUio(1, &state_1.egscor, sizeof state_1.egscor);
+   DoUio(1, &state_1.mxload, sizeof state_1.mxload);
+   DoUio(1, &state_1.ltshft, sizeof state_1.ltshft);
+   DoUio(1, &state_1.bloc, sizeof state_1.bloc);
+   DoUio(1, &state_1.mungrm, sizeof state_1.mungrm);
+   DoUio(1, &state_1.hs, sizeof state_1.hs);
+   DoUio(1, &screen_1.fromdr, sizeof screen_1.fromdr);
+   DoUio(1, &screen_1.scolrm, sizeof screen_1.scolrm);
+   DoUio(1, &screen_1.scolac, sizeof screen_1.scolac);
+   EndExSU();
+   BegExSU(1, 0, 0);
+   DoUio(220, objcts_1.odesc1, sizeof objcts_1.odesc1[0]);
+   DoUio(220, objcts_1.odesc2, sizeof objcts_1.odesc2[0]);
+   DoUio(220, objcts_1.oflag1, sizeof objcts_1.oflag1[0]);
+   DoUio(220, objcts_1.oflag2, sizeof objcts_1.oflag2[0]);
+   DoUio(220, objcts_1.ofval, sizeof objcts_1.ofval[0]);
+   DoUio(220, objcts_1.otval, sizeof objcts_1.otval[0]);
+   DoUio(220, objcts_1.osize, sizeof objcts_1.osize[0]);
+   DoUio(220, objcts_1.ocapac, sizeof objcts_1.ocapac[0]);
+   DoUio(220, objcts_1.oroom, sizeof objcts_1.oroom[0]);
+   DoUio(220, objcts_1.oadv, sizeof objcts_1.oadv[0]);
+   DoUio(220, objcts_1.ocan, sizeof objcts_1.ocan[0]);
+   EndExSU();
+   BegExSU(1, 0, 0);
+   DoUio(200, rooms_1.rval, sizeof rooms_1.rval[0]);
+   DoUio(200, rooms_1.rflag, sizeof rooms_1.rflag[0]);
+   EndExSU();
+   BegExSU(1, 0, 0);
+   DoUio(4, advs_1.aroom, sizeof advs_1.aroom[0]);
+   DoUio(4, advs_1.ascore, sizeof advs_1.ascore[0]);
+   DoUio(4, advs_1.avehic, sizeof advs_1.avehic[0]);
+   DoUio(4, advs_1.astren, sizeof advs_1.astren[0]);
+   DoUio(4, advs_1.aflag, sizeof advs_1.aflag[0]);
+   EndExSU();
+   BegExSU(1, 0, 0);
+   DoUio(46, flags, sizeof flags[0]);
+   DoUio(22, switch__, sizeof switch__[0]);
+   DoUio(4, vill_1.vprob, sizeof vill_1.vprob[0]);
+   DoUio(25, cevent_1.cflag, sizeof cevent_1.cflag[0]);
+   DoUio(25, cevent_1.ctick, sizeof cevent_1.ctick[0]);
+   EndExSU();
 
-   cl__1.cerr = 0;
-   cl__1.cunit = 1;
-   cl__1.csta = 0;
-   f_clos(&cl__1);
+   CloseF(1);
    rspeak_(c__597);
    return;
 
@@ -409,8 +386,6 @@ L100:
 void rstrgm_(void) {
 // System generated locals
    int i__1;
-   olist o__1;
-   cllist cl__1;
 
 // Local variables
    static int i__, j, k;
@@ -428,15 +403,6 @@ void rstrgm_(void) {
 #define prpvec ((int *)&pv_1 + 3)
 #define switch__ ((int *)&findex_1 + 46)
    extern void rspeak_(int);
-
-// Fortran I/O blocks
-   static cilist io___35 = { 0, 1, 0, 0, 0 };
-   static cilist io___39 = { 0, 1, 0, 0, 0 };
-   static cilist io___40 = { 0, 1, 0, 0, 0 };
-   static cilist io___41 = { 0, 1, 0, 0, 0 };
-   static cilist io___42 = { 0, 1, 0, 0, 0 };
-   static cilist io___43 = { 0, 1, 0, 0, 0 };
-   static cilist io___44 = { 0, 1, 0, 0, 0 };
 
 // PARSER OUTPUT
 
@@ -468,91 +434,79 @@ void rstrgm_(void) {
 // 						!DISABLE GAME.
 // Note: save file format is different for PDP vs. non-PDP versions
 
-   o__1.oerr = 1;
-   o__1.ounit = 1;
-   o__1.ofnmlen = 9;
-   o__1.ofnm = "dsave.dat";
-   o__1.orl = 0;
-   o__1.osta = "OLD";
-   o__1.oacc = "SEQUENTIAL";
-   o__1.ofm = "UNFORMATTED";
-   o__1.oblnk = 0;
-   i__1 = f_open(&o__1);
+   i__1 = OpenF(1, "dsave.dat", "OLD", "SEQUENTIAL", "UNFORMATTED", 0);
    if (i__1 != 0) {
       goto L100;
    }
 
-   s_rsue(&io___35);
-   do_uio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&j, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&k, (ftnlen) sizeof(int));
-   e_rsue();
+   BegInSU(1, 0, 0);
+   DoUio(1, &i__, sizeof i__);
+   DoUio(1, &j, sizeof j);
+   DoUio(1, &k, sizeof k);
+   EndInSU();
    if (i__ != vers_1.vmaj || j != vers_1.vmin) {
       goto L200;
    }
 
-   s_rsue(&io___39);
-   do_uio(&c__1, (char *)&play_1.winner, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&play_1.here, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&hack_1.thfpos, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&play_1.telflg, (ftnlen) sizeof(Bool));
-   do_uio(&c__1, (char *)&hack_1.thfflg, (ftnlen) sizeof(Bool));
-   do_uio(&c__1, (char *)&hack_1.thfact, (ftnlen) sizeof(Bool));
-   do_uio(&c__1, (char *)&hack_1.swdact, (ftnlen) sizeof(Bool));
-   do_uio(&c__1, (char *)&hack_1.swdsta, (ftnlen) sizeof(int));
-   do_uio(&c__64, (char *)&puzzle_1.cpvec[0], (ftnlen) sizeof(int));
-   e_rsue();
-   s_rsue(&io___40);
-   do_uio(&c__1, (char *)&time_1.pltime, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&state_1.moves, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&state_1.deaths, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&state_1.rwscor, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&state_1.egscor, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&state_1.mxload, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&state_1.ltshft, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&state_1.bloc, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&state_1.mungrm, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&state_1.hs, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&screen_1.fromdr, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&screen_1.scolrm, (ftnlen) sizeof(int));
-   do_uio(&c__1, (char *)&screen_1.scolac, (ftnlen) sizeof(int));
-   e_rsue();
-   s_rsue(&io___41);
-   do_uio(&c__220, (char *)&objcts_1.odesc1[0], (ftnlen) sizeof(int));
-   do_uio(&c__220, (char *)&objcts_1.odesc2[0], (ftnlen) sizeof(int));
-   do_uio(&c__220, (char *)&objcts_1.oflag1[0], (ftnlen) sizeof(int));
-   do_uio(&c__220, (char *)&objcts_1.oflag2[0], (ftnlen) sizeof(int));
-   do_uio(&c__220, (char *)&objcts_1.ofval[0], (ftnlen) sizeof(int));
-   do_uio(&c__220, (char *)&objcts_1.otval[0], (ftnlen) sizeof(int));
-   do_uio(&c__220, (char *)&objcts_1.osize[0], (ftnlen) sizeof(int));
-   do_uio(&c__220, (char *)&objcts_1.ocapac[0], (ftnlen) sizeof(int));
-   do_uio(&c__220, (char *)&objcts_1.oroom[0], (ftnlen) sizeof(int));
-   do_uio(&c__220, (char *)&objcts_1.oadv[0], (ftnlen) sizeof(int));
-   do_uio(&c__220, (char *)&objcts_1.ocan[0], (ftnlen) sizeof(int));
-   e_rsue();
-   s_rsue(&io___42);
-   do_uio(&c__200, (char *)&rooms_1.rval[0], (ftnlen) sizeof(int));
-   do_uio(&c__200, (char *)&rooms_1.rflag[0], (ftnlen) sizeof(int));
-   e_rsue();
-   s_rsue(&io___43);
-   do_uio(&c__4, (char *)&advs_1.aroom[0], (ftnlen) sizeof(int));
-   do_uio(&c__4, (char *)&advs_1.ascore[0], (ftnlen) sizeof(int));
-   do_uio(&c__4, (char *)&advs_1.avehic[0], (ftnlen) sizeof(int));
-   do_uio(&c__4, (char *)&advs_1.astren[0], (ftnlen) sizeof(int));
-   do_uio(&c__4, (char *)&advs_1.aflag[0], (ftnlen) sizeof(int));
-   e_rsue();
-   s_rsue(&io___44);
-   do_uio(&c__46, (char *)&flags[0], (ftnlen) sizeof(Bool));
-   do_uio(&c__22, (char *)&switch__[0], (ftnlen) sizeof(int));
-   do_uio(&c__4, (char *)&vill_1.vprob[0], (ftnlen) sizeof(int));
-   do_uio(&c__25, (char *)&cevent_1.cflag[0], (ftnlen) sizeof(Bool));
-   do_uio(&c__25, (char *)&cevent_1.ctick[0], (ftnlen) sizeof(int));
-   e_rsue();
+   BegInSU(1, 0, 0);
+   DoUio(1, &play_1.winner, sizeof play_1.winner);
+   DoUio(1, &play_1.here, sizeof play_1.here);
+   DoUio(1, &hack_1.thfpos, sizeof hack_1.thfpos);
+   DoUio(1, &play_1.telflg, sizeof play_1.telflg);
+   DoUio(1, &hack_1.thfflg, sizeof hack_1.thfflg);
+   DoUio(1, &hack_1.thfact, sizeof hack_1.thfact);
+   DoUio(1, &hack_1.swdact, sizeof hack_1.swdact);
+   DoUio(1, &hack_1.swdsta, sizeof hack_1.swdsta);
+   DoUio(64, puzzle_1.cpvec, sizeof puzzle_1.cpvec[0]);
+   EndInSU();
+   BegInSU(1, 0, 0);
+   DoUio(1, &time_1.pltime, sizeof time_1.pltime);
+   DoUio(1, &state_1.moves, sizeof state_1.moves);
+   DoUio(1, &state_1.deaths, sizeof state_1.deaths);
+   DoUio(1, &state_1.rwscor, sizeof state_1.rwscor);
+   DoUio(1, &state_1.egscor, sizeof state_1.egscor);
+   DoUio(1, &state_1.mxload, sizeof state_1.mxload);
+   DoUio(1, &state_1.ltshft, sizeof state_1.ltshft);
+   DoUio(1, &state_1.bloc, sizeof state_1.bloc);
+   DoUio(1, &state_1.mungrm, sizeof state_1.mungrm);
+   DoUio(1, &state_1.hs, sizeof state_1.hs);
+   DoUio(1, &screen_1.fromdr, sizeof screen_1.fromdr);
+   DoUio(1, &screen_1.scolrm, sizeof screen_1.scolrm);
+   DoUio(1, &screen_1.scolac, sizeof screen_1.scolac);
+   EndInSU();
+   BegInSU(1, 0, 0);
+   DoUio(220, objcts_1.odesc1, sizeof objcts_1.odesc1[0]);
+   DoUio(220, objcts_1.odesc2, sizeof objcts_1.odesc2[0]);
+   DoUio(220, objcts_1.oflag1, sizeof objcts_1.oflag1[0]);
+   DoUio(220, objcts_1.oflag2, sizeof objcts_1.oflag2[0]);
+   DoUio(220, objcts_1.ofval, sizeof objcts_1.ofval[0]);
+   DoUio(220, objcts_1.otval, sizeof objcts_1.otval[0]);
+   DoUio(220, objcts_1.osize, sizeof objcts_1.osize[0]);
+   DoUio(220, objcts_1.ocapac, sizeof objcts_1.ocapac[0]);
+   DoUio(220, objcts_1.oroom, sizeof objcts_1.oroom[0]);
+   DoUio(220, objcts_1.oadv, sizeof objcts_1.oadv[0]);
+   DoUio(220, objcts_1.ocan, sizeof objcts_1.ocan[0]);
+   EndInSU();
+   BegInSU(1, 0, 0);
+   DoUio(200, rooms_1.rval, sizeof rooms_1.rval[0]);
+   DoUio(200, rooms_1.rflag, sizeof rooms_1.rflag[0]);
+   EndInSU();
+   BegInSU(1, 0, 0);
+   DoUio(4, advs_1.aroom, sizeof advs_1.aroom[0]);
+   DoUio(4, advs_1.ascore, sizeof advs_1.ascore[0]);
+   DoUio(4, advs_1.avehic, sizeof advs_1.avehic[0]);
+   DoUio(4, advs_1.astren, sizeof advs_1.astren[0]);
+   DoUio(4, advs_1.aflag, sizeof advs_1.aflag[0]);
+   EndInSU();
+   BegInSU(1, 0, 0);
+   DoUio(46, flags, sizeof flags[0]);
+   DoUio(22, switch__, sizeof switch__[0]);
+   DoUio(4, vill_1.vprob, sizeof vill_1.vprob[0]);
+   DoUio(25, cevent_1.cflag, sizeof cevent_1.cflag[0]);
+   DoUio(25, cevent_1.ctick, sizeof cevent_1.ctick[0]);
+   EndInSU();
 
-   cl__1.cerr = 0;
-   cl__1.cunit = 1;
-   cl__1.csta = 0;
-   f_clos(&cl__1);
+   CloseF(1);
    rspeak_(c__599);
    return;
 
@@ -564,10 +518,7 @@ L100:
 L200:
    rspeak_(c__600);
 // 						!OBSOLETE VERSION
-   cl__1.cerr = 0;
-   cl__1.cunit = 1;
-   cl__1.csta = 0;
-   f_clos(&cl__1);
+   CloseF(1);
 }
 
 #undef switch__

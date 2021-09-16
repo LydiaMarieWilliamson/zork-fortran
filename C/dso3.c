@@ -216,9 +216,6 @@ int fwim_(int f1, int f2, int rm, int con, int adv, Bool nocare) {
 // 	YES-IS-TRUE=YESNO(QUESTION,YES-STRING,NO-STRING)
 
 Bool yesno_(int q, int y, int n) {
-// Format strings
-   static char fmt_110[] = "(a1)";
-
 // System generated locals
    Bool ret_val;
 
@@ -226,16 +223,12 @@ Bool yesno_(int q, int y, int n) {
    static char ans[1];
    extern void rspeak_(int);
 
-// Fortran I/O blocks
-   static cilist io___9 = { 0, 0, 0, fmt_110, 0 };
-
 L100:
    rspeak_(q);
 // 						!ASK
-   io___9.ciunit = chan_1.inpch;
-   s_rsfe(&io___9);
-   do_fio(&c__1, ans, (ftnlen) 1);
-   e_rsfe();
+   BegInSF(chan_1.inpch, /*110*/"(a1)", 0);
+   DoFio(1, ans, sizeof ans[0]);
+   EndInSF();
 // 						!GET ANSWER
    if (*(unsigned char *)ans == 'Y' || *(unsigned char *)ans == 'y') {
       goto L200;

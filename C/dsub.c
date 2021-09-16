@@ -226,9 +226,6 @@ void rspsub_(int n, int s1) {
 // 	CALL RSPSB2(MSGNUM,SUBNUM1,SUBNUM2)
 
 void rspsb2_(int n, int s1, int s2) {
-// Format strings
-   static char fmt_650[] = "(1x,74a1)";
-
 // System generated locals
    int i__1;
 
@@ -237,12 +234,6 @@ void rspsb2_(int n, int s1, int s2) {
    static char b1[74], b2[74], b3[74];
    static int k1, k2, x1;
    static short jrec, oldrec, newrec;
-
-// Fortran I/O blocks
-   static cilist io___4 = { 0, 0, 0, 0, 0 };
-   static cilist io___9 = { 0, 0, 0, fmt_650, 0 };
-   static cilist io___11 = { 0, 0, 0, 0, 0 };
-   static cilist io___16 = { 0, 0, 0, 0, 0 };
 
 // DECLARATIONS
 
@@ -280,12 +271,10 @@ void rspsb2_(int n, int s1, int s2) {
    play_1.telflg = true;
 // 						!SAID SOMETHING.
 
-   io___4.ciunit = chan_1.dbch;
-   io___4.cirec = x;
-   s_rdue(&io___4);
-   do_uio(&c__1, (char *)&oldrec, (ftnlen) sizeof(short));
-   do_uio(&c__1, b1, (ftnlen) 74);
-   e_rdue();
+   BegInDU(chan_1.dbch, 0, x);
+   DoUio(1, &oldrec, sizeof oldrec);
+   DoUio(1, b1, sizeof b1);
+   EndInDU();
 
 L100:
    for (i__ = 1; i__ <= 74; ++i__) {
@@ -317,21 +306,18 @@ L400:
    }
 
 L600:
-   io___9.ciunit = chan_1.outch;
-   s_wsfe(&io___9);
+   BegExSF(chan_1.outch, /*650*/"(1x,74a1)", 0);
    i__1 = i__;
    for (j = 1; j <= i__1; ++j) {
-      do_fio(&c__1, b1 + (j - 1), j - (j - 1));
+      DoFio(1, b1 + (j - 1), sizeof b1[0]);
    }
-   e_wsfe();
+   EndExSF();
    ++x;
 // 						!ON TO NEXT RECORD.
-   io___11.ciunit = chan_1.dbch;
-   io___11.cirec = x;
-   s_rdue(&io___11);
-   do_uio(&c__1, (char *)&newrec, (ftnlen) sizeof(short));
-   do_uio(&c__1, b1, (ftnlen) 74);
-   e_rdue();
+   BegInDU(chan_1.dbch, 0, x);
+   DoUio(1, &newrec, sizeof newrec);
+   DoUio(1, b1, sizeof b1);
+   EndInDU();
    if (oldrec == newrec) {
       goto L100;
    }
@@ -363,12 +349,10 @@ L1000:
 
 //   READ SUBSTITUTE STRING INTO B3, AND DECRYPT IT:
 
-   io___16.ciunit = chan_1.dbch;
-   io___16.cirec = y;
-   s_rdue(&io___16);
-   do_uio(&c__1, (char *)&jrec, (ftnlen) sizeof(short));
-   do_uio(&c__1, b3, (ftnlen) 74);
-   e_rdue();
+   BegInDU(chan_1.dbch, 0, y);
+   DoUio(1, &jrec, sizeof jrec);
+   DoUio(1, b3, sizeof b3);
+   EndInDU();
    for (k1 = 1; k1 <= 74; ++k1) {
       x1 = (y & 31) + k1;
       *(unsigned char *)&b3[k1 - 1] = (char)(*(unsigned char *)&b3[k1 - 1] ^ x1);
@@ -479,19 +463,13 @@ L200:
 // 	CALL BUG(NO,PAR)
 
 void bug_(int a, int b) {
-// Format strings
-   static char fmt_100[] = "(\002 PROGRAM ERROR \002,i2,\002, PARAMETER=" "\002,i6)";
-
 // Local variables
    extern void exit_(void);
 
-// Fortran I/O blocks
-   static cilist io___25 = { 0, 6, 0, fmt_100, 0 };
-
-   s_wsfe(&io___25);
-   do_fio(&c__1, (char *)&(a),(ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&(b),(ftnlen) sizeof(int));
-   e_wsfe();
+   BegExSF(6, /*100*/"(\002 PROGRAM ERROR \002,i2,\002, PARAMETER=\002,i6)", 0);
+   DoFio(1, &a, sizeof a);
+   DoFio(1, &b, sizeof b);
+   EndExSF();
    if (debug_1.dbgflg != 0) {
       return;
    }
@@ -596,7 +574,6 @@ void jigsup_(int desc) {
 
 // System generated locals
    int i__1;
-   cllist cl__1;
 
 // Local variables
 #define flags ((Bool *)&findex_1)
@@ -779,10 +756,7 @@ L1000:
 L1100:
    score_(c_false);
 // 						!TELL SCORE.
-   cl__1.cerr = 0;
-   cl__1.cunit = chan_1.dbch;
-   cl__1.csta = 0;
-   f_clos(&cl__1);
+   CloseF(chan_1.dbch);
    exit_();
 
 }

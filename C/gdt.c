@@ -222,60 +222,9 @@ void gdt_(void) {
    };
 
 // Format strings
-   static char fmt_100[] = "(\002 You are not an authorized user.\002)";
-   static char fmt_200[] = "(\002 GDT>\002,$)";
-   static char fmt_210[] = "(a2)";
-   static char fmt_220[] = "(\002 ?\002)";
-   static char fmt_230[] = "(2i6)";
-   static char fmt_240[] = "(i6)";
-   static char fmt_225[] = "(\002 Limits:   \002,$)";
-   static char fmt_235[] = "(\002 Entry:    \002,$)";
-   static char fmt_245[] = "(\002 Idx,Ary:  \002,$)";
-   static char fmt_300[] = "(\002 RM#  DESC1  EXITS ACTION  VALUE  FLAGS" "\002)";
-   static char fmt_310[] = "(1x,i3,4(1x,i6),1x,i6)";
-   static char fmt_320[] = "(\002 OB# DESC1 DESC2 DESCO ACT FLAGS1 FLAGS2 F" "VL TVL  SIZE CAPAC ROOM ADV CON  READ\002)";
-   static char fmt_330[] = "(1x,i3,3i6,i4,2i7,2i4,2i6,1x,3i4,i6)";
-   static char fmt_340[] = "(\002 AD#   ROOM  SCORE  VEHIC OBJECT ACTION  S" "TREN  FLAGS\002)";
-   static char fmt_350[] = "(1x,i3,6(1x,i6),1x,i6)";
-   static char fmt_360[] = "(\002 CL#   TICK ACTION  FLAG\002)";
-   static char fmt_370[] = "(1x,i3,1x,i6,1x,i6,5x,l1)";
-   static char fmt_380[] = "(\002   RANGE   CONTENTS\002)";
-   static char fmt_390[] = "(1x,i3,\002-\002,i3,3x,10i7)";
-   static char fmt_400[] = "(\002 THFPOS=\002,i6,\002, THFFLG=\002,l2,\002," "THFACT=\002,l2/\002 SWDACT=\002,l2,\002, SWDSTA=\002,i2)";
-   static char fmt_410[] = "(\002 R=\002,i6,\002, X=\002,i6,\002, O=\002," "i6,\002, C=\002,i6/\002 V=\002,i6,\002, A=\002,i6,\002, M=\002,i" "6,\002, R2=\002,i5/\002 MBASE=\002,i6,\002, STRBIT=\002,i6)";
-   static char fmt_420[] = "(\002 VL# OBJECT   PROB   OPPS   BEST  MELEE" "\002)";
-   static char fmt_430[] = "(1x,i3,5(1x,i6))";
-   static char fmt_440[] = "(\002 Flag #\002,i2,\002 = \002,l1)";
-   static char fmt_450[] = "(\002 Parse vector=\002,3(1x,i6),1x,l6,1x,i6)";
-   static char fmt_460[] = "(\002 Play vector= \002,2(1x,i6),1x,l6)";
-   static char fmt_470[] = "(\002 State vector=\002,9(1x,i6)/14x,2(1x,i6))";
-   static char fmt_475[] = "(\002 Scol vector= \002,1x,i6,2(1x,i6))";
-   static char fmt_480[] = "(\002 Old=\002,l2,6x,\002New= \002,$)";
-   static char fmt_490[] = "(l1)";
-   static char fmt_900[] =
-      "(\002 Valid commands are:\002/\002 AA- Alter AD" "VS\002/\002 AC- Alter CEVENT\002/\002 AF- Alter FINDEX\002/\002 " "AH- Alter HERE\002/\002 AN- Alter switches\002/\002 AO- Alter OB" "JCTS\002/\002 AR- Alter ROOMS\002/\002 AV- Alter VILLS\002/\002 "
-      "AX- Alter EXITS\002/\002 AZ- Alter PUZZLE\002/\002 DA- Display A" "DVS\002/\002 DC- Display CEVENT\002/\002 DF- Display FINDEX\002" "/\002 DH- Display HACKS\002/\002 DL- Display lengths\002/\002 DM"
-      "- Display RTEXT\002/\002 DN- Display switches\002/\002 DO- Displ" "ay OBJCTS\002/\002 DP- Display parser\002/\002 DR- Display ROOM" "S\002/\002 DS- Display state\002/\002 DT- Display text\002/\002 "
-      "DV- Display VILLS\002/\002 DX- Display EXITS\002/\002 DZ- Displa" "y PUZZLE\002/\002 D2- Display ROOM2\002/\002 EX- Exit\002/\002 H" "E- Type this message\002/\002 NC- No cyclops\002/\002 ND- No dea"
-      "ths\002/\002 NR- No robber\002/\002 NT- No troll\002/\002 PD- Pr" "ogram detail\002/\002 RC- Restore cyclops\002/\002 RD- Restore d" "eaths\002/\002 RR- Restore robber\002/\002 RT- Restore troll\002/" "\002 TK- Take.\002)";
-   static char fmt_500[] = "(\002 No robber.\002)";
-   static char fmt_510[] = "(\002 No troll.\002)";
-   static char fmt_520[] = "(\002 No cyclops.\002)";
-   static char fmt_530[] = "(\002 No deaths.\002)";
-   static char fmt_540[] = "(\002 Restored robber.\002)";
-   static char fmt_550[] = "(\002 Restored troll.\002)";
-   static char fmt_560[] = "(\002 Restored cyclops.\002)";
-   static char fmt_570[] = "(\002 Restored deaths.\002)";
-   static char fmt_580[] = "(\002 Taken.\002)";
-   static char fmt_590[] = "(\002 Old= \002,i6,6x,\002New= \002,$)";
-   static char fmt_600[] = "(i6)";
-   static char fmt_610[] = "(\002 Old= \002,i6,6x,\002New= \002,$)";
-   static char fmt_620[] = "(i6)";
-   static char fmt_630[] = "(\002 #\002,i2,\002   Room=\002,i6,\002   Obj" "=\002,i6)";
-   static char fmt_640[] = "(\002 Switch #\002,i2,\002 = \002,i6)";
-   static char fmt_650[] = "(1x,i3,\002-\002,i3,3x,10(1x,i6))";
-   static char fmt_660[] = "(\002 ORPHS= \002,i7,i7,4i7/\002 PV=    \002,i7" ",4i7/\002 SYN=   \002,6i7/15x,5i7)";
-   static char fmt_670[] = "(2x,8i3)";
+   static char fmt_0[] = "(\002   RANGE   CONTENTS\002)";
+   static char fmt_1[] = "(\002 Old=\002,l2,6x,\002New= \002,$)";
+   static char fmt_2[] = "(\002 Old= \002,i6,6x,\002New= \002,$)";
 
 // System generated locals
    int i__1, i__2;
@@ -299,77 +248,6 @@ void gdt_(void) {
 #define rrand ((int *)&rooms_1 + 602)
 #define objvec ((int *)&pv_1 + 1)
 #define prpvec ((int *)&pv_1 + 3)
-
-// Fortran I/O blocks
-   static cilist io___20 = { 0, 0, 0, fmt_100, 0 };
-   static cilist io___21 = { 0, 0, 0, fmt_200, 0 };
-   static cilist io___22 = { 0, 0, 0, fmt_210, 0 };
-   static cilist io___25 = { 0, 0, 0, fmt_220, 0 };
-   static cilist io___26 = { 0, 0, 0, fmt_245, 0 };
-   static cilist io___27 = { 0, 0, 0, fmt_230, 0 };
-   static cilist io___30 = { 0, 0, 0, fmt_225, 0 };
-   static cilist io___31 = { 0, 0, 0, fmt_230, 0 };
-   static cilist io___32 = { 0, 0, 0, fmt_235, 0 };
-   static cilist io___33 = { 0, 0, 0, fmt_240, 0 };
-   static cilist io___34 = { 0, 0, 0, fmt_300, 0 };
-   static cilist io___35 = { 0, 0, 0, fmt_310, 0 };
-   static cilist io___37 = { 0, 0, 0, fmt_320, 0 };
-   static cilist io___38 = { 0, 0, 0, fmt_330, 0 };
-   static cilist io___39 = { 0, 0, 0, fmt_340, 0 };
-   static cilist io___40 = { 0, 0, 0, fmt_350, 0 };
-   static cilist io___41 = { 0, 0, 0, fmt_360, 0 };
-   static cilist io___42 = { 0, 0, 0, fmt_370, 0 };
-   static cilist io___43 = { 0, 0, 0, fmt_380, 0 };
-   static cilist io___44 = { 0, 0, 0, fmt_390, 0 };
-   static cilist io___46 = { 0, 0, 0, fmt_400, 0 };
-   static cilist io___47 = { 0, 0, 0, fmt_410, 0 };
-   static cilist io___48 = { 0, 0, 0, fmt_420, 0 };
-   static cilist io___49 = { 0, 0, 0, fmt_430, 0 };
-   static cilist io___50 = { 0, 0, 0, fmt_440, 0 };
-   static cilist io___51 = { 0, 0, 0, fmt_450, 0 };
-   static cilist io___52 = { 0, 0, 0, fmt_460, 0 };
-   static cilist io___53 = { 0, 0, 0, fmt_470, 0 };
-   static cilist io___54 = { 0, 0, 0, fmt_475, 0 };
-   static cilist io___55 = { 0, 0, 0, fmt_480, 0 };
-   static cilist io___56 = { 0, 0, 0, fmt_490, 0 };
-   static cilist io___57 = { 0, 0, 0, fmt_900, 0 };
-   static cilist io___58 = { 0, 0, 0, fmt_500, 0 };
-   static cilist io___59 = { 0, 0, 0, fmt_510, 0 };
-   static cilist io___60 = { 0, 0, 0, fmt_520, 0 };
-   static cilist io___61 = { 0, 0, 0, fmt_530, 0 };
-   static cilist io___62 = { 0, 0, 0, fmt_540, 0 };
-   static cilist io___63 = { 0, 0, 0, fmt_550, 0 };
-   static cilist io___64 = { 0, 0, 0, fmt_560, 0 };
-   static cilist io___65 = { 0, 0, 0, fmt_570, 0 };
-   static cilist io___66 = { 0, 0, 0, fmt_580, 0 };
-   static cilist io___67 = { 0, 0, 0, fmt_590, 0 };
-   static cilist io___68 = { 0, 0, 0, fmt_600, 0 };
-   static cilist io___69 = { 0, 0, 0, fmt_590, 0 };
-   static cilist io___70 = { 0, 0, 0, fmt_600, 0 };
-   static cilist io___71 = { 0, 0, 0, fmt_590, 0 };
-   static cilist io___72 = { 0, 0, 0, fmt_600, 0 };
-   static cilist io___73 = { 0, 0, 0, fmt_590, 0 };
-   static cilist io___74 = { 0, 0, 0, fmt_600, 0 };
-   static cilist io___75 = { 0, 0, 0, fmt_480, 0 };
-   static cilist io___76 = { 0, 0, 0, fmt_490, 0 };
-   static cilist io___77 = { 0, 0, 0, fmt_610, 0 };
-   static cilist io___78 = { 0, 0, 0, fmt_620, 0 };
-   static cilist io___79 = { 0, 0, 0, fmt_590, 0 };
-   static cilist io___80 = { 0, 0, 0, fmt_600, 0 };
-   static cilist io___81 = { 0, 0, 0, fmt_630, 0 };
-   static cilist io___82 = { 0, 0, 0, fmt_640, 0 };
-   static cilist io___83 = { 0, 0, 0, fmt_590, 0 };
-   static cilist io___84 = { 0, 0, 0, fmt_600, 0 };
-   static cilist io___85 = { 0, 0, 0, fmt_380, 0 };
-   static cilist io___86 = { 0, 0, 0, fmt_650, 0 };
-   static cilist io___87 = { 0, 0, 0, fmt_590, 0 };
-   static cilist io___88 = { 0, 0, 0, fmt_600, 0 };
-   static cilist io___89 = { 0, 0, 0, fmt_660, 0 };
-   static cilist io___90 = { 0, 0, 0, fmt_610, 0 };
-   static cilist io___91 = { 0, 0, 0, fmt_620, 0 };
-   static cilist io___92 = { 0, 0, 0, fmt_670, 0 };
-   static cilist io___93 = { 0, 0, 0, fmt_590, 0 };
-   static cilist io___94 = { 0, 0, 0, fmt_600, 0 };
 
 // PARSER OUTPUT
 
@@ -415,9 +293,8 @@ void gdt_(void) {
       goto L2000;
    }
 // 						!IF OK, SKIP.
-   io___20.ciunit = chan_1.outch;
-   s_wsfe(&io___20);
-   e_wsfe();
+   BegExSF(chan_1.outch, /*100*/"(\002 You are not an authorized user.\002)", 0);
+   EndExSF();
 // 						!NOT AN IMPLEMENTER.
    return;
 // 						!BOOT HIM OFF
@@ -427,36 +304,33 @@ void gdt_(void) {
 // HERE TO GET NEXT COMMAND
 
 L2000:
-   io___21.ciunit = chan_1.outch;
-   s_wsfe(&io___21);
-   e_wsfe();
+   BegExSF(chan_1.outch, /*200*/"(\002 GDT>\002,$)", 0);
+   EndExSF();
 // 						!OUTPUT PROMPT.
-   io___22.ciunit = chan_1.inpch;
-   s_rsfe(&io___22);
-   do_fio(&c__1, cmd, (ftnlen) 2);
-   e_rsfe();
+   BegInSF(chan_1.inpch, /*210*/"(a2)", 0);
+   DoFio(1, cmd, sizeof cmd);
+   EndInSF();
 // 						!GET COMMAND.
-   if (s_cmp(cmd, "  ", (ftnlen) 2, (ftnlen) 2) == 0) {
+   if (CompS(cmd, "  ", sizeof cmd) == 0) {
       goto L2000;
    }
 // 						!IGNORE BLANKS.
    i__1 = cmdmax;
    for (i__ = 1; i__ <= i__1; ++i__) {
 // 						!LOOK IT UP.
-      if (s_cmp(cmd, dbgcmd + (i__ - 1 << 1), (ftnlen) 2, (ftnlen) 2) == 0) {
+      if (CompS(cmd, dbgcmd + (i__ - 1 << 1), sizeof cmd) == 0) {
          goto L2300;
       }
 // 						!FOUND?
 // 	  check for lower case command, as well
-      if (s_cmp(cmd, ldbgcmd + (i__ - 1 << 1), (ftnlen) 2, (ftnlen) 2) == 0) {
+      if (CompS(cmd, ldbgcmd + (i__ - 1 << 1), sizeof cmd) == 0) {
          goto L2300;
       }
 // L2100:
    }
 L2200:
-   io___25.ciunit = chan_1.outch;
-   s_wsfe(&io___25);
-   e_wsfe();
+   BegExSF(chan_1.outch, /*220*/"(\002 ?\002)", 0);
+   EndExSF();
 // 						!NO, LOSE.
    goto L2000;
 
@@ -482,41 +356,35 @@ L2300:
 // 						!ILLEGAL TYPE.
 
 L2700:
-   io___26.ciunit = chan_1.outch;
-   s_wsfe(&io___26);
-   e_wsfe();
+   BegExSF(chan_1.outch, /*245*/"(\002 Idx,Ary:  \002,$)", 0);
+   EndExSF();
 // 						!TYPE 3, REQUEST ARRAY COORDS.
-   io___27.ciunit = chan_1.inpch;
-   s_rsfe(&io___27);
-   do_fio(&c__1, (char *)&j, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&k, (ftnlen) sizeof(int));
-   e_rsfe();
+   BegInSF(chan_1.inpch, /*230*/"(2i6)", 0);
+   DoFio(1, &j, sizeof j);
+   DoFio(1, &k, sizeof k);
+   EndInSF();
    goto L2400;
 
 L2600:
-   io___30.ciunit = chan_1.outch;
-   s_wsfe(&io___30);
-   e_wsfe();
+   BegExSF(chan_1.outch, /*225*/"(\002 Limits:   \002,$)", 0);
+   EndExSF();
 // 						!TYPE 2, READ BOUNDS.
-   io___31.ciunit = chan_1.inpch;
-   s_rsfe(&io___31);
-   do_fio(&c__1, (char *)&j, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&k, (ftnlen) sizeof(int));
-   e_rsfe();
+   BegInSF(chan_1.inpch, /*230*/"(2i6)", 0);
+   DoFio(1, &j, sizeof j);
+   DoFio(1, &k, sizeof k);
+   EndInSF();
    if (k == 0) {
       k = j;
    }
    goto L2400;
 
 L2500:
-   io___32.ciunit = chan_1.outch;
-   s_wsfe(&io___32);
-   e_wsfe();
+   BegExSF(chan_1.outch, /*235*/"(\002 Entry:    \002,$)", 0);
+   EndExSF();
 // 						!TYPE 1, READ ENTRY NO.
-   io___33.ciunit = chan_1.inpch;
-   s_rsfe(&io___33);
-   do_fio(&c__1, (char *)&j, (ftnlen) sizeof(int));
-   e_rsfe();
+   BegInSF(chan_1.inpch, /*240*/"(i6)", 0);
+   DoFio(1, &j, sizeof j);
+   EndInSF();
 L2400:
    switch (i__) {
       case 1:
@@ -607,19 +475,17 @@ L10000:
       goto L2200;
    }
 // 						!ARGS VALID?
-   io___34.ciunit = chan_1.outch;
-   s_wsfe(&io___34);
-   e_wsfe();
+   BegExSF(chan_1.outch, /*300*/"(\002 RM#  DESC1  EXITS ACTION  VALUE  FLAGS\002)", 0);
+   EndExSF();
 // 						!COL HDRS.
    i__1 = k;
    for (i__ = j; i__ <= i__1; ++i__) {
-      io___35.ciunit = chan_1.outch;
-      s_wsfe(&io___35);
-      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
+      BegExSF(chan_1.outch, /*310*/"(1x,i3,4(1x,i6),1x,i6)", 0);
+      DoFio(1, &i__, sizeof i__);
       for (l = 1; l <= 5; ++l) {
-         do_fio(&c__1, (char *)&eqr[i__ + l * 200 - 201], (ftnlen) sizeof(int));
+         DoFio(1, &eqr[i__ + l * 200 - 201], sizeof eqr[0]);
       }
-      e_wsfe();
+      EndExSF();
 // L10100:
    }
    goto L2000;
@@ -631,19 +497,17 @@ L11000:
       goto L2200;
    }
 // 						!ARGS VALID?
-   io___37.ciunit = chan_1.outch;
-   s_wsfe(&io___37);
-   e_wsfe();
+   BegExSF(chan_1.outch, /*320*/"(\002 OB# DESC1 DESC2 DESCO ACT FLAGS1 FLAGS2 FVL TVL  SIZE CAPAC ROOM ADV CON  READ\002)", 0);
+   EndExSF();
 // 						!COL HDRS
    i__1 = k;
    for (i__ = j; i__ <= i__1; ++i__) {
-      io___38.ciunit = chan_1.outch;
-      s_wsfe(&io___38);
-      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
+      BegExSF(chan_1.outch, /*330*/"(1x,i3,3i6,i4,2i7,2i4,2i6,1x,3i4,i6)", 0);
+      DoFio(1, &i__, sizeof i__);
       for (l = 1; l <= 14; ++l) {
-         do_fio(&c__1, (char *)&eqo[i__ + l * 220 - 221], (ftnlen) sizeof(int));
+         DoFio(1, &eqo[i__ + l * 220 - 221], sizeof eqo[0]);
       }
-      e_wsfe();
+      EndExSF();
 // L11100:
    }
    goto L2000;
@@ -655,18 +519,16 @@ L12000:
       goto L2200;
    }
 // 						!ARGS VALID?
-   io___39.ciunit = chan_1.outch;
-   s_wsfe(&io___39);
-   e_wsfe();
+   BegExSF(chan_1.outch, /*340*/"(\002 AD#   ROOM  SCORE  VEHIC OBJECT ACTION  STREN  FLAGS\002)", 0);
+   EndExSF();
    i__1 = k;
    for (i__ = j; i__ <= i__1; ++i__) {
-      io___40.ciunit = chan_1.outch;
-      s_wsfe(&io___40);
-      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
+      BegExSF(chan_1.outch, /*350*/"(1x,i3,6(1x,i6),1x,i6)", 0);
+      DoFio(1, &i__, sizeof i__);
       for (l = 1; l <= 7; ++l) {
-         do_fio(&c__1, (char *)&eqa[i__ + (l << 2) - 5], (ftnlen) sizeof(int));
+         DoFio(1, &eqa[i__ + (l << 2) - 5], sizeof eqa[0]);
       }
-      e_wsfe();
+      EndExSF();
 // L12100:
    }
    goto L2000;
@@ -678,19 +540,17 @@ L13000:
       goto L2200;
    }
 // 						!ARGS VALID?
-   io___41.ciunit = chan_1.outch;
-   s_wsfe(&io___41);
-   e_wsfe();
+   BegExSF(chan_1.outch, /*360*/"(\002 CL#   TICK ACTION  FLAG\002)", 0);
+   EndExSF();
    i__1 = k;
    for (i__ = j; i__ <= i__1; ++i__) {
-      io___42.ciunit = chan_1.outch;
-      s_wsfe(&io___42);
-      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
+      BegExSF(chan_1.outch, /*370*/"(1x,i3,1x,i6,1x,i6,5x,l1)", 0);
+      DoFio(1, &i__, sizeof i__);
       for (l = 1; l <= 2; ++l) {
-         do_fio(&c__1, (char *)&eqc[i__ + l * 25 - 26], (ftnlen) sizeof(int));
+         DoFio(1, &eqc[i__ + l * 25 - 26], sizeof eqc[0]);
       }
-      do_fio(&c__1, (char *)&cevent_1.cflag[i__ - 1], (ftnlen) sizeof(Bool));
-      e_wsfe();
+      DoFio(1, &cevent_1.cflag[i__ - 1], sizeof cevent_1.cflag[0]);
+      EndExSF();
 // L13100:
    }
    goto L2000;
@@ -702,9 +562,8 @@ L14000:
       goto L2200;
    }
 // 						!ARGS VALID?
-   io___43.ciunit = chan_1.outch;
-   s_wsfe(&io___43);
-   e_wsfe();
+   BegExSF(chan_1.outch, /*380*/fmt_0, 0);
+   EndExSF();
 // 						!COL HDRS.
    i__1 = k;
    for (i__ = j; i__ <= i__1; i__ += 10) {
@@ -713,15 +572,14 @@ L14000:
       i__2 = i__ + 9;
       l = min(i__2, k);
 // 						!COMPUTE END OF LINE.
-      io___44.ciunit = chan_1.outch;
-      s_wsfe(&io___44);
-      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
-      do_fio(&c__1, (char *)&l, (ftnlen) sizeof(int));
+      BegExSF(chan_1.outch, /*390*/"(1x,i3,\002-\002,i3,3x,10i7)", 0);
+      DoFio(1, &i__, sizeof i__);
+      DoFio(1, &l, sizeof l);
       i__2 = l;
       for (l1 = i__; l1 <= i__2; ++l1) {
-         do_fio(&c__1, (char *)&exits_1.travel[l1 - 1], (ftnlen) sizeof(int));
+         DoFio(1, &exits_1.travel[l1 - 1], sizeof exits_1.travel[0]);
       }
-      e_wsfe();
+      EndExSF();
 // L14100:
    }
    goto L2000;
@@ -729,32 +587,30 @@ L14000:
 // DH-- DISPLAY HACKS
 
 L15000:
-   io___46.ciunit = chan_1.outch;
-   s_wsfe(&io___46);
-   do_fio(&c__1, (char *)&hack_1.thfpos, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&hack_1.thfflg, (ftnlen) sizeof(Bool));
-   do_fio(&c__1, (char *)&hack_1.thfact, (ftnlen) sizeof(Bool));
-   do_fio(&c__1, (char *)&hack_1.swdact, (ftnlen) sizeof(Bool));
-   do_fio(&c__1, (char *)&hack_1.swdsta, (ftnlen) sizeof(int));
-   e_wsfe();
+   BegExSF(chan_1.outch, /*400*/"(\002 THFPOS=\002,i6,\002, THFFLG=\002,l2,\002,THFACT=\002,l2/\002 SWDACT=\002,l2,\002, SWDSTA=\002,i2)", 0);
+   DoFio(1, &hack_1.thfpos, sizeof hack_1.thfpos);
+   DoFio(1, &hack_1.thfflg, sizeof hack_1.thfflg);
+   DoFio(1, &hack_1.thfact, sizeof hack_1.thfact);
+   DoFio(1, &hack_1.swdact, sizeof hack_1.swdact);
+   DoFio(1, &hack_1.swdsta, sizeof hack_1.swdsta);
+   EndExSF();
    goto L2000;
 
 // DL-- DISPLAY LENGTHS
 
 L16000:
-   io___47.ciunit = chan_1.outch;
-   s_wsfe(&io___47);
-   do_fio(&c__1, (char *)&rooms_1.rlnt, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&exits_1.xlnt, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&objcts_1.olnt, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&cevent_1.clnt, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&vill_1.vlnt, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&advs_1.alnt, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&rmsg_1.mlnt, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&oroom2_1.r2lnt, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&star_1.mbase, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&star_1.strbit, (ftnlen) sizeof(int));
-   e_wsfe();
+   BegExSF(chan_1.outch, /*410*/"(\002 R=\002,i6,\002, X=\002,i6,\002, O=\002,i6,\002, C=\002,i6/\002 V=\002,i6,\002, A=\002,i6,\002, M=\002,i6,\002, R2=\002,i5/\002 MBASE=\002,i6,\002, STRBIT=\002,i6)", 0);
+   DoFio(1, &rooms_1.rlnt, sizeof rooms_1.rlnt);
+   DoFio(1, &exits_1.xlnt, sizeof exits_1.xlnt);
+   DoFio(1, &objcts_1.olnt, sizeof objcts_1.olnt);
+   DoFio(1, &cevent_1.clnt, sizeof cevent_1.clnt);
+   DoFio(1, &vill_1.vlnt, sizeof vill_1.vlnt);
+   DoFio(1, &advs_1.alnt, sizeof advs_1.alnt);
+   DoFio(1, &rmsg_1.mlnt, sizeof rmsg_1.mlnt);
+   DoFio(1, &oroom2_1.r2lnt, sizeof oroom2_1.r2lnt);
+   DoFio(1, &star_1.mbase, sizeof star_1.mbase);
+   DoFio(1, &star_1.strbit, sizeof star_1.strbit);
+   EndExSF();
    goto L2000;
 
 // DV-- DISPLAY VILLAINS
@@ -764,19 +620,17 @@ L17000:
       goto L2200;
    }
 // 						!ARGS VALID?
-   io___48.ciunit = chan_1.outch;
-   s_wsfe(&io___48);
-   e_wsfe();
+   BegExSF(chan_1.outch, /*420*/"(\002 VL# OBJECT   PROB   OPPS   BEST  MELEE\002)", 0);
+   EndExSF();
 // 						!COL HDRS
    i__1 = k;
    for (i__ = j; i__ <= i__1; ++i__) {
-      io___49.ciunit = chan_1.outch;
-      s_wsfe(&io___49);
-      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
+      BegExSF(chan_1.outch, /*430*/"(1x,i3,5(1x,i6))", 0);
+      DoFio(1, &i__, sizeof i__);
       for (l = 1; l <= 5; ++l) {
-         do_fio(&c__1, (char *)&eqv[i__ + (l << 2) - 5], (ftnlen) sizeof(int));
+         DoFio(1, &eqv[i__ + (l << 2) - 5], sizeof eqv[0]);
       }
-      e_wsfe();
+      EndExSF();
 // L17100:
    }
    goto L2000;
@@ -790,11 +644,10 @@ L18000:
 // 						!ARGS VALID?
    i__1 = k;
    for (i__ = j; i__ <= i__1; ++i__) {
-      io___50.ciunit = chan_1.outch;
-      s_wsfe(&io___50);
-      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
-      do_fio(&c__1, (char *)&flags[i__ - 1], (ftnlen) sizeof(Bool));
-      e_wsfe();
+      BegExSF(chan_1.outch, /*440*/"(\002 Flag #\002,i2,\002 = \002,l1)", 0);
+      DoFio(1, &i__, sizeof i__);
+      DoFio(1, &flags[i__ - 1], sizeof flags[0]);
+      EndExSF();
 // L18100:
    }
    goto L2000;
@@ -802,40 +655,38 @@ L18000:
 // DS-- DISPLAY STATE
 
 L19000:
-   io___51.ciunit = chan_1.outch;
-   s_wsfe(&io___51);
-   do_fio(&c__1, (char *)&prsvec_1.prsa, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&prsvec_1.prso, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&prsvec_1.prsi, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&prsvec_1.prswon, (ftnlen) sizeof(Bool));
-   do_fio(&c__1, (char *)&prsvec_1.prscon, (ftnlen) sizeof(int));
-   e_wsfe();
-   io___52.ciunit = chan_1.outch;
-   s_wsfe(&io___52);
-   do_fio(&c__1, (char *)&play_1.winner, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&play_1.here, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&play_1.telflg, (ftnlen) sizeof(Bool));
-   e_wsfe();
-   io___53.ciunit = chan_1.outch;
-   s_wsfe(&io___53);
-   do_fio(&c__1, (char *)&state_1.moves, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&state_1.deaths, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&state_1.rwscor, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&state_1.mxscor, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&state_1.mxload, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&state_1.ltshft, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&state_1.bloc, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&state_1.mungrm, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&state_1.hs, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&state_1.egscor, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&state_1.egmxsc, (ftnlen) sizeof(int));
-   e_wsfe();
-   io___54.ciunit = chan_1.outch;
-   s_wsfe(&io___54);
-   do_fio(&c__1, (char *)&screen_1.fromdr, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&screen_1.scolrm, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&screen_1.scolac, (ftnlen) sizeof(int));
-   e_wsfe();
+{
+   BegExSF(chan_1.outch, /*450*/"(\002 Parse vector=\002,3(1x,i6),1x,l6,1x,i6)", 0);
+   DoFio(1, &prsvec_1.prsa, sizeof prsvec_1.prsa);
+   DoFio(1, &prsvec_1.prso, sizeof prsvec_1.prso);
+   DoFio(1, &prsvec_1.prsi, sizeof prsvec_1.prsi);
+   DoFio(1, &prsvec_1.prswon, sizeof prsvec_1.prswon);
+   DoFio(1, &prsvec_1.prscon, sizeof prsvec_1.prscon);
+   EndExSF();
+   BegExSF(chan_1.outch, /*460*/"(\002 Play vector= \002,2(1x,i6),1x,l6)", 0);
+   DoFio(1, &play_1.winner, sizeof play_1.winner);
+   DoFio(1, &play_1.here, sizeof play_1.here);
+   DoFio(1, &play_1.telflg, sizeof play_1.telflg);
+   EndExSF();
+   BegExSF(chan_1.outch, /*470*/"(\002 State vector=\002,9(1x,i6)/14x,2(1x,i6))", 0);
+   DoFio(1, &state_1.moves, sizeof state_1.moves);
+   DoFio(1, &state_1.deaths, sizeof state_1.deaths);
+   DoFio(1, &state_1.rwscor, sizeof state_1.rwscor);
+   DoFio(1, &state_1.mxscor, sizeof state_1.mxscor);
+   DoFio(1, &state_1.mxload, sizeof state_1.mxload);
+   DoFio(1, &state_1.ltshft, sizeof state_1.ltshft);
+   DoFio(1, &state_1.bloc, sizeof state_1.bloc);
+   DoFio(1, &state_1.mungrm, sizeof state_1.mungrm);
+   DoFio(1, &state_1.hs, sizeof state_1.hs);
+   DoFio(1, &state_1.egscor, sizeof state_1.egscor);
+   DoFio(1, &state_1.egmxsc, sizeof state_1.egmxsc);
+   EndExSF();
+   BegExSF(chan_1.outch, /*475*/"(\002 Scol vector= \002,1x,i6,2(1x,i6))", 0);
+   DoFio(1, &screen_1.fromdr, sizeof screen_1.fromdr);
+   DoFio(1, &screen_1.scolrm, sizeof screen_1.scolrm);
+   DoFio(1, &screen_1.scolac, sizeof screen_1.scolac);
+   EndExSF();
+}
    goto L2000;
 
 // GDT, PAGE 4
@@ -847,23 +698,26 @@ L20000:
       goto L2200;
    }
 // 						!ENTRY NO VALID?
-   io___55.ciunit = chan_1.outch;
-   s_wsfe(&io___55);
-   do_fio(&c__1, (char *)&flags[j - 1], (ftnlen) sizeof(Bool));
-   e_wsfe();
+{
+   BegExSF(chan_1.outch, /*480*/fmt_1, 0);
+   DoFio(1, &flags[j - 1], sizeof flags[0]);
+   EndExSF();
+}
 // 						!TYPE OLD, GET NEW.
-   io___56.ciunit = chan_1.inpch;
-   s_rsfe(&io___56);
-   do_fio(&c__1, (char *)&flags[j - 1], (ftnlen) sizeof(Bool));
-   e_rsfe();
+{
+   BegInSF(chan_1.inpch, /*490*/"(l1)", 0);
+   DoFio(1, &flags[j - 1], sizeof flags[0]);
+   EndInSF();
+} 
    goto L2000;
 
 // 21000-- HELP
 
 L21000:
-   io___57.ciunit = chan_1.outch;
-   s_wsfe(&io___57);
-   e_wsfe();
+{
+   BegExSF(chan_1.outch, /*900*/"(\002 Valid commands are:\002/\002 AA- Alter ADVS\002/\002 AC- Alter CEVENT\002/\002 AF- Alter FINDEX\002/\002 AH- Alter HERE\002/\002 AN- Alter switches\002/\002 AO- Alter OBJCTS\002/\002 AR- Alter ROOMS\002/\002 AV- Alter VILLS\002/\002 AX- Alter EXITS\002/\002 AZ- Alter PUZZLE\002/\002 DA- Display ADVS\002/\002 DC- Display CEVENT\002/\002 DF- Display FINDEX\002/\002 DH- Display HACKS\002/\002 DL- Display lengths\002/\002 DM- Display RTEXT\002/\002 DN- Display switches\002/\002 DO- Display OBJCTS\002/\002 DP- Display parser\002/\002 DR- Display ROOMS\002/\002 DS- Display state\002/\002 DT- Display text\002/\002 DV- Display VILLS\002/\002 DX- Display EXITS\002/\002 DZ- Display PUZZLE\002/\002 D2- Display ROOM2\002/\002 EX- Exit\002/\002 HE- Type this message\002/\002 NC- No cyclops\002/\002 ND- No deaths\002/\002 NR- No robber\002/\002 NT- No troll\002/\002 PD- Program detail\002/\002 RC- Restore cyclops\002/\002 RD- Restore deaths\002/\002 RR- Restore robber\002/\002 RT- Restore troll\002/\002 TK- Take.\002)", 0);
+   EndExSF();
+}
    goto L2000;
 
 // NR-- NO ROBBER
@@ -874,9 +728,10 @@ L22000:
    hack_1.thfact = false;
    newsta_(oindex_1.thief, c__0, c__0, c__0, c__0);
 // 						!VANISH THIEF.
-   io___58.ciunit = chan_1.outch;
-   s_wsfe(&io___58);
-   e_wsfe();
+{
+   BegExSF(chan_1.outch, /*500*/"(\002 No robber.\002)", 0);
+   EndExSF();
+}
    goto L2000;
 
 // NT-- NO TROLL
@@ -884,9 +739,10 @@ L22000:
 L23000:
    findex_1.trollf = true;
    newsta_(oindex_1.troll, c__0, c__0, c__0, c__0);
-   io___59.ciunit = chan_1.outch;
-   s_wsfe(&io___59);
-   e_wsfe();
+{
+   BegExSF(chan_1.outch, /*510*/"(\002 No troll.\002)", 0);
+   EndExSF();
+}
    goto L2000;
 
 // NC-- NO CYCLOPS
@@ -894,27 +750,30 @@ L23000:
 L24000:
    findex_1.cyclof = true;
    newsta_(oindex_1.cyclo, c__0, c__0, c__0, c__0);
-   io___60.ciunit = chan_1.outch;
-   s_wsfe(&io___60);
-   e_wsfe();
+{
+   BegExSF(chan_1.outch, /*520*/"(\002 No cyclops.\002)", 0);
+   EndExSF();
+}
    goto L2000;
 
 // ND-- IMMORTALITY MODE
 
 L25000:
    debug_1.dbgflg = 1;
-   io___61.ciunit = chan_1.outch;
-   s_wsfe(&io___61);
-   e_wsfe();
+{
+   BegExSF(chan_1.outch, /*530*/"(\002 No deaths.\002)", 0);
+   EndExSF();
+}
    goto L2000;
 
 // RR-- RESTORE ROBBER
 
 L26000:
    hack_1.thfact = true;
-   io___62.ciunit = chan_1.outch;
-   s_wsfe(&io___62);
-   e_wsfe();
+{
+   BegExSF(chan_1.outch, /*540*/"(\002 Restored robber.\002)", 0);
+   EndExSF();
+}
    goto L2000;
 
 // RT-- RESTORE TROLL
@@ -922,9 +781,10 @@ L26000:
 L27000:
    findex_1.trollf = false;
    newsta_(oindex_1.troll, c__0, rindex_1.mtrol, c__0, c__0);
-   io___63.ciunit = chan_1.outch;
-   s_wsfe(&io___63);
-   e_wsfe();
+{
+   BegExSF(chan_1.outch, /*550*/"(\002 Restored troll.\002)", 0);
+   EndExSF();
+}
    goto L2000;
 
 // RC-- RESTORE CYCLOPS
@@ -933,18 +793,20 @@ L28000:
    findex_1.cyclof = false;
    findex_1.magicf = false;
    newsta_(oindex_1.cyclo, c__0, rindex_1.mcycl, c__0, c__0);
-   io___64.ciunit = chan_1.outch;
-   s_wsfe(&io___64);
-   e_wsfe();
+{
+   BegExSF(chan_1.outch, /*560*/"(\002 Restored cyclops.\002)", 0);
+   EndExSF();
+}
    goto L2000;
 
 // RD-- MORTAL MODE
 
 L29000:
    debug_1.dbgflg = 0;
-   io___65.ciunit = chan_1.outch;
-   s_wsfe(&io___65);
-   e_wsfe();
+{
+   BegExSF(chan_1.outch, /*570*/"(\002 Restored deaths.\002)", 0);
+   EndExSF();
+}
    goto L2000;
 
 // GDT, PAGE 5
@@ -958,9 +820,10 @@ L30000:
 // 						!VALID OBJECT?
    newsta_(j, c__0, c__0, c__0, play_1.winner);
 // 						!YES, TAKE OBJECT.
-   io___66.ciunit = chan_1.outch;
-   s_wsfe(&io___66);
-   e_wsfe();
+{
+   BegExSF(chan_1.outch, /*580*/"(\002 Taken.\002)", 0);
+   EndExSF();
+}
 // 						!TELL.
    goto L2000;
 
@@ -977,15 +840,17 @@ L32000:
       goto L2200;
    }
 // 						!INDICES VALID?
-   io___67.ciunit = chan_1.outch;
-   s_wsfe(&io___67);
-   do_fio(&c__1, (char *)&eqr[j + k * 200 - 201], (ftnlen) sizeof(int));
-   e_wsfe();
+{
+   BegExSF(chan_1.outch, /*590*/fmt_2, 0);
+   DoFio(1, &eqr[j + k * 200 - 201], sizeof eqr[0]);
+   EndExSF();
+}
 // 						!TYPE OLD, GET NEW.
-   io___68.ciunit = chan_1.inpch;
-   s_rsfe(&io___68);
-   do_fio(&c__1, (char *)&eqr[j + k * 200 - 201], (ftnlen) sizeof(int));
-   e_rsfe();
+{
+   BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
+   DoFio(1, &eqr[j + k * 200 - 201], sizeof eqr[0]);
+   EndInSF();
+}
    goto L2000;
 
 // AO-- ALTER OBJECT ENTRY
@@ -995,14 +860,14 @@ L33000:
       goto L2200;
    }
 // 						!INDICES VALID?
-   io___69.ciunit = chan_1.outch;
-   s_wsfe(&io___69);
-   do_fio(&c__1, (char *)&eqo[j + k * 220 - 221], (ftnlen) sizeof(int));
-   e_wsfe();
-   io___70.ciunit = chan_1.inpch;
-   s_rsfe(&io___70);
-   do_fio(&c__1, (char *)&eqo[j + k * 220 - 221], (ftnlen) sizeof(int));
-   e_rsfe();
+{
+   BegExSF(chan_1.outch, /*590*/fmt_2, 0);
+   DoFio(1, &eqo[j + k * 220 - 221], sizeof eqo[0]);
+   EndExSF();
+   BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
+   DoFio(1, &eqo[j + k * 220 - 221], sizeof eqo[0]);
+   EndInSF();
+}
    goto L2000;
 
 // AA-- ALTER ADVS ENTRY
@@ -1012,14 +877,14 @@ L34000:
       goto L2200;
    }
 // 						!INDICES VALID?
-   io___71.ciunit = chan_1.outch;
-   s_wsfe(&io___71);
-   do_fio(&c__1, (char *)&eqa[j + (k << 2) - 5], (ftnlen) sizeof(int));
-   e_wsfe();
-   io___72.ciunit = chan_1.inpch;
-   s_rsfe(&io___72);
-   do_fio(&c__1, (char *)&eqa[j + (k << 2) - 5], (ftnlen) sizeof(int));
-   e_rsfe();
+{
+   BegExSF(chan_1.outch, /*590*/fmt_2, 0);
+   DoFio(1, &eqa[j + (k << 2) - 5], sizeof eqa[0]);
+   EndExSF();
+   BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
+   DoFio(1, &eqa[j + (k << 2) - 5], sizeof eqa[0]);
+   EndInSF();
+}
    goto L2000;
 
 // AC-- ALTER CLOCK EVENTS
@@ -1033,25 +898,25 @@ L35000:
       goto L35500;
    }
 // 						!FLAGS ENTRY?
-   io___73.ciunit = chan_1.outch;
-   s_wsfe(&io___73);
-   do_fio(&c__1, (char *)&eqc[j + k * 25 - 26], (ftnlen) sizeof(int));
-   e_wsfe();
-   io___74.ciunit = chan_1.inpch;
-   s_rsfe(&io___74);
-   do_fio(&c__1, (char *)&eqc[j + k * 25 - 26], (ftnlen) sizeof(int));
-   e_rsfe();
+{
+   BegExSF(chan_1.outch, /*590*/fmt_2, 0);
+   DoFio(1, &eqc[j + k * 25 - 26], sizeof eqc[0]);
+   EndExSF();
+   BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
+   DoFio(1, &eqc[j + k * 25 - 26], sizeof eqc[0]);
+   EndInSF();
+}
    goto L2000;
 
 L35500:
-   io___75.ciunit = chan_1.outch;
-   s_wsfe(&io___75);
-   do_fio(&c__1, (char *)&cevent_1.cflag[j - 1], (ftnlen) sizeof(Bool));
-   e_wsfe();
-   io___76.ciunit = chan_1.inpch;
-   s_rsfe(&io___76);
-   do_fio(&c__1, (char *)&cevent_1.cflag[j - 1], (ftnlen) sizeof(Bool));
-   e_rsfe();
+{
+   BegExSF(chan_1.outch, /*480*/fmt_1, 0);
+   DoFio(1, &cevent_1.cflag[j - 1], sizeof cevent_1.cflag[0]);
+   EndExSF();
+   BegInSF(chan_1.inpch, /*490*/"(l1)", 0);
+   DoFio(1, &cevent_1.cflag[j - 1], sizeof cevent_1.cflag[0]);
+   EndInSF();
+}
    goto L2000;
 // GDT, PAGE 6
 
@@ -1062,14 +927,14 @@ L36000:
       goto L2200;
    }
 // 						!ENTRY NO VALID?
-   io___77.ciunit = chan_1.outch;
-   s_wsfe(&io___77);
-   do_fio(&c__1, (char *)&exits_1.travel[j - 1], (ftnlen) sizeof(int));
-   e_wsfe();
-   io___78.ciunit = chan_1.inpch;
-   s_rsfe(&io___78);
-   do_fio(&c__1, (char *)&exits_1.travel[j - 1], (ftnlen) sizeof(int));
-   e_rsfe();
+{
+   BegExSF(chan_1.outch, /*610*/fmt_2, 0);
+   DoFio(1, &exits_1.travel[j - 1], sizeof exits_1.travel[0]);
+   EndExSF();
+   BegInSF(chan_1.inpch, /*620*/"(i6)", 0);
+   DoFio(1, &exits_1.travel[j - 1], sizeof exits_1.travel[0]);
+   EndInSF();
+}
    goto L2000;
 
 // AV-- ALTER VILLAINS
@@ -1079,14 +944,14 @@ L37000:
       goto L2200;
    }
 // 						!INDICES VALID?
-   io___79.ciunit = chan_1.outch;
-   s_wsfe(&io___79);
-   do_fio(&c__1, (char *)&eqv[j + (k << 2) - 5], (ftnlen) sizeof(int));
-   e_wsfe();
-   io___80.ciunit = chan_1.inpch;
-   s_rsfe(&io___80);
-   do_fio(&c__1, (char *)&eqv[j + (k << 2) - 5], (ftnlen) sizeof(int));
-   e_rsfe();
+{
+   BegExSF(chan_1.outch, /*590*/fmt_2, 0);
+   DoFio(1, &eqv[j + (k << 2) - 5], sizeof eqv[0]);
+   EndExSF();
+   BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
+   DoFio(1, &eqv[j + (k << 2) - 5], sizeof eqv[0]);
+   EndInSF();
+}
    goto L2000;
 
 // D2-- DISPLAY ROOM2 LIST
@@ -1097,12 +962,11 @@ L38000:
    }
    i__1 = k;
    for (i__ = j; i__ <= i__1; ++i__) {
-      io___81.ciunit = chan_1.outch;
-      s_wsfe(&io___81);
-      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
-      do_fio(&c__1, (char *)&oroom2_1.rroom2[i__ - 1], (ftnlen) sizeof(int));
-      do_fio(&c__1, (char *)&oroom2_1.oroom2[i__ - 1], (ftnlen) sizeof(int));
-      e_wsfe();
+      BegExSF(chan_1.outch, /*630*/"(\002 #\002,i2,\002   Room=\002,i6,\002   Obj=\002,i6)", 0);
+      DoFio(1, &i__, sizeof i__);
+      DoFio(1, &oroom2_1.rroom2[i__ - 1], sizeof oroom2_1.rroom2[0]);
+      DoFio(1, &oroom2_1.oroom2[i__ - 1], sizeof oroom2_1.oroom2[0]);
+      EndExSF();
 // L38100:
    }
    goto L2000;
@@ -1116,11 +980,10 @@ L39000:
 // 						!VALID?
    i__1 = k;
    for (i__ = j; i__ <= i__1; ++i__) {
-      io___82.ciunit = chan_1.outch;
-      s_wsfe(&io___82);
-      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
-      do_fio(&c__1, (char *)&switch__[i__ - 1], (ftnlen) sizeof(int));
-      e_wsfe();
+      BegExSF(chan_1.outch, /*640*/"(\002 Switch #\002,i2,\002 = \002,i6)", 0);
+      DoFio(1, &i__, sizeof i__);
+      DoFio(1, &switch__[i__ - 1], sizeof switch__[0]);
+      EndExSF();
 // L39100:
    }
    goto L2000;
@@ -1132,14 +995,14 @@ L40000:
       goto L2200;
    }
 // 						!VALID ENTRY?
-   io___83.ciunit = chan_1.outch;
-   s_wsfe(&io___83);
-   do_fio(&c__1, (char *)&switch__[j - 1], (ftnlen) sizeof(int));
-   e_wsfe();
-   io___84.ciunit = chan_1.inpch;
-   s_rsfe(&io___84);
-   do_fio(&c__1, (char *)&switch__[j - 1], (ftnlen) sizeof(int));
-   e_rsfe();
+{
+   BegExSF(chan_1.outch, /*590*/fmt_2, 0);
+   DoFio(1, &switch__[j - 1], sizeof switch__[0]);
+   EndExSF();
+   BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
+   DoFio(1, &switch__[j - 1], sizeof switch__[0]);
+   EndInSF();
+}
    goto L2000;
 
 // DM-- DISPLAY MESSAGES
@@ -1149,23 +1012,23 @@ L41000:
       goto L2200;
    }
 // 						!VALID LIMITS?
-   io___85.ciunit = chan_1.outch;
-   s_wsfe(&io___85);
-   e_wsfe();
+{
+   BegExSF(chan_1.outch, /*380*/fmt_0, 0);
+   EndExSF();
+}
    i__1 = k;
    for (i__ = j; i__ <= i__1; i__ += 10) {
 // Computing MIN
       i__2 = i__ + 9;
       l = min(i__2, k);
-      io___86.ciunit = chan_1.outch;
-      s_wsfe(&io___86);
-      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
-      do_fio(&c__1, (char *)&l, (ftnlen) sizeof(int));
+      BegExSF(chan_1.outch, /*650*/"(1x,i3,\002-\002,i3,3x,10(1x,i6))", 0);
+      DoFio(1, &i__, sizeof i__);
+      DoFio(1, &l, sizeof l);
       i__2 = l;
       for (l1 = i__; l1 <= i__2; ++l1) {
-         do_fio(&c__1, (char *)&rmsg_1.rtext[l1 - 1], (ftnlen) sizeof(int));
+         DoFio(1, &rmsg_1.rtext[l1 - 1], sizeof rmsg_1.rtext[0]);
       }
-      e_wsfe();
+      EndExSF();
 // L41100:
    }
    goto L2000;
@@ -1179,41 +1042,44 @@ L42000:
 // AH--	ALTER HERE
 
 L43000:
-   io___87.ciunit = chan_1.outch;
-   s_wsfe(&io___87);
-   do_fio(&c__1, (char *)&play_1.here, (ftnlen) sizeof(int));
-   e_wsfe();
-   io___88.ciunit = chan_1.inpch;
-   s_rsfe(&io___88);
-   do_fio(&c__1, (char *)&play_1.here, (ftnlen) sizeof(int));
-   e_rsfe();
+{
+   BegExSF(chan_1.outch, /*590*/fmt_2, 0);
+   DoFio(1, &play_1.here, sizeof play_1.here);
+   EndExSF();
+   BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
+   DoFio(1, &play_1.here, sizeof play_1.here);
+   EndInSF();
+}
    eqa[0] = play_1.here;
    goto L2000;
 
 // DP--	DISPLAY PARSER STATE
 
 L44000:
-   io___89.ciunit = chan_1.outch;
-   s_wsfe(&io___89);
-   do_fio(&c__5, (char *)&orp[0], (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&last_1.lastit, (ftnlen) sizeof(int));
-   do_fio(&c__5, (char *)&pvec[0], (ftnlen) sizeof(int));
-   do_fio(&c__11, (char *)&syn[0], (ftnlen) sizeof(int));
-   e_wsfe();
+{
+   BegExSF(chan_1.outch, /*660*/"(\002 ORPHS= \002,i7,i7,4i7/\002 PV=    \002,i7,4i7/\002 SYN=   \002,6i7/15x,5i7)", 0);
+   DoFio(5, orp, sizeof orp[0]);
+   DoFio(1, &last_1.lastit, sizeof last_1.lastit);
+   DoFio(5, pvec, sizeof pvec[0]);
+   DoFio(11, syn, sizeof syn[0]);
+   EndExSF();
+}
    goto L2000;
 
 // PD--	PROGRAM DETAIL DEBUG
 
 L45000:
-   io___90.ciunit = chan_1.outch;
-   s_wsfe(&io___90);
-   do_fio(&c__1, (char *)&debug_1.prsflg, (ftnlen) sizeof(int));
-   e_wsfe();
+{
+   BegExSF(chan_1.outch, /*610*/fmt_2, 0);
+   DoFio(1, &debug_1.prsflg, sizeof debug_1.prsflg);
+   EndExSF();
+}
 // 						!TYPE OLD, GET NEW.
-   io___91.ciunit = chan_1.inpch;
-   s_rsfe(&io___91);
-   do_fio(&c__1, (char *)&debug_1.prsflg, (ftnlen) sizeof(int));
-   e_rsfe();
+{
+   BegInSF(chan_1.inpch, /*620*/"(i6)", 0);
+   DoFio(1, &debug_1.prsflg, sizeof debug_1.prsflg);
+   EndInSF();
+}
    goto L2000;
 
 // DZ--	DISPLAY PUZZLE ROOM
@@ -1221,13 +1087,12 @@ L45000:
 L46000:
    for (i__ = 1; i__ <= 64; i__ += 8) {
 // 						!DISPLAY PUZZLE
-      io___92.ciunit = chan_1.outch;
-      s_wsfe(&io___92);
+      BegExSF(chan_1.outch, /*670*/"(2x,8i3)", 0);
       i__1 = i__ + 7;
       for (j = i__; j <= i__1; ++j) {
-         do_fio(&c__1, (char *)&puzzle_1.cpvec[j - 1], (ftnlen) sizeof(int));
+         DoFio(1, &puzzle_1.cpvec[j - 1], sizeof puzzle_1.cpvec[0]);
       }
-      e_wsfe();
+      EndExSF();
 // L46100:
    }
    goto L2000;
@@ -1239,15 +1104,17 @@ L47000:
       goto L2200;
    }
 // 						!VALID ENTRY?
-   io___93.ciunit = chan_1.outch;
-   s_wsfe(&io___93);
-   do_fio(&c__1, (char *)&puzzle_1.cpvec[j - 1], (ftnlen) sizeof(int));
-   e_wsfe();
+{
+   BegExSF(chan_1.outch, /*590*/fmt_2, 0);
+   DoFio(1, &puzzle_1.cpvec[j - 1], sizeof puzzle_1.cpvec[0]);
+   EndExSF();
+}
 // 						!OUTPUT OLD,
-   io___94.ciunit = chan_1.inpch;
-   s_rsfe(&io___94);
-   do_fio(&c__1, (char *)&puzzle_1.cpvec[j - 1], (ftnlen) sizeof(int));
-   e_rsfe();
+{
+   BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
+   DoFio(1, &puzzle_1.cpvec[j - 1], sizeof puzzle_1.cpvec[0]);
+   EndInSF();
+}
    goto L2000;
 
 }

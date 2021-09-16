@@ -415,11 +415,6 @@ int blow_(int h__, int v, int rmk, Bool hflg, int out) {
       2109, 4111, 4115, 4119, 4123, 4127, 3131, 3134
    };
 
-// Format strings
-   static char fmt_10[] = "(\002 BLOW 10-- \002,3i7,l7,i7)";
-   static char fmt_2050[] = "(\002 BLOW 2050-- \002,5i7)";
-   static char fmt_2650[] = "(\002 BLOW 2650-- \002,5i7)";
-
 // System generated locals
    int ret_val, i__1, i__2;
 
@@ -448,11 +443,6 @@ int blow_(int h__, int v, int rmk, Bool hflg, int out) {
    extern void rspsub_(int, int);
    extern void jigsup_(int);
    extern void newsta_(int, int, int, int, int);
-
-// Fortran I/O blocks
-   static cilist io___43 = { 0, 6, 0, fmt_10, 0 };
-   static cilist io___51 = { 0, 6, 0, fmt_2050, 0 };
-   static cilist io___56 = { 0, 6, 0, fmt_2650, 0 };
 
 // PARSE VECTOR
 
@@ -484,13 +474,13 @@ int blow_(int h__, int v, int rmk, Bool hflg, int out) {
 // 						!DESCRIPTION.
    ret_val = rmiss;
 // 						!ASSUME NO RESULT.
-   s_wsfe(&io___43);
-   do_fio(&c__1, (char *)&(h__),(ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&(v),(ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&(rmk),(ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&(hflg),(ftnlen) sizeof(Bool));
-   do_fio(&c__1, (char *)&(out),(ftnlen) sizeof(int));
-   e_wsfe();
+   BegExSF(6, /*10*/"(\002 BLOW 10-- \002,3i7,l7,i7)", 0);
+   DoFio(1, &h__, sizeof h__);
+   DoFio(1, &v, sizeof v);
+   DoFio(1, &rmk, sizeof rmk);
+   DoFio(1, &hflg, sizeof hflg);
+   DoFio(1, &out, sizeof out);
+   EndExSF();
    if (!(hflg)) {
       goto L1000;
    }
@@ -575,13 +565,13 @@ L1200:
 // ATT MUST BE > 0.
 
 L2000:
-   s_wsfe(&io___51);
-   do_fio(&c__1, (char *)&att, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&oa, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&def, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&od, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&dweap, (ftnlen) sizeof(int));
-   e_wsfe();
+   BegExSF(6, /*2050*/"(\002 BLOW 2050-- \002,5i7)", 0);
+   DoFio(1, &att, sizeof att);
+   DoFio(1, &oa, sizeof oa);
+   DoFio(1, &def, sizeof def);
+   DoFio(1, &od, sizeof od);
+   DoFio(1, &dweap, sizeof dweap);
+   EndExSF();
    if (def > 0) {
       goto L2100;
    }
@@ -656,13 +646,13 @@ L2600:
    if (!(hflg) && dweap != 0) {
       j = objcts_1.odesc2[dweap - 1];
    }
-   s_wsfe(&io___56);
-   do_fio(&c__1, (char *)&res, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&mi, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&j, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&star_1.mbase, (ftnlen) sizeof(int));
-   e_wsfe();
+   BegExSF(6, /*2650*/"(\002 BLOW 2650-- \002,5i7)", 0);
+   DoFio(1, &res, sizeof res);
+   DoFio(1, &mi, sizeof mi);
+   DoFio(1, &i__, sizeof i__);
+   DoFio(1, &j, sizeof j);
+   DoFio(1, &star_1.mbase, sizeof star_1.mbase);
+   EndExSF();
    rspsub_(i__, j);
 // 						!PRESENT RESULT.
 // BLOW, PAGE 5

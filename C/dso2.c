@@ -217,14 +217,6 @@ void score_(Bool flg) {
    static int rank[10] = { 20, 19, 18, 16, 12, 8, 4, 2, 1, 0 };
    static int erank[5] = { 20, 15, 10, 5, 0 };
 
-// Format strings
-   static char fmt_100[] = "(\002 Your score would be\002,$)";
-   static char fmt_110[] = "(\002 Your score is\002,$)";
-   static char fmt_120[] = "(i4,\002 [total of\002,i4,\002 points], in\002," "i5,\002 moves.\002)";
-   static char fmt_130[] = "(i4,\002 [total of\002,i4,\002 points], in\002," "i5,\002 move.\002)";
-   static char fmt_140[] = "(\002 Your score in the endgame would be\002,$)";
-   static char fmt_150[] = "(\002 Your score in the endgame is\002,$)";
-
 // System generated locals
    int i__1;
 
@@ -234,15 +226,6 @@ void score_(Bool flg) {
 #define flags ((Bool *)&findex_1)
 #define switch__ ((int *)&findex_1 + 46)
    extern void rspeak_(int);
-
-// Fortran I/O blocks
-   static cilist io___16 = { 0, 0, 0, fmt_100, 0 };
-   static cilist io___17 = { 0, 0, 0, fmt_110, 0 };
-   static cilist io___18 = { 0, 0, 0, fmt_120, 0 };
-   static cilist io___19 = { 0, 0, 0, fmt_130, 0 };
-   static cilist io___21 = { 0, 0, 0, fmt_140, 0 };
-   static cilist io___22 = { 0, 0, 0, fmt_150, 0 };
-   static cilist io___23 = { 0, 0, 0, fmt_120, 0 };
 
 // GAME STATE
 
@@ -261,30 +244,26 @@ void score_(Bool flg) {
    }
 // 						!ENDGAME?
    if (flg) {
-      io___16.ciunit = chan_1.outch;
-      s_wsfe(&io___16);
-      e_wsfe();
+      BegExSF(chan_1.outch, /*100*/"(\002 Your score would be\002,$)", 0);
+      EndExSF();
    }
    if (!(flg)) {
-      io___17.ciunit = chan_1.outch;
-      s_wsfe(&io___17);
-      e_wsfe();
+      BegExSF(chan_1.outch, /*110*/"(\002 Your score is\002,$)", 0);
+      EndExSF();
    }
    if (state_1.moves != 1) {
-      io___18.ciunit = chan_1.outch;
-      s_wsfe(&io___18);
-      do_fio(&c__1, (char *)&as, (ftnlen) sizeof(int));
-      do_fio(&c__1, (char *)&state_1.mxscor, (ftnlen) sizeof(int));
-      do_fio(&c__1, (char *)&state_1.moves, (ftnlen) sizeof(int));
-      e_wsfe();
+      BegExSF(chan_1.outch, /*120*/"(i4,\002 [total of\002,i4,\002 points], in\002,i5,\002 moves.\002)", 0);
+      DoFio(1, &as, sizeof as);
+      DoFio(1, &state_1.mxscor, sizeof state_1.mxscor);
+      DoFio(1, &state_1.moves, sizeof state_1.moves);
+      EndExSF();
    }
    if (state_1.moves == 1) {
-      io___19.ciunit = chan_1.outch;
-      s_wsfe(&io___19);
-      do_fio(&c__1, (char *)&as, (ftnlen) sizeof(int));
-      do_fio(&c__1, (char *)&state_1.mxscor, (ftnlen) sizeof(int));
-      do_fio(&c__1, (char *)&state_1.moves, (ftnlen) sizeof(int));
-      e_wsfe();
+      BegExSF(chan_1.outch, /*130*/"(i4,\002 [total of\002,i4,\002 points], in\002,i5,\002 move.\002)", 0);
+      DoFio(1, &as, sizeof as);
+      DoFio(1, &state_1.mxscor, sizeof state_1.mxscor);
+      DoFio(1, &state_1.moves, sizeof state_1.moves);
+      EndExSF();
    }
 
    for (i__ = 1; i__ <= 10; ++i__) {
@@ -300,21 +279,18 @@ L50:
 
 L60:
    if (flg) {
-      io___21.ciunit = chan_1.outch;
-      s_wsfe(&io___21);
-      e_wsfe();
+      BegExSF(chan_1.outch, /*140*/"(\002 Your score in the endgame would be\002,$)", 0);
+      EndExSF();
    }
    if (!(flg)) {
-      io___22.ciunit = chan_1.outch;
-      s_wsfe(&io___22);
-      e_wsfe();
+      BegExSF(chan_1.outch, /*150*/"(\002 Your score in the endgame is\002,$)", 0);
+      EndExSF();
    }
-   io___23.ciunit = chan_1.outch;
-   s_wsfe(&io___23);
-   do_fio(&c__1, (char *)&state_1.egscor, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&state_1.egmxsc, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&state_1.moves, (ftnlen) sizeof(int));
-   e_wsfe();
+   BegExSF(chan_1.outch, /*120*/"(i4,\002 [total of\002,i4,\002 points], in\002,i5,\002 moves.\002)", 0);
+   DoFio(1, &state_1.egscor, sizeof state_1.egscor);
+   DoFio(1, &state_1.egmxsc, sizeof state_1.egmxsc);
+   DoFio(1, &state_1.moves, sizeof state_1.moves);
+   EndExSF();
    for (i__ = 1; i__ <= 5; ++i__) {
       if (state_1.egscor * 20 / state_1.egmxsc >= erank[i__ - 1]) {
          goto L80;

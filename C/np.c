@@ -91,11 +91,7 @@ static int c__601 = 601;
 
 // DECLARATIONS
 
-void rdline_(char *buffer, int length, int who, ftnlen buffer_len) {
-// Format strings
-   static char fmt_50[] = "(\002 >\002,$)";
-   static char fmt_100[] = "(78a1)";
-
+void rdline_(char *buffer, int length, int who, size_t buffer_unit) {
 // System generated locals
    int i__1;
 
@@ -106,10 +102,6 @@ void rdline_(char *buffer, int length, int who, ftnlen buffer_len) {
 #define pvec ((int *)&pv_1)
 #define objvec ((int *)&pv_1 + 1)
 #define prpvec ((int *)&pv_1 + 3)
-
-// Fortran I/O blocks
-   static cilist io___6 = { 0, 0, 0, fmt_50, 0 };
-   static cilist io___7 = { 0, 0, 0, fmt_100, 0 };
 
 // PARSER OUTPUT
 
@@ -130,15 +122,13 @@ L5:
    }
 // 						!SEE WHO TO PROMPT FOR.
 L10:
-   io___6.ciunit = chan_1.outch;
-   s_wsfe(&io___6);
-   e_wsfe();
+   BegExSF(chan_1.outch, /*50*/"(\002 >\002,$)", 0);
+   EndExSF();
 // 						!PROMPT FOR GAME.
 L90:
-   io___7.ciunit = chan_1.inpch;
-   s_rsfe(&io___7);
-   do_fio(&c__78, buffer + 1, (ftnlen) 1);
-   e_rsfe();
+   BegInSF(chan_1.inpch, /*100*/"(78a1)", 0);
+   DoFio(78, buffer + 1, buffer_unit);
+   EndInSF();
    for (length = 78; length >= 1; --(length)) {
       if (*(unsigned char *)&buffer[length] != ' ') {
          goto L250;
@@ -185,11 +175,11 @@ L250:
 // PARSE-	TOP LEVEL PARSE ROUTINE
 
 // DECLARATIONS
-static Bool lex_(char *, int, int *, int *, Bool, ftnlen);
+static Bool lex_(char *, int, int *, int *, Bool/*, size_t*/);
 
 // THIS ROUTINE DETAILS ON BIT 0 OF PRSFLG
 
-Bool parse_(char *inbuf, int inlnt, Bool vbflag, ftnlen inbuf_len) {
+Bool parse_(char *inbuf, int inlnt, Bool vbflag/*, size_t inbuf_unit*/) {
 // System generated locals
    int i__1;
    Bool ret_val;
@@ -223,7 +213,7 @@ Bool parse_(char *inbuf, int inlnt, Bool vbflag, ftnlen inbuf_len) {
    prsvec_1.prsi = 0;
    prsvec_1.prso = 0;
 
-   if (!lex_(inbuf + 1, inlnt, outbuf, &outlnt, vbflag, (ftnlen) 1)) {
+   if (!lex_(inbuf + 1, inlnt, outbuf, &outlnt, vbflag/*, inbuf_unit*/)) {
       goto L100;
    }
    if ((i__1 = sparse_(outbuf, outlnt, vbflag)) < 0) {
@@ -296,7 +286,7 @@ void orphan_(int o1, int o2, int o3, int o4, int o5) {
 
 // THIS ROUTINE DETAILS ON BIT 1 OF PRSFLAG
 
-static Bool lex_(char *inbuf, int inlnt, int * outbuf, int * op, Bool vbflag, ftnlen inbuf_len) {
+static Bool lex_(char *inbuf, int inlnt, int * outbuf, int * op, Bool vbflag/*, size_t inbuf_unit*/) {
 // Initialized data
 
    static char dlimit[1 * 9] = "A" "Z" "x" "1" "9" "x" "-" "-" "x";

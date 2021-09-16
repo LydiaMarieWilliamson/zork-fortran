@@ -243,26 +243,11 @@ static Bool protct_(int);
 
 Bool init_(int x) {
 // Format strings
-   static char fmt_10100[] =
-      "(\002 There appears before you a threatening " "figure clad \002,\002all over\002/\002 in heavy black armor.  Hi" "s legs seem like the \002,\002massive trunk\002/\002 of the oak " "tree.  His broad shoulders and \002,\002helmeted head loom\002"
-      "/\002 high over your own puny frame, and \002,\002you realize th" "at his powerful\002/\002 arms could easily crush the \002,\002ve" "ry life from your body.  There\002/\002 hangs from his belt a"
-      " \002,\002veritable arsenal of deadly weapons:\002/\002 sword, m" "ace, ball \002,\002and chain, dagger, lance, and trident.\002" "/\002 He speaks with a \002,\002commanding voice:\002//20x,"
-      "\002\"You shall not pass.\"\002//\002 As \002,\002he grabs you b" "y the neck all grows dim about you.\002)";
-   static char fmt_130[] = "(i6)";
-   static char fmt_135[] = "(l4)";
-   static char fmt_910[] = "(\002 I can't open \002,\002dindx.dat\002,\002" ".\002)";
-   static char fmt_980[] =
-      "(\002 Suddenly a sinister, wraithlike figure ap" "pears before \002,\002you,\002/\002 seeming to float in the air." "  In a low, sorrowful voice\002,\002 he says,\002/\002 \"Alas, t"
-      "he very nature of the world has changed, \002,\002and the dungeon" "\002/\002 cannot be found.  All must now pass away.\"\002,\002  " "Raising his oaken staff\002/\002 in farewell, he fades into the"
-      " \002,\002spreading darkness.  In his place\002/\002 appears a t" "astefully \002,\002lettered sign reading:\002//23x,\002INITIALIZ" "ATION FAILURE\002//\002 The darkness becomes all encompassing, a" "nd your vision fails.\002)";
-   static char fmt_920[] = "(\002 \"dindx.dat\" is version \002,i1,\002." "\002,i1,a1,\002.\002/\002 I require version \002,i1,\002.\002,i1" ",a1,\002.\002)";
-   static char fmt_960[] = "(\002 I can't open \002,\002dtext.dat\002,\002" ".\002)";
+   static char fmt_0[] = "(\002 Suddenly a sinister, wraithlike figure appears before \002,\002you,\002/\002 seeming to float in the air.  In a low, sorrowful voice\002,\002 he says,\002/\002 \"Alas, the very nature of the world has changed, \002,\002and the dungeon\002/\002 cannot be found.  All must now pass away.\"\002,\002  Raising his oaken staff\002/\002 in farewell, he fades into the \002,\002spreading darkness.  In his place\002/\002 appears a tastefully \002,\002lettered sign reading:\002//23x,\002INITIALIZATION FAILURE\002//\002 The darkness becomes all encompassing, and your vision fails.\002)";
 
 // System generated locals
    int i__1;
    Bool ret_val;
-   olist o__1;
-   cllist cl__1;
 
 // Local variables
 #define flags ((Bool *)&findex_1)
@@ -285,26 +270,6 @@ Bool init_(int x) {
 #define xflag ((int *)&curxt_1 + 4)
 #define objvec ((int *)&pv_1 + 1)
 #define prpvec ((int *)&pv_1 + 3)
-
-// Fortran I/O blocks
-   static cilist io___15 = { 0, 6, 0, fmt_10100, 0 };
-   static cilist io___29 = { 0, 1, 0, fmt_130, 0 };
-   static cilist io___32 = { 0, 1, 0, fmt_130, 0 };
-   static cilist io___33 = { 0, 1, 0, fmt_130, 0 };
-   static cilist io___34 = { 0, 1, 0, fmt_130, 0 };
-   static cilist io___35 = { 0, 1, 0, fmt_130, 0 };
-   static cilist io___36 = { 0, 1, 0, fmt_130, 0 };
-   static cilist io___37 = { 0, 1, 0, fmt_130, 0 };
-   static cilist io___38 = { 0, 1, 0, fmt_135, 0 };
-   static cilist io___39 = { 0, 1, 0, fmt_130, 0 };
-   static cilist io___40 = { 0, 1, 0, fmt_130, 0 };
-   static cilist io___41 = { 0, 1, 0, fmt_130, 0 };
-   static cilist io___42 = { 0, 6, 0, fmt_910, 0 };
-   static cilist io___43 = { 0, 6, 0, fmt_980, 0 };
-   static cilist io___44 = { 0, 6, 0, fmt_920, 0 };
-   static cilist io___45 = { 0, 6, 0, fmt_980, 0 };
-   static cilist io___46 = { 0, 6, 0, fmt_960, 0 };
-   static cilist io___47 = { 0, 6, 0, fmt_980, 0 };
 
 // PARSER OUTPUT
 
@@ -344,8 +309,8 @@ Bool init_(int x) {
       goto L10000;
    }
 // 						!PROTECTION VIOLATION?
-   s_wsfe(&io___15);
-   e_wsfe();
+   BegExSF(6, /*10100*/"(\002 There appears before you a threatening figure clad \002,\002all over\002/\002 in heavy black armor.  His legs seem like the \002,\002massive trunk\002/\002 of the oak tree.  His broad shoulders and \002,\002helmeted head loom\002/\002 high over your own puny frame, and \002,\002you realize that his powerful\002/\002 arms could easily crush the \002,\002very life from your body.  There\002/\002 hangs from his belt a \002,\002veritable arsenal of deadly weapons:\002/\002 sword, mace, ball \002,\002and chain, dagger, lance, and trident.\002/\002 He speaks with a \002,\002commanding voice:\002//20x,\002\"You shall not pass.\"\002//\002 As \002,\002he grabs you by the neck all grows dim about you.\002)", 0);
+   EndExSF();
    exit_();
 
 // NOW START INITIALIZATION PROPER
@@ -555,120 +520,100 @@ L10000:
 // NOW RESTORE FROM EXISTING INDEX FILE.
 
 // 	OPEN(UNIT=1,file='/usr/share/games/dungeon/dindx.dat',
-   o__1.oerr = 1;
-   o__1.ounit = 1;
-   o__1.ofnmlen = 9;
-   o__1.ofnm = "dindx.dat";
-   o__1.orl = 0;
-   o__1.osta = "OLD";
-   o__1.oacc = "SEQUENTIAL";
-   o__1.ofm = "FORMATTED";
-   o__1.oblnk = 0;
-   i__1 = f_open(&o__1);
+   i__1 = OpenF(1, "dindx.dat", "OLD", "SEQUENTIAL", "FORMATTED", 0);
    if (i__1 != 0) {
       goto L1900;
    }
-   s_rsfe(&io___29);
-   do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&j, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&k, (ftnlen) sizeof(int));
-   e_rsfe();
+
+   BegInSF(1, /*130*/"(i6)", 0);
+   DoFio(1, &i__, sizeof i__);
+   DoFio(1, &j, sizeof j);
+   DoFio(1, &k, sizeof k);
+   EndInSF();
 // 						!GET VERSION.
    if (i__ != vers_1.vmaj || j != vers_1.vmin) {
       goto L1925;
    }
 // 	OPEN(UNIT=DBCH,file='/usr/share/games/dungeon/dtext.dat',
-   o__1.oerr = 1;
-   o__1.ounit = chan_1.dbch;
-   o__1.ofnmlen = 9;
-   o__1.ofnm = "dtext.dat";
-   o__1.orl = 76;
-   o__1.osta = "OLD";
-   o__1.oacc = "DIRECT";
-   o__1.ofm = "UNFORMATTED";
-   o__1.oblnk = 0;
-   i__1 = f_open(&o__1);
+   i__1 = OpenF(chan_1.dbch, "dtext.dat", "OLD", "DIRECT", "UNFORMATTED", 76);
    if (i__1 != 0) {
       goto L1950;
    }
 // D	PRINT 150
 // D150	FORMAT(' RESTORING FROM "dindx.dat"')
-   s_rsfe(&io___32);
-   do_fio(&c__1, (char *)&state_1.mxscor, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&star_1.strbit, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&state_1.egmxsc, (ftnlen) sizeof(int));
-   e_rsfe();
-   s_rsfe(&io___33);
-   do_fio(&c__1, (char *)&rooms_1.rlnt, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&rooms_1.rdesc2, (ftnlen) sizeof(int));
-   do_fio(&c__200, (char *)&rooms_1.rdesc1[0], (ftnlen) sizeof(int));
-   do_fio(&c__200, (char *)&rooms_1.rexit[0], (ftnlen) sizeof(int));
-   do_fio(&c__200, (char *)&rooms_1.ractio[0], (ftnlen) sizeof(int));
-   do_fio(&c__200, (char *)&rooms_1.rval[0], (ftnlen) sizeof(int));
-   do_fio(&c__200, (char *)&rooms_1.rflag[0], (ftnlen) sizeof(int));
-   e_rsfe();
-   s_rsfe(&io___34);
-   do_fio(&c__1, (char *)&exits_1.xlnt, (ftnlen) sizeof(int));
-   do_fio(&c__900, (char *)&exits_1.travel[0], (ftnlen) sizeof(int));
-   e_rsfe();
-   s_rsfe(&io___35);
-   do_fio(&c__1, (char *)&objcts_1.olnt, (ftnlen) sizeof(int));
-   do_fio(&c__220, (char *)&objcts_1.odesc1[0], (ftnlen) sizeof(int));
-   do_fio(&c__220, (char *)&objcts_1.odesc2[0], (ftnlen) sizeof(int));
-   do_fio(&c__220, (char *)&objcts_1.odesco[0], (ftnlen) sizeof(int));
-   do_fio(&c__220, (char *)&objcts_1.oactio[0], (ftnlen) sizeof(int));
-   do_fio(&c__220, (char *)&objcts_1.oflag1[0], (ftnlen) sizeof(int));
-   do_fio(&c__220, (char *)&objcts_1.oflag2[0], (ftnlen) sizeof(int));
-   do_fio(&c__220, (char *)&objcts_1.ofval[0], (ftnlen) sizeof(int));
-   do_fio(&c__220, (char *)&objcts_1.otval[0], (ftnlen) sizeof(int));
-   do_fio(&c__220, (char *)&objcts_1.osize[0], (ftnlen) sizeof(int));
-   do_fio(&c__220, (char *)&objcts_1.ocapac[0], (ftnlen) sizeof(int));
-   do_fio(&c__220, (char *)&objcts_1.oroom[0], (ftnlen) sizeof(int));
-   do_fio(&c__220, (char *)&objcts_1.oadv[0], (ftnlen) sizeof(int));
-   do_fio(&c__220, (char *)&objcts_1.ocan[0], (ftnlen) sizeof(int));
-   do_fio(&c__220, (char *)&objcts_1.oread[0], (ftnlen) sizeof(int));
-   e_rsfe();
-   s_rsfe(&io___36);
-   do_fio(&c__1, (char *)&oroom2_1.r2lnt, (ftnlen) sizeof(int));
-   do_fio(&c__20, (char *)&oroom2_1.oroom2[0], (ftnlen) sizeof(int));
-   do_fio(&c__20, (char *)&oroom2_1.rroom2[0], (ftnlen) sizeof(int));
-   e_rsfe();
-   s_rsfe(&io___37);
-   do_fio(&c__1, (char *)&cevent_1.clnt, (ftnlen) sizeof(int));
-   do_fio(&c__25, (char *)&cevent_1.ctick[0], (ftnlen) sizeof(int));
-   do_fio(&c__25, (char *)&cevent_1.cactio[0], (ftnlen) sizeof(int));
-   e_rsfe();
-   s_rsfe(&io___38);
-   do_fio(&c__25, (char *)&cevent_1.cflag[0], (ftnlen) sizeof(Bool));
-   e_rsfe();
-   s_rsfe(&io___39);
-   do_fio(&c__1, (char *)&vill_1.vlnt, (ftnlen) sizeof(int));
-   do_fio(&c__4, (char *)&vill_1.villns[0], (ftnlen) sizeof(int));
-   do_fio(&c__4, (char *)&vill_1.vprob[0], (ftnlen) sizeof(int));
-   do_fio(&c__4, (char *)&vill_1.vopps[0], (ftnlen) sizeof(int));
-   do_fio(&c__4, (char *)&vill_1.vbest[0], (ftnlen) sizeof(int));
-   do_fio(&c__4, (char *)&vill_1.vmelee[0], (ftnlen) sizeof(int));
-   e_rsfe();
-   s_rsfe(&io___40);
-   do_fio(&c__1, (char *)&advs_1.alnt, (ftnlen) sizeof(int));
-   do_fio(&c__4, (char *)&advs_1.aroom[0], (ftnlen) sizeof(int));
-   do_fio(&c__4, (char *)&advs_1.ascore[0], (ftnlen) sizeof(int));
-   do_fio(&c__4, (char *)&advs_1.avehic[0], (ftnlen) sizeof(int));
-   do_fio(&c__4, (char *)&advs_1.aobj[0], (ftnlen) sizeof(int));
-   do_fio(&c__4, (char *)&advs_1.aactio[0], (ftnlen) sizeof(int));
-   do_fio(&c__4, (char *)&advs_1.astren[0], (ftnlen) sizeof(int));
-   do_fio(&c__4, (char *)&advs_1.aflag[0], (ftnlen) sizeof(int));
-   e_rsfe();
-   s_rsfe(&io___41);
-   do_fio(&c__1, (char *)&star_1.mbase, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&rmsg_1.mlnt, (ftnlen) sizeof(int));
-   do_fio(&c__1820, (char *)&rmsg_1.rtext[0], (ftnlen) sizeof(int));
-   e_rsfe();
+   BegInSF(1, /*130*/"(i6)", 0);
+   DoFio(1, &state_1.mxscor, sizeof state_1.mxscor);
+   DoFio(1, &star_1.strbit, sizeof star_1.strbit);
+   DoFio(1, &state_1.egmxsc, sizeof state_1.egmxsc);
+   EndInSF();
+   BegInSF(1, /*130*/"(i6)", 0);
+   DoFio(1, &rooms_1.rlnt, sizeof rooms_1.rlnt);
+   DoFio(1, &rooms_1.rdesc2, sizeof rooms_1.rdesc2);
+   DoFio(200, rooms_1.rdesc1, sizeof rooms_1.rdesc1[0]);
+   DoFio(200, rooms_1.rexit, sizeof rooms_1.rexit[0]);
+   DoFio(200, rooms_1.ractio, sizeof rooms_1.ractio[0]);
+   DoFio(200, rooms_1.rval, sizeof rooms_1.rval[0]);
+   DoFio(200, rooms_1.rflag, sizeof rooms_1.rflag[0]);
+   EndInSF();
+   BegInSF(1, /*130*/"(i6)", 0);
+   DoFio(1, &exits_1.xlnt, sizeof exits_1.xlnt);
+   DoFio(900, exits_1.travel, sizeof exits_1.travel[0]);
+   EndInSF();
+   BegInSF(1, /*130*/"(i6)", 0);
+   DoFio(1, &objcts_1.olnt, sizeof objcts_1.olnt);
+   DoFio(220, objcts_1.odesc1, sizeof objcts_1.odesc1[0]);
+   DoFio(220, objcts_1.odesc2, sizeof objcts_1.odesc2[0]);
+   DoFio(220, objcts_1.odesco, sizeof objcts_1.odesco[0]);
+   DoFio(220, objcts_1.oactio, sizeof objcts_1.oactio[0]);
+   DoFio(220, objcts_1.oflag1, sizeof objcts_1.oflag1[0]);
+   DoFio(220, objcts_1.oflag2, sizeof objcts_1.oflag2[0]);
+   DoFio(220, objcts_1.ofval, sizeof objcts_1.ofval[0]);
+   DoFio(220, objcts_1.otval, sizeof objcts_1.otval[0]);
+   DoFio(220, objcts_1.osize, sizeof objcts_1.osize[0]);
+   DoFio(220, objcts_1.ocapac, sizeof objcts_1.ocapac[0]);
+   DoFio(220, objcts_1.oroom, sizeof objcts_1.oroom[0]);
+   DoFio(220, objcts_1.oadv, sizeof objcts_1.oadv[0]);
+   DoFio(220, objcts_1.ocan, sizeof objcts_1.ocan[0]);
+   DoFio(220, objcts_1.oread, sizeof objcts_1.oread[0]);
+   EndInSF();
+   BegInSF(1, /*130*/"(i6)", 0);
+   DoFio(1, &oroom2_1.r2lnt, sizeof oroom2_1.r2lnt);
+   DoFio(20, oroom2_1.oroom2, sizeof oroom2_1.oroom2[0]);
+   DoFio(20, oroom2_1.rroom2, sizeof oroom2_1.rroom2[0]);
+   EndInSF();
+   BegInSF(1, /*130*/"(i6)", 0);
+   DoFio(1, &cevent_1.clnt, sizeof cevent_1.clnt);
+   DoFio(25, cevent_1.ctick, sizeof cevent_1.ctick[0]);
+   DoFio(25, cevent_1.cactio, sizeof cevent_1.cactio[0]);
+   EndInSF();
+   BegInSF(1, /*135*/"(l4)", 0);
+   DoFio(25, cevent_1.cflag, sizeof cevent_1.cflag[0]);
+   EndInSF();
+   BegInSF(1, /*130*/"(i6)", 0);
+   DoFio(1, &vill_1.vlnt, sizeof vill_1.vlnt);
+   DoFio(4, vill_1.villns, sizeof vill_1.villns[0]);
+   DoFio(4, vill_1.vprob, sizeof vill_1.vprob[0]);
+   DoFio(4, vill_1.vopps, sizeof vill_1.vopps[0]);
+   DoFio(4, vill_1.vbest, sizeof vill_1.vbest[0]);
+   DoFio(4, vill_1.vmelee, sizeof vill_1.vmelee[0]);
+   EndInSF();
+   BegInSF(1, /*130*/"(i6)", 0);
+   DoFio(1, &advs_1.alnt, sizeof advs_1.alnt);
+   DoFio(4, advs_1.aroom, sizeof advs_1.aroom[0]);
+   DoFio(4, advs_1.ascore, sizeof advs_1.ascore[0]);
+   DoFio(4, advs_1.avehic, sizeof advs_1.avehic[0]);
+   DoFio(4, advs_1.aobj, sizeof advs_1.aobj[0]);
+   DoFio(4, advs_1.aactio, sizeof advs_1.aactio[0]);
+   DoFio(4, advs_1.astren, sizeof advs_1.astren[0]);
+   DoFio(4, advs_1.aflag, sizeof advs_1.aflag[0]);
+   EndInSF();
+   BegInSF(1, /*130*/"(i6)", 0);
+   DoFio(1, &star_1.mbase, sizeof star_1.mbase);
+   DoFio(1, &rmsg_1.mlnt, sizeof rmsg_1.mlnt);
+   DoFio(1820, rmsg_1.rtext, sizeof rmsg_1.rtext[0]);
+   EndInSF();
 
-   cl__1.cerr = 0;
-   cl__1.cunit = 1;
-   cl__1.csta = 0;
-   f_clos(&cl__1);
+   CloseF(1);
    goto L1025;
 // 						!INIT DONE.
 
@@ -718,28 +663,28 @@ L1025:
 // ERRORS-- INIT FAILS.
 
 L1900:
-   s_wsfe(&io___42);
-   e_wsfe();
-   s_wsfe(&io___43);
-   e_wsfe();
+   BegExSF(6, /*910*/"(\002 I can't open \002,\002dindx.dat\002,\002.\002)", 0);
+   EndExSF();
+   BegExSF(6, /*980*/fmt_0, 0);
+   EndExSF();
    return ret_val;
 L1925:
-   s_wsfe(&io___44);
-   do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&j, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&k, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&vers_1.vmaj, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&vers_1.vmin, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&vers_1.vedit, (ftnlen) sizeof(int));
-   e_wsfe();
-   s_wsfe(&io___45);
-   e_wsfe();
+   BegExSF(6, /*920*/"(\002 \"dindx.dat\" is version \002,i1,\002.\002,i1,a1,\002.\002/\002 I require version \002,i1,\002.\002,i1,a1,\002.\002)", 0);
+   DoFio(1, &i__, sizeof i__);
+   DoFio(1, &j, sizeof j);
+   DoFio(1, &k, sizeof k);
+   DoFio(1, &vers_1.vmaj, sizeof vers_1.vmaj);
+   DoFio(1, &vers_1.vmin, sizeof vers_1.vmin);
+   DoFio(1, &vers_1.vedit, sizeof vers_1.vedit);
+   EndExSF();
+   BegExSF(6, /*980*/fmt_0, 0);
+   EndExSF();
    return ret_val;
 L1950:
-   s_wsfe(&io___46);
-   e_wsfe();
-   s_wsfe(&io___47);
-   e_wsfe();
+   BegExSF(6, /*960*/"(\002 I can't open \002,\002dtext.dat\002,\002.\002)", 0);
+   EndExSF();
+   BegExSF(6, /*980*/fmt_0, 0);
+   EndExSF();
    return ret_val;
 
 }

@@ -181,9 +181,6 @@ void game_(void) {
 
    static char secho[1 * 4] = "E" "C" "H" "O";
 
-// Format strings
-   static char fmt_1410[] = "(1x,78a1)";
-
 // System generated locals
    int i__1;
 
@@ -191,7 +188,7 @@ void game_(void) {
 #define flags ((Bool *)&findex_1)
 #define switch__ ((int *)&findex_1 + 46)
    extern void rspeak_(int);
-   extern void rdline_(char *, int, int, ftnlen);
+   extern void rdline_(char *, int, int, size_t);
    extern void valuac_(int);
    extern int oactor_(int);
    static Bool f;
@@ -204,7 +201,7 @@ void game_(void) {
 #define syn ((int *)&syntax_1)
 #define pvec ((int *)&pv_1)
 #define rrand ((int *)&rooms_1 + 602)
-   extern Bool parse_(char *, int, Bool, ftnlen);
+   extern Bool parse_(char *, int, Bool/*, size_t*/);
    extern Bool aappli_(int);
 #define objvec ((int *)&pv_1 + 1)
    extern Bool rmdesc_(int);
@@ -212,9 +209,6 @@ void game_(void) {
    extern Bool vappli_(int);
    extern Bool findxt_(int, int);
 #define prpvec ((int *)&pv_1 + 3)
-
-// Fortran I/O blocks
-   static cilist io___15 = { 0, 0, 0, fmt_1410, 0 };
 
 // PARSER OUTPUT
 
@@ -254,7 +248,7 @@ L100:
    play_1.telflg = false;
 // 						!ASSUME NOTHING TOLD.
    if (prsvec_1.prscon <= 1) {
-      rdline_(input_1.inbuf, input_1.inlnt, c__1, (ftnlen) 1);
+      rdline_(input_1.inbuf, input_1.inlnt, c__1, sizeof input_1.inbuf[0]);
    }
 
 // D   DO 150 I=1,3
@@ -268,7 +262,7 @@ L100:
 
 //L200:
    ++state_1.moves;
-   prsvec_1.prswon = parse_(input_1.inbuf, input_1.inlnt, c_true, (ftnlen)1);
+   prsvec_1.prswon = parse_(input_1.inbuf, input_1.inlnt, c_true/*, sizeof input_1.inbuf[0]*/);
    if (!prsvec_1.prswon) {
       goto L400;
    }
@@ -313,7 +307,7 @@ L900:
 // IF INPUT IS NOT 'ECHO' OR A DIRECTION, JUST ECHO.
 
 L1000:
-   rdline_(input_1.inbuf, input_1.inlnt, c__0, (ftnlen) 1);
+   rdline_(input_1.inbuf, input_1.inlnt, c__0, sizeof input_1.inbuf[0]);
    ++state_1.moves;
 // 						!CHARGE FOR MOVES.
    for (i__ = 1; i__ <= 4; ++i__) {
@@ -347,7 +341,7 @@ L1000:
    goto L400;
 
 L1300:
-   prsvec_1.prswon = parse_(input_1.inbuf, input_1.inlnt, c_false, (ftnlen)1);
+   prsvec_1.prswon = parse_(input_1.inbuf, input_1.inlnt, c_false/*, sizeof input_1.inbuf[0]*/);
    if (!prsvec_1.prswon || prsvec_1.prsa != vindex_1.walkw) {
       goto L1400;
    }
@@ -357,13 +351,12 @@ L1300:
 // 						!VALID EXIT?
 
 L1400:
-   io___15.ciunit = chan_1.outch;
-   s_wsfe(&io___15);
+   BegExSF(chan_1.outch, /*1410*/"(1x,78a1)", 0);
    i__1 = input_1.inlnt;
    for (j = 1; j <= i__1; ++j) {
-      do_fio(&c__1, input_1.inbuf + (j - 1), (ftnlen) 1);
+      DoFio(1, input_1.inbuf + (j - 1), sizeof input_1.inbuf[0]);
    }
-   e_wsfe();
+   EndExSF();
    play_1.telflg = true;
 // 						!INDICATE OUTPUT.
    goto L1000;
@@ -391,7 +384,7 @@ L2100:
       goto L2700;
    }
 // 						!ANY INPUT?
-   if (parse_(input_1.inbuf, input_1.inlnt, c_true, (ftnlen) 1)) {
+   if (parse_(input_1.inbuf, input_1.inlnt, c_true/*, sizeof input_1.inbuf[0])*/)) {
       goto L2150;
    }
 L2700:

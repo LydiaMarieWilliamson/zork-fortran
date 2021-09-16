@@ -3,67 +3,31 @@
 
 // Based on f2c.h: The Standard Fortran to C header file.
 #include <stdbool.h>
+#include <stdlib.h>
 
 // These types will be nativized, after it's made OK to do so.
 typedef long Bool; // Logical.
-
-// I/O stuff.
-#ifdef f2c_i2
-// for -i2
-typedef short flag, ftnlen, ftnint;
-#else
-typedef long flag, ftnlen, ftnint;
-#endif
-
-// external read, write
-typedef struct {
-   flag cierr;
-   ftnint ciunit;
-   flag ciend;
-   char *cifmt;
-   ftnint cirec;
-} cilist;
-
-// open
-typedef struct {
-   flag oerr;
-   ftnint ounit;
-   char *ofnm;
-   ftnlen ofnmlen;
-   char *osta;
-   char *oacc;
-   char *ofm;
-   ftnint orl;
-   char *oblnk;
-} olist;
-
-// close
-typedef struct {
-   flag cerr;
-   ftnint cunit;
-   char *csta;
-} cllist;
 
 #define abs(X)		((X) >= 0? (X): -(X))
 #define min(A, B)	((A) <= (B)? (A): (B))
 #define max(A, B)	((A) >= (B)? (A): (B))
 
-// Built-in functions (defined in the f2c library):
-int do_fio(int *, char *, ftnlen);
-int do_uio(int *, char *, ftnlen);
-int e_rdue(void);
-int e_rsfe(void);
-int e_rsue(void);
-int e_wsfe(void);
-int e_wsue(void);
-int f_clos(cllist *);
-int f_open(olist *);
-int s_cmp(char *, char *, ftnlen, ftnlen);
-int s_rdue(cilist *);
-int s_rsfe(cilist *);
-int s_rsue(cilist *);
-int s_wsfe(cilist *);
-int s_wsue(cilist *);
-int /* Subroutine */ s_stop(char *, ftnlen);
+// A wrapper for the built-in functions defined in the f2c library.
+int DoFio(size_t N, void *X, size_t dN);
+int DoUio(size_t N, void *X, size_t dN);
+int CompS(char *A, char *B, size_t N);
+void StopS(char *A, size_t N);
+int OpenF(int Unit, char *File, char *Sta, char *Acc, char *Fm, int Rl);
+int CloseF(int Unit);
+int BegInDU(int Unit, char *Format, int Rec);
+int EndInDU(void);
+int BegInSF(int Unit, char *Format, int Rec);
+int EndInSF(void);
+int BegInSU(int Unit, char *Format, int Rec);
+int EndInSU(void);
+int BegExSF(int Unit, char *Format, int Rec);
+int EndExSF(void);
+int BegExSU(int Unit, char *Format, int Rec);
+int EndExSU(void);
 
 #endif // OnceOnly

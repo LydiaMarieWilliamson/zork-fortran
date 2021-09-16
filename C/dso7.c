@@ -81,7 +81,7 @@ static int c__875 = 875;
 
 // DECLARATIONS
 
-void encryp_(const char *inw, char *outw, ftnlen inw_len, ftnlen outw_len) {
+void encryp_(const char *inw, char *outw/*, size_t inw_unit, size_t outw_unit*/) {
 // Initialized data
 
    static char keyw[1 * 6] = "E" "C" "O" "R" "M" "S";
@@ -187,18 +187,12 @@ void cpinfo_(int rmk, int st) {
    static char pict[1 * 5] = "S" "S" "S" " " "M";
    static char qmk[1] = "?";
 
-// Format strings
-   static char fmt_10[] = "(\002       |\002,a2,1x,a2,1x,a2,\002|\002/,\002" " West  |\002,a2,\002 .. \002,a2,\002|  East\002,/\002       |" "\002,a2,1x,a2,1x,a2,\002|\002)";
-
 // Local variables
    static int i__, j, k, l;
    static char dgm[1 * 8];
 #define flags ((Bool *)&findex_1)
    extern void rspeak_(int);
 #define switch__ ((int *)&findex_1 + 46)
-
-// Fortran I/O blocks
-   static cilist io___25 = { 0, 0, 0, fmt_10, 0 };
 
 // PUZZLE ROOM
 
@@ -228,10 +222,9 @@ void cpinfo_(int rmk, int st) {
    L100:
       ;
    }
-   io___25.ciunit = chan_1.outch;
-   s_wsfe(&io___25);
-   do_fio(&c__8, dgm, (ftnlen) 1);
-   e_wsfe();
+   BegExSF(chan_1.outch, /*10*/"(\002       |\002,a2,1x,a2,1x,a2,\002|\002/,\002 West  |\002,a2,\002 .. \002,a2,\002|  East\002,/\002       |\002,a2,1x,a2,1x,a2,\002|\002)", 0);
+   DoFio(8, dgm, sizeof dgm[0]);
+   EndExSF();
 
    if (st == 10) {
       rspeak_(c__870);

@@ -274,21 +274,9 @@ Bool sverbs_(int ri) {
       "T" "E" "M" "P" "L" "E" "F" "O" "R" "E" "S" "T" "3" "0" "0" "0" "3" "F" "L" "A" "S" "K" "R" "U" "B" "F" "O" "N" "D" "L" "E" "C" "A" "R" "R" "E" "S" "T" "O" "U" "C" "H" "B" "O" "N" "E" "S" "B" "O" "D" "Y" "S" "K" "E" "L" "E" "T" "R" "U" "S" "T" "Y"
       "K" "N" "I" "F" "E" "N" "O" "N" "E" "N" "O" "W" "H" "E" "R" "\000";
 
-// Format strings
-   static char fmt_5010[] = "(\002 V\002,i1,\002.\002,i2,a1)";
-   static char fmt_21010[] = "(\002 You have been playing Dungeon for \002," "$)";
-   static char fmt_21011[] = "(\002+\002,i3,\002 hour\002,$)";
-   static char fmt_21012[] = "(\002+s and \002,$)";
-   static char fmt_21013[] = "(\002+ and \002,$)";
-   static char fmt_21014[] = "(\002+\002,i2,\002 minute.\002)";
-   static char fmt_21015[] = "(\002+\002,i2,\002 minutes.\002)";
-   static char fmt_25100[] = "(\002 You will be cured after \002,i3,\002 mo" "ves.\002)";
-   static char fmt_26510[] = "(\002 A hollow voice replies:  \"\002,6a1,1x," "6a1,\002\".\002)";
-
 // System generated locals
    int i__1, i__2;
    Bool ret_val;
-   cllist cl__1;
 
 // Local variables
    static Bool f;
@@ -304,7 +292,7 @@ Bool sverbs_(int ri) {
    static int k;
    extern int fights_(int, Bool);
    static int l;
-   extern void encryp_(const char *, char *, ftnlen, ftnlen);
+   extern void encryp_(const char *, char * /*, size_t, size_t*/);
    static char ch[1 * 6];
    static int cp, wp;
 #define eqa ((int *)&advs_1 + 1)
@@ -328,17 +316,6 @@ Bool sverbs_(int ri) {
    extern Bool findxt_(int, int);
 #define prpvec ((int *)&pv_1 + 3)
    extern Bool moveto_(int, int);
-
-// Fortran I/O blocks
-   static cilist io___23 = { 0, 0, 0, fmt_5010, 0 };
-   static cilist io___26 = { 0, 0, 0, fmt_21010, 0 };
-   static cilist io___27 = { 0, 0, 0, fmt_21011, 0 };
-   static cilist io___28 = { 0, 0, 0, fmt_21012, 0 };
-   static cilist io___29 = { 0, 0, 0, fmt_21013, 0 };
-   static cilist io___30 = { 0, 0, 0, fmt_21014, 0 };
-   static cilist io___31 = { 0, 0, 0, fmt_21015, 0 };
-   static cilist io___33 = { 0, 0, 0, fmt_25100, 0 };
-   static cilist io___37 = { 0, 0, 0, fmt_26510, 0 };
 
 // PARSER OUTPUT
 
@@ -571,12 +548,11 @@ L4100:
 // V74--	VERSION.  PRINT INFO.
 
 L5000:
-   io___23.ciunit = chan_1.outch;
-   s_wsfe(&io___23);
-   do_fio(&c__1, (char *)&vers_1.vmaj, (ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&vers_1.vmin, (ftnlen) sizeof(int));
-   do_fio(&c__1, vers_1.vedit, (ftnlen) 1);
-   e_wsfe();
+   BegExSF(chan_1.outch, /*5010*/"(\002 V\002,i1,\002.\002,i2,a1)", 0);
+   DoFio(1, &vers_1.vmaj, sizeof vers_1.vmaj);
+   DoFio(1, &vers_1.vmin, sizeof vers_1.vmin);
+   DoFio(1, vers_1.vedit, sizeof vers_1.vedit[0]);
+   EndExSF();
    play_1.telflg = true;
    return ret_val;
 
@@ -726,10 +702,7 @@ L15000:
       return ret_val;
    }
 // 						!ASK FOR Y/N DECISION.
-   cl__1.cerr = 0;
-   cl__1.cunit = chan_1.dbch;
-   cl__1.csta = 0;
-   f_clos(&cl__1);
+   CloseF(chan_1.dbch);
    exit_();
 // 						!BYE.
 // SVERBS, PAGE 4
@@ -897,36 +870,30 @@ L21000:
    i__ = k / 60;
    j = k % 60;
 
-   io___26.ciunit = chan_1.outch;
-   s_wsfe(&io___26);
-   e_wsfe();
+   BegExSF(chan_1.outch, /*21010*/"(\002 You have been playing Dungeon for \002,$)", 0);
+   EndExSF();
    if (i__ != 0) {
-      io___27.ciunit = chan_1.outch;
-      s_wsfe(&io___27);
-      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
-      e_wsfe();
+      BegExSF(chan_1.outch, /*21011*/"(\002+\002,i3,\002 hour\002,$)", 0);
+      DoFio(1, &i__, sizeof i__);
+      EndExSF();
    }
    if (i__ >= 2) {
-      io___28.ciunit = chan_1.outch;
-      s_wsfe(&io___28);
-      e_wsfe();
+      BegExSF(chan_1.outch, /*21012*/"(\002+s and \002,$)", 0);
+      EndExSF();
    }
    if (i__ == 1) {
-      io___29.ciunit = chan_1.outch;
-      s_wsfe(&io___29);
-      e_wsfe();
+      BegExSF(chan_1.outch, /*21013*/"(\002+ and \002,$)", 0);
+      EndExSF();
    }
    if (j == 1) {
-      io___30.ciunit = chan_1.outch;
-      s_wsfe(&io___30);
-      do_fio(&c__1, (char *)&j, (ftnlen) sizeof(int));
-      e_wsfe();
+      BegExSF(chan_1.outch, /*21014*/"(\002+\002,i2,\002 minute.\002)", 0);
+      DoFio(1, &j, sizeof j);
+      EndExSF();
    }
    if (j != 1) {
-      io___31.ciunit = chan_1.outch;
-      s_wsfe(&io___31);
-      do_fio(&c__1, (char *)&j, (ftnlen) sizeof(int));
-      e_wsfe();
+      BegExSF(chan_1.outch, /*21015*/"(\002+\002,i2,\002 minutes.\002)", 0);
+      DoFio(1, &j, sizeof j);
+      EndExSF();
    }
    play_1.telflg = true;
    return ret_val;
@@ -1043,10 +1010,9 @@ L25000:
 // 						!COMPUTE WAIT.
 
    if (j != 0) {
-      io___33.ciunit = chan_1.outch;
-      s_wsfe(&io___33);
-      do_fio(&c__1, (char *)&i__, (ftnlen) sizeof(int));
-      e_wsfe();
+      BegExSF(chan_1.outch, /*25100*/"(\002 You will be cured after \002,i3,\002 moves.\002)", 0);
+      DoFio(1, &i__, sizeof i__);
+      EndExSF();
    }
 
    i__1 = k + 478;
@@ -1119,7 +1085,7 @@ L26300:
    return ret_val;
 
 L26400:
-   encryp_(pv_1.p1, ch, (ftnlen) 1, (ftnlen) 1);
+   encryp_(pv_1.p1, ch/*, sizeof pv_1.p1[0], sizeof ch[0]*/);
 // 						!COMPUTE RESPONSE.
    if (*(unsigned char *)&pv_1.p2[0] != ' ') {
       goto L26600;
@@ -1135,11 +1101,10 @@ L26400:
    findex_1.spellf = true;
 // 						!TELL HIM.
    play_1.telflg = true;
-   io___37.ciunit = chan_1.outch;
-   s_wsfe(&io___37);
-   do_fio(&c__6, pv_1.p1, (ftnlen) 1);
-   do_fio(&c__6, ch, (ftnlen) 1);
-   e_wsfe();
+   BegExSF(chan_1.outch, /*26510*/"(\002 A hollow voice replies:  \"\002,6a1,1x,6a1,\002\".\002)", 0);
+   DoFio(6, pv_1.p1, sizeof pv_1.p1[0]);
+   DoFio(6, ch, sizeof ch[0]);
+   EndExSF();
 
    return ret_val;
 
