@@ -81,7 +81,7 @@ static int c__875 = 875;
 
 // DECLARATIONS
 
-Void encryp_(char *inw, char *outw, ftnlen inw_len, ftnlen outw_len) {
+void encryp_(const char *inw, char *outw, ftnlen inw_len, ftnlen outw_len) {
 // Initialized data
 
    static char keyw[1 * 6] = "E" "C" "O" "R" "M" "S";
@@ -127,15 +127,13 @@ Void encryp_(char *inw, char *outw, ftnlen inw_len, ftnlen outw_len) {
       *(unsigned char *)&outw[i__] = (char)(max(1, j) + 64);
 // L200:
    }
-   return 0;
-
 }
 
 // CPGOTO--	MOVE TO NEXT STATE IN PUZZLE ROOM
 
 // DECLARATIONS
 
-Void cpgoto_(int * st) {
+void cpgoto_(int st) {
 // System generated locals
    int i__1, i__2;
 
@@ -146,7 +144,7 @@ Void cpgoto_(int * st) {
 #define rrand ((int *)&rooms_1 + 602)
 #define flags ((Bool *)&findex_1)
 #define switch__ ((int *)&findex_1 + 46)
-   extern Void newsta_(int *, int *, int *, int *, int *);
+   extern void newsta_(int, int, int, int, int);
 
 // ROOMS
 
@@ -162,16 +160,14 @@ Void cpgoto_(int * st) {
 // 						!RELOCATE OBJECTS.
       if (objcts_1.oroom[i__ - 1] == rindex_1.cpuzz && (objcts_1.oflag2[i__ - 1] & oflags_1.actrbt + oflags_1.villbt) == 0) {
          i__2 = findex_1.cphere * hyper_1.hfactr;
-         newsta_(&i__, &c__0, &i__2, &c__0, &c__0);
+         newsta_(i__, c__0, i__2, c__0, c__0);
       }
-      if (objcts_1.oroom[i__ - 1] == *st * hyper_1.hfactr) {
-         newsta_(&i__, &c__0, &rindex_1.cpuzz, &c__0, &c__0);
+      if (objcts_1.oroom[i__ - 1] == st * hyper_1.hfactr) {
+         newsta_(i__, c__0, rindex_1.cpuzz, c__0, c__0);
       }
 // L100:
    }
-   findex_1.cphere = *st;
-   return 0;
-
+   findex_1.cphere = st;
 }
 
 #undef switch__
@@ -184,7 +180,7 @@ Void cpgoto_(int * st) {
 
 // DECLARATIONS
 
-Void cpinfo_(int * rmk, int * st) {
+void cpinfo_(int rmk, int st) {
 // Initialized data
 
    static int dgmoft[8] = { -9, -8, -7, -1, 1, 7, 8, 9 };
@@ -198,7 +194,7 @@ Void cpinfo_(int * rmk, int * st) {
    static int i__, j, k, l;
    static char dgm[1 * 8];
 #define flags ((Bool *)&findex_1)
-   extern Void rspeak_(int *);
+   extern void rspeak_(int);
 #define switch__ ((int *)&findex_1 + 46)
 
 // Fortran I/O blocks
@@ -215,7 +211,7 @@ Void cpinfo_(int * rmk, int * st) {
    rspeak_(rmk);
    for (i__ = 1; i__ <= 8; ++i__) {
       j = dgmoft[i__ - 1];
-      *(unsigned char *)&dgm[i__ - 1] = *(unsigned char *)&pict[puzzle_1.cpvec[*st + j - 1] + 3];
+      *(unsigned char *)&dgm[i__ - 1] = *(unsigned char *)&pict[puzzle_1.cpvec[st + j - 1] + 3];
 // 						!GET PICTURE ELEMENT.
       if (abs(j) == 1 || abs(j) == 8) {
          goto L100;
@@ -226,7 +222,7 @@ Void cpinfo_(int * rmk, int * st) {
       }
 // 						!GET ORTHO DIR.
       l = j - k;
-      if (puzzle_1.cpvec[*st + k - 1] != 0 && puzzle_1.cpvec[*st + l - 1] != 0) {
+      if (puzzle_1.cpvec[st + k - 1] != 0 && puzzle_1.cpvec[st + l - 1] != 0) {
          *(unsigned char *)&dgm[i__ - 1] = *(unsigned char *)&qmk[0];
       }
    L100:
@@ -237,12 +233,12 @@ Void cpinfo_(int * rmk, int * st) {
    do_fio(&c__8, dgm, (ftnlen) 1);
    e_wsfe();
 
-   if (*st == 10) {
-      rspeak_(&c__870);
+   if (st == 10) {
+      rspeak_(c__870);
    }
 // 						!AT HOLE?
-   if (*st == 37) {
-      rspeak_(&c__871);
+   if (st == 37) {
+      rspeak_(c__871);
    }
 // 						!AT NICHE?
    i__ = 872;
@@ -250,20 +246,18 @@ Void cpinfo_(int * rmk, int * st) {
    if (findex_1.cpoutf) {
       i__ = 873;
    }
-   if (*st == 52) {
-      rspeak_(&i__);
+   if (st == 52) {
+      rspeak_(i__);
    }
 // 						!AT DOOR?
-   if (puzzle_1.cpvec[*st] == -2) {
-      rspeak_(&c__874);
+   if (puzzle_1.cpvec[st] == -2) {
+      rspeak_(c__874);
    }
 // 						!EAST LADDER?
-   if (puzzle_1.cpvec[*st - 2] == -3) {
-      rspeak_(&c__875);
+   if (puzzle_1.cpvec[st - 2] == -3) {
+      rspeak_(c__875);
    }
 // 						!WEST LADDER?
-   return 0;
-
 }
 
 #undef switch__

@@ -23,3 +23,10 @@ History
 		Compilation is now possible, but no baseline has yet been established.
 		Hidden size-dependencies for data I/O exist, which crash the file I/O.
 2021/09/15	Added the data/configuration files d{indx,text}.dat as symbolic links (for now).
+2021/09/15	Normalized the layout of the comments.
+2021/09/15	Strength reduction:
+		∙	lifted input-only function parameters to value parameters.
+		∙	lifted output-only parameters to return values, when singular.
+		∙	commented out unused parameters.
+		∙	eliminated ‟Void”, after reducing it to ‟void”.
+		No effect on the compile-time or run-time baselines.

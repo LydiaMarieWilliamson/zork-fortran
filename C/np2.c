@@ -167,10 +167,11 @@ static int c__0 = 0;
 // WRITTEN BY R. M. SUPNIK
 
 // DECLARATIONS
+static Bool thisit_(int, int, int, int);
 
 // THIS ROUTINE DETAILS ON BIT 3 OF PRSFLG
 
-int getobj_(int * oidx, int * aidx, int * spcobj) {
+int getobj_(int oidx, int aidx, int spcobj) {
 // System generated locals
    int ret_val, i__1;
 
@@ -179,7 +180,7 @@ int getobj_(int * oidx, int * aidx, int * spcobj) {
 #define eqa ((int *)&advs_1 + 1)
    static int obj;
 #define eqo ((int *)&objcts_1 + 1)
-   extern Bool lit_(int *);
+   extern Bool lit_(int);
 #define orp ((int *)&orphs_1)
 #define syn ((int *)&syntax_1)
 #define avoc ((int *)&adjvoc_1)
@@ -187,12 +188,11 @@ int getobj_(int * oidx, int * aidx, int * spcobj) {
 #define pvec ((int *)&pv_1)
 #define ovoc ((int *)&objvoc_1)
 #define vvoc ((int *)&vrbvoc_1)
-   extern Bool ghere_(int *, int *);
+   extern Bool ghere_(int, int);
    static Bool chomp;
 #define objvec ((int *)&pv_1 + 1)
 #define prpvec ((int *)&pv_1 + 3)
-   extern Bool thisit_(int *, int *, int *, int *);
-   extern int schlst_(int *, int *, int *, int *, int *, int *);
+   extern int schlst_(int, int, int, int, int, int);
 
 // PARSER OUTPUT
 
@@ -216,12 +216,12 @@ int getobj_(int * oidx, int * aidx, int * spcobj) {
    av = advs_1.avehic[play_1.winner - 1];
    obj = 0;
 // 						!ASSUME DARK.
-   if (!lit_(&play_1.here)) {
+   if (!lit_(play_1.here)) {
       goto L200;
    }
 // 						!LIT?
 
-   obj = schlst_(oidx, aidx, &play_1.here, &c__0, &c__0, spcobj);
+   obj = schlst_(oidx, aidx, play_1.here, c__0, c__0, spcobj);
 // 						!SEARCH ROOM.
 // D	IF(DFLAG) PRINT 10,OBJ
 // D10	FORMAT(' SCHLST- ROOM SCH ',I6)
@@ -249,7 +249,7 @@ L200:
       goto L400;
    }
 // 						!IN VEHICLE?
-   nobj = schlst_(oidx, aidx, &c__0, &av, &c__0, spcobj);
+   nobj = schlst_(oidx, aidx, c__0, av, c__0, spcobj);
 // 						!SEARCH VEHICLE.
 // D	IF(DFLAG) PRINT 20,NOBJ
 // D20	FORMAT(' SCHLST- VEH SCH  ',I6)
@@ -275,7 +275,7 @@ L300:
    obj = nobj;
 
 L400:
-   nobj = schlst_(oidx, aidx, &c__0, &c__0, &play_1.winner, spcobj);
+   nobj = schlst_(oidx, aidx, c__0, c__0, play_1.winner, spcobj);
 // 						!SEARCH ADVENTURER.
 // D	IF(DFLAG) PRINT 30,NOBJ
 // D30	FORMAT(' SCHLST- ADV SCH  ',I6)
@@ -310,10 +310,10 @@ L1000:
    i__1 = objcts_1.olnt;
    for (i__ = star_1.strbit + 1; i__ <= i__1; ++i__) {
 // 						!NO, SEARCH GLOBALS.
-      if (!thisit_(oidx, aidx, &i__, spcobj)) {
+      if (!thisit_(oidx, aidx, i__, spcobj)) {
          goto L1200;
       }
-      if (!ghere_(&i__, &play_1.here)) {
+      if (!ghere_(i__, play_1.here)) {
          goto L1200;
       }
 // 						!CAN IT BE HERE?
@@ -349,15 +349,16 @@ L1500:
 // SCHLST--	SEARCH FOR OBJECT
 
 // DECLARATIONS
+static Bool thisit_(int, int, int, int);
 
-int schlst_(int * oidx, int * aidx, int * rm, int * cn, int * ad, int * spcobj) {
+int schlst_(int oidx, int aidx, int rm, int cn, int ad, int spcobj) {
 // System generated locals
    int ret_val, i__1, i__2;
 
 // Local variables
    static int i__, j, x;
 #define eqo ((int *)&objcts_1 + 1)
-   extern Bool qhere_(int *, int *), thisit_(int *, int *, int *, int *);
+   extern Bool qhere_(int, int);
 
 // OBJECTS
 
@@ -368,10 +369,10 @@ int schlst_(int * oidx, int * aidx, int * rm, int * cn, int * ad, int * spcobj) 
    i__1 = objcts_1.olnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
 // 						!SEARCH OBJECTS.
-      if ((objcts_1.oflag1[i__ - 1] & oflags_1.visibt) == 0 || (*rm == 0 || !qhere_(&i__, rm)) && (*cn == 0 || objcts_1.ocan[i__ - 1] != *cn) && (*ad == 0 || objcts_1.oadv[i__ - 1] != *ad)) {
+      if ((objcts_1.oflag1[i__ - 1] & oflags_1.visibt) == 0 || (rm == 0 || !qhere_(i__, rm)) && (cn == 0 || objcts_1.ocan[i__ - 1] != cn) && (ad == 0 || objcts_1.oadv[i__ - 1] != ad)) {
          goto L1000;
       }
-      if (!thisit_(oidx, aidx, &i__, spcobj)) {
+      if (!thisit_(oidx, aidx, i__, spcobj)) {
          goto L200;
       }
       if (ret_val != 0) {
@@ -397,7 +398,7 @@ int schlst_(int * oidx, int * aidx, int * rm, int * cn, int * ad, int * spcobj) 
       i__2 = objcts_1.olnt;
       for (j = 1; j <= i__2; ++j) {
 // 						!SEARCH OBJECTS.
-         if ((objcts_1.oflag1[j - 1] & oflags_1.visibt) == 0 || !thisit_(oidx, aidx, &j, spcobj)) {
+         if ((objcts_1.oflag1[j - 1] & oflags_1.visibt) == 0 || !thisit_(oidx, aidx, j, spcobj)) {
             goto L500;
          }
          x = objcts_1.ocan[j - 1];
@@ -447,7 +448,7 @@ L2000:
 
 // DECLARATIONS
 
-Bool thisit_(int * oidx, int * aidx, int * obj, int * spcobj) {
+static Bool thisit_(int oidx, int aidx, int obj, int spcobj) {
 // Initialized data
 
    static int r50min = 1600;
@@ -471,36 +472,36 @@ Bool thisit_(int * oidx, int * aidx, int * obj, int * spcobj) {
 
    ret_val = false;
 // 						!ASSUME NO MATCH.
-   if (*spcobj != 0 && *obj == *spcobj) {
+   if (spcobj != 0 && obj == spcobj) {
       goto L500;
    }
 
 // CHECK FOR OBJECT NAMES
 
-   i__ = *oidx + 1;
+   i__ = oidx + 1;
 L100:
    ++i__;
    if (ovoc[i__ - 1] <= 0 || ovoc[i__ - 1] >= r50min) {
       return ret_val;
    }
 // 						!IF DONE, LOSE.
-   if (ovoc[i__ - 1] != *obj) {
+   if (ovoc[i__ - 1] != obj) {
       goto L100;
    }
 // 						!IF FAIL, CONT.
 
-   if (*aidx == 0) {
+   if (aidx == 0) {
       goto L500;
    }
 // 						!ANY ADJ?
-   i__ = *aidx + 1;
+   i__ = aidx + 1;
 L200:
    ++i__;
    if (avoc[i__ - 1] <= 0 || avoc[i__ - 1] >= r50min) {
       return ret_val;
    }
 // 						!IF DONE, LOSE.
-   if (avoc[i__ - 1] != *obj) {
+   if (avoc[i__ - 1] != obj) {
       goto L200;
    }
 // 						!IF FAIL, CONT.

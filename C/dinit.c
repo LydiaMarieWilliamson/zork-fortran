@@ -239,8 +239,9 @@ static int c__1820 = 1820;
 // WRITTEN BY R. M. SUPNIK
 
 // DECLARATIONS
+static Bool protct_(int);
 
-Bool init_(int * x) {
+Bool init_(int x) {
 // Format strings
    static char fmt_10100[] =
       "(\002 There appears before you a threatening " "figure clad \002,\002all over\002/\002 in heavy black armor.  Hi" "s legs seem like the \002,\002massive trunk\002/\002 of the oak " "tree.  His broad shoulders and \002,\002helmeted head loom\002"
@@ -267,7 +268,8 @@ Bool init_(int * x) {
 #define flags ((Bool *)&findex_1)
 #define switch__ ((int *)&findex_1 + 46)
    static int xmax, r2max, dirmax, recno;
-   extern Void intime_(int *, int *, int *), inirnd_(int *);
+   extern void intime_(int *, int *, int *);
+   extern void inirnd_(int);
    static int i__, j, k;
 #define eqa ((int *)&advs_1 + 1)
 #define eqc ((int *)&cevent_1 + 1)
@@ -277,13 +279,12 @@ Bool init_(int * x) {
 #define orp ((int *)&orphs_1)
 #define syn ((int *)&syntax_1)
 #define pvec ((int *)&pv_1)
-   extern Void exit_(void);
+   extern void exit_(void);
    static int mmax, omax, rmax, vmax, amax, cmax, fmax, smax;
 #define rrand ((int *)&rooms_1 + 602)
 #define xflag ((int *)&curxt_1 + 4)
 #define objvec ((int *)&pv_1 + 1)
 #define prpvec ((int *)&pv_1 + 3)
-   extern Bool protct_(int *);
 
 // Fortran I/O blocks
    static cilist io___15 = { 0, 6, 0, fmt_10100, 0 };
@@ -686,7 +687,7 @@ L1025:
 //     &	or(SHOUR,or(SMIN,SSEC)))
 // 	NEW WAY TO INITIALIZE /+TAA+/
    i__1 = time_1.shour * 3600 + time_1.smin * 60 + time_1.ssec;
-   inirnd_(&i__1);
+   inirnd_(i__1);
 
    play_1.winner = aindex_1.player;
    last_1.lastit = advs_1.aobj[aindex_1.player - 1];
@@ -765,7 +766,7 @@ L1950:
 
 // AT THE MOMENT, PLAY IS PERMITTED UNDER ALL CIRCUMSTANCES.
 
-Bool protct_(int * x) {
+static Bool protct_(int x) {
 // System generated locals
    Bool ret_val;
 

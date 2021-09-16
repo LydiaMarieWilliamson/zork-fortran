@@ -201,11 +201,10 @@ static int c__431 = 431;
 
 // 	CALL RSPEAK(MSGNUM)
 
-Void rspeak_(int * n) {
-   extern Void rspsb2_(int *, int *, int *);
+void rspeak_(int n) {
+   extern void rspsb2_(int, int, int);
 
-   rspsb2_(n, &c__0, &c__0);
-   return 0;
+   rspsb2_(n, c__0, c__0);
 }
 
 // RSPSUB-- OUTPUT RANDOM MESSAGE WITH SUBSTITUTABLE ARGUMENT
@@ -214,11 +213,10 @@ Void rspeak_(int * n) {
 
 // 	CALL RSPSUB(MSGNUM,SUBNUM)
 
-Void rspsub_(int * n, int * s1) {
-   extern Void rspsb2_(int *, int *, int *);
+void rspsub_(int n, int s1) {
+   extern void rspsb2_(int, int, int);
 
-   rspsb2_(n, s1, &c__0);
-   return 0;
+   rspsb2_(n, s1, c__0);
 }
 
 // RSPSB2-- OUTPUT RANDOM MESSAGE WITH UP TO TWO SUBSTITUTABLE ARGUMENTS
@@ -227,7 +225,7 @@ Void rspsub_(int * n, int * s1) {
 
 // 	CALL RSPSB2(MSGNUM,SUBNUM1,SUBNUM2)
 
-Void rspsb2_(int * n, int * s1, int * s2) {
+void rspsb2_(int n, int s1, int s2) {
 // Format strings
    static char fmt_650[] = "(1x,74a1)";
 
@@ -257,10 +255,10 @@ Void rspsb2_(int * n, int * s1, int * s2) {
 
 // I/O VARIABLES
 
-   x = *n;
+   x = n;
 // 						!SET UP WORK VARIABLES.
-   y = *s1;
-   z__ = *s2;
+   y = s1;
+   z__ = s2;
    if (x > 0) {
       x = rmsg_1.rtext[x - 1];
    }
@@ -276,7 +274,7 @@ Void rspsb2_(int * n, int * s1, int * s2) {
    y = abs(y);
    z__ = abs(z__);
    if (x == 0) {
-      return 0;
+      return;
    }
 // 						!ANYTHING TO DO?
    play_1.telflg = true;
@@ -338,7 +336,7 @@ L600:
       goto L100;
    }
 // 						!CONTINUATION?
-   return 0;
+   return;
 // 						!NO, EXIT.
 
 // SUBSTITUTION WITH SUBSTITUTABLE AVAILABLE.
@@ -421,7 +419,7 @@ L1300:
 
 // DECLARATIONS
 
-Bool objact_(int * x) {
+Bool objact_(/*int x*/) {
 // System generated locals
    Bool ret_val;
 
@@ -431,7 +429,7 @@ Bool objact_(int * x) {
 #define syn ((int *)&syntax_1)
 #define pvec ((int *)&pv_1)
 #define objvec ((int *)&pv_1 + 1)
-   extern Bool oappli_(int *, int *);
+   extern Bool oappli_(int, int);
 #define prpvec ((int *)&pv_1 + 3)
 
 // PARSER OUTPUT
@@ -446,7 +444,7 @@ Bool objact_(int * x) {
       goto L100;
    }
 // 						!IND OBJECT?
-   if (oappli_(&objcts_1.oactio[prsvec_1.prsi - 1], &c__0)) {
+   if (oappli_(objcts_1.oactio[prsvec_1.prsi - 1], c__0)) {
       return ret_val;
    }
 // 						!YES, LET IT HANDLE.
@@ -456,7 +454,7 @@ L100:
       goto L200;
    }
 // 						!DIR OBJECT?
-   if (oappli_(&objcts_1.oactio[prsvec_1.prso - 1], &c__0)) {
+   if (oappli_(objcts_1.oactio[prsvec_1.prso - 1], c__0)) {
       return ret_val;
    }
 // 						!YES, LET IT HANDLE.
@@ -480,26 +478,24 @@ L200:
 
 // 	CALL BUG(NO,PAR)
 
-Void bug_(int * a, int * b) {
+void bug_(int a, int b) {
 // Format strings
    static char fmt_100[] = "(\002 PROGRAM ERROR \002,i2,\002, PARAMETER=" "\002,i6)";
 
 // Local variables
-   extern Void exit_(void);
+   extern void exit_(void);
 
 // Fortran I/O blocks
    static cilist io___25 = { 0, 6, 0, fmt_100, 0 };
 
    s_wsfe(&io___25);
-   do_fio(&c__1, (char *)&(*a),(ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&(*b),(ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&(a),(ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&(b),(ftnlen) sizeof(int));
    e_wsfe();
    if (debug_1.dbgflg != 0) {
-      return 0;
+      return;
    }
    exit_();
-
-   return 0;
 }
 
 // NEWSTA-- SET NEW STATUS FOR OBJECT
@@ -508,18 +504,17 @@ Void bug_(int * a, int * b) {
 
 // 	CALL NEWSTA(OBJECT,STRING,NEWROOM,NEWCON,NEWADV)
 
-Void newsta_(int * o, int * r__, int * rm, int * cn, int * ad) {
+void newsta_(int o, int r__, int rm, int cn, int ad) {
 // Local variables
 #define eqo ((int *)&objcts_1 + 1)
-   extern Void rspeak_(int *);
+   extern void rspeak_(int);
 
 // OBJECTS
 
    rspeak_(r__);
-   objcts_1.oroom[*o - 1] = *rm;
-   objcts_1.ocan[*o - 1] = *cn;
-   objcts_1.oadv[*o - 1] = *ad;
-   return 0;
+   objcts_1.oroom[o - 1] = rm;
+   objcts_1.ocan[o - 1] = cn;
+   objcts_1.oadv[o - 1] = ad;
 }
 
 #undef eqo
@@ -528,7 +523,7 @@ Void newsta_(int * o, int * r__, int * rm, int * cn, int * ad) {
 
 // DECLARATIONS
 
-Bool qhere_(int * obj, int * rm) {
+Bool qhere_(int obj, int rm) {
 // System generated locals
    int i__1;
    Bool ret_val;
@@ -540,14 +535,14 @@ Bool qhere_(int * obj, int * rm) {
 // OBJECTS
 
    ret_val = true;
-   if (objcts_1.oroom[*obj - 1] == *rm) {
+   if (objcts_1.oroom[obj - 1] == rm) {
       return ret_val;
    }
 // 						!IN ROOM?
    i__1 = oroom2_1.r2lnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
 // 						!NO, SCH ROOM2.
-      if (oroom2_1.oroom2[i__ - 1] == *obj && oroom2_1.rroom2[i__ - 1] == *rm) {
+      if (oroom2_1.oroom2[i__ - 1] == obj && oroom2_1.rroom2[i__ - 1] == rm) {
          return ret_val;
       }
 // L100:
@@ -563,7 +558,7 @@ Bool qhere_(int * obj, int * rm) {
 
 // DECLARATIONS
 
-Bool qempty_(int * obj) {
+Bool qempty_(int obj) {
 // System generated locals
    int i__1;
    Bool ret_val;
@@ -578,7 +573,7 @@ Bool qempty_(int * obj) {
 // 						!ASSUME LOSE.
    i__1 = objcts_1.olnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
-      if (objcts_1.ocan[i__ - 1] == *obj) {
+      if (objcts_1.ocan[i__ - 1] == obj) {
          return ret_val;
       }
 // 						!INSIDE TARGET?
@@ -594,7 +589,7 @@ Bool qempty_(int * obj) {
 
 // DECLARATIONS
 
-Void jigsup_(int * desc) {
+void jigsup_(int desc) {
 // Initialized data
 
    static int rlist[9] = { 8, 6, 36, 35, 34, 4, 34, 6, 5 };
@@ -606,9 +601,12 @@ Void jigsup_(int * desc) {
 // Local variables
 #define flags ((Bool *)&findex_1)
 #define switch__ ((int *)&findex_1 + 46)
-   extern Void rspeak_(int *), rspsub_(int *, int *), newsta_(int *, int *, int *, int *, int *), scrupd_(int *);
+   extern void rspeak_(int);
+   extern void rspsub_(int, int);
+   extern void newsta_(int, int, int, int, int);
+   extern void scrupd_(int);
    static int nonofl;
-   extern Void score_(Bool *);
+   extern void score_(Bool);
    static Bool f;
    static int i__, j;
 #define eqa ((int *)&advs_1 + 1)
@@ -617,13 +615,13 @@ Void jigsup_(int * desc) {
 #define orp ((int *)&orphs_1)
 #define syn ((int *)&syntax_1)
 #define pvec ((int *)&pv_1)
-   extern Void exit_(void);
-   extern Bool qhere_(int *, int *);
+   extern void exit_(void);
+   extern Bool qhere_(int, int);
 #define rrand ((int *)&rooms_1 + 602)
-   extern Bool yesno_(int *, int *, int *);
+   extern Bool yesno_(int, int, int);
 #define objvec ((int *)&pv_1 + 1)
 #define prpvec ((int *)&pv_1 + 3)
-   extern Bool moveto_(int *, int *);
+   extern Bool moveto_(int, int);
 
 // PARSER OUTPUT
 
@@ -650,7 +648,7 @@ Void jigsup_(int * desc) {
    prsvec_1.prscon = 1;
 // 						!STOP PARSER.
    if (debug_1.dbgflg != 0) {
-      return 0;
+      return;
    }
 // 						!IF DBG, EXIT.
    advs_1.avehic[play_1.winner - 1] = 0;
@@ -659,11 +657,11 @@ Void jigsup_(int * desc) {
       goto L100;
    }
 // 						!HIMSELF?
-   rspsub_(&c__432, &objcts_1.odesc2[advs_1.aobj[play_1.winner - 1] - 1]);
+   rspsub_(c__432, objcts_1.odesc2[advs_1.aobj[play_1.winner - 1] - 1]);
 // 						!NO, SAY WHO DIED.
-   newsta_(&advs_1.aobj[play_1.winner - 1], &c__0, &c__0, &c__0, &c__0);
+   newsta_(advs_1.aobj[play_1.winner - 1], c__0, c__0, c__0, c__0);
 // 						!SEND TO HYPER SPACE.
-   return 0;
+   return;
 
 L100:
    if (findex_1.endgmf) {
@@ -674,7 +672,7 @@ L100:
       goto L1000;
    }
 // 						!DEAD TWICE? KICK HIM OFF.
-   if (!yesno_(&c__10, &c__9, &c__8)) {
+   if (!yesno_(c__10, c__9, c__8)) {
       goto L1100;
    }
 // 						!CONTINUE?
@@ -682,26 +680,26 @@ L100:
    i__1 = objcts_1.olnt;
    for (j = 1; j <= i__1; ++j) {
 // 						!TURN OFF FIGHTING.
-      if (qhere_(&j, &play_1.here)) {
+      if (qhere_(j, play_1.here)) {
          objcts_1.oflag2[j - 1] &= ~oflags_1.fitebt;
       }
 // L50:
    }
 
    ++state_1.deaths;
-   scrupd_(&c_n10);
+   scrupd_(c_n10);
 // 						!CHARGE TEN POINTS.
-   f = moveto_(&rindex_1.fore1, &play_1.winner);
+   f = moveto_(rindex_1.fore1, play_1.winner);
 // 						!REPOSITION HIM.
    findex_1.egyptf = true;
 // 						!RESTORE COFFIN.
    if (objcts_1.oadv[oindex_1.coffi - 1] == play_1.winner) {
-      newsta_(&oindex_1.coffi, &c__0, &rindex_1.egypt, &c__0, &c__0);
+      newsta_(oindex_1.coffi, c__0, rindex_1.egypt, c__0, c__0);
    }
    objcts_1.oflag2[oindex_1.door - 1] &= ~oflags_1.tchbt;
    objcts_1.oflag1[oindex_1.robot - 1] = (objcts_1.oflag1[oindex_1.robot - 1] | oflags_1.visibt) & ~oflags_1.ndscbt;
    if (objcts_1.oroom[oindex_1.lamp - 1] != 0 || objcts_1.oadv[oindex_1.lamp - 1] == play_1.winner) {
-      newsta_(&oindex_1.lamp, &c__0, &rindex_1.lroom, &c__0, &c__0);
+      newsta_(oindex_1.lamp, c__0, rindex_1.lroom, c__0, c__0);
    }
 
 // NOW REDISTRIBUTE HIS VALUABLES AND OTHER BELONGINGS.
@@ -723,7 +721,7 @@ L100:
          goto L400;
       }
 // 						!MOVE TO RANDOM LOCATIONS.
-      newsta_(&j, &c__0, &rlist[i__ - 1], &c__0, &c__0);
+      newsta_(j, c__0, rlist[i__ - 1], c__0, c__0);
    L200:
       ;
    }
@@ -744,7 +742,7 @@ L400:
       if ((rooms_1.rflag[i__ - 1] & nonofl) != 0) {
          goto L250;
       }
-      newsta_(&j, &c__0, &i__, &c__0, &c__0);
+      newsta_(j, c__0, i__, c__0, c__0);
 // 						!YES, MOVE.
    L300:
       ;
@@ -762,24 +760,24 @@ L400:
       if ((rooms_1.rflag[i__ - 1] & nonofl) != 0) {
          goto L450;
       }
-      newsta_(&j, &c__0, &i__, &c__0, &c__0);
+      newsta_(j, c__0, i__, c__0, c__0);
    L500:
       ;
    }
-   return 0;
+   return;
 
 // CAN'T OR WON'T CONTINUE, CLEAN UP AND EXIT.
 
 L900:
-   rspeak_(&c__625);
+   rspeak_(c__625);
 // 						!IN ENDGAME, LOSE.
    goto L1100;
 
 L1000:
-   rspeak_(&c__7);
+   rspeak_(c__7);
 // 						!INVOLUNTARY EXIT.
 L1100:
-   score_(&c_false);
+   score_(c_false);
 // 						!TELL SCORE.
    cl__1.cerr = 0;
    cl__1.cunit = chan_1.dbch;
@@ -787,7 +785,6 @@ L1100:
    f_clos(&cl__1);
    exit_();
 
-   return 0;
 }
 
 #undef prpvec
@@ -806,14 +803,14 @@ L1100:
 
 // DECLARATIONS
 
-int oactor_(int * obj) {
+int oactor_(int obj) {
 // System generated locals
    int ret_val, i__1;
 
 // Local variables
    static int i__;
 #define eqa ((int *)&advs_1 + 1)
-   extern Void bug_(int *, int *);
+   extern void bug_(int, int);
 
 // ADVENTURERS
 
@@ -822,13 +819,13 @@ int oactor_(int * obj) {
 // 						!LOOP THRU ACTORS.
       ret_val = i__;
 // 						!ASSUME FOUND.
-      if (advs_1.aobj[i__ - 1] == *obj) {
+      if (advs_1.aobj[i__ - 1] == obj) {
          return ret_val;
       }
 // 						!FOUND IT?
 // L100:
    }
-   bug_(&c__40, obj);
+   bug_(c__40, obj);
 // 						!NO, DIE.
    return ret_val;
 }
@@ -839,25 +836,25 @@ int oactor_(int * obj) {
 
 // DECLARATIONS
 
-Bool prob_(int * g, int * b) {
+Bool prob_(int g, int b) {
 // System generated locals
    Bool ret_val;
 
 // Local variables
    static int i__;
-   extern int rnd_(int *);
+   extern int rnd_(int);
 #define flags ((Bool *)&findex_1)
 #define switch__ ((int *)&findex_1 + 46)
 
 // FLAGS
 
-   i__ = *g;
+   i__ = g;
 // 						!ASSUME GOOD LUCK.
    if (findex_1.badlkf) {
-      i__ = *b;
+      i__ = b;
    }
 // 						!IF BAD, TOO BAD.
-   ret_val = rnd_(&c__100) < i__;
+   ret_val = rnd_(c__100) < i__;
 // 						!COMPUTE.
    return ret_val;
 }
@@ -870,7 +867,7 @@ Bool prob_(int * g, int * b) {
 // RMDESC PRINTS A DESCRIPTION OF THE CURRENT ROOM.
 // IT IS ALSO THE PROCESSOR FOR VERBS 'LOOK' AND 'EXAMINE'.
 
-Bool rmdesc_(int * full) {
+Bool rmdesc_(int full) {
 // System generated locals
    Bool ret_val, L__1;
 
@@ -879,18 +876,20 @@ Bool rmdesc_(int * full) {
 #define eqa ((int *)&advs_1 + 1)
 #define eqo ((int *)&objcts_1 + 1)
 #define eqr ((int *)&rooms_1 + 2)
-   extern Bool lit_(int *);
+   extern Bool lit_(int);
 #define orp ((int *)&orphs_1)
 #define syn ((int *)&syntax_1)
 #define pvec ((int *)&pv_1)
-   extern Bool prob_(int *, int *);
+   extern Bool prob_(int, int);
 #define flags ((Bool *)&findex_1)
 #define rrand ((int *)&rooms_1 + 602)
 #define objvec ((int *)&pv_1 + 1)
-   extern Bool rappli_(int *);
+   extern Bool rappli_(int);
 #define prpvec ((int *)&pv_1 + 3)
 #define switch__ ((int *)&findex_1 + 46)
-   extern Void rspeak_(int *), rspsub_(int *, int *), princr_(Bool *, int *);
+   extern void rspeak_(int);
+   extern void rspsub_(int, int);
+   extern void princr_(Bool, int);
 
 // FULL=	0/1/2/3=	SHORT/OBJ/ROOM/FULL
 
@@ -931,18 +930,18 @@ L50:
       goto L100;
    }
 // 						!PLAYER JUST MOVE?
-   rspeak_(&c__2);
+   rspeak_(c__2);
 // 						!NO, JUST SAY DONE.
    prsvec_1.prsa = vindex_1.walkiw;
 // 						!SET UP WALK IN ACTION.
    return ret_val;
 
 L100:
-   if (lit_(&play_1.here)) {
+   if (lit_(play_1.here)) {
       goto L300;
    }
 // 						!LIT?
-   rspeak_(&c__430);
+   rspeak_(c__430);
 // 						!WARN OF GRUE.
    ret_val = false;
    return ret_val;
@@ -950,13 +949,13 @@ L100:
 L300:
    ra = rooms_1.ractio[play_1.here - 1];
 // 						!GET ROOM ACTION.
-   if (*full == 1) {
+   if (full == 1) {
       goto L600;
    }
 // 						!OBJ ONLY?
    i__ = rooms_1.rdesc2 - play_1.here;
 // 						!ASSUME SHORT DESC.
-   if (*full == 0 && (findex_1.superf || (rooms_1.rflag[play_1.here - 1] & rflag_1.rseen) != 0 && (findex_1.brieff || prob_(&c__80, &c__80)))) {
+   if (full == 0 && (findex_1.superf || (rooms_1.rflag[play_1.here - 1] & rflag_1.rseen) != 0 && (findex_1.brieff || prob_(c__80, c__80)))) {
       goto L400;
    }
    i__ = rooms_1.rdesc1[play_1.here - 1];
@@ -967,7 +966,7 @@ L300:
 // 						!IF GOT DESC, SKIP.
    prsvec_1.prsa = vindex_1.lookw;
 // 						!PRETEND LOOK AROUND.
-   if (!rappli_(&ra)) {
+   if (!rappli_(ra)) {
       goto L100;
    }
 // 						!ROOM HANDLES, NEW DESC?
@@ -976,26 +975,26 @@ L300:
    goto L500;
 
 L400:
-   rspeak_(&i__);
+   rspeak_(i__);
 // 						!OUTPUT DESCRIPTION.
 L500:
    if (advs_1.avehic[play_1.winner - 1] != 0) {
-      rspsub_(&c__431, &objcts_1.odesc2[advs_1.avehic[play_1.winner - 1] - 1]);
+      rspsub_(c__431, objcts_1.odesc2[advs_1.avehic[play_1.winner - 1] - 1]);
    }
 
 L600:
-   if (*full != 2) {
-      L__1 = *full != 0;
-      princr_(&L__1, &play_1.here);
+   if (full != 2) {
+      L__1 = full != 0;
+      princr_(L__1, play_1.here);
    }
    rooms_1.rflag[play_1.here - 1] |= rflag_1.rseen;
-   if (*full != 0 || ra == 0) {
+   if (full != 0 || ra == 0) {
       return ret_val;
    }
 // 						!ANYTHING MORE?
    prsvec_1.prsa = vindex_1.walkiw;
 // 						!GIVE HIM A SURPISE.
-   if (!rappli_(&ra)) {
+   if (!rappli_(ra)) {
       goto L100;
    }
 // 						!ROOM HANDLES, NEW DESC?
@@ -1020,7 +1019,7 @@ L600:
 
 // DECLARATIONS
 
-Bool rappli_(int * ri) {
+Bool rappli_(int ri) {
 // Initialized data
 
    static int newrms = 38;
@@ -1029,19 +1028,20 @@ Bool rappli_(int * ri) {
    Bool ret_val;
 
 // Local variables
-   extern Bool rappl1_(int *), rappl2_(int *);
+   extern Bool rappl1_(int);
+   extern Bool rappl2_(int);
 
    ret_val = true;
 // 						!ASSUME WINS.
-   if (*ri == 0) {
+   if (ri == 0) {
       return ret_val;
    }
 // 						!IF ZERO, WIN.
-   if (*ri < newrms) {
+   if (ri < newrms) {
       ret_val = rappl1_(ri);
    }
 // 						!IF OLD, PROCESSOR 1.
-   if (*ri >= newrms) {
+   if (ri >= newrms) {
       ret_val = rappl2_(ri);
    }
 // 						!IF NEW, PROCESSOR 2.

@@ -369,9 +369,9 @@ struct {
 // Main program
 int MAIN__(void) {
    static int x;
-   extern Void game_(void);
-   extern Bool init_(int *);
-   extern Void exit_(void);
+   extern void game_(void);
+   extern Bool init_(int);
+   extern void exit_(void);
 
 // DECLARATIONS
 
@@ -380,7 +380,7 @@ int MAIN__(void) {
 // 1) INITIALIZE DATA STRUCTURES
 // 2) PLAY GAME
 
-   if (init_(&x)) {
+   if (init_(x)) {
       game_();
    }
 // 						!IF INIT, PLAY GAME.
@@ -426,7 +426,7 @@ int MAIN__(void) {
 // FLAGS
 
 // Main program alias
-int dungeo_() {
+int dungeo_(void) {
    MAIN__();
    return 0;
 }

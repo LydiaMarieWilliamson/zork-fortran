@@ -17,11 +17,11 @@ void ITime_(int HMS[3]) {
    HMS[0] = HereNow->tm_hour, HMS[1] = HereNow->tm_min, HMS[2] = HereNow->tm_sec;
 }
 #else
-extern Void itime_(int *);
-#   define ITime_(HMS) (itime_(HMS))
+extern int /* Subroutine */ itime_(int *);
+#   define ITime_(HMS) ((void)(itime_(HMS)))
 #endif
 
-Void intime_(int * hours, int * minutes, int * seconds) {
+void intime_(int * hours, int * minutes, int * seconds) {
    static int tarray[3];
 
 // 	CALL GETTIM(HOURS, MINUTES, SECONDS, HUNDREDTHS)
@@ -29,25 +29,22 @@ Void intime_(int * hours, int * minutes, int * seconds) {
    *hours = tarray[0];
    *minutes = tarray[1];
    *seconds = tarray[2];
-   return 0;
 }
 
-Void inirnd_(int * seed) {
-   random_1.seedy = *seed;
-   return 0;
+void inirnd_(int seed) {
+   random_1.seedy = seed;
 }
 
-int rnd_(int * maxval) {
+int rnd_(int maxval) {
 // System generated locals
    int ret_val;
 
    random_1.seedy = random_1.seedy * 1059 + 17 & 2147483647;
-   ret_val = random_1.seedy / 100 % *maxval;
+   ret_val = random_1.seedy / 100 % maxval;
    return ret_val;
 }
 
-Void exit_(void) {
+void exit_(void) {
 // NO "CALL EXIT" HERE
    s_stop("", (ftnlen) 0);
-   return 0;
 }

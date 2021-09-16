@@ -144,7 +144,7 @@ static int c__580 = 580;
 
 // TAKE AN OBJECT (FOR VERBS TAKE, PUT, DROP, READ, ETC.)
 
-Bool take_(Bool * flg) {
+Bool take_(Bool flg) {
 // System generated locals
    int i__1;
    Bool ret_val;
@@ -152,18 +152,20 @@ Bool take_(Bool * flg) {
 // Local variables
    static int x, oa;
 #define eqa ((int *)&advs_1 + 1)
-   extern int rnd_(int *);
+   extern int rnd_(int);
 #define eqo ((int *)&objcts_1 + 1)
 #define orp ((int *)&orphs_1)
 #define syn ((int *)&syntax_1)
 #define pvec ((int *)&pv_1)
-   extern Bool qhere_(int *, int *), objact_(int *);
+   extern Bool qhere_(int, int);
+   extern Bool objact_(/*int*/);
 #define objvec ((int *)&pv_1 + 1)
-   extern Bool oappli_(int *, int *);
+   extern Bool oappli_(int, int);
 #define prpvec ((int *)&pv_1 + 3)
-   extern Void rspeak_(int *);
-   extern int weight_(int *, int *, int *);
-   extern Void newsta_(int *, int *, int *, int *, int *), scrupd_(int *);
+   extern void rspeak_(int);
+   extern int weight_(int, int, int);
+   extern void newsta_(int, int, int, int, int);
+   extern void scrupd_(int);
 
 // DECLARATIONS
 
@@ -189,7 +191,7 @@ Bool take_(Bool * flg) {
       goto L100;
    }
 // 						!STAR?
-   ret_val = objact_(&x);
+   ret_val = objact_(/*x*/);
 // 						!YES, LET IT HANDLE.
    return ret_val;
 
@@ -200,7 +202,7 @@ L100:
       goto L400;
    }
 // 						!HIS VEHICLE?
-   rspeak_(&c__672);
+   rspeak_(c__672);
 // 						!DUMMY.
    return ret_val;
 
@@ -208,48 +210,48 @@ L400:
    if ((objcts_1.oflag1[prsvec_1.prso - 1] & oflags_1.takebt) != 0) {
       goto L500;
    }
-   if (!oappli_(&oa, &c__0)) {
-      i__1 = rnd_(&c__5) + 552;
-      rspeak_(&i__1);
+   if (!oappli_(oa, c__0)) {
+      i__1 = rnd_(c__5) + 552;
+      rspeak_(i__1);
    }
    return ret_val;
 
 // OBJECT IS TAKEABLE AND IN POSITION TO BE TAKEN.
 
 L500:
-   if (x != 0 || qhere_(&prsvec_1.prso, &play_1.here)) {
+   if (x != 0 || qhere_(prsvec_1.prso, play_1.here)) {
       goto L600;
    }
    if (objcts_1.oadv[prsvec_1.prso - 1] == play_1.winner) {
-      rspeak_(&c__557);
+      rspeak_(c__557);
    }
 // 						!ALREADY GOT IT?
    return ret_val;
 
 L600:
-   if (x != 0 && objcts_1.oadv[x - 1] == play_1.winner || weight_(&c__0, &prsvec_1.prso, &play_1.winner) + objcts_1.osize[prsvec_1.prso - 1] <= state_1.mxload) {
+   if (x != 0 && objcts_1.oadv[x - 1] == play_1.winner || weight_(c__0, prsvec_1.prso, play_1.winner) + objcts_1.osize[prsvec_1.prso - 1] <= state_1.mxload) {
       goto L700;
    }
-   rspeak_(&c__558);
+   rspeak_(c__558);
 // 						!TOO MUCH WEIGHT.
    return ret_val;
 
 L700:
    ret_val = true;
 // 						!AT LAST.
-   if (oappli_(&oa, &c__0)) {
+   if (oappli_(oa, c__0)) {
       return ret_val;
    }
 // 						!DID IT HANDLE?
-   newsta_(&prsvec_1.prso, &c__0, &c__0, &c__0, &play_1.winner);
+   newsta_(prsvec_1.prso, c__0, c__0, c__0, play_1.winner);
 // 						!TAKE OBJECT FOR WINNER.
    objcts_1.oflag2[prsvec_1.prso - 1] |= oflags_1.tchbt;
-   scrupd_(&objcts_1.ofval[prsvec_1.prso - 1]);
+   scrupd_(objcts_1.ofval[prsvec_1.prso - 1]);
 // 						!UPDATE SCORE.
    objcts_1.ofval[prsvec_1.prso - 1] = 0;
 // 						!CANT BE SCORED AGAIN.
-   if (*flg) {
-      rspeak_(&c__559);
+   if (flg) {
+      rspeak_(c__559);
    }
 // 						!TELL TAKEN.
    return ret_val;
@@ -268,7 +270,7 @@ L700:
 
 // DECLARATIONS
 
-Bool drop_(Bool * z__) {
+Bool drop_(/*Bool z__*/) {
 // System generated locals
    Bool ret_val;
 
@@ -278,13 +280,16 @@ Bool drop_(Bool * z__) {
 #define eqa ((int *)&advs_1 + 1)
 #define eqo ((int *)&objcts_1 + 1)
 #define orp ((int *)&orphs_1)
-   extern Bool put_(Bool *);
+   extern Bool put_(/*Bool*/);
 #define syn ((int *)&syntax_1)
 #define pvec ((int *)&pv_1)
-   extern Bool objact_(int *);
+   extern Bool objact_(/*int*/);
 #define objvec ((int *)&pv_1 + 1)
 #define prpvec ((int *)&pv_1 + 3)
-   extern Void rspsub_(int *, int *), newsta_(int *, int *, int *, int *, int *), scrupd_(int *), rspeak_(int *);
+   extern void rspsub_(int, int);
+   extern void newsta_(int, int, int, int, int);
+   extern void scrupd_(int);
+   extern void rspeak_(int);
 
 // PARSER OUTPUT
 
@@ -317,7 +322,7 @@ Bool drop_(Bool * z__) {
    if ((objcts_1.oflag2[x - 1] & oflags_1.openbt) != 0) {
       goto L300;
    }
-   rspsub_(&c__525, &objcts_1.odesc2[x - 1]);
+   rspsub_(c__525, objcts_1.odesc2[x - 1]);
 // 						!CANT REACH.
    return ret_val;
 
@@ -333,7 +338,7 @@ L300:
 // 						!IS HE IN VEHICLE?
    prsvec_1.prsi = advs_1.avehic[play_1.winner - 1];
 // 						!YES,
-   f = put_(&c_true);
+   f = put_(/*c_true*/);
 // 						!DROP INTO VEHICLE.
    prsvec_1.prsi = 0;
 // 						!DISARM PARSER.
@@ -341,18 +346,18 @@ L300:
 // 						!DONE.
 
 L400:
-   newsta_(&prsvec_1.prso, &c__0, &play_1.here, &c__0, &c__0);
+   newsta_(prsvec_1.prso, c__0, play_1.here, c__0, c__0);
 // 						!DROP INTO ROOM.
    if (play_1.here == rindex_1.mtree) {
-      newsta_(&prsvec_1.prso, &c__0, &rindex_1.fore3, &c__0, &c__0);
+      newsta_(prsvec_1.prso, c__0, rindex_1.fore3, c__0, c__0);
    }
-   scrupd_(&objcts_1.ofval[prsvec_1.prso - 1]);
+   scrupd_(objcts_1.ofval[prsvec_1.prso - 1]);
 // 						!SCORE OBJECT.
    objcts_1.ofval[prsvec_1.prso - 1] = 0;
 // 						!CANT BE SCORED AGAIN.
    objcts_1.oflag2[prsvec_1.prso - 1] |= oflags_1.tchbt;
 
-   if (objact_(&x)) {
+   if (objact_(/*x*/)) {
       return ret_val;
    }
 // 						!DID IT HANDLE?
@@ -367,11 +372,11 @@ L400:
    if (i__ != 0 && play_1.here == rindex_1.mtree) {
       i__ = 659;
    }
-   rspsub_(&i__, &objcts_1.odesc2[prsvec_1.prso - 1]);
+   rspsub_(i__, objcts_1.odesc2[prsvec_1.prso - 1]);
    return ret_val;
 
 L1000:
-   rspeak_(&c__527);
+   rspeak_(c__527);
 // 						!DONT HAVE IT.
    return ret_val;
 
@@ -389,7 +394,7 @@ L1000:
 
 // DECLARATIONS
 
-Bool put_(Bool * flg) {
+Bool put_(/*Bool flg*/) {
 // System generated locals
    Bool ret_val;
 
@@ -400,16 +405,18 @@ Bool put_(Bool * flg) {
 #define orp ((int *)&orphs_1)
    static int svi, svo;
 #define syn ((int *)&syntax_1)
-   extern Bool take_(Bool *);
+   extern Bool take_(Bool);
 #define pvec ((int *)&pv_1)
-   extern Bool qhere_(int *, int *);
-   extern Void rspsb2_(int *, int *, int *);
-   extern Bool objact_(int *);
+   extern Bool qhere_(int, int);
+   extern void rspsb2_(int, int, int);
+   extern Bool objact_(/*int*/);
 #define objvec ((int *)&pv_1 + 1)
 #define prpvec ((int *)&pv_1 + 3)
-   extern Void rspeak_(int *);
-   extern int weight_(int *, int *, int *);
-   extern Void rspsub_(int *, int *), scrupd_(int *), newsta_(int *, int *, int *, int *, int *);
+   extern void rspeak_(int);
+   extern int weight_(int, int, int);
+   extern void rspsub_(int, int);
+   extern void scrupd_(int);
+   extern void newsta_(int, int, int, int, int);
 
 // PARSER OUTPUT
 
@@ -433,8 +440,8 @@ Bool put_(Bool * flg) {
    if (prsvec_1.prso <= star_1.strbit && prsvec_1.prsi <= star_1.strbit) {
       goto L200;
    }
-   if (!objact_(&x)) {
-      rspeak_(&c__560);
+   if (!objact_(/*x*/)) {
+      rspeak_(c__560);
    }
 // 						!STAR
    ret_val = true;
@@ -444,7 +451,7 @@ L200:
    if ((objcts_1.oflag2[prsvec_1.prsi - 1] & oflags_1.openbt) != 0 || (objcts_1.oflag1[prsvec_1.prsi - 1] & oflags_1.doorbt + oflags_1.contbt) != 0 || (objcts_1.oflag2[prsvec_1.prsi - 1] & oflags_1.vehbt) != 0) {
       goto L300;
    }
-   rspeak_(&c__561);
+   rspeak_(c__561);
 // 						!CANT PUT IN THAT.
    return ret_val;
 
@@ -453,7 +460,7 @@ L300:
       goto L400;
    }
 // 						!IS IT OPEN?
-   rspeak_(&c__562);
+   rspeak_(c__562);
 // 						!NO, JOKE
    return ret_val;
 
@@ -462,7 +469,7 @@ L400:
       goto L500;
    }
 // 						!INTO ITSELF?
-   rspeak_(&c__563);
+   rspeak_(c__563);
 // 						!YES, JOKE.
    return ret_val;
 
@@ -471,15 +478,15 @@ L500:
       goto L600;
    }
 // 						!ALREADY INSIDE.
-   rspsb2_(&c__564, &objcts_1.odesc2[prsvec_1.prso - 1], &objcts_1.odesc2[prsvec_1.prsi - 1]);
+   rspsb2_(c__564, objcts_1.odesc2[prsvec_1.prso - 1], objcts_1.odesc2[prsvec_1.prsi - 1]);
    ret_val = true;
    return ret_val;
 
 L600:
-   if (weight_(&c__0, &prsvec_1.prso, &c__0) + weight_(&c__0, &prsvec_1.prsi, &c__0) + objcts_1.osize[prsvec_1.prso - 1] <= objcts_1.ocapac[prsvec_1.prsi - 1]) {
+   if (weight_(c__0, prsvec_1.prso, c__0) + weight_(c__0, prsvec_1.prsi, c__0) + objcts_1.osize[prsvec_1.prso - 1] <= objcts_1.ocapac[prsvec_1.prsi - 1]) {
       goto L700;
    }
-   rspeak_(&c__565);
+   rspeak_(c__565);
 // 						!THEN CANT DO IT.
    return ret_val;
 
@@ -489,7 +496,7 @@ L700:
    j = prsvec_1.prso;
 // 						!START SEARCH.
 L725:
-   if (qhere_(&j, &play_1.here)) {
+   if (qhere_(j, play_1.here)) {
       goto L750;
    }
 // 						!IS IT HERE?
@@ -507,7 +514,7 @@ L750:
    svi = prsvec_1.prsi;
    prsvec_1.prsa = vindex_1.takew;
    prsvec_1.prsi = 0;
-   if (!take_(&c_false)) {
+   if (!take_(c_false)) {
       return ret_val;
    }
 // 						!TAKE OBJECT.
@@ -527,24 +534,24 @@ L800:
       goto L900;
    }
 // 						!OPEN?
-   rspsub_(&c__566, &objcts_1.odesc2[prsvec_1.prso - 1]);
+   rspsub_(c__566, objcts_1.odesc2[prsvec_1.prso - 1]);
 // 						!LOSE.
    return ret_val;
 
 L900:
-   scrupd_(&objcts_1.ofval[prsvec_1.prso - 1]);
+   scrupd_(objcts_1.ofval[prsvec_1.prso - 1]);
 // 						!SCORE OBJECT.
    objcts_1.ofval[prsvec_1.prso - 1] = 0;
    objcts_1.oflag2[prsvec_1.prso - 1] |= oflags_1.tchbt;
-   newsta_(&prsvec_1.prso, &c__0, &c__0, &c__0, &play_1.winner);
+   newsta_(prsvec_1.prso, c__0, c__0, c__0, play_1.winner);
 // 						!TEMPORARILY ON WINNER.
 
 L1000:
-   if (objact_(&x)) {
+   if (objact_(/*x*/)) {
       return ret_val;
    }
 // 						!NO, GIVE OBJECT A SHOT.
-   newsta_(&prsvec_1.prso, &c__2, &c__0, &prsvec_1.prsi, &c__0);
+   newsta_(prsvec_1.prso, c__2, c__0, prsvec_1.prsi, c__0);
 // 						!CONTAINED INSIDE.
    ret_val = true;
    return ret_val;
@@ -563,7 +570,7 @@ L1000:
 
 // DECLARATIONS
 
-Void valuac_(int * v) {
+void valuac_(int v) {
 // System generated locals
    int i__1;
 
@@ -572,17 +579,19 @@ Void valuac_(int * v) {
    static int i__;
    static Bool f1;
 #define eqo ((int *)&objcts_1 + 1)
-   extern Bool lit_(int *);
+   extern Bool lit_(int);
 #define orp ((int *)&orphs_1)
-   extern Bool put_(Bool *);
+   extern Bool put_(/*Bool*/);
 #define syn ((int *)&syntax_1)
-   extern Bool take_(Bool *);
+   extern Bool take_(Bool);
 #define pvec ((int *)&pv_1)
-   extern Bool drop_(Bool *), qhere_(int *, int *);
+   extern Bool drop_(/*Bool*/);
+   extern Bool qhere_(int, int);
    static int savep, saveh;
 #define objvec ((int *)&pv_1 + 1)
 #define prpvec ((int *)&pv_1 + 3)
-   extern Void rspsub_(int *, int *), rspeak_(int *);
+   extern void rspsub_(int, int);
+   extern void rspeak_(int);
 
 // PARSER OUTPUT
 
@@ -602,7 +611,7 @@ Void valuac_(int * v) {
 // 						!ASSUME NO ACTIONS.
    i__ = 579;
 // 						!ASSUME NOT LIT.
-   if (!lit_(&play_1.here)) {
+   if (!lit_(play_1.here)) {
       goto L4000;
    }
 // 						!IF NOT LIT, PUNT.
@@ -621,17 +630,17 @@ Void valuac_(int * v) {
    i__1 = objcts_1.olnt;
    for (prsvec_1.prso = 1; prsvec_1.prso <= i__1; ++prsvec_1.prso) {
 // 						!LOOP THRU OBJECTS.
-      if (!qhere_(&prsvec_1.prso, &play_1.here) || (objcts_1.oflag1[prsvec_1.prso - 1] & oflags_1.visibt) == 0 || (objcts_1.oflag2[prsvec_1.prso - 1] & oflags_1.actrbt) != 0 || savep == *v && objcts_1.otval[prsvec_1.prso - 1] <= 0) {
+      if (!qhere_(prsvec_1.prso, play_1.here) || (objcts_1.oflag1[prsvec_1.prso - 1] & oflags_1.visibt) == 0 || (objcts_1.oflag2[prsvec_1.prso - 1] & oflags_1.actrbt) != 0 || savep == v && objcts_1.otval[prsvec_1.prso - 1] <= 0) {
          goto L500;
       }
       if ((objcts_1.oflag1[prsvec_1.prso - 1] & oflags_1.takebt) == 0 && (objcts_1.oflag2[prsvec_1.prso - 1] & oflags_1.trybt) == 0) {
          goto L500;
       }
       f = false;
-      rspsub_(&c__580, &objcts_1.odesc2[prsvec_1.prso - 1]);
-      f1 = take_(&c_true);
+      rspsub_(c__580, objcts_1.odesc2[prsvec_1.prso - 1]);
+      f1 = take_(c_true);
       if (saveh != play_1.here) {
-         return 0;
+         return;
       }
    L500:
       ;
@@ -645,14 +654,14 @@ L1000:
 // 						!DROP EVERY/VALUA?
    i__1 = objcts_1.olnt;
    for (prsvec_1.prso = 1; prsvec_1.prso <= i__1; ++prsvec_1.prso) {
-      if (objcts_1.oadv[prsvec_1.prso - 1] != play_1.winner || savep == *v && objcts_1.otval[prsvec_1.prso - 1] <= 0) {
+      if (objcts_1.oadv[prsvec_1.prso - 1] != play_1.winner || savep == v && objcts_1.otval[prsvec_1.prso - 1] <= 0) {
          goto L1500;
       }
       f = false;
-      rspsub_(&c__580, &objcts_1.odesc2[prsvec_1.prso - 1]);
-      f1 = drop_(&c_true);
+      rspsub_(c__580, objcts_1.odesc2[prsvec_1.prso - 1]);
+      f1 = drop_(/*c_true*/);
       if (saveh != play_1.here) {
-         return 0;
+         return;
       }
    L1500:
       ;
@@ -667,14 +676,14 @@ L2000:
    i__1 = objcts_1.olnt;
    for (prsvec_1.prso = 1; prsvec_1.prso <= i__1; ++prsvec_1.prso) {
 // 						!LOOP THRU OBJECTS.
-      if (objcts_1.oadv[prsvec_1.prso - 1] != play_1.winner || prsvec_1.prso == prsvec_1.prsi || savep == *v && objcts_1.otval[prsvec_1.prso - 1] <= 0 || (objcts_1.oflag1[prsvec_1.prso - 1] & oflags_1.visibt) == 0) {
+      if (objcts_1.oadv[prsvec_1.prso - 1] != play_1.winner || prsvec_1.prso == prsvec_1.prsi || savep == v && objcts_1.otval[prsvec_1.prso - 1] <= 0 || (objcts_1.oflag1[prsvec_1.prso - 1] & oflags_1.visibt) == 0) {
          goto L2500;
       }
       f = false;
-      rspsub_(&c__580, &objcts_1.odesc2[prsvec_1.prso - 1]);
-      f1 = put_(&c_true);
+      rspsub_(c__580, objcts_1.odesc2[prsvec_1.prso - 1]);
+      f1 = put_(/*c_true*/);
       if (saveh != play_1.here) {
-         return 0;
+         return;
       }
    L2500:
       ;
@@ -682,16 +691,15 @@ L2000:
 
 L3000:
    i__ = 581;
-   if (savep == *v) {
+   if (savep == v) {
       i__ = 582;
    }
 // 						!CHOOSE MESSAGE.
 L4000:
    if (f) {
-      rspeak_(&i__);
+      rspeak_(i__);
    }
 // 						!IF NOTHING, REPORT.
-   return 0;
 }
 
 #undef prpvec

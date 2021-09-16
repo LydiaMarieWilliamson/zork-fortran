@@ -163,7 +163,7 @@ static int c__627 = 627;
 
 // DECLARATIONS
 
-Bool trollp_(int * arg) {
+Bool trollp_(/*int arg*/) {
 // System generated locals
    Bool ret_val;
 
@@ -173,12 +173,15 @@ Bool trollp_(int * arg) {
 #define orp ((int *)&orphs_1)
 #define syn ((int *)&syntax_1)
 #define pvec ((int *)&pv_1)
-   extern Bool prob_(int *, int *), qhere_(int *, int *);
+   extern Bool prob_(int, int);
+   extern Bool qhere_(int, int);
 #define objvec ((int *)&pv_1 + 1)
 #define prpvec ((int *)&pv_1 + 3)
 #define flags ((Bool *)&findex_1)
 #define switch__ ((int *)&findex_1 + 46)
-   extern Void newsta_(int *, int *, int *, int *, int *), rspeak_(int *), rspsub_(int *, int *);
+   extern void newsta_(int, int, int, int, int);
+   extern void rspeak_(int);
+   extern void rspsub_(int, int);
 
 // PARSER OUTPUT
 
@@ -206,16 +209,16 @@ Bool trollp_(int * arg) {
 // 						!GOT AXE?  NOTHING.
    i__ = 433;
 // 						!ASSUME CANT GET.
-   if (!qhere_(&oindex_1.axe, &play_1.here)) {
+   if (!qhere_(oindex_1.axe, play_1.here)) {
       goto L1050;
    }
 // 						!HERE?
    i__ = 434;
 // 						!YES, RECOVER.
-   newsta_(&oindex_1.axe, &c__0, &c__0, &oindex_1.troll, &c__0);
+   newsta_(oindex_1.axe, c__0, c__0, oindex_1.troll, c__0);
 L1050:
-   if (qhere_(&oindex_1.troll, &play_1.here)) {
-      rspeak_(&i__);
+   if (qhere_(oindex_1.troll, play_1.here)) {
+      rspeak_(i__);
    }
 // 						!IF PLAYER HERE.
    return ret_val;
@@ -251,8 +254,8 @@ L1300:
    objcts_1.oflag1[oindex_1.axe - 1] |= oflags_1.visibt;
    objcts_1.odesc1[oindex_1.troll - 1] = 436;
 // 						!TROLL IN.
-   if (qhere_(&oindex_1.troll, &play_1.here)) {
-      rspeak_(&c__437);
+   if (qhere_(oindex_1.troll, play_1.here)) {
+      rspeak_(c__437);
    }
    return ret_val;
 
@@ -261,7 +264,7 @@ L1400:
       goto L1500;
    }
 // 						!FIRST ENCOUNTER?
-   ret_val = prob_(&c__33, &c__66);
+   ret_val = prob_(c__33, c__66);
 // 						!33% TRUE UNLESS BADLK.
    return ret_val;
 
@@ -278,13 +281,13 @@ L1500:
    objcts_1.oflag1[oindex_1.axe - 1] |= oflags_1.visibt;
    findex_1.trollf = false;
    objcts_1.odesc1[oindex_1.troll - 1] = 436;
-   rspeak_(&c__437);
+   rspeak_(c__437);
 
 L1550:
    if (prsvec_1.prsa != vindex_1.takew && prsvec_1.prsa != vindex_1.movew) {
       goto L1600;
    }
-   rspeak_(&c__438);
+   rspeak_(c__438);
 // 						!JOKE.
    return ret_val;
 
@@ -293,7 +296,7 @@ L1600:
       goto L1700;
    }
 // 						!MUNG?
-   rspeak_(&c__439);
+   rspeak_(c__439);
 // 						!JOKE.
    return ret_val;
 
@@ -308,18 +311,18 @@ L1700:
       i__ = 441;
    }
 // 						!GIVE?
-   rspsub_(&i__, &objcts_1.odesc2[prsvec_1.prso - 1]);
+   rspsub_(i__, objcts_1.odesc2[prsvec_1.prso - 1]);
 // 						!TROLL TAKES.
    if (prsvec_1.prso == oindex_1.knife) {
       goto L1900;
    }
 // 						!OBJ KNIFE?
-   newsta_(&prsvec_1.prso, &c__442, &c__0, &c__0, &c__0);
+   newsta_(prsvec_1.prso, c__442, c__0, c__0, c__0);
 // 						!NO, EATS IT.
    return ret_val;
 
 L1900:
-   rspeak_(&c__443);
+   rspeak_(c__443);
 // 						!KNIFE, THROWS IT BACK
    objcts_1.oflag2[oindex_1.troll - 1] |= oflags_1.fitebt;
    return ret_val;
@@ -328,7 +331,7 @@ L2000:
    if (!findex_1.trollf || prsvec_1.prsa != vindex_1.hellow) {
       goto L10;
    }
-   rspeak_(&c__366);
+   rspeak_(c__366);
 // 						!TROLL OUT.
    return ret_val;
 
@@ -351,14 +354,14 @@ L10:
 
 // DECLARATIONS
 
-Bool cyclop_(int * arg) {
+Bool cyclop_(/*int arg*/) {
 // System generated locals
    int i__1, i__2;
    Bool ret_val;
 
 // Local variables
    static int i__;
-   extern int rnd_(int *);
+   extern int rnd_(int);
 #define eqo ((int *)&objcts_1 + 1)
 #define orp ((int *)&orphs_1)
 #define syn ((int *)&syntax_1)
@@ -367,7 +370,9 @@ Bool cyclop_(int * arg) {
 #define prpvec ((int *)&pv_1 + 3)
 #define flags ((Bool *)&findex_1)
 #define switch__ ((int *)&findex_1 + 46)
-   extern Void rspeak_(int *), jigsup_(int *), newsta_(int *, int *, int *, int *, int *);
+   extern void rspeak_(int);
+   extern void jigsup_(int);
+   extern void newsta_(int, int, int, int, int);
 
 // PARSER OUTPUT
 
@@ -394,7 +399,7 @@ Bool cyclop_(int * arg) {
    }
    findex_1.cyclof = false;
 // 						!WAKE CYCLOPS.
-   rspeak_(&c__187);
+   rspeak_(c__187);
 // 						!DESCRIBE.
    findex_1.rvcyc = abs(findex_1.rvcyc);
    objcts_1.oflag2[oindex_1.cyclo - 1] = (objcts_1.oflag2[oindex_1.cyclo - 1] | oflags_1.fitebt) & ~oflags_1.slepbt;
@@ -410,7 +415,7 @@ L100:
 // 						!ANNOYED TOO MUCH?
    findex_1.rvcyc = 0;
 // 						!RESTART COUNT.
-   jigsup_(&c__188);
+   jigsup_(c__188);
 // 						!YES, EATS PLAYER.
    return ret_val;
 
@@ -423,7 +428,7 @@ L200:
       goto L300;
    }
 // 						!FOOD WHEN HUNGRY?
-   newsta_(&oindex_1.food, &c__189, &c__0, &c__0, &c__0);
+   newsta_(oindex_1.food, c__189, c__0, c__0, c__0);
 // 						!EATS PEPPERS.
 // Computing MIN
    i__1 = -1, i__2 = -findex_1.rvcyc;
@@ -439,7 +444,7 @@ L300:
    if (findex_1.rvcyc >= 0) {
       goto L350;
    }
-   newsta_(&prsvec_1.prso, &c__190, &c__0, &c__0, &c__0);
+   newsta_(prsvec_1.prso, c__190, c__0, c__0, c__0);
 // 						!DRINKS AND
    findex_1.cyclof = true;
 // 						!FALLS ASLEEP.
@@ -447,7 +452,7 @@ L300:
    return ret_val;
 
 L350:
-   rspeak_(&c__191);
+   rspeak_(c__191);
 // 						!NOT THIRSTY.
 L10:
    ret_val = false;
@@ -462,7 +467,7 @@ L400:
    }
 // 						!GARLIC IS JOKE.
 L450:
-   rspeak_(&i__);
+   rspeak_(i__);
 // 						!DISDAIN IT.
    if (findex_1.rvcyc < 0) {
       --findex_1.rvcyc;
@@ -472,7 +477,7 @@ L450:
    }
    if (!findex_1.cyclof) {
       i__1 = abs(findex_1.rvcyc) + 193;
-      rspeak_(&i__1);
+      rspeak_(i__1);
    }
    return ret_val;
 
@@ -484,7 +489,7 @@ L500:
    }
 // 						!HELLO IS NO GO.
    if (prsvec_1.prsa == vindex_1.throww || prsvec_1.prsa == vindex_1.mungw) {
-      i__ = rnd_(&c__2) + 200;
+      i__ = rnd_(c__2) + 200;
    }
    if (prsvec_1.prsa == vindex_1.takew) {
       i__ = 202;
@@ -514,7 +519,7 @@ L500:
 
 // DECLARATIONS
 
-Bool thiefp_(int * arg) {
+Bool thiefp_(/*int arg*/) {
 // System generated locals
    int i__1;
    Bool ret_val;
@@ -522,7 +527,9 @@ Bool thiefp_(int * arg) {
 // Local variables
 #define flags ((Bool *)&findex_1)
 #define switch__ ((int *)&findex_1 + 46)
-   extern Void newsta_(int *, int *, int *, int *, int *), rspeak_(int *), rspsub_(int *, int *);
+   extern void newsta_(int, int, int, int, int);
+   extern void rspeak_(int);
+   extern void rspsub_(int, int);
    static int i__, j;
 #define eqc ((int *)&cevent_1 + 1)
 #define eqo ((int *)&objcts_1 + 1)
@@ -530,7 +537,8 @@ Bool thiefp_(int * arg) {
 #define orp ((int *)&orphs_1)
 #define syn ((int *)&syntax_1)
 #define pvec ((int *)&pv_1)
-   extern Bool prob_(int *, int *), qhere_(int *, int *);
+   extern Bool prob_(int, int);
+   extern Bool qhere_(int, int);
 #define objvec ((int *)&pv_1 + 1)
 #define prpvec ((int *)&pv_1 + 3)
 
@@ -564,23 +572,23 @@ Bool thiefp_(int * arg) {
       goto L10;
    }
 // 						!GOT STILLETTO?  F.
-   if (qhere_(&oindex_1.still, &hack_1.thfpos)) {
+   if (qhere_(oindex_1.still, hack_1.thfpos)) {
       goto L50;
    }
 // 						!CAN HE RECOVER IT?
-   newsta_(&oindex_1.thief, &c__0, &c__0, &c__0, &c__0);
+   newsta_(oindex_1.thief, c__0, c__0, c__0, c__0);
 // 						!NO, VANISH.
-   if (qhere_(&oindex_1.thief, &play_1.here)) {
-      rspeak_(&c__498);
+   if (qhere_(oindex_1.thief, play_1.here)) {
+      rspeak_(c__498);
    }
 // 						!IF HERO, TELL.
    return ret_val;
 
 L50:
-   newsta_(&oindex_1.still, &c__0, &c__0, &oindex_1.thief, &c__0);
+   newsta_(oindex_1.still, c__0, c__0, oindex_1.thief, c__0);
 // 						!YES, RECOVER.
-   if (qhere_(&oindex_1.thief, &play_1.here)) {
-      rspeak_(&c__499);
+   if (qhere_(oindex_1.thief, play_1.here)) {
+      rspeak_(c__499);
    }
 // 						!IF HERO, TELL.
    return ret_val;
@@ -602,25 +610,25 @@ L100:
          j = 500;
       }
    }
-   rspeak_(&j);
+   rspeak_(j);
 // 						!TELL IF BOOTY REAPPEARS.
 
    j = 501;
    i__1 = objcts_1.olnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
 // 						!LOOP.
-      if (i__ == oindex_1.chali || i__ == oindex_1.thief || play_1.here != rindex_1.treas || !qhere_(&i__, &play_1.here)) {
+      if (i__ == oindex_1.chali || i__ == oindex_1.thief || play_1.here != rindex_1.treas || !qhere_(i__, play_1.here)) {
          goto L135;
       }
       objcts_1.oflag1[i__ - 1] |= oflags_1.visibt;
-      rspsub_(&j, &objcts_1.odesc2[i__ - 1]);
+      rspsub_(j, objcts_1.odesc2[i__ - 1]);
 // 						!DESCRIBE.
       j = 502;
       goto L150;
 
    L135:
       if (objcts_1.oadv[i__ - 1] == -oindex_1.thief) {
-         newsta_(&i__, &c__0, &play_1.here, &c__0, &c__0);
+         newsta_(i__, c__0, play_1.here, c__0, c__0);
       }
    L150:
       ;
@@ -632,14 +640,14 @@ L200:
       goto L250;
    }
 // 						!FIRST ENCOUNTER?
-   ret_val = prob_(&c__20, &c__75);
+   ret_val = prob_(c__20, c__75);
    return ret_val;
 
 L250:
    if (prsvec_1.prsa != vindex_1.hellow || objcts_1.odesc1[oindex_1.thief - 1] != 504) {
       goto L300;
    }
-   rspeak_(&c__626);
+   rspeak_(c__626);
    return ret_val;
 
 L300:
@@ -660,8 +668,8 @@ L400:
       goto L500;
    }
 // 						!IN?
-   if (qhere_(&oindex_1.thief, &play_1.here)) {
-      rspeak_(&c__505);
+   if (qhere_(oindex_1.thief, play_1.here)) {
+      rspeak_(c__505);
    }
 // 						!CAN HERO SEE?
    hack_1.thfact = true;
@@ -669,7 +677,7 @@ L400:
    objcts_1.odesc1[oindex_1.thief - 1] = 503;
 // 						!CHANGE DESCRIPTION.
    objcts_1.oflag1[oindex_1.still - 1] |= oflags_1.visibt;
-   if (play_1.here == rindex_1.treas && qhere_(&oindex_1.chali, &play_1.here)) {
+   if (play_1.here == rindex_1.treas && qhere_(oindex_1.chali, play_1.here)) {
       objcts_1.oflag1[oindex_1.chali - 1] &= ~oflags_1.takebt;
    }
    return ret_val;
@@ -679,7 +687,7 @@ L500:
       goto L600;
    }
 // 						!TAKE?
-   rspeak_(&c__506);
+   rspeak_(c__506);
 // 						!JOKE.
    return ret_val;
 
@@ -687,11 +695,11 @@ L600:
    if (prsvec_1.prsa != vindex_1.throww || prsvec_1.prso != oindex_1.knife || (objcts_1.oflag2[oindex_1.thief - 1] & oflags_1.fitebt) != 0) {
       goto L700;
    }
-   if (prob_(&c__10, &c__10)) {
+   if (prob_(c__10, c__10)) {
       goto L650;
    }
 // 						!THREW KNIFE, 10%?
-   rspeak_(&c__507);
+   rspeak_(c__507);
 // 						!NO, JUST MAKES
    objcts_1.oflag2[oindex_1.thief - 1] |= oflags_1.fitebt;
    return ret_val;
@@ -706,11 +714,11 @@ L650:
       }
 // 						!THIEF CARRYING?
       j = 509;
-      newsta_(&i__, &c__0, &play_1.here, &c__0, &c__0);
+      newsta_(i__, c__0, play_1.here, c__0, c__0);
    L675:
       ;
    }
-   newsta_(&oindex_1.thief, &j, &c__0, &c__0, &c__0);
+   newsta_(oindex_1.thief, j, c__0, c__0, c__0);
 // 						!THIEF VANISHES.
    return ret_val;
 
@@ -726,29 +734,29 @@ L700:
    hack_1.thfact = true;
    objcts_1.oflag1[oindex_1.still - 1] |= oflags_1.visibt;
    objcts_1.odesc1[oindex_1.thief - 1] = 503;
-   rspeak_(&c__510);
+   rspeak_(c__510);
 
 L750:
    if (prsvec_1.prso != oindex_1.brick || objcts_1.ocan[oindex_1.fuse - 1] != oindex_1.brick || cevent_1.ctick[cindex_1.cevfus - 1] == 0) {
       goto L800;
    }
-   rspeak_(&c__511);
+   rspeak_(c__511);
 // 						!THIEF REFUSES BOMB.
    return ret_val;
 
 L800:
    i__1 = -oindex_1.thief;
-   newsta_(&prsvec_1.prso, &c__0, &c__0, &c__0, &i__1);
+   newsta_(prsvec_1.prso, c__0, c__0, c__0, i__1);
 // 						!THIEF TAKES GIFT.
    if (objcts_1.otval[prsvec_1.prso - 1] > 0) {
       goto L900;
    }
 // 						!A TREASURE?
-   rspsub_(&c__512, &objcts_1.odesc2[prsvec_1.prso - 1]);
+   rspsub_(c__512, objcts_1.odesc2[prsvec_1.prso - 1]);
    return ret_val;
 
 L900:
-   rspsub_(&c__627, &objcts_1.odesc2[prsvec_1.prso - 1]);
+   rspsub_(c__627, objcts_1.odesc2[prsvec_1.prso - 1]);
 // 						!THIEF ENGROSSED.
    findex_1.thfenf = true;
    return ret_val;

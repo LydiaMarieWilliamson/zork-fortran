@@ -65,13 +65,13 @@ static int c__6 = 6;
 
 // DECLARATIONS
 
-Bool findxt_(int * dir, int * rm) {
+Bool findxt_(int dir, int rm) {
 // System generated locals
    Bool ret_val;
 
 // Local variables
    static int i__, xi;
-   extern Void bug_(int *, int *);
+   extern void bug_(int, int);
 #define eqr ((int *)&rooms_1 + 2)
 #define xflag ((int *)&curxt_1 + 4)
 #define rrand ((int *)&rooms_1 + 602)
@@ -84,7 +84,7 @@ Bool findxt_(int * dir, int * rm) {
 
    ret_val = true;
 // 						!ASSUME WINS.
-   xi = rooms_1.rexit[*rm - 1];
+   xi = rooms_1.rexit[rm - 1];
 // 						!FIND FIRST ENTRY.
    if (xi == 0) {
       goto L1000;
@@ -107,7 +107,7 @@ L100:
          goto L130;
    }
 // 						!BRANCH ON ENTRY.
-   bug_(&c__10, &curxt_1.xtype);
+   bug_(c__10, curxt_1.xtype);
 
 L130:
    curxt_1.xobj = exits_1.travel[xi + 1] & xpars_1.xrmask;
@@ -118,7 +118,7 @@ L120:
 L110:
    xi += xpars_1.xelnt[curxt_1.xtype - 1];
 // 						!ADVANCE TO NEXT ENTRY.
-   if ((i__ & xpars_1.xdmask) == *dir) {
+   if ((i__ & xpars_1.xdmask) == dir) {
       return ret_val;
    }
    if ((i__ & xpars_1.xlflag) == 0) {
@@ -138,7 +138,7 @@ L1000:
 
 // DECLARATIONS
 
-int fwim_(int * f1, int * f2, int * rm, int * con, int * adv, Bool * nocare) {
+int fwim_(int f1, int f2, int rm, int con, int adv, Bool nocare) {
 // System generated locals
    int ret_val, i__1, i__2;
 
@@ -153,7 +153,7 @@ int fwim_(int * f1, int * f2, int * rm, int * con, int * adv, Bool * nocare) {
    i__1 = objcts_1.olnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
 // 						!LOOP
-      if ((*rm == 0 || objcts_1.oroom[i__ - 1] != *rm) && (*adv == 0 || objcts_1.oadv[i__ - 1] != *adv) && (*con == 0 || objcts_1.ocan[i__ - 1] != *con)) {
+      if ((rm == 0 || objcts_1.oroom[i__ - 1] != rm) && (adv == 0 || objcts_1.oadv[i__ - 1] != adv) && (con == 0 || objcts_1.ocan[i__ - 1] != con)) {
          goto L1000;
       }
 
@@ -163,7 +163,7 @@ int fwim_(int * f1, int * f2, int * rm, int * con, int * adv, Bool * nocare) {
          goto L1000;
       }
 // 	  IF(IAND(not(NOCARE),(IAND(OFLAG1(I),TAKEBT).EQ.0)) .OR.
-      if (!(*nocare) && (objcts_1.oflag1[i__ - 1] & oflags_1.takebt) == 0 || (objcts_1.oflag1[i__ - 1] & *f1) == 0 && (objcts_1.oflag2[i__ - 1] & *f2) == 0) {
+      if (!(nocare) && (objcts_1.oflag1[i__ - 1] & oflags_1.takebt) == 0 || (objcts_1.oflag1[i__ - 1] & f1) == 0 && (objcts_1.oflag2[i__ - 1] & f2) == 0) {
          goto L500;
       }
       if (ret_val == 0) {
@@ -187,7 +187,7 @@ int fwim_(int * f1, int * f2, int * rm, int * con, int * adv, Bool * nocare) {
       i__2 = objcts_1.olnt;
       for (j = 1; j <= i__2; ++j) {
 // 						!NO, SEARCH CONTENTS.
-         if (objcts_1.ocan[j - 1] != i__ || (objcts_1.oflag1[j - 1] & oflags_1.visibt) == 0 || (objcts_1.oflag1[j - 1] & *f1) == 0 && (objcts_1.oflag2[j - 1] & *f2) == 0) {
+         if (objcts_1.ocan[j - 1] != i__ || (objcts_1.oflag1[j - 1] & oflags_1.visibt) == 0 || (objcts_1.oflag1[j - 1] & f1) == 0 && (objcts_1.oflag2[j - 1] & f2) == 0) {
             goto L700;
          }
          if (ret_val == 0) {
@@ -215,7 +215,7 @@ int fwim_(int * f1, int * f2, int * rm, int * con, int * adv, Bool * nocare) {
 
 // 	YES-IS-TRUE=YESNO(QUESTION,YES-STRING,NO-STRING)
 
-Bool yesno_(int * q, int * y, int * n) {
+Bool yesno_(int q, int y, int n) {
 // Format strings
    static char fmt_110[] = "(a1)";
 
@@ -224,7 +224,7 @@ Bool yesno_(int * q, int * y, int * n) {
 
 // Local variables
    static char ans[1];
-   extern Void rspeak_(int *);
+   extern void rspeak_(int);
 
 // Fortran I/O blocks
    static cilist io___9 = { 0, 0, 0, fmt_110, 0 };
@@ -243,7 +243,7 @@ L100:
    if (*(unsigned char *)ans == 'N' || *(unsigned char *)ans == 'n') {
       goto L300;
    }
-   rspeak_(&c__6);
+   rspeak_(c__6);
 // 						!SCOLD.
    goto L100;
 

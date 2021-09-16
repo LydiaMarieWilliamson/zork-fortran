@@ -405,9 +405,9 @@ struct {
    212, 5121, 22965, 214, 17805, 25818, 215, 19244, 6618, 216, -1
 };
 
-Void foo_(void) {
-   return 0;
-}
+#if 0
+void foo_(void) { }
+#endif
 
 // DECLARATIONS
 

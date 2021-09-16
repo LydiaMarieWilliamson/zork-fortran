@@ -198,7 +198,7 @@ static int c__80 = 80;
 
 // DECLARATIONS
 
-Bool aappli_(int * ri) {
+Bool aappli_(int ri) {
 // System generated locals
    Bool ret_val;
 
@@ -206,11 +206,12 @@ Bool aappli_(int * ri) {
 #define flags ((Bool *)&findex_1)
 #define switch__ ((int *)&findex_1 + 46)
    static Bool f;
-   extern Void newsta_(int *, int *, int *, int *, int *), rspeak_(int *);
+   extern void newsta_(int, int, int, int, int);
+   extern void rspeak_(int);
    static int i__;
 #define eqa ((int *)&advs_1 + 1)
 #define eqc ((int *)&cevent_1 + 1)
-   extern Void bug_(int *, int *);
+   extern void bug_(int, int);
 #define eqo ((int *)&objcts_1 + 1)
 #define eqr ((int *)&rooms_1 + 2)
 #define orp ((int *)&orphs_1)
@@ -219,7 +220,7 @@ Bool aappli_(int * ri) {
 #define rrand ((int *)&rooms_1 + 602)
 #define objvec ((int *)&pv_1 + 1)
 #define prpvec ((int *)&pv_1 + 3)
-   extern Bool moveto_(int *, int *);
+   extern Bool moveto_(int, int);
 
 // PARSER OUTPUT
 
@@ -241,20 +242,20 @@ Bool aappli_(int * ri) {
 
 // FLAGS
 
-   if (*ri == 0) {
+   if (ri == 0) {
       goto L10;
    }
 // 						!IF ZERO, NO APP.
    ret_val = true;
 // 						!ASSUME WINS.
-   switch (*ri) {
+   switch (ri) {
       case 1:
          goto L1000;
       case 2:
          goto L2000;
    }
 // 						!BRANCH ON ADV.
-   bug_(&c__11, ri);
+   bug_(c__11, ri);
 
 // COMMON FALSE RETURN.
 
@@ -272,11 +273,11 @@ L1000:
 // 						!ROBOT RAISED CAGE.
    play_1.winner = aindex_1.player;
 // 						!RESET FOR PLAYER.
-   f = moveto_(&rindex_1.cager, &play_1.winner);
+   f = moveto_(rindex_1.cager, play_1.winner);
 // 						!MOVE TO NEW ROOM.
-   newsta_(&oindex_1.cage, &c__567, &rindex_1.cager, &c__0, &c__0);
+   newsta_(oindex_1.cage, c__567, rindex_1.cager, c__0, c__0);
 // 						!INSTALL CAGE IN ROOM.
-   newsta_(&oindex_1.robot, &c__0, &rindex_1.cager, &c__0, &c__0);
+   newsta_(oindex_1.robot, c__0, rindex_1.cager, c__0, c__0);
 // 						!INSTALL ROBOT IN ROOM.
    advs_1.aroom[aindex_1.arobot - 1] = rindex_1.cager;
 // 						!ALSO MOVE ROBOT/ADV.
@@ -290,7 +291,7 @@ L1200:
    if (prsvec_1.prsa != vindex_1.drinkw && prsvec_1.prsa != vindex_1.eatw) {
       goto L1300;
    }
-   rspeak_(&c__568);
+   rspeak_(c__568);
 // 						!EAT OR DRINK, JOKE.
    return ret_val;
 
@@ -299,7 +300,7 @@ L1300:
       goto L1400;
    }
 // 						!READ,
-   rspeak_(&c__569);
+   rspeak_(c__569);
 // 						!JOKE.
    return ret_val;
 
@@ -307,7 +308,7 @@ L1400:
    if (prsvec_1.prsa == vindex_1.walkw || prsvec_1.prsa == vindex_1.takew || prsvec_1.prsa == vindex_1.dropw || prsvec_1.prsa == vindex_1.putw || prsvec_1.prsa == vindex_1.pushw || prsvec_1.prsa == vindex_1.throww || prsvec_1.prsa == vindex_1.turnw || prsvec_1.prsa == vindex_1.leapw) {
       goto L10;
    }
-   rspeak_(&c__570);
+   rspeak_(c__570);
 // 						!JOKE.
    return ret_val;
 // AAPPLI, PAGE 3
@@ -318,7 +319,7 @@ L2000:
    if ((objcts_1.oflag2[oindex_1.qdoor - 1] & oflags_1.openbt) != 0) {
       goto L2100;
    }
-   rspeak_(&c__783);
+   rspeak_(c__783);
 // 						!NO MASTER YET.
    return ret_val;
 
@@ -332,14 +333,14 @@ L2100:
    if (play_1.here == rindex_1.scorr && (prsvec_1.prso == xsrch_1.xnorth || prsvec_1.prso == xsrch_1.xenter) || play_1.here == rindex_1.ncorr && (prsvec_1.prso == xsrch_1.xsouth || prsvec_1.prso == xsrch_1.xenter)) {
       i__ = 785;
    }
-   rspeak_(&i__);
+   rspeak_(i__);
    return ret_val;
 
 L2200:
    if (prsvec_1.prsa == vindex_1.takew || prsvec_1.prsa == vindex_1.dropw || prsvec_1.prsa == vindex_1.putw || prsvec_1.prsa == vindex_1.throww || prsvec_1.prsa == vindex_1.pushw || prsvec_1.prsa == vindex_1.turnw || prsvec_1.prsa == vindex_1.spinw || prsvec_1.prsa == vindex_1.trntow || prsvec_1.prsa == vindex_1.follow || prsvec_1.prsa == vindex_1.stayw || prsvec_1.prsa == vindex_1.openw || prsvec_1.prsa == vindex_1.closew || prsvec_1.prsa == vindex_1.killw) {
       goto L10;
    }
-   rspeak_(&c__786);
+   rspeak_(c__786);
 // 						!MASTER CANT DO IT.
    return ret_val;
 
@@ -362,7 +363,7 @@ L2200:
 
 // DECLARATIONS
 
-Void thiefd_(void) {
+void thiefd_(void) {
 // System generated locals
    int i__1, i__2;
 
@@ -370,18 +371,21 @@ Void thiefd_(void) {
    static int i__, j, nr;
 #define eqo ((int *)&objcts_1 + 1)
 #define eqr ((int *)&rooms_1 + 2)
-   extern Bool lit_(int *);
+   extern Bool lit_(int);
 #define eqv ((int *)&vill_1 + 1)
    static Bool once;
-   extern Bool prob_(int *, int *), qhere_(int *, int *);
+   extern Bool prob_(int, int);
+   extern Bool qhere_(int, int);
 #define rrand ((int *)&rooms_1 + 602)
-   extern Bool winnin_(int *, int *);
+   extern Bool winnin_(int, int);
 #define flags ((Bool *)&findex_1)
 #define switch__ ((int *)&findex_1 + 46)
    static int rhere;
-   extern Void newsta_(int *, int *, int *, int *, int *);
-   extern int robadv_(int *, int *, int *, int *), robrm_(int *, int *, int *, int *, int *);
-   extern Void rspeak_(int *), rspsub_(int *, int *);
+   extern void newsta_(int, int, int, int, int);
+   extern int robadv_(int, int, int, int);
+   extern int robrm_(int, int, int, int, int);
+   extern void rspeak_(int);
+   extern void rspsub_(int, int);
 
 // GAME STATE
 
@@ -425,17 +429,17 @@ L1025:
       goto L1050;
    }
 // 						!VISIBLE?
-   newsta_(&oindex_1.thief, &c__0, &c__0, &c__0, &c__0);
+   newsta_(oindex_1.thief, c__0, c__0, c__0, c__0);
 // 						!YES, VANISH.
    rhere = 0;
-   if (qhere_(&oindex_1.still, &rindex_1.treas) || objcts_1.oadv[oindex_1.still - 1] == -oindex_1.thief) {
-      newsta_(&oindex_1.still, &c__0, &c__0, &oindex_1.thief, &c__0);
+   if (qhere_(oindex_1.still, rindex_1.treas) || objcts_1.oadv[oindex_1.still - 1] == -oindex_1.thief) {
+      newsta_(oindex_1.still, c__0, c__0, oindex_1.thief, c__0);
    }
 L1050:
    i__1 = -oindex_1.thief;
-   i__ = robadv_(&i__1, &hack_1.thfpos, &c__0, &c__0);
+   i__ = robadv_(i__1, hack_1.thfpos, c__0, c__0);
 // 						!DROP VALUABLES.
-   if (qhere_(&oindex_1.egg, &hack_1.thfpos)) {
+   if (qhere_(oindex_1.egg, hack_1.thfpos)) {
       objcts_1.oflag2[oindex_1.egg - 1] |= oflags_1.openbt;
    }
    goto L1700;
@@ -456,7 +460,7 @@ L1100:
       goto L1300;
    }
 // 						!THIEF ANNOUNCED?
-   if (rhere != 0 || prob_(&c__70, &c__70)) {
+   if (rhere != 0 || prob_(c__70, c__70)) {
       goto L1150;
    }
 // 						!IF INVIS AND 30%.
@@ -464,45 +468,45 @@ L1100:
       goto L1700;
    }
 // 						!ABORT IF NO STILLETTO.
-   newsta_(&oindex_1.thief, &c__583, &hack_1.thfpos, &c__0, &c__0);
+   newsta_(oindex_1.thief, c__583, hack_1.thfpos, c__0, c__0);
 // 						!INSERT THIEF INTO ROOM.
    hack_1.thfflg = true;
 // 						!THIEF IS ANNOUNCED.
-   return 0;
+   return;
 
 L1150:
    if (rhere == 0 || (objcts_1.oflag2[oindex_1.thief - 1] & oflags_1.fitebt) == 0) {
       goto L1200;
    }
-   if (winnin_(&oindex_1.thief, &play_1.winner)) {
+   if (winnin_(oindex_1.thief, play_1.winner)) {
       goto L1175;
    }
 // 						!WINNING?
-   newsta_(&oindex_1.thief, &c__584, &c__0, &c__0, &c__0);
+   newsta_(oindex_1.thief, c__584, c__0, c__0, c__0);
 // 						!NO, VANISH THIEF.
    objcts_1.oflag2[oindex_1.thief - 1] &= ~oflags_1.fitebt;
-   if (qhere_(&oindex_1.still, &hack_1.thfpos) || objcts_1.oadv[oindex_1.still - 1] == -oindex_1.thief) {
-      newsta_(&oindex_1.still, &c__0, &c__0, &oindex_1.thief, &c__0);
+   if (qhere_(oindex_1.still, hack_1.thfpos) || objcts_1.oadv[oindex_1.still - 1] == -oindex_1.thief) {
+      newsta_(oindex_1.still, c__0, c__0, oindex_1.thief, c__0);
    }
-   return 0;
+   return;
 
 L1175:
-   if (prob_(&c__90, &c__90)) {
+   if (prob_(c__90, c__90)) {
       goto L1700;
    }
 // 						!90% CHANCE TO STAY.
 
 L1200:
-   if (rhere == 0 || prob_(&c__70, &c__70)) {
+   if (rhere == 0 || prob_(c__70, c__70)) {
       goto L1250;
    }
 // 						!IF VISIBLE AND 30%
-   newsta_(&oindex_1.thief, &c__585, &c__0, &c__0, &c__0);
+   newsta_(oindex_1.thief, c__585, c__0, c__0, c__0);
 // 						!VANISH THIEF.
-   if (qhere_(&oindex_1.still, &hack_1.thfpos) || objcts_1.oadv[oindex_1.still - 1] == -oindex_1.thief) {
-      newsta_(&oindex_1.still, &c__0, &c__0, &oindex_1.thief, &c__0);
+   if (qhere_(oindex_1.still, hack_1.thfpos) || objcts_1.oadv[oindex_1.still - 1] == -oindex_1.thief) {
+      newsta_(oindex_1.still, c__0, c__0, oindex_1.thief, c__0);
    }
-   return 0;
+   return;
 
 L1300:
    if (rhere == 0) {
@@ -510,14 +514,14 @@ L1300:
    }
 // 						!ANNOUNCED.  VISIBLE?
 L1250:
-   if (prob_(&c__70, &c__70)) {
-      return 0;
+   if (prob_(c__70, c__70)) {
+      return;
    }
 // 						!70% CHANCE TO DO NOTHING.
    hack_1.thfflg = true;
    i__1 = -oindex_1.thief;
    i__2 = -oindex_1.thief;
-   nr = robrm_(&hack_1.thfpos, &c__100, &c__0, &c__0, &i__1) + robadv_(&play_1.winner, &c__0, &c__0, &i__2);
+   nr = robrm_(hack_1.thfpos, c__100, c__0, c__0, i__1) + robadv_(play_1.winner, c__0, c__0, i__2);
    i__ = 586;
 // 						!ROBBED EM.
    if (rhere != 0) {
@@ -528,13 +532,13 @@ L1250:
       ++i__;
    }
 // 						!DID HE GET ANYTHING?
-   newsta_(&oindex_1.thief, &i__, &c__0, &c__0, &c__0);
+   newsta_(oindex_1.thief, i__, c__0, c__0, c__0);
 // 						!VANISH THIEF.
-   if (qhere_(&oindex_1.still, &hack_1.thfpos) || objcts_1.oadv[oindex_1.still - 1] == -oindex_1.thief) {
-      newsta_(&oindex_1.still, &c__0, &c__0, &oindex_1.thief, &c__0);
+   if (qhere_(oindex_1.still, hack_1.thfpos) || objcts_1.oadv[oindex_1.still - 1] == -oindex_1.thief) {
+      newsta_(oindex_1.still, c__0, c__0, oindex_1.thief, c__0);
    }
-   if (nr != 0 && !lit_(&hack_1.thfpos)) {
-      rspeak_(&c__406);
+   if (nr != 0 && !lit_(hack_1.thfpos)) {
+      rspeak_(c__406);
    }
    rhere = 0;
    goto L1700;
@@ -543,19 +547,19 @@ L1250:
 // NOT IN ADVENTURERS ROOM.
 
 L1400:
-   newsta_(&oindex_1.thief, &c__0, &c__0, &c__0, &c__0);
+   newsta_(oindex_1.thief, c__0, c__0, c__0, c__0);
 // 						!VANISH.
    rhere = 0;
 // D	IF(DFLAG) PRINT 30,THFPOS
 // D30	FORMAT(' THIEFD-- IN ROOM ',I4)
-   if (qhere_(&oindex_1.still, &hack_1.thfpos) || objcts_1.oadv[oindex_1.still - 1] == -oindex_1.thief) {
-      newsta_(&oindex_1.still, &c__0, &c__0, &oindex_1.thief, &c__0);
+   if (qhere_(oindex_1.still, hack_1.thfpos) || objcts_1.oadv[oindex_1.still - 1] == -oindex_1.thief) {
+      newsta_(oindex_1.still, c__0, c__0, oindex_1.thief, c__0);
    }
    if ((rooms_1.rflag[hack_1.thfpos - 1] & rflag_1.rseen) == 0) {
       goto L1700;
    }
    i__1 = -oindex_1.thief;
-   i__ = robrm_(&hack_1.thfpos, &c__75, &c__0, &c__0, &i__1);
+   i__ = robrm_(hack_1.thfpos, c__75, c__0, c__0, i__1);
 // 						!ROB ROOM 75%.
    if (hack_1.thfpos < rindex_1.maze1 || hack_1.thfpos > rindex_1.maz15 || play_1.here < rindex_1.maze1 || play_1.here > rindex_1.maz15) {
       goto L1500;
@@ -563,16 +567,16 @@ L1400:
    i__1 = objcts_1.olnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
 // 						!BOTH IN MAZE.
-      if (!qhere_(&i__, &hack_1.thfpos) || prob_(&c__60, &c__60) || (objcts_1.oflag1[i__ - 1] & oflags_1.visibt + oflags_1.takebt) != oflags_1.visibt + oflags_1.takebt) {
+      if (!qhere_(i__, hack_1.thfpos) || prob_(c__60, c__60) || (objcts_1.oflag1[i__ - 1] & oflags_1.visibt + oflags_1.takebt) != oflags_1.visibt + oflags_1.takebt) {
          goto L1450;
       }
-      rspsub_(&c__590, &objcts_1.odesc2[i__ - 1]);
+      rspsub_(c__590, objcts_1.odesc2[i__ - 1]);
 // 						!TAKE OBJECT.
-      if (prob_(&c__40, &c__20)) {
+      if (prob_(c__40, c__20)) {
          goto L1700;
       }
       i__2 = -oindex_1.thief;
-      newsta_(&i__, &c__0, &c__0, &c__0, &i__2);
+      newsta_(i__, c__0, c__0, c__0, i__2);
 // 						!MOST OF THE TIME.
       objcts_1.oflag2[i__ - 1] |= oflags_1.tchbt;
       goto L1700;
@@ -585,11 +589,11 @@ L1500:
    i__1 = objcts_1.olnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
 // 						!NOT IN MAZE.
-      if (!qhere_(&i__, &hack_1.thfpos) || objcts_1.otval[i__ - 1] != 0 || prob_(&c__80, &c__60) || (objcts_1.oflag1[i__ - 1] & oflags_1.visibt + oflags_1.takebt) != oflags_1.visibt + oflags_1.takebt) {
+      if (!qhere_(i__, hack_1.thfpos) || objcts_1.otval[i__ - 1] != 0 || prob_(c__80, c__60) || (objcts_1.oflag1[i__ - 1] & oflags_1.visibt + oflags_1.takebt) != oflags_1.visibt + oflags_1.takebt) {
          goto L1550;
       }
       i__2 = -oindex_1.thief;
-      newsta_(&i__, &c__0, &c__0, &c__0, &i__2);
+      newsta_(i__, c__0, c__0, c__0, i__2);
       objcts_1.oflag2[i__ - 1] |= oflags_1.tchbt;
       goto L1700;
    L1550:
@@ -624,7 +628,7 @@ L1750:
 
 L1800:
    if (hack_1.thfpos == rindex_1.treas) {
-      return 0;
+      return;
    }
 // 						!IN TREASURE ROOM?
    j = 591;
@@ -634,16 +638,14 @@ L1800:
    }
    i__1 = objcts_1.olnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
-      if (objcts_1.oadv[i__ - 1] != -oindex_1.thief || prob_(&c__70, &c__70) || objcts_1.otval[i__ - 1] > 0) {
+      if (objcts_1.oadv[i__ - 1] != -oindex_1.thief || prob_(c__70, c__70) || objcts_1.otval[i__ - 1] > 0) {
          goto L1850;
       }
-      newsta_(&i__, &j, &hack_1.thfpos, &c__0, &c__0);
+      newsta_(i__, j, hack_1.thfpos, c__0, c__0);
       j = 0;
    L1850:
       ;
    }
-   return 0;
-
 }
 
 #undef switch__

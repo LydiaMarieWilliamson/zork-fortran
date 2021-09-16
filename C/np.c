@@ -91,7 +91,7 @@ static int c__601 = 601;
 
 // DECLARATIONS
 
-Void rdline_(char *buffer, int * length, int * who, ftnlen buffer_len) {
+void rdline_(char *buffer, int length, int who, ftnlen buffer_len) {
 // Format strings
    static char fmt_50[] = "(\002 >\002,$)";
    static char fmt_100[] = "(78a1)";
@@ -122,7 +122,7 @@ Void rdline_(char *buffer, int * length, int * who, ftnlen buffer_len) {
 
 // Function Body
 L5:
-   switch (*who + 1) {
+   switch (who + 1) {
       case 1:
          goto L90;
       case 2:
@@ -139,8 +139,8 @@ L90:
    s_rsfe(&io___7);
    do_fio(&c__78, buffer + 1, (ftnlen) 1);
    e_rsfe();
-   for (*length = 78; *length >= 1; --(*length)) {
-      if (*(unsigned char *)&buffer[*length] != ' ') {
+   for (length = 78; length >= 1; --(length)) {
+      if (*(unsigned char *)&buffer[length] != ' ') {
          goto L250;
       }
 // L200:
@@ -162,19 +162,18 @@ L250:
 // 	go to 5
 // CONVERT TO UPPER CASE
 //L300:
-   i__1 = *length;
+   i__1 = length;
    for (i__ = 1; i__ <= i__1; ++i__) {
       if (*(unsigned char *)&buffer[i__] >= 'a' && *(unsigned char *)&buffer[i__] <= 'z') {
          *(unsigned char *)&buffer[i__] = (char)(*(unsigned char *)&buffer[i__] - 32);
       }
 // L400:
    }
-   if (*length == 0) {
+   if (length == 0) {
       goto L5;
    }
    prsvec_1.prscon = 1;
 // 						!RESTART LEX SCAN.
-   return 0;
 }
 
 #undef prpvec
@@ -186,25 +185,25 @@ L250:
 // PARSE-	TOP LEVEL PARSE ROUTINE
 
 // DECLARATIONS
+static Bool lex_(char *, int, int *, int, Bool, ftnlen);
 
 // THIS ROUTINE DETAILS ON BIT 0 OF PRSFLG
 
-Bool parse_(char *inbuf, int * inlnt, Bool * vbflag, ftnlen inbuf_len) {
+Bool parse_(char *inbuf, int inlnt, Bool vbflag, ftnlen inbuf_len) {
 // System generated locals
    int i__1;
    Bool ret_val;
 
 // Local variables
    static int x;
-   extern Bool lex_(char *, int *, int *, int *, Bool *, ftnlen);
 #define orp ((int *)&orphs_1)
 #define syn ((int *)&syntax_1)
 #define pvec ((int *)&pv_1)
 #define objvec ((int *)&pv_1 + 1)
-   extern Void orphan_(int *, int *, int *, int *, int *);
-   extern int sparse_(int *, int *, Bool *);
+   extern void orphan_(int, int, int, int, int);
+   extern int sparse_(int *, int, Bool);
 #define prpvec ((int *)&pv_1 + 3)
-   extern Bool synmch_(int *);
+   extern Bool synmch_(/*int*/);
    static int outbuf[40], outlnt;
 
 // PARSER OUTPUT
@@ -224,10 +223,10 @@ Bool parse_(char *inbuf, int * inlnt, Bool * vbflag, ftnlen inbuf_len) {
    prsvec_1.prsi = 0;
    prsvec_1.prso = 0;
 
-   if (!lex_(inbuf + 1, inlnt, outbuf, &outlnt, vbflag, (ftnlen) 1)) {
+   if (!lex_(inbuf + 1, inlnt, outbuf, outlnt, vbflag, (ftnlen) 1)) {
       goto L100;
    }
-   if ((i__1 = sparse_(outbuf, &outlnt, vbflag)) < 0) {
+   if ((i__1 = sparse_(outbuf, outlnt, vbflag)) < 0) {
       goto L100;
    } else if (i__1 == 0) {
       goto L200;
@@ -239,11 +238,11 @@ Bool parse_(char *inbuf, int * inlnt, Bool * vbflag, ftnlen inbuf_len) {
 // PARSE REQUIRES VALIDATION
 
 L200:
-   if (!(*vbflag)) {
+   if (!(vbflag)) {
       goto L350;
    }
 // 						!ECHO MODE, FORCE FAIL.
-   if (!synmch_(&x)) {
+   if (!synmch_(/*x*/)) {
       goto L100;
    }
 // 						!DO SYN MATCH.
@@ -256,7 +255,7 @@ L200:
 L300:
    ret_val = true;
 L350:
-   orphan_(&c__0, &c__0, &c__0, &c__0, &c__0);
+   orphan_(c__0, c__0, c__0, c__0, c__0);
 // 						!CLEAR ORPHANS.
 // D	if(dflag) write(0,*) 'parse good'
 // D	IF(DFLAG) PRINT 10,PARSE,PRSA,PRSO,PRSI
@@ -283,22 +282,21 @@ L100:
 
 // DECLARATIONS
 
-Void orphan_(int * o1, int * o2, int * o3, int * o4, int * o5) {
+void orphan_(int o1, int o2, int o3, int o4, int o5) {
 
-   orphs_2.a = *o1;
+   orphs_2.a = o1;
 // 						!SET UP NEW ORPHANS.
-   orphs_2.b = *o2;
-   orphs_2.c__ = *o3;
-   orphs_2.d__ = *o4;
-   orphs_2.e = *o5;
-   return 0;
+   orphs_2.b = o2;
+   orphs_2.c__ = o3;
+   orphs_2.d__ = o4;
+   orphs_2.e = o5;
 }
 
 // LEX-	LEXICAL ANALYZER
 
 // THIS ROUTINE DETAILS ON BIT 1 OF PRSFLAG
 
-Bool lex_(char *inbuf, int * inlnt, int * outbuf, int * op, Bool * vbflag, ftnlen inbuf_len) {
+static Bool lex_(char *inbuf, int inlnt, int * outbuf, int op, Bool vbflag, ftnlen inbuf_len) {
 // Initialized data
 
    static char dlimit[1 * 9] = "A" "Z" "x" "1" "9" "x" "-" "-" "x";
@@ -314,7 +312,7 @@ Bool lex_(char *inbuf, int * inlnt, int * outbuf, int * op, Bool * vbflag, ftnle
 #define syn ((int *)&syntax_1)
 #define pvec ((int *)&pv_1)
 #define objvec ((int *)&pv_1 + 1)
-   extern Void rspeak_(int *);
+   extern void rspeak_(int);
 #define prpvec ((int *)&pv_1 + 3)
 
 // PARSER OUTPUT
@@ -336,16 +334,16 @@ Bool lex_(char *inbuf, int * inlnt, int * outbuf, int * op, Bool * vbflag, ftnle
 // D	DFLAG=IAND(PRSFLG,2).NE.0
    ret_val = false;
 // 						!ASSUME LEX FAILS.
-   *op = -1;
+   op = -1;
 // 						!OUTPUT PTR.
 L50:
-   *op += 2;
+   op += 2;
 // 						!ADV OUTPUT PTR.
    cp = 0;
 // 						!CHAR PTR=0.
 
 L200:
-   if (prsvec_1.prscon > *inlnt) {
+   if (prsvec_1.prscon > inlnt) {
       goto L1000;
    }
 // 						!END OF INPUT?
@@ -373,8 +371,8 @@ L200:
 // L500:
    }
 
-   if (*vbflag) {
-      rspeak_(&c__601);
+   if (vbflag) {
+      rspeak_(c__601);
    }
 // 						!GREEK TO ME, FAIL.
    return ret_val;
@@ -382,15 +380,15 @@ L200:
 // END OF INPUT, SEE IF PARTIAL WORD AVAILABLE.
 
 L1000:
-   if (prsvec_1.prscon > *inlnt) {
+   if (prsvec_1.prscon > inlnt) {
       prsvec_1.prscon = 1;
    }
 // 						!FORCE PARSE RESTART.
-   if (cp == 0 && *op == 1) {
+   if (cp == 0 && op == 1) {
       return ret_val;
    }
    if (cp == 0) {
-      *op += -2;
+      op += -2;
    }
 // 						!ANY LAST WORD?
    ret_val = true;
@@ -408,7 +406,7 @@ L4000:
       goto L200;
    }
 // 						!IGNORE IF TOO MANY CHAR.
-   k = *op + cp / 3;
+   k = op + cp / 3;
 // 						!COMPUTE WORD INDEX.
    switch (cp % 3 + 1) {
       case 1:

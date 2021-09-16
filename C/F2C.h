@@ -6,7 +6,6 @@
 
 // These types will be nativized, after it's made OK to do so.
 typedef long Bool; // Logical.
-typedef int Void; // Subroutine.
 
 // I/O stuff.
 #ifdef f2c_i2
@@ -65,6 +64,6 @@ int s_rsfe(cilist *);
 int s_rsue(cilist *);
 int s_wsfe(cilist *);
 int s_wsue(cilist *);
-Void s_stop(char *, ftnlen);
+int /* Subroutine */ s_stop(char *, ftnlen);
 
 #endif // OnceOnly

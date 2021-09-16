@@ -183,10 +183,13 @@ static int c__559 = 559;
 // WRITTEN BY R. M. SUPNIK
 
 // DECLARATIONS
+static int unpacks_(int);
+static Bool syneql_(int, int, int, int, int);
+static Bool takeit_(int, int);
 
 // THIS ROUTINE DETAILS ON BIT 4 OF PRSFLG
 
-Bool synmch_(void) {
+Bool synmch_(/*int x*/) {
 // Initialized data
 
    static int r50min = 1600;
@@ -202,16 +205,14 @@ Bool synmch_(void) {
 #define avoc ((int *)&adjvoc_1)
 #define pvec ((int *)&pv_1)
    static int newj;
-   extern int gwim_(int *, int *, int *);
+   extern int gwim_(int, int, int);
 #define ovoc ((int *)&objvoc_1)
 #define vvoc ((int *)&vrbvoc_1)
    static int drive, limit, qprep, sprep, dforce;
 #define objvec ((int *)&pv_1 + 1)
-   extern Bool takeit_(int *, int *);
-   extern Void rspeak_(int *), orphan_(int *, int *, int *, int *, int *);
+   extern void rspeak_(int);
+   extern void orphan_(int, int, int, int, int);
 #define prpvec ((int *)&pv_1 + 3)
-   extern Bool syneql_(int *, int *, int *, int *, int *);
-   extern Void unpacks_(int *, int *);
 
 // PARSER OUTPUT
 
@@ -245,17 +246,17 @@ L100:
 // 						!ADVANCE TO NEXT.
 
 L200:
-   unpacks_(&j, &newj);
+   newj = unpacks_(j);
 // 						!UNPACK SYNTAX.
 // D	IF(DFLAG) PRINT 60,O1,P1,DOBJ,DFL1,DFL2
 // D60	FORMAT(' SYNMCH INPUTS TO SYNEQL- ',5I7)
    sprep = syntax_1.dobj & objflg_1.vpmask;
-   if (!syneql_(&pv_1.p1, &pv_1.o1, &syntax_1.dobj, &syntax_1.dfl1, &syntax_1.dfl2)) {
+   if (!syneql_(pv_1.p1, pv_1.o1, syntax_1.dobj, syntax_1.dfl1, syntax_1.dfl2)) {
       goto L1000;
    }
 // D	IF(DFLAG) PRINT 60,O2,P2,IOBJ,IFL1,IFL2
    sprep = syntax_1.iobj & objflg_1.vpmask;
-   if (syneql_(&pv_1.p2, &pv_1.o2, &syntax_1.iobj, &syntax_1.ifl1, &syntax_1.ifl2)) {
+   if (syneql_(pv_1.p2, pv_1.o2, syntax_1.iobj, syntax_1.ifl1, syntax_1.ifl2)) {
       goto L6000;
    }
 
@@ -303,7 +304,7 @@ L3000:
       goto L10000;
    }
 // 						!ANY DRIVER?
-   unpacks_(&drive, &dforce);
+   dforce = unpacks_(drive);
 // 						!UNPACK DFLT SYNTAX.
 
 // TRY TO FILL DIRECT OBJECT SLOT IF THAT WAS THE PROBLEM.
@@ -319,14 +320,14 @@ L3000:
       goto L3500;
    }
 // 						!ANY ORPHAN?
-   if (syneql_(&pv_1.p1, &pv_1.o1, &syntax_1.dobj, &syntax_1.dfl1, &syntax_1.dfl2)) {
+   if (syneql_(pv_1.p1, pv_1.o1, syntax_1.dobj, syntax_1.dfl1, syntax_1.dfl2)) {
       goto L4000;
    }
 
 // ORPHAN FAILS, TRY GWIM.
 
 L3500:
-   pv_1.o1 = gwim_(&syntax_1.dobj, &syntax_1.dfw1, &syntax_1.dfw2);
+   pv_1.o1 = gwim_(syntax_1.dobj, syntax_1.dfw1, syntax_1.dfw2);
 // 						!GET GWIM.
 // D	IF(DFLAG) PRINT 30,O1
 // D30	FORMAT(' SYNMCH- DO GWIM= ',I6)
@@ -335,8 +336,8 @@ L3500:
    }
 // 						!TEST RESULT.
    i__1 = syntax_1.dobj & objflg_1.vpmask;
-   orphan_(&c_n1, &pv_1.act, &c__0, &i__1, &c__0);
-   rspeak_(&c__623);
+   orphan_(c_n1, pv_1.act, c__0, i__1, c__0);
+   rspeak_(c__623);
    return ret_val;
 
 // TRY TO FILL INDIRECT OBJECT SLOT IF THAT WAS THE PROBLEM.
@@ -345,7 +346,7 @@ L4000:
    if ((syntax_1.vflag & synflg_1.sind) == 0 || pv_1.o2 != 0) {
       goto L6000;
    }
-   pv_1.o2 = gwim_(&syntax_1.iobj, &syntax_1.ifw1, &syntax_1.ifw2);
+   pv_1.o2 = gwim_(syntax_1.iobj, syntax_1.ifw1, syntax_1.ifw2);
 // 						!GWIM.
 // D	IF(DFLAG) PRINT 40,O2
 // D40	FORMAT(' SYNMCH- IO GWIM= ',I6)
@@ -356,14 +357,14 @@ L4000:
       pv_1.o1 = orphs_1.oflag & orphs_1.oslot;
    }
    i__1 = syntax_1.dobj & objflg_1.vpmask;
-   orphan_(&c_n1, &pv_1.act, &pv_1.o1, &i__1, &c__0);
-   rspeak_(&c__624);
+   orphan_(c_n1, pv_1.act, pv_1.o1, i__1, c__0);
+   rspeak_(c__624);
    return ret_val;
 
 // TOTAL CHOMP
 
 L10000:
-   rspeak_(&c__601);
+   rspeak_(c__601);
 // 						!CANT DO ANYTHING.
    return ret_val;
 // SYNMCH, PAGE 3
@@ -386,11 +387,11 @@ L5000:
 // 						!GET DIR OBJ.
    prsvec_1.prsi = pv_1.o2;
 // 						!GET IND OBJ.
-   if (!takeit_(&prsvec_1.prso, &syntax_1.dobj)) {
+   if (!takeit_(prsvec_1.prso, syntax_1.dobj)) {
       return ret_val;
    }
 // 						!TRY TAKE.
-   if (!takeit_(&prsvec_1.prsi, &syntax_1.iobj)) {
+   if (!takeit_(prsvec_1.prsi, syntax_1.iobj)) {
       return ret_val;
    }
 // 						!TRY TAKE.
@@ -414,7 +415,7 @@ L5000:
 
 // DECLARATIONS
 
-Void unpacks_(int * oldj, int * j) {
+static int unpacks_(int oldj) {
 // Local variables
    static int i__;
 #define orp ((int *)&orphs_1)
@@ -438,10 +439,10 @@ Void unpacks_(int * oldj, int * j) {
 // L10:
    }
 
-   syntax_1.vflag = vvoc[*oldj - 1];
-   *j = *oldj + 1;
+   syntax_1.vflag = vvoc[oldj - 1];
+   int j = oldj + 1;
    if ((syntax_1.vflag & synflg_1.sdir) == 0) {
-      return 0;
+      return j;
    }
    syntax_1.dfl1 = -1;
 // 						!ASSUME STD.
@@ -456,11 +457,11 @@ Void unpacks_(int * oldj, int * j) {
    goto L200;
 
 L100:
-   syntax_1.dobj = vvoc[*j - 1];
+   syntax_1.dobj = vvoc[j - 1];
 // 						!NOT STD.
-   syntax_1.dfw1 = vvoc[*j];
-   syntax_1.dfw2 = vvoc[*j + 1];
-   *j += 3;
+   syntax_1.dfw1 = vvoc[j];
+   syntax_1.dfw2 = vvoc[j + 1];
+   j += 3;
    if ((syntax_1.dobj & objflg_1.vebit) == 0) {
       goto L200;
    }
@@ -470,22 +471,22 @@ L100:
 
 L200:
    if ((syntax_1.vflag & synflg_1.sind) == 0) {
-      return 0;
+      return j;
    }
    syntax_1.ifl1 = -1;
 // 						!ASSUME STD.
    syntax_1.ifl2 = -1;
-   syntax_1.iobj = vvoc[*j - 1];
-   syntax_1.ifw1 = vvoc[*j];
-   syntax_1.ifw2 = vvoc[*j + 1];
-   *j += 3;
+   syntax_1.iobj = vvoc[j - 1];
+   syntax_1.ifw1 = vvoc[j];
+   syntax_1.ifw2 = vvoc[j + 1];
+   j += 3;
    if ((syntax_1.iobj & objflg_1.vebit) == 0) {
-      return 0;
+      return j;
    }
    syntax_1.ifl1 = syntax_1.ifw1;
 // 						!YES.
    syntax_1.ifl2 = syntax_1.ifw2;
-   return 0;
+   return j;
 
 }
 
@@ -502,7 +503,7 @@ L200:
 
 // DECLARATIONS
 
-Bool syneql_(int * prep, int * obj, int * sprep, int * sfl1, int * sfl2) {
+static Bool syneql_(int prep, int obj, int sprep, int sfl1, int sfl2) {
 // System generated locals
    Bool ret_val;
 
@@ -520,15 +521,15 @@ Bool syneql_(int * prep, int * obj, int * sprep, int * sfl1, int * sfl2) {
 
 // PARSER STATE
 
-   if (*obj == 0) {
+   if (obj == 0) {
       goto L100;
    }
 // 						!ANY OBJECT?
-   ret_val = *prep == (*sprep & objflg_1.vpmask) && (*sfl1 & objcts_1.oflag1[*obj - 1] | *sfl2 & objcts_1.oflag2[*obj - 1]) != 0;
+   ret_val = prep == (sprep & objflg_1.vpmask) && (sfl1 & objcts_1.oflag1[obj - 1] | sfl2 & objcts_1.oflag2[obj - 1]) != 0;
    return ret_val;
 
 L100:
-   ret_val = *prep == 0 && *sfl1 == 0 && *sfl2 == 0;
+   ret_val = prep == 0 && sfl1 == 0 && sfl2 == 0;
    return ret_val;
 
 }
@@ -544,7 +545,7 @@ L100:
 
 // DECLARATIONS
 
-Bool takeit_(int * obj, int * sflag) {
+Bool takeit_(int obj, int sflag) {
 // System generated locals
    Bool ret_val;
 
@@ -558,11 +559,12 @@ Bool takeit_(int * obj, int * sflag) {
 #define pvec ((int *)&pv_1)
 #define objvec ((int *)&pv_1 + 1)
 #define prpvec ((int *)&pv_1 + 3)
-   extern Void rspsub_(int *, int *);
-   extern int schlst_(int *, int *, int *, int *, int *, int *);
-   extern Void rspeak_(int *);
-   extern int weight_(int *, int *, int *);
-   extern Void newsta_(int *, int *, int *, int *, int *), scrupd_(int *);
+   extern void rspsub_(int, int);
+   extern int schlst_(int, int, int, int, int, int);
+   extern void rspeak_(int);
+   extern int weight_(int, int, int);
+   extern void newsta_(int, int, int, int, int);
+   extern void scrupd_(int);
 
 // PARSER OUTPUT
 
@@ -578,65 +580,65 @@ Bool takeit_(int * obj, int * sflag) {
 
    ret_val = false;
 // 						!ASSUME LOSES.
-   if (*obj == 0 || *obj > star_1.strbit) {
+   if (obj == 0 || obj > star_1.strbit) {
       goto L4000;
    }
 // 						!NULL/STARS WIN.
-   odo2 = objcts_1.odesc2[*obj - 1];
+   odo2 = objcts_1.odesc2[obj - 1];
 // 						!GET DESC.
-   x = objcts_1.ocan[*obj - 1];
+   x = objcts_1.ocan[obj - 1];
 // 						!GET CONTAINER.
-   if (x == 0 || (*sflag & objflg_1.vfbit) == 0) {
+   if (x == 0 || (sflag & objflg_1.vfbit) == 0) {
       goto L500;
    }
    if ((objcts_1.oflag2[x - 1] & oflags_1.openbt) != 0) {
       goto L500;
    }
-   rspsub_(&c__566, &odo2);
+   rspsub_(c__566, odo2);
 // 						!CANT REACH.
    return ret_val;
 
 L500:
-   if ((*sflag & objflg_1.vrbit) == 0) {
+   if ((sflag & objflg_1.vrbit) == 0) {
       goto L1000;
    }
-   if ((*sflag & objflg_1.vtbit) == 0) {
+   if ((sflag & objflg_1.vtbit) == 0) {
       goto L2000;
    }
 
 // SHOULD BE IN ROOM (VRBIT NE 0) AND CAN BE TAKEN (VTBIT NE 0)
 
-   if (schlst_(&c__0, &c__0, &play_1.here, &c__0, &c__0, obj) <= 0) {
+   if (schlst_(c__0, c__0, play_1.here, c__0, c__0, obj) <= 0) {
       goto L4000;
    }
 // 						!IF NOT, OK.
 
 // ITS IN THE ROOM AND CAN BE TAKEN.
 
-   if ((objcts_1.oflag1[*obj - 1] & oflags_1.takebt) != 0 && (objcts_1.oflag2[*obj - 1] & oflags_1.trybt) == 0) {
+   if ((objcts_1.oflag1[obj - 1] & oflags_1.takebt) != 0 && (objcts_1.oflag2[obj - 1] & oflags_1.trybt) == 0) {
       goto L3000;
    }
 
 // NOT TAKEABLE.  IF WE CARE, FAIL.
 
-   if ((*sflag & objflg_1.vcbit) == 0) {
+   if ((sflag & objflg_1.vcbit) == 0) {
       goto L4000;
    }
-   rspsub_(&c__445, &odo2);
+   rspsub_(c__445, odo2);
    return ret_val;
 
 // 1000--	IT SHOULD NOT BE IN THE ROOM.
 // 2000--	IT CANT BE TAKEN.
 
 L2000:
-   if ((*sflag & objflg_1.vcbit) == 0) {
+   if ((sflag & objflg_1.vcbit) == 0) {
       goto L4000;
    }
 L1000:
-   if (schlst_(&c__0, &c__0, &play_1.here, &c__0, &c__0, obj) <= 0) {
+   if (schlst_(c__0, c__0, play_1.here, c__0, c__0, obj) <= 0) {
       goto L4000;
    }
-   rspsub_(&c__665, &odo2);
+   rspsub_(c__665, odo2);
    return ret_val;
 // TAKEIT, PAGE 3
 
@@ -647,27 +649,27 @@ L1000:
 // THE FOLLOWING CODE IS LIFTED FROM SUBROUTINE TAKE.
 
 L3000:
-   if (*obj != advs_1.avehic[play_1.winner - 1]) {
+   if (obj != advs_1.avehic[play_1.winner - 1]) {
       goto L3500;
    }
 // 						!TAKE VEHICLE?
-   rspeak_(&c__672);
+   rspeak_(c__672);
    return ret_val;
 
 L3500:
-   if (x != 0 && objcts_1.oadv[x - 1] == play_1.winner || weight_(&c__0, obj, &play_1.winner) + objcts_1.osize[*obj - 1] <= state_1.mxload) {
+   if (x != 0 && objcts_1.oadv[x - 1] == play_1.winner || weight_(c__0, obj, play_1.winner) + objcts_1.osize[obj - 1] <= state_1.mxload) {
       goto L3700;
    }
-   rspeak_(&c__558);
+   rspeak_(c__558);
 // 						!TOO BIG.
    return ret_val;
 
 L3700:
-   newsta_(obj, &c__559, &c__0, &c__0, &play_1.winner);
+   newsta_(obj, c__559, c__0, c__0, play_1.winner);
 // 						!DO TAKE.
-   objcts_1.oflag2[*obj - 1] |= oflags_1.tchbt;
-   scrupd_(&objcts_1.ofval[*obj - 1]);
-   objcts_1.ofval[*obj - 1] = 0;
+   objcts_1.oflag2[obj - 1] |= oflags_1.tchbt;
+   scrupd_(objcts_1.ofval[obj - 1]);
+   objcts_1.ofval[obj - 1] = 0;
 
 L4000:
    ret_val = true;
@@ -687,8 +689,9 @@ L4000:
 // GWIM- GET WHAT I MEAN IN AMBIGOUS SITUATIONS
 
 // DECLARATIONS
+static Bool takeit_(int, int);
 
-int gwim_(int * sflag, int * sfw1, int * sfw2) {
+int gwim_(int sflag, int sfw1, int sfw2) {
 // System generated locals
    int ret_val;
 
@@ -700,10 +703,9 @@ int gwim_(int * sflag, int * sfw1, int * sfw2) {
 #define syn ((int *)&syntax_1)
    static int nobj, robj;
 #define pvec ((int *)&pv_1)
-   extern int fwim_(int *, int *, int *, int *, int *, Bool *);
+   extern int fwim_(int, int, int, int, int, Bool);
    static Bool nocare;
 #define objvec ((int *)&pv_1 + 1)
-   extern Bool takeit_(int *, int *);
 #define prpvec ((int *)&pv_1 + 3)
 
 // PARSER OUTPUT
@@ -722,14 +724,14 @@ int gwim_(int * sflag, int * sfw1, int * sfw2) {
 // 						!ASSUME LOSE.
    av = advs_1.avehic[play_1.winner - 1];
    nobj = 0;
-   nocare = (*sflag & objflg_1.vcbit) == 0;
+   nocare = (sflag & objflg_1.vcbit) == 0;
 
 // FIRST SEARCH ADVENTURER
 
-   if ((*sflag & objflg_1.vabit) != 0) {
-      nobj = fwim_(sfw1, sfw2, &c__0, &c__0, &play_1.winner, &nocare);
+   if ((sflag & objflg_1.vabit) != 0) {
+      nobj = fwim_(sfw1, sfw2, c__0, c__0, play_1.winner, nocare);
    }
-   if ((*sflag & objflg_1.vrbit) != 0) {
+   if ((sflag & objflg_1.vrbit) != 0) {
       goto L100;
    }
 L50:
@@ -739,7 +741,7 @@ L50:
 // ALSO SEARCH ROOM
 
 L100:
-   robj = fwim_(sfw1, sfw2, &play_1.here, &c__0, &c__0, &nocare);
+   robj = fwim_(sfw1, sfw2, play_1.here, c__0, c__0, nocare);
    if (robj < 0) {
       goto L500;
    } else if (robj == 0) {
@@ -764,7 +766,7 @@ L300:
       return ret_val;
    }
 // 						!IF AMBIGUOUS, RETURN.
-   if (!takeit_(&robj, sflag)) {
+   if (!takeit_(robj, sflag)) {
       return ret_val;
    }
 // 						!IF UNTAKEABLE, RETURN

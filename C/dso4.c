@@ -137,14 +137,14 @@ static int c__10 = 10;
 
 // DECLARATIONS
 
-int robadv_(int * adv, int * nr, int * nc, int * na) {
+int robadv_(int adv, int nr, int nc, int na) {
 // System generated locals
    int ret_val, i__1;
 
 // Local variables
    static int i__;
 #define eqo ((int *)&objcts_1 + 1)
-   extern Void newsta_(int *, int *, int *, int *, int *);
+   extern void newsta_(int, int, int, int, int);
 
 // OBJECTS
 
@@ -152,10 +152,10 @@ int robadv_(int * adv, int * nr, int * nc, int * na) {
 // 						!COUNT OBJECTS
    i__1 = objcts_1.olnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
-      if (objcts_1.oadv[i__ - 1] != *adv || objcts_1.otval[i__ - 1] <= 0 || (objcts_1.oflag2[i__ - 1] & oflags_1.scrdbt) != 0) {
+      if (objcts_1.oadv[i__ - 1] != adv || objcts_1.otval[i__ - 1] <= 0 || (objcts_1.oflag2[i__ - 1] & oflags_1.scrdbt) != 0) {
          goto L100;
       }
-      newsta_(&i__, &c__0, nr, nc, na);
+      newsta_(i__, c__0, nr, nc, na);
 // 						!STEAL OBJECT
       ++ret_val;
    L100:
@@ -170,16 +170,18 @@ int robadv_(int * adv, int * nr, int * nc, int * na) {
 
 // DECLARATIONS
 
-int robrm_(int * rm, int * pr, int * nr, int * nc, int * na) {
+int robrm_(int rm, int pr, int nr, int nc, int na) {
 // System generated locals
    int ret_val, i__1, i__2;
 
 // Local variables
    static int i__;
 #define eqo ((int *)&objcts_1 + 1)
-   extern Bool prob_(int *, int *), qhere_(int *, int *);
-   extern Void newsta_(int *, int *, int *, int *, int *);
-   extern int robadv_(int *, int *, int *, int *), oactor_(int *);
+   extern Bool prob_(int, int);
+   extern Bool qhere_(int, int);
+   extern void newsta_(int, int, int, int, int);
+   extern int robadv_(int, int, int, int);
+   extern int oactor_(int);
 
 // OBJECTS
 
@@ -188,20 +190,20 @@ int robrm_(int * rm, int * pr, int * nr, int * nc, int * na) {
    i__1 = objcts_1.olnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
 // 						!LOOP ON OBJECTS.
-      if (!qhere_(&i__, rm)) {
+      if (!qhere_(i__, rm)) {
          goto L100;
       }
       if (objcts_1.otval[i__ - 1] <= 0 || (objcts_1.oflag2[i__ - 1] & oflags_1.scrdbt) != 0 || (objcts_1.oflag1[i__ - 1] & oflags_1.visibt) == 0 || !prob_(pr, pr)) {
          goto L50;
       }
-      newsta_(&i__, &c__0, nr, nc, na);
+      newsta_(i__, c__0, nr, nc, na);
       ++ret_val;
       objcts_1.oflag2[i__ - 1] |= oflags_1.tchbt;
       goto L100;
    L50:
       if ((objcts_1.oflag2[i__ - 1] & oflags_1.actrbt) != 0) {
-         i__2 = oactor_(&i__);
-         ret_val += robadv_(&i__2, nr, nc, na);
+         i__2 = oactor_(i__);
+         ret_val += robadv_(i__2, nr, nc, na);
       }
    L100:
       ;
@@ -215,43 +217,43 @@ int robrm_(int * rm, int * pr, int * nr, int * nc, int * na) {
 
 // DECLARATIONS
 
-Bool winnin_(int * vl, int * hr) {
+Bool winnin_(int vl, int hr) {
 // System generated locals
    Bool ret_val;
 
 // Local variables
    static int ps, vs;
 #define eqo ((int *)&objcts_1 + 1)
-   extern Bool prob_(int *, int *);
-   extern int fights_(int *, Bool *);
+   extern Bool prob_(int, int);
+   extern int fights_(int, Bool);
 
 // OBJECTS
 
-   vs = objcts_1.ocapac[*vl - 1];
+   vs = objcts_1.ocapac[vl - 1];
 // 						!VILLAIN STRENGTH
-   ps = vs - fights_(hr, &c_true);
+   ps = vs - fights_(hr, c_true);
 // 						!HIS MARGIN OVER HERO
-   ret_val = prob_(&c__90, &c__100);
+   ret_val = prob_(c__90, c__100);
    if (ps > 3) {
       return ret_val;
    }
 // 						!+3... 90% WINNING
-   ret_val = prob_(&c__75, &c__85);
+   ret_val = prob_(c__75, c__85);
    if (ps > 0) {
       return ret_val;
    }
 // 						!>0... 75% WINNING
-   ret_val = prob_(&c__50, &c__30);
+   ret_val = prob_(c__50, c__30);
    if (ps == 0) {
       return ret_val;
    }
 // 						!=0... 50% WINNING
-   ret_val = prob_(&c__25, &c__25);
+   ret_val = prob_(c__25, c__25);
    if (vs > 1) {
       return ret_val;
    }
 // 						!ANY VILLAIN STRENGTH.
-   ret_val = prob_(&c__10, &c__0);
+   ret_val = prob_(c__10, c__0);
    return ret_val;
 }
 
@@ -261,7 +263,7 @@ Bool winnin_(int * vl, int * hr) {
 
 // DECLARATIONS
 
-int fights_(int * h__, Bool * flg) {
+int fights_(int h__, Bool flg) {
 // Initialized data
 
    static int smin = 2;
@@ -279,9 +281,9 @@ int fights_(int * h__, Bool * flg) {
 
 // ADVENTURERS
 
-   ret_val = smin + ((smax - smin) * advs_1.ascore[(20 + (0 + (*h__ - 1 << 2)) - 20) / 4] + state_1.mxscor / 2) / state_1.mxscor;
-   if (*flg) {
-      ret_val += advs_1.astren[*h__ - 1];
+   ret_val = smin + ((smax - smin) * advs_1.ascore[(20 + (0 + (h__ - 1 << 2)) - 20) / 4] + state_1.mxscor / 2) / state_1.mxscor;
+   if (flg) {
+      ret_val += advs_1.astren[h__ - 1];
    }
    return ret_val;
 }
@@ -292,7 +294,7 @@ int fights_(int * h__, Bool * flg) {
 
 // DECLARATIONS
 
-int vilstr_(int * v) {
+int vilstr_(int v) {
 // System generated locals
    int ret_val, i__1, i__2, i__3;
 
@@ -320,11 +322,11 @@ int vilstr_(int * v) {
 
 // FLAGS
 
-   ret_val = objcts_1.ocapac[*v - 1];
+   ret_val = objcts_1.ocapac[v - 1];
    if (ret_val <= 0) {
       return ret_val;
    }
-   if (*v != oindex_1.thief || !findex_1.thfenf) {
+   if (v != oindex_1.thief || !findex_1.thfenf) {
       goto L100;
    }
    findex_1.thfenf = false;
@@ -336,7 +338,7 @@ L100:
    i__1 = vill_1.vlnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
 // 						!SEE IF  BEST WEAPON.
-      if (vill_1.villns[i__ - 1] == *v && prsvec_1.prsi == vill_1.vbest[i__ - 1]) {
+      if (vill_1.villns[i__ - 1] == v && prsvec_1.prsi == vill_1.vbest[i__ - 1]) {
 // Computing MAX
          i__2 = 1, i__3 = ret_val - 1;
          ret_val = max(i__2, i__3);

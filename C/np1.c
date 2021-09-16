@@ -178,7 +178,7 @@ static int c__622 = 622;
 
 // THIS ROUTINE DETAILS ON BIT 2 OF PRSFLG
 
-int sparse_(int * lbuf, int * llnt, Bool * vbflag) {
+int sparse_(int * lbuf, int llnt, Bool vbflag) {
 // Initialized data
 
    static int r50min = 1600;
@@ -192,7 +192,7 @@ int sparse_(int * lbuf, int * llnt, Bool * vbflag) {
 #define eqa ((int *)&advs_1 + 1)
    static int obj;
 #define eqo ((int *)&objcts_1 + 1)
-   extern Bool lit_(int *);
+   extern Bool lit_(int);
 #define orp ((int *)&orphs_1)
 #define syn ((int *)&syntax_1)
 #define pvec ((int *)&pv_1)
@@ -203,9 +203,10 @@ int sparse_(int * lbuf, int * llnt, Bool * vbflag) {
 #define objvec ((int *)&pv_1 + 1)
 #define prpvec ((int *)&pv_1 + 3)
    static int buzlnt, prplnt, dirlnt;
-   extern Void rspeak_(int *);
-   extern int getobj_(int *, int *, int *);
-   extern Void rspsub_(int *, int *), orphan_(int *, int *, int *, int *, int *);
+   extern void rspeak_(int);
+   extern int getobj_(int, int, int);
+   extern void rspsub_(int, int);
+   extern void orphan_(int, int, int, int, int);
 
 // PARSER OUTPUT
 
@@ -257,7 +258,7 @@ int sparse_(int * lbuf, int * llnt, Bool * vbflag) {
 
 // NOW LOOP OVER INPUT BUFFER OF LEXICAL TOKENS.
 
-   i__1 = *llnt;
+   i__1 = llnt;
    for (i__ = 1; i__ <= i__1; i__ += 2) {
 // 						!TWO WORDS/TOKEN.
       lbuf1 = lbuf[i__];
@@ -367,8 +368,8 @@ int sparse_(int * lbuf, int * llnt, Bool * vbflag) {
 
    // NOT RECOGNIZABLE
 
-      if (*vbflag) {
-         rspeak_(&c__601);
+      if (vbflag) {
+         rspeak_(c__601);
       }
       return ret_val;
 // SPARSE, PAGE 9
@@ -376,7 +377,7 @@ int sparse_(int * lbuf, int * llnt, Bool * vbflag) {
 // OBJECT PROCESSING (CONTINUATION OF DO LOOP ON PREV PAGE)
 
    L600:
-      obj = getobj_(&j, &adj, &c__0);
+      obj = getobj_(j, adj, c__0);
 // 						!IDENTIFY OBJECT.
 // D	  IF(DFLAG) PRINT 60,J,OBJ
 // D60	  FORMAT(' SPARSE- OBJ AT ',I6,'  OBJ= ',I6)
@@ -388,7 +389,7 @@ int sparse_(int * lbuf, int * llnt, Bool * vbflag) {
          goto L650;
       }
 // 						!"IT"?
-      obj = getobj_(&c__0, &c__0, &last_1.lastit);
+      obj = getobj_(c__0, c__0, last_1.lastit);
 // 						!FIND LAST.
       if (obj <= 0) {
          goto L6000;
@@ -451,8 +452,8 @@ int sparse_(int * lbuf, int * llnt, Bool * vbflag) {
       goto L1000;
 
    L4500:
-      if (*vbflag) {
-         rspeak_(&c__616);
+      if (vbflag) {
+         rspeak_(c__616);
       }
       return ret_val;
 
@@ -463,7 +464,7 @@ int sparse_(int * lbuf, int * llnt, Bool * vbflag) {
       j = orphs_1.oname & orphs_1.oflag;
 // D	IF(DFLAG) PRINT 40,ADJ,J
 // D40	FORMAT(' SPARSE- ADJ AT ',I6,' ORPHAN= ',I6)
-      if (j != 0 && i__ >= *llnt) {
+      if (j != 0 && i__ >= llnt) {
          goto L600;
       }
       goto L1000;
@@ -475,11 +476,11 @@ int sparse_(int * lbuf, int * llnt, Bool * vbflag) {
          goto L6100;
       }
       j = 579;
-      if (lit_(&play_1.here)) {
+      if (lit_(play_1.here)) {
          j = 618;
       }
-      if (*vbflag) {
-         rspeak_(&j);
+      if (vbflag) {
+         rspeak_(j);
       }
       return ret_val;
 
@@ -487,26 +488,26 @@ int sparse_(int * lbuf, int * llnt, Bool * vbflag) {
       if (obj != -10000) {
          goto L6200;
       }
-      if (*vbflag) {
-         rspsub_(&c__620, &objcts_1.odesc2[advs_1.avehic[play_1.winner - 1] - 1]);
+      if (vbflag) {
+         rspsub_(c__620, objcts_1.odesc2[advs_1.avehic[play_1.winner - 1] - 1]);
       }
       return ret_val;
 
    L6200:
-      if (*vbflag) {
-         rspeak_(&c__619);
+      if (vbflag) {
+         rspeak_(c__619);
       }
       if (pv_1.act == 0) {
          pv_1.act = orphs_1.oflag & orphs_1.oact;
       }
-      orphan_(&c_n1, &pv_1.act, &pv_1.o1, &prep, &j);
+      orphan_(c_n1, pv_1.act, pv_1.o1, prep, j);
       return ret_val;
 
 // 7000--	TOO MANY OBJECTS.
 
    L7000:
-      if (*vbflag) {
-         rspeak_(&c__617);
+      if (vbflag) {
+         rspeak_(c__617);
       }
       return ret_val;
 
@@ -516,8 +517,8 @@ int sparse_(int * lbuf, int * llnt, Bool * vbflag) {
       if (objvec[pptr - 1] == obj) {
          goto L700;
       }
-      if (*vbflag) {
-         rspeak_(&c__601);
+      if (vbflag) {
+         rspeak_(c__601);
       }
       return ret_val;
 
@@ -576,18 +577,18 @@ L9000:
       goto L10000;
    }
 // 						!ANY DIRECT OBJECT?
-   if (*vbflag) {
-      rspsub_(&c__621, &objcts_1.odesc2[pv_1.o1 - 1]);
+   if (vbflag) {
+      rspsub_(c__621, objcts_1.odesc2[pv_1.o1 - 1]);
    }
 // 						!WHAT TO DO?
-   orphan_(&c_n1, &c__0, &pv_1.o1, &c__0, &c__0);
+   orphan_(c_n1, c__0, pv_1.o1, c__0, c__0);
    return ret_val;
 
 // 10000--	TOTAL CHOMP
 
 L10000:
-   if (*vbflag) {
-      rspeak_(&c__622);
+   if (vbflag) {
+      rspeak_(c__622);
    }
 // 						!HUH?
    return ret_val;
@@ -616,7 +617,7 @@ L11500:
 // 		ORPHAN FOR LATER.
 
 L12000:
-   orphan_(&c_n1, &pv_1.act, &c__0, &prep, &c__0);
+   orphan_(c_n1, pv_1.act, c__0, prep, c__0);
 // 						!ORPHAN PREP.
    goto L1750;
 

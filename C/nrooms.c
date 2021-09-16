@@ -207,8 +207,10 @@ static int c__825 = 825;
 // WRITTEN BY R. M. SUPNIK
 
 // DECLARATIONS
+static void lookto_(int, int, int, int, int);
+static void ewtell_(int, int);
 
-Bool rappl2_(int * ri) {
+Bool rappl2_(int ri) {
 // Initialized data
 
    static int newrms = 38;
@@ -220,21 +222,24 @@ Bool rappl2_(int * ri) {
 // Local variables
 #define flags ((Bool *)&findex_1)
 #define switch__ ((int *)&findex_1 + 46)
-   extern Void lookto_(int *, int *, int *, int *, int *), jigsup_(int *), ewtell_(int *, int *), rspeak_(int *);
+   extern void jigsup_(int);
+   extern void rspeak_(int);
    static int i__;
-   extern Void rspsub_(int *, int *);
+   extern void rspsub_(int, int);
    static int j;
-   extern Void rspsb2_(int *, int *, int *), score_(Bool *), cpinfo_(int *, int *);
+   extern void rspsb2_(int, int, int);
+   extern void score_(Bool);
+   extern void cpinfo_(int, int);
 #define eqa ((int *)&advs_1 + 1)
 #define eqc ((int *)&cevent_1 + 1)
-   extern Void bug_(int *, int *);
+   extern void bug_(int, int);
 #define eqo ((int *)&objcts_1 + 1)
 #define eqr ((int *)&rooms_1 + 2)
 #define orp ((int *)&orphs_1)
 #define syn ((int *)&syntax_1)
 #define pvec ((int *)&pv_1)
-   extern Void exit_(void);
-   extern Bool qhere_(int *, int *);
+   extern void exit_(void);
+   extern Bool qhere_(int, int);
 #define rrand ((int *)&rooms_1 + 602)
 #define objvec ((int *)&pv_1 + 1)
 #define prpvec ((int *)&pv_1 + 3)
@@ -264,7 +269,7 @@ Bool rappl2_(int * ri) {
 // RAPPL2, PAGE 2
 
    ret_val = true;
-   switch (*ri - newrms + 1) {
+   switch (ri - newrms + 1) {
       case 1:
          goto L38000;
       case 2:
@@ -312,14 +317,14 @@ Bool rappl2_(int * ri) {
       case 23:
          goto L60000;
    }
-   bug_(&c__70, ri);
+   bug_(c__70, ri);
    return ret_val;
 
 // R38--	MIRROR D ROOM
 
 L38000:
    if (prsvec_1.prsa == vindex_1.lookw) {
-      lookto_(&rindex_1.fdoor, &rindex_1.mrg, &c__0, &c__682, &c__681);
+      lookto_(rindex_1.fdoor, rindex_1.mrg, c__0, c__682, c__681);
    }
    return ret_val;
 
@@ -327,7 +332,7 @@ L38000:
 
 L39000:
    if (prsvec_1.prsa == vindex_1.walkiw) {
-      jigsup_(&c__685);
+      jigsup_(c__685);
    }
    return ret_val;
 
@@ -335,7 +340,7 @@ L39000:
 
 L40000:
    if (prsvec_1.prsa == vindex_1.lookw) {
-      lookto_(&rindex_1.mrg, &rindex_1.mrb, &c__683, &c__0, &c__681);
+      lookto_(rindex_1.mrg, rindex_1.mrb, c__683, c__0, c__681);
    }
    return ret_val;
 
@@ -343,7 +348,7 @@ L40000:
 
 L41000:
    if (prsvec_1.prsa == vindex_1.lookw) {
-      lookto_(&rindex_1.mrc, &rindex_1.mra, &c__0, &c__0, &c__681);
+      lookto_(rindex_1.mrc, rindex_1.mra, c__0, c__0, c__681);
    }
    return ret_val;
 
@@ -351,7 +356,7 @@ L41000:
 
 L42000:
    if (prsvec_1.prsa == vindex_1.lookw) {
-      lookto_(&rindex_1.mrb, &c__0, &c__0, &c__684, &c__681);
+      lookto_(rindex_1.mrb, c__0, c__0, c__684, c__681);
    }
    return ret_val;
 // RAPPL2, PAGE 3
@@ -360,7 +365,7 @@ L42000:
 
 L43000:
    if (prsvec_1.prsa == vindex_1.lookw) {
-      ewtell_(&play_1.here, &c__683);
+      ewtell_(play_1.here, c__683);
    }
    return ret_val;
 
@@ -368,7 +373,7 @@ L43000:
 
 L44000:
    if (prsvec_1.prsa == vindex_1.lookw) {
-      ewtell_(&play_1.here, &c__686);
+      ewtell_(play_1.here, c__686);
    }
    return ret_val;
 
@@ -376,7 +381,7 @@ L44000:
 
 L45000:
    if (prsvec_1.prsa == vindex_1.lookw) {
-      ewtell_(&play_1.here, &c__687);
+      ewtell_(play_1.here, c__687);
    }
    return ret_val;
 
@@ -387,7 +392,7 @@ L46000:
       return ret_val;
    }
 // 						!LOOK?
-   rspeak_(&c__688);
+   rspeak_(c__688);
 // 						!DESCRIBE
 
 // NOW DESCRIBE POLE STATE.
@@ -404,10 +409,10 @@ L46000:
    if (findex_1.mdir % 180 == 0) {
       i__ = min(findex_1.poleuf, 1) + 692;
    }
-   rspeak_(&i__);
+   rspeak_(i__);
 // 						!DESCRIBE POLE.
    i__1 = findex_1.mdir / 45 + 695;
-   rspsub_(&c__694, &i__1);
+   rspsub_(c__694, i__1);
 // 						!DESCRIBE ARROW.
    return ret_val;
 // RAPPL2, PAGE 4
@@ -423,16 +428,16 @@ L47000:
 // 						!ASSUME BEAM STOP.
    i__1 = objcts_1.olnt;
    for (j = 1; j <= i__1; ++j) {
-      if (qhere_(&j, &play_1.here) && j != oindex_1.rbeam) {
+      if (qhere_(j, play_1.here) && j != oindex_1.rbeam) {
          goto L47200;
       }
 // L47100:
    }
    i__ = 703;
 L47200:
-   rspsub_(&i__, &objcts_1.odesc2[j - 1]);
+   rspsub_(i__, objcts_1.odesc2[j - 1]);
 // 						!DESCRIBE BEAM.
-   lookto_(&rindex_1.mra, &c__0, &c__0, &c__0, &c__0);
+   lookto_(rindex_1.mra, c__0, c__0, c__0, c__0);
 // 						!LOOK NORTH.
    return ret_val;
 
@@ -448,7 +453,7 @@ L48000:
    if ((objcts_1.oflag2[oindex_1.tomb - 1] & oflags_1.openbt) != 0) {
       i__ = 12;
    }
-   rspsub_(&c__705, &i__);
+   rspsub_(c__705, i__);
    return ret_val;
 
 // R49--	SOUTH CORRIDOR
@@ -458,7 +463,7 @@ L49000:
       return ret_val;
    }
 // 						!LOOK?
-   rspeak_(&c__706);
+   rspeak_(c__706);
 // 						!DESCRIBE.
    i__ = 46;
 // 						!ODOOR IS OPEN/CLOSED.
@@ -466,7 +471,7 @@ L49000:
       i__ = 12;
    }
    if (findex_1.lcell == 4) {
-      rspsub_(&c__707, &i__);
+      rspsub_(c__707, i__);
    }
 // 						!DESCRIBE ODOOR IF THERE.
    return ret_val;
@@ -493,7 +498,7 @@ L50100:
    if ((objcts_1.oflag2[oindex_1.qdoor - 1] & oflags_1.openbt) != 0) {
       i__ = 12;
    }
-   rspsub_(&c__708, &i__);
+   rspsub_(c__708, i__);
    return ret_val;
 // RAPPL2, PAGE 5
 
@@ -508,7 +513,7 @@ L51000:
       return ret_val;
    }
 // 						!LOOK?
-   lookto_(&c__0, &rindex_1.mrd, &c__709, &c__0, &c__0);
+   lookto_(c__0, rindex_1.mrd, c__709, c__0, c__0);
 // 						!DESCRIBE SOUTH.
    i__ = 46;
 // 						!PANEL IS OPEN/CLOSED.
@@ -521,7 +526,7 @@ L51000:
    if ((objcts_1.oflag2[oindex_1.qdoor - 1] & oflags_1.openbt) != 0) {
       j = 12;
    }
-   rspsb2_(&c__710, &i__, &j);
+   rspsb2_(c__710, i__, j);
    return ret_val;
 
 // R52--	NORTH CORRIDOR
@@ -536,7 +541,7 @@ L52000:
       i__ = 12;
    }
 // 						!CDOOR IS OPEN/CLOSED.
-   rspsub_(&c__711, &i__);
+   rspsub_(c__711, i__);
    return ret_val;
 
 // R53--	PARAPET
@@ -544,7 +549,7 @@ L52000:
 L53000:
    if (prsvec_1.prsa == vindex_1.lookw) {
       i__1 = findex_1.pnumb + 712;
-      rspsub_(&c__712, &i__1);
+      rspsub_(c__712, i__1);
    }
    return ret_val;
 
@@ -560,14 +565,14 @@ L54000:
    if ((objcts_1.oflag2[oindex_1.cdoor - 1] & oflags_1.openbt) != 0) {
       i__ = 722;
    }
-   rspeak_(&i__);
+   rspeak_(i__);
    i__ = 46;
 // 						!ODOOR IS OPEN/CLOSED.
    if ((objcts_1.oflag2[oindex_1.odoor - 1] & oflags_1.openbt) != 0) {
       i__ = 12;
    }
    if (findex_1.lcell == 4) {
-      rspsub_(&c__723, &i__);
+      rspsub_(c__723, i__);
    }
 // 						!DESCRIBE.
    return ret_val;
@@ -576,7 +581,7 @@ L54000:
 
 L55000:
    if (prsvec_1.prsa == vindex_1.lookw) {
-      rspeak_(&c__724);
+      rspeak_(c__724);
    }
 // 						!LOOK?
    return ret_val;
@@ -593,7 +598,7 @@ L56000:
    if ((objcts_1.oflag2[oindex_1.odoor - 1] & oflags_1.openbt) != 0) {
       i__ = 12;
    }
-   rspsub_(&c__725, &i__);
+   rspsub_(c__725, i__);
    return ret_val;
 // RAPPL2, PAGE 6
 
@@ -604,8 +609,8 @@ L57000:
       return ret_val;
    }
 // 						!WALKIN?
-   rspeak_(&c__726);
-   score_(&c_false);
+   rspeak_(c__726);
+   score_(c_false);
 // moved to exit routine	CLOSE(DBCH)
    exit_();
 
@@ -621,7 +626,7 @@ L58000:
    if ((objcts_1.oflag2[oindex_1.tomb - 1] & oflags_1.openbt) != 0) {
       i__ = 12;
    }
-   rspsub_(&c__792, &i__);
+   rspsub_(c__792, i__);
    return ret_val;
 
 // R59--	PUZZLE SIDE ROOM
@@ -637,7 +642,7 @@ L59000:
       i__ = 862;
    }
 // 						!OPEN?
-   rspeak_(&i__);
+   rspeak_(i__);
 // 						!DESCRIBE.
    return ret_val;
 
@@ -652,15 +657,15 @@ L60000:
       goto L60100;
    }
 // 						!STARTED PUZZLE?
-   rspeak_(&c__868);
+   rspeak_(c__868);
 // 						!NO, DESCRIBE.
    if ((objcts_1.oflag2[oindex_1.warni - 1] & oflags_1.tchbt) != 0) {
-      rspeak_(&c__869);
+      rspeak_(c__869);
    }
    return ret_val;
 
 L60100:
-   cpinfo_(&c__880, &findex_1.cphere);
+   cpinfo_(c__880, findex_1.cphere);
 // 						!DESCRIBE ROOM.
    return ret_val;
 
@@ -683,18 +688,18 @@ L60100:
 
 // DECLARATIONS
 
-Void lookto_(int * nrm, int * srm, int * nt, int * st, int * ht) {
+static void lookto_(int nrm, int srm, int nt, int st, int ht) {
 // System generated locals
    int i__1;
 
 // Local variables
    static int i__, m1, dir, mrbf;
 #define flags ((Bool *)&findex_1)
-   extern Void rspsb2_(int *, int *, int *);
-   extern int mrhere_(int *);
-   extern Void rspeak_(int *);
+   extern void rspsb2_(int, int, int);
+   extern int mrhere_(int);
+   extern void rspeak_(int);
 #define switch__ ((int *)&findex_1 + 46)
-   extern Void rspsub_(int *, int *);
+   extern void rspsub_(int, int);
 
 // GAME STATE
 
@@ -714,10 +719,10 @@ Void lookto_(int * nrm, int * srm, int * nt, int * st, int * ht) {
       goto L200;
    }
 // 						!MIRROR TO N OR S?
-   if (findex_1.mloc == *nrm) {
+   if (findex_1.mloc == nrm) {
       dir = 695;
    }
-   if (findex_1.mloc == *srm) {
+   if (findex_1.mloc == srm) {
       dir = 699;
    }
 // 						!DIR=N/S.
@@ -725,14 +730,14 @@ Void lookto_(int * nrm, int * srm, int * nt, int * st, int * ht) {
       goto L100;
    }
 // 						!MIRROR N-S?
-   rspsub_(&c__847, &dir);
+   rspsub_(c__847, dir);
 // 						!YES, HE SEES PANEL
-   rspsb2_(&c__848, &dir, &dir);
+   rspsb2_(c__848, dir, dir);
 // 						!AND NARROW ROOMS.
    goto L200;
 
 L100:
-   m1 = mrhere_(&play_1.here);
+   m1 = mrhere_(play_1.here);
 // 						!WHICH MIRROR?
    mrbf = 0;
 // 						!ASSUME INTACT.
@@ -740,33 +745,32 @@ L100:
       mrbf = 1;
    }
    i__1 = mrbf + 849;
-   rspsub_(&i__1, &dir);
+   rspsub_(i__1, dir);
 // 						!DESCRIBE.
    if (m1 == 1 && findex_1.mropnf) {
       i__1 = mrbf + 823;
-      rspeak_(&i__1);
+      rspeak_(i__1);
    }
    if (mrbf != 0) {
-      rspeak_(&c__851);
+      rspeak_(c__851);
    }
 
 L200:
    i__ = 0;
 // 						!ASSUME NO MORE TO DO.
-   if (*nt == 0 && (dir == 0 || dir == 699)) {
+   if (nt == 0 && (dir == 0 || dir == 699)) {
       i__ = 852;
    }
-   if (*st == 0 && (dir == 0 || dir == 695)) {
+   if (st == 0 && (dir == 0 || dir == 695)) {
       i__ = 853;
    }
-   if (*nt + *st + dir == 0) {
+   if (nt + st + dir == 0) {
       i__ = 854;
    }
-   if (*ht != 0) {
-      rspeak_(&i__);
+   if (ht != 0) {
+      rspeak_(i__);
    }
 // 						!DESCRIBE HALLS.
-   return 0;
 
 }
 
@@ -777,7 +781,7 @@ L200:
 
 // DECLARATIONS
 
-Void ewtell_(int * rm, int * st) {
+static void ewtell_(int rm, int st) {
 // System generated locals
    int i__1;
 
@@ -785,7 +789,7 @@ Void ewtell_(int * rm, int * st) {
    static int i__;
    static Bool m1;
 #define flags ((Bool *)&findex_1)
-   extern Void rspeak_(int *);
+   extern void rspeak_(int);
 #define switch__ ((int *)&findex_1 + 46)
 
 // ROOMS
@@ -797,20 +801,19 @@ Void ewtell_(int * rm, int * st) {
 
 // FLAGS
 
-   m1 = findex_1.mdir + (*rm - rindex_1.mrae) % 2 * 180 == 180;
-   i__ = (*rm - rindex_1.mrae) % 2 + 819;
+   m1 = findex_1.mdir + (rm - rindex_1.mrae) % 2 * 180 == 180;
+   i__ = (rm - rindex_1.mrae) % 2 + 819;
 // 						!GET BASIC E/W STRING.
    if (m1 && !findex_1.mr1f || !m1 && !findex_1.mr2f) {
       i__ += 2;
    }
-   rspeak_(&i__);
+   rspeak_(i__);
    if (m1 && findex_1.mropnf) {
       i__1 = (i__ - 819) / 2 + 823;
-      rspeak_(&i__1);
+      rspeak_(i__1);
    }
-   rspeak_(&c__825);
+   rspeak_(c__825);
    rspeak_(st);
-   return 0;
 
 }
 

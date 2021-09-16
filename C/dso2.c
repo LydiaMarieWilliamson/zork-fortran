@@ -105,7 +105,7 @@ static int c__1 = 1;
 
 // DECLARATIONS
 
-Bool moveto_(int * nr, int * who) {
+Bool moveto_(int nr, int who) {
 // System generated locals
    Bool ret_val;
 
@@ -118,7 +118,10 @@ Bool moveto_(int * nr, int * who) {
    static Bool lnr, nlv;
    static int bits;
 #define rrand ((int *)&rooms_1 + 602)
-   extern Void rspeak_(int *), scrupd_(int *), newsta_(int *, int *, int *, int *, int *), rspsub_(int *, int *);
+   extern void rspeak_(int);
+   extern void scrupd_(int);
+   extern void newsta_(int, int, int, int, int);
+   extern void rspsub_(int, int);
 
 // GAME STATE
 
@@ -133,8 +136,8 @@ Bool moveto_(int * nr, int * who) {
    ret_val = false;
 // 						!ASSUME FAILS.
    lhr = (rooms_1.rflag[play_1.here - 1] & rflag_1.rland) != 0;
-   lnr = (rooms_1.rflag[*nr - 1] & rflag_1.rland) != 0;
-   j = advs_1.avehic[*who - 1];
+   lnr = (rooms_1.rflag[nr - 1] & rflag_1.rland) != 0;
+   j = advs_1.avehic[who - 1];
 // 						!HIS VEHICLE
 
    if (j != 0) {
@@ -145,7 +148,7 @@ Bool moveto_(int * nr, int * who) {
       goto L500;
    }
 // 						!NO, GOING TO LAND?
-   rspeak_(&c__427);
+   rspeak_(c__427);
 // 						!CAN'T GO WITHOUT VEHICLE.
    return ret_val;
 
@@ -164,7 +167,7 @@ L100:
       bits = rflag_1.rbuck;
    }
 // 						!IN BUCKET?
-   nlv = (rooms_1.rflag[*nr - 1] & bits) == 0;
+   nlv = (rooms_1.rflag[nr - 1] & bits) == 0;
    if (!lnr && nlv || lnr && lhr && nlv && bits != rflag_1.rland) {
       goto L800;
    }
@@ -172,29 +175,29 @@ L100:
 L500:
    ret_val = true;
 // 						!MOVE SHOULD SUCCEED.
-   if ((rooms_1.rflag[*nr - 1] & rflag_1.rmung) == 0) {
+   if ((rooms_1.rflag[nr - 1] & rflag_1.rmung) == 0) {
       goto L600;
    }
-   rspeak_(&rrand[*nr - 1]);
+   rspeak_(rrand[nr - 1]);
 // 						!YES, TELL HOW.
    return ret_val;
 
 L600:
-   if (*who != aindex_1.player) {
-      newsta_(&advs_1.aobj[*who - 1], &c__0, nr, &c__0, &c__0);
+   if (who != aindex_1.player) {
+      newsta_(advs_1.aobj[who - 1], c__0, nr, c__0, c__0);
    }
    if (j != 0) {
-      newsta_(&j, &c__0, nr, &c__0, &c__0);
+      newsta_(j, c__0, nr, c__0, c__0);
    }
-   play_1.here = *nr;
-   advs_1.aroom[*who - 1] = play_1.here;
-   scrupd_(&rooms_1.rval[*nr - 1]);
+   play_1.here = nr;
+   advs_1.aroom[who - 1] = play_1.here;
+   scrupd_(rooms_1.rval[nr - 1]);
 // 						!SCORE ROOM
-   rooms_1.rval[*nr - 1] = 0;
+   rooms_1.rval[nr - 1] = 0;
    return ret_val;
 
 L800:
-   rspsub_(&c__428, &objcts_1.odesc2[j - 1]);
+   rspsub_(c__428, objcts_1.odesc2[j - 1]);
 // 						!WRONG VEHICLE.
    return ret_val;
 }
@@ -208,7 +211,7 @@ L800:
 
 // DECLARATIONS
 
-Void score_(Bool * flg) {
+void score_(Bool flg) {
 // Initialized data
 
    static int rank[10] = { 20, 19, 18, 16, 12, 8, 4, 2, 1, 0 };
@@ -230,7 +233,7 @@ Void score_(Bool * flg) {
 #define eqa ((int *)&advs_1 + 1)
 #define flags ((Bool *)&findex_1)
 #define switch__ ((int *)&findex_1 + 46)
-   extern Void rspeak_(int *);
+   extern void rspeak_(int);
 
 // Fortran I/O blocks
    static cilist io___16 = { 0, 0, 0, fmt_100, 0 };
@@ -257,12 +260,12 @@ Void score_(Bool * flg) {
       goto L60;
    }
 // 						!ENDGAME?
-   if (*flg) {
+   if (flg) {
       io___16.ciunit = chan_1.outch;
       s_wsfe(&io___16);
       e_wsfe();
    }
-   if (!(*flg)) {
+   if (!(flg)) {
       io___17.ciunit = chan_1.outch;
       s_wsfe(&io___17);
       e_wsfe();
@@ -292,16 +295,16 @@ Void score_(Bool * flg) {
    }
 L50:
    i__1 = i__ + 484;
-   rspeak_(&i__1);
-   return 0;
+   rspeak_(i__1);
+   return;
 
 L60:
-   if (*flg) {
+   if (flg) {
       io___21.ciunit = chan_1.outch;
       s_wsfe(&io___21);
       e_wsfe();
    }
-   if (!(*flg)) {
+   if (!(flg)) {
       io___22.ciunit = chan_1.outch;
       s_wsfe(&io___22);
       e_wsfe();
@@ -320,9 +323,7 @@ L60:
    }
 L80:
    i__1 = i__ + 786;
-   rspeak_(&i__1);
-   return 0;
-
+   rspeak_(i__1);
 }
 
 #undef switch__
@@ -333,7 +334,7 @@ L80:
 
 // DECLARATIONS
 
-Void scrupd_(int * n) {
+void scrupd_(int n) {
 // Local variables
 #define eqa ((int *)&advs_1 + 1)
 #define eqc ((int *)&cevent_1 + 1)
@@ -352,22 +353,21 @@ Void scrupd_(int * n) {
       goto L100;
    }
 // 						!ENDGAME?
-   advs_1.ascore[play_1.winner - 1] += *n;
+   advs_1.ascore[play_1.winner - 1] += n;
 // 						!UPDATE SCORE
-   state_1.rwscor += *n;
+   state_1.rwscor += n;
 // 						!UPDATE RAW SCORE
    if (advs_1.ascore[play_1.winner - 1] < state_1.mxscor - state_1.deaths * 10) {
-      return 0;
+      return;
    }
    cevent_1.cflag[cindex_1.cevegh - 1] = true;
 // 						!TURN ON END GAME
    cevent_1.ctick[cindex_1.cevegh - 1] = 15;
-   return 0;
+   return;
 
 L100:
-   state_1.egscor += *n;
+   state_1.egscor += n;
 // 						!UPDATE EG SCORE.
-   return 0;
 }
 
 #undef switch__

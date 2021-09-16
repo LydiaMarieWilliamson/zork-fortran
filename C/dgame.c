@@ -173,8 +173,10 @@ static int c__2 = 2;
 // WRITTEN BY R. M. SUPNIK
 
 // DECLARATIONS
+static void xendmv_(Bool);
+static Bool xvehic_(int);
 
-Void game_(void) {
+void game_(void) {
 // Initialized data
 
    static char secho[1 * 4] = "E" "C" "H" "O";
@@ -188,21 +190,27 @@ Void game_(void) {
 // Local variables
 #define flags ((Bool *)&findex_1)
 #define switch__ ((int *)&findex_1 + 46)
-   extern Void rspeak_(int *), rdline_(char *, int *, int *, ftnlen), xendmv_(Bool *), valuac_(int *);
-   extern int oactor_(int *);
+   extern void rspeak_(int);
+   extern void rdline_(char *, int, int, ftnlen);
+   extern void valuac_(int);
+   extern int oactor_(int);
    static Bool f;
    static int i__, j;
 #define eqa ((int *)&advs_1 + 1)
 #define eqo ((int *)&objcts_1 + 1)
 #define eqr ((int *)&rooms_1 + 2)
-   extern Bool lit_(int *);
+   extern Bool lit_(int);
 #define orp ((int *)&orphs_1)
 #define syn ((int *)&syntax_1)
 #define pvec ((int *)&pv_1)
 #define rrand ((int *)&rooms_1 + 602)
-   extern Bool parse_(char *, int *, Bool *, ftnlen), aappli_(int *);
+   extern Bool parse_(char *, int, Bool, ftnlen);
+   extern Bool aappli_(int);
 #define objvec ((int *)&pv_1 + 1)
-   extern Bool rmdesc_(int *), xvehic_(int *), rappli_(int *), vappli_(int *), findxt_(int *, int *);
+   extern Bool rmdesc_(int);
+   extern Bool rappli_(int);
+   extern Bool vappli_(int);
+   extern Bool findxt_(int, int);
 #define prpvec ((int *)&pv_1 + 3)
 
 // Fortran I/O blocks
@@ -233,9 +241,9 @@ Void game_(void) {
 
 // START UP, DESCRIBE CURRENT LOCATION.
 
-   rspeak_(&c__1);
+   rspeak_(c__1);
 // 						!WELCOME ABOARD.
-   f = rmdesc_(&c__3);
+   f = rmdesc_(c__3);
 // 						!START GAME.
 
 // NOW LOOP, READING AND EXECUTING COMMANDS.
@@ -246,7 +254,7 @@ L100:
    play_1.telflg = false;
 // 						!ASSUME NOTHING TOLD.
    if (prsvec_1.prscon <= 1) {
-      rdline_(input_1.inbuf, &input_1.inlnt, &c__1, (ftnlen) 1);
+      rdline_(input_1.inbuf, input_1.inlnt, c__1, (ftnlen) 1);
    }
 
 // D   DO 150 I=1,3
@@ -260,12 +268,12 @@ L100:
 
 //L200:
    ++state_1.moves;
-   prsvec_1.prswon = parse_(input_1.inbuf, &input_1.inlnt, &c_true, (ftnlen)1);
+   prsvec_1.prswon = parse_(input_1.inbuf, input_1.inlnt, c_true, (ftnlen)1);
    if (!prsvec_1.prswon) {
       goto L400;
    }
 // 						!PARSE LOSES?
-   if (xvehic_(&c__1)) {
+   if (xvehic_(c__1)) {
       goto L400;
    }
 // 						!VEHICLE HANDLE?
@@ -278,7 +286,7 @@ L300:
    if (prsvec_1.prso == oindex_1.valua || prsvec_1.prso == oindex_1.every) {
       goto L900;
    }
-   if (!vappli_(&prsvec_1.prsa)) {
+   if (!vappli_(prsvec_1.prsa)) {
       goto L400;
    }
 // 						!VERB OK?
@@ -286,18 +294,18 @@ L350:
    if (!findex_1.echof && play_1.here == rindex_1.echor) {
       goto L1000;
    }
-   f = rappli_(&rooms_1.ractio[play_1.here - 1]);
+   f = rappli_(rooms_1.ractio[play_1.here - 1]);
 
 L400:
-   xendmv_(&play_1.telflg);
+   xendmv_(play_1.telflg);
 // 						!DO END OF MOVE.
-   if (!lit_(&play_1.here)) {
+   if (!lit_(play_1.here)) {
       prsvec_1.prscon = 1;
    }
    goto L100;
 
 L900:
-   valuac_(&oindex_1.valua);
+   valuac_(oindex_1.valua);
    goto L350;
 // GAME, PAGE 3
 
@@ -305,7 +313,7 @@ L900:
 // IF INPUT IS NOT 'ECHO' OR A DIRECTION, JUST ECHO.
 
 L1000:
-   rdline_(input_1.inbuf, &input_1.inlnt, &c__0, (ftnlen) 1);
+   rdline_(input_1.inbuf, input_1.inlnt, c__0, (ftnlen) 1);
    ++state_1.moves;
 // 						!CHARGE FOR MOVES.
    for (i__ = 1; i__ <= 4; ++i__) {
@@ -328,7 +336,7 @@ L1000:
 // L1200:
    }
 
-   rspeak_(&c__571);
+   rspeak_(c__571);
 // 						!KILL THE ECHO.
    findex_1.echof = true;
    objcts_1.oflag2[oindex_1.bar - 1] &= ~oflags_1.scrdbt;
@@ -339,11 +347,11 @@ L1000:
    goto L400;
 
 L1300:
-   prsvec_1.prswon = parse_(input_1.inbuf, &input_1.inlnt, &c_false, (ftnlen)1);
+   prsvec_1.prswon = parse_(input_1.inbuf, input_1.inlnt, c_false, (ftnlen)1);
    if (!prsvec_1.prswon || prsvec_1.prsa != vindex_1.walkw) {
       goto L1400;
    }
-   if (findxt_(&prsvec_1.prso, &play_1.here)) {
+   if (findxt_(prsvec_1.prso, play_1.here)) {
       goto L300;
    }
 // 						!VALID EXIT?
@@ -369,13 +377,13 @@ L2000:
    if ((objcts_1.oflag2[prsvec_1.prso - 1] & oflags_1.actrbt) != 0) {
       goto L2100;
    }
-   rspeak_(&c__602);
+   rspeak_(c__602);
 // 						!CANT DO IT.
    goto L350;
 // 						!VAPPLI SUCCEEDS.
 
 L2100:
-   play_1.winner = oactor_(&prsvec_1.prso);
+   play_1.winner = oactor_(prsvec_1.prso);
 // 						!NEW PLAYER.
    play_1.here = advs_1.aroom[play_1.winner - 1];
 // 						!NEW LOCATION.
@@ -383,7 +391,7 @@ L2100:
       goto L2700;
    }
 // 						!ANY INPUT?
-   if (parse_(input_1.inbuf, &input_1.inlnt, &c_true, (ftnlen) 1)) {
+   if (parse_(input_1.inbuf, input_1.inlnt, c_true, (ftnlen) 1)) {
       goto L2150;
    }
 L2700:
@@ -393,7 +401,7 @@ L2700:
       i__ = 604;
    }
 // 						!GIVE RESPONSE.
-   rspeak_(&i__);
+   rspeak_(i__);
 L2600:
    play_1.winner = aindex_1.player;
 // 						!RESTORE STATE.
@@ -401,32 +409,32 @@ L2600:
    goto L350;
 
 L2150:
-   if (aappli_(&advs_1.aactio[play_1.winner - 1])) {
+   if (aappli_(advs_1.aactio[play_1.winner - 1])) {
       goto L2400;
    }
 // 						!ACTOR HANDLE?
-   if (xvehic_(&c__1)) {
+   if (xvehic_(c__1)) {
       goto L2400;
    }
 // 						!VEHICLE HANDLE?
    if (prsvec_1.prso == oindex_1.valua || prsvec_1.prso == oindex_1.every) {
       goto L2900;
    }
-   if (!vappli_(&prsvec_1.prsa)) {
+   if (!vappli_(prsvec_1.prsa)) {
       goto L2400;
    }
 // 						!VERB HANDLE?
 //L2350:
-   f = rappli_(&rooms_1.ractio[play_1.here - 1]);
+   f = rappli_(rooms_1.ractio[play_1.here - 1]);
 
 L2400:
-   xendmv_(&play_1.telflg);
+   xendmv_(play_1.telflg);
 // 						!DO END OF MOVE.
    goto L2600;
 // 						!DONE.
 
 L2900:
-   valuac_(&oindex_1.valua);
+   valuac_(oindex_1.valua);
 // 						!ALL OR VALUABLES.
    goto L350;
 
@@ -447,22 +455,25 @@ L2900:
 // XENDMV-	EXECUTE END OF MOVE FUNCTIONS.
 
 // DECLARATIONS
+static Bool xvehic_(int);
 
-Void xendmv_(Bool * flag__) {
+static void xendmv_(Bool flag__) {
 // Local variables
    static Bool f;
-   static int x;
+#if 0
+   static int x; //(@) Not actually used.
+#endif
 #define eqv ((int *)&vill_1 + 1)
 #define orp ((int *)&orphs_1)
 #define syn ((int *)&syntax_1)
 #define pvec ((int *)&pv_1)
-   extern Bool clockd_(int *);
-   extern Void thiefd_(void), fightd_(void);
+   extern Bool clockd_(/*int*/);
+   extern void thiefd_(void);
+   extern void fightd_(void);
 #define objvec ((int *)&pv_1 + 1)
-   extern Bool xvehic_(int *);
-   extern Void rspeak_(int *);
+   extern void rspeak_(int);
 #define prpvec ((int *)&pv_1 + 3)
-   extern Void swordd_(void);
+   extern void swordd_(void);
 
 // PARSER OUTPUT
 
@@ -470,8 +481,8 @@ Void xendmv_(Bool * flag__) {
 
 // VILLAINS AND DEMONS
 
-   if (!(*flag__)) {
-      rspeak_(&c__341);
+   if (!(flag__)) {
+      rspeak_(c__341);
    }
 // 						!DEFAULT REMARK.
    if (hack_1.thfact) {
@@ -487,14 +498,13 @@ Void xendmv_(Bool * flag__) {
    }
 // 						!SWORD DEMON.
    if (prsvec_1.prswon) {
-      f = clockd_(&x);
+      f = clockd_(/*x*/);
    }
 // 						!CLOCK DEMON.
    if (prsvec_1.prswon) {
-      f = xvehic_(&c__2);
+      f = xvehic_(c__2);
    }
 // 						!VEHICLE READOUT.
-   return 0;
 }
 
 #undef prpvec
@@ -508,7 +518,7 @@ Void xendmv_(Bool * flag__) {
 
 // DECLARATIONS
 
-Bool xvehic_(int * n) {
+static Bool xvehic_(int n) {
 // System generated locals
    Bool ret_val;
 
@@ -516,7 +526,7 @@ Bool xvehic_(int * n) {
    static int av;
 #define eqa ((int *)&advs_1 + 1)
 #define eqo ((int *)&objcts_1 + 1)
-   extern Bool oappli_(int *, int *);
+   extern Bool oappli_(int, int);
 
 // GAME STATE
 
@@ -529,7 +539,7 @@ Bool xvehic_(int * n) {
    av = advs_1.avehic[play_1.winner - 1];
 // 						!GET VEHICLE.
    if (av != 0) {
-      ret_val = oappli_(&objcts_1.oactio[av - 1], n);
+      ret_val = oappli_(objcts_1.oactio[av - 1], n);
    }
    return ret_val;
 }

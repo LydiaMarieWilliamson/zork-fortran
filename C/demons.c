@@ -186,7 +186,7 @@ static int c__596 = 596;
 
 // DECLARATIONS
 
-Void fightd_(void) {
+void fightd_(void) {
 // Initialized data
 
    static int rout = 1;
@@ -201,7 +201,7 @@ Void fightd_(void) {
    static int i__, j, ra;
 #define eqa ((int *)&advs_1 + 1)
    static int obj;
-   extern int rnd_(int *);
+   extern int rnd_(int);
 #define eqo ((int *)&objcts_1 + 1)
    static int res;
 #define eqv ((int *)&vill_1 + 1)
@@ -209,10 +209,10 @@ Void fightd_(void) {
    static int out;
 #define syn ((int *)&syntax_1)
 #define pvec ((int *)&pv_1)
-   extern Bool prob_(int *, int *);
-   extern int blow_(int *, int *, int *, Bool *, int *);
+   extern Bool prob_(int, int);
+   extern int blow_(int, int, int, Bool, int);
 #define objvec ((int *)&pv_1 + 1)
-   extern Bool oappli_(int *, int *);
+   extern Bool oappli_(int, int);
 #define prpvec ((int *)&pv_1 + 3)
 
 // PARSER OUTPUT
@@ -256,7 +256,7 @@ Void fightd_(void) {
          goto L2050;
       }
 // 						!YES, VILL AWAKE?
-      if (vill_1.vprob[i__ - 1] == 0 || !prob_(&vill_1.vprob[i__ - 1], &vill_1.vprob[i__ - 1])) {
+      if (vill_1.vprob[i__ - 1] == 0 || !prob_(vill_1.vprob[i__ - 1], vill_1.vprob[i__ - 1])) {
          goto L2025;
       }
       objcts_1.ocapac[obj - 1] = (i__2 = objcts_1.ocapac[obj - 1], abs(i__2));
@@ -267,7 +267,7 @@ Void fightd_(void) {
 // 						!ANYTHING TO DO?
       prsvec_1.prsa = vindex_1.inxw;
 // 						!YES, WAKE HIM UP.
-      f = oappli_(&ra, &c__0);
+      f = oappli_(ra, c__0);
       goto L2400;
 // 						!NOTHING ELSE HAPPENS.
 
@@ -292,7 +292,7 @@ Void fightd_(void) {
 // 						!NOT FIGHTING,
       prsvec_1.prsa = vindex_1.frstqw;
 // 						!SET UP PROBABILITY
-      if (!oappli_(&ra, &c__0)) {
+      if (!oappli_(ra, c__0)) {
          goto L2400;
       }
 // 						!OF FIGHTING.
@@ -307,7 +307,7 @@ Void fightd_(void) {
       }
       prsvec_1.prsa = vindex_1.fightw;
 // 						!HAVE A FIGHT.
-      f = oappli_(&ra, &c__0);
+      f = oappli_(ra, c__0);
    L2300:
       if (obj == oindex_1.thief) {
          findex_1.thfenf = false;
@@ -320,7 +320,7 @@ Void fightd_(void) {
       }
       prsvec_1.prsa = vindex_1.inxw;
 // 						!WAKE HIM UP.
-      f = oappli_(&ra, &c__0);
+      f = oappli_(ra, c__0);
       objcts_1.ocapac[obj - 1] = (i__2 = objcts_1.ocapac[obj - 1], abs(i__2));
    L2400:
       ;
@@ -349,19 +349,19 @@ L2600:
 // 						!VILLAIN ACTION?
       prsvec_1.prsa = vindex_1.fightw;
 // 						!SEE IF
-      if (oappli_(&ra, &c__0)) {
+      if (oappli_(ra, c__0)) {
          goto L2700;
       }
 // 						!SPECIAL ACTION.
    L2650:
-      res = blow_(&aindex_1.player, &j, &vill_1.vmelee[i__ - 1], &c_false, &out);
+      res = blow_(aindex_1.player, j, vill_1.vmelee[i__ - 1], c_false, out);
 // 						!STRIKE BLOW.
       if (res < 0) {
-         return 0;
+         return;
       }
 // 						!IF HERO DEAD, EXIT.
       if (res == rout) {
-         out = rnd_(&c__3) + 2;
+         out = rnd_(c__3) + 2;
       }
 // 						!IF HERO OUT, SET FLG.
    L2700:
@@ -373,8 +373,6 @@ L2600:
       goto L2600;
    }
 // 						!IF STILL OUT, GO AGAIN.
-   return 0;
-
 }
 
 #undef prpvec
@@ -392,7 +390,7 @@ L2600:
 
 // DECLARATIONS
 
-int blow_(int * h__, int * v, int * rmk, Bool * hflg, int * out) {
+int blow_(int h__, int v, int rmk, Bool hflg, int out) {
 // Initialized data
 
    static int rmiss = 0;
@@ -431,22 +429,25 @@ int blow_(int * h__, int * v, int * rmk, Bool * hflg, int * out) {
 #define eqa ((int *)&advs_1 + 1)
 #define eqc ((int *)&cevent_1 + 1)
    static int tbl;
-   extern int rnd_(int *);
+   extern int rnd_(int);
 #define eqo ((int *)&objcts_1 + 1)
    static int att, res;
 #define orp ((int *)&orphs_1)
 #define syn ((int *)&syntax_1)
 #define pvec ((int *)&pv_1)
-   extern Bool prob_(int *, int *);
-   extern int fwim_(int *, int *, int *, int *, int *, Bool *);
+   extern Bool prob_(int, int);
+   extern int fwim_(int, int, int, int, int, Bool);
    static int dweap;
 #define objvec ((int *)&pv_1 + 1)
-   extern Bool oappli_(int *, int *);
+   extern Bool oappli_(int, int);
 #define prpvec ((int *)&pv_1 + 3)
    static int pblose;
-   extern Void rspeak_(int *);
-   extern int fights_(int *, Bool *), vilstr_(int *);
-   extern Void rspsub_(int *, int *), jigsup_(int *), newsta_(int *, int *, int *, int *, int *);
+   extern void rspeak_(int);
+   extern int fights_(int, Bool);
+   extern int vilstr_(int);
+   extern void rspsub_(int, int);
+   extern void jigsup_(int);
+   extern void newsta_(int, int, int, int, int);
 
 // Fortran I/O blocks
    static cilist io___43 = { 0, 6, 0, fmt_10, 0 };
@@ -477,20 +478,20 @@ int blow_(int * h__, int * v, int * rmk, Bool * hflg, int * out) {
 
 // BLOW, PAGE 3
 
-   ra = objcts_1.oactio[(2644 + (0 + (*v - 1 << 2)) - 2644) / 4];
+   ra = objcts_1.oactio[(2644 + (0 + (v - 1 << 2)) - 2644) / 4];
 // 						!GET VILLAIN ACTION,
-   dv = objcts_1.odesc2[*v - 1];
+   dv = objcts_1.odesc2[v - 1];
 // 						!DESCRIPTION.
    ret_val = rmiss;
 // 						!ASSUME NO RESULT.
    s_wsfe(&io___43);
-   do_fio(&c__1, (char *)&(*h__),(ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&(*v),(ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&(*rmk),(ftnlen) sizeof(int));
-   do_fio(&c__1, (char *)&(*hflg),(ftnlen) sizeof(Bool));
-   do_fio(&c__1, (char *)&(*out),(ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&(h__),(ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&(v),(ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&(rmk),(ftnlen) sizeof(int));
+   do_fio(&c__1, (char *)&(hflg),(ftnlen) sizeof(Bool));
+   do_fio(&c__1, (char *)&(out),(ftnlen) sizeof(int));
    e_wsfe();
-   if (!(*hflg)) {
+   if (!(hflg)) {
       goto L1000;
    }
 // 						!HERO STRIKING BLOW?
@@ -499,17 +500,17 @@ int blow_(int * h__, int * v, int * rmk, Bool * hflg, int * out) {
 
    pblose = 10;
 // 						!BAD LK PROB.
-   objcts_1.oflag2[*v - 1] |= oflags_1.fitebt;
-   if ((advs_1.aflag[*h__ - 1] & aflags_1.astag) == 0) {
+   objcts_1.oflag2[v - 1] |= oflags_1.fitebt;
+   if ((advs_1.aflag[h__ - 1] & aflags_1.astag) == 0) {
       goto L100;
    }
-   rspeak_(&c__591);
+   rspeak_(c__591);
 // 						!YES, CANT FIGHT.
-   advs_1.aflag[*h__ - 1] &= ~aflags_1.astag;
+   advs_1.aflag[h__ - 1] &= ~aflags_1.astag;
    return ret_val;
 
 L100:
-   att = fights_(h__, &c_true);
+   att = fights_(h__, c_true);
 // 						!GET HIS STRENGTH.
    oa = att;
    def = vilstr_(v);
@@ -520,12 +521,12 @@ L100:
    i__1 = objcts_1.olnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
 // 						!SEARCH VILLAIN.
-      if (objcts_1.ocan[i__ - 1] == *v && (objcts_1.oflag2[i__ - 1] & oflags_1.weapbt) != 0) {
+      if (objcts_1.ocan[i__ - 1] == v && (objcts_1.oflag2[i__ - 1] & oflags_1.weapbt) != 0) {
          dweap = i__;
       }
 // L200:
    }
-   if (*v == advs_1.aobj[aindex_1.player - 1]) {
+   if (v == advs_1.aobj[aindex_1.player - 1]) {
       goto L300;
    }
 // 						!KILLING SELF?
@@ -533,12 +534,12 @@ L100:
       goto L2000;
    }
 // 						!DEFENDER ALIVE?
-   rspsub_(&c__592, &dv);
+   rspsub_(c__592, dv);
 // 						!VILLAIN DEAD.
    return ret_val;
 
 L300:
-   jigsup_(&c__593);
+   jigsup_(c__593);
 // 						!KILLING SELF.
    return ret_val;
 
@@ -547,12 +548,12 @@ L300:
 L1000:
    pblose = 50;
 // 						!BAD LK PROB.
-   advs_1.aflag[*h__ - 1] &= ~aflags_1.astag;
-   if ((objcts_1.oflag2[*v - 1] & oflags_1.stagbt) == 0) {
+   advs_1.aflag[h__ - 1] &= ~aflags_1.astag;
+   if ((objcts_1.oflag2[v - 1] & oflags_1.stagbt) == 0) {
       goto L1200;
    }
-   objcts_1.oflag2[*v - 1] &= ~oflags_1.stagbt;
-   rspsub_(&c__594, &dv);
+   objcts_1.oflag2[v - 1] &= ~oflags_1.stagbt;
+   rspsub_(c__594, dv);
 // 						!DESCRIBE.
    return ret_val;
 
@@ -560,14 +561,13 @@ L1200:
    att = vilstr_(v);
 // 						!SET UP ATT, DEF.
    oa = att;
-   def = fights_(h__, &c_true);
+   def = fights_(h__, c_true);
    if (def <= 0) {
       return ret_val;
    }
 // 						!DONT ALLOW DEAD DEF.
-   od = fights_(h__, &c_false);
-   dweap = (i__1 = fwim_(&c__0, &oflags_1.weapbt, &c__0, &c__0, h__, &c_true)
-      , abs(i__1));
+   od = fights_(h__, c_false);
+   dweap = (i__1 = fwim_(c__0, oflags_1.weapbt, c__0, c__0, h__, c_true), abs(i__1));
 // 						!FIND A WEAPON.
 // BLOW, PAGE 4
 
@@ -587,8 +587,8 @@ L2000:
    }
 // 						!DEF ALIVE?
    res = rkill;
-   if (*hflg) {
-      rspsub_(&c__595, &dv);
+   if (hflg) {
+      rspsub_(c__595, dv);
    }
 // 						!DEADER.
    goto L3000;
@@ -625,9 +625,9 @@ L2400:
    tbl = def3r[att - 1];
 
 L2500:
-   res = rvectr[tbl + rnd_(&c__10) - 1];
+   res = rvectr[tbl + rnd_(c__10) - 1];
 // 						!GET RESULT.
-   if (*out == 0) {
+   if (out == 0) {
       goto L2600;
    }
 // 						!WAS HE OUT?
@@ -641,19 +641,19 @@ L2500:
 L2550:
    res = rhes;
 L2600:
-   if (res == rstag && dweap != 0 && prob_(&c__25, &pblose)) {
+   if (res == rstag && dweap != 0 && prob_(c__25, pblose)) {
       res = rlose;
    }
 
-   mi = rstate[(*rmk - 1) * 9 + res];
+   mi = rstate[(rmk - 1) * 9 + res];
 // 						!CHOOSE TABLE ENTRY.
    if (mi == 0) {
       goto L3000;
    }
    i__1 = mi / 1000;
-   i__ = mi % 1000 + rnd_(&i__1) + star_1.mbase + 1;
+   i__ = mi % 1000 + rnd_(i__1) + star_1.mbase + 1;
    j = dv;
-   if (!(*hflg) && dweap != 0) {
+   if (!(hflg) && dweap != 0) {
       j = objcts_1.odesc2[dweap - 1];
    }
    s_wsfe(&io___56);
@@ -663,7 +663,7 @@ L2600:
    do_fio(&c__1, (char *)&j, (ftnlen) sizeof(int));
    do_fio(&c__1, (char *)&star_1.mbase, (ftnlen) sizeof(int));
    e_wsfe();
-   rspsub_(&i__, &j);
+   rspsub_(i__, j);
 // 						!PRESENT RESULT.
 // BLOW, PAGE 5
 
@@ -692,7 +692,7 @@ L3000:
    }
 
 L3100:
-   if (*hflg) {
+   if (hflg) {
       def = -def;
    }
 // 						!UNCONSCIOUS.
@@ -718,50 +718,49 @@ L3400:
    goto L4000;
 
 L3500:
-   if (*hflg) {
+   if (hflg) {
       goto L3550;
    }
 // 						!STAGGERED.
-   advs_1.aflag[*h__ - 1] |= aflags_1.astag;
+   advs_1.aflag[h__ - 1] |= aflags_1.astag;
    goto L4000;
 
 L3550:
-   objcts_1.oflag2[*v - 1] |= oflags_1.stagbt;
+   objcts_1.oflag2[v - 1] |= oflags_1.stagbt;
    goto L4000;
 
 L3600:
-   newsta_(&dweap, &c__0, &play_1.here, &c__0, &c__0);
+   newsta_(dweap, c__0, play_1.here, c__0, c__0);
 // 						!LOSE WEAPON.
    dweap = 0;
-   if (*hflg) {
+   if (hflg) {
       goto L4000;
    }
 // 						!IF HERO, DONE.
-   dweap = (i__1 = fwim_(&c__0, &oflags_1.weapbt, &c__0, &c__0, h__, &c_true)
-      , abs(i__1));
+   dweap = (i__1 = fwim_(c__0, oflags_1.weapbt, c__0, c__0, h__, c_true), abs(i__1));
 // 						!GET NEW.
    if (dweap != 0) {
-      rspsub_(&c__605, &objcts_1.odesc2[dweap - 1]);
+      rspsub_(c__605, objcts_1.odesc2[dweap - 1]);
    }
 // BLOW, PAGE 6
 
 L4000:
    ret_val = res;
 // 						!RETURN RESULT.
-   if (!(*hflg)) {
+   if (!(hflg)) {
       goto L4500;
    }
 // 						!HERO?
-   objcts_1.ocapac[*v - 1] = def;
+   objcts_1.ocapac[v - 1] = def;
 // 						!STORE NEW CAPACITY.
    if (def != 0) {
       goto L4100;
    }
 // 						!DEAD?
-   objcts_1.oflag2[*v - 1] &= ~oflags_1.fitebt;
-   rspsub_(&c__572, &dv);
+   objcts_1.oflag2[v - 1] &= ~oflags_1.fitebt;
+   rspsub_(c__572, dv);
 // 						!HE DIES.
-   newsta_(v, &c__0, &c__0, &c__0, &c__0);
+   newsta_(v, c__0, c__0, c__0, c__0);
 // 						!MAKE HIM DISAPPEAR.
    if (ra == 0) {
       return ret_val;
@@ -769,7 +768,7 @@ L4000:
 // 						!IF NX TO DO, EXIT.
    prsvec_1.prsa = vindex_1.deadxw;
 // 						!LET HIM KNOW.
-   f = oappli_(&ra, &c__0);
+   f = oappli_(ra, c__0);
    return ret_val;
 
 L4100:
@@ -778,14 +777,14 @@ L4100:
    }
    prsvec_1.prsa = vindex_1.outxw;
 // 						!LET HIM BE OUT.
-   f = oappli_(&ra, &c__0);
+   f = oappli_(ra, c__0);
    return ret_val;
 
 L4500:
-   advs_1.astren[*h__ - 1] = -10000;
+   advs_1.astren[h__ - 1] = -10000;
 // 						!ASSUME DEAD.
    if (def != 0) {
-      advs_1.astren[*h__ - 1] = def - od;
+      advs_1.astren[h__ - 1] = def - od;
    }
    if (def >= od) {
       goto L4600;
@@ -793,12 +792,12 @@ L4500:
    cevent_1.ctick[cindex_1.cevcur - 1] = 30;
    cevent_1.cflag[cindex_1.cevcur - 1] = true;
 L4600:
-   if (fights_(h__, &c_true) > 0) {
+   if (fights_(h__, c_true) > 0) {
       return ret_val;
    }
-   advs_1.astren[*h__ - 1] = 1 - fights_(h__, &c_false);
+   advs_1.astren[h__ - 1] = 1 - fights_(h__, c_false);
 // 						!HE'S DEAD.
-   jigsup_(&c__596);
+   jigsup_(c__596);
    ret_val = -1;
    return ret_val;
 
@@ -816,8 +815,9 @@ L4600:
 // SWORDD- SWORD INTERMOVE DEMON
 
 // DECLARATIONS
+static Bool infest_(int);
 
-Void swordd_(void) {
+void swordd_(void) {
 // System generated locals
    int i__1, i__2;
 
@@ -827,9 +827,8 @@ Void swordd_(void) {
 #define eqo ((int *)&objcts_1 + 1)
 #define eqv ((int *)&vill_1 + 1)
 #define xflag ((int *)&curxt_1 + 4)
-   extern Bool infest_(int *);
-   extern Void rspeak_(int *);
-   extern Bool findxt_(int *, int *);
+   extern void rspeak_(int);
+   extern Bool findxt_(int, int);
 
 // GAME STATE
 
@@ -849,7 +848,7 @@ Void swordd_(void) {
 // 						!HOLDING SWORD?
    ng = 2;
 // 						!ASSUME VILL CLOSE.
-   if (infest_(&play_1.here)) {
+   if (infest_(play_1.here)) {
       goto L300;
    }
 // 						!VILL HERE?
@@ -858,7 +857,7 @@ Void swordd_(void) {
    i__2 = xsrch_1.xmin;
    for (i__ = xsrch_1.xmin; i__2 < 0 ? i__ >= i__1 : i__ <= i__1; i__ += i__2) {
 // 						!NO, SEARCH ROOMS.
-      if (!findxt_(&i__, &play_1.here)) {
+      if (!findxt_(i__, play_1.here)) {
          goto L200;
       }
 // 						!ROOM THAT WAY?
@@ -874,7 +873,7 @@ Void swordd_(void) {
       }
 // 						!SEE IF ROOM AT ALL.
    L50:
-      if (infest_(&curxt_1.xroom1)) {
+      if (infest_(curxt_1.xroom1)) {
          goto L300;
       }
 // 						!CHECK ROOM.
@@ -886,19 +885,19 @@ Void swordd_(void) {
 
 L300:
    if (ng == hack_1.swdsta) {
-      return 0;
+      return;
    }
 // 						!ANY STATE CHANGE?
    i__2 = ng + 495;
-   rspeak_(&i__2);
+   rspeak_(i__2);
 // 						!YES, TELL NEW STATE.
    hack_1.swdsta = ng;
-   return 0;
+   return;
 
 L500:
    hack_1.swdact = false;
 // 						!DROPPED SWORD,
-   return 0;
+// return;
 // 						!DISABLE DEMON.
 }
 
@@ -911,7 +910,7 @@ L500:
 
 // DECLARATIONS
 
-Bool infest_(int * r__) {
+static Bool infest_(int r__) {
 // System generated locals
    Bool ret_val;
 
@@ -930,10 +929,10 @@ Bool infest_(int * r__) {
 // FLAGS
 
    if (!findex_1.endgmf) {
-      ret_val = objcts_1.oroom[oindex_1.cyclo - 1] == *r__ || objcts_1.oroom[oindex_1.troll - 1] == *r__ || objcts_1.oroom[oindex_1.thief - 1] == *r__ && hack_1.thfact;
+      ret_val = objcts_1.oroom[oindex_1.cyclo - 1] == r__ || objcts_1.oroom[oindex_1.troll - 1] == r__ || objcts_1.oroom[oindex_1.thief - 1] == r__ && hack_1.thfact;
    }
    if (findex_1.endgmf) {
-      ret_val = *r__ == rindex_1.mrg || *r__ == rindex_1.mrge || *r__ == rindex_1.mrgw || *r__ == rindex_1.inmir && findex_1.mloc == rindex_1.mrg;
+      ret_val = r__ == rindex_1.mrg || r__ == rindex_1.mrge || r__ == rindex_1.mrgw || r__ == rindex_1.inmir && findex_1.mloc == rindex_1.mrg;
    }
    return ret_val;
 }

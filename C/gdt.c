@@ -210,7 +210,7 @@ static int c__64 = 64;
 
 // DECLARATIONS
 
-Void gdt_(void) {
+void gdt_(void) {
 // Initialized data
 
    static int cmdmax = 38;
@@ -283,7 +283,8 @@ Void gdt_(void) {
 // Local variables
 #define flags ((Bool *)&findex_1)
 #define switch__ ((int *)&findex_1 + 46)
-   extern Void newsta_(int *, int *, int *, int *, int *), rspeak_(int *);
+   extern void newsta_(int, int, int, int, int);
+   extern void rspeak_(int);
    static int i__, j, k, l, l1;
    static char cmd[2];
 #define eqa ((int *)&advs_1 + 1)
@@ -418,7 +419,7 @@ Void gdt_(void) {
    s_wsfe(&io___20);
    e_wsfe();
 // 						!NOT AN IMPLEMENTER.
-   return 0;
+   return;
 // 						!BOOT HIM OFF
 
 // GDT, PAGE 2A
@@ -871,7 +872,7 @@ L22000:
    hack_1.thfflg = false;
 // 						!DISABLE ROBBER.
    hack_1.thfact = false;
-   newsta_(&oindex_1.thief, &c__0, &c__0, &c__0, &c__0);
+   newsta_(oindex_1.thief, c__0, c__0, c__0, c__0);
 // 						!VANISH THIEF.
    io___58.ciunit = chan_1.outch;
    s_wsfe(&io___58);
@@ -882,7 +883,7 @@ L22000:
 
 L23000:
    findex_1.trollf = true;
-   newsta_(&oindex_1.troll, &c__0, &c__0, &c__0, &c__0);
+   newsta_(oindex_1.troll, c__0, c__0, c__0, c__0);
    io___59.ciunit = chan_1.outch;
    s_wsfe(&io___59);
    e_wsfe();
@@ -892,7 +893,7 @@ L23000:
 
 L24000:
    findex_1.cyclof = true;
-   newsta_(&oindex_1.cyclo, &c__0, &c__0, &c__0, &c__0);
+   newsta_(oindex_1.cyclo, c__0, c__0, c__0, c__0);
    io___60.ciunit = chan_1.outch;
    s_wsfe(&io___60);
    e_wsfe();
@@ -920,7 +921,7 @@ L26000:
 
 L27000:
    findex_1.trollf = false;
-   newsta_(&oindex_1.troll, &c__0, &rindex_1.mtrol, &c__0, &c__0);
+   newsta_(oindex_1.troll, c__0, rindex_1.mtrol, c__0, c__0);
    io___63.ciunit = chan_1.outch;
    s_wsfe(&io___63);
    e_wsfe();
@@ -931,7 +932,7 @@ L27000:
 L28000:
    findex_1.cyclof = false;
    findex_1.magicf = false;
-   newsta_(&oindex_1.cyclo, &c__0, &rindex_1.mcycl, &c__0, &c__0);
+   newsta_(oindex_1.cyclo, c__0, rindex_1.mcycl, c__0, c__0);
    io___64.ciunit = chan_1.outch;
    s_wsfe(&io___64);
    e_wsfe();
@@ -955,7 +956,7 @@ L30000:
       goto L2200;
    }
 // 						!VALID OBJECT?
-   newsta_(&j, &c__0, &c__0, &c__0, &play_1.winner);
+   newsta_(j, c__0, c__0, c__0, play_1.winner);
 // 						!YES, TAKE OBJECT.
    io___66.ciunit = chan_1.outch;
    s_wsfe(&io___66);
@@ -967,7 +968,7 @@ L30000:
 
 L31000:
    prsvec_1.prscon = 1;
-   return 0;
+   return;
 
 // AR--	ALTER ROOM ENTRY
 
@@ -1172,7 +1173,7 @@ L41000:
 // DT-- DISPLAY TEXT
 
 L42000:
-   rspeak_(&j);
+   rspeak_(j);
    goto L2000;
 
 // AH--	ALTER HERE

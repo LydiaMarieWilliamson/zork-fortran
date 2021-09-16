@@ -119,37 +119,36 @@ static int c__3 = 3;
 
 // DECLARATIONS
 
-Void gttime_(int * t) {
+int gttime_(void) {
    static int h__, m, s;
-   extern Void intime_(int *, int *, int *);
+   extern void intime_(int *, int *, int *);
 
    intime_(&h__, &m, &s);
-   *t = h__ * 60 + m - (time_1.shour * 60 + time_1.smin);
-   if (*t < 0) {
-      *t += 1440;
+   int t = h__ * 60 + m - (time_1.shour * 60 + time_1.smin);
+   if (t < 0) {
+      t += 1440;
    }
-   *t += time_1.pltime;
-   return 0;
+   return t += time_1.pltime;
 }
 
 // OPNCLS-- PROCESS OPEN/CLOSE FOR DOORS
 
 // DECLARATIONS
 
-Bool opncls_(int * obj, int * so, int * sc) {
+Bool opncls_(int obj, int so, int sc) {
 // System generated locals
    int i__1;
    Bool ret_val;
 
 // Local variables
-   extern int rnd_(int *);
+   extern int rnd_(int);
 #define eqo ((int *)&objcts_1 + 1)
 #define orp ((int *)&orphs_1)
 #define syn ((int *)&syntax_1)
 #define pvec ((int *)&pv_1)
 #define objvec ((int *)&pv_1 + 1)
 #define prpvec ((int *)&pv_1 + 3)
-   extern Void rspeak_(int *);
+   extern void rspeak_(int);
 
 // PARSER OUTPUT
 
@@ -176,26 +175,26 @@ Bool opncls_(int * obj, int * so, int * sc) {
    return ret_val;
 
 L50:
-   if ((objcts_1.oflag2[*obj - 1] & oflags_1.openbt) != 0) {
+   if ((objcts_1.oflag2[obj - 1] & oflags_1.openbt) != 0) {
       goto L200;
    }
 // 						!OPEN... IS IT?
    rspeak_(so);
-   objcts_1.oflag2[*obj - 1] |= oflags_1.openbt;
+   objcts_1.oflag2[obj - 1] |= oflags_1.openbt;
    return ret_val;
 
 L100:
-   if (!((objcts_1.oflag2[*obj - 1] & oflags_1.openbt) != 0)) {
+   if (!((objcts_1.oflag2[obj - 1] & oflags_1.openbt) != 0)) {
       goto L200;
    }
 // 						!CLOSE... IS IT?
    rspeak_(sc);
-   objcts_1.oflag2[*obj - 1] &= ~oflags_1.openbt;
+   objcts_1.oflag2[obj - 1] &= ~oflags_1.openbt;
    return ret_val;
 
 L200:
-   i__1 = rnd_(&c__3) + 125;
-   rspeak_(&i__1);
+   i__1 = rnd_(c__3) + 125;
+   rspeak_(i__1);
 // 						!DUMMY.
    return ret_val;
 }
@@ -211,7 +210,7 @@ L200:
 
 // DECLARATIONS
 
-Bool lit_(int * rm) {
+Bool lit_(int rm) {
 // System generated locals
    int i__1, i__2;
    Bool ret_val;
@@ -221,7 +220,7 @@ Bool lit_(int * rm) {
 #define eqa ((int *)&advs_1 + 1)
 #define eqo ((int *)&objcts_1 + 1)
 #define eqr ((int *)&rooms_1 + 2)
-   extern Bool qhere_(int *, int *);
+   extern Bool qhere_(int, int);
 #define rrand ((int *)&rooms_1 + 602)
 
 // ROOMS
@@ -232,14 +231,14 @@ Bool lit_(int * rm) {
 
    ret_val = true;
 // 						!ASSUME WINS
-   if ((rooms_1.rflag[*rm - 1] & rflag_1.rlight) != 0) {
+   if ((rooms_1.rflag[rm - 1] & rflag_1.rlight) != 0) {
       return ret_val;
    }
 
    i__1 = objcts_1.olnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
 // 						!LOOK FOR LIT OBJ
-      if (qhere_(&i__, rm)) {
+      if (qhere_(i__, rm)) {
          goto L100;
       }
 // 						!IN ROOM?
@@ -249,7 +248,7 @@ Bool lit_(int * rm) {
          goto L1000;
       }
 // 						!ON ADV?
-      if (advs_1.aroom[oa - 1] != *rm) {
+      if (advs_1.aroom[oa - 1] != rm) {
          goto L1000;
       }
 // 						!ADV IN ROOM?
@@ -289,14 +288,14 @@ Bool lit_(int * rm) {
 
 // DECLARATIONS
 
-int weight_(int * rm, int * cn, int * ad) {
+int weight_(int rm, int cn, int ad) {
 // System generated locals
    int ret_val, i__1;
 
 // Local variables
    static int i__, j;
 #define eqo ((int *)&objcts_1 + 1)
-   extern Bool qhere_(int *, int *);
+   extern Bool qhere_(int, int);
 
 // OBJECTS
 
@@ -308,7 +307,7 @@ int weight_(int * rm, int * cn, int * ad) {
          goto L100;
       }
 // 						!IF FIXED, FORGET IT.
-      if (qhere_(&i__, rm) && *rm != 0 || objcts_1.oadv[i__ - 1] == *ad && *ad != 0) {
+      if (qhere_(i__, rm) && rm != 0 || objcts_1.oadv[i__ - 1] == ad && ad != 0) {
          goto L50;
       }
       j = i__;
@@ -320,7 +319,7 @@ int weight_(int * rm, int * cn, int * ad) {
          goto L100;
       }
 // 						!END OF LIST?
-      if (j != *cn) {
+      if (j != cn) {
          goto L25;
       }
    L50:

@@ -125,7 +125,7 @@ static int c__185 = 185;
 
 // DECLARATIONS
 
-Bool lightp_(int * obj) {
+Bool lightp_(int obj) {
 // System generated locals
    Bool ret_val;
 
@@ -133,10 +133,11 @@ Bool lightp_(int * obj) {
 #define flags ((Bool *)&findex_1)
 #define switch__ ((int *)&findex_1 + 46)
    static int flobts;
-   extern Void rspeak_(int *), newsta_(int *, int *, int *, int *, int *);
+   extern void rspeak_(int);
+   extern void newsta_(int, int, int, int, int);
    static int i__;
 #define eqc ((int *)&cevent_1 + 1)
-   extern Void bug_(int *, int *);
+   extern void bug_(int, int);
 #define eqo ((int *)&objcts_1 + 1)
 #define orp ((int *)&orphs_1)
 #define syn ((int *)&syntax_1)
@@ -165,7 +166,7 @@ Bool lightp_(int * obj) {
    ret_val = true;
 // 						!ASSUME WINS
    flobts = oflags_1.flambt + oflags_1.litebt + oflags_1.onbt;
-   if (*obj != oindex_1.candl) {
+   if (obj != oindex_1.candl) {
       goto L20000;
    }
 // 						!CANDLE?
@@ -196,7 +197,7 @@ L19100:
    cevent_1.cflag[cindex_1.cevcnd - 1] = false;
 // 						!DISABLE COUNTDOWN.
    objcts_1.oflag1[oindex_1.candl - 1] &= ~oflags_1.onbt;
-   rspeak_(&i__);
+   rspeak_(i__);
    return ret_val;
 
 L19200:
@@ -206,7 +207,7 @@ L19200:
    if ((objcts_1.oflag1[oindex_1.candl - 1] & oflags_1.litebt) != 0) {
       goto L19300;
    }
-   rspeak_(&c__515);
+   rspeak_(c__515);
 // 						!CANDLES TOO SHORT.
    return ret_val;
 
@@ -215,7 +216,7 @@ L19300:
       goto L19400;
    }
 // 						!ANY FLAME?
-   rspeak_(&c__516);
+   rspeak_(c__516);
 // 						!NO, LOSE.
    prsvec_1.prswon = false;
    return ret_val;
@@ -233,7 +234,7 @@ L19400:
    objcts_1.oflag1[oindex_1.candl - 1] |= oflags_1.onbt;
    cevent_1.cflag[cindex_1.cevcnd - 1] = true;
 // 						!RESUME COUNTDOWN.
-   rspeak_(&i__);
+   rspeak_(i__);
    return ret_val;
 
 L19500:
@@ -244,23 +245,23 @@ L19500:
       goto L19700;
    }
 // 						!ALREADY ON?
-   newsta_(&oindex_1.candl, &c__521, &c__0, &c__0, &c__0);
+   newsta_(oindex_1.candl, c__521, c__0, c__0, c__0);
 // 						!NO, VAPORIZE.
    return ret_val;
 
 L19600:
-   rspeak_(&c__519);
+   rspeak_(c__519);
 // 						!CANT LIGHT WITH THAT.
    return ret_val;
 
 L19700:
-   rspeak_(&c__520);
+   rspeak_(c__520);
 // 						!ALREADY ON.
    return ret_val;
 
 L20000:
-   if (*obj != oindex_1.match) {
-      bug_(&c__6, obj);
+   if (obj != oindex_1.match) {
+      bug_(c__6, obj);
    }
    if (prsvec_1.prsa != vindex_1.trnonw || prsvec_1.prso != oindex_1.match) {
       goto L20500;
@@ -269,7 +270,7 @@ L20000:
       goto L20100;
    }
 // 						!ANY MATCHES LEFT?
-   rspeak_(&c__183);
+   rspeak_(c__183);
 // 						!NO, LOSE.
    return ret_val;
 
@@ -279,7 +280,7 @@ L20100:
    objcts_1.oflag1[oindex_1.match - 1] |= flobts;
    cevent_1.ctick[cindex_1.cevmat - 1] = 2;
 // 						!COUNTDOWN.
-   rspeak_(&c__184);
+   rspeak_(c__184);
    return ret_val;
 
 L20500:
@@ -288,7 +289,7 @@ L20500:
    }
    objcts_1.oflag1[oindex_1.match - 1] &= ~flobts;
    cevent_1.ctick[cindex_1.cevmat - 1] = 0;
-   rspeak_(&c__185);
+   rspeak_(c__185);
    return ret_val;
 
 // HERE FOR FALSE RETURN

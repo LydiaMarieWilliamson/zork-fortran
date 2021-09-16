@@ -234,7 +234,7 @@ static int c__882 = 882;
 
 // DECLARATIONS
 
-Void savegm_(void) {
+void savegm_(void) {
 // System generated locals
    int i__1;
    olist o__1;
@@ -255,7 +255,8 @@ Void savegm_(void) {
 #define objvec ((int *)&pv_1 + 1)
 #define prpvec ((int *)&pv_1 + 3)
 #define switch__ ((int *)&findex_1 + 46)
-   extern Void gttime_(int *), rspeak_(int *);
+   extern int gttime_(void);
+   extern void rspeak_(int);
 
 // Fortran I/O blocks
    static cilist io___15 = { 0, 1, 0, 0, 0 };
@@ -310,7 +311,7 @@ Void savegm_(void) {
       goto L100;
    }
 
-   gttime_(&i__);
+   i__ = gttime_();
 // 						!GET TIME.
    s_wsue(&io___15);
    do_uio(&c__1, (char *)&vers_1.vmaj, (ftnlen) sizeof(int));
@@ -379,13 +380,12 @@ Void savegm_(void) {
    cl__1.cunit = 1;
    cl__1.csta = 0;
    f_clos(&cl__1);
-   rspeak_(&c__597);
-   return 0;
+   rspeak_(c__597);
+   return;
 
 L100:
-   rspeak_(&c__598);
+   rspeak_(c__598);
 // 						!CANT DO IT.
-   return 0;
 }
 
 #undef switch__
@@ -406,7 +406,7 @@ L100:
 
 // DECLARATIONS
 
-Void rstrgm_(void) {
+void rstrgm_(void) {
 // System generated locals
    int i__1;
    olist o__1;
@@ -427,7 +427,7 @@ Void rstrgm_(void) {
 #define objvec ((int *)&pv_1 + 1)
 #define prpvec ((int *)&pv_1 + 3)
 #define switch__ ((int *)&findex_1 + 46)
-   extern Void rspeak_(int *);
+   extern void rspeak_(int);
 
 // Fortran I/O blocks
    static cilist io___35 = { 0, 1, 0, 0, 0 };
@@ -553,22 +553,21 @@ Void rstrgm_(void) {
    cl__1.cunit = 1;
    cl__1.csta = 0;
    f_clos(&cl__1);
-   rspeak_(&c__599);
-   return 0;
+   rspeak_(c__599);
+   return;
 
 L100:
-   rspeak_(&c__598);
+   rspeak_(c__598);
 // 						!CANT DO IT.
-   return 0;
+   return;
 
 L200:
-   rspeak_(&c__600);
+   rspeak_(c__600);
 // 						!OBSOLETE VERSION
    cl__1.cerr = 0;
    cl__1.cunit = 1;
    cl__1.csta = 0;
    f_clos(&cl__1);
-   return 0;
 }
 
 #undef switch__
@@ -588,33 +587,36 @@ L200:
 // WALK- MOVE IN SPECIFIED DIRECTION
 
 // DECLARATIONS
+static int cxappl_(int);
 
-Bool walk_(int * x) {
+Bool walk_(/*int x*/) {
 // System generated locals
    Bool ret_val;
 
 // Local variables
 #define eqa ((int *)&advs_1 + 1)
 #define eqc ((int *)&cevent_1 + 1)
-   extern Void bug_(int *, int *);
+   extern void bug_(int, int);
 #define eqo ((int *)&objcts_1 + 1)
 #define eqr ((int *)&rooms_1 + 2)
-   extern Bool lit_(int *);
+   extern Bool lit_(int);
 #define eqv ((int *)&vill_1 + 1)
 #define orp ((int *)&orphs_1)
 #define syn ((int *)&syntax_1)
 #define pvec ((int *)&pv_1)
-   extern Bool prob_(int *, int *);
+   extern Bool prob_(int, int);
 #define xflag ((int *)&curxt_1 + 4)
 #define rrand ((int *)&rooms_1 + 602)
 #define flags ((Bool *)&findex_1)
 #define objvec ((int *)&pv_1 + 1)
-   extern Bool rmdesc_(int *), findxt_(int *, int *);
+   extern Bool rmdesc_(int);
+   extern Bool findxt_(int, int);
 #define prpvec ((int *)&pv_1 + 3)
-   extern Bool moveto_(int *, int *);
+   extern Bool moveto_(int, int);
 #define switch__ ((int *)&findex_1 + 46)
-   extern int cxappl_(int *);
-   extern Void jigsup_(int *), rspeak_(int *), rspsub_(int *, int *);
+   extern void jigsup_(int);
+   extern void rspeak_(int);
+   extern void rspsub_(int, int);
 
 // PARSER OUTPUT
 
@@ -642,10 +644,10 @@ Bool walk_(int * x) {
 
    ret_val = true;
 // 						!ASSUME WINS.
-   if (play_1.winner != aindex_1.player || lit_(&play_1.here) || prob_(&c__25, &c__25)) {
+   if (play_1.winner != aindex_1.player || lit_(play_1.here) || prob_(c__25, c__25)) {
       goto L500;
    }
-   if (!findxt_(&prsvec_1.prso, &play_1.here)) {
+   if (!findxt_(prsvec_1.prso, play_1.here)) {
       goto L450;
    }
 // 						!INVALID EXIT? GRUE
@@ -661,10 +663,10 @@ Bool walk_(int * x) {
          goto L300;
    }
 // 						!DECODE EXIT TYPE.
-   bug_(&c__9, &curxt_1.xtype);
+   bug_(c__9, curxt_1.xtype);
 
 L100:
-   if (cxappl_(&curxt_1.xactio) != 0) {
+   if (cxappl_(curxt_1.xactio) != 0) {
       goto L400;
    }
 // 						!CEXIT... RETURNED ROOM?
@@ -673,13 +675,13 @@ L100:
    }
 // 						!NO, FLAG ON?
 L200:
-   jigsup_(&c__523);
+   jigsup_(c__523);
 // 						!BAD EXIT, GRUE
 // 						!
    return ret_val;
 
 L300:
-   if (cxappl_(&curxt_1.xactio) != 0) {
+   if (cxappl_(curxt_1.xactio) != 0) {
       goto L400;
    }
 // 						!DOOR... RETURNED ROOM?
@@ -687,18 +689,18 @@ L300:
       goto L400;
    }
 // 						!NO, DOOR OPEN?
-   jigsup_(&c__523);
+   jigsup_(c__523);
 // 						!BAD EXIT, GRUE
 // 						!
    return ret_val;
 
 L400:
-   if (lit_(&curxt_1.xroom1)) {
+   if (lit_(curxt_1.xroom1)) {
       goto L900;
    }
 // 						!VALID ROOM, IS IT LIT?
 L450:
-   jigsup_(&c__522);
+   jigsup_(c__522);
 // 						!NO, GRUE
 // 						!
    return ret_val;
@@ -706,7 +708,7 @@ L450:
 // ROOM IS LIT, OR WINNER IS NOT PLAYER (NO GRUE).
 
 L500:
-   if (findxt_(&prsvec_1.prso, &play_1.here)) {
+   if (findxt_(prsvec_1.prso, play_1.here)) {
       goto L550;
    }
 // 						!EXIT EXIST?
@@ -724,7 +726,7 @@ L525:
    if ((rooms_1.rflag[play_1.here - 1] & rflag_1.rnwall) != 0) {
       curxt_1.xstrng = 524;
    }
-   rspeak_(&curxt_1.xstrng);
+   rspeak_(curxt_1.xstrng);
    prsvec_1.prscon = 1;
 // 						!STOP CMD STREAM.
    return ret_val;
@@ -741,10 +743,10 @@ L550:
          goto L800;
    }
 // 						!BRANCH ON EXIT TYPE.
-   bug_(&c__9, &curxt_1.xtype);
+   bug_(c__9, curxt_1.xtype);
 
 L700:
-   if (cxappl_(&curxt_1.xactio) != 0) {
+   if (cxappl_(curxt_1.xactio) != 0) {
       goto L900;
    }
 // 						!CEXIT... RETURNED ROOM?
@@ -757,14 +759,14 @@ L600:
       goto L525;
    }
 // 						!IF NO REASON, USE STD.
-   rspeak_(&curxt_1.xstrng);
+   rspeak_(curxt_1.xstrng);
 // 						!DENY EXIT.
    prsvec_1.prscon = 1;
 // 						!STOP CMD STREAM.
    return ret_val;
 
 L800:
-   if (cxappl_(&curxt_1.xactio) != 0) {
+   if (cxappl_(curxt_1.xactio) != 0) {
       goto L900;
    }
 // 						!DOOR... RETURNED ROOM?
@@ -776,16 +778,16 @@ L800:
       curxt_1.xstrng = 525;
    }
 // 						!IF NO REASON, USE STD.
-   rspsub_(&curxt_1.xstrng, &objcts_1.odesc2[curxt_1.xobj - 1]);
+   rspsub_(curxt_1.xstrng, objcts_1.odesc2[curxt_1.xobj - 1]);
    prsvec_1.prscon = 1;
 // 						!STOP CMD STREAM.
    return ret_val;
 
 L900:
-   ret_val = moveto_(&curxt_1.xroom1, &play_1.winner);
+   ret_val = moveto_(curxt_1.xroom1, play_1.winner);
 // 						!MOVE TO ROOM.
    if (ret_val) {
-      ret_val = rmdesc_(&c__0);
+      ret_val = rmdesc_(c__0);
    }
 // 						!DESCRIBE ROOM.
    return ret_val;
@@ -810,20 +812,20 @@ L900:
 
 // DECLARATIONS
 
-int cxappl_(int * ri) {
+static int cxappl_(int ri) {
 // System generated locals
    int ret_val, i__1;
 
 // Local variables
 #define flags ((Bool *)&findex_1)
 #define switch__ ((int *)&findex_1 + 46)
-   extern Void rspeak_(int *);
-   extern int mrhere_(int *);
-   extern Void cpgoto_(int *);
+   extern void rspeak_(int);
+   extern int mrhere_(int);
+   extern void cpgoto_(int);
    static int i__, j, k;
 #define eqa ((int *)&advs_1 + 1)
-   extern Void bug_(int *, int *);
-   extern int rnd_(int *);
+   extern void bug_(int, int);
+   extern int rnd_(int);
 #define eqo ((int *)&objcts_1 + 1)
 #define eqr ((int *)&rooms_1 + 2)
 #define orp ((int *)&orphs_1)
@@ -860,11 +862,11 @@ int cxappl_(int * ri) {
 
    ret_val = 0;
 // 						!NO RETURN.
-   if (*ri == 0) {
+   if (ri == 0) {
       return ret_val;
    }
 // 						!IF NO ACTION, DONE.
-   switch (*ri) {
+   switch (ri) {
       case 1:
          goto L1000;
       case 2:
@@ -894,7 +896,7 @@ int cxappl_(int * ri) {
       case 14:
          goto L14000;
    }
-   bug_(&c__5, ri);
+   bug_(c__5, ri);
 
 // C1- COFFIN-CURE
 
@@ -912,10 +914,10 @@ L2000:
    }
 // 						!IF FLIPPED, NOTHING.
 L2500:
-   rspeak_(&c__121);
+   rspeak_(c__121);
 // 						!SPIN THE COMPASS.
 L5000:
-   i__ = xpars_1.xelnt[xpars_1.xcond - 1] * rnd_(&c__8);
+   i__ = xpars_1.xelnt[xpars_1.xcond - 1] * rnd_(c__8);
 // 						!CHOOSE RANDOM EXIT.
    curxt_1.xroom1 = exits_1.travel[rooms_1.rexit[play_1.here - 1] + i__ - 1]
       & xpars_1.xrmask;
@@ -1032,7 +1034,7 @@ L8300:
 // C9-	FROBOZZ FLAG (MIRIN)
 
 L9000:
-   if (mrhere_(&play_1.here) != 1) {
+   if (mrhere_(play_1.here) != 1) {
       goto L9100;
    }
 // 						!MIRROR 1 HERE?
@@ -1088,7 +1090,7 @@ L10200:
       curxt_1.xroom1 = findex_1.mloc - 1;
    }
 // 						!IF S.
-   rspeak_(&c__818);
+   rspeak_(c__818);
 // 						!CLOSE DOOR.
    findex_1.wdopnf = false;
    ret_val = curxt_1.xroom1;
@@ -1140,7 +1142,7 @@ L14000:
       return ret_val;
    }
 // 						!LADDER HERE?
-   rspeak_(&c__882);
+   rspeak_(c__882);
 // 						!YOU WIN.
    findex_1.frobzf = true;
 // 						!LET HIM OUT.
@@ -1181,7 +1183,7 @@ L14400:
    return ret_val;
 
 L14500:
-   cpgoto_(&nxt);
+   cpgoto_(nxt);
 // 						!MOVE TO STATE.
    curxt_1.xroom1 = rindex_1.cpuzz;
 // 						!STAY IN ROOM.
