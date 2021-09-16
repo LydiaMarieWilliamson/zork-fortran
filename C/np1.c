@@ -156,18 +156,6 @@ extern union {
 #define objvoc_1 (objvoc_._1)
 #define objvoc_2 (objvoc_._2)
 
-// Table of constant values
-
-static int c__601 = 601;
-static int c__0 = 0;
-static int c__616 = 616;
-static int c__620 = 620;
-static int c__619 = 619;
-static int c_n1 = -1;
-static int c__617 = 617;
-static int c__621 = 621;
-static int c__622 = 622;
-
 // SPARSE-	START OF PARSE
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
@@ -369,7 +357,7 @@ int sparse_(int * lbuf, int llnt, Bool vbflag) {
    // NOT RECOGNIZABLE
 
       if (vbflag) {
-         rspeak_(c__601);
+         rspeak_(601);
       }
       return ret_val;
 // SPARSE, PAGE 9
@@ -377,7 +365,7 @@ int sparse_(int * lbuf, int llnt, Bool vbflag) {
 // OBJECT PROCESSING (CONTINUATION OF DO LOOP ON PREV PAGE)
 
    L600:
-      obj = getobj_(j, adj, c__0);
+      obj = getobj_(j, adj, 0);
 // 						!IDENTIFY OBJECT.
 // D	  IF(DFLAG) PRINT 60,J,OBJ
 // D60	  FORMAT(' SPARSE- OBJ AT ',I6,'  OBJ= ',I6)
@@ -389,7 +377,7 @@ int sparse_(int * lbuf, int llnt, Bool vbflag) {
          goto L650;
       }
 // 						!"IT"?
-      obj = getobj_(c__0, c__0, last_1.lastit);
+      obj = getobj_(0, 0, last_1.lastit);
 // 						!FIND LAST.
       if (obj <= 0) {
          goto L6000;
@@ -453,7 +441,7 @@ int sparse_(int * lbuf, int llnt, Bool vbflag) {
 
    L4500:
       if (vbflag) {
-         rspeak_(c__616);
+         rspeak_(616);
       }
       return ret_val;
 
@@ -489,25 +477,25 @@ int sparse_(int * lbuf, int llnt, Bool vbflag) {
          goto L6200;
       }
       if (vbflag) {
-         rspsub_(c__620, objcts_1.odesc2[advs_1.avehic[play_1.winner - 1] - 1]);
+         rspsub_(620, objcts_1.odesc2[advs_1.avehic[play_1.winner - 1] - 1]);
       }
       return ret_val;
 
    L6200:
       if (vbflag) {
-         rspeak_(c__619);
+         rspeak_(619);
       }
       if (pv_1.act == 0) {
          pv_1.act = orphs_1.oflag & orphs_1.oact;
       }
-      orphan_(c_n1, pv_1.act, pv_1.o1, prep, j);
+      orphan_(-1, pv_1.act, pv_1.o1, prep, j);
       return ret_val;
 
 // 7000--	TOO MANY OBJECTS.
 
    L7000:
       if (vbflag) {
-         rspeak_(c__617);
+         rspeak_(617);
       }
       return ret_val;
 
@@ -518,7 +506,7 @@ int sparse_(int * lbuf, int llnt, Bool vbflag) {
          goto L700;
       }
       if (vbflag) {
-         rspeak_(c__601);
+         rspeak_(601);
       }
       return ret_val;
 
@@ -578,17 +566,17 @@ L9000:
    }
 // 						!ANY DIRECT OBJECT?
    if (vbflag) {
-      rspsub_(c__621, objcts_1.odesc2[pv_1.o1 - 1]);
+      rspsub_(621, objcts_1.odesc2[pv_1.o1 - 1]);
    }
 // 						!WHAT TO DO?
-   orphan_(c_n1, c__0, pv_1.o1, c__0, c__0);
+   orphan_(-1, 0, pv_1.o1, 0, 0);
    return ret_val;
 
 // 10000--	TOTAL CHOMP
 
 L10000:
    if (vbflag) {
-      rspeak_(c__622);
+      rspeak_(622);
    }
 // 						!HUH?
    return ret_val;
@@ -617,7 +605,7 @@ L11500:
 // 		ORPHAN FOR LATER.
 
 L12000:
-   orphan_(c_n1, pv_1.act, c__0, prep, c__0);
+   orphan_(-1, pv_1.act, 0, prep, 0);
 // 						!ORPHAN PREP.
    goto L1750;
 

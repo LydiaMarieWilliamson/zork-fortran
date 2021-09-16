@@ -33,10 +33,6 @@ extern struct {
 
 #define findex_1 findex_
 
-// Table of constant values
-
-static int c__60 = 60;
-
 // GHERE--	IS GLOBAL ACTUALLY IN THIS ROOM?
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
@@ -112,7 +108,7 @@ Bool ghere_(int obj, int rm) {
       case 25:
          goto L11000;
    }
-   bug_(c__60, obj);
+   bug_(60, obj);
 
 // 1000--	STARS ARE ALWAYS HERE
 

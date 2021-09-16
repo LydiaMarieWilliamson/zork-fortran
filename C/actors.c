@@ -166,30 +166,6 @@ extern struct {
 
 #define vill_1 vill_
 
-// Table of constant values
-
-static int c__11 = 11;
-static int c__567 = 567;
-static int c__0 = 0;
-static int c__568 = 568;
-static int c__569 = 569;
-static int c__570 = 570;
-static int c__783 = 783;
-static int c__786 = 786;
-static int c__70 = 70;
-static int c__583 = 583;
-static int c__584 = 584;
-static int c__90 = 90;
-static int c__585 = 585;
-static int c__100 = 100;
-static int c__406 = 406;
-static int c__75 = 75;
-static int c__60 = 60;
-static int c__590 = 590;
-static int c__40 = 40;
-static int c__20 = 20;
-static int c__80 = 80;
-
 // AAPPLI- APPLICABLES FOR ADVENTURERS
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
@@ -255,7 +231,7 @@ Bool aappli_(int ri) {
          goto L2000;
    }
 // 						!BRANCH ON ADV.
-   bug_(c__11, ri);
+   bug_(11, ri);
 
 // COMMON FALSE RETURN.
 
@@ -275,9 +251,9 @@ L1000:
 // 						!RESET FOR PLAYER.
    f = moveto_(rindex_1.cager, play_1.winner);
 // 						!MOVE TO NEW ROOM.
-   newsta_(oindex_1.cage, c__567, rindex_1.cager, c__0, c__0);
+   newsta_(oindex_1.cage, 567, rindex_1.cager, 0, 0);
 // 						!INSTALL CAGE IN ROOM.
-   newsta_(oindex_1.robot, c__0, rindex_1.cager, c__0, c__0);
+   newsta_(oindex_1.robot, 0, rindex_1.cager, 0, 0);
 // 						!INSTALL ROBOT IN ROOM.
    advs_1.aroom[aindex_1.arobot - 1] = rindex_1.cager;
 // 						!ALSO MOVE ROBOT/ADV.
@@ -291,7 +267,7 @@ L1200:
    if (prsvec_1.prsa != vindex_1.drinkw && prsvec_1.prsa != vindex_1.eatw) {
       goto L1300;
    }
-   rspeak_(c__568);
+   rspeak_(568);
 // 						!EAT OR DRINK, JOKE.
    return ret_val;
 
@@ -300,7 +276,7 @@ L1300:
       goto L1400;
    }
 // 						!READ,
-   rspeak_(c__569);
+   rspeak_(569);
 // 						!JOKE.
    return ret_val;
 
@@ -308,7 +284,7 @@ L1400:
    if (prsvec_1.prsa == vindex_1.walkw || prsvec_1.prsa == vindex_1.takew || prsvec_1.prsa == vindex_1.dropw || prsvec_1.prsa == vindex_1.putw || prsvec_1.prsa == vindex_1.pushw || prsvec_1.prsa == vindex_1.throww || prsvec_1.prsa == vindex_1.turnw || prsvec_1.prsa == vindex_1.leapw) {
       goto L10;
    }
-   rspeak_(c__570);
+   rspeak_(570);
 // 						!JOKE.
    return ret_val;
 // AAPPLI, PAGE 3
@@ -319,7 +295,7 @@ L2000:
    if ((objcts_1.oflag2[oindex_1.qdoor - 1] & oflags_1.openbt) != 0) {
       goto L2100;
    }
-   rspeak_(c__783);
+   rspeak_(783);
 // 						!NO MASTER YET.
    return ret_val;
 
@@ -340,7 +316,7 @@ L2200:
    if (prsvec_1.prsa == vindex_1.takew || prsvec_1.prsa == vindex_1.dropw || prsvec_1.prsa == vindex_1.putw || prsvec_1.prsa == vindex_1.throww || prsvec_1.prsa == vindex_1.pushw || prsvec_1.prsa == vindex_1.turnw || prsvec_1.prsa == vindex_1.spinw || prsvec_1.prsa == vindex_1.trntow || prsvec_1.prsa == vindex_1.follow || prsvec_1.prsa == vindex_1.stayw || prsvec_1.prsa == vindex_1.openw || prsvec_1.prsa == vindex_1.closew || prsvec_1.prsa == vindex_1.killw) {
       goto L10;
    }
-   rspeak_(c__786);
+   rspeak_(786);
 // 						!MASTER CANT DO IT.
    return ret_val;
 
@@ -429,15 +405,15 @@ L1025:
       goto L1050;
    }
 // 						!VISIBLE?
-   newsta_(oindex_1.thief, c__0, c__0, c__0, c__0);
+   newsta_(oindex_1.thief, 0, 0, 0, 0);
 // 						!YES, VANISH.
    rhere = 0;
    if (qhere_(oindex_1.still, rindex_1.treas) || objcts_1.oadv[oindex_1.still - 1] == -oindex_1.thief) {
-      newsta_(oindex_1.still, c__0, c__0, oindex_1.thief, c__0);
+      newsta_(oindex_1.still, 0, 0, oindex_1.thief, 0);
    }
 L1050:
    i__1 = -oindex_1.thief;
-   i__ = robadv_(i__1, hack_1.thfpos, c__0, c__0);
+   i__ = robadv_(i__1, hack_1.thfpos, 0, 0);
 // 						!DROP VALUABLES.
    if (qhere_(oindex_1.egg, hack_1.thfpos)) {
       objcts_1.oflag2[oindex_1.egg - 1] |= oflags_1.openbt;
@@ -460,7 +436,7 @@ L1100:
       goto L1300;
    }
 // 						!THIEF ANNOUNCED?
-   if (rhere != 0 || prob_(c__70, c__70)) {
+   if (rhere != 0 || prob_(70, 70)) {
       goto L1150;
    }
 // 						!IF INVIS AND 30%.
@@ -468,7 +444,7 @@ L1100:
       goto L1700;
    }
 // 						!ABORT IF NO STILLETTO.
-   newsta_(oindex_1.thief, c__583, hack_1.thfpos, c__0, c__0);
+   newsta_(oindex_1.thief, 583, hack_1.thfpos, 0, 0);
 // 						!INSERT THIEF INTO ROOM.
    hack_1.thfflg = true;
 // 						!THIEF IS ANNOUNCED.
@@ -482,29 +458,29 @@ L1150:
       goto L1175;
    }
 // 						!WINNING?
-   newsta_(oindex_1.thief, c__584, c__0, c__0, c__0);
+   newsta_(oindex_1.thief, 584, 0, 0, 0);
 // 						!NO, VANISH THIEF.
    objcts_1.oflag2[oindex_1.thief - 1] &= ~oflags_1.fitebt;
    if (qhere_(oindex_1.still, hack_1.thfpos) || objcts_1.oadv[oindex_1.still - 1] == -oindex_1.thief) {
-      newsta_(oindex_1.still, c__0, c__0, oindex_1.thief, c__0);
+      newsta_(oindex_1.still, 0, 0, oindex_1.thief, 0);
    }
    return;
 
 L1175:
-   if (prob_(c__90, c__90)) {
+   if (prob_(90, 90)) {
       goto L1700;
    }
 // 						!90% CHANCE TO STAY.
 
 L1200:
-   if (rhere == 0 || prob_(c__70, c__70)) {
+   if (rhere == 0 || prob_(70, 70)) {
       goto L1250;
    }
 // 						!IF VISIBLE AND 30%
-   newsta_(oindex_1.thief, c__585, c__0, c__0, c__0);
+   newsta_(oindex_1.thief, 585, 0, 0, 0);
 // 						!VANISH THIEF.
    if (qhere_(oindex_1.still, hack_1.thfpos) || objcts_1.oadv[oindex_1.still - 1] == -oindex_1.thief) {
-      newsta_(oindex_1.still, c__0, c__0, oindex_1.thief, c__0);
+      newsta_(oindex_1.still, 0, 0, oindex_1.thief, 0);
    }
    return;
 
@@ -514,14 +490,14 @@ L1300:
    }
 // 						!ANNOUNCED.  VISIBLE?
 L1250:
-   if (prob_(c__70, c__70)) {
+   if (prob_(70, 70)) {
       return;
    }
 // 						!70% CHANCE TO DO NOTHING.
    hack_1.thfflg = true;
    i__1 = -oindex_1.thief;
    i__2 = -oindex_1.thief;
-   nr = robrm_(hack_1.thfpos, c__100, c__0, c__0, i__1) + robadv_(play_1.winner, c__0, c__0, i__2);
+   nr = robrm_(hack_1.thfpos, 100, 0, 0, i__1) + robadv_(play_1.winner, 0, 0, i__2);
    i__ = 586;
 // 						!ROBBED EM.
    if (rhere != 0) {
@@ -532,13 +508,13 @@ L1250:
       ++i__;
    }
 // 						!DID HE GET ANYTHING?
-   newsta_(oindex_1.thief, i__, c__0, c__0, c__0);
+   newsta_(oindex_1.thief, i__, 0, 0, 0);
 // 						!VANISH THIEF.
    if (qhere_(oindex_1.still, hack_1.thfpos) || objcts_1.oadv[oindex_1.still - 1] == -oindex_1.thief) {
-      newsta_(oindex_1.still, c__0, c__0, oindex_1.thief, c__0);
+      newsta_(oindex_1.still, 0, 0, oindex_1.thief, 0);
    }
    if (nr != 0 && !lit_(hack_1.thfpos)) {
-      rspeak_(c__406);
+      rspeak_(406);
    }
    rhere = 0;
    goto L1700;
@@ -547,19 +523,19 @@ L1250:
 // NOT IN ADVENTURERS ROOM.
 
 L1400:
-   newsta_(oindex_1.thief, c__0, c__0, c__0, c__0);
+   newsta_(oindex_1.thief, 0, 0, 0, 0);
 // 						!VANISH.
    rhere = 0;
 // D	IF(DFLAG) PRINT 30,THFPOS
 // D30	FORMAT(' THIEFD-- IN ROOM ',I4)
    if (qhere_(oindex_1.still, hack_1.thfpos) || objcts_1.oadv[oindex_1.still - 1] == -oindex_1.thief) {
-      newsta_(oindex_1.still, c__0, c__0, oindex_1.thief, c__0);
+      newsta_(oindex_1.still, 0, 0, oindex_1.thief, 0);
    }
    if ((rooms_1.rflag[hack_1.thfpos - 1] & rflag_1.rseen) == 0) {
       goto L1700;
    }
    i__1 = -oindex_1.thief;
-   i__ = robrm_(hack_1.thfpos, c__75, c__0, c__0, i__1);
+   i__ = robrm_(hack_1.thfpos, 75, 0, 0, i__1);
 // 						!ROB ROOM 75%.
    if (hack_1.thfpos < rindex_1.maze1 || hack_1.thfpos > rindex_1.maz15 || play_1.here < rindex_1.maze1 || play_1.here > rindex_1.maz15) {
       goto L1500;
@@ -567,16 +543,16 @@ L1400:
    i__1 = objcts_1.olnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
 // 						!BOTH IN MAZE.
-      if (!qhere_(i__, hack_1.thfpos) || prob_(c__60, c__60) || (objcts_1.oflag1[i__ - 1] & oflags_1.visibt + oflags_1.takebt) != oflags_1.visibt + oflags_1.takebt) {
+      if (!qhere_(i__, hack_1.thfpos) || prob_(60, 60) || (objcts_1.oflag1[i__ - 1] & oflags_1.visibt + oflags_1.takebt) != oflags_1.visibt + oflags_1.takebt) {
          goto L1450;
       }
-      rspsub_(c__590, objcts_1.odesc2[i__ - 1]);
+      rspsub_(590, objcts_1.odesc2[i__ - 1]);
 // 						!TAKE OBJECT.
-      if (prob_(c__40, c__20)) {
+      if (prob_(40, 20)) {
          goto L1700;
       }
       i__2 = -oindex_1.thief;
-      newsta_(i__, c__0, c__0, c__0, i__2);
+      newsta_(i__, 0, 0, 0, i__2);
 // 						!MOST OF THE TIME.
       objcts_1.oflag2[i__ - 1] |= oflags_1.tchbt;
       goto L1700;
@@ -589,11 +565,11 @@ L1500:
    i__1 = objcts_1.olnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
 // 						!NOT IN MAZE.
-      if (!qhere_(i__, hack_1.thfpos) || objcts_1.otval[i__ - 1] != 0 || prob_(c__80, c__60) || (objcts_1.oflag1[i__ - 1] & oflags_1.visibt + oflags_1.takebt) != oflags_1.visibt + oflags_1.takebt) {
+      if (!qhere_(i__, hack_1.thfpos) || objcts_1.otval[i__ - 1] != 0 || prob_(80, 60) || (objcts_1.oflag1[i__ - 1] & oflags_1.visibt + oflags_1.takebt) != oflags_1.visibt + oflags_1.takebt) {
          goto L1550;
       }
       i__2 = -oindex_1.thief;
-      newsta_(i__, c__0, c__0, c__0, i__2);
+      newsta_(i__, 0, 0, 0, i__2);
       objcts_1.oflag2[i__ - 1] |= oflags_1.tchbt;
       goto L1700;
    L1550:
@@ -638,10 +614,10 @@ L1800:
    }
    i__1 = objcts_1.olnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
-      if (objcts_1.oadv[i__ - 1] != -oindex_1.thief || prob_(c__70, c__70) || objcts_1.otval[i__ - 1] > 0) {
+      if (objcts_1.oadv[i__ - 1] != -oindex_1.thief || prob_(70, 70) || objcts_1.otval[i__ - 1] > 0) {
          goto L1850;
       }
-      newsta_(i__, j, hack_1.thfpos, c__0, c__0);
+      newsta_(i__, j, hack_1.thfpos, 0, 0);
       j = 0;
    L1850:
       ;

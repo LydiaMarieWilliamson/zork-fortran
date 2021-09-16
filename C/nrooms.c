@@ -165,41 +165,6 @@ extern struct {
 
 #define findex_1 findex_
 
-// Table of constant values
-
-static int c__70 = 70;
-static int c__0 = 0;
-static int c__682 = 682;
-static int c__681 = 681;
-static int c__685 = 685;
-static int c__683 = 683;
-static int c__684 = 684;
-static int c__686 = 686;
-static int c__687 = 687;
-static int c__688 = 688;
-static int c__694 = 694;
-static int c__705 = 705;
-static int c__706 = 706;
-static int c__707 = 707;
-static int c__708 = 708;
-static int c__709 = 709;
-static int c__710 = 710;
-static int c__711 = 711;
-static int c__712 = 712;
-static int c__723 = 723;
-static int c__724 = 724;
-static int c__725 = 725;
-static int c__726 = 726;
-static Bool c_false = false;
-static int c__792 = 792;
-static int c__868 = 868;
-static int c__869 = 869;
-static int c__880 = 880;
-static int c__847 = 847;
-static int c__848 = 848;
-static int c__851 = 851;
-static int c__825 = 825;
-
 // RAPPL2- SPECIAL PURPOSE ROOM ROUTINES, PART 2
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
@@ -317,14 +282,14 @@ Bool rappl2_(int ri) {
       case 23:
          goto L60000;
    }
-   bug_(c__70, ri);
+   bug_(70, ri);
    return ret_val;
 
 // R38--	MIRROR D ROOM
 
 L38000:
    if (prsvec_1.prsa == vindex_1.lookw) {
-      lookto_(rindex_1.fdoor, rindex_1.mrg, c__0, c__682, c__681);
+      lookto_(rindex_1.fdoor, rindex_1.mrg, 0, 682, 681);
    }
    return ret_val;
 
@@ -332,7 +297,7 @@ L38000:
 
 L39000:
    if (prsvec_1.prsa == vindex_1.walkiw) {
-      jigsup_(c__685);
+      jigsup_(685);
    }
    return ret_val;
 
@@ -340,7 +305,7 @@ L39000:
 
 L40000:
    if (prsvec_1.prsa == vindex_1.lookw) {
-      lookto_(rindex_1.mrg, rindex_1.mrb, c__683, c__0, c__681);
+      lookto_(rindex_1.mrg, rindex_1.mrb, 683, 0, 681);
    }
    return ret_val;
 
@@ -348,7 +313,7 @@ L40000:
 
 L41000:
    if (prsvec_1.prsa == vindex_1.lookw) {
-      lookto_(rindex_1.mrc, rindex_1.mra, c__0, c__0, c__681);
+      lookto_(rindex_1.mrc, rindex_1.mra, 0, 0, 681);
    }
    return ret_val;
 
@@ -356,7 +321,7 @@ L41000:
 
 L42000:
    if (prsvec_1.prsa == vindex_1.lookw) {
-      lookto_(rindex_1.mrb, c__0, c__0, c__684, c__681);
+      lookto_(rindex_1.mrb, 0, 0, 684, 681);
    }
    return ret_val;
 // RAPPL2, PAGE 3
@@ -365,7 +330,7 @@ L42000:
 
 L43000:
    if (prsvec_1.prsa == vindex_1.lookw) {
-      ewtell_(play_1.here, c__683);
+      ewtell_(play_1.here, 683);
    }
    return ret_val;
 
@@ -373,7 +338,7 @@ L43000:
 
 L44000:
    if (prsvec_1.prsa == vindex_1.lookw) {
-      ewtell_(play_1.here, c__686);
+      ewtell_(play_1.here, 686);
    }
    return ret_val;
 
@@ -381,7 +346,7 @@ L44000:
 
 L45000:
    if (prsvec_1.prsa == vindex_1.lookw) {
-      ewtell_(play_1.here, c__687);
+      ewtell_(play_1.here, 687);
    }
    return ret_val;
 
@@ -392,7 +357,7 @@ L46000:
       return ret_val;
    }
 // 						!LOOK?
-   rspeak_(c__688);
+   rspeak_(688);
 // 						!DESCRIBE
 
 // NOW DESCRIBE POLE STATE.
@@ -412,7 +377,7 @@ L46000:
    rspeak_(i__);
 // 						!DESCRIBE POLE.
    i__1 = findex_1.mdir / 45 + 695;
-   rspsub_(c__694, i__1);
+   rspsub_(694, i__1);
 // 						!DESCRIBE ARROW.
    return ret_val;
 // RAPPL2, PAGE 4
@@ -437,7 +402,7 @@ L47000:
 L47200:
    rspsub_(i__, objcts_1.odesc2[j - 1]);
 // 						!DESCRIBE BEAM.
-   lookto_(rindex_1.mra, c__0, c__0, c__0, c__0);
+   lookto_(rindex_1.mra, 0, 0, 0, 0);
 // 						!LOOK NORTH.
    return ret_val;
 
@@ -453,7 +418,7 @@ L48000:
    if ((objcts_1.oflag2[oindex_1.tomb - 1] & oflags_1.openbt) != 0) {
       i__ = 12;
    }
-   rspsub_(c__705, i__);
+   rspsub_(705, i__);
    return ret_val;
 
 // R49--	SOUTH CORRIDOR
@@ -463,7 +428,7 @@ L49000:
       return ret_val;
    }
 // 						!LOOK?
-   rspeak_(c__706);
+   rspeak_(706);
 // 						!DESCRIBE.
    i__ = 46;
 // 						!ODOOR IS OPEN/CLOSED.
@@ -471,7 +436,7 @@ L49000:
       i__ = 12;
    }
    if (findex_1.lcell == 4) {
-      rspsub_(c__707, i__);
+      rspsub_(707, i__);
    }
 // 						!DESCRIBE ODOOR IF THERE.
    return ret_val;
@@ -498,7 +463,7 @@ L50100:
    if ((objcts_1.oflag2[oindex_1.qdoor - 1] & oflags_1.openbt) != 0) {
       i__ = 12;
    }
-   rspsub_(c__708, i__);
+   rspsub_(708, i__);
    return ret_val;
 // RAPPL2, PAGE 5
 
@@ -513,7 +478,7 @@ L51000:
       return ret_val;
    }
 // 						!LOOK?
-   lookto_(c__0, rindex_1.mrd, c__709, c__0, c__0);
+   lookto_(0, rindex_1.mrd, 709, 0, 0);
 // 						!DESCRIBE SOUTH.
    i__ = 46;
 // 						!PANEL IS OPEN/CLOSED.
@@ -526,7 +491,7 @@ L51000:
    if ((objcts_1.oflag2[oindex_1.qdoor - 1] & oflags_1.openbt) != 0) {
       j = 12;
    }
-   rspsb2_(c__710, i__, j);
+   rspsb2_(710, i__, j);
    return ret_val;
 
 // R52--	NORTH CORRIDOR
@@ -541,7 +506,7 @@ L52000:
       i__ = 12;
    }
 // 						!CDOOR IS OPEN/CLOSED.
-   rspsub_(c__711, i__);
+   rspsub_(711, i__);
    return ret_val;
 
 // R53--	PARAPET
@@ -549,7 +514,7 @@ L52000:
 L53000:
    if (prsvec_1.prsa == vindex_1.lookw) {
       i__1 = findex_1.pnumb + 712;
-      rspsub_(c__712, i__1);
+      rspsub_(712, i__1);
    }
    return ret_val;
 
@@ -572,7 +537,7 @@ L54000:
       i__ = 12;
    }
    if (findex_1.lcell == 4) {
-      rspsub_(c__723, i__);
+      rspsub_(723, i__);
    }
 // 						!DESCRIBE.
    return ret_val;
@@ -581,7 +546,7 @@ L54000:
 
 L55000:
    if (prsvec_1.prsa == vindex_1.lookw) {
-      rspeak_(c__724);
+      rspeak_(724);
    }
 // 						!LOOK?
    return ret_val;
@@ -598,7 +563,7 @@ L56000:
    if ((objcts_1.oflag2[oindex_1.odoor - 1] & oflags_1.openbt) != 0) {
       i__ = 12;
    }
-   rspsub_(c__725, i__);
+   rspsub_(725, i__);
    return ret_val;
 // RAPPL2, PAGE 6
 
@@ -609,8 +574,8 @@ L57000:
       return ret_val;
    }
 // 						!WALKIN?
-   rspeak_(c__726);
-   score_(c_false);
+   rspeak_(726);
+   score_(false);
 // moved to exit routine	CLOSE(DBCH)
    exit_();
 
@@ -626,7 +591,7 @@ L58000:
    if ((objcts_1.oflag2[oindex_1.tomb - 1] & oflags_1.openbt) != 0) {
       i__ = 12;
    }
-   rspsub_(c__792, i__);
+   rspsub_(792, i__);
    return ret_val;
 
 // R59--	PUZZLE SIDE ROOM
@@ -657,15 +622,15 @@ L60000:
       goto L60100;
    }
 // 						!STARTED PUZZLE?
-   rspeak_(c__868);
+   rspeak_(868);
 // 						!NO, DESCRIBE.
    if ((objcts_1.oflag2[oindex_1.warni - 1] & oflags_1.tchbt) != 0) {
-      rspeak_(c__869);
+      rspeak_(869);
    }
    return ret_val;
 
 L60100:
-   cpinfo_(c__880, findex_1.cphere);
+   cpinfo_(880, findex_1.cphere);
 // 						!DESCRIBE ROOM.
    return ret_val;
 
@@ -730,9 +695,9 @@ static void lookto_(int nrm, int srm, int nt, int st, int ht) {
       goto L100;
    }
 // 						!MIRROR N-S?
-   rspsub_(c__847, dir);
+   rspsub_(847, dir);
 // 						!YES, HE SEES PANEL
-   rspsb2_(c__848, dir, dir);
+   rspsb2_(848, dir, dir);
 // 						!AND NARROW ROOMS.
    goto L200;
 
@@ -752,7 +717,7 @@ L100:
       rspeak_(i__1);
    }
    if (mrbf != 0) {
-      rspeak_(c__851);
+      rspeak_(851);
    }
 
 L200:
@@ -812,7 +777,7 @@ static void ewtell_(int rm, int st) {
       i__1 = (i__ - 819) / 2 + 823;
       rspeak_(i__1);
    }
-   rspeak_(c__825);
+   rspeak_(825);
    rspeak_(st);
 
 }

@@ -104,19 +104,6 @@ extern struct {
 
 #define findex_1 findex_
 
-// Table of constant values
-
-static int c__515 = 515;
-static int c__516 = 516;
-static int c__521 = 521;
-static int c__0 = 0;
-static int c__519 = 519;
-static int c__520 = 520;
-static int c__6 = 6;
-static int c__183 = 183;
-static int c__184 = 184;
-static int c__185 = 185;
-
 // LIGHTP-	LIGHT PROCESSOR
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
@@ -207,7 +194,7 @@ L19200:
    if ((objcts_1.oflag1[oindex_1.candl - 1] & oflags_1.litebt) != 0) {
       goto L19300;
    }
-   rspeak_(c__515);
+   rspeak_(515);
 // 						!CANDLES TOO SHORT.
    return ret_val;
 
@@ -216,7 +203,7 @@ L19300:
       goto L19400;
    }
 // 						!ANY FLAME?
-   rspeak_(c__516);
+   rspeak_(516);
 // 						!NO, LOSE.
    prsvec_1.prswon = false;
    return ret_val;
@@ -245,23 +232,23 @@ L19500:
       goto L19700;
    }
 // 						!ALREADY ON?
-   newsta_(oindex_1.candl, c__521, c__0, c__0, c__0);
+   newsta_(oindex_1.candl, 521, 0, 0, 0);
 // 						!NO, VAPORIZE.
    return ret_val;
 
 L19600:
-   rspeak_(c__519);
+   rspeak_(519);
 // 						!CANT LIGHT WITH THAT.
    return ret_val;
 
 L19700:
-   rspeak_(c__520);
+   rspeak_(520);
 // 						!ALREADY ON.
    return ret_val;
 
 L20000:
    if (obj != oindex_1.match) {
-      bug_(c__6, obj);
+      bug_(6, obj);
    }
    if (prsvec_1.prsa != vindex_1.trnonw || prsvec_1.prso != oindex_1.match) {
       goto L20500;
@@ -270,7 +257,7 @@ L20000:
       goto L20100;
    }
 // 						!ANY MATCHES LEFT?
-   rspeak_(c__183);
+   rspeak_(183);
 // 						!NO, LOSE.
    return ret_val;
 
@@ -280,7 +267,7 @@ L20100:
    objcts_1.oflag1[oindex_1.match - 1] |= flobts;
    cevent_1.ctick[cindex_1.cevmat - 1] = 2;
 // 						!COUNTDOWN.
-   rspeak_(c__184);
+   rspeak_(184);
    return ret_val;
 
 L20500:
@@ -289,7 +276,7 @@ L20500:
    }
    objcts_1.oflag1[oindex_1.match - 1] &= ~flobts;
    cevent_1.ctick[cindex_1.cevmat - 1] = 0;
-   rspeak_(c__185);
+   rspeak_(185);
    return ret_val;
 
 // HERE FOR FALSE RETURN

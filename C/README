@@ -32,3 +32,4 @@ History
 		∙	eliminated ‟Void”, after reducing it to ‟void”.
 		No effect on the compile-time or run-time baselines.
 2021/09/16	Encapsulation of the f2c library in F2C.c; as a first step to nativizing and replacing it.
+2021/09/16	Elimination of static constant parameters.

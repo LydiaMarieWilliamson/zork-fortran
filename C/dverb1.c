@@ -114,28 +114,6 @@ extern struct {
 
 #define vindex_1 vindex_
 
-// Table of constant values
-
-static int c__672 = 672;
-static int c__0 = 0;
-static int c__5 = 5;
-static int c__557 = 557;
-static int c__558 = 558;
-static int c__559 = 559;
-static int c__525 = 525;
-static Bool c_true = true;
-static int c__527 = 527;
-static int c__560 = 560;
-static int c__561 = 561;
-static int c__562 = 562;
-static int c__563 = 563;
-static int c__564 = 564;
-static int c__565 = 565;
-static Bool c_false = false;
-static int c__566 = 566;
-static int c__2 = 2;
-static int c__580 = 580;
-
 // TAKE-- BASIC TAKE SEQUENCE
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
@@ -202,7 +180,7 @@ L100:
       goto L400;
    }
 // 						!HIS VEHICLE?
-   rspeak_(c__672);
+   rspeak_(672);
 // 						!DUMMY.
    return ret_val;
 
@@ -210,8 +188,8 @@ L400:
    if ((objcts_1.oflag1[prsvec_1.prso - 1] & oflags_1.takebt) != 0) {
       goto L500;
    }
-   if (!oappli_(oa, c__0)) {
-      i__1 = rnd_(c__5) + 552;
+   if (!oappli_(oa, 0)) {
+      i__1 = rnd_(5) + 552;
       rspeak_(i__1);
    }
    return ret_val;
@@ -223,27 +201,27 @@ L500:
       goto L600;
    }
    if (objcts_1.oadv[prsvec_1.prso - 1] == play_1.winner) {
-      rspeak_(c__557);
+      rspeak_(557);
    }
 // 						!ALREADY GOT IT?
    return ret_val;
 
 L600:
-   if (x != 0 && objcts_1.oadv[x - 1] == play_1.winner || weight_(c__0, prsvec_1.prso, play_1.winner) + objcts_1.osize[prsvec_1.prso - 1] <= state_1.mxload) {
+   if (x != 0 && objcts_1.oadv[x - 1] == play_1.winner || weight_(0, prsvec_1.prso, play_1.winner) + objcts_1.osize[prsvec_1.prso - 1] <= state_1.mxload) {
       goto L700;
    }
-   rspeak_(c__558);
+   rspeak_(558);
 // 						!TOO MUCH WEIGHT.
    return ret_val;
 
 L700:
    ret_val = true;
 // 						!AT LAST.
-   if (oappli_(oa, c__0)) {
+   if (oappli_(oa, 0)) {
       return ret_val;
    }
 // 						!DID IT HANDLE?
-   newsta_(prsvec_1.prso, c__0, c__0, c__0, play_1.winner);
+   newsta_(prsvec_1.prso, 0, 0, 0, play_1.winner);
 // 						!TAKE OBJECT FOR WINNER.
    objcts_1.oflag2[prsvec_1.prso - 1] |= oflags_1.tchbt;
    scrupd_(objcts_1.ofval[prsvec_1.prso - 1]);
@@ -251,7 +229,7 @@ L700:
    objcts_1.ofval[prsvec_1.prso - 1] = 0;
 // 						!CANT BE SCORED AGAIN.
    if (flg) {
-      rspeak_(c__559);
+      rspeak_(559);
    }
 // 						!TELL TAKEN.
    return ret_val;
@@ -322,7 +300,7 @@ Bool drop_(/*Bool z__*/) {
    if ((objcts_1.oflag2[x - 1] & oflags_1.openbt) != 0) {
       goto L300;
    }
-   rspsub_(c__525, objcts_1.odesc2[x - 1]);
+   rspsub_(525, objcts_1.odesc2[x - 1]);
 // 						!CANT REACH.
    return ret_val;
 
@@ -338,7 +316,7 @@ L300:
 // 						!IS HE IN VEHICLE?
    prsvec_1.prsi = advs_1.avehic[play_1.winner - 1];
 // 						!YES,
-   f = put_(/*c_true*/);
+   f = put_(/*true*/);
 // 						!DROP INTO VEHICLE.
    prsvec_1.prsi = 0;
 // 						!DISARM PARSER.
@@ -346,10 +324,10 @@ L300:
 // 						!DONE.
 
 L400:
-   newsta_(prsvec_1.prso, c__0, play_1.here, c__0, c__0);
+   newsta_(prsvec_1.prso, 0, play_1.here, 0, 0);
 // 						!DROP INTO ROOM.
    if (play_1.here == rindex_1.mtree) {
-      newsta_(prsvec_1.prso, c__0, rindex_1.fore3, c__0, c__0);
+      newsta_(prsvec_1.prso, 0, rindex_1.fore3, 0, 0);
    }
    scrupd_(objcts_1.ofval[prsvec_1.prso - 1]);
 // 						!SCORE OBJECT.
@@ -376,7 +354,7 @@ L400:
    return ret_val;
 
 L1000:
-   rspeak_(c__527);
+   rspeak_(527);
 // 						!DONT HAVE IT.
    return ret_val;
 
@@ -441,7 +419,7 @@ Bool put_(/*Bool flg*/) {
       goto L200;
    }
    if (!objact_(/*x*/)) {
-      rspeak_(c__560);
+      rspeak_(560);
    }
 // 						!STAR
    ret_val = true;
@@ -451,7 +429,7 @@ L200:
    if ((objcts_1.oflag2[prsvec_1.prsi - 1] & oflags_1.openbt) != 0 || (objcts_1.oflag1[prsvec_1.prsi - 1] & oflags_1.doorbt + oflags_1.contbt) != 0 || (objcts_1.oflag2[prsvec_1.prsi - 1] & oflags_1.vehbt) != 0) {
       goto L300;
    }
-   rspeak_(c__561);
+   rspeak_(561);
 // 						!CANT PUT IN THAT.
    return ret_val;
 
@@ -460,7 +438,7 @@ L300:
       goto L400;
    }
 // 						!IS IT OPEN?
-   rspeak_(c__562);
+   rspeak_(562);
 // 						!NO, JOKE
    return ret_val;
 
@@ -469,7 +447,7 @@ L400:
       goto L500;
    }
 // 						!INTO ITSELF?
-   rspeak_(c__563);
+   rspeak_(563);
 // 						!YES, JOKE.
    return ret_val;
 
@@ -478,15 +456,15 @@ L500:
       goto L600;
    }
 // 						!ALREADY INSIDE.
-   rspsb2_(c__564, objcts_1.odesc2[prsvec_1.prso - 1], objcts_1.odesc2[prsvec_1.prsi - 1]);
+   rspsb2_(564, objcts_1.odesc2[prsvec_1.prso - 1], objcts_1.odesc2[prsvec_1.prsi - 1]);
    ret_val = true;
    return ret_val;
 
 L600:
-   if (weight_(c__0, prsvec_1.prso, c__0) + weight_(c__0, prsvec_1.prsi, c__0) + objcts_1.osize[prsvec_1.prso - 1] <= objcts_1.ocapac[prsvec_1.prsi - 1]) {
+   if (weight_(0, prsvec_1.prso, 0) + weight_(0, prsvec_1.prsi, 0) + objcts_1.osize[prsvec_1.prso - 1] <= objcts_1.ocapac[prsvec_1.prsi - 1]) {
       goto L700;
    }
-   rspeak_(c__565);
+   rspeak_(565);
 // 						!THEN CANT DO IT.
    return ret_val;
 
@@ -514,7 +492,7 @@ L750:
    svi = prsvec_1.prsi;
    prsvec_1.prsa = vindex_1.takew;
    prsvec_1.prsi = 0;
-   if (!take_(c_false)) {
+   if (!take_(false)) {
       return ret_val;
    }
 // 						!TAKE OBJECT.
@@ -534,7 +512,7 @@ L800:
       goto L900;
    }
 // 						!OPEN?
-   rspsub_(c__566, objcts_1.odesc2[prsvec_1.prso - 1]);
+   rspsub_(566, objcts_1.odesc2[prsvec_1.prso - 1]);
 // 						!LOSE.
    return ret_val;
 
@@ -543,7 +521,7 @@ L900:
 // 						!SCORE OBJECT.
    objcts_1.ofval[prsvec_1.prso - 1] = 0;
    objcts_1.oflag2[prsvec_1.prso - 1] |= oflags_1.tchbt;
-   newsta_(prsvec_1.prso, c__0, c__0, c__0, play_1.winner);
+   newsta_(prsvec_1.prso, 0, 0, 0, play_1.winner);
 // 						!TEMPORARILY ON WINNER.
 
 L1000:
@@ -551,7 +529,7 @@ L1000:
       return ret_val;
    }
 // 						!NO, GIVE OBJECT A SHOT.
-   newsta_(prsvec_1.prso, c__2, c__0, prsvec_1.prsi, c__0);
+   newsta_(prsvec_1.prso, 2, 0, prsvec_1.prsi, 0);
 // 						!CONTAINED INSIDE.
    ret_val = true;
    return ret_val;
@@ -637,8 +615,8 @@ void valuac_(int v) {
          goto L500;
       }
       f = false;
-      rspsub_(c__580, objcts_1.odesc2[prsvec_1.prso - 1]);
-      f1 = take_(c_true);
+      rspsub_(580, objcts_1.odesc2[prsvec_1.prso - 1]);
+      f1 = take_(true);
       if (saveh != play_1.here) {
          return;
       }
@@ -658,8 +636,8 @@ L1000:
          goto L1500;
       }
       f = false;
-      rspsub_(c__580, objcts_1.odesc2[prsvec_1.prso - 1]);
-      f1 = drop_(/*c_true*/);
+      rspsub_(580, objcts_1.odesc2[prsvec_1.prso - 1]);
+      f1 = drop_(/*true*/);
       if (saveh != play_1.here) {
          return;
       }
@@ -680,8 +658,8 @@ L2000:
          goto L2500;
       }
       f = false;
-      rspsub_(c__580, objcts_1.odesc2[prsvec_1.prso - 1]);
-      f1 = put_(/*c_true*/);
+      rspsub_(580, objcts_1.odesc2[prsvec_1.prso - 1]);
+      f1 = put_(/*true*/);
       if (saveh != play_1.here) {
          return;
       }

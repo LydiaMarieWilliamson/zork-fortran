@@ -191,17 +191,6 @@ extern struct {
 
 #define findex_1 findex_
 
-// Table of constant values
-
-static int c__1 = 1;
-static int c__0 = 0;
-static int c__5 = 5;
-static int c__14 = 14;
-static int c__7 = 7;
-static int c__3 = 3;
-static int c__11 = 11;
-static int c__64 = 64;
-
 // GDT- GAME DEBUGGING TOOL
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
@@ -726,7 +715,7 @@ L22000:
    hack_1.thfflg = false;
 // 						!DISABLE ROBBER.
    hack_1.thfact = false;
-   newsta_(oindex_1.thief, c__0, c__0, c__0, c__0);
+   newsta_(oindex_1.thief, 0, 0, 0, 0);
 // 						!VANISH THIEF.
 {
    BegExSF(chan_1.outch, /*500*/"(\002 No robber.\002)", 0);
@@ -738,7 +727,7 @@ L22000:
 
 L23000:
    findex_1.trollf = true;
-   newsta_(oindex_1.troll, c__0, c__0, c__0, c__0);
+   newsta_(oindex_1.troll, 0, 0, 0, 0);
 {
    BegExSF(chan_1.outch, /*510*/"(\002 No troll.\002)", 0);
    EndExSF();
@@ -749,7 +738,7 @@ L23000:
 
 L24000:
    findex_1.cyclof = true;
-   newsta_(oindex_1.cyclo, c__0, c__0, c__0, c__0);
+   newsta_(oindex_1.cyclo, 0, 0, 0, 0);
 {
    BegExSF(chan_1.outch, /*520*/"(\002 No cyclops.\002)", 0);
    EndExSF();
@@ -780,7 +769,7 @@ L26000:
 
 L27000:
    findex_1.trollf = false;
-   newsta_(oindex_1.troll, c__0, rindex_1.mtrol, c__0, c__0);
+   newsta_(oindex_1.troll, 0, rindex_1.mtrol, 0, 0);
 {
    BegExSF(chan_1.outch, /*550*/"(\002 Restored troll.\002)", 0);
    EndExSF();
@@ -792,7 +781,7 @@ L27000:
 L28000:
    findex_1.cyclof = false;
    findex_1.magicf = false;
-   newsta_(oindex_1.cyclo, c__0, rindex_1.mcycl, c__0, c__0);
+   newsta_(oindex_1.cyclo, 0, rindex_1.mcycl, 0, 0);
 {
    BegExSF(chan_1.outch, /*560*/"(\002 Restored cyclops.\002)", 0);
    EndExSF();
@@ -818,7 +807,7 @@ L30000:
       goto L2200;
    }
 // 						!VALID OBJECT?
-   newsta_(j, c__0, c__0, c__0, play_1.winner);
+   newsta_(j, 0, 0, 0, play_1.winner);
 // 						!YES, TAKE OBJECT.
 {
    BegExSF(chan_1.outch, /*580*/"(\002 Taken.\002)", 0);
@@ -836,7 +825,7 @@ L31000:
 // AR--	ALTER ROOM ENTRY
 
 L32000:
-   if (!(j > 0 && j <= rooms_1.rlnt && (k > 0 && k <= c__5))) {
+   if (!(j > 0 && j <= rooms_1.rlnt && (k > 0 && k <= 5))) {
       goto L2200;
    }
 // 						!INDICES VALID?
@@ -856,7 +845,7 @@ L32000:
 // AO-- ALTER OBJECT ENTRY
 
 L33000:
-   if (!(j > 0 && j <= objcts_1.olnt && (k > 0 && k <= c__14))) {
+   if (!(j > 0 && j <= objcts_1.olnt && (k > 0 && k <= 14))) {
       goto L2200;
    }
 // 						!INDICES VALID?
@@ -873,7 +862,7 @@ L33000:
 // AA-- ALTER ADVS ENTRY
 
 L34000:
-   if (!(j > 0 && j <= advs_1.alnt && (k > 0 && k <= c__7))) {
+   if (!(j > 0 && j <= advs_1.alnt && (k > 0 && k <= 7))) {
       goto L2200;
    }
 // 						!INDICES VALID?
@@ -890,7 +879,7 @@ L34000:
 // AC-- ALTER CLOCK EVENTS
 
 L35000:
-   if (!(j > 0 && j <= cevent_1.clnt && (k > 0 && k <= c__3))) {
+   if (!(j > 0 && j <= cevent_1.clnt && (k > 0 && k <= 3))) {
       goto L2200;
    }
 // 						!INDICES VALID?
@@ -940,7 +929,7 @@ L36000:
 // AV-- ALTER VILLAINS
 
 L37000:
-   if (!(j > 0 && j <= vill_1.vlnt && (k > 0 && k <= c__5))) {
+   if (!(j > 0 && j <= vill_1.vlnt && (k > 0 && k <= 5))) {
       goto L2200;
    }
 // 						!INDICES VALID?
@@ -1100,7 +1089,7 @@ L46000:
 // AZ--	ALTER PUZZLE ROOM
 
 L47000:
-   if (!(j > 0 && j <= c__64)) {
+   if (!(j > 0 && j <= 64)) {
       goto L2200;
    }
 // 						!VALID ENTRY?

@@ -202,30 +202,6 @@ extern struct {
 
 #define oindex_1 oindex_
 
-// Table of constant values
-
-static int c__1 = 1;
-static int c__64 = 64;
-static int c__220 = 220;
-static int c__200 = 200;
-static int c__4 = 4;
-static int c__46 = 46;
-static int c__22 = 22;
-static int c__25 = 25;
-static int c__597 = 597;
-static int c__598 = 598;
-static int c__599 = 599;
-static int c__600 = 600;
-static int c__9 = 9;
-static int c__523 = 523;
-static int c__522 = 522;
-static int c__0 = 0;
-static int c__5 = 5;
-static int c__121 = 121;
-static int c__8 = 8;
-static int c__818 = 818;
-static int c__882 = 882;
-
 // SAVE- SAVE GAME STATE
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
@@ -357,11 +333,11 @@ void savegm_(void) {
    EndExSU();
 
    CloseF(1);
-   rspeak_(c__597);
+   rspeak_(597);
    return;
 
 L100:
-   rspeak_(c__598);
+   rspeak_(598);
 // 						!CANT DO IT.
 }
 
@@ -507,16 +483,16 @@ void rstrgm_(void) {
    EndInSU();
 
    CloseF(1);
-   rspeak_(c__599);
+   rspeak_(599);
    return;
 
 L100:
-   rspeak_(c__598);
+   rspeak_(598);
 // 						!CANT DO IT.
    return;
 
 L200:
-   rspeak_(c__600);
+   rspeak_(600);
 // 						!OBSOLETE VERSION
    CloseF(1);
 }
@@ -595,7 +571,7 @@ Bool walk_(/*int x*/) {
 
    ret_val = true;
 // 						!ASSUME WINS.
-   if (play_1.winner != aindex_1.player || lit_(play_1.here) || prob_(c__25, c__25)) {
+   if (play_1.winner != aindex_1.player || lit_(play_1.here) || prob_(25, 25)) {
       goto L500;
    }
    if (!findxt_(prsvec_1.prso, play_1.here)) {
@@ -614,7 +590,7 @@ Bool walk_(/*int x*/) {
          goto L300;
    }
 // 						!DECODE EXIT TYPE.
-   bug_(c__9, curxt_1.xtype);
+   bug_(9, curxt_1.xtype);
 
 L100:
    if (cxappl_(curxt_1.xactio) != 0) {
@@ -626,7 +602,7 @@ L100:
    }
 // 						!NO, FLAG ON?
 L200:
-   jigsup_(c__523);
+   jigsup_(523);
 // 						!BAD EXIT, GRUE
 // 						!
    return ret_val;
@@ -640,7 +616,7 @@ L300:
       goto L400;
    }
 // 						!NO, DOOR OPEN?
-   jigsup_(c__523);
+   jigsup_(523);
 // 						!BAD EXIT, GRUE
 // 						!
    return ret_val;
@@ -651,7 +627,7 @@ L400:
    }
 // 						!VALID ROOM, IS IT LIT?
 L450:
-   jigsup_(c__522);
+   jigsup_(522);
 // 						!NO, GRUE
 // 						!
    return ret_val;
@@ -694,7 +670,7 @@ L550:
          goto L800;
    }
 // 						!BRANCH ON EXIT TYPE.
-   bug_(c__9, curxt_1.xtype);
+   bug_(9, curxt_1.xtype);
 
 L700:
    if (cxappl_(curxt_1.xactio) != 0) {
@@ -738,7 +714,7 @@ L900:
    ret_val = moveto_(curxt_1.xroom1, play_1.winner);
 // 						!MOVE TO ROOM.
    if (ret_val) {
-      ret_val = rmdesc_(c__0);
+      ret_val = rmdesc_(0);
    }
 // 						!DESCRIBE ROOM.
    return ret_val;
@@ -847,7 +823,7 @@ static int cxappl_(int ri) {
       case 14:
          goto L14000;
    }
-   bug_(c__5, ri);
+   bug_(5, ri);
 
 // C1- COFFIN-CURE
 
@@ -865,10 +841,10 @@ L2000:
    }
 // 						!IF FLIPPED, NOTHING.
 L2500:
-   rspeak_(c__121);
+   rspeak_(121);
 // 						!SPIN THE COMPASS.
 L5000:
-   i__ = xpars_1.xelnt[xpars_1.xcond - 1] * rnd_(c__8);
+   i__ = xpars_1.xelnt[xpars_1.xcond - 1] * rnd_(8);
 // 						!CHOOSE RANDOM EXIT.
    curxt_1.xroom1 = exits_1.travel[rooms_1.rexit[play_1.here - 1] + i__ - 1]
       & xpars_1.xrmask;
@@ -1041,7 +1017,7 @@ L10200:
       curxt_1.xroom1 = findex_1.mloc - 1;
    }
 // 						!IF S.
-   rspeak_(c__818);
+   rspeak_(818);
 // 						!CLOSE DOOR.
    findex_1.wdopnf = false;
    ret_val = curxt_1.xroom1;
@@ -1093,7 +1069,7 @@ L14000:
       return ret_val;
    }
 // 						!LADDER HERE?
-   rspeak_(c__882);
+   rspeak_(882);
 // 						!YOU WIN.
    findex_1.frobzf = true;
 // 						!LET HIM OUT.

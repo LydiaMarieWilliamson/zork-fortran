@@ -64,15 +64,6 @@ extern struct {
 
 #define puzzle_1 puzzle_
 
-// Table of constant values
-
-static int c__0 = 0;
-static int c__8 = 8;
-static int c__870 = 870;
-static int c__871 = 871;
-static int c__874 = 874;
-static int c__875 = 875;
-
 // ENCRYP--	ENCRYPT PASSWORD
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
@@ -160,10 +151,10 @@ void cpgoto_(int st) {
 // 						!RELOCATE OBJECTS.
       if (objcts_1.oroom[i__ - 1] == rindex_1.cpuzz && (objcts_1.oflag2[i__ - 1] & oflags_1.actrbt + oflags_1.villbt) == 0) {
          i__2 = findex_1.cphere * hyper_1.hfactr;
-         newsta_(i__, c__0, i__2, c__0, c__0);
+         newsta_(i__, 0, i__2, 0, 0);
       }
       if (objcts_1.oroom[i__ - 1] == st * hyper_1.hfactr) {
-         newsta_(i__, c__0, rindex_1.cpuzz, c__0, c__0);
+         newsta_(i__, 0, rindex_1.cpuzz, 0, 0);
       }
 // L100:
    }
@@ -227,11 +218,11 @@ void cpinfo_(int rmk, int st) {
    EndExSF();
 
    if (st == 10) {
-      rspeak_(c__870);
+      rspeak_(870);
    }
 // 						!AT HOLE?
    if (st == 37) {
-      rspeak_(c__871);
+      rspeak_(871);
    }
 // 						!AT NICHE?
    i__ = 872;
@@ -244,11 +235,11 @@ void cpinfo_(int rmk, int st) {
    }
 // 						!AT DOOR?
    if (puzzle_1.cpvec[st] == -2) {
-      rspeak_(c__874);
+      rspeak_(874);
    }
 // 						!EAST LADDER?
    if (puzzle_1.cpvec[st - 2] == -3) {
-      rspeak_(c__875);
+      rspeak_(875);
    }
 // 						!WEST LADDER?
 }

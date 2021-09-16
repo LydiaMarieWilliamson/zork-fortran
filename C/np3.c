@@ -162,20 +162,6 @@ extern struct {
 
 #define aindex_1 aindex_
 
-// Table of constant values
-
-static int c_n1 = -1;
-static int c__0 = 0;
-static int c__623 = 623;
-static int c__624 = 624;
-static int c__601 = 601;
-static int c__566 = 566;
-static int c__445 = 445;
-static int c__665 = 665;
-static int c__672 = 672;
-static int c__558 = 558;
-static int c__559 = 559;
-
 // SYNMCH--	SYNTAX MATCHER
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
@@ -336,8 +322,8 @@ L3500:
    }
 // 						!TEST RESULT.
    i__1 = syntax_1.dobj & objflg_1.vpmask;
-   orphan_(c_n1, pv_1.act, c__0, i__1, c__0);
-   rspeak_(c__623);
+   orphan_(-1, pv_1.act, 0, i__1, 0);
+   rspeak_(623);
    return ret_val;
 
 // TRY TO FILL INDIRECT OBJECT SLOT IF THAT WAS THE PROBLEM.
@@ -357,14 +343,14 @@ L4000:
       pv_1.o1 = orphs_1.oflag & orphs_1.oslot;
    }
    i__1 = syntax_1.dobj & objflg_1.vpmask;
-   orphan_(c_n1, pv_1.act, pv_1.o1, i__1, c__0);
-   rspeak_(c__624);
+   orphan_(-1, pv_1.act, pv_1.o1, i__1, 0);
+   rspeak_(624);
    return ret_val;
 
 // TOTAL CHOMP
 
 L10000:
-   rspeak_(c__601);
+   rspeak_(601);
 // 						!CANT DO ANYTHING.
    return ret_val;
 // SYNMCH, PAGE 3
@@ -594,7 +580,7 @@ Bool takeit_(int obj, int sflag) {
    if ((objcts_1.oflag2[x - 1] & oflags_1.openbt) != 0) {
       goto L500;
    }
-   rspsub_(c__566, odo2);
+   rspsub_(566, odo2);
 // 						!CANT REACH.
    return ret_val;
 
@@ -608,7 +594,7 @@ L500:
 
 // SHOULD BE IN ROOM (VRBIT NE 0) AND CAN BE TAKEN (VTBIT NE 0)
 
-   if (schlst_(c__0, c__0, play_1.here, c__0, c__0, obj) <= 0) {
+   if (schlst_(0, 0, play_1.here, 0, 0, obj) <= 0) {
       goto L4000;
    }
 // 						!IF NOT, OK.
@@ -624,7 +610,7 @@ L500:
    if ((sflag & objflg_1.vcbit) == 0) {
       goto L4000;
    }
-   rspsub_(c__445, odo2);
+   rspsub_(445, odo2);
    return ret_val;
 
 // 1000--	IT SHOULD NOT BE IN THE ROOM.
@@ -635,10 +621,10 @@ L2000:
       goto L4000;
    }
 L1000:
-   if (schlst_(c__0, c__0, play_1.here, c__0, c__0, obj) <= 0) {
+   if (schlst_(0, 0, play_1.here, 0, 0, obj) <= 0) {
       goto L4000;
    }
-   rspsub_(c__665, odo2);
+   rspsub_(665, odo2);
    return ret_val;
 // TAKEIT, PAGE 3
 
@@ -653,19 +639,19 @@ L3000:
       goto L3500;
    }
 // 						!TAKE VEHICLE?
-   rspeak_(c__672);
+   rspeak_(672);
    return ret_val;
 
 L3500:
-   if (x != 0 && objcts_1.oadv[x - 1] == play_1.winner || weight_(c__0, obj, play_1.winner) + objcts_1.osize[obj - 1] <= state_1.mxload) {
+   if (x != 0 && objcts_1.oadv[x - 1] == play_1.winner || weight_(0, obj, play_1.winner) + objcts_1.osize[obj - 1] <= state_1.mxload) {
       goto L3700;
    }
-   rspeak_(c__558);
+   rspeak_(558);
 // 						!TOO BIG.
    return ret_val;
 
 L3700:
-   newsta_(obj, c__559, c__0, c__0, play_1.winner);
+   newsta_(obj, 559, 0, 0, play_1.winner);
 // 						!DO TAKE.
    objcts_1.oflag2[obj - 1] |= oflags_1.tchbt;
    scrupd_(objcts_1.ofval[obj - 1]);
@@ -729,7 +715,7 @@ int gwim_(int sflag, int sfw1, int sfw2) {
 // FIRST SEARCH ADVENTURER
 
    if ((sflag & objflg_1.vabit) != 0) {
-      nobj = fwim_(sfw1, sfw2, c__0, c__0, play_1.winner, nocare);
+      nobj = fwim_(sfw1, sfw2, 0, 0, play_1.winner, nocare);
    }
    if ((sflag & objflg_1.vrbit) != 0) {
       goto L100;
@@ -741,7 +727,7 @@ L50:
 // ALSO SEARCH ROOM
 
 L100:
-   robj = fwim_(sfw1, sfw2, play_1.here, c__0, c__0, nocare);
+   robj = fwim_(sfw1, sfw2, play_1.here, 0, 0, nocare);
    if (robj < 0) {
       goto L500;
    } else if (robj == 0) {

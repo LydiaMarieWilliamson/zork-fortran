@@ -178,72 +178,6 @@ extern struct {
 
 #define findex_1 findex_
 
-// Table of constant values
-
-static int c__6 = 6;
-static int c__639 = 639;
-static int c__640 = 640;
-static int c__673 = 673;
-static int c__674 = 674;
-static int c__0 = 0;
-static int c__675 = 675;
-static int c__676 = 676;
-static int c__213 = 213;
-static int c__641 = 641;
-static int c__642 = 642;
-static int c__643 = 643;
-static int c__644 = 644;
-static int c__649 = 649;
-static int c__650 = 650;
-static int c__651 = 651;
-static int c__658 = 658;
-static int c__645 = 645;
-static int c__646 = 646;
-static int c__647 = 647;
-static int c__648 = 648;
-static int c__860 = 860;
-static int c__662 = 662;
-static int c__666 = 666;
-static int c__667 = 667;
-static int c__80 = 80;
-static int c__876 = 876;
-static int c__877 = 877;
-static Bool c_true = true;
-static int c__751 = 751;
-static int c__752 = 752;
-static int c__753 = 753;
-static int c__756 = 756;
-static int c__757 = 757;
-static int c__758 = 758;
-static int c__759 = 759;
-static int c__760 = 760;
-static int c__763 = 763;
-static int c__764 = 764;
-static int c__765 = 765;
-static int c__766 = 766;
-static int c__767 = 767;
-static int c__8 = 8;
-static int c__768 = 768;
-static int c__769 = 769;
-static int c__798 = 798;
-static int c__778 = 778;
-static int c__779 = 779;
-static int c__780 = 780;
-static int c__809 = 809;
-static int c__810 = 810;
-static int c__797 = 797;
-static int c__806 = 806;
-static int c__807 = 807;
-static int c__808 = 808;
-static int c__832 = 832;
-static Bool c_false = false;
-static int c__843 = 843;
-static int c__838 = 838;
-static int c__863 = 863;
-static int c__5 = 5;
-static int c__864 = 864;
-static int c__846 = 846;
-
 // NOBJS-	NEW OBJECTS PROCESSOR
 // 	OBJECTS IN THIS MODULE CANNOT CALL RMINFO, JIGSUP,
 // 	MAJOR VERBS, OR OTHER NON-RESIDENT SUBROUTINES
@@ -376,7 +310,7 @@ Bool nobjs_(int ri/*, int arg*/) {
       case 21:
          goto L21000;
    }
-   bug_(c__6, ri);
+   bug_(6, ri);
 
 // RETURN HERE TO DECLARE FALSE RESULT
 
@@ -391,13 +325,13 @@ L1000:
       goto L1100;
    }
 // 						!EAT?
-   rspeak_(c__639);
+   rspeak_(639);
 // 						!JOKE.
    return ret_val;
 
 L1100:
    if (prsvec_1.prsa == vindex_1.burnw) {
-      rspeak_(c__640);
+      rspeak_(640);
    }
 // 						!BURN?  JOKE.
    goto L10;
@@ -417,7 +351,7 @@ L2100:
    if (prsvec_1.prsa != vindex_1.pushw && prsvec_1.prsa != vindex_1.movew && prsvec_1.prsa != vindex_1.takew && prsvec_1.prsa != vindex_1.rubw) {
       goto L2200;
    }
-   rspeak_(c__673);
+   rspeak_(673);
 // 						!HAND PASSES THRU.
    return ret_val;
 
@@ -425,7 +359,7 @@ L2200:
    if (prsvec_1.prsa != vindex_1.killw && prsvec_1.prsa != vindex_1.attacw && prsvec_1.prsa != vindex_1.mungw) {
       goto L2400;
    }
-   rspsub_(c__674, odi2);
+   rspsub_(674, odi2);
 // 						!PASSES THRU.
    return ret_val;
 
@@ -437,9 +371,9 @@ L2400:
       goto L2600;
    }
 // 						!THRU SCOL?
-   newsta_(prsvec_1.prso, c__0, rindex_1.bkbox, c__0, c__0);
+   newsta_(prsvec_1.prso, 0, rindex_1.bkbox, 0, 0);
 // 						!NO, THRU WALL.
-   rspsub_(c__675, odo2);
+   rspsub_(675, odo2);
 // 						!ENDS UP IN BOX ROOM.
    cevent_1.ctick[cindex_1.cevscl - 1] = 0;
 // 						!CANCEL ALARM.
@@ -452,9 +386,9 @@ L2600:
       goto L2900;
    }
 // 						!TRIED TO GO THRU?
-   newsta_(prsvec_1.prso, c__0, screen_1.scolrm, c__0, c__0);
+   newsta_(prsvec_1.prso, 0, screen_1.scolrm, 0, 0);
 // 						!SUCCESS.
-   rspsub_(c__676, odo2);
+   rspsub_(676, odo2);
 // 						!ENDS UP SOMEWHERE.
    cevent_1.ctick[cindex_1.cevscl - 1] = 0;
 // 						!CANCEL ALARM.
@@ -463,7 +397,7 @@ L2600:
    return ret_val;
 
 L2900:
-   rspeak_(c__213);
+   rspeak_(213);
 // 						!CANT DO IT.
    return ret_val;
 // NOBJS, PAGE 4
@@ -478,15 +412,15 @@ L3000:
       goto L3100;
    }
 // 						!THROW A TREASURE?
-   newsta_(prsvec_1.prso, c__641, c__0, c__0, c__0);
+   newsta_(prsvec_1.prso, 641, 0, 0, 0);
 // 						!NO, GO POP.
    return ret_val;
 
 L3100:
-   newsta_(prsvec_1.prso, c__0, c__0, c__0, c__0);
+   newsta_(prsvec_1.prso, 0, 0, 0, 0);
 // 						!YES, BYE BYE TREASURE.
-   rspsub_(c__642, odo2);
-   newsta_(oindex_1.zgnom, c__0, c__0, c__0, c__0);
+   rspsub_(642, odo2);
+   newsta_(oindex_1.zgnom, 0, 0, 0, 0);
 // 						!BYE BYE GNOME.
    cevent_1.ctick[cindex_1.cevzgo - 1] = 0;
 // 						!CANCEL EXIT.
@@ -498,14 +432,14 @@ L3200:
    if (prsvec_1.prsa != vindex_1.attacw && prsvec_1.prsa != vindex_1.killw && prsvec_1.prsa != vindex_1.mungw) {
       goto L3300;
    }
-   newsta_(oindex_1.zgnom, c__643, c__0, c__0, c__0);
+   newsta_(oindex_1.zgnom, 643, 0, 0, 0);
 // 						!VANISH GNOME.
    cevent_1.ctick[cindex_1.cevzgo - 1] = 0;
 // 						!CANCEL EXIT.
    return ret_val;
 
 L3300:
-   rspeak_(c__644);
+   rspeak_(644);
 // 						!GNOME IS IMPATIENT.
    return ret_val;
 
@@ -519,7 +453,7 @@ L4000:
       goto L4100;
    }
 // 						!OPEN ALREADY?
-   rspeak_(c__649);
+   rspeak_(649);
 // 						!YES.
    return ret_val;
 
@@ -528,7 +462,7 @@ L4100:
       goto L4200;
    }
 // 						!WITH SOMETHING?
-   rspeak_(c__650);
+   rspeak_(650);
 // 						!NO, CANT.
    return ret_val;
 
@@ -537,7 +471,7 @@ L4200:
       goto L4300;
    }
 // 						!WITH HANDS?
-   rspeak_(c__651);
+   rspeak_(651);
 // 						!NOT RECOMMENDED.
    return ret_val;
 
@@ -564,7 +498,7 @@ L4500:
 // 						!YOU BLEW IT.
 L4600:
    newsta_(oindex_1.begg, i__, objcts_1.oroom[oindex_1.egg - 1], objcts_1.ocan[oindex_1.egg - 1], objcts_1.oadv[oindex_1.egg - 1]);
-   newsta_(oindex_1.egg, c__0, c__0, c__0, c__0);
+   newsta_(oindex_1.egg, 0, 0, 0, 0);
 // 						!VANISH EGG.
    objcts_1.otval[oindex_1.begg - 1] = 2;
 // 						!BAD EGG HAS VALUE.
@@ -578,7 +512,7 @@ L4600:
    return ret_val;
 
 L4700:
-   newsta_(oindex_1.bcana, c__0, c__0, c__0, c__0);
+   newsta_(oindex_1.bcana, 0, 0, 0, 0);
 // 						!NO, VANISH IT.
    return ret_val;
 
@@ -586,9 +520,9 @@ L4800:
    if (prsvec_1.prsa != vindex_1.dropw || play_1.here != rindex_1.mtree) {
       goto L10;
    }
-   newsta_(oindex_1.begg, c__658, rindex_1.fore3, c__0, c__0);
+   newsta_(oindex_1.begg, 658, rindex_1.fore3, 0, 0);
 // 						!DROPPED EGG.
-   newsta_(oindex_1.egg, c__0, c__0, c__0, c__0);
+   newsta_(oindex_1.egg, 0, 0, 0, 0);
    objcts_1.otval[oindex_1.begg - 1] = 2;
    if (objcts_1.ocan[oindex_1.canar - 1] != oindex_1.egg) {
       goto L4700;
@@ -609,7 +543,7 @@ L5000:
       goto L5100;
    }
 // 						!RIGHT ONE?
-   rspeak_(c__645);
+   rspeak_(645);
 // 						!NO, BAD NEWS.
    return ret_val;
 
@@ -617,7 +551,7 @@ L5100:
    if (!findex_1.singsf && (play_1.here == rindex_1.mtree || play_1.here >= rindex_1.fore1 && play_1.here < rindex_1.clear)) {
       goto L5200;
    }
-   rspeak_(c__646);
+   rspeak_(646);
 // 						!NO, MEDIOCRE NEWS.
    return ret_val;
 
@@ -629,7 +563,7 @@ L5200:
       i__ = rindex_1.fore3;
    }
 // 						!PLACE BAUBLE.
-   newsta_(oindex_1.baubl, c__647, i__, c__0, c__0);
+   newsta_(oindex_1.baubl, 647, i__, 0, 0);
    return ret_val;
 
 // O37--	WHITE CLIFFS
@@ -638,7 +572,7 @@ L6000:
    if (prsvec_1.prsa != vindex_1.clmbw && prsvec_1.prsa != vindex_1.clmbuw && prsvec_1.prsa != vindex_1.clmbdw) {
       goto L10;
    }
-   rspeak_(c__648);
+   rspeak_(648);
 // 						!OH YEAH?
    return ret_val;
 
@@ -648,7 +582,7 @@ L7000:
    if ((i__1 = play_1.here - findex_1.mloc, abs(i__1)) != 1 || mrhere_(play_1.here) != 0 || prsvec_1.prsa != vindex_1.pushw) {
       goto L7100;
    }
-   rspeak_(c__860);
+   rspeak_(860);
 // 						!PUSHED MIRROR WALL.
    return ret_val;
 
@@ -656,7 +590,7 @@ L7100:
    if ((rooms_1.rflag[play_1.here - 1] & rflag_1.rnwall) == 0) {
       goto L10;
    }
-   rspeak_(c__662);
+   rspeak_(662);
 // 						!NO WALL.
    return ret_val;
 // NOBJS, PAGE 6
@@ -668,7 +602,7 @@ L8000:
       goto L8100;
    }
 // 						!FIND?
-   rspeak_(c__666);
+   rspeak_(666);
    return ret_val;
 
 L8100:
@@ -676,7 +610,7 @@ L8100:
       goto L10;
    }
 // 						!EXAMINE?
-   rspeak_(c__667);
+   rspeak_(667);
    return ret_val;
 
 // O40--	PUZZLE/SCOL WALLS
@@ -697,7 +631,7 @@ L9000:
       }
 // L9100:
    }
-   bug_(c__80, prsvec_1.prso);
+   bug_(80, prsvec_1.prso);
 // 						!WHAT?
 
 L9200:
@@ -722,7 +656,7 @@ L9200:
 // 						!PROCESS.
 
 L9250:
-   rspeak_(c__876);
+   rspeak_(876);
 // 						!CLEAR CORRIDOR.
    return ret_val;
 
@@ -732,7 +666,7 @@ L9300:
    }
 // 						!MOVABLE, ROOM TO MOVE?
 L9350:
-   rspeak_(c__877);
+   rspeak_(877);
 // 						!IMMOVABLE, NO ROOM.
    return ret_val;
 
@@ -752,7 +686,7 @@ L9400:
 // 						!ONWARD.
    cpinfo_(i__, nxt);
 // 						!DESCRIBE.
-   princr_(c_true, play_1.here);
+   princr_(true, play_1.here);
 // 						!PRINT ROOMS CONTENTS.
    rooms_1.rflag[play_1.here - 1] |= rflag_1.rseen;
    return ret_val;
@@ -807,7 +741,7 @@ L10100:
       goto L10200;
    }
 // 						!ALREADY LOWERED?
-   rspeak_(c__751);
+   rspeak_(751);
 // 						!CANT DO IT.
    return ret_val;
 
@@ -818,7 +752,7 @@ L10200:
 // 						!MIRROR N-S?
    findex_1.poleuf = 0;
 // 						!YES, LOWER INTO
-   rspeak_(c__752);
+   rspeak_(752);
 // 						!CHANNEL.
    return ret_val;
 
@@ -828,7 +762,7 @@ L10300:
    }
    findex_1.poleuf = 0;
 // 						!LOWER INTO HOLE.
-   rspeak_(c__753);
+   rspeak_(753);
    return ret_val;
 
 L10400:
@@ -850,7 +784,7 @@ L11000:
       goto L11300;
    }
 // 						!ALREADY PUSHED?
-   rspeak_(c__756);
+   rspeak_(756);
 // 						!BUTTON GOES IN.
    i__1 = objcts_1.olnt;
    for (i__ = 1; i__ <= i__1; ++i__) {
@@ -860,7 +794,7 @@ L11000:
       }
 // L11100:
    }
-   rspeak_(c__757);
+   rspeak_(757);
 // 						!NOTHING IN BEAM.
    return ret_val;
 
@@ -873,7 +807,7 @@ L11200:
    return ret_val;
 
 L11300:
-   rspeak_(c__758);
+   rspeak_(758);
 // 						!MIRROR ALREADYOPEN.
    return ret_val;
 // NOBJS, PAGE 8
@@ -884,7 +818,7 @@ L12000:
    if (prsvec_1.prsa != vindex_1.takew || prsvec_1.prso != oindex_1.rbeam) {
       goto L12100;
    }
-   rspeak_(c__759);
+   rspeak_(759);
 // 						!TAKE BEAM, JOKE.
    return ret_val;
 
@@ -903,9 +837,9 @@ L12200:
       goto L12300;
    }
 // 						!CARRYING?
-   newsta_(i__, c__0, play_1.here, c__0, c__0);
+   newsta_(i__, 0, play_1.here, 0, 0);
 // 						!DROP OBJ.
-   rspsub_(c__760, objcts_1.odesc2[i__ - 1]);
+   rspsub_(760, objcts_1.odesc2[i__ - 1]);
    return ret_val;
 
 L12300:
@@ -925,17 +859,17 @@ L13000:
    if (play_1.here == rindex_1.ncell || findex_1.lcell == 4 && (play_1.here == rindex_1.cell || play_1.here == rindex_1.scorr)) {
       goto L13100;
    }
-   rspeak_(c__763);
+   rspeak_(763);
 // 						!DOOR NOT THERE.
    return ret_val;
 
 L13100:
-   if (!opncls_(oindex_1.odoor, c__764, c__765)) {
+   if (!opncls_(oindex_1.odoor, 764, 765)) {
       goto L10;
    }
 // 						!OPEN/CLOSE?
    if (play_1.here == rindex_1.ncell && (objcts_1.oflag2[oindex_1.odoor - 1] & oflags_1.openbt) != 0) {
-      rspeak_(c__766);
+      rspeak_(766);
    }
    return ret_val;
 
@@ -945,7 +879,7 @@ L14000:
    if (prsvec_1.prsa != vindex_1.openw && prsvec_1.prsa != vindex_1.closew) {
       goto L14100;
    }
-   rspeak_(c__767);
+   rspeak_(767);
 // 						!DOOR WONT MOVE.
    return ret_val;
 
@@ -962,20 +896,20 @@ L14100:
 // 						!START INQUISITION.
    cevent_1.cflag[cindex_1.cevinq - 1] = true;
    cevent_1.ctick[cindex_1.cevinq - 1] = 2;
-   findex_1.quesno = rnd_(c__8);
+   findex_1.quesno = rnd_(8);
 // 						!SELECT QUESTION.
    findex_1.nqatt = 0;
    findex_1.corrct = 0;
-   rspeak_(c__768);
+   rspeak_(768);
 // 						!ANNOUNCE RULES.
-   rspeak_(c__769);
+   rspeak_(769);
    i__1 = findex_1.quesno + 770;
    rspeak_(i__1);
 // 						!ASK QUESTION.
    return ret_val;
 
 L14200:
-   rspeak_(c__798);
+   rspeak_(798);
 // 						!NO REPLY.
    return ret_val;
 
@@ -986,14 +920,14 @@ L15000:
       goto L10;
    }
 // 						!OPEN?
-   rspeak_(c__778);
+   rspeak_(778);
 // 						!CANT.
    return ret_val;
 
 // O47--	CELL DOOR
 
 L16000:
-   ret_val = opncls_(oindex_1.cdoor, c__779, c__780);
+   ret_val = opncls_(oindex_1.cdoor, 779, 780);
 // 						!OPEN/CLOSE?
    return ret_val;
 // NOBJS, PAGE 9
@@ -1005,10 +939,10 @@ L17000:
       goto L10;
    }
 // 						!PUSH?
-   rspeak_(c__809);
+   rspeak_(809);
 // 						!CLICK.
    if ((objcts_1.oflag2[oindex_1.cdoor - 1] & oflags_1.openbt) != 0) {
-      rspeak_(c__810);
+      rspeak_(810);
    }
 // 						!CLOSE CELL DOOR.
 
@@ -1017,10 +951,10 @@ L17000:
 // 						!RELOCATE OLD TO HYPER.
       if (objcts_1.oroom[i__ - 1] == rindex_1.cell && (objcts_1.oflag1[i__ - 1] & oflags_1.doorbt) == 0) {
          i__2 = findex_1.lcell * hyper_1.hfactr;
-         newsta_(i__, c__0, i__2, c__0, c__0);
+         newsta_(i__, 0, i__2, 0, 0);
       }
       if (objcts_1.oroom[i__ - 1] == findex_1.pnumb * hyper_1.hfactr) {
-         newsta_(i__, c__0, rindex_1.cell, c__0, c__0);
+         newsta_(i__, 0, rindex_1.cell, 0, 0);
       }
 // L17100:
    }
@@ -1060,11 +994,11 @@ L18000:
       goto L18100;
    }
 // 						!SPIN?
-   findex_1.pnumb = rnd_(c__8) + 1;
+   findex_1.pnumb = rnd_(8) + 1;
 // 						!WHEE
 // 						!
    i__1 = findex_1.pnumb + 712;
-   rspsub_(c__797, i__1);
+   rspsub_(797, i__1);
    return ret_val;
 
 L18100:
@@ -1075,7 +1009,7 @@ L18100:
       goto L18200;
    }
 // 						!TURN DIAL TO X?
-   rspeak_(c__806);
+   rspeak_(806);
 // 						!MUST SPECIFY.
    return ret_val;
 
@@ -1083,7 +1017,7 @@ L18200:
    if (prsvec_1.prsi >= oindex_1.num1 && prsvec_1.prsi <= oindex_1.num8) {
       goto L18300;
    }
-   rspeak_(c__807);
+   rspeak_(807);
 // 						!MUST BE DIGIT.
    return ret_val;
 
@@ -1091,13 +1025,13 @@ L18300:
    findex_1.pnumb = prsvec_1.prsi - oindex_1.num1 + 1;
 // 						!SET UP NEW.
    i__1 = findex_1.pnumb + 712;
-   rspsub_(c__808, i__1);
+   rspsub_(808, i__1);
    return ret_val;
 
 // O50--	GLOBAL MIRROR
 
 L19000:
-   ret_val = mirpan_(c__832, c_false);
+   ret_val = mirpan_(832, false);
    return ret_val;
 
 // O51--	GLOBAL PANEL
@@ -1110,12 +1044,12 @@ L20000:
    if (prsvec_1.prsa != vindex_1.openw && prsvec_1.prsa != vindex_1.closew) {
       goto L10;
    }
-   rspeak_(c__843);
+   rspeak_(843);
 // 						!PANEL IN DOOR, NOGO.
    return ret_val;
 
 L20100:
-   ret_val = mirpan_(c__838, c_true);
+   ret_val = mirpan_(838, true);
    return ret_val;
 
 // O52--	PUZZLE ROOM SLIT
@@ -1128,7 +1062,7 @@ L21000:
       goto L21100;
    }
 // 						!PUT CARD IN SLIT?
-   newsta_(prsvec_1.prso, c__863, c__0, c__0, c__0);
+   newsta_(prsvec_1.prso, 863, 0, 0, 0);
 // 						!KILL CARD.
    findex_1.cpoutf = true;
 // 						!OPEN DOOR.
@@ -1139,15 +1073,15 @@ L21100:
    if ((objcts_1.oflag1[prsvec_1.prso - 1] & oflags_1.victbt) == 0 && (objcts_1.oflag2[prsvec_1.prso - 1] & oflags_1.villbt) == 0) {
       goto L21200;
    }
-   i__1 = rnd_(c__5) + 552;
+   i__1 = rnd_(5) + 552;
    rspeak_(i__1);
 // 						!JOKE FOR VILL, VICT.
    return ret_val;
 
 L21200:
-   newsta_(prsvec_1.prso, c__0, c__0, c__0, c__0);
+   newsta_(prsvec_1.prso, 0, 0, 0, 0);
 // 						!KILL OBJECT.
-   rspsub_(c__864, odo2);
+   rspsub_(864, odo2);
 // 						!DESCRIBE.
    return ret_val;
 
@@ -1256,7 +1190,7 @@ L400:
       goto L500;
    }
 // 						!BROKEN MIRROR?
-   rspeak_(c__846);
+   rspeak_(846);
    return ret_val;
 
 L500:

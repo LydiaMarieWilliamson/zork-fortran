@@ -77,12 +77,6 @@ extern struct {
 
 #define xsrch_1 xsrch_
 
-// Table of constant values
-
-static int c__78 = 78;
-static int c__0 = 0;
-static int c__601 = 601;
-
 // RDLINE-	READ INPUT LINE
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
@@ -245,7 +239,7 @@ L200:
 L300:
    ret_val = true;
 L350:
-   orphan_(c__0, c__0, c__0, c__0, c__0);
+   orphan_(0, 0, 0, 0, 0);
 // 						!CLEAR ORPHANS.
 // D	if(dflag) write(0,*) 'parse good'
 // D	IF(DFLAG) PRINT 10,PARSE,PRSA,PRSO,PRSI
@@ -362,7 +356,7 @@ L200:
    }
 
    if (vbflag) {
-      rspeak_(c__601);
+      rspeak_(601);
    }
 // 						!GREEK TO ME, FAIL.
    return ret_val;

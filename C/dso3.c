@@ -51,12 +51,6 @@ extern struct {
 
 #define chan_1 chan_
 
-// Table of constant values
-
-static int c__10 = 10;
-static int c__1 = 1;
-static int c__6 = 6;
-
 // FINDXT- FIND EXIT FROM ROOM
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
@@ -107,7 +101,7 @@ L100:
          goto L130;
    }
 // 						!BRANCH ON ENTRY.
-   bug_(c__10, curxt_1.xtype);
+   bug_(10, curxt_1.xtype);
 
 L130:
    curxt_1.xobj = exits_1.travel[xi + 1] & xpars_1.xrmask;
@@ -236,7 +230,7 @@ L100:
    if (*(unsigned char *)ans == 'N' || *(unsigned char *)ans == 'n') {
       goto L300;
    }
-   rspeak_(c__6);
+   rspeak_(6);
 // 						!SCOLD.
    goto L100;
 

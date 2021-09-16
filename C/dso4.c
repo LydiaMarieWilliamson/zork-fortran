@@ -116,19 +116,6 @@ extern struct {
 
 #define findex_1 findex_
 
-// Table of constant values
-
-static int c__0 = 0;
-static Bool c_true = true;
-static int c__90 = 90;
-static int c__100 = 100;
-static int c__75 = 75;
-static int c__85 = 85;
-static int c__50 = 50;
-static int c__30 = 30;
-static int c__25 = 25;
-static int c__10 = 10;
-
 // ROBADV-- STEAL WINNER'S VALUABLES
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
@@ -155,7 +142,7 @@ int robadv_(int adv, int nr, int nc, int na) {
       if (objcts_1.oadv[i__ - 1] != adv || objcts_1.otval[i__ - 1] <= 0 || (objcts_1.oflag2[i__ - 1] & oflags_1.scrdbt) != 0) {
          goto L100;
       }
-      newsta_(i__, c__0, nr, nc, na);
+      newsta_(i__, 0, nr, nc, na);
 // 						!STEAL OBJECT
       ++ret_val;
    L100:
@@ -196,7 +183,7 @@ int robrm_(int rm, int pr, int nr, int nc, int na) {
       if (objcts_1.otval[i__ - 1] <= 0 || (objcts_1.oflag2[i__ - 1] & oflags_1.scrdbt) != 0 || (objcts_1.oflag1[i__ - 1] & oflags_1.visibt) == 0 || !prob_(pr, pr)) {
          goto L50;
       }
-      newsta_(i__, c__0, nr, nc, na);
+      newsta_(i__, 0, nr, nc, na);
       ++ret_val;
       objcts_1.oflag2[i__ - 1] |= oflags_1.tchbt;
       goto L100;
@@ -231,29 +218,29 @@ Bool winnin_(int vl, int hr) {
 
    vs = objcts_1.ocapac[vl - 1];
 // 						!VILLAIN STRENGTH
-   ps = vs - fights_(hr, c_true);
+   ps = vs - fights_(hr, true);
 // 						!HIS MARGIN OVER HERO
-   ret_val = prob_(c__90, c__100);
+   ret_val = prob_(90, 100);
    if (ps > 3) {
       return ret_val;
    }
 // 						!+3... 90% WINNING
-   ret_val = prob_(c__75, c__85);
+   ret_val = prob_(75, 85);
    if (ps > 0) {
       return ret_val;
    }
 // 						!>0... 75% WINNING
-   ret_val = prob_(c__50, c__30);
+   ret_val = prob_(50, 30);
    if (ps == 0) {
       return ret_val;
    }
 // 						!=0... 50% WINNING
-   ret_val = prob_(c__25, c__25);
+   ret_val = prob_(25, 25);
    if (vs > 1) {
       return ret_val;
    }
 // 						!ANY VILLAIN STRENGTH.
-   ret_val = prob_(c__10, c__0);
+   ret_val = prob_(10, 0);
    return ret_val;
 }
 

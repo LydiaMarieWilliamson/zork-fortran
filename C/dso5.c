@@ -107,10 +107,6 @@ extern struct {
 
 #define aindex_1 aindex_
 
-// Table of constant values
-
-static int c__3 = 3;
-
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
 // ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 // WRITTEN BY R. M. SUPNIK
@@ -193,7 +189,7 @@ L100:
    return ret_val;
 
 L200:
-   i__1 = rnd_(c__3) + 125;
+   i__1 = rnd_(3) + 125;
    rspeak_(i__1);
 // 						!DUMMY.
    return ret_val;

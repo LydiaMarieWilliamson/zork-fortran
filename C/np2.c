@@ -156,10 +156,6 @@ extern union {
 #define objvoc_1 (objvoc_._1)
 #define objvoc_2 (objvoc_._2)
 
-// Table of constant values
-
-static int c__0 = 0;
-
 // GETOBJ--	FIND OBJ DESCRIBED BY ADJ, NAME PAIR
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
@@ -221,7 +217,7 @@ int getobj_(int oidx, int aidx, int spcobj) {
    }
 // 						!LIT?
 
-   obj = schlst_(oidx, aidx, play_1.here, c__0, c__0, spcobj);
+   obj = schlst_(oidx, aidx, play_1.here, 0, 0, spcobj);
 // 						!SEARCH ROOM.
 // D	IF(DFLAG) PRINT 10,OBJ
 // D10	FORMAT(' SCHLST- ROOM SCH ',I6)
@@ -249,7 +245,7 @@ L200:
       goto L400;
    }
 // 						!IN VEHICLE?
-   nobj = schlst_(oidx, aidx, c__0, av, c__0, spcobj);
+   nobj = schlst_(oidx, aidx, 0, av, 0, spcobj);
 // 						!SEARCH VEHICLE.
 // D	IF(DFLAG) PRINT 20,NOBJ
 // D20	FORMAT(' SCHLST- VEH SCH  ',I6)
@@ -275,7 +271,7 @@ L300:
    obj = nobj;
 
 L400:
-   nobj = schlst_(oidx, aidx, c__0, c__0, play_1.winner, spcobj);
+   nobj = schlst_(oidx, aidx, 0, 0, play_1.winner, spcobj);
 // 						!SEARCH ADVENTURER.
 // D	IF(DFLAG) PRINT 30,NOBJ
 // D30	FORMAT(' SCHLST- ADV SCH  ',I6)

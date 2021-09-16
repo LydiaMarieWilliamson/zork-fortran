@@ -197,56 +197,6 @@ extern struct {
 
 #define findex_1 findex_
 
-// Table of constant values
-
-static int c__7 = 7;
-static int c__2 = 2;
-static int c__1 = 1;
-static int c__138 = 138;
-static int c__326 = 326;
-static int c__327 = 327;
-static int c__328 = 328;
-static int c__781 = 781;
-static int c__664 = 664;
-static int c__3 = 3;
-static int c__334 = 334;
-static int c__335 = 335;
-static int c__336 = 336;
-static int c__337 = 337;
-static int c__0 = 0;
-static int c__338 = 338;
-static int c__339 = 339;
-static int c__340 = 340;
-static int c__341 = 341;
-static Bool c_false = false;
-static Bool c_true = true;
-static int c__343 = 343;
-static int c__782 = 782;
-static int c__668 = 668;
-static int c__5 = 5;
-static int c__362 = 362;
-static int c__363 = 363;
-static int c__364 = 364;
-static int c__365 = 365;
-static int c__447 = 447;
-static int c__448 = 448;
-static int c__4 = 4;
-static int c__464 = 464;
-static int c__214 = 214;
-static int c__465 = 465;
-static int c__217 = 217;
-static int c__856 = 856;
-static int c__6 = 6;
-static int c__857 = 857;
-static int c__858 = 858;
-static int c__859 = 859;
-static int c__855 = 855;
-static int c__799 = 799;
-static int c__826 = 826;
-static int c__800 = 800;
-static int c__769 = 769;
-static int c__827 = 827;
-
 // SVERBS-	SIMPLE VERBS PROCESSOR
 // 	ALL VERBS IN THIS ROUTINE MUST BE INDEPENDANT
 // 	OF OBJECT ACTIONS
@@ -360,7 +310,7 @@ Bool sverbs_(int ri) {
    }
 
    if (ri == 0) {
-      bug_(c__7, ri);
+      bug_(7, ri);
    }
 // 						!ZERO IS VERBOTEN.
    if (ri <= mxnop) {
@@ -437,7 +387,7 @@ Bool sverbs_(int ri) {
       case 32:
          goto L27000;
    }
-   bug_(c__7, ri);
+   bug_(7, ri);
 
 // ALL VERB PROCESSORS RETURN HERE TO DECLARE FAILURE.
 
@@ -466,17 +416,17 @@ L100:
 // V65--	ROOM
 
 L65000:
-   ret_val = rmdesc_(c__2);
+   ret_val = rmdesc_(2);
 // 						!DESCRIBE ROOM ONLY.
    return ret_val;
 
 // V66--	OBJECTS
 
 L66000:
-   ret_val = rmdesc_(c__1);
+   ret_val = rmdesc_(1);
 // 						!DESCRIBE OBJ ONLY.
    if (!play_1.telflg) {
-      rspeak_(c__138);
+      rspeak_(138);
    }
 // 						!NO OBJECTS.
    return ret_val;
@@ -506,7 +456,7 @@ L1000:
    findex_1.brieff = true;
 // 						!BRIEF DESCRIPTIONS.
    findex_1.superf = false;
-   rspeak_(c__326);
+   rspeak_(326);
    return ret_val;
 
 // V71--	VERBOSE.  CLEAR FLAGS.
@@ -515,14 +465,14 @@ L2000:
    findex_1.brieff = false;
 // 						!LONG DESCRIPTIONS.
    findex_1.superf = false;
-   rspeak_(c__327);
+   rspeak_(327);
    return ret_val;
 
 // V72--	SUPERBRIEF.  SET FLAG.
 
 L3000:
    findex_1.superf = true;
-   rspeak_(c__328);
+   rspeak_(328);
    return ret_val;
 
 // V73-- STAY (USED IN ENDGAME).
@@ -532,7 +482,7 @@ L4000:
       goto L4100;
    }
 // 						!TELL MASTER, STAY.
-   rspeak_(c__781);
+   rspeak_(781);
 // 						!HE DOES.
    cevent_1.ctick[cindex_1.cevfol - 1] = 0;
 // 						!NOT FOLLOWING.
@@ -540,7 +490,7 @@ L4000:
 
 L4100:
    if (play_1.winner == aindex_1.player) {
-      rspeak_(c__664);
+      rspeak_(664);
    }
 // 						!JOKE.
    return ret_val;
@@ -562,7 +512,7 @@ L6000:
    i__ = 330;
 // 						!ASSUME WATER.
    if ((rooms_1.rflag[play_1.here - 1] & rflag_1.rwater + rflag_1.rfill) == 0) {
-      i__ = rnd_(c__3) + 331;
+      i__ = rnd_(3) + 331;
    }
    rspeak_(i__);
    return ret_val;
@@ -574,12 +524,12 @@ L7000:
       goto L7100;
    }
 // 						!IN BARREL?
-   rspeak_(c__334);
+   rspeak_(334);
 // 						!NO, JOKE.
    return ret_val;
 
 L7100:
-   jigsup_(c__335);
+   jigsup_(335);
 // 						!OVER FALLS.
    return ret_val;
 
@@ -589,12 +539,12 @@ L8000:
    if (play_1.here == rindex_1.mcycl && qhere_(oindex_1.cyclo, play_1.here)) {
       goto L8100;
    }
-   rspeak_(c__336);
+   rspeak_(336);
 // 						!NOT HERE, JOKE.
    return ret_val;
 
 L8100:
-   newsta_(oindex_1.cyclo, c__337, c__0, c__0, c__0);
+   newsta_(oindex_1.cyclo, 337, 0, 0, 0);
 // 						!CYCLOPS FLEES.
    findex_1.cyclof = true;
 // 						!SET ALL FLAGS.
@@ -611,11 +561,11 @@ L9000:
 // 						!IN RIDDLE ROOM?
    findex_1.riddlf = true;
 // 						!YES, SOLVED IT.
-   rspeak_(c__338);
+   rspeak_(338);
    return ret_val;
 
 L9100:
-   rspeak_(c__339);
+   rspeak_(339);
 // 						!WELL, WHAT?
    return ret_val;
 
@@ -632,12 +582,12 @@ L10000:
    }
 // 						!FORE1 STILL THERE?
 L10050:
-   rspeak_(c__340);
+   rspeak_(340);
 // 						!JOKE.
    return ret_val;
 
 L10100:
-   f = rmdesc_(c__3);
+   f = rmdesc_(3);
 // 						!MOVED, DESCRIBE.
    return ret_val;
 
@@ -654,7 +604,7 @@ L11000:
    }
 // 						!TREASURE ROOM THERE?
 L11050:
-   rspeak_(c__341);
+   rspeak_(341);
 // 						!NOTHING HAPPENS.
    return ret_val;
 
@@ -671,7 +621,7 @@ L12000:
    }
 // 						!TEMP1 STILL THERE?
 L12050:
-   rspeak_(c__341);
+   rspeak_(341);
 // 						!NOTHING HAPPENS.
    return ret_val;
 
@@ -690,15 +640,15 @@ L13000:
 // V83--	SCORE.  PRINT SCORE.
 
 L14000:
-   score_(c_false);
+   score_(false);
    return ret_val;
 
 // V84--	QUIT.  FINISH OUT THE GAME.
 
 L15000:
-   score_(c_true);
+   score_(true);
 // 						!TELLL SCORE.
-   if (!yesno_(c__343, c__0, c__0)) {
+   if (!yesno_(343, 0, 0)) {
       return ret_val;
    }
 // 						!ASK FOR Y/N DECISION.
@@ -714,7 +664,7 @@ L16000:
       return ret_val;
    }
 // 						!TELL MASTER, FOLLOW.
-   rspeak_(c__782);
+   rspeak_(782);
    cevent_1.ctick[cindex_1.cevfol - 1] = -1;
 // 						!STARTS FOLLOWING.
    return ret_val;
@@ -731,11 +681,11 @@ L17000:
 // 						!FAKE OUT FROMDR.
    cevent_1.ctick[cindex_1.cevscl - 1] = 6;
 // 						!START ALARM.
-   rspeak_(c__668);
+   rspeak_(668);
 // 						!DISORIENT HIM.
    f = moveto_(screen_1.scolrm, play_1.winner);
 // 						!INTO ROOM.
-   f = rmdesc_(c__3);
+   f = rmdesc_(3);
 // 						!DESCRIBE.
    return ret_val;
 
@@ -769,7 +719,7 @@ L17400:
    i__ = 671;
 // 						!JOKE.
    if (objcts_1.oroom[prsvec_1.prso - 1] != 0) {
-      i__ = rnd_(c__5) + 552;
+      i__ = rnd_(5) + 552;
    }
 // 						!SPECIAL JOKES IF CARRY.
    rspeak_(i__);
@@ -788,11 +738,11 @@ L17500:
 // 						!DECLARE NEW SCOLRM.
    cevent_1.ctick[cindex_1.cevscl - 1] = 0;
 // 						!CANCEL ALARM.
-   rspeak_(c__668);
+   rspeak_(668);
 // 						!DISORIENT HIM.
    f = moveto_(rindex_1.bkbox, play_1.winner);
 // 						!BACK IN BOX ROOM.
-   f = rmdesc_(c__3);
+   f = rmdesc_(3);
    return ret_val;
 
 // V87--	RING.  A JOKE.
@@ -815,7 +765,7 @@ L19000:
       goto L19100;
    }
 // 						!BRUSH TEETH?
-   rspeak_(c__362);
+   rspeak_(362);
 // 						!NO, JOKE.
    return ret_val;
 
@@ -824,7 +774,7 @@ L19100:
       goto L19200;
    }
 // 						!WITH SOMETHING?
-   rspeak_(c__363);
+   rspeak_(363);
 // 						!NO, JOKE.
    return ret_val;
 
@@ -832,12 +782,12 @@ L19200:
    if (prsvec_1.prsi == oindex_1.putty && objcts_1.oadv[oindex_1.putty - 1] == play_1.winner) {
       goto L19300;
    }
-   rspsub_(c__364, odi2);
+   rspsub_(364, odi2);
 // 						!NO, JOKE.
    return ret_val;
 
 L19300:
-   jigsup_(c__365);
+   jigsup_(365);
 // 						!YES, DEAD
 // 						!
 // 						!
@@ -909,7 +859,7 @@ L22000:
       goto L22100;
    }
 // 						!HERE?
-   rspeak_(c__447);
+   rspeak_(447);
 // 						!NO, JOKE.
    return ret_val;
 
@@ -917,7 +867,7 @@ L22100:
    if ((objcts_1.oflag2[prsvec_1.prso - 1] & oflags_1.villbt) == 0) {
       goto L22300;
    }
-   rspsub_(c__448, odo2);
+   rspsub_(448, odo2);
 // 						!CANT JUMP VILLAIN.
    return ret_val;
 
@@ -930,14 +880,14 @@ L22200:
       goto L22400;
    }
 L22300:
-   i__1 = rnd_(c__5) + 314;
+   i__1 = rnd_(5) + 314;
    rspeak_(i__1);
 // 						!WHEEEE
 // 						!
    return ret_val;
 
 L22400:
-   i__1 = rnd_(c__4) + 449;
+   i__1 = rnd_(4) + 449;
    jigsup_(i__1);
 // 						!FATAL LEAP.
    return ret_val;
@@ -950,14 +900,14 @@ L23000:
       goto L23200;
    }
 L23100:
-   rspeak_(c__464);
+   rspeak_(464);
 // 						!NOT LOCK GRATE.
    return ret_val;
 
 L23200:
    findex_1.grunlf = false;
 // 						!GRATE NOW LOCKED.
-   rspeak_(c__214);
+   rspeak_(214);
    exits_1.travel[rooms_1.rexit[play_1.here - 1]] = 214;
 // 						!CHANGE EXIT STATUS.
    return ret_val;
@@ -972,14 +922,14 @@ L24000:
       goto L24200;
    }
 // 						!GOT KEYS?
-   rspsub_(c__465, odi2);
+   rspsub_(465, odi2);
 // 						!NO, JOKE.
    return ret_val;
 
 L24200:
    findex_1.grunlf = true;
 // 						!UNLOCK GRATE.
-   rspeak_(c__217);
+   rspeak_(217);
    exits_1.travel[rooms_1.rexit[play_1.here - 1]] = 217;
 // 						!CHANGE EXIT STATUS.
    return ret_val;
@@ -987,7 +937,7 @@ L24200:
 // V94--	DIAGNOSE.
 
 L25000:
-   i__ = fights_(play_1.winner, c_false);
+   i__ = fights_(play_1.winner, false);
 // 						!GET FIGHTS STRENGTH.
    j = advs_1.astren[play_1.winner - 1];
 // 						!GET HEALTH.
@@ -1080,7 +1030,7 @@ L26300:
       goto L26400;
    }
 // 						!ANY INPUT?
-   rspeak_(c__856);
+   rspeak_(856);
 // 						!NO, HO HUM.
    return ret_val;
 
@@ -1109,12 +1059,12 @@ L26400:
    return ret_val;
 
 L26550:
-   rspeak_(c__857);
+   rspeak_(857);
 // 						!HE'S GOT ONE ALREADY.
    return ret_val;
 
 L26575:
-   rspeak_(c__858);
+   rspeak_(858);
 // 						!HE'S NOT IN ENDGAME.
    return ret_val;
 
@@ -1131,13 +1081,13 @@ L26600:
    }
    findex_1.spellf = true;
 // 						!IT WORKS.
-   rspeak_(c__859);
+   rspeak_(859);
    cevent_1.ctick[cindex_1.cevste - 1] = 1;
 // 						!FORCE START.
    return ret_val;
 
 L26800:
-   rspeak_(c__855);
+   rspeak_(855);
 // 						!TOO LATE.
    return ret_val;
 // SVERBS, PAGE 8
@@ -1148,7 +1098,7 @@ L27000:
    if (prsvec_1.prscon > 1 && play_1.here == rindex_1.fdoor && findex_1.inqstf) {
       goto L27100;
    }
-   rspeak_(c__799);
+   rspeak_(799);
 // 						!NO ONE LISTENS.
    prsvec_1.prscon = 1;
    return ret_val;
@@ -1203,7 +1153,7 @@ L27100:
    return ret_val;
 
 L27400:
-   rspeak_(c__826);
+   rspeak_(826);
 // 						!ALL OVER.
    cevent_1.cflag[cindex_1.cevinq - 1] = false;
 // 						!LOSE.
@@ -1214,7 +1164,7 @@ L27500:
 // 						!KILL REST OF LINE.
    ++findex_1.corrct;
 // 						!GOT IT RIGHT.
-   rspeak_(c__800);
+   rspeak_(800);
 // 						!HOORAY.
    if (findex_1.corrct >= 3) {
       goto L27600;
@@ -1224,14 +1174,14 @@ L27500:
 // 						!NO, START AGAIN.
    findex_1.quesno = (findex_1.quesno + 3) % 8;
    findex_1.nqatt = 0;
-   rspeak_(c__769);
+   rspeak_(769);
 // 						!ASK NEXT QUESTION.
    i__1 = findex_1.quesno + 770;
    rspeak_(i__1);
    return ret_val;
 
 L27600:
-   rspeak_(c__827);
+   rspeak_(827);
 // 						!QUIZ OVER,
    cevent_1.cflag[cindex_1.cevinq - 1] = false;
    objcts_1.oflag2[oindex_1.qdoor - 1] |= oflags_1.openbt;

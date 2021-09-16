@@ -71,12 +71,6 @@ extern struct {
 
 #define findex_1 findex_
 
-// Table of constant values
-
-static int c__502 = 502;
-static int c__578 = 578;
-static int c__573 = 573;
-
 // PRINCR- PRINT CONTENTS OF ROOM
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
@@ -233,7 +227,7 @@ void invent_(int adv) {
       }
       rspsub_(i__, objcts_1.odesc2[advs_1.aobj[adv - 1] - 1]);
       i__ = 0;
-      rspsub_(c__502, objcts_1.odesc2[j - 1]);
+      rspsub_(502, objcts_1.odesc2[j - 1]);
    L10:
       ;
    }
@@ -243,7 +237,7 @@ void invent_(int adv) {
    }
 // 						!ANY OBJECTS?
    if (adv == aindex_1.player) {
-      rspeak_(c__578);
+      rspeak_(578);
    }
 // 						!NO, TELL HIM.
    return;
@@ -256,7 +250,7 @@ L25:
          goto L100;
       }
       if (!qempty_(j)) {
-         princo_(j, c__573);
+         princo_(j, 573);
       }
 // 						!IF NOT EMPTY, LIST.
    L100:
@@ -288,7 +282,7 @@ void princo_(int obj, int desc) {
    for (i__ = 1; i__ <= i__1; ++i__) {
 // 						!LOOP THRU.
       if (objcts_1.ocan[i__ - 1] == obj) {
-         rspsub_(c__502, objcts_1.odesc2[i__ - 1]);
+         rspsub_(502, objcts_1.odesc2[i__ - 1]);
       }
 // L100:
    }

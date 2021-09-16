@@ -221,17 +221,6 @@ extern struct {
 
 #define findex_1 findex_
 
-// Table of constant values
-
-static int c__1 = 1;
-static int c__200 = 200;
-static int c__900 = 900;
-static int c__220 = 220;
-static int c__20 = 20;
-static int c__25 = 25;
-static int c__4 = 4;
-static int c__1820 = 1820;
-
 // INIT-- DUNGEON INITIALIZATION SUBROUTINE
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142

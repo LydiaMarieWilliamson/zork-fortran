@@ -170,25 +170,6 @@ extern struct {
 
 #define vindex_1 vindex_
 
-// Table of constant values
-
-static int c__0 = 0;
-static int c__1 = 1;
-static int c__432 = 432;
-static int c__10 = 10;
-static int c__9 = 9;
-static int c__8 = 8;
-static int c_n10 = -10;
-static int c__625 = 625;
-static int c__7 = 7;
-static Bool c_false = false;
-static int c__40 = 40;
-static int c__100 = 100;
-static int c__2 = 2;
-static int c__430 = 430;
-static int c__80 = 80;
-static int c__431 = 431;
-
 // RESIDENT SUBROUTINES FOR DUNGEON
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
@@ -204,7 +185,7 @@ static int c__431 = 431;
 void rspeak_(int n) {
    extern void rspsb2_(int, int, int);
 
-   rspsb2_(n, c__0, c__0);
+   rspsb2_(n, 0, 0);
 }
 
 // RSPSUB-- OUTPUT RANDOM MESSAGE WITH SUBSTITUTABLE ARGUMENT
@@ -216,7 +197,7 @@ void rspeak_(int n) {
 void rspsub_(int n, int s1) {
    extern void rspsb2_(int, int, int);
 
-   rspsb2_(n, s1, c__0);
+   rspsb2_(n, s1, 0);
 }
 
 // RSPSB2-- OUTPUT RANDOM MESSAGE WITH UP TO TWO SUBSTITUTABLE ARGUMENTS
@@ -428,7 +409,7 @@ Bool objact_(/*int x*/) {
       goto L100;
    }
 // 						!IND OBJECT?
-   if (oappli_(objcts_1.oactio[prsvec_1.prsi - 1], c__0)) {
+   if (oappli_(objcts_1.oactio[prsvec_1.prsi - 1], 0)) {
       return ret_val;
    }
 // 						!YES, LET IT HANDLE.
@@ -438,7 +419,7 @@ L100:
       goto L200;
    }
 // 						!DIR OBJECT?
-   if (oappli_(objcts_1.oactio[prsvec_1.prso - 1], c__0)) {
+   if (oappli_(objcts_1.oactio[prsvec_1.prso - 1], 0)) {
       return ret_val;
    }
 // 						!YES, LET IT HANDLE.
@@ -634,9 +615,9 @@ void jigsup_(int desc) {
       goto L100;
    }
 // 						!HIMSELF?
-   rspsub_(c__432, objcts_1.odesc2[advs_1.aobj[play_1.winner - 1] - 1]);
+   rspsub_(432, objcts_1.odesc2[advs_1.aobj[play_1.winner - 1] - 1]);
 // 						!NO, SAY WHO DIED.
-   newsta_(advs_1.aobj[play_1.winner - 1], c__0, c__0, c__0, c__0);
+   newsta_(advs_1.aobj[play_1.winner - 1], 0, 0, 0, 0);
 // 						!SEND TO HYPER SPACE.
    return;
 
@@ -649,7 +630,7 @@ L100:
       goto L1000;
    }
 // 						!DEAD TWICE? KICK HIM OFF.
-   if (!yesno_(c__10, c__9, c__8)) {
+   if (!yesno_(10, 9, 8)) {
       goto L1100;
    }
 // 						!CONTINUE?
@@ -664,19 +645,19 @@ L100:
    }
 
    ++state_1.deaths;
-   scrupd_(c_n10);
+   scrupd_(-10);
 // 						!CHARGE TEN POINTS.
    f = moveto_(rindex_1.fore1, play_1.winner);
 // 						!REPOSITION HIM.
    findex_1.egyptf = true;
 // 						!RESTORE COFFIN.
    if (objcts_1.oadv[oindex_1.coffi - 1] == play_1.winner) {
-      newsta_(oindex_1.coffi, c__0, rindex_1.egypt, c__0, c__0);
+      newsta_(oindex_1.coffi, 0, rindex_1.egypt, 0, 0);
    }
    objcts_1.oflag2[oindex_1.door - 1] &= ~oflags_1.tchbt;
    objcts_1.oflag1[oindex_1.robot - 1] = (objcts_1.oflag1[oindex_1.robot - 1] | oflags_1.visibt) & ~oflags_1.ndscbt;
    if (objcts_1.oroom[oindex_1.lamp - 1] != 0 || objcts_1.oadv[oindex_1.lamp - 1] == play_1.winner) {
-      newsta_(oindex_1.lamp, c__0, rindex_1.lroom, c__0, c__0);
+      newsta_(oindex_1.lamp, 0, rindex_1.lroom, 0, 0);
    }
 
 // NOW REDISTRIBUTE HIS VALUABLES AND OTHER BELONGINGS.
@@ -698,7 +679,7 @@ L100:
          goto L400;
       }
 // 						!MOVE TO RANDOM LOCATIONS.
-      newsta_(j, c__0, rlist[i__ - 1], c__0, c__0);
+      newsta_(j, 0, rlist[i__ - 1], 0, 0);
    L200:
       ;
    }
@@ -719,7 +700,7 @@ L400:
       if ((rooms_1.rflag[i__ - 1] & nonofl) != 0) {
          goto L250;
       }
-      newsta_(j, c__0, i__, c__0, c__0);
+      newsta_(j, 0, i__, 0, 0);
 // 						!YES, MOVE.
    L300:
       ;
@@ -737,7 +718,7 @@ L400:
       if ((rooms_1.rflag[i__ - 1] & nonofl) != 0) {
          goto L450;
       }
-      newsta_(j, c__0, i__, c__0, c__0);
+      newsta_(j, 0, i__, 0, 0);
    L500:
       ;
    }
@@ -746,15 +727,15 @@ L400:
 // CAN'T OR WON'T CONTINUE, CLEAN UP AND EXIT.
 
 L900:
-   rspeak_(c__625);
+   rspeak_(625);
 // 						!IN ENDGAME, LOSE.
    goto L1100;
 
 L1000:
-   rspeak_(c__7);
+   rspeak_(7);
 // 						!INVOLUNTARY EXIT.
 L1100:
-   score_(c_false);
+   score_(false);
 // 						!TELL SCORE.
    CloseF(chan_1.dbch);
    exit_();
@@ -799,7 +780,7 @@ int oactor_(int obj) {
 // 						!FOUND IT?
 // L100:
    }
-   bug_(c__40, obj);
+   bug_(40, obj);
 // 						!NO, DIE.
    return ret_val;
 }
@@ -828,7 +809,7 @@ Bool prob_(int g, int b) {
       i__ = b;
    }
 // 						!IF BAD, TOO BAD.
-   ret_val = rnd_(c__100) < i__;
+   ret_val = rnd_(100) < i__;
 // 						!COMPUTE.
    return ret_val;
 }
@@ -904,7 +885,7 @@ L50:
       goto L100;
    }
 // 						!PLAYER JUST MOVE?
-   rspeak_(c__2);
+   rspeak_(2);
 // 						!NO, JUST SAY DONE.
    prsvec_1.prsa = vindex_1.walkiw;
 // 						!SET UP WALK IN ACTION.
@@ -915,7 +896,7 @@ L100:
       goto L300;
    }
 // 						!LIT?
-   rspeak_(c__430);
+   rspeak_(430);
 // 						!WARN OF GRUE.
    ret_val = false;
    return ret_val;
@@ -929,7 +910,7 @@ L300:
 // 						!OBJ ONLY?
    i__ = rooms_1.rdesc2 - play_1.here;
 // 						!ASSUME SHORT DESC.
-   if (full == 0 && (findex_1.superf || (rooms_1.rflag[play_1.here - 1] & rflag_1.rseen) != 0 && (findex_1.brieff || prob_(c__80, c__80)))) {
+   if (full == 0 && (findex_1.superf || (rooms_1.rflag[play_1.here - 1] & rflag_1.rseen) != 0 && (findex_1.brieff || prob_(80, 80)))) {
       goto L400;
    }
    i__ = rooms_1.rdesc1[play_1.here - 1];
@@ -953,7 +934,7 @@ L400:
 // 						!OUTPUT DESCRIPTION.
 L500:
    if (advs_1.avehic[play_1.winner - 1] != 0) {
-      rspsub_(c__431, objcts_1.odesc2[advs_1.avehic[play_1.winner - 1] - 1]);
+      rspsub_(431, objcts_1.odesc2[advs_1.avehic[play_1.winner - 1] - 1]);
    }
 
 L600:

@@ -90,13 +90,6 @@ extern struct {
 
 #define cindex_1 cindex_
 
-// Table of constant values
-
-static int c__427 = 427;
-static int c__0 = 0;
-static int c__428 = 428;
-static int c__1 = 1;
-
 // MOVETO- MOVE PLAYER TO NEW ROOM
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
@@ -148,7 +141,7 @@ Bool moveto_(int nr, int who) {
       goto L500;
    }
 // 						!NO, GOING TO LAND?
-   rspeak_(c__427);
+   rspeak_(427);
 // 						!CAN'T GO WITHOUT VEHICLE.
    return ret_val;
 
@@ -184,10 +177,10 @@ L500:
 
 L600:
    if (who != aindex_1.player) {
-      newsta_(advs_1.aobj[who - 1], c__0, nr, c__0, c__0);
+      newsta_(advs_1.aobj[who - 1], 0, nr, 0, 0);
    }
    if (j != 0) {
-      newsta_(j, c__0, nr, c__0, c__0);
+      newsta_(j, 0, nr, 0, 0);
    }
    play_1.here = nr;
    advs_1.aroom[who - 1] = play_1.here;
@@ -197,7 +190,7 @@ L600:
    return ret_val;
 
 L800:
-   rspsub_(c__428, objcts_1.odesc2[j - 1]);
+   rspsub_(428, objcts_1.odesc2[j - 1]);
 // 						!WRONG VEHICLE.
    return ret_val;
 }

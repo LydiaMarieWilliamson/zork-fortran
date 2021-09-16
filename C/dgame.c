@@ -154,18 +154,6 @@ extern struct {
 
 #define vill_1 vill_
 
-// Table of constant values
-
-static int c__1 = 1;
-static int c__3 = 3;
-static Bool c_true = true;
-static int c__0 = 0;
-static int c__571 = 571;
-static Bool c_false = false;
-static int c__602 = 602;
-static int c__341 = 341;
-static int c__2 = 2;
-
 // GAME- MAIN COMMAND LOOP FOR DUNGEON
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
@@ -235,9 +223,9 @@ void game_(void) {
 
 // START UP, DESCRIBE CURRENT LOCATION.
 
-   rspeak_(c__1);
+   rspeak_(1);
 // 						!WELCOME ABOARD.
-   f = rmdesc_(c__3);
+   f = rmdesc_(3);
 // 						!START GAME.
 
 // NOW LOOP, READING AND EXECUTING COMMANDS.
@@ -248,7 +236,7 @@ L100:
    play_1.telflg = false;
 // 						!ASSUME NOTHING TOLD.
    if (prsvec_1.prscon <= 1) {
-      rdline_(input_1.inbuf, input_1.inlnt, c__1, sizeof input_1.inbuf[0]);
+      rdline_(input_1.inbuf, input_1.inlnt, 1, sizeof input_1.inbuf[0]);
    }
 
 // D   DO 150 I=1,3
@@ -262,12 +250,12 @@ L100:
 
 //L200:
    ++state_1.moves;
-   prsvec_1.prswon = parse_(input_1.inbuf, input_1.inlnt, c_true/*, sizeof input_1.inbuf[0]*/);
+   prsvec_1.prswon = parse_(input_1.inbuf, input_1.inlnt, true/*, sizeof input_1.inbuf[0]*/);
    if (!prsvec_1.prswon) {
       goto L400;
    }
 // 						!PARSE LOSES?
-   if (xvehic_(c__1)) {
+   if (xvehic_(1)) {
       goto L400;
    }
 // 						!VEHICLE HANDLE?
@@ -307,7 +295,7 @@ L900:
 // IF INPUT IS NOT 'ECHO' OR A DIRECTION, JUST ECHO.
 
 L1000:
-   rdline_(input_1.inbuf, input_1.inlnt, c__0, sizeof input_1.inbuf[0]);
+   rdline_(input_1.inbuf, input_1.inlnt, 0, sizeof input_1.inbuf[0]);
    ++state_1.moves;
 // 						!CHARGE FOR MOVES.
    for (i__ = 1; i__ <= 4; ++i__) {
@@ -330,7 +318,7 @@ L1000:
 // L1200:
    }
 
-   rspeak_(c__571);
+   rspeak_(571);
 // 						!KILL THE ECHO.
    findex_1.echof = true;
    objcts_1.oflag2[oindex_1.bar - 1] &= ~oflags_1.scrdbt;
@@ -341,7 +329,7 @@ L1000:
    goto L400;
 
 L1300:
-   prsvec_1.prswon = parse_(input_1.inbuf, input_1.inlnt, c_false/*, sizeof input_1.inbuf[0]*/);
+   prsvec_1.prswon = parse_(input_1.inbuf, input_1.inlnt, false/*, sizeof input_1.inbuf[0]*/);
    if (!prsvec_1.prswon || prsvec_1.prsa != vindex_1.walkw) {
       goto L1400;
    }
@@ -370,7 +358,7 @@ L2000:
    if ((objcts_1.oflag2[prsvec_1.prso - 1] & oflags_1.actrbt) != 0) {
       goto L2100;
    }
-   rspeak_(c__602);
+   rspeak_(602);
 // 						!CANT DO IT.
    goto L350;
 // 						!VAPPLI SUCCEEDS.
@@ -384,7 +372,7 @@ L2100:
       goto L2700;
    }
 // 						!ANY INPUT?
-   if (parse_(input_1.inbuf, input_1.inlnt, c_true/*, sizeof input_1.inbuf[0])*/)) {
+   if (parse_(input_1.inbuf, input_1.inlnt, true/*, sizeof input_1.inbuf[0])*/)) {
       goto L2150;
    }
 L2700:
@@ -406,7 +394,7 @@ L2150:
       goto L2400;
    }
 // 						!ACTOR HANDLE?
-   if (xvehic_(c__1)) {
+   if (xvehic_(1)) {
       goto L2400;
    }
 // 						!VEHICLE HANDLE?
@@ -475,7 +463,7 @@ static void xendmv_(Bool flag__) {
 // VILLAINS AND DEMONS
 
    if (!(flag__)) {
-      rspeak_(c__341);
+      rspeak_(341);
    }
 // 						!DEFAULT REMARK.
    if (hack_1.thfact) {
@@ -495,7 +483,7 @@ static void xendmv_(Bool flag__) {
    }
 // 						!CLOCK DEMON.
    if (prsvec_1.prswon) {
-      f = xvehic_(c__2);
+      f = xvehic_(2);
    }
 // 						!VEHICLE READOUT.
 }
