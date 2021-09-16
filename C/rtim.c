@@ -47,5 +47,5 @@ int rnd_(int maxval) {
 void exit_(void) {
 // NO "CALL EXIT" HERE
    char *Msg = "";
-   StopS(Msg, (size_t)Msg);
+   StopS(Msg, sizeof Msg);
 }
