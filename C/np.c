@@ -185,7 +185,7 @@ L250:
 // PARSE-	TOP LEVEL PARSE ROUTINE
 
 // DECLARATIONS
-static Bool lex_(char *, int, int *, int, Bool, ftnlen);
+static Bool lex_(char *, int, int *, int *, Bool, ftnlen);
 
 // THIS ROUTINE DETAILS ON BIT 0 OF PRSFLG
 
@@ -223,7 +223,7 @@ Bool parse_(char *inbuf, int inlnt, Bool vbflag, ftnlen inbuf_len) {
    prsvec_1.prsi = 0;
    prsvec_1.prso = 0;
 
-   if (!lex_(inbuf + 1, inlnt, outbuf, outlnt, vbflag, (ftnlen) 1)) {
+   if (!lex_(inbuf + 1, inlnt, outbuf, &outlnt, vbflag, (ftnlen) 1)) {
       goto L100;
    }
    if ((i__1 = sparse_(outbuf, outlnt, vbflag)) < 0) {
@@ -296,7 +296,7 @@ void orphan_(int o1, int o2, int o3, int o4, int o5) {
 
 // THIS ROUTINE DETAILS ON BIT 1 OF PRSFLAG
 
-static Bool lex_(char *inbuf, int inlnt, int * outbuf, int op, Bool vbflag, ftnlen inbuf_len) {
+static Bool lex_(char *inbuf, int inlnt, int * outbuf, int * op, Bool vbflag, ftnlen inbuf_len) {
 // Initialized data
 
    static char dlimit[1 * 9] = "A" "Z" "x" "1" "9" "x" "-" "-" "x";
@@ -334,10 +334,10 @@ static Bool lex_(char *inbuf, int inlnt, int * outbuf, int op, Bool vbflag, ftnl
 // D	DFLAG=IAND(PRSFLG,2).NE.0
    ret_val = false;
 // 						!ASSUME LEX FAILS.
-   op = -1;
+   *op = -1;
 // 						!OUTPUT PTR.
 L50:
-   op += 2;
+   *op += 2;
 // 						!ADV OUTPUT PTR.
    cp = 0;
 // 						!CHAR PTR=0.
@@ -384,11 +384,11 @@ L1000:
       prsvec_1.prscon = 1;
    }
 // 						!FORCE PARSE RESTART.
-   if (cp == 0 && op == 1) {
+   if (cp == 0 && *op == 1) {
       return ret_val;
    }
    if (cp == 0) {
-      op += -2;
+      *op += -2;
    }
 // 						!ANY LAST WORD?
    ret_val = true;
@@ -406,7 +406,7 @@ L4000:
       goto L200;
    }
 // 						!IGNORE IF TOO MANY CHAR.
-   k = op + cp / 3;
+   k = *op + cp / 3;
 // 						!COMPUTE WORD INDEX.
    switch (cp % 3 + 1) {
       case 1:
