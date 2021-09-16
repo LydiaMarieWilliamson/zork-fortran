@@ -1,14 +1,17 @@
 #include "F2C.h"
 
-// Common Block Declarations
+// parser.h:
+
+// PARSER OUTPUT
 
 extern struct {
    int prsa, prsi, prso;
    Bool prswon;
    int prscon;
 } prsvec_;
-
 #define prsvec_1 prsvec_
+
+// PARSER STATE
 
 extern union {
    struct {
@@ -18,63 +21,66 @@ extern union {
       int a, b, c__, d__, e;
    } _2;
 } orphs_;
-
 #define orphs_1 (orphs_._1)
+#define orp ((int *)&orphs_1)
 #define orphs_2 (orphs_._2)
 
 extern struct {
    int lastit;
 } last_;
-
 #define last_1 last_
 
 extern struct {
    int act, o1, o2, p1, p2;
 } pv_;
-
 #define pv_1 pv_
+#define pvec ((int *)&pv_1)
+#define objvec ((int *)&pv_1 + 1)
+#define prpvec ((int *)&pv_1 + 3)
 
 extern struct {
    int vflag, dobj, dfl1, dfl2, dfw1, dfw2, iobj, ifl1, ifl2, ifw1, ifw2;
 } syntax_;
-
 #define syntax_1 syntax_
+#define syn ((int *)&syntax_1)
 
 extern struct {
    int sdir, sind, sstd, sflip, sdriv, svmask;
 } synflg_;
-
 #define synflg_1 synflg_
 
 extern struct {
    int vabit, vrbit, vtbit, vcbit, vebit, vfbit, vpmask;
 } objflg_;
-
 #define objflg_1 objflg_
+
+// io.h:
+
+// I/O VARIABLES
 
 extern struct {
    int inlnt;
    char inbuf[78];
 } input_;
-
 #define input_1 input_
 
 extern struct {
    int inpch, outch, dbch;
 } chan_;
-
 #define chan_1 chan_
+
+// debug.h:
 
 extern struct {
    int dbgflg, prsflg, gdtflg;
 } debug_;
-
 #define debug_1 debug_
+
+// xsrch.h:
 
 extern struct {
    int xmin, xmax, xdown, xup, xnorth, xsouth, xenter, xexit, xeast, xwest;
 } xsrch_;
-
 #define xsrch_1 xsrch_
 
 // RDLINE-	READ INPUT LINE
@@ -91,17 +97,6 @@ void rdline_(char *buffer, int length, int who, size_t buffer_unit) {
 
 // Local variables
    static int i__;
-#define orp ((int *)&orphs_1)
-#define syn ((int *)&syntax_1)
-#define pvec ((int *)&pv_1)
-#define objvec ((int *)&pv_1 + 1)
-#define prpvec ((int *)&pv_1 + 3)
-
-// PARSER OUTPUT
-
-// PARSER STATE
-
-// I/O VARIABLES
 
 // Parameter adjustments
    --buffer;
@@ -160,12 +155,6 @@ L250:
 // 						!RESTART LEX SCAN.
 }
 
-#undef prpvec
-#undef objvec
-#undef pvec
-#undef syn
-#undef orp
-
 // PARSE-	TOP LEVEL PARSE ROUTINE
 
 // DECLARATIONS
@@ -180,19 +169,10 @@ Bool parse_(char *inbuf, int inlnt, Bool vbflag/*, size_t inbuf_unit*/) {
 
 // Local variables
    static int x;
-#define orp ((int *)&orphs_1)
-#define syn ((int *)&syntax_1)
-#define pvec ((int *)&pv_1)
-#define objvec ((int *)&pv_1 + 1)
    extern void orphan_(int, int, int, int, int);
    extern int sparse_(int *, int, Bool);
-#define prpvec ((int *)&pv_1 + 3)
    extern Bool synmch_(/*int*/);
    static int outbuf[40], outlnt;
-
-// PARSER OUTPUT
-
-// PARSER STATE
 
 // D	DFLAG=IAND(PRSFLG,1).NE.0
 
@@ -256,12 +236,6 @@ L100:
 
 }
 
-#undef prpvec
-#undef objvec
-#undef pvec
-#undef syn
-#undef orp
-
 // ORPHAN- SET UP NEW ORPHANS
 
 // DECLARATIONS
@@ -292,16 +266,7 @@ static Bool lex_(char *inbuf, int inlnt, int * outbuf, int * op, Bool vbflag/*, 
    static int i__;
    static char j[1];
    static int k, j1, j2, cp;
-#define orp ((int *)&orphs_1)
-#define syn ((int *)&syntax_1)
-#define pvec ((int *)&pv_1)
-#define objvec ((int *)&pv_1 + 1)
    extern void rspeak_(int);
-#define prpvec ((int *)&pv_1 + 3)
-
-// PARSER OUTPUT
-
-// PARSER STATE
 
 // Parameter adjustments
    --outbuf;
@@ -427,9 +392,3 @@ L6000:
 // 						!YES, ADV OP.
 
 }
-
-#undef prpvec
-#undef objvec
-#undef pvec
-#undef syn
-#undef orp

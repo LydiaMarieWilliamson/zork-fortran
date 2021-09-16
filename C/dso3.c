@@ -1,54 +1,68 @@
 #include "F2C.h"
 
-// Common Block Declarations
+// rooms.h:
+
+// ROOMS
 
 extern struct {
    int rlnt, rdesc2, rdesc1[200], rexit[200], ractio[200], rval[200], rflag[200];
 } rooms_;
-
 #define rooms_1 rooms_
+#define eqr ((int *)&rooms_1 + 2)
+#define rrand ((int *)&rooms_1 + 602)
+
+// exits.h:
+
+// EXITS
 
 extern struct {
    int xlnt, travel[900];
 } exits_;
-
 #define exits_1 exits_
+
+// curxt.h:
+
+// CURRENT EXITS
 
 extern struct {
    int xtype, xroom1, xstrng, xactio, xobj;
 } curxt_;
-
 #define curxt_1 curxt_
+#define xflag ((int *)&curxt_1 + 4)
+
+// xpars.h:
 
 extern struct {
    int xrmask, xdmask, xfmask, xfshft, xashft, xelnt[4], xnorm, xno, xcond, xdoor, xlflag;
 } xpars_;
-
 #define xpars_1 xpars_
 
-extern struct {
-   int olnt, odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220]
-   , oroom[220], oadv[220], ocan[220], oread[220];
-} objcts_;
+// objects.h:
 
+// OBJECTS
+
+extern struct {
+   int olnt, odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220], oroom[220], oadv[220], ocan[220], oread[220];
+} objcts_;
 #define objcts_1 objcts_
+#define eqo ((int *)&objcts_1 + 1)
 
 extern struct {
    int r2lnt, oroom2[20], rroom2[20];
 } oroom2_;
-
 #define oroom2_1 oroom2_
+
+// oflags.h:
 
 extern struct {
    int visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
-
 #define oflags_1 oflags_
 
+// io.h: (Unlisted)
 extern struct {
    int inpch, outch, dbch;
 } chan_;
-
 #define chan_1 chan_
 
 // FINDXT- FIND EXIT FROM ROOM
@@ -66,15 +80,6 @@ Bool findxt_(int dir, int rm) {
 // Local variables
    static int i__, xi;
    extern void bug_(int, int);
-#define eqr ((int *)&rooms_1 + 2)
-#define xflag ((int *)&curxt_1 + 4)
-#define rrand ((int *)&rooms_1 + 602)
-
-// ROOMS
-
-// EXITS
-
-// CURRENT EXITS
 
    ret_val = true;
 // 						!ASSUME WINS.
@@ -124,10 +129,6 @@ L1000:
    return ret_val;
 }
 
-#undef rrand
-#undef xflag
-#undef eqr
-
 // FWIM- FIND WHAT I MEAN
 
 // DECLARATIONS
@@ -138,9 +139,6 @@ int fwim_(int f1, int f2, int rm, int con, int adv, Bool nocare) {
 
 // Local variables
    static int i__, j;
-#define eqo ((int *)&objcts_1 + 1)
-
-// OBJECTS
 
    ret_val = 0;
 // 						!ASSUME NOTHING.
@@ -200,8 +198,6 @@ int fwim_(int f1, int f2, int rm, int con, int adv, Bool nocare) {
    }
    return ret_val;
 }
-
-#undef eqo
 
 // YESNO- OBTAIN YES/NO ANSWER
 

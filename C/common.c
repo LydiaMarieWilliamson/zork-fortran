@@ -194,8 +194,7 @@ struct {
 
 // objcts:
 struct {
-   int olnt, odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220]
-   , oroom[220], oadv[220], ocan[220], oread[220];
+   int olnt, odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220], oroom[220], oadv[220], ocan[220], oread[220];
 } objcts_;
 
 // oroom2:

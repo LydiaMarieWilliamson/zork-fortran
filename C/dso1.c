@@ -1,75 +1,93 @@
 #include "F2C.h"
 
-// Common Block Declarations
+// gamestat.h:
+
+// GAME STATE
 
 extern struct {
    int winner, here;
    Bool telflg;
 } play_;
-
 #define play_1 play_
+
+// rooms.h:
+
+// ROOMS
 
 extern struct {
    int rlnt, rdesc2, rdesc1[200], rexit[200], ractio[200], rval[200], rflag[200];
 } rooms_;
-
 #define rooms_1 rooms_
+#define eqr ((int *)&rooms_1 + 2)
+#define rrand ((int *)&rooms_1 + 602)
+
+// rflag.h:
 
 extern struct {
    int rseen, rlight, rland, rwater, rair, rsacrd, rfill, rmung, rbuck, rhouse, rnwall, rend;
 } rflag_;
-
 #define rflag_1 rflag_
 
-extern struct {
-   int olnt, odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220]
-   , oroom[220], oadv[220], ocan[220], oread[220];
-} objcts_;
+// objects.h:
 
+// OBJECTS
+
+extern struct {
+   int olnt, odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220], oroom[220], oadv[220], ocan[220], oread[220];
+} objcts_;
 #define objcts_1 objcts_
+#define eqo ((int *)&objcts_1 + 1)
 
 extern struct {
    int r2lnt, oroom2[20], rroom2[20];
 } oroom2_;
-
 #define oroom2_1 oroom2_
+
+// oflags.h:
 
 extern struct {
    int visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
-
 #define oflags_1 oflags_
+
+// oindex.h:
 
 extern struct {
    int garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
-
 #define oindex_1 oindex_
+
+// advers.h:
+
+// ADVENTURERS
 
 extern struct {
    int alnt, aroom[4], ascore[4], avehic[4], aobj[4], aactio[4], astren[4], aflag[4];
 } advs_;
-
 #define advs_1 advs_
+#define eqa ((int *)&advs_1 + 1)
 
 extern struct {
    int astag;
 } aflags_;
-
 #define aflags_1 aflags_
 
 extern struct {
    int player, arobot, amastr;
 } aindex_;
-
 #define aindex_1 aindex_
+
+// flags.h:
+
+// FLAGS
 
 extern struct {
    Bool trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
    int btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
-
 #define findex_1 findex_
+#define flags ((Bool *)&findex_1)
+#define switch__ ((int *)&findex_1 + 46)
 
 // PRINCR- PRINT CONTENTS OF ROOM
 
@@ -85,31 +103,15 @@ void princr_(Bool full, int rm) {
 
 // Local variables
    static int i__, j, k;
-#define eqa ((int *)&advs_1 + 1)
-#define eqo ((int *)&objcts_1 + 1)
-#define eqr ((int *)&rooms_1 + 2)
    extern Bool qhere_(int, int);
-#define rrand ((int *)&rooms_1 + 602)
    extern Bool qempty_(int);
-#define flags ((Bool *)&findex_1)
-#define switch__ ((int *)&findex_1 + 46)
    extern void rspeak_(int);
    extern void rspsub_(int, int);
    extern void invent_(int);
    extern int oactor_(int);
    extern void princo_(int, int);
 
-// GAME STATE
-
-// ROOMS
-
-// OBJECTS
-
-// ADVENTURERS
-
 // PRINCR, PAGE 2
-
-// FLAGS
 
    j = 329;
 // 						!ASSUME SUPERBRIEF FORMAT.
@@ -181,13 +183,6 @@ void princr_(Bool full, int rm) {
 
 }
 
-#undef switch__
-#undef flags
-#undef rrand
-#undef eqr
-#undef eqo
-#undef eqa
-
 // INVENT- PRINT CONTENTS OF ADVENTURER
 
 // DECLARATIONS
@@ -198,20 +193,12 @@ void invent_(int adv) {
 
 // Local variables
    static int i__, j;
-#define eqa ((int *)&advs_1 + 1)
-#define eqo ((int *)&objcts_1 + 1)
    extern void rspeak_(int);
    extern void princo_(int, int);
    extern Bool qempty_(int);
    extern void rspsub_(int, int);
 
-// GAME STATE
-
-// OBJECTS
-
 // INVENT, PAGE 2
-
-// ADVENTURERS
 
    i__ = 575;
 // 						!FIRST LINE.
@@ -258,9 +245,6 @@ L25:
    }
 }
 
-#undef eqo
-#undef eqa
-
 // PRINCO-	PRINT CONTENTS OF OBJECT
 
 // DECLARATIONS
@@ -271,10 +255,7 @@ void princo_(int obj, int desc) {
 
 // Local variables
    static int i__;
-#define eqo ((int *)&objcts_1 + 1)
    extern void rspsub_(int, int);
-
-// OBJECTS
 
    rspsub_(desc, objcts_1.odesc2[obj - 1]);
 // 						!PRINT HEADER.
@@ -287,5 +268,3 @@ void princo_(int obj, int desc) {
 // L100:
    }
 }
-
-#undef eqo

@@ -1,67 +1,70 @@
 #include "F2C.h"
 
-// Common Block Declarations
+// parser.h:
+
+// PARSER OUTPUT
 
 extern struct {
    int prsa, prsi, prso;
    Bool prswon;
    int prscon;
 } prsvec_;
-
 #define prsvec_1 prsvec_
+
+// PARSER STATE
 
 extern struct {
    int oflag, oact, oslot, oprep, oname;
 } orphs_;
-
 #define orphs_1 orphs_
+#define orp ((int *)&orphs_1)
 
 extern struct {
    int lastit;
 } last_;
-
 #define last_1 last_
 
 extern struct {
    int act, o1, o2, p1, p2;
 } pv_;
-
 #define pv_1 pv_
+#define pvec ((int *)&pv_1)
+#define objvec ((int *)&pv_1 + 1)
+#define prpvec ((int *)&pv_1 + 3)
 
 extern struct {
    int vflag, dobj, dfl1, dfl2, dfw1, dfw2, iobj, ifl1, ifl2, ifw1, ifw2;
 } syntax_;
-
 #define syntax_1 syntax_
+#define syn ((int *)&syntax_1)
 
 extern struct {
    int sdir, sind, sstd, sflip, sdriv, svmask;
 } synflg_;
-
 #define synflg_1 synflg_
 
 extern struct {
    int vabit, vrbit, vtbit, vcbit, vebit, vfbit, vpmask;
 } objflg_;
-
 #define objflg_1 objflg_
+
+// vocab.h:
+
+// VOCABULARIES
 
 extern struct {
    int bvoc[20];
 } buzvoc_;
-
 #define buzvoc_1 buzvoc_
 
 extern struct {
    int pvoc[45];
 } prpvoc_;
-
 #define prpvoc_1 prpvoc_
 
 extern struct {
    int dvoc[75];
 } dirvoc_;
-
 #define dirvoc_1 dirvoc_
 
 extern union {
@@ -72,8 +75,8 @@ extern union {
       double eqv_pad[225];
    } _2;
 } adjvoc_;
-
 #define adjvoc_1 (adjvoc_._1)
+#define avoc ((int *)&adjvoc_1)
 #define adjvoc_2 (adjvoc_._2)
 
 extern union {
@@ -84,8 +87,8 @@ extern union {
       double eqv_pad[475];
    } _2;
 } vrbvoc_;
-
 #define vrbvoc_1 (vrbvoc_._1)
+#define vvoc ((int *)&vrbvoc_1)
 #define vrbvoc_2 (vrbvoc_._2)
 
 extern union {
@@ -96,70 +99,79 @@ extern union {
       double eqv_pad[525];
    } _2;
 } objvoc_;
-
 #define objvoc_1 (objvoc_._1)
+#define ovoc ((int *)&objvoc_1)
 #define objvoc_2 (objvoc_._2)
+
+// debug.h:
 
 extern struct {
    int dbgflg, prsflg, gdtflg;
 } debug_;
-
 #define debug_1 debug_
 
-extern struct {
-   int olnt, odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220]
-   , oroom[220], oadv[220], ocan[220], oread[220];
-} objcts_;
+// objects.h:
 
+// OBJECTS
+
+extern struct {
+   int olnt, odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220], oroom[220], oadv[220], ocan[220], oread[220];
+} objcts_;
 #define objcts_1 objcts_
+#define eqo ((int *)&objcts_1 + 1)
 
 extern struct {
    int r2lnt, oroom2[20], rroom2[20];
 } oroom2_;
-
 #define oroom2_1 oroom2_
 
+// star.h: (Unlisted)
 extern struct {
    int mbase, strbit;
 } star_;
-
 #define star_1 star_
+
+// gamestat.h:
+
+// GAME STATE
 
 extern struct {
    int winner, here;
    Bool telflg;
 } play_;
-
 #define play_1 play_
 
+// state.h:
 extern struct {
    int moves, deaths, rwscor, mxscor, mxload, ltshft, bloc, mungrm, hs, egscor, egmxsc;
 } state_;
-
 #define state_1 state_
+
+// oflags.h:
 
 extern struct {
    int visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
-
 #define oflags_1 oflags_
+
+// advers.h:
+
+// ADVENTURERS
 
 extern struct {
    int alnt, aroom[4], ascore[4], avehic[4], aobj[4], aactio[4], astren[4], aflag[4];
 } advs_;
-
 #define advs_1 advs_
+#define eqa ((int *)&advs_1 + 1)
 
 extern struct {
    int astag;
 } aflags_;
-
 #define aflags_1 aflags_
 
 extern struct {
    int player, arobot, amastr;
 } aindex_;
-
 #define aindex_1 aindex_
 
 // SYNMCH--	SYNTAX MATCHER
@@ -186,25 +198,11 @@ Bool synmch_(/*int x*/) {
 
 // Local variables
    static int j;
-#define orp ((int *)&orphs_1)
-#define syn ((int *)&syntax_1)
-#define avoc ((int *)&adjvoc_1)
-#define pvec ((int *)&pv_1)
    static int newj;
    extern int gwim_(int, int, int);
-#define ovoc ((int *)&objvoc_1)
-#define vvoc ((int *)&vrbvoc_1)
    static int drive, limit, qprep, sprep, dforce;
-#define objvec ((int *)&pv_1 + 1)
    extern void rspeak_(int);
    extern void orphan_(int, int, int, int, int);
-#define prpvec ((int *)&pv_1 + 3)
-
-// PARSER OUTPUT
-
-// PARSER STATE
-
-// VOCABULARIES
 
 //   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
 
@@ -388,15 +386,6 @@ L5000:
 
 }
 
-#undef prpvec
-#undef objvec
-#undef vvoc
-#undef ovoc
-#undef pvec
-#undef avoc
-#undef syn
-#undef orp
-
 // UNPACKS-	UNPACK SYNTAX SPECIFICATION, ADV POINTER
 
 // DECLARATIONS
@@ -404,20 +393,6 @@ L5000:
 static int unpacks_(int oldj) {
 // Local variables
    static int i__;
-#define orp ((int *)&orphs_1)
-#define syn ((int *)&syntax_1)
-#define avoc ((int *)&adjvoc_1)
-#define pvec ((int *)&pv_1)
-#define ovoc ((int *)&objvoc_1)
-#define vvoc ((int *)&vrbvoc_1)
-#define objvec ((int *)&pv_1 + 1)
-#define prpvec ((int *)&pv_1 + 3)
-
-// VOCABULARIES
-
-// PARSER OUTPUT
-
-// PARSER STATE
 
    for (i__ = 1; i__ <= 11; ++i__) {
 // 						!CLEAR SYNTAX.
@@ -476,15 +451,6 @@ L200:
 
 }
 
-#undef prpvec
-#undef objvec
-#undef vvoc
-#undef ovoc
-#undef pvec
-#undef avoc
-#undef syn
-#undef orp
-
 // SYNEQL-	TEST FOR SYNTAX EQUALITY
 
 // DECLARATIONS
@@ -494,18 +460,6 @@ static Bool syneql_(int prep, int obj, int sprep, int sfl1, int sfl2) {
    Bool ret_val;
 
 // Local variables
-#define eqo ((int *)&objcts_1 + 1)
-#define orp ((int *)&orphs_1)
-#define syn ((int *)&syntax_1)
-#define pvec ((int *)&pv_1)
-#define objvec ((int *)&pv_1 + 1)
-#define prpvec ((int *)&pv_1 + 3)
-
-// OBJECTS
-
-// PARSER OUTPUT
-
-// PARSER STATE
 
    if (obj == 0) {
       goto L100;
@@ -520,13 +474,6 @@ L100:
 
 }
 
-#undef prpvec
-#undef objvec
-#undef pvec
-#undef syn
-#undef orp
-#undef eqo
-
 // TAKEIT-	PARSER BASED TAKE OF OBJECT
 
 // DECLARATIONS
@@ -537,14 +484,7 @@ Bool takeit_(int obj, int sflag) {
 
 // Local variables
    static int x;
-#define eqa ((int *)&advs_1 + 1)
-#define eqo ((int *)&objcts_1 + 1)
-#define orp ((int *)&orphs_1)
-#define syn ((int *)&syntax_1)
    static int odo2;
-#define pvec ((int *)&pv_1)
-#define objvec ((int *)&pv_1 + 1)
-#define prpvec ((int *)&pv_1 + 3)
    extern void rspsub_(int, int);
    extern int schlst_(int, int, int, int, int, int);
    extern void rspeak_(int);
@@ -552,17 +492,7 @@ Bool takeit_(int obj, int sflag) {
    extern void newsta_(int, int, int, int, int);
    extern void scrupd_(int);
 
-// PARSER OUTPUT
-
-// PARSER STATE
-
-// GAME STATE
-
-// OBJECTS
-
 // TAKEIT, PAGE 2
-
-// ADVENTURERS
 
    ret_val = false;
 // 						!ASSUME LOSES.
@@ -664,14 +594,6 @@ L4000:
 
 }
 
-#undef prpvec
-#undef objvec
-#undef pvec
-#undef syn
-#undef orp
-#undef eqo
-#undef eqa
-
 // GWIM- GET WHAT I MEAN IN AMBIGOUS SITUATIONS
 
 // DECLARATIONS
@@ -683,28 +605,11 @@ int gwim_(int sflag, int sfw1, int sfw2) {
 
 // Local variables
    static int av;
-#define eqa ((int *)&advs_1 + 1)
-#define eqo ((int *)&objcts_1 + 1)
-#define orp ((int *)&orphs_1)
-#define syn ((int *)&syntax_1)
    static int nobj, robj;
-#define pvec ((int *)&pv_1)
    extern int fwim_(int, int, int, int, int, Bool);
    static Bool nocare;
-#define objvec ((int *)&pv_1 + 1)
-#define prpvec ((int *)&pv_1 + 3)
-
-// PARSER OUTPUT
-
-// PARSER STATE
-
-// GAME STATE
-
-// OBJECTS
 
 // GWIM, PAGE 2
-
-// ADVENTURERS
 
    ret_val = -1;
 // 						!ASSUME LOSE.
@@ -761,11 +666,3 @@ L500:
    return ret_val;
 
 }
-
-#undef prpvec
-#undef objvec
-#undef pvec
-#undef syn
-#undef orp
-#undef eqo
-#undef eqa

@@ -1,11 +1,9 @@
 #include "F2C.h"
 
-// Common Block Declarations
-
+// random.h: (Unlisted)
 extern struct {
    int seedy;
 } random_;
-
 #define random_1 random_
 
 #if 1

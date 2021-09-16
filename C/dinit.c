@@ -1,225 +1,270 @@
 #include "F2C.h"
 
-// Common Block Declarations
+// parser.h:
+
+// PARSER OUTPUT
 
 extern struct {
    int prsa, prsi, prso;
    Bool prswon;
    int prscon;
 } prsvec_;
-
 #define prsvec_1 prsvec_
+
+// PARSER STATE
 
 extern struct {
    int oflag, oact, oslot, oprep, oname;
 } orphs_;
-
 #define orphs_1 orphs_
+#define orp ((int *)&orphs_1)
 
 extern struct {
    int lastit;
 } last_;
-
 #define last_1 last_
 
 extern struct {
    int act, o1, o2, p1, p2;
 } pv_;
-
 #define pv_1 pv_
+#define pvec ((int *)&pv_1)
+#define objvec ((int *)&pv_1 + 1)
+#define prpvec ((int *)&pv_1 + 3)
 
 extern struct {
    int vflag, dobj, dfl1, dfl2, dfw1, dfw2, iobj, ifl1, ifl2, ifw1, ifw2;
 } syntax_;
-
 #define syntax_1 syntax_
+#define syn ((int *)&syntax_1)
 
 extern struct {
    int sdir, sind, sstd, sflip, sdriv, svmask;
 } synflg_;
-
 #define synflg_1 synflg_
 
 extern struct {
    int vabit, vrbit, vtbit, vcbit, vebit, vfbit, vpmask;
 } objflg_;
-
 #define objflg_1 objflg_
+
+// gamestat.h:
+
+// GAME STATE
 
 extern struct {
    int winner, here;
    Bool telflg;
 } play_;
-
 #define play_1 play_
 
+// state.h:
 extern struct {
    int moves, deaths, rwscor, mxscor, mxload, ltshft, bloc, mungrm, hs, egscor, egmxsc;
 } state_;
-
 #define state_1 state_
+
+// screen.h:
+
+// SCREEN OF LIGHT
 
 extern struct {
    int fromdr, scolrm, scolac, scoldr[8], scolwl[12];
 } screen_;
-
 #define screen_1 screen_
+
+// mindex.h:
+
+// MESSAGE INDEX
 
 extern struct {
    int mlnt, rtext[1820];
 } rmsg_;
-
 #define rmsg_1 rmsg_
 
+// star.h: (Unlisted)
 extern struct {
    int mbase, strbit;
 } star_;
-
 #define star_1 star_
 
+// vers.h: (Unlisted)
 extern struct {
    int vmaj, vmin, vedit;
 } vers_;
-
 #define vers_1 vers_
 
+// time.h: (Unlisted)
 extern struct {
    int pltime, shour, smin, ssec;
 } time_;
-
 #define time_1 time_
+
+// io.h:
+
+// I/O VARIABLES
 
 extern struct {
    int inlnt;
    char inbuf[78];
 } input_;
-
 #define input_1 input_
 
 extern struct {
    int inpch, outch, dbch;
 } chan_;
-
 #define chan_1 chan_
+
+// debug.h:
 
 extern struct {
    int dbgflg, prsflg, gdtflg;
 } debug_;
-
 #define debug_1 debug_
 
+// hyper.h: (Unlisted)
 extern struct {
    int hfactr;
 } hyper_;
-
 #define hyper_1 hyper_
+
+// rooms.h:
+
+// ROOMS
 
 extern struct {
    int rlnt, rdesc2, rdesc1[200], rexit[200], ractio[200], rval[200], rflag[200];
 } rooms_;
-
 #define rooms_1 rooms_
+#define eqr ((int *)&rooms_1 + 2)
+#define rrand ((int *)&rooms_1 + 602)
+
+// rflag.h:
 
 extern struct {
    int rseen, rlight, rland, rwater, rair, rsacrd, rfill, rmung, rbuck, rhouse, rnwall, rend;
 } rflag_;
-
 #define rflag_1 rflag_
+
+// rindex.h:
 
 extern struct {
    int whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
 } rindex_;
-
 #define rindex_1 rindex_
+
+// exits.h:
+
+// EXITS
 
 extern struct {
    int xlnt, travel[900];
 } exits_;
-
 #define exits_1 exits_
+
+// curxt.h:
+
+// CURRENT EXITS
 
 extern struct {
    int xtype, xroom1, xstrng, xactio, xobj;
 } curxt_;
-
 #define curxt_1 curxt_
+#define xflag ((int *)&curxt_1 + 4)
+
+// xpars.h:
 
 extern struct {
    int xrmask, xdmask, xfmask, xfshft, xashft, xelnt[4], xnorm, xno, xcond, xdoor, xlflag;
 } xpars_;
-
 #define xpars_1 xpars_
 
-extern struct {
-   int olnt, odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220]
-   , oroom[220], oadv[220], ocan[220], oread[220];
-} objcts_;
+// objects.h:
 
+// OBJECTS
+
+extern struct {
+   int olnt, odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220], oroom[220], oadv[220], ocan[220], oread[220];
+} objcts_;
 #define objcts_1 objcts_
+#define eqo ((int *)&objcts_1 + 1)
 
 extern struct {
    int r2lnt, oroom2[20], rroom2[20];
 } oroom2_;
-
 #define oroom2_1 oroom2_
+
+// oindex.h:
 
 extern struct {
    int garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
-
 #define oindex_1 oindex_
+
+// clock.h:
+
+// CLOCK INTERRUPTS
 
 extern struct {
    int clnt, ctick[25], cactio[25];
    Bool cflag[25];
 } cevent_;
-
 #define cevent_1 cevent_
+#define eqc ((int *)&cevent_1 + 1)
 
 extern struct {
    int cevcur, cevmnt, cevlnt, cevmat, cevcnd, cevbal, cevbrn, cevfus, cevled, cevsaf, cevvlg, cevgno, cevbuc, cevsph, cevegh, cevfor, cevscl, cevzgi, cevzgo, cevste, cevmrs, cevpin, cevinq, cevfol;
 } cindex_;
-
 #define cindex_1 cindex_
+
+// villians.h:
+
+// VILLAINS AND DEMONS
 
 extern struct {
    int thfpos;
    Bool thfflg, thfact, swdact;
    int swdsta;
 } hack_;
-
 #define hack_1 hack_
 
 extern struct {
    int vlnt, villns[4], vprob[4], vopps[4], vbest[4], vmelee[4];
 } vill_;
-
 #define vill_1 vill_
+#define eqv ((int *)&vill_1 + 1)
+
+// advers.h:
+
+// ADVENTURERS
 
 extern struct {
    int alnt, aroom[4], ascore[4], avehic[4], aobj[4], aactio[4], astren[4], aflag[4];
 } advs_;
-
 #define advs_1 advs_
+#define eqa ((int *)&advs_1 + 1)
 
 extern struct {
    int astag;
 } aflags_;
-
 #define aflags_1 aflags_
 
 extern struct {
    int player, arobot, amastr;
 } aindex_;
-
 #define aindex_1 aindex_
+
+// flags.h:
+
+// FLAGS
 
 extern struct {
    Bool trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
    int btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
-
 #define findex_1 findex_
+#define flags ((Bool *)&findex_1)
+#define switch__ ((int *)&findex_1 + 46)
 
 // INIT-- DUNGEON INITIALIZATION SUBROUTINE
 
@@ -239,60 +284,18 @@ Bool init_(int x) {
    Bool ret_val;
 
 // Local variables
-#define flags ((Bool *)&findex_1)
-#define switch__ ((int *)&findex_1 + 46)
    static int xmax, r2max, dirmax, recno;
    extern void intime_(int *, int *, int *);
    extern void inirnd_(int);
    static int i__, j, k;
-#define eqa ((int *)&advs_1 + 1)
-#define eqc ((int *)&cevent_1 + 1)
-#define eqo ((int *)&objcts_1 + 1)
-#define eqr ((int *)&rooms_1 + 2)
-#define eqv ((int *)&vill_1 + 1)
-#define orp ((int *)&orphs_1)
-#define syn ((int *)&syntax_1)
-#define pvec ((int *)&pv_1)
    extern void exit_(void);
    static int mmax, omax, rmax, vmax, amax, cmax, fmax, smax;
-#define rrand ((int *)&rooms_1 + 602)
-#define xflag ((int *)&curxt_1 + 4)
-#define objvec ((int *)&pv_1 + 1)
-#define prpvec ((int *)&pv_1 + 3)
-
-// PARSER OUTPUT
-
-// PARSER STATE
-
-// GAME STATE
-
-// SCREEN OF LIGHT
 
 // MISCELLANEOUS VARIABLES
-
-// MESSAGE INDEX
-
-// I/O VARIABLES
-
-// ROOMS
-
-// EXITS
-
-// CURRENT EXITS
-
-// OBJECTS
-
-// CLOCK INTERRUPTS
-
-// VILLAINS AND DEMONS
-
-// ADVENTURERS
 
 // INIT, PAGE 2
 
 // FIRST CHECK FOR PROTECTION VIOLATION
-
-// FLAGS
 
    if (protct_(x)) {
       goto L10000;
@@ -677,21 +680,6 @@ L1950:
    return ret_val;
 
 }
-
-#undef prpvec
-#undef objvec
-#undef xflag
-#undef rrand
-#undef pvec
-#undef syn
-#undef orp
-#undef eqv
-#undef eqr
-#undef eqo
-#undef eqc
-#undef eqa
-#undef switch__
-#undef flags
 
 // PROTCT-- CHECK FOR USER VIOLATION
 

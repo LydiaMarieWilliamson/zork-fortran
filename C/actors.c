@@ -1,170 +1,204 @@
 #include "F2C.h"
 
-// Common Block Declarations
+// parser.h:
+
+// PARSER OUTPUT
 
 extern struct {
    int prsa, prsi, prso;
    Bool prswon;
    int prscon;
 } prsvec_;
-
 #define prsvec_1 prsvec_
+
+// PARSER STATE
 
 extern struct {
    int oflag, oact, oslot, oprep, oname;
 } orphs_;
-
 #define orphs_1 orphs_
+#define orp ((int *)&orphs_1)
 
 extern struct {
    int lastit;
 } last_;
-
 #define last_1 last_
 
 extern struct {
    int act, o1, o2, p1, p2;
 } pv_;
-
 #define pv_1 pv_
+#define pvec ((int *)&pv_1)
+#define objvec ((int *)&pv_1 + 1)
+#define prpvec ((int *)&pv_1 + 3)
 
 extern struct {
    int vflag, dobj, dfl1, dfl2, dfw1, dfw2, iobj, ifl1, ifl2, ifw1, ifw2;
 } syntax_;
-
 #define syntax_1 syntax_
+#define syn ((int *)&syntax_1)
 
 extern struct {
    int sdir, sind, sstd, sflip, sdriv, svmask;
 } synflg_;
-
 #define synflg_1 synflg_
 
 extern struct {
    int vabit, vrbit, vtbit, vcbit, vebit, vfbit, vpmask;
 } objflg_;
-
 #define objflg_1 objflg_
+
+// gamestat.h:
+
+// GAME STATE
 
 extern struct {
    int winner, here;
    Bool telflg;
 } play_;
-
 #define play_1 play_
+
+// rooms.h:
+
+// ROOMS
 
 extern struct {
    int rlnt, rdesc2, rdesc1[200], rexit[200], ractio[200], rval[200], rflag[200];
 } rooms_;
-
 #define rooms_1 rooms_
+#define eqr ((int *)&rooms_1 + 2)
+#define rrand ((int *)&rooms_1 + 602)
+
+// rflag.h:
 
 extern struct {
    int rseen, rlight, rland, rwater, rair, rsacrd, rfill, rmung, rbuck, rhouse, rnwall, rend;
 } rflag_;
-
 #define rflag_1 rflag_
+
+// rindex.h:
 
 extern struct {
    int whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
 } rindex_;
-
 #define rindex_1 rindex_
+
+// xsrch.h:
 
 extern struct {
    int xmin, xmax, xdown, xup, xnorth, xsouth, xenter, xexit, xeast, xwest;
 } xsrch_;
-
 #define xsrch_1 xsrch_
 
-extern struct {
-   int olnt, odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220]
-   , oroom[220], oadv[220], ocan[220], oread[220];
-} objcts_;
+// objects.h:
 
+// OBJECTS
+
+extern struct {
+   int olnt, odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220], oroom[220], oadv[220], ocan[220], oread[220];
+} objcts_;
 #define objcts_1 objcts_
+#define eqo ((int *)&objcts_1 + 1)
 
 extern struct {
    int r2lnt, oroom2[20], rroom2[20];
 } oroom2_;
-
 #define oroom2_1 oroom2_
+
+// oflags.h:
 
 extern struct {
    int visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
-
 #define oflags_1 oflags_
+
+// oindex.h:
 
 extern struct {
    int garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
-
 #define oindex_1 oindex_
+
+// clock.h:
+
+// CLOCK INTERRUPTS
 
 extern struct {
    int clnt, ctick[25], cactio[25];
    Bool cflag[25];
 } cevent_;
-
 #define cevent_1 cevent_
+#define eqc ((int *)&cevent_1 + 1)
 
 extern struct {
    int cevcur, cevmnt, cevlnt, cevmat, cevcnd, cevbal, cevbrn, cevfus, cevled, cevsaf, cevvlg, cevgno, cevbuc, cevsph, cevegh, cevfor, cevscl, cevzgi, cevzgo, cevste, cevmrs, cevpin, cevinq, cevfol;
 } cindex_;
-
 #define cindex_1 cindex_
+
+// advers.h:
+
+// ADVENTURERS
 
 extern struct {
    int alnt, aroom[4], ascore[4], avehic[4], aobj[4], aactio[4], astren[4], aflag[4];
 } advs_;
-
 #define advs_1 advs_
+#define eqa ((int *)&advs_1 + 1)
 
 extern struct {
    int astag;
 } aflags_;
-
 #define aflags_1 aflags_
 
 extern struct {
    int player, arobot, amastr;
 } aindex_;
-
 #define aindex_1 aindex_
+
+// verbs.h:
+
+// VERBS
 
 extern struct {
    int cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw, openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw, clmbuw, clmbdw, trntow;
 } vindex_;
-
 #define vindex_1 vindex_
+
+// flags.h:
+
+// FLAGS
 
 extern struct {
    Bool trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
    int btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
-
 #define findex_1 findex_
+#define flags ((Bool *)&findex_1)
+#define switch__ ((int *)&findex_1 + 46)
+
+// debug.h:
 
 extern struct {
    int dbgflg, prsflg, gdtflg;
 } debug_;
-
 #define debug_1 debug_
+
+// villians.h:
+
+// VILLAINS AND DEMONS
 
 extern struct {
    int thfpos;
    Bool thfflg, thfact, swdact;
    int swdsta;
 } hack_;
-
 #define hack_1 hack_
 
 extern struct {
    int vlnt, villns[4], vprob[4], vopps[4], vbest[4], vmelee[4];
 } vill_;
-
 #define vill_1 vill_
+#define eqv ((int *)&vill_1 + 1)
 
 // AAPPLI- APPLICABLES FOR ADVENTURERS
 
@@ -179,44 +213,14 @@ Bool aappli_(int ri) {
    Bool ret_val;
 
 // Local variables
-#define flags ((Bool *)&findex_1)
-#define switch__ ((int *)&findex_1 + 46)
    static Bool f;
    extern void newsta_(int, int, int, int, int);
    extern void rspeak_(int);
    static int i__;
-#define eqa ((int *)&advs_1 + 1)
-#define eqc ((int *)&cevent_1 + 1)
    extern void bug_(int, int);
-#define eqo ((int *)&objcts_1 + 1)
-#define eqr ((int *)&rooms_1 + 2)
-#define orp ((int *)&orphs_1)
-#define syn ((int *)&syntax_1)
-#define pvec ((int *)&pv_1)
-#define rrand ((int *)&rooms_1 + 602)
-#define objvec ((int *)&pv_1 + 1)
-#define prpvec ((int *)&pv_1 + 3)
    extern Bool moveto_(int, int);
 
-// PARSER OUTPUT
-
-// PARSER STATE
-
-// GAME STATE
-
-// ROOMS
-
-// OBJECTS
-
-// CLOCK INTERRUPTS
-
-// ADVENTURERS
-
-// VERBS
-
 // AAPPLI, PAGE 2
-
-// FLAGS
 
    if (ri == 0) {
       goto L10;
@@ -322,19 +326,6 @@ L2200:
 
 }
 
-#undef prpvec
-#undef objvec
-#undef rrand
-#undef pvec
-#undef syn
-#undef orp
-#undef eqr
-#undef eqo
-#undef eqc
-#undef eqa
-#undef switch__
-#undef flags
-
 // THIEFD-	INTERMOVE THIEF DEMON
 
 // DECLARATIONS
@@ -345,17 +336,11 @@ void thiefd_(void) {
 
 // Local variables
    static int i__, j, nr;
-#define eqo ((int *)&objcts_1 + 1)
-#define eqr ((int *)&rooms_1 + 2)
    extern Bool lit_(int);
-#define eqv ((int *)&vill_1 + 1)
    static Bool once;
    extern Bool prob_(int, int);
    extern Bool qhere_(int, int);
-#define rrand ((int *)&rooms_1 + 602)
    extern Bool winnin_(int, int);
-#define flags ((Bool *)&findex_1)
-#define switch__ ((int *)&findex_1 + 46)
    static int rhere;
    extern void newsta_(int, int, int, int, int);
    extern int robadv_(int, int, int, int);
@@ -363,17 +348,7 @@ void thiefd_(void) {
    extern void rspeak_(int);
    extern void rspsub_(int, int);
 
-// GAME STATE
-
-// ROOMS
-
-// OBJECTS
-
-// VILLAINS AND DEMONS
-
 // FUNCTIONS AND DATA
-
-// FLAGS
 
 // THIEFD, PAGE 2
 
@@ -623,10 +598,3 @@ L1800:
       ;
    }
 }
-
-#undef switch__
-#undef flags
-#undef rrand
-#undef eqv
-#undef eqr
-#undef eqo

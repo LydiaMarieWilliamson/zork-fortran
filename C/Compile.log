@@ -1,121 +1,159 @@
-The results for the first run of ‟Makefile”.
+Fallback Functions
+━━━━━━━━━━━━━━━━━━
+rtim.c:		ITime_() for itime_()
 
-// Undefined Functions (Resolved)
-// ──────────────────────────────
-rtim.c:		itime_()
+Wrapper Functions
+━━━━━━━━━━━━━━━━━
+(These will all be replaced by fallback functions.)
+F2C.c:		DoFio() for do_fio()
+		DoUio() for do_uio()
+		CompS() for s_cmp()
+		StopS() for s_stop()
+		OpenF() for f_open()
+		CloseF() for f_clos()
+		BegInDU() for s_rdue()
+		EndInDU() for e_rdue()
+		BegInSF() for s_rsfe()
+		EndInSF() for e_rsfe()
+		BegInSU() for s_rsue()
+		EndInSU() for e_rsue()
+		BegExSF() for s_wsfe()
+		EndExSF() for e_wsfe()
+		BegExSU() for s_wsue()
+		EndExSU() for e_wsue()
 
-// Unlisted Common Blocks
-// ━━━━━━━━━━━━━━━━━━━━━━
-star_:		[demons dinit dmain dso6 dverb1 gdt np2 np3 verbs]
-vers_:		[dinit dmain dverb2 sverbs]
-hyper_:		[dinit dmain dso7 nobjs]
-bats_:		[dmain objcts rooms]
-time_:		[dinit dso5 dverb2]
-random_:	[rtim]
+Common Blocks
+━━━━━━━━━━━━━
+Except where otherwise noted, they are defined in common.c.
 
-// Mixed Common Blocks
-// ━━━━━━━━━━━━━━━━━━━
-// io.h
-// ────
+Unlisted
+────────
+star_:		demons dinit dmain dso6 dverb1 gdt np2 np3 verbs
+time_:		dinit dso5 dverb2
+random_:	rtim
+
+Defined in dmain.c:
+vers_:		dinit dmain dverb2 sverbs
+hyper_:		dinit dmain dso7 nobjs
+bats_:		dmain objcts rooms
+
+I/O Variables (io.h)
+────────────────────
 input_:		dgame dinit dmain dsub gdt np nrooms sverbs
-chan_:		dgame dinit dmain [dso2 dso3 dso7] dsub gdt np nrooms sverbs
+chan_:		dgame dinit dmain dso2 dso3 dso7 dsub gdt np nrooms sverbs
 
-// parser.h
-// ────────
+Parser Output (parser.h)
+────────────────────────
 prsvec_:	actors ballop blkdata demons dgame dinit dmain dso4 dso5 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 np nrooms objcts rooms sobjs sverbs verbs villns
-orphs_:		actors ballop blkdata demons dgame dinit dmain dso4 dso5 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 [np] nrooms objcts rooms sobjs sverbs verbs villns
+
+Parser State (parser.h)
+───────────────────────
+orphs_:		actors ballop blkdata demons dgame dinit dmain dso4 dso5 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 np nrooms objcts rooms sobjs sverbs verbs villns
 last_:		actors ballop blkdata demons dgame dinit dmain dso4 dso5 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 np nrooms objcts rooms sobjs sverbs verbs villns
 C
 pv_:		actors ballop blkdata demons dgame dinit dmain dso4 dso5 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 np nrooms objcts rooms sobjs sverbs verbs villns
 syntax_:	actors ballop blkdata demons dgame dinit dmain dso4 dso5 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 np nrooms objcts rooms sobjs sverbs verbs villns
+
+Defined in dmain.c:
 synflg_:	actors ballop blkdata demons dgame dinit dmain dso4 dso5 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 np nrooms objcts rooms sobjs sverbs verbs villns
 objflg_:	actors ballop blkdata demons dgame dinit dmain dso4 dso5 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 np nrooms objcts rooms sobjs sverbs verbs villns
 
-// puzzle.h
-// ────────
-puzzle_:	dmain [dso7] dverb2 gdt nobjs [objcts]
+Puzzle Room State (puzzle.h)
+────────────────────────────
+Defined in dmain.c:
+puzzle_:	dmain dso7 dverb2 gdt nobjs objcts
 
-// screen.h
-// ────────
-screen_:	dinit dmain dsub dverb2 gdt nobjs [rooms] sverbs
+Screen of Light (screen.h)
+──────────────────────────
+Defined in dmain.c:
+screen_:	dinit dmain dsub dverb2 gdt nobjs rooms sverbs
 
-// Listed Common Blocks
-// ━━━━━━━━━━━━━━━━━━━━
-// advers.h
-// ────────
+Adventurers (advers.h)
+──────────────────────
 advs_:		actors blkdata clockr demons dgame dinit dmain dso1 dso2 dso4 dso5 dsub dverb1 dverb2 gdt nobjs np1 np2 np3 nrooms objcts rooms sobjs sverbs verbs
+
+Defined in dmain.c:
 aflags_:	actors blkdata clockr demons dgame dinit dmain dso1 dso2 dso4 dso5 dsub dverb1 dverb2 gdt nobjs np1 np2 np3 nrooms objcts rooms sobjs sverbs verbs
 aindex_:	actors blkdata clockr demons dgame dinit dmain dso1 dso2 dso4 dso5 dsub dverb1 dverb2 gdt nobjs np1 np2 np3 nrooms objcts rooms sobjs sverbs verbs
+Defined in dmain.c:
 
-// clock.h
-// ───────
+Clock Interrupts (clock.h)
+──────────────────────────
 cevent_:	actors ballop clockr demons dinit dmain dso2 dverb2 gdt lightp nobjs nrooms objcts rooms sobjs sverbs verbs villns
+
+Defined in dmain.c:
 cindex_:	actors ballop clockr demons dinit dmain dso2 dverb2 gdt lightp nobjs nrooms objcts rooms sobjs sverbs verbs villns
 
-// curxt.h
-// ───────
+Current Exits (curxt.h)
+───────────────────────
 curxt_:		ballop clockr demons dinit dmain dso3 dverb2 sverbs
 
-// debug.h
-// ───────
+(debug.h)
+─────────
 debug_:		actors blkdata dinit dmain dsub gdt np1 np2 np3 np
 
-// exits.h
-// ───────
+Exits (exits.h)
+───────────────
 exits_:		dinit dmain dso3 dverb2 gdt sverbs
 
-// flags.h
-// ───────
+Flags (flags.h)
+───────────────
 findex_:	actors ballop clockr demons dgame dinit dmain dso1 dso2 dso4 dso6 dso7 dsub dverb2 gdt lightp nobjs nrooms objcts rooms sobjs sverbs villns
 
-// gamestat.h
-// ──────────
+Game State (gamestat.h)
+───────────────────────
 play_:		actors ballop blkdata clockr demons dgame dinit dmain dso1 dso2 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 nrooms objcts rooms sobjs sverbs verbs villns
 
-// mindex.h
-// ────────
+Message Index (mindex.h)
+────────────────────────
 rmsg_:		dinit dsub gdt
 
-// objects.h
-// ─────────
+Objects (objects.h)
+───────────────────
 objcts_:	actors ballop blkdata clockr demons dgame dinit dmain dso1 dso2 dso3 dso4 dso5 dso7 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 nrooms objcts rooms sobjs sverbs verbs villns
 oroom2_:	actors ballop blkdata clockr demons dgame dinit dmain dso1 dso2 dso3 dso4 dso5 dso7 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 nrooms objcts rooms sobjs sverbs verbs villns
 
-// oflags.h
-// ────────
+(oflags.h)
+──────────
+Defined in dmain.c:
 oflags_:	actors ballop clockr demons dgame dmain dso1 dso3 dso4 dso5 dso7 dsub dverb1 dverb2 lightp nobjs np2 np3 nrooms objcts rooms sobjs sverbs verbs villns
 
-// oindex.h
-// ────────
+(oindex.h)
+──────────
+Defined in dmain.c:
 oindex_:	actors ballop blkdata clockr demons dgame dinit dmain dso1 dso2 dso4 dsub dverb2 gdt lightp nobjs np1 nrooms objcts rooms sobjs sverbs verbs villns
 
-// rflag.h
-// ───────
+(rflag.h)
+─────────
+Defined in dmain.c:
 rflag_:		actors ballop clockr dinit dmain dso1 dso2 dso5 dso6 dso7 dsub dverb2 nobjs nrooms objcts rooms sobjs sverbs verbs
 
-// rindex.h
-// ────────
+(rindex.h)
+──────────
+Defined in dmain.c:
 rindex_:	actors clockr demons dgame dinit dmain dso6 dso7 dsub dverb1 dverb2 gdt nobjs nrooms objcts rooms sobjs sverbs verbs villns
 
-// rooms.h
-// ───────
+Rooms (rooms.h)
+───────────────
 rooms_:		actors ballop clockr dgame dinit dmain dso1 dso2 dso3 dso5 dso6 dso7 dsub dverb2 gdt nobjs nrooms objcts rooms sobjs sverbs verbs
 
-// state.h
-// ───────
+(state.h)
+─────────
 state_:		ballop clockr dgame dinit dmain dso2 dso4 dsub dverb1 dverb2 gdt nobjs np3 nrooms objcts rooms sobjs sverbs verbs
 
-// verbs.h
-// ───────
+Verbs (verbs.h)
+───────────────
+Defined in dmain.c:
 vindex_:	actors ballop blkdata demons dgame dmain dso5 dsub dverb1 lightp nobjs np1 nrooms objcts rooms sobjs sverbs verbs villns
 
-// villians.h
-// ──────────
+Villains and Demons (villians.h)
+────────────────────────────────
 hack_:		actors clockr demons dgame dinit dmain dso4 dverb2 gdt nobjs rooms sobjs villns
 vill_:		actors clockr demons dgame dinit dmain dso4 dverb2 gdt nobjs rooms sobjs villns
 
-// vocab.h
-// ───────
+Vocabularies (vocab.h)
+──────────────────────
+Defined in blkdata.c:
 buzvoc_:	blkdata np1 np2 np3
 prpvoc_:	blkdata np1 np2 np3
 dirvoc_:	blkdata np1 np2 np3
@@ -123,19 +161,12 @@ adjvoc_:	blkdata np1 np2 np3
 vrbvoc_:	blkdata np1 np2 np3
 objvoc_:	blkdata np1 np2 np3
 
-// xpars.h
-// ───────
+(xpars.h)
+─────────
+Defined in dmain.c:
 xpars_:		ballop dinit dmain dso3 dverb2 sverbs
 
-// xsrch.h
-// ───────
+(xsrch.h)
+─────────
+Defined in dmain.c:
 xsrch_:		actors clockr demons dmain dsub dverb2 np nrooms sverbs verbs
-
-The results for the second run of ‟Makefile”.
-
-Duplicate Definitions (Resolved):
-∙	In blkdata.c, common.c:
-	buzvoc_, prpvoc_, dirvoc_, adjvoc_, vrbvoc_, objvoc_
-∙	In dmain.c, common.c:
-	synflg_, objflg_, screen_, puzzle_, vers_, bats_, hyper_, rflag_, rindex_,
-	xpars_, xsrch_, oflags_, oindex_, cindex_, aflags_, aindex_, vindex_,

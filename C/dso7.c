@@ -1,67 +1,83 @@
 #include "F2C.h"
 
-// Common Block Declarations
-
+// hyper.h: (Unlisted)
 extern struct {
    int hfactr;
 } hyper_;
-
 #define hyper_1 hyper_
+
+// rooms.h:
+
+// ROOMS
 
 extern struct {
    int rlnt, rdesc2, rdesc1[200], rexit[200], ractio[200], rval[200], rflag[200];
 } rooms_;
-
 #define rooms_1 rooms_
+#define eqr ((int *)&rooms_1 + 2)
+#define rrand ((int *)&rooms_1 + 602)
+
+// rflag.h:
 
 extern struct {
    int rseen, rlight, rland, rwater, rair, rsacrd, rfill, rmung, rbuck, rhouse, rnwall, rend;
 } rflag_;
-
 #define rflag_1 rflag_
+
+// rindex.h:
 
 extern struct {
    int whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
 } rindex_;
-
 #define rindex_1 rindex_
 
-extern struct {
-   int olnt, odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220]
-   , oroom[220], oadv[220], ocan[220], oread[220];
-} objcts_;
+// objects.h:
 
+// OBJECTS
+
+extern struct {
+   int olnt, odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220], oroom[220], oadv[220], ocan[220], oread[220];
+} objcts_;
 #define objcts_1 objcts_
+#define eqo ((int *)&objcts_1 + 1)
 
 extern struct {
    int r2lnt, oroom2[20], rroom2[20];
 } oroom2_;
-
 #define oroom2_1 oroom2_
+
+// oflags.h:
 
 extern struct {
    int visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
-
 #define oflags_1 oflags_
+
+// flags.h:
+
+// FLAGS
 
 extern struct {
    Bool trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
    int btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
 } findex_;
-
 #define findex_1 findex_
+#define flags ((Bool *)&findex_1)
+#define switch__ ((int *)&findex_1 + 46)
 
+// io.h: (Unlisted)
 extern struct {
    int inpch, outch, dbch;
 } chan_;
-
 #define chan_1 chan_
+
+// puzzle.h:
+
+// PUZZLE ROOM STATE
 
 extern struct {
    int cpdr[16], cpwl[8], cpvec[64];
 } puzzle_;
-
 #define puzzle_1 puzzle_
 
 // ENCRYP--	ENCRYPT PASSWORD
@@ -130,20 +146,9 @@ void cpgoto_(int st) {
 
 // Local variables
    static int i__;
-#define eqo ((int *)&objcts_1 + 1)
-#define eqr ((int *)&rooms_1 + 2)
-#define rrand ((int *)&rooms_1 + 602)
-#define flags ((Bool *)&findex_1)
-#define switch__ ((int *)&findex_1 + 46)
    extern void newsta_(int, int, int, int, int);
 
-// ROOMS
-
-// OBJECTS
-
 // CPGOTO, PAGE 2
-
-// FLAGS
 
    rooms_1.rflag[rindex_1.cpuzz - 1] &= ~rflag_1.rseen;
    i__1 = objcts_1.olnt;
@@ -161,12 +166,6 @@ void cpgoto_(int st) {
    findex_1.cphere = st;
 }
 
-#undef switch__
-#undef flags
-#undef rrand
-#undef eqr
-#undef eqo
-
 // CPINFO--	DESCRIBE PUZZLE ROOM
 
 // DECLARATIONS
@@ -181,15 +180,11 @@ void cpinfo_(int rmk, int st) {
 // Local variables
    static int i__, j, k, l;
    static char dgm[1 * 8];
-#define flags ((Bool *)&findex_1)
    extern void rspeak_(int);
-#define switch__ ((int *)&findex_1 + 46)
 
 // PUZZLE ROOM
 
 // FUNCTIONS AND LOCAL DATA
-
-// FLAGS
 
 // CPINFO, PAGE 2
 
@@ -243,6 +238,3 @@ void cpinfo_(int rmk, int st) {
    }
 // 						!WEST LADDER?
 }
-
-#undef switch__
-#undef flags
