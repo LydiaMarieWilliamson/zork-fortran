@@ -44,12 +44,12 @@ extern struct {
 #define syntax_1 syntax_
 #define syn ((int *)&syntax_1)
 
-extern struct {
+extern struct synflg_1_ {
    int sdir, sind, sstd, sflip, sdriv, svmask;
 } synflg_;
 #define synflg_1 synflg_
 
-extern struct {
+extern struct objflg_1_ {
    int vabit, vrbit, vtbit, vcbit, vebit, vfbit, vpmask;
 } objflg_;
 #define objflg_1 objflg_
@@ -78,7 +78,7 @@ extern struct {
 
 // xsrch.h:
 
-extern struct {
+extern struct xsrch_1_ {
    int xmin, xmax, xdown, xup, xnorth, xsouth, xenter, xexit, xeast, xwest;
 } xsrch_;
 #define xsrch_1 xsrch_

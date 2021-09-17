@@ -38,12 +38,12 @@ extern struct {
 #define syntax_1 syntax_
 #define syn ((int *)&syntax_1)
 
-extern struct {
+extern struct synflg_1_ {
    int sdir, sind, sstd, sflip, sdriv, svmask;
 } synflg_;
 #define synflg_1 synflg_
 
-extern struct {
+extern struct objflg_1_ {
    int vabit, vrbit, vtbit, vcbit, vebit, vfbit, vpmask;
 } objflg_;
 #define objflg_1 objflg_
@@ -68,7 +68,7 @@ extern struct {
 
 // SCREEN OF LIGHT
 
-extern struct {
+extern struct screen_1_ {
    int fromdr, scolrm, scolac, scoldr[8], scolwl[12];
 } screen_;
 #define screen_1 screen_
@@ -77,7 +77,7 @@ extern struct {
 
 // PUZZLE ROOM STATE
 
-extern struct {
+extern struct puzzle_1_ {
    int cpdr[16], cpwl[8], cpvec[64];
 } puzzle_;
 #define puzzle_1 puzzle_
@@ -132,7 +132,7 @@ extern struct {
 
 // rindex.h:
 
-extern struct {
+extern struct rindex_1_ {
    int whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
 } rindex_;
 #define rindex_1 rindex_
@@ -163,7 +163,7 @@ extern struct {
 
 // oindex.h:
 
-extern struct {
+extern struct oindex_1_ {
    int garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
 #define oindex_1 oindex_
@@ -179,7 +179,7 @@ extern struct {
 #define cevent_1 cevent_
 #define eqc ((int *)&cevent_1 + 1)
 
-extern struct {
+extern struct cindex_1_ {
    int cevcur, cevmnt, cevlnt, cevmat, cevcnd, cevbal, cevbrn, cevfus, cevled, cevsaf, cevvlg, cevgno, cevbuc, cevsph, cevegh, cevfor, cevscl, cevzgi, cevzgo, cevste, cevmrs, cevpin, cevinq, cevfol;
 } cindex_;
 #define cindex_1 cindex_
@@ -211,12 +211,12 @@ extern struct {
 #define advs_1 advs_
 #define eqa ((int *)&advs_1 + 1)
 
-extern struct {
+extern struct aflags_1_ {
    int astag;
 } aflags_;
 #define aflags_1 aflags_
 
-extern struct {
+extern struct aindex_1_ {
    int player, arobot, amastr;
 } aindex_;
 #define aindex_1 aindex_

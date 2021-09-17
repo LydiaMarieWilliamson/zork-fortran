@@ -32,7 +32,7 @@ extern struct {
 
 // xpars.h:
 
-extern struct {
+extern struct xpars_1_ {
    int xrmask, xdmask, xfmask, xfshft, xashft, xelnt[4], xnorm, xno, xcond, xdoor, xlflag;
 } xpars_;
 #define xpars_1 xpars_
@@ -54,7 +54,7 @@ extern struct {
 
 // oflags.h:
 
-extern struct {
+extern struct oflags_1_ {
    int visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 #define oflags_1 oflags_

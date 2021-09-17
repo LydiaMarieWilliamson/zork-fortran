@@ -44,12 +44,12 @@ extern struct {
 #define syntax_1 syntax_
 #define syn ((int *)&syntax_1)
 
-extern struct {
+extern struct synflg_1_ {
    int sdir, sind, sstd, sflip, sdriv, svmask;
 } synflg_;
 #define synflg_1 synflg_
 
-extern struct {
+extern struct objflg_1_ {
    int vabit, vrbit, vtbit, vcbit, vebit, vfbit, vpmask;
 } objflg_;
 #define objflg_1 objflg_
@@ -71,7 +71,7 @@ extern struct {
 
 // oflags.h:
 
-extern struct {
+extern struct oflags_1_ {
    int visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 #define oflags_1 oflags_
@@ -80,7 +80,7 @@ extern struct {
 
 // VERBS
 
-extern struct {
+extern struct vindex_1_ {
    int cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw, openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw, clmbuw, clmbdw, trntow;
 } vindex_;
 #define vindex_1 vindex_
@@ -98,7 +98,7 @@ extern struct {
 
 // rflag.h:
 
-extern struct {
+extern struct rflag_1_ {
    int rseen, rlight, rland, rwater, rair, rsacrd, rfill, rmung, rbuck, rhouse, rnwall, rend;
 } rflag_;
 #define rflag_1 rflag_
@@ -113,12 +113,12 @@ extern struct {
 #define advs_1 advs_
 #define eqa ((int *)&advs_1 + 1)
 
-extern struct {
+extern struct aflags_1_ {
    int astag;
 } aflags_;
 #define aflags_1 aflags_
 
-extern struct {
+extern struct aindex_1_ {
    int player, arobot, amastr;
 } aindex_;
 #define aindex_1 aindex_

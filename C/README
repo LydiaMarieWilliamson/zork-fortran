@@ -35,3 +35,4 @@ History
 		The program crashes occur in the f2c library functions, and these need to be replaced and fixed.
 2021/09/16	Elimination of static constant parameters.
 2021/09/16	Collating the in-line inserted ‟include” files; in preparation of removing them back to include files.
+2021/09/16	Regularized the translated copies of the ‟include” files and their common block and equivalence definitions.

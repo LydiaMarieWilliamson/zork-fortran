@@ -38,12 +38,12 @@ extern struct {
 #define syntax_1 syntax_
 #define syn ((int *)&syntax_1)
 
-extern struct {
+extern struct synflg_1_ {
    int sdir, sind, sstd, sflip, sdriv, svmask;
 } synflg_;
 #define synflg_1 synflg_
 
-extern struct {
+extern struct objflg_1_ {
    int vabit, vrbit, vtbit, vcbit, vebit, vfbit, vpmask;
 } objflg_;
 #define objflg_1 objflg_
@@ -52,26 +52,26 @@ extern struct {
 
 // VOCABULARIES
 
-extern struct {
+extern struct buzvoc_1_ {
    int bvoc[20];
 } buzvoc_;
 #define buzvoc_1 buzvoc_
 
-extern struct {
+extern struct prpvoc_1_ {
    int pvoc[45];
 } prpvoc_;
 #define prpvoc_1 prpvoc_
 
-extern struct {
+extern struct dirvoc_1_ {
    int dvoc[75];
 } dirvoc_;
 #define dirvoc_1 dirvoc_
 
 extern union {
-   struct {
+   struct adjvoc_1_ {
       int avoc1[184], avoc2[114], avoc3[106], avocnd;
    } _1;
-   struct {
+   struct adjvoc_2_ {
       double eqv_pad[225];
    } _2;
 } adjvoc_;
@@ -80,10 +80,10 @@ extern union {
 #define adjvoc_2 (adjvoc_._2)
 
 extern union {
-   struct {
+   struct vrbvoc_1_ {
       int vvoc1[92], vvoc1a[108], vvoc1b[38], vvoc2[104], vvoc3[136], vvoc4[116], vvoc5[134], vvoc6[117], vvoc7[89], vvocnd;
    } _1;
-   struct {
+   struct vrbvoc_2_ {
       double eqv_pad[475];
    } _2;
 } vrbvoc_;
@@ -92,10 +92,10 @@ extern union {
 #define vrbvoc_2 (vrbvoc_._2)
 
 extern union {
-   struct {
+   struct objvoc_1_ {
       int ovoc1[159], ovoc2[144], ovoc3[150], ovoc4[128], ovoc5[111], ovoc6[104], ovoc6a[97], ovoc7[127], ovocnd;
    } _1;
-   struct {
+   struct objvoc_2_ {
       double eqv_pad[525];
    } _2;
 } objvoc_;
@@ -149,7 +149,7 @@ extern struct {
 
 // oflags.h:
 
-extern struct {
+extern struct oflags_1_ {
    int visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 #define oflags_1 oflags_
@@ -164,12 +164,12 @@ extern struct {
 #define advs_1 advs_
 #define eqa ((int *)&advs_1 + 1)
 
-extern struct {
+extern struct aflags_1_ {
    int astag;
 } aflags_;
 #define aflags_1 aflags_
 
-extern struct {
+extern struct aindex_1_ {
    int player, arobot, amastr;
 } aindex_;
 #define aindex_1 aindex_

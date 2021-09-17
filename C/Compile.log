@@ -75,7 +75,6 @@ advs_:		actors blkdata clockr demons dgame dinit dmain dso1 dso2 dso4 dso5 dsub 
 Defined in dmain.c:
 aflags_:	actors blkdata clockr demons dgame dinit dmain dso1 dso2 dso4 dso5 dsub dverb1 dverb2 gdt nobjs np1 np2 np3 nrooms objcts rooms sobjs sverbs verbs
 aindex_:	actors blkdata clockr demons dgame dinit dmain dso1 dso2 dso4 dso5 dsub dverb1 dverb2 gdt nobjs np1 np2 np3 nrooms objcts rooms sobjs sverbs verbs
-Defined in dmain.c:
 
 Clock Interrupts (clock.h)
 ──────────────────────────

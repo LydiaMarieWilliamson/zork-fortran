@@ -1,7 +1,7 @@
 #include "F2C.h"
 
 // hyper.h: (Unlisted)
-extern struct {
+extern struct hyper_1_ {
    int hfactr;
 } hyper_;
 #define hyper_1 hyper_
@@ -19,14 +19,14 @@ extern struct {
 
 // rflag.h:
 
-extern struct {
+extern struct rflag_1_ {
    int rseen, rlight, rland, rwater, rair, rsacrd, rfill, rmung, rbuck, rhouse, rnwall, rend;
 } rflag_;
 #define rflag_1 rflag_
 
 // rindex.h:
 
-extern struct {
+extern struct rindex_1_ {
    int whous, lroom, cella, mtrol, maze1, mgrat, maz15, fore1, fore3, clear, reser, strea, egypt, echor, tshaf, bshaf, mmach, dome, mtorc, carou, riddl, lld2, temp1, temp2, maint, blroo, treas, rivr1, rivr2, rivr3, mcycl, rivr4, rivr5, fchmp, falls, mbarr, mrain, pog, vlbot, vair1, vair2, vair3, vair4, ledg2, ledg3, ledg4, msafe, cager, caged, twell, bwell, alice, alism, alitr, mtree, bkent, bkvw, bktwi, bkvau, bkbox, crypt, tstrs, mrant, mreye, mra, mrb, mrc, mrg, mrd, fdoor, mrae, mrce, mrcw, mrge, mrgw, mrdw, inmir, scorr, ncorr, parap, cell, pcell, ncell, cpant, cpout, cpuzz;
 } rindex_;
 #define rindex_1 rindex_
@@ -48,7 +48,7 @@ extern struct {
 
 // oflags.h:
 
-extern struct {
+extern struct oflags_1_ {
    int visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 #define oflags_1 oflags_
@@ -75,7 +75,7 @@ extern struct {
 
 // PUZZLE ROOM STATE
 
-extern struct {
+extern struct puzzle_1_ {
    int cpdr[16], cpwl[8], cpvec[64];
 } puzzle_;
 #define puzzle_1 puzzle_

@@ -23,7 +23,7 @@ extern struct {
 
 // rflag.h:
 
-extern struct {
+extern struct rflag_1_ {
    int rseen, rlight, rland, rwater, rair, rsacrd, rfill, rmung, rbuck, rhouse, rnwall, rend;
 } rflag_;
 #define rflag_1 rflag_
@@ -45,14 +45,14 @@ extern struct {
 
 // oflags.h:
 
-extern struct {
+extern struct oflags_1_ {
    int visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
 } oflags_;
 #define oflags_1 oflags_
 
 // oindex.h:
 
-extern struct {
+extern struct oindex_1_ {
    int garli, food, gunk, coal, machi, diamo, tcase, bottl, water, rope, knife, sword, lamp, blamp, rug, leave, troll, axe, rknif, keys, ice, bar, coffi, torch, tbask, fbask, irbox, ghost, trunk, bell, book, candl, match, tube, putty, wrenc, screw, cyclo, chali, thief, still, windo, grate, door, hpole, leak, rbutt, raili, pot, statu, iboat, dboat, pump, rboat, stick, buoy, shove, ballo, recep, guano, brope, hook1, hook2, safe, sslot, brick, fuse, gnome, blabe, dball, tomb, lcase, cage, rcage, spher, sqbut, flask, pool, saffr, bucke, ecake, orice, rdice, blice, robot, ftree, bills, portr, scol, zgnom, egg, begg, baubl, canar, bcana, ylwal, rdwal, pindr, rbeam, odoor, qdoor, cdoor, num1, num8, warni, cslit, gcard, stldr, hands, wall, lungs, sailo, aviat, teeth, itobj, every, valua, oplay, wnort, gwate, master;
 } oindex_;
 #define oindex_1 oindex_
@@ -67,12 +67,12 @@ extern struct {
 #define advs_1 advs_
 #define eqa ((int *)&advs_1 + 1)
 
-extern struct {
+extern struct aflags_1_ {
    int astag;
 } aflags_;
 #define aflags_1 aflags_
 
-extern struct {
+extern struct aindex_1_ {
    int player, arobot, amastr;
 } aindex_;
 #define aindex_1 aindex_
