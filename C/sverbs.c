@@ -28,10 +28,7 @@ extern struct {
    int act, o1, o2;
    char p1[6], p2[6];
 } pv_;
-#define pv_1 pv_
-#define pvec ((int *)&pv_1)
-#define objvec ((int *)&pv_1 + 1)
-#define prpvec ((int *)&pv_1 + 3)
+#define pv_2 pv_
 
 extern struct {
    int vflag, dobj, dfl1, dfl2, dfw1, dfw2, iobj, ifl1, ifl2, ifw1, ifw2;
@@ -991,8 +988,8 @@ L25000:
 L26000:
    for (i__ = 1; i__ <= 6; ++i__) {
 // 						!SET UP PARSE.
-      *(unsigned char *)&pv_1.p1[i__ - 1] = ' ';
-      *(unsigned char *)&pv_1.p2[i__ - 1] = ' ';
+      pv_2.p1[i__ - 1] = ' ';
+      pv_2.p2[i__ - 1] = ' ';
 // L26100:
    }
    wp = 1;
@@ -1020,11 +1017,11 @@ L26000:
       goto L26200;
    L26150:
       if (wp == 1) {
-         *(unsigned char *)&pv_1.p1[cp - 1] = *(unsigned char *)&input_1.inbuf[i__ - 1];
+         pv_2.p1[cp - 1] = input_1.inbuf[i__ - 1];
       }
 // 						!STUFF INTO HOLDER.
       if (wp == 2) {
-         *(unsigned char *)&pv_1.p2[cp - 1] = *(unsigned char *)&input_1.inbuf[i__ - 1];
+         pv_2.p2[cp - 1] = input_1.inbuf[i__ - 1];
       }
 // Computing MIN
       i__2 = cp + 1;
@@ -1036,7 +1033,7 @@ L26000:
 L26300:
    prsvec_1.prscon = 1;
 // 						!KILL REST OF LINE.
-   if (*(unsigned char *)&pv_1.p1[0] != ' ') {
+   if (pv_2.p1[0] != ' ') {
       goto L26400;
    }
 // 						!ANY INPUT?
@@ -1045,9 +1042,9 @@ L26300:
    return ret_val;
 
 L26400:
-   encryp_(pv_1.p1, ch/*, sizeof pv_1.p1[0], sizeof ch[0]*/);
+   encryp_(pv_2.p1, ch/*, sizeof pv_2.p1[0], sizeof ch[0]*/);
 // 						!COMPUTE RESPONSE.
-   if (*(unsigned char *)&pv_1.p2[0] != ' ') {
+   if (pv_2.p2[0] != ' ') {
       goto L26600;
    }
 // 						!TWO PHRASES?
@@ -1062,7 +1059,7 @@ L26400:
 // 						!TELL HIM.
    play_1.telflg = true;
    BegExSF(chan_1.outch, /*26510*/"(\002 A hollow voice replies:  \"\002,6a1,1x,6a1,\002\".\002)", 0);
-   DoFio(6, pv_1.p1, sizeof pv_1.p1[0]);
+   DoFio(6, pv_2.p1, sizeof pv_2.p1[0]);
    DoFio(6, ch, sizeof ch[0]);
    EndExSF();
 
@@ -1083,7 +1080,7 @@ L26600:
       goto L26800;
    }
    for (i__ = 1; i__ <= 6; ++i__) {
-      if (*(unsigned char *)&pv_1.p2[i__ - 1] != *(unsigned char *)&ch[i__ - 1]) {
+      if (pv_2.p2[i__ - 1] != ch[i__ - 1]) {
          goto L26575;
       }
 // 						!WRONG.

@@ -242,12 +242,12 @@ L100:
 
 void orphan_(int o1, int o2, int o3, int o4, int o5) {
 
-   orphs_2.a = o1;
+   orphs_1.oflag = o1;
 // 						!SET UP NEW ORPHANS.
-   orphs_2.b = o2;
-   orphs_2.c__ = o3;
-   orphs_2.d__ = o4;
-   orphs_2.e = o5;
+   orphs_1.oact = o2;
+   orphs_1.oslot = o3;
+   orphs_1.oprep = o4;
+   orphs_1.oname = o5;
 }
 
 // LEX-	LEXICAL ANALYZER
