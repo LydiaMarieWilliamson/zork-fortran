@@ -39,3 +39,5 @@ History
 2021/09/17	The in-line versions of ‟parser.h” have been regularized and extracted, first.
 2021/09/17	The in-line versions of ‟vocab.h” have been regularized and extracted, next,
 		and combined with ‟parser.h” into ‟parse.h”.
+2021/09/17	The initializations and comments in blkdata.c have been realigned to the form they had originally in Fortran.
+		The extraneous includes in blkdata.c have been removed both here and in the Fortran version.
