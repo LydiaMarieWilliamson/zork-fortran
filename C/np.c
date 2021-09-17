@@ -1,58 +1,5 @@
 #include "F2C.h"
-
-// parser.h:
-
-// PARSER OUTPUT
-
-extern struct {
-   int prsa, prsi, prso;
-   Bool prswon;
-   int prscon;
-} prsvec_;
-#define prsvec_1 prsvec_
-
-// PARSER STATE
-
-extern union {
-   struct {
-      int oflag, oact, oslot, oprep, oname;
-   } _1;
-   struct {
-      int a, b, c__, d__, e;
-   } _2;
-} orphs_;
-#define orphs_1 (orphs_._1)
-#define orp ((int *)&orphs_1)
-#define orphs_2 (orphs_._2)
-
-extern struct {
-   int lastit;
-} last_;
-#define last_1 last_
-
-extern struct {
-   int act, o1, o2, p1, p2;
-} pv_;
-#define pv_1 pv_
-#define pvec ((int *)&pv_1)
-#define objvec ((int *)&pv_1 + 1)
-#define prpvec ((int *)&pv_1 + 3)
-
-extern struct {
-   int vflag, dobj, dfl1, dfl2, dfw1, dfw2, iobj, ifl1, ifl2, ifw1, ifw2;
-} syntax_;
-#define syntax_1 syntax_
-#define syn ((int *)&syntax_1)
-
-extern struct synflg_1_ {
-   int sdir, sind, sstd, sflip, sdriv, svmask;
-} synflg_;
-#define synflg_1 synflg_
-
-extern struct objflg_1_ {
-   int vabit, vrbit, vtbit, vcbit, vebit, vfbit, vpmask;
-} objflg_;
-#define objflg_1 objflg_
+#include "parser.h"
 
 // io.h:
 

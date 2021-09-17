@@ -36,3 +36,4 @@ History
 2021/09/16	Elimination of static constant parameters.
 2021/09/16	Collating the in-line inserted ‟include” files; in preparation of removing them back to include files.
 2021/09/16	Regularized the translated copies of the ‟include” files and their common block and equivalence definitions.
+2021/09/17	The in-line versions of ‟parser.h” have been regularized and extracted, first.

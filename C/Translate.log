@@ -26,23 +26,18 @@ Most of the ‟Fortran”-isms have also been removed from "F2C.h" and rendered 
 Unused Variables
 ────────────────
 Because the original Fortran source ‟D”-commented out the ‟GDB” debug code.
-actors.f:	dflag
-blkdata.f:	dflag
-demons.f:	rlight, rser
-dgame.f:	gdtstr
-dinit.f:	dflag, datarry
-dmain.f:	dflag
-dsub.f:		dflag, dflag
-gdt.f:		dflag
-np1.f:		dflag
-np2.f:		dflag
-np3.f:		dflag
-np.f:		sysbuf, dflag, dflag
+	dflag:		actors.f, blkdata.f, dinit.f, dmain.f, dsub.f, gdt.f, np1.f, np2.f, np3.f, np.f
+	rlight:		demons.f
+	rser:		demons.f
+	gdtstr:		dgame.f
+	datarry:	dinit.f
+	sysbuf:		np.f
 
-Block Data
-──────────
-blkdata.f:	BLOCK DATA
-dmain.f:	BLOCK DATA
+Initialized Block Data
+──────────────────────
+blkdata.f:	buzvoc, prpvoc, dirvoc, adjvoc, vrbvoc, objvoc
+dmain.f:	vers, hyper, bats, synflg, objflg, puzzle, screen,
+		aflags, aindex, cindex, oflags, oindex, rflag, rindex, vindex, xpars, xsrch,
 
 Main Program
 ────────────
