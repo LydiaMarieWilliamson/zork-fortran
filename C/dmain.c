@@ -1,5 +1,5 @@
 #include "F2C.h"
-#include "parser.h"
+#include "parse.h"
 
 // parser.h:
 struct synflg_1_ synflg_ = (struct synflg_1_){

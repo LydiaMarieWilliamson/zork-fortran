@@ -37,11 +37,6 @@ vers_:		dinit dmain dverb2 sverbs
 hyper_:		dinit dmain dso7 nobjs
 bats_:		dmain objcts rooms
 
-I/O Variables (io.h)
-────────────────────
-input_:		dgame dinit dmain dsub gdt np nrooms sverbs
-chan_:		dgame dinit dmain dso2 dso3 dso7 dsub gdt np nrooms sverbs
-
 Parser Output (parser.h)
 ────────────────────────
 prsvec_:	actors ballop blkdata demons dgame dinit dmain dso4 dso5 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 np nrooms objcts rooms sobjs sverbs verbs villns
@@ -58,54 +53,38 @@ Defined in dmain.c:
 synflg_:	actors ballop blkdata demons dgame dinit dmain dso4 dso5 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 np nrooms objcts rooms sobjs sverbs verbs villns
 objflg_:	actors ballop blkdata demons dgame dinit dmain dso4 dso5 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 np nrooms objcts rooms sobjs sverbs verbs villns
 
-Puzzle Room State (puzzle.h)
-────────────────────────────
-Defined in dmain.c:
-puzzle_:	dmain dso7 dverb2 gdt nobjs objcts
-
-Screen of Light (screen.h)
-──────────────────────────
-Defined in dmain.c:
-screen_:	dinit dmain dsub dverb2 gdt nobjs rooms sverbs
-
-Adventurers (advers.h)
+Vocabularies (vocab.h)
 ──────────────────────
-advs_:		actors blkdata clockr demons dgame dinit dmain dso1 dso2 dso4 dso5 dsub dverb1 dverb2 gdt nobjs np1 np2 np3 nrooms objcts rooms sobjs sverbs verbs
-
-Defined in dmain.c:
-aflags_:	actors blkdata clockr demons dgame dinit dmain dso1 dso2 dso4 dso5 dsub dverb1 dverb2 gdt nobjs np1 np2 np3 nrooms objcts rooms sobjs sverbs verbs
-aindex_:	actors blkdata clockr demons dgame dinit dmain dso1 dso2 dso4 dso5 dsub dverb1 dverb2 gdt nobjs np1 np2 np3 nrooms objcts rooms sobjs sverbs verbs
-
-Clock Interrupts (clock.h)
-──────────────────────────
-cevent_:	actors ballop clockr demons dinit dmain dso2 dverb2 gdt lightp nobjs nrooms objcts rooms sobjs sverbs verbs villns
-
-Defined in dmain.c:
-cindex_:	actors ballop clockr demons dinit dmain dso2 dverb2 gdt lightp nobjs nrooms objcts rooms sobjs sverbs verbs villns
-
-Current Exits (curxt.h)
-───────────────────────
-curxt_:		ballop clockr demons dinit dmain dso3 dverb2 sverbs
-
-(debug.h)
-─────────
-debug_:		actors blkdata dinit dmain dsub gdt np1 np2 np3 np
-
-Exits (exits.h)
-───────────────
-exits_:		dinit dmain dso3 dverb2 gdt sverbs
-
-Flags (flags.h)
-───────────────
-findex_:	actors ballop clockr demons dgame dinit dmain dso1 dso2 dso4 dso6 dso7 dsub dverb2 gdt lightp nobjs nrooms objcts rooms sobjs sverbs villns
+Defined in blkdata.c:
+buzvoc_:	blkdata np1 np2 np3
+prpvoc_:	blkdata np1 np2 np3
+dirvoc_:	blkdata np1 np2 np3
+adjvoc_:	blkdata np1 np2 np3
+vrbvoc_:	blkdata np1 np2 np3
+objvoc_:	blkdata np1 np2 np3
 
 Game State (gamestat.h)
 ───────────────────────
 play_:		actors ballop blkdata clockr demons dgame dinit dmain dso1 dso2 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 nrooms objcts rooms sobjs sverbs verbs villns
 
-Message Index (mindex.h)
-────────────────────────
-rmsg_:		dinit dsub gdt
+Rooms (rooms.h)
+───────────────
+rooms_:		actors ballop clockr dgame dinit dmain dso1 dso2 dso3 dso5 dso6 dso7 dsub dverb2 gdt nobjs nrooms objcts rooms sobjs sverbs verbs
+
+(rflag.h)
+─────────
+Defined in dmain.c:
+rflag_:		actors ballop clockr dinit dmain dso1 dso2 dso5 dso6 dso7 dsub dverb2 nobjs nrooms objcts rooms sobjs sverbs verbs
+
+(rindex.h)
+──────────
+Defined in dmain.c:
+rindex_:	actors clockr demons dgame dinit dmain dso6 dso7 dsub dverb1 dverb2 gdt nobjs nrooms objcts rooms sobjs sverbs verbs villns
+
+(xsrch.h)
+─────────
+Defined in dmain.c:
+xsrch_:		actors clockr demons dmain dsub dverb2 np nrooms sverbs verbs
 
 Objects (objects.h)
 ───────────────────
@@ -122,50 +101,71 @@ oflags_:	actors ballop clockr demons dgame dmain dso1 dso3 dso4 dso5 dso7 dsub d
 Defined in dmain.c:
 oindex_:	actors ballop blkdata clockr demons dgame dinit dmain dso1 dso2 dso4 dsub dverb2 gdt lightp nobjs np1 nrooms objcts rooms sobjs sverbs verbs villns
 
-(rflag.h)
-─────────
+Clock Interrupts (clock.h)
+──────────────────────────
+cevent_:	actors ballop clockr demons dinit dmain dso2 dverb2 gdt lightp nobjs nrooms objcts rooms sobjs sverbs verbs villns
+
 Defined in dmain.c:
-rflag_:		actors ballop clockr dinit dmain dso1 dso2 dso5 dso6 dso7 dsub dverb2 nobjs nrooms objcts rooms sobjs sverbs verbs
+cindex_:	actors ballop clockr demons dinit dmain dso2 dverb2 gdt lightp nobjs nrooms objcts rooms sobjs sverbs verbs villns
 
-(rindex.h)
-──────────
+Adventurers (advers.h)
+──────────────────────
+advs_:		actors blkdata clockr demons dgame dinit dmain dso1 dso2 dso4 dso5 dsub dverb1 dverb2 gdt nobjs np1 np2 np3 nrooms objcts rooms sobjs sverbs verbs
+
 Defined in dmain.c:
-rindex_:	actors clockr demons dgame dinit dmain dso6 dso7 dsub dverb1 dverb2 gdt nobjs nrooms objcts rooms sobjs sverbs verbs villns
-
-Rooms (rooms.h)
-───────────────
-rooms_:		actors ballop clockr dgame dinit dmain dso1 dso2 dso3 dso5 dso6 dso7 dsub dverb2 gdt nobjs nrooms objcts rooms sobjs sverbs verbs
-
-(state.h)
-─────────
-state_:		ballop clockr dgame dinit dmain dso2 dso4 dsub dverb1 dverb2 gdt nobjs np3 nrooms objcts rooms sobjs sverbs verbs
+aflags_:	actors blkdata clockr demons dgame dinit dmain dso1 dso2 dso4 dso5 dsub dverb1 dverb2 gdt nobjs np1 np2 np3 nrooms objcts rooms sobjs sverbs verbs
+aindex_:	actors blkdata clockr demons dgame dinit dmain dso1 dso2 dso4 dso5 dsub dverb1 dverb2 gdt nobjs np1 np2 np3 nrooms objcts rooms sobjs sverbs verbs
 
 Verbs (verbs.h)
 ───────────────
 Defined in dmain.c:
 vindex_:	actors ballop blkdata demons dgame dmain dso5 dsub dverb1 lightp nobjs np1 nrooms objcts rooms sobjs sverbs verbs villns
 
+Flags (flags.h)
+───────────────
+findex_:	actors ballop clockr demons dgame dinit dmain dso1 dso2 dso4 dso6 dso7 dsub dverb2 gdt lightp nobjs nrooms objcts rooms sobjs sverbs villns
+
+(debug.h)
+─────────
+debug_:		actors blkdata dinit dmain dsub gdt np1 np2 np3 np
+
 Villains and Demons (villians.h)
 ────────────────────────────────
 hack_:		actors clockr demons dgame dinit dmain dso4 dverb2 gdt nobjs rooms sobjs villns
 vill_:		actors clockr demons dgame dinit dmain dso4 dverb2 gdt nobjs rooms sobjs villns
 
-Vocabularies (vocab.h)
-──────────────────────
-Defined in blkdata.c:
-buzvoc_:	blkdata np1 np2 np3
-prpvoc_:	blkdata np1 np2 np3
-dirvoc_:	blkdata np1 np2 np3
-adjvoc_:	blkdata np1 np2 np3
-vrbvoc_:	blkdata np1 np2 np3
-objvoc_:	blkdata np1 np2 np3
+(state.h)
+─────────
+state_:		ballop clockr dgame dinit dmain dso2 dso4 dsub dverb1 dverb2 gdt nobjs np3 nrooms objcts rooms sobjs sverbs verbs
+
+Current Exits (curxt.h)
+───────────────────────
+curxt_:		ballop clockr demons dinit dmain dso3 dverb2 sverbs
 
 (xpars.h)
 ─────────
 Defined in dmain.c:
 xpars_:		ballop dinit dmain dso3 dverb2 sverbs
 
-(xsrch.h)
-─────────
+I/O Variables (io.h)
+────────────────────
+input_:		dgame dinit dmain dsub gdt np nrooms sverbs
+chan_:		dgame dinit dmain dso2 dso3 dso7 dsub gdt np nrooms sverbs
+
+Screen of Light (screen.h)
+──────────────────────────
 Defined in dmain.c:
-xsrch_:		actors clockr demons dmain dsub dverb2 np nrooms sverbs verbs
+screen_:	dinit dmain dsub dverb2 gdt nobjs rooms sverbs
+
+Message Index (mindex.h)
+────────────────────────
+rmsg_:		dinit dsub gdt
+
+Exits (exits.h)
+───────────────
+exits_:		dinit dmain dso3 dverb2 gdt sverbs
+
+Puzzle Room State (puzzle.h)
+────────────────────────────
+Defined in dmain.c:
+puzzle_:	dmain dso7 dverb2 gdt nobjs objcts

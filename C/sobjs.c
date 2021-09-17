@@ -1,5 +1,5 @@
 #include "F2C.h"
-#include "parser.h"
+#include "parse.h"
 
 // gamestat.h:
 
