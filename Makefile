@@ -1,53 +1,41 @@
-## Makefile for Dungeon/Zork
+## Makefile for creating dungeon.
+## 2012/12/04 bkw: modified for use with gnu fortran 4.7.x.
+## 2021/09/13 LMW: modified for use with gfortran 11.2.1 20210728.
 
-## The system link command (or else copy).
-#LN=cp
-LN=ln -sf
+## The Fortran compiler, suitable for the target system.
+#FC = g77
+FC = gfortran
 
-## The Dungeon/Zork program provides a ``more'' facility which tries to figure out how many rows the terminal has.
-## Several mechanisms are supported for determining this; the most common one has been left uncommented.
-## If you have trouble, especially when linking, you may have to select a different option.
+ifeq ($(DEBUG),1)
+GDT = gdt.f
+DLINE = -fd-lines-as-code
+else
+DLINE = -fd-lines-as-comments
+endif
 
-LIBS = -lf2c -lm
+APP = dungeon
+## Where it should go.
+#BINDIR = $(DESTDIR)/usr/bin
+#APPDIR = $(DESTDIR)/usr/share/games/$(APP)
+## Where it's going now, for the time being.
+BINDIR=.
+APPDIR=.
 
-## End of more options
+FORS =  actors.f ballop.f clockr.f demons.f \
+	dgame.f dinit.f dmain.f dso1.f dso2.f \
+	dso3.f dso4.f dso5.f dso6.f dso7.f \
+	dsub.f dverb1.f dverb2.f lightp.f \
+	nobjs.f np.f np2.f np3.f nrooms.f objcts.f \
+	rooms.f sobjs.f sverbs.f verbs.f villns.f \
+	np1.f blkdata.f rtim.f $(GDT)
 
-## Uncomment the following line if you want to have access to the game debugging tool.
-## This is invoked by typing "gdt".
-## It is not much use except for debugging.
-GDTFLAG = -DALLOW_GDT
-
-## Compilation flags
-## Development
-CFLAGS = -g
-## Production
-#CFLAGS = -O2
-
-## Object files
-OBJ =	common.o F2C.o \
-	actors.o ballop.o blkdata.o clockr.o demons.o dgame.o dinit.o dmain.o dso1.o dso2.o dso3.o \
-	dso4.o dso5.o dso6.o dso7.o dsub.o dverb1.o dverb2.o gdt.o lightp.o nobjs.o np1.o \
-	np2.o np3.o np.o nrooms.o objcts.o rooms.o rtim.o sobjs.o sverbs.o verbs.o villns.o
-
-APP = Zork
-
-.c.o:
-	$(CC) $(CFLAGS) -c $<
-
-$(APP): $(OBJ)
-	$(CC) $(CFLAGS) -o $(APP) $(OBJ) $(LIBS)
-
-## Temporary expedients.
-dinit.o: dindx.dat dtext.dat
-dindx.dat:
-	$(LN) ../dindx.dat .
-dtext.dat:
-	$(LN) ../dtext.dat .
-undat:
-	rm -f dindx.dat
-	rm -f dtext.dat
+$(APP): $(FORS)
+	$(FC) $(FFLAGS) -fbackslash $(DLINE) -o $(APP) $(FORS)
 
 clean:
-	rm -f $(OBJ)
-clobber: clean undat
 	rm -f $(APP)
+
+install: $(APP)
+	mkdir -p $(BINDIR) $(APPDIR)
+	install -s $(APP) $(BINDIR)
+	install *.dat $(APPDIR)
