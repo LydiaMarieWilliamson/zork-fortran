@@ -18,7 +18,7 @@ Addendum (2021/09/17):
 	These inconsistencies have also been inherited by the translations of Zork into C.
 	They will all need to be repaired
 
-The following note (up to layout changes) was inserted into the translated files, but has been moved here:
+The following note (up to layout changes) was inserted by f2c into the translated files, but has been moved here:
 
 	Translated by f2c (version 20190311).
 	You must link the resulting object file with libf2c:

@@ -1,34 +1,5 @@
 #include "F2C.h"
-#include "parse.h"
-
-// io.h:
-
-// I/O VARIABLES
-
-extern struct {
-   int inlnt;
-   char inbuf[78];
-} input_;
-#define input_1 input_
-
-extern struct {
-   int inpch, outch, dbch;
-} chan_;
-#define chan_1 chan_
-
-// debug.h:
-
-extern struct {
-   int dbgflg, prsflg, gdtflg;
-} debug_;
-#define debug_1 debug_
-
-// xsrch.h:
-
-extern struct xsrch_1_ {
-   int xmin, xmax, xdown, xup, xnorth, xsouth, xenter, xexit, xeast, xwest;
-} xsrch_;
-#define xsrch_1 xsrch_
+#include "common.h"
 
 // RDLINE-	READ INPUT LINE
 

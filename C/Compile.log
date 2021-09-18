@@ -125,7 +125,7 @@ Flags (flags.h)
 ───────────────
 findex_:	actors ballop clockr demons dgame dinit dmain dso1 dso2 dso4 dso6 dso7 dsub dverb2 gdt lightp nobjs nrooms objcts rooms sobjs sverbs villns
 
-(debug.h)
+(debug.)
 ─────────
 debug_:		actors blkdata dinit dmain dsub gdt np1 np2 np3 np
 

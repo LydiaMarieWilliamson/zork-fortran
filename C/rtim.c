@@ -1,10 +1,5 @@
 #include "F2C.h"
-
-// random.h: (Unlisted)
-extern struct {
-   int seedy;
-} random_;
-#define random_1 random_
+#include "common.h"
 
 #if 1
 //(@) Cheat, cheat! We make a ‟fallback” using a hack from the other repository.

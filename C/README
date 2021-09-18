@@ -42,3 +42,8 @@ History
 2021/09/17	The initializations and comments in blkdata.c have been realigned to the form they had originally in Fortran.
 		The extraneous includes in blkdata.c have been removed both here and in the Fortran version.
 2021/09/17	Documented the translation error in the original Fortran and C versions ‟blkdata.{f,c}” in ‟Translate.log”.
+2021/09/17	Collated the remaining in-line includes into ‟parse.h” and renamed the file ‟common.h”.
+		In the 1991 version of the C program, most of the role of its ‟parse.h” is played, here, by ‟blkdata.c”,
+		while its ‟vars.h” corresponds, here, to ‟common.h”.
+2021/09/18	Extracted the in-line include files out into ‟common.h”.
+		Regularized the names of the common block types.

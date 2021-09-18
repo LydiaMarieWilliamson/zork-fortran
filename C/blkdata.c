@@ -1,5 +1,5 @@
 #include "F2C.h"
-#include "parse.h"
+#include "common.h"
 
 // block data foo
 // DECLARATIONS
@@ -10,7 +10,7 @@
 //
 // BUZZ WORDS--	IGNORED IN SYNTACTIC PROCESSING
 //
-struct buzvoc_1_ buzvoc_ = (struct buzvoc_1_){
+struct buzvocCB buzvoc_ = (struct buzvocCB){
 //   THE FOLLOWING DATA STATEMENT WAS CONVERTED FROM:
 //
 // 	DATA BVOC/3RAND,0,2RBY,0,2RIS,0,1RA,0,
@@ -24,7 +24,7 @@ struct buzvoc_1_ buzvoc_ = (struct buzvoc_1_){
 
 // PREPOSITIONS--	MAPS PREPOSITIONS TO INDICES
 //
-struct prpvoc_1_ prpvoc_ = (struct prpvoc_1_){
+struct prpvocCB prpvoc_ = (struct prpvocCB){
 //   THE FOLLOWING DATA STATEMENT WAS CONVERTED FROM:
 //
 // 	DATA PVOC/3ROVE,1RR,1,3RWIT,1RH,2,3RUSI,2RNG,2,3RTHR,3ROUG,2,
@@ -43,7 +43,7 @@ struct prpvoc_1_ prpvoc_ = (struct prpvoc_1_){
 //
 // DIRECTIONS--	MAPS DIRECTIONS TO INDICES
 //
-struct dirvoc_1_ dirvoc_ = (struct dirvoc_1_){
+struct dirvocCB dirvoc_ = (struct dirvocCB){
 //   THE FOLLOWING DATA STATEMENT WAS CONVERTED FROM:
 //
 // 	DATA DVOC/1RN,0,"2000,3RNOR,2RTH,"2000,1RS,0,"12000,
@@ -82,7 +82,7 @@ struct dirvoc_1_ dirvoc_ = (struct dirvoc_1_){
 // FOLLOWS-- ALL ADJECTIVES ARE .GE. 1RA (1600), WHILE ALL OBJECTS
 // ARE .LE. OLNT (255 MAX).
 //
-struct adjvoc_1_ adjvoc_ = (struct adjvoc_1_){
+struct adjvocCB adjvoc_ = (struct adjvocCB){
 //   THE DATA STATEMENT BELOW WAS CONVERTED FROM:
 //
 // 	DATA AVOC1/3RBRO,2RWN,1,81,3RELO,3RNGA,1,3RHOT,0,3,3RPEP,3RPER,3,
@@ -249,7 +249,7 @@ struct adjvoc_1_ adjvoc_ = (struct adjvoc_1_){
 //
 // SPARSE, PAGE 5
 //
-struct vrbvoc_1_ vrbvoc_ = (struct vrbvoc_1_){
+struct vrbvocCB vrbvoc_ = (struct vrbvocCB){
 //   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
 //
 // 	DATA VVOC1/3RBRI,2REF,1,70,3RVER,3RBOS,1,71,
@@ -568,7 +568,7 @@ struct vrbvoc_1_ vrbvoc_ = (struct vrbvoc_1_){
 // SAME FORMAT AS AVOC.
 //
 //
-struct objvoc_1_ objvoc_ = (struct objvoc_1_){
+struct objvocCB objvoc_ = (struct objvocCB){
 //   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
 //
 // 	DATA OVOC1/3RBAG,0,1,25,100,3RSAC,1RK,1,3RGAR,3RLIC,2,
