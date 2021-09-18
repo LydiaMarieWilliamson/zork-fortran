@@ -15,10 +15,10 @@ Bool moveto_(int nr, int who) {
    Bool ret_val;
 
 // Local variables
-   static int j;
-   static Bool lhr;
-   static Bool lnr, nlv;
-   static int bits;
+   int j;
+   Bool lhr;
+   Bool lnr, nlv;
+   int bits;
 
 // MOVETO, PAGE 2
 
@@ -98,14 +98,14 @@ L800:
 void score_(Bool flg) {
 // Initialized data
 
-   static int rank[10] = { 20, 19, 18, 16, 12, 8, 4, 2, 1, 0 };
-   static int erank[5] = { 20, 15, 10, 5, 0 };
+   static const int rank[10] = { 20, 19, 18, 16, 12, 8, 4, 2, 1, 0 };
+   static const int erank[5] = { 20, 15, 10, 5, 0 };
 
 // System generated locals
    int i__1;
 
 // Local variables
-   static int i, as;
+   int i, as;
 
 // FUNCTIONS AND DATA
 

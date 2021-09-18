@@ -15,7 +15,7 @@ Bool trollp_(/*int arg*/) {
    Bool ret_val;
 
 // Local variables
-   static int i;
+   int i;
 
 // TROLLP, PAGE 2
 
@@ -173,7 +173,7 @@ Bool cyclop_(/*int arg*/) {
    Bool ret_val;
 
 // Local variables
-   static int i;
+   int i;
 
 // CYCLOP, PAGE 2
 
@@ -305,7 +305,7 @@ Bool thiefp_(/*int arg*/) {
    Bool ret_val;
 
 // Local variables
-   static int i, j;
+   int i, j;
 
 // ROOMS
 

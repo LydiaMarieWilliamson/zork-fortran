@@ -15,7 +15,7 @@ Bool findxt_(int dir, int rm) {
    Bool ret_val;
 
 // Local variables
-   static int i, xi;
+   int i, xi;
 
    ret_val = true;
 // 						!ASSUME WINS.
@@ -74,7 +74,7 @@ int fwim_(int f1, int f2, int rm, int con, int adv, Bool nocare) {
    int ret_val, i__1, i__2;
 
 // Local variables
-   static int i, j;
+   int i, j;
 
    ret_val = 0;
 // 						!ASSUME NOTHING.
@@ -146,7 +146,7 @@ Bool yesno_(int q, int y, int n) {
    Bool ret_val;
 
 // Local variables
-   static char ans[1];
+   char ans[1];
 
 L100:
    rspeak_(q);

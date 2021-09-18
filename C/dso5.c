@@ -11,7 +11,7 @@
 // DECLARATIONS
 
 int gttime_(void) {
-   static int h__, m, s;
+   int h__, m, s;
 
    intime_(&h__, &m, &s);
    int t = h__ * 60 + m - (time_1.shour * 60 + time_1.smin);
@@ -83,7 +83,7 @@ Bool lit_(int rm) {
    Bool ret_val;
 
 // Local variables
-   static int i, j, oa;
+   int i, j, oa;
 
    ret_val = true;
 // 						!ASSUME WINS
@@ -144,7 +144,7 @@ int weight_(int rm, int cn, int ad) {
    int ret_val, i__1;
 
 // Local variables
-   static int i, j;
+   int i, j;
 
    ret_val = 0;
    i__1 = objcts_1.olnt;

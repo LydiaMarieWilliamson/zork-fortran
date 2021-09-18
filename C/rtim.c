@@ -16,7 +16,7 @@ extern int /* Subroutine */ itime_(int *);
 #endif
 
 void intime_(int * hours, int * minutes, int * seconds) {
-   static int tarray[3];
+   int tarray[3];
 
 // 	CALL GETTIM(HOURS, MINUTES, SECONDS, HUNDREDTHS)
    ITime_(tarray);

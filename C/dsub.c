@@ -41,10 +41,10 @@ void rspsb2_(int n, int s1, int s2) {
    int i__1;
 
 // Local variables
-   static int i, j, x, y, z__;
-   static char b1[74], b2[74], b3[74];
-   static int k1, k2, x1;
-   static short jrec, oldrec, newrec;
+   int i, j, x, y, z__;
+   char b1[74], b2[74], b3[74];
+   int k1, k2, x1;
+   short jrec, oldrec, newrec;
 
 // DECLARATIONS
 
@@ -285,7 +285,7 @@ Bool qhere_(int obj, int rm) {
    Bool ret_val;
 
 // Local variables
-   static int i;
+   int i;
 
    ret_val = true;
    if (objcts_1.oroom[obj - 1] == rm) {
@@ -315,7 +315,7 @@ Bool qempty_(int obj) {
    Bool ret_val;
 
 // Local variables
-   static int i;
+   int i;
 
    ret_val = false;
 // 						!ASSUME LOSE.
@@ -338,15 +338,15 @@ Bool qempty_(int obj) {
 void jigsup_(int desc) {
 // Initialized data
 
-   static int rlist[9] = { 8, 6, 36, 35, 34, 4, 34, 6, 5 };
+   static const int rlist[9] = { 8, 6, 36, 35, 34, 4, 34, 6, 5 };
 
 // System generated locals
    int i__1;
 
 // Local variables
-   static int nonofl;
-   static Bool f;
-   static int i, j;
+   int nonofl;
+   Bool f;
+   int i, j;
 
 // FUNCTIONS AND DATA
 
@@ -502,7 +502,7 @@ int oactor_(int obj) {
    int ret_val, i__1;
 
 // Local variables
-   static int i;
+   int i;
 
    i__1 = advs_1.alnt;
    for (i = 1; i <= i__1; ++i) {
@@ -529,7 +529,7 @@ Bool prob_(int g, int b) {
    Bool ret_val;
 
 // Local variables
-   static int i;
+   int i;
 
    i = g;
 // 						!ASSUME GOOD LUCK.
@@ -552,7 +552,7 @@ Bool rmdesc_(int full) {
    Bool ret_val, L__1;
 
 // Local variables
-   static int i, ra;
+   int i, ra;
 
 // FULL=	0/1/2/3=	SHORT/OBJ/ROOM/FULL
 
@@ -655,7 +655,7 @@ L600:
 Bool rappli_(int ri) {
 // Initialized data
 
-   static int newrms = 38;
+   const int newrms = 38;
 
 // System generated locals
    Bool ret_val;

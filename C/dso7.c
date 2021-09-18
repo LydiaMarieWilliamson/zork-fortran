@@ -13,11 +13,11 @@
 void encryp_(const char *inw, char *outw/*, size_t inw_unit, size_t outw_unit*/) {
 // Initialized data
 
-   static char keyw[1 * 6] = "E" "C" "O" "R" "M" "S";
+   static const char keyw[1 * 6] = "E" "C" "O" "R" "M" "S";
 
-   static int i, j, uinw[6], usum;
-   static char ukeyw[1 * 6];
-   static int uinws, ukeyws;
+   int i, j, uinw[6], usum;
+   char ukeyw[1 * 6];
+   int uinws, ukeyws;
 
 // Parameter adjustments
    --outw;
@@ -67,7 +67,7 @@ void cpgoto_(int st) {
    int i__1, i__2;
 
 // Local variables
-   static int i;
+   int i;
 
 // CPGOTO, PAGE 2
 
@@ -94,13 +94,13 @@ void cpgoto_(int st) {
 void cpinfo_(int rmk, int st) {
 // Initialized data
 
-   static int dgmoft[8] = { -9, -8, -7, -1, 1, 7, 8, 9 };
-   static char pict[1 * 5] = "S" "S" "S" " " "M";
-   static char qmk[1] = "?";
+   static const int dgmoft[8] = { -9, -8, -7, -1, 1, 7, 8, 9 };
+   static const char pict[1 * 5] = "S" "S" "S" " " "M";
+   static const char qmk[1] = "?";
 
 // Local variables
-   static int i, j, k, l;
-   static char dgm[1 * 8];
+   int i, j, k, l;
+   char dgm[1 * 8];
 
 // PUZZLE ROOM
 

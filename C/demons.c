@@ -13,17 +13,17 @@
 void fightd_(void) {
 // Initialized data
 
-   static int rout = 1;
+   const int rout = 1;
 
 // System generated locals
    int i__1, i__2;
 
 // Local variables
-   static Bool f;
-   static int i, j, ra;
-   static int obj;
-   static int res;
-   static int out;
+   Bool f;
+   int i, j, ra;
+   int obj;
+   int res;
+   int out;
 
 // FUNCTIONS AND DATA
 
@@ -176,22 +176,22 @@ L2600:
 int blow_(int h__, int v, int rmk, Bool hflg, int out) {
 // Initialized data
 
-   static int rmiss = 0;
-   static int rout = 1;
-   static int rkill = 2;
-   static int rstag = 5;
-   static int rlose = 6;
-   static int rhes = 7;
-   static int rsit = 8;
-   static int def1r[3] = { 1, 2, 3 };
-   static int def2r[4] = { 13, 23, 24, 25 };
-   static int def3r[5] = { 35, 36, 46, 47, 57 };
-   static int rvectr[66] = {
+   const int rmiss = 0;
+   const int rout = 1;
+   const int rkill = 2;
+   const int rstag = 5;
+   const int rlose = 6;
+   const int rhes = 7;
+   const int rsit = 8;
+   static const int def1r[3] = { 1, 2, 3 };
+   static const int def2r[4] = { 13, 23, 24, 25 };
+   static const int def3r[5] = { 35, 36, 46, 47, 57 };
+   static const int rvectr[66] = {
       0, 0, 0, 0, 5, 5, 1, 1, 2, 2, 2, 2, 0, 0, 0, 0, 0, 5, 5, 3, 3, 1,
       0, 0, 0, 5, 5, 3, 3, 3, 1, 2, 2, 2, 0, 0, 0, 0, 0, 5, 5, 3, 3, 4, 4, 0, 0, 0, 5, 5, 3, 3, 3, 4, 4,
       4, 0, 5, 5, 3, 3, 3, 3, 4, 4, 4
    };
-   static int rstate[45] = {
+   static const int rstate[45] = {
       5000, 3005, 3008, 4011, 3015, 3018, 1021, 0, 0, 5022,
       3027, 3030, 4033, 3037, 3040, 1043, 0, 0, 4044, 2048, 4050, 4054, 5058, 4063,
       4067, 3071, 1074, 4075, 1079, 4080, 4084, 4088, 4092, 4096, 4100, 1104, 4105,
@@ -202,12 +202,12 @@ int blow_(int h__, int v, int rmk, Bool hflg, int out) {
    int ret_val, i__1, i__2;
 
 // Local variables
-   static Bool f;
-   static int i, j, oa, ra, od, mi, dv, def;
-   static int tbl;
-   static int att, res;
-   static int dweap;
-   static int pblose;
+   Bool f;
+   int i, j, oa, ra, od, mi, dv, def;
+   int tbl;
+   int att, res;
+   int dweap;
+   int pblose;
 
 // PARSE VECTOR
 
@@ -554,7 +554,7 @@ void swordd_(void) {
    int i__1, i__2;
 
 // Local variables
-   static int i, ng;
+   int i, ng;
 
 // SWORDD, PAGE 2
 

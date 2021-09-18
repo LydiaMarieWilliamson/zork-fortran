@@ -18,11 +18,11 @@ Bool sobjs_(int ri, int arg) {
    Bool ret_val;
 
 // Local variables
-   static Bool f;
-   static int i;
-   static int mroom;
-   static int av;
-   static int odi2, odo2;
+   Bool f;
+   int i;
+   int mroom;
+   int av;
+   int odi2, odo2;
 
 // FUNCTIONS AND DATA
 

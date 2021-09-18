@@ -18,16 +18,16 @@ static Bool takeit_(int, int);
 Bool synmch_(/*int x*/) {
 // Initialized data
 
-   static int r50min = 1600;
+   const int r50min = 1600;
 
 // System generated locals
    int i__1;
    Bool ret_val;
 
 // Local variables
-   static int j;
-   static int newj;
-   static int drive, limit, qprep, sprep, dforce;
+   int j;
+   int newj;
+   int drive, limit, qprep, sprep, dforce;
 
 //   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
 
@@ -217,7 +217,7 @@ L5000:
 
 static int unpacks_(int oldj) {
 // Local variables
-   static int i;
+   int i;
 
    for (i = 1; i <= 11; ++i) {
 // 						!CLEAR SYNTAX.
@@ -308,8 +308,8 @@ Bool takeit_(int obj, int sflag) {
    Bool ret_val;
 
 // Local variables
-   static int x;
-   static int odo2;
+   int x;
+   int odo2;
 
 // TAKEIT, PAGE 2
 
@@ -423,9 +423,9 @@ int gwim_(int sflag, int sfw1, int sfw2) {
    int ret_val;
 
 // Local variables
-   static int av;
-   static int nobj, robj;
-   static Bool nocare;
+   int av;
+   int nobj, robj;
+   Bool nocare;
 
 // GWIM, PAGE 2
 

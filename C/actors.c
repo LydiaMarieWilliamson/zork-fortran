@@ -15,8 +15,8 @@ Bool aappli_(int ri) {
    Bool ret_val;
 
 // Local variables
-   static Bool f;
-   static int i;
+   Bool f;
+   int i;
 
 // AAPPLI, PAGE 2
 
@@ -133,9 +133,9 @@ void thiefd_(void) {
    int i__1, i__2;
 
 // Local variables
-   static int i, j, nr;
-   static Bool once;
-   static int rhere;
+   int i, j, nr;
+   Bool once;
+   int rhere;
 
 // FUNCTIONS AND DATA
 

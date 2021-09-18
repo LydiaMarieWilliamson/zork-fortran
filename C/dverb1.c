@@ -16,7 +16,7 @@ Bool take_(Bool flg) {
    Bool ret_val;
 
 // Local variables
-   static int x, oa;
+   int x, oa;
 
 // DECLARATIONS
 
@@ -108,8 +108,8 @@ Bool drop_(/*Bool z__*/) {
    Bool ret_val;
 
 // Local variables
-   static Bool f;
-   static int i, x;
+   Bool f;
+   int i, x;
 
 // ROOMS
 
@@ -199,8 +199,8 @@ Bool put_(/*Bool flg*/) {
    Bool ret_val;
 
 // Local variables
-   static int j, x;
-   static int svi, svo;
+   int j, x;
+   int svi, svo;
 
 // MISCELLANEOUS VARIABLES
 
@@ -339,10 +339,10 @@ void valuac_(int v) {
    int i__1;
 
 // Local variables
-   static Bool f;
-   static int i;
-   static Bool f1;
-   static int savep, saveh;
+   Bool f;
+   int i;
+   Bool f1;
+   int savep, saveh;
 
 // FUNCTIONS AND DATA
 

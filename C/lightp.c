@@ -15,8 +15,8 @@ Bool lightp_(int obj) {
    Bool ret_val;
 
 // Local variables
-   static int flobts;
-   static int i;
+   int flobts;
+   int i;
 
 // FUNCTIONS AND DATA
 

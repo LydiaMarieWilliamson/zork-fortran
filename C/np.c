@@ -15,7 +15,7 @@ void rdline_(char *buffer, int length, int who, size_t buffer_unit) {
    int i__1;
 
 // Local variables
-   static int i;
+   int i;
 
 // Parameter adjustments
    --buffer;
@@ -38,7 +38,7 @@ L90:
    DoFio(78, buffer + 1, buffer_unit);
    EndInSF();
    for (length = 78; length >= 1; --(length)) {
-      if (*(unsigned char *)&buffer[length] != ' ') {
+      if (buffer[length] != ' ') {
          goto L250;
       }
 // L200:
@@ -62,8 +62,8 @@ L250:
 //L300:
    i__1 = length;
    for (i = 1; i <= i__1; ++i) {
-      if (*(unsigned char *)&buffer[i] >= 'a' && *(unsigned char *)&buffer[i] <= 'z') {
-         *(unsigned char *)&buffer[i] = (char)(*(unsigned char *)&buffer[i] - 32);
+      if (buffer[i] >= 'a' && buffer[i] <= 'z') {
+         buffer[i] = (char)(buffer[i] - 32);
       }
 // L400:
    }
@@ -87,8 +87,8 @@ Bool parse_(char *inbuf, int inlnt, Bool vbflag/*, size_t inbuf_unit*/) {
    Bool ret_val;
 
 // Local variables
-   static int x;
-   static int outbuf[40], outlnt;
+   int x;
+   int outbuf[40], outlnt;
 
 // D	DFLAG=IAND(PRSFLG,1).NE.0
 
@@ -173,15 +173,15 @@ void orphan_(int o1, int o2, int o3, int o4, int o5) {
 static Bool lex_(char *inbuf, int inlnt, int * outbuf, int * op, Bool vbflag/*, size_t inbuf_unit*/) {
 // Initialized data
 
-   static char dlimit[1 * 9] = "A" "Z" "x" "1" "9" "x" "-" "-" "x";
+   static const char dlimit[1 * 9] = "A" "Z" "x" "1" "9" "x" "-" "-" "x";
 
 // System generated locals
    Bool ret_val;
 
 // Local variables
-   static int i;
-   static char j[1];
-   static int k, j1, j2, cp;
+   int i;
+   char j[1];
+   int k, j1, j2, cp;
 
 // Parameter adjustments
    --outbuf;
@@ -211,25 +211,25 @@ L200:
       goto L1000;
    }
 // 						!END OF INPUT?
-   *(unsigned char *)j = *(unsigned char *)&inbuf[prsvec_1.prscon];
+   *j = inbuf[prsvec_1.prscon];
 // 						!NO, GET CHARACTER,
    ++prsvec_1.prscon;
 // 						!ADVANCE PTR.
-   if (*(unsigned char *)j == '.') {
+   if (*j == '.') {
       goto L1000;
    }
 // 						!END OF COMMAND?
-   if (*(unsigned char *)j == ',') {
+   if (*j == ',') {
       goto L1000;
    }
 // 						!END OF COMMAND?
-   if (*(unsigned char *)j == ' ') {
+   if (*j == ' ') {
       goto L6000;
    }
 // 						!SPACE?
    for (i = 1; i <= 9; i += 3) {
 // 						!SCH FOR CHAR.
-      if (*(unsigned char *)j >= *(unsigned char *)&dlimit[i - 1] && *(unsigned char *)j <= *(unsigned char *)&dlimit[i]) {
+      if (*j >= dlimit[i - 1] && *j <= dlimit[i]) {
          goto L4000;
       }
 // L500:
@@ -263,7 +263,7 @@ L1000:
 // LEGITIMATE CHARACTERS: LETTER, DIGIT, OR HYPHEN.
 
 L4000:
-   j1 = *(unsigned char *)j - *(unsigned char *)&dlimit[i + 1];
+   j1 = *j - dlimit[i + 1];
 // D	IF(DFLAG) PRINT 20,J,J1,CP
 // D20	FORMAT(' LEX- CHAR= ',A1,2I7)
    if (cp >= 6) {

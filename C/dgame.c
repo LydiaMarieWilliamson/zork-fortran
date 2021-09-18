@@ -15,14 +15,14 @@ static Bool xvehic_(int);
 void game_(void) {
 // Initialized data
 
-   static char secho[1 * 4] = "E" "C" "H" "O";
+   static const char secho[1 * 4] = "E" "C" "H" "O";
 
 // System generated locals
    int i__1;
 
 // Local variables
-   static Bool f;
-   static int i, j;
+   Bool f;
+   int i, j;
 
 // FUNCTIONS AND DATA
 
@@ -236,9 +236,9 @@ static Bool xvehic_(int);
 
 static void xendmv_(Bool flag__) {
 // Local variables
-   static Bool f;
+   Bool f;
 #if 0
-   static int x; //(@) Not actually used.
+   int x; //(@) Not actually used.
 #endif
 
    if (!(flag__)) {
@@ -276,7 +276,7 @@ static Bool xvehic_(int n) {
    Bool ret_val;
 
 // Local variables
-   static int av;
+   int av;
 
    ret_val = false;
 // 						!ASSUME LOSES.

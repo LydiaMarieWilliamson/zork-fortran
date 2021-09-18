@@ -48,3 +48,8 @@ History
 2021/09/18	Extracted the in-line include files out into ‟common.h”.
 		Regularized the names of the common block types.
 2021/09/18	Separated the external function declarations and the function list in ‟Translate.log” out to ‟extern.h”.
+2021/09/18	Correcting errors in blkdata.{c,f} (round 1 of 2).
+2021/09/18	Strength reduction:
+		∙	uninitialized ‟static” locals to ‟auto”
+		∙	initialized ‟static” scalar locals to ‟auto const”
+		∙	initialized ‟static” array locals to ‟static const”

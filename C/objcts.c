@@ -13,18 +13,18 @@
 Bool oappli_(int ri, int arg) {
 // Initialized data
 
-   static int mxsmp = 99;
+   const int mxsmp = 99;
 
 // System generated locals
    int i__1;
    Bool ret_val;
 
 // Local variables
-   static Bool f;
-   static int flobts, i;
-   static int j,/* x,*/ av, io, ir, iz;
-   static int odi2, odo2;
-   static int nloc;
+   Bool f;
+   int flobts, i;
+   int j,/* x,*/ av, io, ir, iz;
+   int odi2, odo2;
+   int nloc;
 
 // PUZZLE ROOM
 

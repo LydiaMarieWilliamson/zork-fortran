@@ -20,9 +20,9 @@ Bool init_(int x) {
    Bool ret_val;
 
 // Local variables
-   static int xmax, r2max, dirmax, recno;
-   static int i, j, k;
-   static int mmax, omax, rmax, vmax, amax, cmax, fmax, smax;
+   int xmax, r2max, dirmax, recno;
+   int i, j, k;
+   int mmax, omax, rmax, vmax, amax, cmax, fmax, smax;
 
 // MISCELLANEOUS VARIABLES
 

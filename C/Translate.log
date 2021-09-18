@@ -1,22 +1,29 @@
 The results of translation from Fortran into C by f2c.
 
-Addendum (2021/09/17):
+Addenda (2021/09/17-2021/09/18):
 	The original Fortran source was a translation from MDL and contains translation errors in blkdata.f.
 	The encodings used for data initialization in the MDL version are in base 40 with:
-		"1Rα": 1600a,
-		"2Rαβ": 1600a + 40b,
-		"3Rαβγ": 1600a + 40b + c
+		‟1Rα”: 1600a,
+		‟2Rαβ”: 1600a + 40b,
+		‟3Rαβγ”: 1600a + 40b + c
 	where
 		(α,a), (β,b), (γ,c) ∈ { ('A',1), ⋯, ('Z',26), ('$',27), ⋯, ('0',30), ('1',31), ⋯, ('9',39) }
 	In blkdata.f, there are mismatches in the following places:
-	∙	(1RO, 0): Mismatched value (it should be 24000).
 	∙	(1RS, 29560): Mismatched value (it should be 30400); 29560 corresponds to 2RRS.
+	∙	(3RPAP, 256656): Mismatched value (it should be 25656).
+	∙	(1RO, 0): Mismatched value (it should be 24000).
 	∙	(1RY, 4000): Mismatched value (it should be 40000).
 	∙	(3RMIN, 21175): Mismatched value (it should be 21174).
-	∙	(3RPAP, 256656): Mismatched value (it should be 25656).
 
-	These inconsistencies have also been inherited by the translations of Zork into C.
-	They will all need to be repaired
+	The first two of these inconsistencies were corrected by the 1991 translation to C,
+	and have been repaired here - both in the Fortran original and the new C translatin.
+	The ‟1RS” in (1RS, 29560) was already changed to ‟2RRS”.
+	This involved words starting in ‟HOURS⋯”, but did not affect them, since the mistake was in the comment, not the code.
+	The 256656 in (3RPAP, 256656) was already changed to 25656, is for words beginning in ‟PAPER⋯” and affects the code.
+
+	The remaining inconsistencies, which affect words that start in ‟INTO⋯”, ‟CLAY⋯”, ‟CRIMIN⋯”, respectively,
+	and have all been inherited by the translations of Zork into C.
+	They will be repaired in a later revision.
 
 The following note (up to layout changes) was inserted by f2c into the translated files, but has been moved here:
 

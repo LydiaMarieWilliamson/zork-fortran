@@ -15,7 +15,7 @@ void princr_(Bool full, int rm) {
    int i__1, i__2;
 
 // Local variables
-   static int i, j, k;
+   int i, j, k;
 
 // PRINCR, PAGE 2
 
@@ -98,7 +98,7 @@ void invent_(int adv) {
    int i__1;
 
 // Local variables
-   static int i, j;
+   int i, j;
 
 // INVENT, PAGE 2
 
@@ -156,7 +156,7 @@ void princo_(int obj, int desc) {
    int i__1;
 
 // Local variables
-   static int i;
+   int i;
 
    rspsub_(desc, objcts_1.odesc2[obj - 1]);
 // 						!PRINT HEADER.

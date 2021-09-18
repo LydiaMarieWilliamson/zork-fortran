@@ -13,19 +13,19 @@
 Bool vappli_(int ri) {
 // Initialized data
 
-   static int mxnop = 39;
-   static int mxsmp = 99;
+   const int mxnop = 39;
+   const int mxsmp = 99;
 
 // System generated locals
    int i__1;
    Bool ret_val;
 
 // Local variables
-   static int melee;
-   static Bool f;
-   static int i, j,/* x,*/ av;
-   static int rmk;
-   static int odi2, odo2;
+   int melee;
+   Bool f;
+   int i, j,/* x,*/ av;
+   int rmk;
+   int odi2, odo2;
 
 // FUNCTIONS AND DATA
 
@@ -1361,7 +1361,7 @@ Bool clockd_(/*int x*/) {
    Bool ret_val;
 
 // Local variables
-   static int i;
+   int i;
 
    ret_val = false;
 // 						!ASSUME NO ACTION.

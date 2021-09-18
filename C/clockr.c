@@ -9,20 +9,20 @@
 // WRITTEN BY R. M. SUPNIK
 
 // DECLARATIONS
-static void litint_(int, int *, int, int *, int);
+static void litint_(int, int *, int, const int *, int);
 
 void cevapp_(int ri) {
 // Initialized data
 
-   static int cndtck[10] = { 50, 20, 10, 5, 0, 156, 156, 156, 157, 0 };
-   static int lmptck[12] = { 50, 30, 20, 10, 4, 0, 154, 154, 154, 154, 155, 0 };
+   static const int cndtck[10] = { 50, 20, 10, 5, 0, 156, 156, 156, 157, 0 };
+   static const int lmptck[12] = { 50, 30, 20, 10, 4, 0, 154, 154, 154, 154, 155, 0 };
 
 // System generated locals
    int i__1, i__2;
 
 // Local variables
-   static Bool f;
-   static int i, j, bc, br;
+   Bool f;
+   int i, j, bc, br;
 
 // FUNCTIONS AND DATA
 
@@ -770,7 +770,7 @@ L24100:
 
 // DECLARATIONS
 
-static void litint_(int obj, int * ctr, int cev, int * ticks, int tickln) {
+static void litint_(int obj, int * ctr, int cev, const int * ticks, int tickln) {
 // Local variables
 
 // Parameter adjustments

@@ -15,17 +15,17 @@
 int sparse_(int * lbuf, int llnt, Bool vbflag) {
 // Initialized data
 
-   static int r50min = 1600;
-   static int r50wal = 36852;
+   const int r50min = 1600;
+   const int r50wal = 36852;
 
 // System generated locals
    int ret_val, i__1, i__2;
 
 // Local variables
-   static int i, j, adj;
-   static int obj;
-   static int prep, pptr, lbuf1, lbuf2;
-   static int buzlnt, prplnt, dirlnt;
+   int i, j, adj;
+   int obj;
+   int prep, pptr, lbuf1, lbuf2;
+   int buzlnt, prplnt, dirlnt;
 
 // SPARSE, PAGE 2
 

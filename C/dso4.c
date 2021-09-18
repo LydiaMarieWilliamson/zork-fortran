@@ -15,7 +15,7 @@ int robadv_(int adv, int nr, int nc, int na) {
    int ret_val, i__1;
 
 // Local variables
-   static int i;
+   int i;
 
    ret_val = 0;
 // 						!COUNT OBJECTS
@@ -42,7 +42,7 @@ int robrm_(int rm, int pr, int nr, int nc, int na) {
    int ret_val, i__1, i__2;
 
 // Local variables
-   static int i;
+   int i;
 
    ret_val = 0;
 // 						!COUNT OBJECTS
@@ -79,7 +79,7 @@ Bool winnin_(int vl, int hr) {
    Bool ret_val;
 
 // Local variables
-   static int ps, vs;
+   int ps, vs;
 
    vs = objcts_1.ocapac[vl - 1];
 // 						!VILLAIN STRENGTH
@@ -116,8 +116,8 @@ Bool winnin_(int vl, int hr) {
 int fights_(int h__, Bool flg) {
 // Initialized data
 
-   static int smin = 2;
-   static int smax = 7;
+   const int smin = 2;
+   const int smax = 7;
 
 // System generated locals
    int ret_val;
@@ -144,7 +144,7 @@ int vilstr_(int v) {
    int ret_val, i__1, i__2, i__3;
 
 // Local variables
-   static int i;
+   int i;
 
 // VILSTR, PAGE 2
 

@@ -160,7 +160,7 @@ struct vindexCB vindex_ = (struct vindexCB){
 
 // Main program
 int MAIN__(void) {
-   static int x;
+   int x;
 
 // DECLARATIONS
 

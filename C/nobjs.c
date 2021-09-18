@@ -19,12 +19,12 @@ Bool nobjs_(int ri/*, int arg*/) {
    Bool ret_val;
 
 // Local variables
-   static Bool f;
-   static int target;
-   static int i;
-   static int j;
-   static int av, wl;
-   static int nxt, odi2, odo2;
+   Bool f;
+   int target;
+   int i;
+   int j;
+   int av, wl;
+   int nxt, odi2, odo2;
 
 // MISCELLANEOUS VARIABLES
 
@@ -872,8 +872,8 @@ static Bool mirpan_(int st, Bool pnf) {
    Bool ret_val;
 
 // Local variables
-   static int num;
-   static int mrbf;
+   int num;
+   int mrbf;
 
 // MIRPAN, PAGE 2
 

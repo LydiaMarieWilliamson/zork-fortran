@@ -15,17 +15,17 @@
 Bool sverbs_(int ri) {
 // Initialized data
 
-   static int mxnop = 39;
-   static int mxjoke = 64;
-   static int jokes[25] = {
+   const int mxnop = 39;
+   const int mxjoke = 64;
+   static const int jokes[25] = {
       4, 5, 3, 304, 305, 306, 307, 308, 309, 310, 311, 312,
       313, 5314, 5319, 324, 325, 883, 884, 120, 120, 0, 0, 0, 0
    };
-   static int answer[28] = {
+   static const int answer[28] = {
       0, 6, 1, 6, 2, 5, 3, 5, 4, 3, 4, 6, 4, 6, 4, 5, 5, 5, 5, 4, 5, 6,
       6, 10, 7, 4, 7, 6
    };
-   static char ansstr[1 * 78] =
+   static const char ansstr[1 * 78] =
       "T" "E" "M" "P" "L" "E" "F" "O" "R" "E" "S" "T" "3" "0" "0" "0" "3" "F" "L" "A" "S" "K" "R" "U" "B" "F" "O" "N" "D" "L" "E" "C" "A" "R" "R" "E" "S" "T" "O" "U" "C" "H" "B" "O" "N" "E" "S" "B" "O" "D" "Y" "S" "K" "E" "L" "E" "T" "R" "U" "S" "T" "Y"
       "K" "N" "I" "F" "E" "N" "O" "N" "E" "N" "O" "W" "H" "E" "R" "\000";
 
@@ -34,14 +34,14 @@ Bool sverbs_(int ri) {
    Bool ret_val;
 
 // Local variables
-   static Bool f;
-   static int i, j;
-   static int k;
-   static int l;
-   static char ch[1 * 6];
-   static int cp, wp;
-   static int odi2, odo2;
-   static int newk;
+   Bool f;
+   int i, j;
+   int k;
+   int l;
+   char ch[1 * 6];
+   int cp, wp;
+   int odi2, odo2;
+   int newk;
 
 // MISCELLANEOUS VARIABLES
 

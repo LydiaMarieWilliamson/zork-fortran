@@ -16,10 +16,10 @@ Bool rappl1_(int ri) {
    Bool ret_val;
 
 // Local variables
-   static Bool f;
-   static int i;
-   static int j;
-   static int chbt;
+   Bool f;
+   int i;
+   int j;
+   int chbt;
 
 // MISCELLANEOUS VARIABLES
 

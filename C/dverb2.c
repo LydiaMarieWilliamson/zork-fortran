@@ -15,7 +15,7 @@ void savegm_(void) {
    int i__1;
 
 // Local variables
-   static int i;
+   int i;
 
 // MISCELLANEOUS VARIABLES
 
@@ -111,7 +111,7 @@ void rstrgm_(void) {
    int i__1;
 
 // Local variables
-   static int i, j, k;
+   int i, j, k;
 
 // MISCELLANEOUS VARIABLES
 
@@ -379,9 +379,9 @@ static int cxappl_(int ri) {
    int ret_val, i__1;
 
 // Local variables
-   static int i, j, k;
-   static int nxt;
-   static int ldir;
+   int i, j, k;
+   int nxt;
+   int ldir;
 
 // CXAPPL, PAGE 2
 

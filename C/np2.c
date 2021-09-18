@@ -18,10 +18,10 @@ int getobj_(int oidx, int aidx, int spcobj) {
    int ret_val, i__1;
 
 // Local variables
-   static int i, av;
-   static int obj;
-   static int nobj;
-   static Bool chomp;
+   int i, av;
+   int obj;
+   int nobj;
+   Bool chomp;
 
 // MISCELLANEOUS VARIABLES
 
@@ -162,7 +162,7 @@ int schlst_(int oidx, int aidx, int rm, int cn, int ad, int spcobj) {
    int ret_val, i__1, i__2;
 
 // Local variables
-   static int i, j, x;
+   int i, j, x;
 
 // FUNCTIONS AND DATA
 
@@ -251,13 +251,13 @@ L2000:
 static Bool thisit_(int oidx, int aidx, int obj, int spcobj) {
 // Initialized data
 
-   static int r50min = 1600;
+   const int r50min = 1600;
 
 // System generated locals
    Bool ret_val;
 
 // Local variables
-   static int i;
+   int i;
 
 // FUNCTIONS AND DATA
 

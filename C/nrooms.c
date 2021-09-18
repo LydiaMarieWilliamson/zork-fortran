@@ -15,15 +15,15 @@ static void ewtell_(int, int);
 Bool rappl2_(int ri) {
 // Initialized data
 
-   static int newrms = 38;
+   const int newrms = 38;
 
 // System generated locals
    int i__1;
    Bool ret_val;
 
 // Local variables
-   static int i;
-   static int j;
+   int i;
+   int j;
 
 // ROOMS
 
@@ -443,7 +443,7 @@ static void lookto_(int nrm, int srm, int nt, int st, int ht) {
    int i__1;
 
 // Local variables
-   static int i, m1, dir, mrbf;
+   int i, m1, dir, mrbf;
 
 // LOOKTO, PAGE 2
 
@@ -523,8 +523,8 @@ static void ewtell_(int rm, int st) {
    int i__1;
 
 // Local variables
-   static int i;
-   static Bool m1;
+   int i;
+   Bool m1;
 
 // ROOMS
 
