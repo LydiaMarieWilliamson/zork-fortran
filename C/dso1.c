@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // PRINCR- PRINT CONTENTS OF ROOM
 
@@ -14,23 +15,16 @@ void princr_(Bool full, int rm) {
    int i__1, i__2;
 
 // Local variables
-   static int i__, j, k;
-   extern Bool qhere_(int, int);
-   extern Bool qempty_(int);
-   extern void rspeak_(int);
-   extern void rspsub_(int, int);
-   extern void invent_(int);
-   extern int oactor_(int);
-   extern void princo_(int, int);
+   static int i, j, k;
 
 // PRINCR, PAGE 2
 
    j = 329;
 // 						!ASSUME SUPERBRIEF FORMAT.
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!LOOP ON OBJECTS
-      if (!qhere_(i__, rm) || (objcts_1.oflag1[i__ - 1] & oflags_1.visibt + oflags_1.ndscbt) != oflags_1.visibt || i__ == advs_1.avehic[play_1.winner - 1]) {
+      if (!qhere_(i, rm) || (objcts_1.oflag1[i - 1] & oflags_1.visibt + oflags_1.ndscbt) != oflags_1.visibt || i == advs_1.avehic[play_1.winner - 1]) {
          goto L500;
       }
       if (!(full) && (findex_1.superf || findex_1.brieff && (rooms_1.rflag[play_1.here - 1] & rflag_1.rseen) != 0)) {
@@ -39,10 +33,10 @@ void princr_(Bool full, int rm) {
 
    // DO LONG DESCRIPTION OF OBJECT.
 
-      k = objcts_1.odesco[i__ - 1];
+      k = objcts_1.odesco[i - 1];
 // 						!GET UNTOUCHED.
-      if (k == 0 || (objcts_1.oflag2[i__ - 1] & oflags_1.tchbt) != 0) {
-         k = objcts_1.odesc1[i__ - 1];
+      if (k == 0 || (objcts_1.oflag2[i - 1] & oflags_1.tchbt) != 0) {
+         k = objcts_1.odesc1[i - 1];
       }
       rspeak_(k);
 // 						!DESCRIBE.
@@ -50,7 +44,7 @@ void princr_(Bool full, int rm) {
 // DO SHORT DESCRIPTION OF OBJECT.
 
    L200:
-      rspsub_(j, objcts_1.odesc2[i__ - 1]);
+      rspsub_(j, objcts_1.odesc2[i - 1]);
 // 						!YOU CAN SEE IT.
       j = 502;
 
@@ -61,23 +55,23 @@ void princr_(Bool full, int rm) {
 // NOW LOOP TO PRINT CONTENTS OF OBJECTS IN ROOM.
 
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!LOOP ON OBJECTS.
-      if (!qhere_(i__, rm) || (objcts_1.oflag1[i__ - 1] & oflags_1.visibt + oflags_1.ndscbt) != oflags_1.visibt) {
+      if (!qhere_(i, rm) || (objcts_1.oflag1[i - 1] & oflags_1.visibt + oflags_1.ndscbt) != oflags_1.visibt) {
          goto L1000;
       }
-      if ((objcts_1.oflag2[i__ - 1] & oflags_1.actrbt) != 0) {
-         i__2 = oactor_(i__);
+      if ((objcts_1.oflag2[i - 1] & oflags_1.actrbt) != 0) {
+         i__2 = oactor_(i);
          invent_(i__2);
       }
-      if ((objcts_1.oflag1[i__ - 1] & oflags_1.tranbt) == 0 && (objcts_1.oflag2[i__ - 1] & oflags_1.openbt) == 0 || qempty_(i__)) {
+      if ((objcts_1.oflag1[i - 1] & oflags_1.tranbt) == 0 && (objcts_1.oflag2[i - 1] & oflags_1.openbt) == 0 || qempty_(i)) {
          goto L1000;
       }
 
    // OBJECT IS NOT EMPTY AND IS OPEN OR TRANSPARENT.
 
       j = 573;
-      if (i__ != oindex_1.tcase) {
+      if (i != oindex_1.tcase) {
          goto L600;
       }
 // 						!TROPHY CASE?
@@ -86,7 +80,7 @@ void princr_(Bool full, int rm) {
          goto L1000;
       }
    L600:
-      princo_(i__, j);
+      princo_(i, j);
 // 						!PRINT CONTENTS.
 
    L1000:
@@ -104,18 +98,14 @@ void invent_(int adv) {
    int i__1;
 
 // Local variables
-   static int i__, j;
-   extern void rspeak_(int);
-   extern void princo_(int, int);
-   extern Bool qempty_(int);
-   extern void rspsub_(int, int);
+   static int i, j;
 
 // INVENT, PAGE 2
 
-   i__ = 575;
+   i = 575;
 // 						!FIRST LINE.
    if (adv != aindex_1.player) {
-      i__ = 576;
+      i = 576;
    }
 // 						!IF NOT ME.
    i__1 = objcts_1.olnt;
@@ -124,14 +114,14 @@ void invent_(int adv) {
       if (objcts_1.oadv[j - 1] != adv || (objcts_1.oflag1[j - 1] & oflags_1.visibt) == 0) {
          goto L10;
       }
-      rspsub_(i__, objcts_1.odesc2[advs_1.aobj[adv - 1] - 1]);
-      i__ = 0;
+      rspsub_(i, objcts_1.odesc2[advs_1.aobj[adv - 1] - 1]);
+      i = 0;
       rspsub_(502, objcts_1.odesc2[j - 1]);
    L10:
       ;
    }
 
-   if (i__ == 0) {
+   if (i == 0) {
       goto L25;
    }
 // 						!ANY OBJECTS?
@@ -166,16 +156,15 @@ void princo_(int obj, int desc) {
    int i__1;
 
 // Local variables
-   static int i__;
-   extern void rspsub_(int, int);
+   static int i;
 
    rspsub_(desc, objcts_1.odesc2[obj - 1]);
 // 						!PRINT HEADER.
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!LOOP THRU.
-      if (objcts_1.ocan[i__ - 1] == obj) {
-         rspsub_(502, objcts_1.odesc2[i__ - 1]);
+      if (objcts_1.ocan[i - 1] == obj) {
+         rspsub_(502, objcts_1.odesc2[i - 1]);
       }
 // L100:
    }

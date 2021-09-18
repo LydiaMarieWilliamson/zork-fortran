@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // OAPPLI- OBJECT SPECIAL ACTION ROUTINES
 
@@ -20,32 +21,10 @@ Bool oappli_(int ri, int arg) {
 
 // Local variables
    static Bool f;
-   static int flobts, i__;
-   extern void rspeak_(int);
-   extern void rspsub_(int, int);
-   extern void newsta_(int, int, int, int, int);
-   extern void jigsup_(int);
-   extern int robadv_(int, int, int, int);
-   extern int robrm_(int, int, int, int, int);
+   static int flobts, i;
    static int j,/* x,*/ av, io, ir, iz;
-   extern void bug_(int, int);
-   extern int rnd_(int);
-   extern Bool lit_(int);
    static int odi2, odo2;
    static int nloc;
-   extern Bool qhere_(int, int);
-   extern Bool nobjs_(int/*, int*/);
-   extern Bool sobjs_(int, int);
-   extern Bool clockd_(/*int*/);
-   extern Bool ballop_(int);
-   extern Bool rmdesc_(int);
-   extern Bool thiefp_(/*int*/);
-   extern Bool lightp_(int);
-   extern Bool cyclop_(/*int*/);
-   extern Bool opncls_(int, int, int);
-   extern Bool moveto_(int, int);
-   extern Bool trollp_(/*int*/);
-   extern Bool qempty_(int);
 
 // PUZZLE ROOM
 
@@ -181,13 +160,13 @@ L5000:
 // 						!FILL X WITH Y IS
    prsvec_1.prsa = vindex_1.putw;
 // 						!MADE INTO
-   i__ = prsvec_1.prsi;
+   i = prsvec_1.prsi;
    prsvec_1.prsi = prsvec_1.prso;
-   prsvec_1.prso = i__;
+   prsvec_1.prso = i;
 // 						!PUT Y IN X.
-   i__ = odi2;
+   i = odi2;
    odi2 = odo2;
-   odo2 = i__;
+   odo2 = i;
 L5050:
    if (prsvec_1.prso == oindex_1.water || prsvec_1.prso == oindex_1.gwate) {
       goto L5100;
@@ -544,13 +523,13 @@ L39200:
    objcts_1.oflag1[oindex_1.pot - 1] |= oflags_1.visibt;
    findex_1.rainbf = !findex_1.rainbf;
 // 						!COMPLEMENT RAINBOW.
-   i__ = 245;
+   i = 245;
 // 						!ASSUME OFF.
    if (findex_1.rainbf) {
-      i__ = 246;
+      i = 246;
    }
 // 						!IF ON, SOLID.
-   rspeak_(i__);
+   rspeak_(i);
 // 						!DESCRIBE.
    return ret_val;
 
@@ -585,7 +564,7 @@ L45100:
 // 						!READ IS OK.
    newsta_(oindex_1.lcase, 260, rindex_1.lroom, 0, 0);
 // 						!MAKE LARGE CASE.
-   i__ = robadv_(play_1.winner, 0, oindex_1.lcase, 0) + robrm_(play_1.here, 100, 0, oindex_1.lcase, 0);
+   i = robadv_(play_1.winner, 0, oindex_1.lcase, 0) + robrm_(play_1.here, 100, 0, oindex_1.lcase, 0);
    jigsup_(261);
 // 						!KILL HIM.
    return ret_val;
@@ -643,14 +622,14 @@ L48000:
       goto L10;
    }
 // 						!PUSH?
-   i__ = prsvec_1.prso - oindex_1.sqbut + 1;
+   i = prsvec_1.prso - oindex_1.sqbut + 1;
 // 						!GET BUTTON INDEX.
-   if (i__ <= 0 || i__ >= 4) {
+   if (i <= 0 || i >= 4) {
       goto L10;
    }
 // 						!A BUTTON?
    if (play_1.winner != aindex_1.player) {
-      switch (i__) {
+      switch (i) {
          case 1:
             goto L48100;
          case 2:
@@ -664,23 +643,23 @@ L48000:
    return ret_val;
 
 L48100:
-   i__ = 267;
+   i = 267;
    if (findex_1.carozf) {
-      i__ = 266;
+      i = 266;
    }
 // 						!SPEED UP?
    findex_1.carozf = true;
-   rspeak_(i__);
+   rspeak_(i);
    return ret_val;
 
 L48200:
-   i__ = 266;
+   i = 266;
 // 						!ASSUME NO CHANGE.
    if (findex_1.carozf) {
-      i__ = 268;
+      i = 268;
    }
    findex_1.carozf = false;
-   rspeak_(i__);
+   rspeak_(i);
    return ret_val;
 
 L48300:
@@ -778,21 +757,21 @@ L52000:
       goto L52200;
    }
 // 						!READ?
-   i__ = 274;
+   i = 274;
 // 						!CANT READ.
    if (prsvec_1.prsi != 0) {
-      i__ = 275;
+      i = 275;
    }
 // 						!THROUGH SOMETHING?
    if (prsvec_1.prsi == oindex_1.bottl) {
-      i__ = 276;
+      i = 276;
    }
 // 						!THROUGH BOTTLE?
    if (prsvec_1.prsi == oindex_1.flask) {
-      i__ = prsvec_1.prso - oindex_1.orice + 277;
+      i = prsvec_1.prso - oindex_1.orice + 277;
    }
 // 						!THROUGH FLASK?
-   rspeak_(i__);
+   rspeak_(i);
 // 						!READ FLASK.
    return ret_val;
 
@@ -840,13 +819,13 @@ L52400:
 
 L52405:
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!ENLARGE WORLD.
-      if (objcts_1.oroom[i__ - 1] != io || objcts_1.osize[i__ - 1] == 10000) {
+      if (objcts_1.oroom[i - 1] != io || objcts_1.osize[i - 1] == 10000) {
          goto L52450;
       }
-      objcts_1.oroom[i__ - 1] = ir;
-      objcts_1.osize[i__ - 1] *= iz;
+      objcts_1.oroom[i - 1] = ir;
+      objcts_1.osize[i - 1] *= iz;
    L52450:
       ;
    }
@@ -909,13 +888,13 @@ L56000:
       goto L56100;
    }
 // 						!SHORT POLE UP?
-   i__ = 731;
+   i = 731;
 // 						!NO, WONT BUDGE.
    if (findex_1.mdir % 180 == 0) {
-      i__ = 732;
+      i = 732;
    }
 // 						!DIFF MSG IF N-S.
-   rspeak_(i__);
+   rspeak_(i);
 // 						!TELL WONT MOVE.
    return ret_val;
 
@@ -930,14 +909,14 @@ L56100:
    return ret_val;
 
 L56200:
-   i__ = 831;
+   i = 831;
 // 						!ROTATE L OR R.
    if (prsvec_1.prso == oindex_1.rdwal || prsvec_1.prso == oindex_1.ylwal) {
-      i__ = 830;
+      i = 830;
    }
-   rspeak_(i__);
+   rspeak_(i);
 // 						!TELL DIRECTION.
-   findex_1.mdir = (findex_1.mdir + 45 + (i__ - 830) * 270) % 360;
+   findex_1.mdir = (findex_1.mdir + 45 + (i - 830) * 270) % 360;
 // 						!CALCULATE NEW DIR.
    i__1 = findex_1.mdir / 45 + 695;
    rspsub_(734, i__1);
@@ -1003,10 +982,10 @@ L57300:
    return ret_val;
 
 L57400:
-   i__ = 699;
+   i = 699;
 // 						!ASSUME SOUTH.
    if (findex_1.mdir == 0) {
-      i__ = 695;
+      i = 695;
    }
 // 						!NORTH.
    j = 739;
@@ -1015,7 +994,7 @@ L57400:
       j = 740;
    }
 // 						!POLE UP, WOBBLES.
-   rspsub_(j, i__);
+   rspsub_(j, i);
 // 						!DESCRIBE.
    findex_1.mloc = nloc;
    if (findex_1.mloc != rindex_1.mrg) {
@@ -1100,7 +1079,7 @@ L60000:
 // 						!TAKE FIVE?
    rspeak_(419);
 // 						!TIME PASSES.
-   for (i__ = 1; i__ <= 3; ++i__) {
+   for (i = 1; i <= 3; ++i) {
 // 						!WAIT A WHILE.
       if (clockd_(/*x*/)) {
          return ret_val;
@@ -1120,11 +1099,11 @@ L61000:
       goto L61100;
    }
 // 						!OPEN?
-   i__ = 793;
+   i = 793;
    if ((objcts_1.oflag2[oindex_1.tomb - 1] & oflags_1.openbt) != 0) {
-      i__ = 794;
+      i = 794;
    }
-   rspeak_(i__);
+   rspeak_(i);
    objcts_1.oflag2[oindex_1.tomb - 1] |= oflags_1.openbt;
    return ret_val;
 
@@ -1133,11 +1112,11 @@ L61100:
       goto L45000;
    }
 // 						!CLOSE?
-   i__ = 795;
+   i = 795;
    if ((objcts_1.oflag2[oindex_1.tomb - 1] & oflags_1.openbt) != 0) {
-      i__ = 796;
+      i = 796;
    }
-   rspeak_(i__);
+   rspeak_(i);
    objcts_1.oflag2[oindex_1.tomb - 1] &= ~oflags_1.openbt;
    if (play_1.here == rindex_1.crypt) {
       cevent_1.ctick[cindex_1.cevste - 1] = 3;

@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // NOBJS-	NEW OBJECTS PROCESSOR
 // 	OBJECTS IN THIS MODULE CANNOT CALL RMINFO, JIGSUP,
@@ -19,23 +20,11 @@ Bool nobjs_(int ri/*, int arg*/) {
 
 // Local variables
    static Bool f;
-   extern void rspeak_(int);
    static int target;
-   extern void rspsub_(int, int);
-   extern void newsta_(int, int, int, int, int);
-   static int i__;
-   extern int mrhere_(int);
+   static int i;
    static int j;
-   extern void cpgoto_(int);
-   extern void cpinfo_(int, int);
-   extern void princr_(Bool, int);
    static int av, wl;
-   extern void bug_(int, int);
-   extern int rnd_(int);
    static int nxt, odi2, odo2;
-   extern Bool qhere_(int, int);
-   extern Bool opncls_(int, int, int);
-   extern Bool moveto_(int, int);
 
 // MISCELLANEOUS VARIABLES
 
@@ -262,28 +251,28 @@ L4200:
    return ret_val;
 
 L4300:
-   i__ = 652;
+   i = 652;
 // 						!MUNG MESSAGE.
    if ((objcts_1.oflag1[prsvec_1.prsi - 1] & oflags_1.toolbt) != 0 || (objcts_1.oflag2[prsvec_1.prsi - 1] & oflags_1.weapbt) != 0) {
       goto L4600;
    }
-   i__ = 653;
+   i = 653;
 // 						!NOVELTY 1.
    if ((objcts_1.oflag2[prsvec_1.prso - 1] & oflags_1.fitebt) != 0) {
-      i__ = 654;
+      i = 654;
    }
    objcts_1.oflag2[prsvec_1.prso - 1] |= oflags_1.fitebt;
-   rspsub_(i__, odi2);
+   rspsub_(i, odi2);
    return ret_val;
 
 L4500:
    if (prsvec_1.prsa != vindex_1.openw && prsvec_1.prsa != vindex_1.mungw) {
       goto L4800;
    }
-   i__ = 655;
+   i = 655;
 // 						!YOU BLEW IT.
 L4600:
-   newsta_(oindex_1.begg, i__, objcts_1.oroom[oindex_1.egg - 1], objcts_1.ocan[oindex_1.egg - 1], objcts_1.oadv[oindex_1.egg - 1]);
+   newsta_(oindex_1.begg, i, objcts_1.oroom[oindex_1.egg - 1], objcts_1.ocan[oindex_1.egg - 1], objcts_1.oadv[oindex_1.egg - 1]);
    newsta_(oindex_1.egg, 0, 0, 0, 0);
 // 						!VANISH EGG.
    objcts_1.otval[oindex_1.begg - 1] = 2;
@@ -344,12 +333,12 @@ L5100:
 L5200:
    findex_1.singsf = true;
 // 						!SANG SONG.
-   i__ = play_1.here;
-   if (i__ == rindex_1.mtree) {
-      i__ = rindex_1.fore3;
+   i = play_1.here;
+   if (i == rindex_1.mtree) {
+      i = rindex_1.fore3;
    }
 // 						!PLACE BAUBLE.
-   newsta_(oindex_1.baubl, 647, i__, 0, 0);
+   newsta_(oindex_1.baubl, 647, i, 0, 0);
    return ret_val;
 
 // O37--	WHITE CLIFFS
@@ -410,9 +399,9 @@ L9000:
       goto L10;
    }
 // 						!PUSH?
-   for (i__ = 1; i__ <= 8; i__ += 2) {
+   for (i = 1; i <= 8; i += 2) {
 // 						!LOCATE WALL.
-      if (prsvec_1.prso == puzzle_1.cpwl[i__ - 1]) {
+      if (prsvec_1.prso == puzzle_1.cpwl[i - 1]) {
          goto L9200;
       }
 // L9100:
@@ -421,7 +410,7 @@ L9000:
 // 						!WHAT?
 
 L9200:
-   j = puzzle_1.cpwl[i__];
+   j = puzzle_1.cpwl[i];
 // 						!GET DIRECTIONAL OFFSET.
    nxt = findex_1.cphere + j;
 // 						!GET NEXT STATE.
@@ -457,10 +446,10 @@ L9350:
    return ret_val;
 
 L9400:
-   i__ = 878;
+   i = 878;
 // 						!ASSUME FIRST PUSH.
    if (findex_1.cpushf) {
-      i__ = 879;
+      i = 879;
    }
 // 						!NOT?
    findex_1.cpushf = true;
@@ -470,7 +459,7 @@ L9400:
 // 						!VACATE NEXT STATE.
    cpgoto_(nxt);
 // 						!ONWARD.
-   cpinfo_(i__, nxt);
+   cpinfo_(i, nxt);
 // 						!DESCRIBE.
    princr_(true, play_1.here);
 // 						!PRINT ROOMS CONTENTS.
@@ -482,10 +471,10 @@ L9500:
       goto L9700;
    }
 // 						!IN SCOL ACTIVE ROOM?
-   for (i__ = 1; i__ <= 12; i__ += 3) {
-      target = screen_1.scolwl[i__];
+   for (i = 1; i <= 12; i += 3) {
+      target = screen_1.scolwl[i];
 // 						!ASSUME TARGET.
-      if (screen_1.scolwl[i__ - 1] == play_1.here) {
+      if (screen_1.scolwl[i - 1] == play_1.here) {
          goto L2100;
       }
 // 						!TREAT IF FOUND.
@@ -508,13 +497,13 @@ L10000:
       goto L10100;
    }
 // 						!LIFT?
-   i__ = 749;
+   i = 749;
 // 						!ASSUME UP.
    if (findex_1.poleuf == 2) {
-      i__ = 750;
+      i = 750;
    }
 // 						!ALREADY UP?
-   rspeak_(i__);
+   rspeak_(i);
    findex_1.poleuf = 2;
 // 						!POLE IS RAISED.
    return ret_val;
@@ -573,9 +562,9 @@ L11000:
    rspeak_(756);
 // 						!BUTTON GOES IN.
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!BLOCKED?
-      if (qhere_(i__, rindex_1.mreye) && i__ != oindex_1.rbeam) {
+      if (qhere_(i, rindex_1.mreye) && i != oindex_1.rbeam) {
          goto L11200;
       }
 // L11100:
@@ -609,7 +598,7 @@ L12000:
    return ret_val;
 
 L12100:
-   i__ = prsvec_1.prso;
+   i = prsvec_1.prso;
 // 						!ASSUME BLK WITH DIROBJ.
    if (prsvec_1.prsa == vindex_1.putw && prsvec_1.prsi == oindex_1.rbeam) {
       goto L12200;
@@ -617,25 +606,25 @@ L12100:
    if (prsvec_1.prsa != vindex_1.mungw || prsvec_1.prso != oindex_1.rbeam || prsvec_1.prsi == 0) {
       goto L10;
    }
-   i__ = prsvec_1.prsi;
+   i = prsvec_1.prsi;
 L12200:
-   if (objcts_1.oadv[i__ - 1] != play_1.winner) {
+   if (objcts_1.oadv[i - 1] != play_1.winner) {
       goto L12300;
    }
 // 						!CARRYING?
-   newsta_(i__, 0, play_1.here, 0, 0);
+   newsta_(i, 0, play_1.here, 0, 0);
 // 						!DROP OBJ.
-   rspsub_(760, objcts_1.odesc2[i__ - 1]);
+   rspsub_(760, objcts_1.odesc2[i - 1]);
    return ret_val;
 
 L12300:
    j = 761;
 // 						!ASSUME NOT IN ROOM.
    if (qhere_(j, play_1.here)) {
-      i__ = 762;
+      i = 762;
    }
 // 						!IN ROOM?
-   rspsub_(j, objcts_1.odesc2[i__ - 1]);
+   rspsub_(j, objcts_1.odesc2[i - 1]);
 // 						!DESCRIBE.
    return ret_val;
 
@@ -733,14 +722,14 @@ L17000:
 // 						!CLOSE CELL DOOR.
 
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!RELOCATE OLD TO HYPER.
-      if (objcts_1.oroom[i__ - 1] == rindex_1.cell && (objcts_1.oflag1[i__ - 1] & oflags_1.doorbt) == 0) {
+      if (objcts_1.oroom[i - 1] == rindex_1.cell && (objcts_1.oflag1[i - 1] & oflags_1.doorbt) == 0) {
          i__2 = findex_1.lcell * hyper_1.hfactr;
-         newsta_(i__, 0, i__2, 0, 0);
+         newsta_(i, 0, i__2, 0, 0);
       }
-      if (objcts_1.oroom[i__ - 1] == findex_1.pnumb * hyper_1.hfactr) {
-         newsta_(i__, 0, rindex_1.cell, 0, 0);
+      if (objcts_1.oroom[i - 1] == findex_1.pnumb * hyper_1.hfactr) {
+         newsta_(i, 0, rindex_1.cell, 0, 0);
       }
 // L17100:
    }
@@ -885,8 +874,6 @@ static Bool mirpan_(int st, Bool pnf) {
 // Local variables
    static int num;
    static int mrbf;
-   extern int mrhere_(int);
-   extern void rspeak_(int);
 
 // MIRPAN, PAGE 2
 

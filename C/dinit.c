@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // INIT-- DUNGEON INITIALIZATION SUBROUTINE
 
@@ -20,10 +21,7 @@ Bool init_(int x) {
 
 // Local variables
    static int xmax, r2max, dirmax, recno;
-   extern void intime_(int *, int *, int *);
-   extern void inirnd_(int);
-   static int i__, j, k;
-   extern void exit_(void);
+   static int i, j, k;
    static int mmax, omax, rmax, vmax, amax, cmax, fmax, smax;
 
 // MISCELLANEOUS VARIABLES
@@ -115,18 +113,18 @@ L10000:
 // INIT ALL ARRAYS.
 
    i__1 = cmax;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!CLEAR CLOCK EVENTS
-      cevent_1.cflag[i__ - 1] = false;
-      cevent_1.ctick[i__ - 1] = 0;
-      cevent_1.cactio[i__ - 1] = 0;
+      cevent_1.cflag[i - 1] = false;
+      cevent_1.ctick[i - 1] = 0;
+      cevent_1.cactio[i - 1] = 0;
 // L5:
    }
 
    i__1 = fmax;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!CLEAR FLAGS.
-      flags[i__ - 1] = false;
+      flags[i - 1] = false;
 // L10:
    }
    findex_1.buoyf = true;
@@ -137,9 +135,9 @@ L10000:
    findex_1.mr2f = true;
    findex_1.follwf = true;
    i__1 = smax;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!CLEAR SWITCHES.
-      switch__[i__ - 1] = 0;
+      switch__[i - 1] = 0;
 // L12:
    }
    findex_1.ormtch = 4;
@@ -151,81 +149,81 @@ L10000:
    findex_1.cphere = 10;
 
    i__1 = r2max;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!CLEAR ROOM 2 ARRAY.
-      oroom2_1.rroom2[i__ - 1] = 0;
-      oroom2_1.oroom2[i__ - 1] = 0;
+      oroom2_1.rroom2[i - 1] = 0;
+      oroom2_1.oroom2[i - 1] = 0;
 // L15:
    }
 
    i__1 = xmax;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!CLEAR TRAVEL ARRAY.
-      exits_1.travel[i__ - 1] = 0;
+      exits_1.travel[i - 1] = 0;
 // L20:
    }
 
    i__1 = vmax;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!CLEAR VILLAINS ARRAYS.
-      vill_1.vopps[i__ - 1] = 0;
-      vill_1.vprob[i__ - 1] = 0;
-      vill_1.villns[i__ - 1] = 0;
-      vill_1.vbest[i__ - 1] = 0;
-      vill_1.vmelee[i__ - 1] = 0;
+      vill_1.vopps[i - 1] = 0;
+      vill_1.vprob[i - 1] = 0;
+      vill_1.villns[i - 1] = 0;
+      vill_1.vbest[i - 1] = 0;
+      vill_1.vmelee[i - 1] = 0;
 // L30:
    }
 
    i__1 = omax;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!CLEAR OBJECT ARRAYS.
-      objcts_1.odesc1[i__ - 1] = 0;
-      objcts_1.odesc2[i__ - 1] = 0;
-      objcts_1.odesco[i__ - 1] = 0;
-      objcts_1.oread[i__ - 1] = 0;
-      objcts_1.oactio[i__ - 1] = 0;
-      objcts_1.oflag1[i__ - 1] = 0;
-      objcts_1.oflag2[i__ - 1] = 0;
-      objcts_1.ofval[i__ - 1] = 0;
-      objcts_1.otval[i__ - 1] = 0;
-      objcts_1.osize[i__ - 1] = 0;
-      objcts_1.ocapac[i__ - 1] = 0;
-      objcts_1.ocan[i__ - 1] = 0;
-      objcts_1.oadv[i__ - 1] = 0;
-      objcts_1.oroom[i__ - 1] = 0;
+      objcts_1.odesc1[i - 1] = 0;
+      objcts_1.odesc2[i - 1] = 0;
+      objcts_1.odesco[i - 1] = 0;
+      objcts_1.oread[i - 1] = 0;
+      objcts_1.oactio[i - 1] = 0;
+      objcts_1.oflag1[i - 1] = 0;
+      objcts_1.oflag2[i - 1] = 0;
+      objcts_1.ofval[i - 1] = 0;
+      objcts_1.otval[i - 1] = 0;
+      objcts_1.osize[i - 1] = 0;
+      objcts_1.ocapac[i - 1] = 0;
+      objcts_1.ocan[i - 1] = 0;
+      objcts_1.oadv[i - 1] = 0;
+      objcts_1.oroom[i - 1] = 0;
 // L40:
    }
 
    rooms_1.rdesc2 = 0;
 // 						!CLEAR DESC BASE PTR.
    i__1 = rmax;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!CLEAR ROOM ARRAYS.
-      rooms_1.rdesc1[i__ - 1] = 0;
-      rooms_1.ractio[i__ - 1] = 0;
-      rooms_1.rflag[i__ - 1] = 0;
-      rooms_1.rval[i__ - 1] = 0;
-      rooms_1.rexit[i__ - 1] = 0;
+      rooms_1.rdesc1[i - 1] = 0;
+      rooms_1.ractio[i - 1] = 0;
+      rooms_1.rflag[i - 1] = 0;
+      rooms_1.rval[i - 1] = 0;
+      rooms_1.rexit[i - 1] = 0;
 // L50:
    }
 
    i__1 = mmax;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!CLEAR MESSAGE DIRECTORY.
-      rmsg_1.rtext[i__ - 1] = 0;
+      rmsg_1.rtext[i - 1] = 0;
 // L60:
    }
 
    i__1 = amax;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!CLEAR ADVENTURER'S ARRAYS.
-      advs_1.aroom[i__ - 1] = 0;
-      advs_1.ascore[i__ - 1] = 0;
-      advs_1.avehic[i__ - 1] = 0;
-      advs_1.aobj[i__ - 1] = 0;
-      advs_1.aactio[i__ - 1] = 0;
-      advs_1.astren[i__ - 1] = 0;
-      advs_1.aflag[i__ - 1] = 0;
+      advs_1.aroom[i - 1] = 0;
+      advs_1.ascore[i - 1] = 0;
+      advs_1.avehic[i - 1] = 0;
+      advs_1.aobj[i - 1] = 0;
+      advs_1.aactio[i - 1] = 0;
+      advs_1.astren[i - 1] = 0;
+      advs_1.aflag[i - 1] = 0;
 // L70:
    }
 
@@ -253,12 +251,12 @@ L10000:
    }
 
    BegInSF(1, /*130*/"(i6)", 0);
-   DoFio(1, &i__, sizeof i__);
+   DoFio(1, &i, sizeof i);
    DoFio(1, &j, sizeof j);
    DoFio(1, &k, sizeof k);
    EndInSF();
 // 						!GET VERSION.
-   if (i__ != vers_2.vmaj || j != vers_2.vmin) {
+   if (i != vers_2.vmaj || j != vers_2.vmin) {
       goto L1925;
    }
 // 	OPEN(UNIT=DBCH,file='/usr/share/games/dungeon/dtext.dat',
@@ -397,7 +395,7 @@ L1900:
    return ret_val;
 L1925:
    BegExSF(6, /*920*/"(\002 \"dindx.dat\" is version \002,i1,\002.\002,i1,a1,\002.\002/\002 I require version \002,i1,\002.\002,i1,a1,\002.\002)", 0);
-   DoFio(1, &i__, sizeof i__);
+   DoFio(1, &i, sizeof i);
    DoFio(1, &j, sizeof j);
    DoFio(1, &k, sizeof k);
    DoFio(1, &vers_2.vmaj, sizeof vers_2.vmaj);

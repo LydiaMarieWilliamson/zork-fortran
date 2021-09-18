@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // RDLINE-	READ INPUT LINE
 
@@ -14,7 +15,7 @@ void rdline_(char *buffer, int length, int who, size_t buffer_unit) {
    int i__1;
 
 // Local variables
-   static int i__;
+   static int i;
 
 // Parameter adjustments
    --buffer;
@@ -60,9 +61,9 @@ L250:
 // CONVERT TO UPPER CASE
 //L300:
    i__1 = length;
-   for (i__ = 1; i__ <= i__1; ++i__) {
-      if (*(unsigned char *)&buffer[i__] >= 'a' && *(unsigned char *)&buffer[i__] <= 'z') {
-         *(unsigned char *)&buffer[i__] = (char)(*(unsigned char *)&buffer[i__] - 32);
+   for (i = 1; i <= i__1; ++i) {
+      if (*(unsigned char *)&buffer[i] >= 'a' && *(unsigned char *)&buffer[i] <= 'z') {
+         *(unsigned char *)&buffer[i] = (char)(*(unsigned char *)&buffer[i] - 32);
       }
 // L400:
    }
@@ -87,9 +88,6 @@ Bool parse_(char *inbuf, int inlnt, Bool vbflag/*, size_t inbuf_unit*/) {
 
 // Local variables
    static int x;
-   extern void orphan_(int, int, int, int, int);
-   extern int sparse_(int *, int, Bool);
-   extern Bool synmch_(/*int*/);
    static int outbuf[40], outlnt;
 
 // D	DFLAG=IAND(PRSFLG,1).NE.0
@@ -181,10 +179,9 @@ static Bool lex_(char *inbuf, int inlnt, int * outbuf, int * op, Bool vbflag/*, 
    Bool ret_val;
 
 // Local variables
-   static int i__;
+   static int i;
    static char j[1];
    static int k, j1, j2, cp;
-   extern void rspeak_(int);
 
 // Parameter adjustments
    --outbuf;
@@ -192,9 +189,9 @@ static Bool lex_(char *inbuf, int inlnt, int * outbuf, int * op, Bool vbflag/*, 
 
 // Function Body
 
-   for (i__ = 1; i__ <= 40; ++i__) {
+   for (i = 1; i <= 40; ++i) {
 // 						!CLEAR OUTPUT BUF.
-      outbuf[i__] = 0;
+      outbuf[i] = 0;
 // L100:
    }
 
@@ -230,9 +227,9 @@ L200:
       goto L6000;
    }
 // 						!SPACE?
-   for (i__ = 1; i__ <= 9; i__ += 3) {
+   for (i = 1; i <= 9; i += 3) {
 // 						!SCH FOR CHAR.
-      if (*(unsigned char *)j >= *(unsigned char *)&dlimit[i__ - 1] && *(unsigned char *)j <= *(unsigned char *)&dlimit[i__]) {
+      if (*(unsigned char *)j >= *(unsigned char *)&dlimit[i - 1] && *(unsigned char *)j <= *(unsigned char *)&dlimit[i]) {
          goto L4000;
       }
 // L500:
@@ -266,7 +263,7 @@ L1000:
 // LEGITIMATE CHARACTERS: LETTER, DIGIT, OR HYPHEN.
 
 L4000:
-   j1 = *(unsigned char *)j - *(unsigned char *)&dlimit[i__ + 1];
+   j1 = *(unsigned char *)j - *(unsigned char *)&dlimit[i + 1];
 // D	IF(DFLAG) PRINT 20,J,J1,CP
 // D20	FORMAT(' LEX- CHAR= ',A1,2I7)
    if (cp >= 6) {

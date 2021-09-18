@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
 // ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
@@ -11,7 +12,6 @@
 
 int gttime_(void) {
    static int h__, m, s;
-   extern void intime_(int *, int *, int *);
 
    intime_(&h__, &m, &s);
    int t = h__ * 60 + m - (time_1.shour * 60 + time_1.smin);
@@ -31,8 +31,6 @@ Bool opncls_(int obj, int so, int sc) {
    Bool ret_val;
 
 // Local variables
-   extern int rnd_(int);
-   extern void rspeak_(int);
 
 // FUNCTIONS AND DATA
 
@@ -85,8 +83,7 @@ Bool lit_(int rm) {
    Bool ret_val;
 
 // Local variables
-   static int i__, j, oa;
-   extern Bool qhere_(int, int);
+   static int i, j, oa;
 
    ret_val = true;
 // 						!ASSUME WINS
@@ -95,13 +92,13 @@ Bool lit_(int rm) {
    }
 
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!LOOK FOR LIT OBJ
-      if (qhere_(i__, rm)) {
+      if (qhere_(i, rm)) {
          goto L100;
       }
 // 						!IN ROOM?
-      oa = objcts_1.oadv[i__ - 1];
+      oa = objcts_1.oadv[i - 1];
 // 						!NO
       if (oa <= 0) {
          goto L1000;
@@ -115,10 +112,10 @@ Bool lit_(int rm) {
 // OBJ IN ROOM OR ON ADV IN ROOM
 
    L100:
-      if ((objcts_1.oflag1[i__ - 1] & oflags_1.onbt) != 0) {
+      if ((objcts_1.oflag1[i - 1] & oflags_1.onbt) != 0) {
          return ret_val;
       }
-      if ((objcts_1.oflag1[i__ - 1] & oflags_1.visibt) == 0 || (objcts_1.oflag1[i__ - 1] & oflags_1.tranbt) == 0 && (objcts_1.oflag2[i__ - 1] & oflags_1.openbt) == 0) {
+      if ((objcts_1.oflag1[i - 1] & oflags_1.visibt) == 0 || (objcts_1.oflag1[i - 1] & oflags_1.tranbt) == 0 && (objcts_1.oflag2[i - 1] & oflags_1.openbt) == 0) {
          goto L1000;
       }
 
@@ -126,7 +123,7 @@ Bool lit_(int rm) {
 
       i__2 = objcts_1.olnt;
       for (j = 1; j <= i__2; ++j) {
-         if (objcts_1.ocan[j - 1] == i__ && (objcts_1.oflag1[j - 1] & oflags_1.onbt) != 0) {
+         if (objcts_1.ocan[j - 1] == i && (objcts_1.oflag1[j - 1] & oflags_1.onbt) != 0) {
             return ret_val;
          }
    // L500:
@@ -147,21 +144,20 @@ int weight_(int rm, int cn, int ad) {
    int ret_val, i__1;
 
 // Local variables
-   static int i__, j;
-   extern Bool qhere_(int, int);
+   static int i, j;
 
    ret_val = 0;
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!OMIT BIG FIXED ITEMS.
-      if (objcts_1.osize[i__ - 1] >= 10000) {
+      if (objcts_1.osize[i - 1] >= 10000) {
          goto L100;
       }
 // 						!IF FIXED, FORGET IT.
-      if (qhere_(i__, rm) && rm != 0 || objcts_1.oadv[i__ - 1] == ad && ad != 0) {
+      if (qhere_(i, rm) && rm != 0 || objcts_1.oadv[i - 1] == ad && ad != 0) {
          goto L50;
       }
-      j = i__;
+      j = i;
 // 						!SEE IF CONTAINED.
    L25:
       j = objcts_1.ocan[j - 1];
@@ -174,7 +170,7 @@ int weight_(int rm, int cn, int ad) {
          goto L25;
       }
    L50:
-      ret_val += objcts_1.osize[i__ - 1];
+      ret_val += objcts_1.osize[i - 1];
    L100:
       ;
    }

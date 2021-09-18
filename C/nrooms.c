@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // RAPPL2- SPECIAL PURPOSE ROOM ROUTINES, PART 2
 
@@ -21,17 +22,8 @@ Bool rappl2_(int ri) {
    Bool ret_val;
 
 // Local variables
-   extern void jigsup_(int);
-   extern void rspeak_(int);
-   static int i__;
-   extern void rspsub_(int, int);
+   static int i;
    static int j;
-   extern void rspsb2_(int, int, int);
-   extern void score_(Bool);
-   extern void cpinfo_(int, int);
-   extern void bug_(int, int);
-   extern void exit_(void);
-   extern Bool qhere_(int, int);
 
 // ROOMS
 
@@ -172,15 +164,15 @@ L46000:
 // CASES 3,4--	MDIR=0 V MDIR=180, POLE IS UP OR IN CHANNEL
 // CASE 5--	POLE IS UP
 
-   i__ = 689;
+   i = 689;
 // 						!ASSUME CASE 5.
    if (findex_1.mdir == 270 && findex_1.mloc == rindex_1.mrb) {
-      i__ = min(findex_1.poleuf, 1) + 690;
+      i = min(findex_1.poleuf, 1) + 690;
    }
    if (findex_1.mdir % 180 == 0) {
-      i__ = min(findex_1.poleuf, 1) + 692;
+      i = min(findex_1.poleuf, 1) + 692;
    }
-   rspeak_(i__);
+   rspeak_(i);
 // 						!DESCRIBE POLE.
    i__1 = findex_1.mdir / 45 + 695;
    rspsub_(694, i__1);
@@ -195,7 +187,7 @@ L47000:
       return ret_val;
    }
 // 						!LOOK?
-   i__ = 704;
+   i = 704;
 // 						!ASSUME BEAM STOP.
    i__1 = objcts_1.olnt;
    for (j = 1; j <= i__1; ++j) {
@@ -204,9 +196,9 @@ L47000:
       }
 // L47100:
    }
-   i__ = 703;
+   i = 703;
 L47200:
-   rspsub_(i__, objcts_1.odesc2[j - 1]);
+   rspsub_(i, objcts_1.odesc2[j - 1]);
 // 						!DESCRIBE BEAM.
    lookto_(rindex_1.mra, 0, 0, 0, 0);
 // 						!LOOK NORTH.
@@ -219,12 +211,12 @@ L48000:
       return ret_val;
    }
 // 						!LOOK?
-   i__ = 46;
+   i = 46;
 // 						!CRYPT IS OPEN/CLOSED.
    if ((objcts_1.oflag2[oindex_1.tomb - 1] & oflags_1.openbt) != 0) {
-      i__ = 12;
+      i = 12;
    }
-   rspsub_(705, i__);
+   rspsub_(705, i);
    return ret_val;
 
 // R49--	SOUTH CORRIDOR
@@ -236,13 +228,13 @@ L49000:
 // 						!LOOK?
    rspeak_(706);
 // 						!DESCRIBE.
-   i__ = 46;
+   i = 46;
 // 						!ODOOR IS OPEN/CLOSED.
    if ((objcts_1.oflag2[oindex_1.odoor - 1] & oflags_1.openbt) != 0) {
-      i__ = 12;
+      i = 12;
    }
    if (findex_1.lcell == 4) {
-      rspsub_(707, i__);
+      rspsub_(707, i);
    }
 // 						!DESCRIBE ODOOR IF THERE.
    return ret_val;
@@ -264,12 +256,12 @@ L50100:
       return ret_val;
    }
 // 						!LOOK?
-   i__ = 46;
+   i = 46;
 // 						!QDOOR IS OPEN/CLOSED.
    if ((objcts_1.oflag2[oindex_1.qdoor - 1] & oflags_1.openbt) != 0) {
-      i__ = 12;
+      i = 12;
    }
-   rspsub_(708, i__);
+   rspsub_(708, i);
    return ret_val;
 // RAPPL2, PAGE 5
 
@@ -286,10 +278,10 @@ L51000:
 // 						!LOOK?
    lookto_(0, rindex_1.mrd, 709, 0, 0);
 // 						!DESCRIBE SOUTH.
-   i__ = 46;
+   i = 46;
 // 						!PANEL IS OPEN/CLOSED.
    if (findex_1.inqstf) {
-      i__ = 12;
+      i = 12;
    }
 // 						!OPEN IF INQ STARTED.
    j = 46;
@@ -297,7 +289,7 @@ L51000:
    if ((objcts_1.oflag2[oindex_1.qdoor - 1] & oflags_1.openbt) != 0) {
       j = 12;
    }
-   rspsb2_(710, i__, j);
+   rspsb2_(710, i, j);
    return ret_val;
 
 // R52--	NORTH CORRIDOR
@@ -307,12 +299,12 @@ L52000:
       return ret_val;
    }
 // 						!LOOK?
-   i__ = 46;
+   i = 46;
    if ((objcts_1.oflag2[oindex_1.cdoor - 1] & oflags_1.openbt) != 0) {
-      i__ = 12;
+      i = 12;
    }
 // 						!CDOOR IS OPEN/CLOSED.
-   rspsub_(711, i__);
+   rspsub_(711, i);
    return ret_val;
 
 // R53--	PARAPET
@@ -331,19 +323,19 @@ L54000:
       return ret_val;
    }
 // 						!LOOK?
-   i__ = 721;
+   i = 721;
 // 						!CDOOR IS OPEN/CLOSED.
    if ((objcts_1.oflag2[oindex_1.cdoor - 1] & oflags_1.openbt) != 0) {
-      i__ = 722;
+      i = 722;
    }
-   rspeak_(i__);
-   i__ = 46;
+   rspeak_(i);
+   i = 46;
 // 						!ODOOR IS OPEN/CLOSED.
    if ((objcts_1.oflag2[oindex_1.odoor - 1] & oflags_1.openbt) != 0) {
-      i__ = 12;
+      i = 12;
    }
    if (findex_1.lcell == 4) {
-      rspsub_(723, i__);
+      rspsub_(723, i);
    }
 // 						!DESCRIBE.
    return ret_val;
@@ -364,12 +356,12 @@ L56000:
       return ret_val;
    }
 // 						!LOOK?
-   i__ = 46;
+   i = 46;
 // 						!ODOOR IS OPEN/CLOSED.
    if ((objcts_1.oflag2[oindex_1.odoor - 1] & oflags_1.openbt) != 0) {
-      i__ = 12;
+      i = 12;
    }
-   rspsub_(725, i__);
+   rspsub_(725, i);
    return ret_val;
 // RAPPL2, PAGE 6
 
@@ -392,12 +384,12 @@ L58000:
       return ret_val;
    }
 // 						!LOOK?
-   i__ = 46;
+   i = 46;
 // 						!TOMB IS OPEN/CLOSED.
    if ((objcts_1.oflag2[oindex_1.tomb - 1] & oflags_1.openbt) != 0) {
-      i__ = 12;
+      i = 12;
    }
-   rspsub_(792, i__);
+   rspsub_(792, i);
    return ret_val;
 
 // R59--	PUZZLE SIDE ROOM
@@ -407,13 +399,13 @@ L59000:
       return ret_val;
    }
 // 						!LOOK?
-   i__ = 861;
+   i = 861;
 // 						!ASSUME DOOR CLOSED.
    if (findex_1.cpoutf) {
-      i__ = 862;
+      i = 862;
    }
 // 						!OPEN?
-   rspeak_(i__);
+   rspeak_(i);
 // 						!DESCRIBE.
    return ret_val;
 
@@ -451,11 +443,7 @@ static void lookto_(int nrm, int srm, int nt, int st, int ht) {
    int i__1;
 
 // Local variables
-   static int i__, m1, dir, mrbf;
-   extern void rspsb2_(int, int, int);
-   extern int mrhere_(int);
-   extern void rspeak_(int);
-   extern void rspsub_(int, int);
+   static int i, m1, dir, mrbf;
 
 // LOOKTO, PAGE 2
 
@@ -508,19 +496,19 @@ L100:
    }
 
 L200:
-   i__ = 0;
+   i = 0;
 // 						!ASSUME NO MORE TO DO.
    if (nt == 0 && (dir == 0 || dir == 699)) {
-      i__ = 852;
+      i = 852;
    }
    if (st == 0 && (dir == 0 || dir == 695)) {
-      i__ = 853;
+      i = 853;
    }
    if (nt + st + dir == 0) {
-      i__ = 854;
+      i = 854;
    }
    if (ht != 0) {
-      rspeak_(i__);
+      rspeak_(i);
    }
 // 						!DESCRIBE HALLS.
 
@@ -535,9 +523,8 @@ static void ewtell_(int rm, int st) {
    int i__1;
 
 // Local variables
-   static int i__;
+   static int i;
    static Bool m1;
-   extern void rspeak_(int);
 
 // ROOMS
 
@@ -547,14 +534,14 @@ static void ewtell_(int rm, int st) {
 // MIRROR MUST BE N-S.
 
    m1 = findex_1.mdir + (rm - rindex_1.mrae) % 2 * 180 == 180;
-   i__ = (rm - rindex_1.mrae) % 2 + 819;
+   i = (rm - rindex_1.mrae) % 2 + 819;
 // 						!GET BASIC E/W STRING.
    if (m1 && !findex_1.mr1f || !m1 && !findex_1.mr2f) {
-      i__ += 2;
+      i += 2;
    }
-   rspeak_(i__);
+   rspeak_(i);
    if (m1 && findex_1.mropnf) {
-      i__1 = (i__ - 819) / 2 + 823;
+      i__1 = (i - 819) / 2 + 823;
       rspeak_(i__1);
    }
    rspeak_(825);

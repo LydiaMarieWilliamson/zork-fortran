@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // FIGHTD- INTERMOVE FIGHT DEMON
 
@@ -19,25 +20,21 @@ void fightd_(void) {
 
 // Local variables
    static Bool f;
-   static int i__, j, ra;
+   static int i, j, ra;
    static int obj;
-   extern int rnd_(int);
    static int res;
    static int out;
-   extern Bool prob_(int, int);
-   extern int blow_(int, int, int, Bool, int);
-   extern Bool oappli_(int, int);
 
 // FUNCTIONS AND DATA
 
 // FIGHTD, PAGE 2
 
    i__1 = vill_1.vlnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!LOOP THRU VILLAINS.
-      vill_1.vopps[i__ - 1] = 0;
+      vill_1.vopps[i - 1] = 0;
 // 						!CLEAR OPPONENT SLOT.
-      obj = vill_1.villns[i__ - 1];
+      obj = vill_1.villns[i - 1];
 // 						!GET OBJECT NO.
       ra = objcts_1.oactio[obj - 1];
 // 						!GET HIS ACTION.
@@ -53,11 +50,11 @@ void fightd_(void) {
          goto L2050;
       }
 // 						!YES, VILL AWAKE?
-      if (vill_1.vprob[i__ - 1] == 0 || !prob_(vill_1.vprob[i__ - 1], vill_1.vprob[i__ - 1])) {
+      if (vill_1.vprob[i - 1] == 0 || !prob_(vill_1.vprob[i - 1], vill_1.vprob[i - 1])) {
          goto L2025;
       }
       objcts_1.ocapac[obj - 1] = (i__2 = objcts_1.ocapac[obj - 1], abs(i__2));
-      vill_1.vprob[i__ - 1] = 0;
+      vill_1.vprob[i - 1] = 0;
       if (ra == 0) {
          goto L2400;
       }
@@ -69,7 +66,7 @@ void fightd_(void) {
 // 						!NOTHING ELSE HAPPENS.
 
    L2025:
-      vill_1.vprob[i__ - 1] += 10;
+      vill_1.vprob[i - 1] += 10;
 // 						!INCREASE WAKEUP PROB.
       goto L2400;
 // 						!NOTHING ELSE.
@@ -78,7 +75,7 @@ void fightd_(void) {
       if ((objcts_1.oflag2[obj - 1] & oflags_1.fitebt) == 0) {
          goto L2100;
       }
-      vill_1.vopps[i__ - 1] = obj;
+      vill_1.vopps[i - 1] = obj;
 // 						!FIGHTING, SET UP OPP.
       goto L2400;
 
@@ -94,7 +91,7 @@ void fightd_(void) {
       }
 // 						!OF FIGHTING.
       objcts_1.oflag2[obj - 1] |= oflags_1.fitebt;
-      vill_1.vopps[i__ - 1] = obj;
+      vill_1.vopps[i - 1] = obj;
 // 						!SET UP OPP.
       goto L2400;
 
@@ -130,9 +127,9 @@ void fightd_(void) {
 // 						!ASSUME HERO OK.
 L2600:
    i__1 = vill_1.vlnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!LOOP THRU OPPS.
-      j = vill_1.vopps[i__ - 1];
+      j = vill_1.vopps[i - 1];
       if (j == 0) {
          goto L2700;
       }
@@ -151,7 +148,7 @@ L2600:
       }
 // 						!SPECIAL ACTION.
    L2650:
-      res = blow_(aindex_1.player, j, vill_1.vmelee[i__ - 1], false, out);
+      res = blow_(aindex_1.player, j, vill_1.vmelee[i - 1], false, out);
 // 						!STRIKE BLOW.
       if (res < 0) {
          return;
@@ -206,21 +203,11 @@ int blow_(int h__, int v, int rmk, Bool hflg, int out) {
 
 // Local variables
    static Bool f;
-   static int i__, j, oa, ra, od, mi, dv, def;
+   static int i, j, oa, ra, od, mi, dv, def;
    static int tbl;
-   extern int rnd_(int);
    static int att, res;
-   extern Bool prob_(int, int);
-   extern int fwim_(int, int, int, int, int, Bool);
    static int dweap;
-   extern Bool oappli_(int, int);
    static int pblose;
-   extern void rspeak_(int);
-   extern int fights_(int, Bool);
-   extern int vilstr_(int);
-   extern void rspsub_(int, int);
-   extern void jigsup_(int);
-   extern void newsta_(int, int, int, int, int);
 
 // PARSE VECTOR
 
@@ -273,10 +260,10 @@ L100:
    dweap = 0;
 // 						!ASSUME NO WEAPON.
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!SEARCH VILLAIN.
-      if (objcts_1.ocan[i__ - 1] == v && (objcts_1.oflag2[i__ - 1] & oflags_1.weapbt) != 0) {
-         dweap = i__;
+      if (objcts_1.ocan[i - 1] == v && (objcts_1.oflag2[i - 1] & oflags_1.weapbt) != 0) {
+         dweap = i;
       }
 // L200:
    }
@@ -405,7 +392,7 @@ L2600:
       goto L3000;
    }
    i__1 = mi / 1000;
-   i__ = mi % 1000 + rnd_(i__1) + star_1.mbase + 1;
+   i = mi % 1000 + rnd_(i__1) + star_1.mbase + 1;
    j = dv;
    if (!(hflg) && dweap != 0) {
       j = objcts_1.odesc2[dweap - 1];
@@ -413,11 +400,11 @@ L2600:
    BegExSF(6, /*2650*/"(\002 BLOW 2650-- \002,5i7)", 0);
    DoFio(1, &res, sizeof res);
    DoFio(1, &mi, sizeof mi);
-   DoFio(1, &i__, sizeof i__);
+   DoFio(1, &i, sizeof i);
    DoFio(1, &j, sizeof j);
    DoFio(1, &star_1.mbase, sizeof star_1.mbase);
    EndExSF();
-   rspsub_(i__, j);
+   rspsub_(i, j);
 // 						!PRESENT RESULT.
 // BLOW, PAGE 5
 
@@ -567,9 +554,7 @@ void swordd_(void) {
    int i__1, i__2;
 
 // Local variables
-   static int i__, ng;
-   extern void rspeak_(int);
-   extern Bool findxt_(int, int);
+   static int i, ng;
 
 // SWORDD, PAGE 2
 
@@ -586,9 +571,9 @@ void swordd_(void) {
    ng = 1;
    i__1 = xsrch_1.xmax;
    i__2 = xsrch_1.xmin;
-   for (i__ = xsrch_1.xmin; i__2 < 0 ? i__ >= i__1 : i__ <= i__1; i__ += i__2) {
+   for (i = xsrch_1.xmin; i__2 < 0 ? i >= i__1 : i <= i__1; i += i__2) {
 // 						!NO, SEARCH ROOMS.
-      if (!findxt_(i__, play_1.here)) {
+      if (!findxt_(i, play_1.here)) {
          goto L200;
       }
 // 						!ROOM THAT WAY?

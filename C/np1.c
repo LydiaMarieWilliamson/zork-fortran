@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // SPARSE-	START OF PARSE
 
@@ -21,15 +22,10 @@ int sparse_(int * lbuf, int llnt, Bool vbflag) {
    int ret_val, i__1, i__2;
 
 // Local variables
-   static int i__, j, adj;
+   static int i, j, adj;
    static int obj;
-   extern Bool lit_(int);
    static int prep, pptr, lbuf1, lbuf2;
    static int buzlnt, prplnt, dirlnt;
-   extern void rspeak_(int);
-   extern int getobj_(int, int, int);
-   extern void rspsub_(int, int);
-   extern void orphan_(int, int, int, int, int);
 
 // SPARSE, PAGE 2
 
@@ -68,11 +64,11 @@ int sparse_(int * lbuf, int llnt, Bool vbflag) {
 // NOW LOOP OVER INPUT BUFFER OF LEXICAL TOKENS.
 
    i__1 = llnt;
-   for (i__ = 1; i__ <= i__1; i__ += 2) {
+   for (i = 1; i <= i__1; i += 2) {
 // 						!TWO WORDS/TOKEN.
-      lbuf1 = lbuf[i__];
+      lbuf1 = lbuf[i];
 // 						!GET CURRENT TOKEN.
-      lbuf2 = lbuf[i__ + 1];
+      lbuf2 = lbuf[i + 1];
 // D	  if(DFLAG) write(0,*) 'lbuf1=',lbuf1,' lbuf2=',lbuf2
       if (lbuf1 == 0) {
          goto L1500;
@@ -273,7 +269,7 @@ int sparse_(int * lbuf, int llnt, Bool vbflag) {
       j = orphs_1.oname & orphs_1.oflag;
 // D	IF(DFLAG) PRINT 40,ADJ,J
 // D40	FORMAT(' SPARSE- ADJ AT ',I6,' ORPHAN= ',I6)
-      if (j != 0 && i__ >= llnt) {
+      if (j != 0 && i >= llnt) {
          goto L600;
       }
       goto L1000;

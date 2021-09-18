@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // GAME- MAIN COMMAND LOOP FOR DUNGEON
 
@@ -20,19 +21,8 @@ void game_(void) {
    int i__1;
 
 // Local variables
-   extern void rspeak_(int);
-   extern void rdline_(char *, int, int, size_t);
-   extern void valuac_(int);
-   extern int oactor_(int);
    static Bool f;
-   static int i__, j;
-   extern Bool lit_(int);
-   extern Bool parse_(char *, int, Bool/*, size_t*/);
-   extern Bool aappli_(int);
-   extern Bool rmdesc_(int);
-   extern Bool rappli_(int);
-   extern Bool vappli_(int);
-   extern Bool findxt_(int, int);
+   static int i, j;
 
 // FUNCTIONS AND DATA
 
@@ -116,9 +106,9 @@ L1000:
    rdline_(input_1.inbuf, input_1.inlnt, 0, sizeof input_1.inbuf[0]);
    ++state_1.moves;
 // 						!CHARGE FOR MOVES.
-   for (i__ = 1; i__ <= 4; ++i__) {
+   for (i = 1; i <= 4; ++i) {
 // 						!INPUT = ECHO?
-      if (*(unsigned char *)&input_1.inbuf[i__ - 1] != *(unsigned char *)&secho[i__ - 1]) {
+      if (*(unsigned char *)&input_1.inbuf[i - 1] != *(unsigned char *)&secho[i - 1]) {
          goto L1300;
       }
 // L1100:
@@ -129,8 +119,8 @@ L1000:
 //      and no longer provides a 78 character buffer padded with blanks.
 
    i__1 = input_1.inlnt;
-   for (i__ = 5; i__ <= i__1; ++i__) {
-      if (*(unsigned char *)&input_1.inbuf[i__ - 1] != ' ') {
+   for (i = 5; i <= i__1; ++i) {
+      if (*(unsigned char *)&input_1.inbuf[i - 1] != ' ') {
          goto L1300;
       }
 // L1200:
@@ -194,13 +184,13 @@ L2100:
       goto L2150;
    }
 L2700:
-   i__ = 341;
+   i = 341;
 // 						!FAILS.
    if (play_1.telflg) {
-      i__ = 604;
+      i = 604;
    }
 // 						!GIVE RESPONSE.
-   rspeak_(i__);
+   rspeak_(i);
 L2600:
    play_1.winner = aindex_1.player;
 // 						!RESTORE STATE.
@@ -250,11 +240,6 @@ static void xendmv_(Bool flag__) {
 #if 0
    static int x; //(@) Not actually used.
 #endif
-   extern Bool clockd_(/*int*/);
-   extern void thiefd_(void);
-   extern void fightd_(void);
-   extern void rspeak_(int);
-   extern void swordd_(void);
 
    if (!(flag__)) {
       rspeak_(341);
@@ -292,7 +277,6 @@ static Bool xvehic_(int n) {
 
 // Local variables
    static int av;
-   extern Bool oappli_(int, int);
 
    ret_val = false;
 // 						!ASSUME LOSES.

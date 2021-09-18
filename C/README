@@ -47,3 +47,4 @@ History
 		while its ‟vars.h” corresponds, here, to ‟common.h”.
 2021/09/18	Extracted the in-line include files out into ‟common.h”.
 		Regularized the names of the common block types.
+2021/09/18	Separated the external function declarations and the function list in ‟Translate.log” out to ‟extern.h”.

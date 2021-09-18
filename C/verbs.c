@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // VAPPLI- MAIN VERB PROCESSING ROUTINE
 
@@ -20,36 +21,11 @@ Bool vappli_(int ri) {
    Bool ret_val;
 
 // Local variables
-   extern void rspeak_(int);
-   extern void rspsub_(int, int);
-   extern void rspsb2_(int, int, int);
-   extern void newsta_(int, int, int, int, int);
-   extern void princo_(int, int);
-   extern void invent_(int);
-   extern void jigsup_(int);
    static int melee;
-   extern void savegm_(void);
-   extern void rstrgm_(void);
    static Bool f;
-   static int i__, j,/* x,*/ av;
-   extern void bug_(int, int);
-   extern int rnd_(int);
-   extern Bool lit_(int);
+   static int i, j,/* x,*/ av;
    static int rmk;
-   extern Bool put_(/*Bool*/);
    static int odi2, odo2;
-   extern Bool take_(Bool);
-   extern Bool walk_(/*int*/);
-   extern Bool drop_(/*Bool*/);
-   extern int blow_(int, int, int, Bool, int);
-   extern Bool qhere_(int, int);
-   extern Bool clockd_(/*int*/);
-   extern Bool objact_(/*int*/);
-   extern Bool rmdesc_(int);
-   extern Bool oappli_(int, int);
-   extern Bool findxt_(int, int);
-   extern Bool sverbs_(int);
-   extern Bool qempty_(int);
 
 // FUNCTIONS AND DATA
 
@@ -367,12 +343,12 @@ L33000:
       return ret_val;
    }
 // 						!OBJECT HANDLE?
-   i__ = 383;
+   i = 383;
 // 						!NO, NOT TIED.
    if ((objcts_1.oflag2[prsvec_1.prso - 1] & oflags_1.tiebt) == 0) {
-      i__ = 384;
+      i = 384;
    }
-   rspeak_(i__);
+   rspeak_(i);
    return ret_val;
 
 // V114--	TIE.  NEVER REALLY WORKS.
@@ -403,12 +379,12 @@ L35000:
    return ret_val;
 
 L35100:
-   i__ = 388;
+   i = 388;
 // 						!ASSUME VILLAIN.
    if ((objcts_1.oflag2[prsvec_1.prso - 1] & oflags_1.villbt) == 0) {
-      i__ = 389;
+      i = 389;
    }
-   rspsub_(i__, odo2);
+   rspsub_(i, odo2);
 // 						!JOKE.
    return ret_val;
 
@@ -450,12 +426,12 @@ L39000:
       return ret_val;
    }
 // 						!OBJ HANDLE?
-   i__ = 394;
+   i = 394;
 // 						!JOKE FOR DOOR.
    if ((objcts_1.oflag1[prsvec_1.prso - 1] & oflags_1.doorbt) == 0) {
-      i__ = 395;
+      i = 395;
    }
-   rspsub_(i__, odo2);
+   rspsub_(i, odo2);
 // 						!JOKE FOR NONDOORS TOO.
    return ret_val;
 
@@ -486,13 +462,13 @@ L41500:
       return ret_val;
    }
 // 						!OBJ HANDLE?
-   i__ = objcts_1.oread[prsvec_1.prso - 1];
+   i = objcts_1.oread[prsvec_1.prso - 1];
 // 						!GET READING MATERIAL.
-   if (i__ != 0) {
-      rspeak_(i__);
+   if (i != 0) {
+      rspeak_(i);
    }
 // 						!OUTPUT IF THERE,
-   if (i__ == 0) {
+   if (i == 0) {
       rspsub_(429, odo2);
    }
 // 						!OTHERWISE DEFAULT.
@@ -530,26 +506,26 @@ L42300:
    rspsub_(397, odo2);
 // 						!SPILL THE WORKS.
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!SPILL CONTENTS.
-      if (objcts_1.ocan[i__ - 1] != prsvec_1.prso) {
+      if (objcts_1.ocan[i - 1] != prsvec_1.prso) {
          goto L42500;
       }
 // 						!INSIDE?
-      objcts_1.oflag2[i__ - 1] |= oflags_1.tchbt;
+      objcts_1.oflag2[i - 1] |= oflags_1.tchbt;
       if (av == 0) {
          goto L42400;
       }
 // 						!IN VEHICLE?
-      newsta_(i__, 0, 0, av, 0);
+      newsta_(i, 0, 0, av, 0);
 // 						!YES, SPILL IN THERE.
       goto L42500;
 
    L42400:
-      newsta_(i__, 0, play_1.here, 0, 0);
+      newsta_(i, 0, play_1.here, 0, 0);
 // 						!NO, SPILL ON FLOOR,
-      if (i__ == oindex_1.water) {
-         newsta_(i__, 133, 0, 0, 0);
+      if (i == oindex_1.water) {
+         newsta_(i, 133, 0, 0, 0);
       }
 // 						!BUT WATER DISAPPEARS.
    L42500:
@@ -564,12 +540,12 @@ L43000:
       return ret_val;
    }
 // 						!OBJ HANDLE?
-   i__ = 398;
+   i = 398;
 // 						!ASSUME NOT HERE.
    if (qhere_(prsvec_1.prso, play_1.here)) {
-      i__ = 399;
+      i = 399;
    }
-   rspsub_(i__, odo2);
+   rspsub_(i, odo2);
 // 						!JOKE.
    return ret_val;
 // VAPPLI, PAGE 6
@@ -725,7 +701,7 @@ L48000:
       return ret_val;
    }
 // 						!OBJ HANDLE?
-   i__ = 415;
+   i = 415;
 // 						!DEFAULT CASE.
    if (qhere_(prsvec_1.prso, play_1.here)) {
       goto L48300;
@@ -743,7 +719,7 @@ L48000:
    if ((objcts_1.oflag1[j - 1] & oflags_1.tranbt) == 0 && (!((objcts_1.oflag2[j - 1] & oflags_1.openbt) != 0) || (objcts_1.oflag1[j - 1] & oflags_1.doorbt + oflags_1.contbt) == 0)) {
       goto L10;
    }
-   i__ = 417;
+   i = 417;
 // 						!ASSUME IN ROOM.
    if (qhere_(j, play_1.here)) {
       goto L48100;
@@ -752,16 +728,16 @@ L48000:
       goto L10;
    }
 // 						!NOT HERE OR ON PERSON.
-   i__ = 418;
+   i = 418;
 L48100:
-   rspsub_(i__, objcts_1.odesc2[j - 1]);
+   rspsub_(i, objcts_1.odesc2[j - 1]);
 // 						!DESCRIBE FINDINGS.
    return ret_val;
 
 L48200:
-   i__ = 416;
+   i = 416;
 L48300:
-   rspsub_(i__, odo2);
+   rspsub_(i, odo2);
 // 						!DESCRIBE FINDINGS.
    return ret_val;
 
@@ -770,7 +746,7 @@ L48300:
 L49000:
    rspeak_(419);
 // 						!TIME PASSES.
-   for (i__ = 1; i__ <= 3; ++i__) {
+   for (i = 1; i <= 3; ++i) {
       if (clockd_(/*x*/)) {
          return ret_val;
       }
@@ -1044,7 +1020,7 @@ L60400:
 // V138--	MUNG.  GO TO COMMON ATTACK CODE.
 
 L63000:
-   i__ = 466;
+   i = 466;
 // 						!CHOOSE PHRASE.
    if ((objcts_1.oflag2[prsvec_1.prso - 1] & oflags_1.villbt) != 0) {
       goto L66100;
@@ -1057,7 +1033,7 @@ L63000:
 // V139--	KILL.  GO TO COMMON ATTACK CODE.
 
 L64000:
-   i__ = 467;
+   i = 467;
 // 						!CHOOSE PHRASE.
    goto L66100;
 
@@ -1077,7 +1053,7 @@ L65000:
 // V141--	ATTACK.  FALL THRU TO ATTACK CODE.
 
 L66000:
-   i__ = 468;
+   i = 468;
 
 // COMMON MUNG/ATTACK/SWING/KILL CODE.
 
@@ -1118,7 +1094,7 @@ L66300:
       melee = 2;
    }
 // 						!MUST BE KNIFE.
-   i__ = blow_(aindex_1.player, prsvec_1.prso, melee, true, 0);
+   i = blow_(aindex_1.player, prsvec_1.prso, melee, true, 0);
 // 						!STRIKE BLOW.
    return ret_val;
 
@@ -1126,7 +1102,7 @@ L66400:
    j = 472;
 // 						!NOT A WEAPON.
 L66500:
-   rspsb2_(i__, odo2, j);
+   rspsb2_(i, odo2, j);
 // 						!JOKE.
    return ret_val;
 // VAPPLI, PAGE 10
@@ -1215,16 +1191,16 @@ L80200:
 // 						!HELLO SAILOR?
    ++state_1.hs;
 // 						!COUNT.
-   i__ = 351;
+   i = 351;
 // 						!GIVE NORMAL OR
    if (state_1.hs % 10 == 0) {
-      i__ = 352;
+      i = 352;
    }
 // 						!RANDOM MESSAGE.
    if (state_1.hs % 20 == 0) {
-      i__ = 353;
+      i = 353;
    }
-   rspeak_(i__);
+   rspeak_(i);
 // 						!SPEAK UP.
    return ret_val;
 
@@ -1233,12 +1209,12 @@ L80300:
       return ret_val;
    }
 // 						!OBJ HANDLE?
-   i__ = 354;
+   i = 354;
 // 						!ASSUME VILLAIN.
    if ((objcts_1.oflag2[prsvec_1.prso - 1] & oflags_1.villbt + oflags_1.actrbt) == 0) {
-      i__ = 355;
+      i = 355;
    }
-   rspsub_(i__, odo2);
+   rspsub_(i, odo2);
 // 						!HELLO THERE
 // 						!
    return ret_val;
@@ -1338,14 +1314,14 @@ L84000:
 L85000:
 L86000:
 L87000:
-   i__ = xsrch_1.xup;
+   i = xsrch_1.xup;
 // 						!ASSUME UP.
    if (prsvec_1.prsa == vindex_1.clmbdw) {
-      i__ = xsrch_1.xdown;
+      i = xsrch_1.xdown;
    }
 // 						!UNLESS CLIMB DN.
    f = (objcts_1.oflag2[prsvec_1.prso - 1] & oflags_1.clmbbt) != 0;
-   if (f && findxt_(i__, play_1.here)) {
+   if (f && findxt_(i, play_1.here)) {
       goto L87500;
    }
 // 						!ANYTHING TO CLIMB?
@@ -1353,22 +1329,22 @@ L87000:
       return ret_val;
    }
 // 						!OBJ HANDLE?
-   i__ = 657;
+   i = 657;
    if (f) {
-      i__ = 524;
+      i = 524;
    }
 // 						!VARIETY OF JOKES.
    if (!f && (prsvec_1.prso == oindex_1.wall || prsvec_1.prso >= oindex_1.wnort && prsvec_1.prso <= oindex_1.wnort + 3)) {
-      i__ = 656;
+      i = 656;
    }
-   rspeak_(i__);
+   rspeak_(i);
 // 						!JOKE.
    return ret_val;
 
 L87500:
    prsvec_1.prsa = vindex_1.walkw;
 // 						!WALK
-   prsvec_1.prso = i__;
+   prsvec_1.prso = i;
 // 						!IN SPECIFIED DIR.
    ret_val = walk_(/*x*/);
    return ret_val;
@@ -1385,28 +1361,27 @@ Bool clockd_(/*int x*/) {
    Bool ret_val;
 
 // Local variables
-   static int i__;
-   extern void cevapp_(int);
+   static int i;
 
    ret_val = false;
 // 						!ASSUME NO ACTION.
    i__1 = cevent_1.clnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
-      if (!cevent_1.cflag[i__ - 1] || cevent_1.ctick[i__ - 1] == 0) {
+   for (i = 1; i <= i__1; ++i) {
+      if (!cevent_1.cflag[i - 1] || cevent_1.ctick[i - 1] == 0) {
          goto L100;
       }
-      if (cevent_1.ctick[i__ - 1] < 0) {
+      if (cevent_1.ctick[i - 1] < 0) {
          goto L50;
       }
 // 						!PERMANENT ENTRY?
-      --cevent_1.ctick[i__ - 1];
-      if (cevent_1.ctick[i__ - 1] != 0) {
+      --cevent_1.ctick[i - 1];
+      if (cevent_1.ctick[i - 1] != 0) {
          goto L100;
       }
 // 						!TIMER EXPIRED?
    L50:
       ret_val = true;
-      cevapp_(cevent_1.cactio[i__ - 1]);
+      cevapp_(cevent_1.cactio[i - 1]);
 // 						!DO ACTION.
    L100:
       ;

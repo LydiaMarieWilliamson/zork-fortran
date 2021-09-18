@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // LIGHTP-	LIGHT PROCESSOR
 
@@ -15,10 +16,7 @@ Bool lightp_(int obj) {
 
 // Local variables
    static int flobts;
-   extern void rspeak_(int);
-   extern void newsta_(int, int, int, int, int);
-   static int i__;
-   extern void bug_(int, int);
+   static int i;
 
 // FUNCTIONS AND DATA
 
@@ -49,16 +47,16 @@ L19100:
       goto L19200;
    }
 // 						!TURN OFF?
-   i__ = 513;
+   i = 513;
 // 						!ASSUME OFF.
    if ((objcts_1.oflag1[oindex_1.candl - 1] & oflags_1.onbt) != 0) {
-      i__ = 514;
+      i = 514;
    }
 // 						!IF ON, DIFFERENT.
    cevent_1.cflag[cindex_1.cevcnd - 1] = false;
 // 						!DISABLE COUNTDOWN.
    objcts_1.oflag1[oindex_1.candl - 1] &= ~oflags_1.onbt;
-   rspeak_(i__);
+   rspeak_(i);
    return ret_val;
 
 L19200:
@@ -86,16 +84,16 @@ L19400:
    if (prsvec_1.prsi != oindex_1.match || !((objcts_1.oflag1[oindex_1.match - 1] & oflags_1.onbt) != 0)) {
       goto L19500;
    }
-   i__ = 517;
+   i = 517;
 // 						!ASSUME OFF.
    if ((objcts_1.oflag1[oindex_1.candl - 1] & oflags_1.onbt) != 0) {
-      i__ = 518;
+      i = 518;
    }
 // 						!IF ON, JOKE.
    objcts_1.oflag1[oindex_1.candl - 1] |= oflags_1.onbt;
    cevent_1.cflag[cindex_1.cevcnd - 1] = true;
 // 						!RESUME COUNTDOWN.
-   rspeak_(i__);
+   rspeak_(i);
    return ret_val;
 
 L19500:

@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // GHERE--	IS GLOBAL ACTUALLY IN THIS ROOM?
 
@@ -14,7 +15,6 @@ Bool ghere_(int obj, int rm) {
    Bool ret_val;
 
 // Local variables
-   extern void bug_(int, int);
 
 // GHERE, PAGE 2
 

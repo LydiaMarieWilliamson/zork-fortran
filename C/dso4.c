@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // ROBADV-- STEAL WINNER'S VALUABLES
 
@@ -14,17 +15,16 @@ int robadv_(int adv, int nr, int nc, int na) {
    int ret_val, i__1;
 
 // Local variables
-   static int i__;
-   extern void newsta_(int, int, int, int, int);
+   static int i;
 
    ret_val = 0;
 // 						!COUNT OBJECTS
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
-      if (objcts_1.oadv[i__ - 1] != adv || objcts_1.otval[i__ - 1] <= 0 || (objcts_1.oflag2[i__ - 1] & oflags_1.scrdbt) != 0) {
+   for (i = 1; i <= i__1; ++i) {
+      if (objcts_1.oadv[i - 1] != adv || objcts_1.otval[i - 1] <= 0 || (objcts_1.oflag2[i - 1] & oflags_1.scrdbt) != 0) {
          goto L100;
       }
-      newsta_(i__, 0, nr, nc, na);
+      newsta_(i, 0, nr, nc, na);
 // 						!STEAL OBJECT
       ++ret_val;
    L100:
@@ -42,31 +42,26 @@ int robrm_(int rm, int pr, int nr, int nc, int na) {
    int ret_val, i__1, i__2;
 
 // Local variables
-   static int i__;
-   extern Bool prob_(int, int);
-   extern Bool qhere_(int, int);
-   extern void newsta_(int, int, int, int, int);
-   extern int robadv_(int, int, int, int);
-   extern int oactor_(int);
+   static int i;
 
    ret_val = 0;
 // 						!COUNT OBJECTS
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!LOOP ON OBJECTS.
-      if (!qhere_(i__, rm)) {
+      if (!qhere_(i, rm)) {
          goto L100;
       }
-      if (objcts_1.otval[i__ - 1] <= 0 || (objcts_1.oflag2[i__ - 1] & oflags_1.scrdbt) != 0 || (objcts_1.oflag1[i__ - 1] & oflags_1.visibt) == 0 || !prob_(pr, pr)) {
+      if (objcts_1.otval[i - 1] <= 0 || (objcts_1.oflag2[i - 1] & oflags_1.scrdbt) != 0 || (objcts_1.oflag1[i - 1] & oflags_1.visibt) == 0 || !prob_(pr, pr)) {
          goto L50;
       }
-      newsta_(i__, 0, nr, nc, na);
+      newsta_(i, 0, nr, nc, na);
       ++ret_val;
-      objcts_1.oflag2[i__ - 1] |= oflags_1.tchbt;
+      objcts_1.oflag2[i - 1] |= oflags_1.tchbt;
       goto L100;
    L50:
-      if ((objcts_1.oflag2[i__ - 1] & oflags_1.actrbt) != 0) {
-         i__2 = oactor_(i__);
+      if ((objcts_1.oflag2[i - 1] & oflags_1.actrbt) != 0) {
+         i__2 = oactor_(i);
          ret_val += robadv_(i__2, nr, nc, na);
       }
    L100:
@@ -85,8 +80,6 @@ Bool winnin_(int vl, int hr) {
 
 // Local variables
    static int ps, vs;
-   extern Bool prob_(int, int);
-   extern int fights_(int, Bool);
 
    vs = objcts_1.ocapac[vl - 1];
 // 						!VILLAIN STRENGTH
@@ -151,7 +144,7 @@ int vilstr_(int v) {
    int ret_val, i__1, i__2, i__3;
 
 // Local variables
-   static int i__;
+   static int i;
 
 // VILSTR, PAGE 2
 
@@ -169,9 +162,9 @@ int vilstr_(int v) {
 
 L100:
    i__1 = vill_1.vlnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!SEE IF  BEST WEAPON.
-      if (vill_1.villns[i__ - 1] == v && prsvec_1.prsi == vill_1.vbest[i__ - 1]) {
+      if (vill_1.villns[i - 1] == v && prsvec_1.prsi == vill_1.vbest[i - 1]) {
 // Computing MAX
          i__2 = 1, i__3 = ret_val - 1;
          ret_val = max(i__2, i__3);

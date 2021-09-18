@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // parser.h:
 // common /synflg/
@@ -160,9 +161,6 @@ struct vindexCB vindex_ = (struct vindexCB){
 // Main program
 int MAIN__(void) {
    static int x;
-   extern void game_(void);
-   extern Bool init_(int);
-   extern void exit_(void);
 
 // DECLARATIONS
 

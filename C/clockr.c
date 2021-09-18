@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // CEVAPP- CLOCK EVENT APPLICABLES
 
@@ -20,21 +21,8 @@ void cevapp_(int ri) {
    int i__1, i__2;
 
 // Local variables
-   extern void rspeak_(int);
-   extern void jigsup_(int);
-   extern void newsta_(int, int, int, int, int);
-   extern void rspsub_(int, int);
-   extern void scrupd_(int);
-   extern int mrhere_(int);
    static Bool f;
-   static int i__, j, bc, br;
-   extern void bug_(int, int);
-   extern Bool lit_(int);
-   extern Bool prob_(int, int);
-   extern Bool qhere_(int, int);
-   extern Bool rmdesc_(int);
-   extern Bool findxt_(int, int);
-   extern Bool moveto_(int, int);
+   static int i, j, bc, br;
 
 // FUNCTIONS AND DATA
 
@@ -360,9 +348,9 @@ L6850:
 
 L7000:
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!FIND BURNING OBJECT
-      if (oindex_1.recep == objcts_1.ocan[i__ - 1] && (objcts_1.oflag1[i__ - 1] & oflags_1.flambt) != 0) {
+      if (oindex_1.recep == objcts_1.ocan[i - 1] && (objcts_1.oflag1[i - 1] & oflags_1.flambt) != 0) {
          goto L7200;
       }
 // L7100:
@@ -370,12 +358,12 @@ L7000:
    bug_(4, 0);
 
 L7200:
-   newsta_(i__, 0, 0, 0, 0);
+   newsta_(i, 0, 0, 0, 0);
 // 						!VANISH OBJECT.
    findex_1.binff = 0;
 // 						!UNINFLATED.
    if (play_1.here == state_1.bloc) {
-      rspsub_(292, objcts_1.odesc2[i__ - 1]);
+      rspsub_(292, objcts_1.odesc2[i - 1]);
    }
 // 						!DESCRIBE.
    return;
@@ -434,10 +422,10 @@ L8100:
 
 L8200:
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!BLEW WRONG ROOM.
-      if (qhere_(i__, br) && (objcts_1.oflag1[i__ - 1] & oflags_1.takebt) != 0) {
-         newsta_(i__, 0, 0, 0, 0);
+      if (qhere_(i, br) && (objcts_1.oflag1[i - 1] & oflags_1.takebt) != 0) {
+         newsta_(i, 0, 0, 0, 0);
       }
 // L8250:
    }
@@ -446,9 +434,9 @@ L8200:
    }
 // 						!BLEW LIVING ROOM?
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
-      if (objcts_1.ocan[i__ - 1] == oindex_1.tcase) {
-         newsta_(i__, 0, 0, 0, 0);
+   for (i = 1; i <= i__1; ++i) {
+      if (objcts_1.ocan[i - 1] == oindex_1.tcase) {
+         newsta_(i, 0, 0, 0, 0);
       }
 // 						!KILL TROPHY CASE.
 // L8300:
@@ -528,12 +516,12 @@ L10000:
    return;
 
 L10100:
-   i__ = 116;
+   i = 116;
 // 						!HE'S DEAD,
    if ((rooms_1.rflag[play_1.here - 1] & rflag_1.rhouse) != 0) {
-      i__ = 117;
+      i = 117;
    }
-   jigsup_(i__);
+   jigsup_(i);
 // 						!LET HIM KNOW.
    return;
 // CEVAPP, PAGE 6
@@ -659,9 +647,9 @@ L20100:
 // 						!ANNOUNCE.
 L20200:
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!STRIP HIM OF OBJS.
-      newsta_(i__, 0, objcts_1.oroom[i__ - 1], objcts_1.ocan[i__ - 1], 0);
+      newsta_(i, 0, objcts_1.oroom[i - 1], objcts_1.ocan[i - 1], 0);
 // L20300:
    }
    newsta_(oindex_1.lamp, 0, 0, 0, aindex_1.player);
@@ -761,17 +749,17 @@ L24000:
 L24100:
    findex_1.follwf = true;
 // 						!FOLLOWING.
-   i__ = 812;
+   i = 812;
 // 						!ASSUME CATCHES UP.
    i__1 = xsrch_1.xmax;
    i__2 = xsrch_1.xmin;
    for (j = xsrch_1.xmin; i__2 < 0 ? j >= i__1 : j <= i__1; j += i__2) {
       if (findxt_(j, advs_1.aroom[aindex_1.amastr - 1]) && curxt_1.xroom1 == play_1.here) {
-         i__ = 813;
+         i = 813;
       }
 // L24200:
    }
-   rspeak_(i__);
+   rspeak_(i);
    newsta_(oindex_1.master, 0, play_1.here, 0, 0);
 // 						!MOVE MASTER OBJECT.
    advs_1.aroom[aindex_1.amastr - 1] = play_1.here;
@@ -784,8 +772,6 @@ L24100:
 
 static void litint_(int obj, int * ctr, int cev, int * ticks, int tickln) {
 // Local variables
-   extern void rspsub_(int, int);
-   extern void rspeak_(int);
 
 // Parameter adjustments
    --ticks;

@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // BALLOP-	BALLOON FUNCTION
 
@@ -12,13 +13,6 @@
 Bool ballop_(int arg) {
 // System generated locals
    Bool ret_val;
-
-// Local variables
-   extern void rspeak_(int);
-   extern void rspsub_(int, int);
-   extern void newsta_(int, int, int, int, int);
-   extern Bool findxt_(int, int);
-   extern Bool qempty_(int);
 
 // BALLOP, PAGE 2
 

@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // SYNMCH--	SYNTAX MATCHER
 
@@ -26,10 +27,7 @@ Bool synmch_(/*int x*/) {
 // Local variables
    static int j;
    static int newj;
-   extern int gwim_(int, int, int);
    static int drive, limit, qprep, sprep, dforce;
-   extern void rspeak_(int);
-   extern void orphan_(int, int, int, int, int);
 
 //   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
 
@@ -219,11 +217,11 @@ L5000:
 
 static int unpacks_(int oldj) {
 // Local variables
-   static int i__;
+   static int i;
 
-   for (i__ = 1; i__ <= 11; ++i__) {
+   for (i = 1; i <= 11; ++i) {
 // 						!CLEAR SYNTAX.
-      syn[i__ - 1] = 0;
+      syn[i - 1] = 0;
 // L10:
    }
 
@@ -312,12 +310,6 @@ Bool takeit_(int obj, int sflag) {
 // Local variables
    static int x;
    static int odo2;
-   extern void rspsub_(int, int);
-   extern int schlst_(int, int, int, int, int, int);
-   extern void rspeak_(int);
-   extern int weight_(int, int, int);
-   extern void newsta_(int, int, int, int, int);
-   extern void scrupd_(int);
 
 // TAKEIT, PAGE 2
 
@@ -433,7 +425,6 @@ int gwim_(int sflag, int sfw1, int sfw2) {
 // Local variables
    static int av;
    static int nobj, robj;
-   extern int fwim_(int, int, int, int, int, Bool);
    static Bool nocare;
 
 // GWIM, PAGE 2

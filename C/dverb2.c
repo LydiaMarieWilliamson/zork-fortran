@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // SAVE- SAVE GAME STATE
 
@@ -14,9 +15,7 @@ void savegm_(void) {
    int i__1;
 
 // Local variables
-   static int i__;
-   extern int gttime_(void);
-   extern void rspeak_(int);
+   static int i;
 
 // MISCELLANEOUS VARIABLES
 
@@ -29,7 +28,7 @@ void savegm_(void) {
       goto L100;
    }
 
-   i__ = gttime_();
+   i = gttime_();
 // 						!GET TIME.
    BegExSU(1, 0, 0);
    DoUio(1, &vers_2.vmaj, sizeof vers_2.vmaj);
@@ -48,7 +47,7 @@ void savegm_(void) {
    DoUio(64, puzzle_1.cpvec, sizeof puzzle_1.cpvec[0]);
    EndExSU();
    BegExSU(1, 0, 0);
-   DoUio(1, &i__, sizeof i__);
+   DoUio(1, &i, sizeof i);
    DoUio(1, &state_1.moves, sizeof state_1.moves);
    DoUio(1, &state_1.deaths, sizeof state_1.deaths);
    DoUio(1, &state_1.rwscor, sizeof state_1.rwscor);
@@ -112,8 +111,7 @@ void rstrgm_(void) {
    int i__1;
 
 // Local variables
-   static int i__, j, k;
-   extern void rspeak_(int);
+   static int i, j, k;
 
 // MISCELLANEOUS VARIABLES
 
@@ -127,11 +125,11 @@ void rstrgm_(void) {
    }
 
    BegInSU(1, 0, 0);
-   DoUio(1, &i__, sizeof i__);
+   DoUio(1, &i, sizeof i);
    DoUio(1, &j, sizeof j);
    DoUio(1, &k, sizeof k);
    EndInSU();
-   if (i__ != vers_2.vmaj || j != vers_2.vmin) {
+   if (i != vers_2.vmaj || j != vers_2.vmin) {
       goto L200;
    }
 
@@ -216,17 +214,6 @@ static int cxappl_(int);
 Bool walk_(/*int x*/) {
 // System generated locals
    Bool ret_val;
-
-// Local variables
-   extern void bug_(int, int);
-   extern Bool lit_(int);
-   extern Bool prob_(int, int);
-   extern Bool rmdesc_(int);
-   extern Bool findxt_(int, int);
-   extern Bool moveto_(int, int);
-   extern void jigsup_(int);
-   extern void rspeak_(int);
-   extern void rspsub_(int, int);
 
 // FUNCTIONS AND DATA
 
@@ -392,12 +379,7 @@ static int cxappl_(int ri) {
    int ret_val, i__1;
 
 // Local variables
-   extern void rspeak_(int);
-   extern int mrhere_(int);
-   extern void cpgoto_(int);
-   static int i__, j, k;
-   extern void bug_(int, int);
-   extern int rnd_(int);
+   static int i, j, k;
    static int nxt;
    static int ldir;
 
@@ -460,9 +442,9 @@ L2500:
    rspeak_(121);
 // 						!SPIN THE COMPASS.
 L5000:
-   i__ = xpars_1.xelnt[xpars_1.xcond - 1] * rnd_(8);
+   i = xpars_1.xelnt[xpars_1.xcond - 1] * rnd_(8);
 // 						!CHOOSE RANDOM EXIT.
-   curxt_1.xroom1 = exits_1.travel[rooms_1.rexit[play_1.here - 1] + i__ - 1]
+   curxt_1.xroom1 = exits_1.travel[rooms_1.rexit[play_1.here - 1] + i - 1]
       & xpars_1.xrmask;
    ret_val = curxt_1.xroom1;
 // 						!RETURN EXIT.
@@ -475,9 +457,9 @@ L3000:
 // 						!ASSUME HEAVY LOAD.
    j = 0;
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!COUNT OBJECTS.
-      if (objcts_1.oadv[i__ - 1] == play_1.winner) {
+      if (objcts_1.oadv[i - 1] == play_1.winner) {
          ++j;
       }
 // L3100:
@@ -700,9 +682,9 @@ L14100:
    return ret_val;
 
 L14200:
-   for (i__ = 1; i__ <= 16; i__ += 2) {
+   for (i = 1; i <= 16; i += 2) {
 // 						!LOCATE EXIT.
-      if (prsvec_1.prso == puzzle_1.cpdr[i__ - 1]) {
+      if (prsvec_1.prso == puzzle_1.cpdr[i - 1]) {
          goto L14400;
       }
 // L14300:
@@ -711,7 +693,7 @@ L14200:
 // 						!NO SUCH EXIT.
 
 L14400:
-   j = puzzle_1.cpdr[i__];
+   j = puzzle_1.cpdr[i];
 // 						!GET DIRECTIONAL OFFSET.
    nxt = findex_1.cphere + j;
 // 						!GET NEXT STATE.

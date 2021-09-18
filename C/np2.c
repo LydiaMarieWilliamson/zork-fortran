@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // GETOBJ--	FIND OBJ DESCRIBED BY ADJ, NAME PAIR
 
@@ -17,13 +18,10 @@ int getobj_(int oidx, int aidx, int spcobj) {
    int ret_val, i__1;
 
 // Local variables
-   static int i__, av;
+   static int i, av;
    static int obj;
-   extern Bool lit_(int);
    static int nobj;
-   extern Bool ghere_(int, int);
    static Bool chomp;
-   extern int schlst_(int, int, int, int, int, int);
 
 // MISCELLANEOUS VARIABLES
 
@@ -127,21 +125,21 @@ L1000:
    }
 // 						!GOT SOMETHING?
    i__1 = objcts_1.olnt;
-   for (i__ = star_1.strbit + 1; i__ <= i__1; ++i__) {
+   for (i = star_1.strbit + 1; i <= i__1; ++i) {
 // 						!NO, SEARCH GLOBALS.
-      if (!thisit_(oidx, aidx, i__, spcobj)) {
+      if (!thisit_(oidx, aidx, i, spcobj)) {
          goto L1200;
       }
-      if (!ghere_(i__, play_1.here)) {
+      if (!ghere_(i, play_1.here)) {
          goto L1200;
       }
 // 						!CAN IT BE HERE?
       if (ret_val != 0) {
-         ret_val = -i__;
+         ret_val = -i;
       }
 // 						!AMB MATCH?
       if (ret_val == 0) {
-         ret_val = i__;
+         ret_val = i;
       }
    L1200:
       ;
@@ -164,33 +162,32 @@ int schlst_(int oidx, int aidx, int rm, int cn, int ad, int spcobj) {
    int ret_val, i__1, i__2;
 
 // Local variables
-   static int i__, j, x;
-   extern Bool qhere_(int, int);
+   static int i, j, x;
 
 // FUNCTIONS AND DATA
 
    ret_val = 0;
 // 						!NO RESULT.
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!SEARCH OBJECTS.
-      if ((objcts_1.oflag1[i__ - 1] & oflags_1.visibt) == 0 || (rm == 0 || !qhere_(i__, rm)) && (cn == 0 || objcts_1.ocan[i__ - 1] != cn) && (ad == 0 || objcts_1.oadv[i__ - 1] != ad)) {
+      if ((objcts_1.oflag1[i - 1] & oflags_1.visibt) == 0 || (rm == 0 || !qhere_(i, rm)) && (cn == 0 || objcts_1.ocan[i - 1] != cn) && (ad == 0 || objcts_1.oadv[i - 1] != ad)) {
          goto L1000;
       }
-      if (!thisit_(oidx, aidx, i__, spcobj)) {
+      if (!thisit_(oidx, aidx, i, spcobj)) {
          goto L200;
       }
       if (ret_val != 0) {
          goto L2000;
       }
 // 						!GOT ONE ALREADY?
-      ret_val = i__;
+      ret_val = i;
 // 						!NO.
 
 // IF OPEN OR TRANSPARENT, SEARCH THE OBJECT ITSELF.
 
    L200:
-      if ((objcts_1.oflag1[i__ - 1] & oflags_1.tranbt) == 0 && (objcts_1.oflag2[i__ - 1] & oflags_1.openbt) == 0) {
+      if ((objcts_1.oflag1[i - 1] & oflags_1.tranbt) == 0 && (objcts_1.oflag2[i - 1] & oflags_1.openbt) == 0) {
          goto L1000;
       }
 
@@ -209,7 +206,7 @@ int schlst_(int oidx, int aidx, int rm, int cn, int ad, int spcobj) {
          x = objcts_1.ocan[j - 1];
 // 						!GET CONTAINER.
       L300:
-         if (x == i__) {
+         if (x == i) {
             goto L400;
          }
 // 						!INSIDE TARGET?
@@ -260,7 +257,7 @@ static Bool thisit_(int oidx, int aidx, int obj, int spcobj) {
    Bool ret_val;
 
 // Local variables
-   static int i__;
+   static int i;
 
 // FUNCTIONS AND DATA
 
@@ -276,14 +273,14 @@ static Bool thisit_(int oidx, int aidx, int obj, int spcobj) {
 
 // CHECK FOR OBJECT NAMES
 
-   i__ = oidx + 1;
+   i = oidx + 1;
 L100:
-   ++i__;
-   if (ovoc[i__ - 1] <= 0 || ovoc[i__ - 1] >= r50min) {
+   ++i;
+   if (ovoc[i - 1] <= 0 || ovoc[i - 1] >= r50min) {
       return ret_val;
    }
 // 						!IF DONE, LOSE.
-   if (ovoc[i__ - 1] != obj) {
+   if (ovoc[i - 1] != obj) {
       goto L100;
    }
 // 						!IF FAIL, CONT.
@@ -292,14 +289,14 @@ L100:
       goto L500;
    }
 // 						!ANY ADJ?
-   i__ = aidx + 1;
+   i = aidx + 1;
 L200:
-   ++i__;
-   if (avoc[i__ - 1] <= 0 || avoc[i__ - 1] >= r50min) {
+   ++i;
+   if (avoc[i - 1] <= 0 || avoc[i - 1] >= r50min) {
       return ret_val;
    }
 // 						!IF DONE, LOSE.
-   if (avoc[i__ - 1] != obj) {
+   if (avoc[i - 1] != obj) {
       goto L200;
    }
 // 						!IF FAIL, CONT.

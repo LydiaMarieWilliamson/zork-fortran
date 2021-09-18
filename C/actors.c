@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // AAPPLI- APPLICABLES FOR ADVENTURERS
 
@@ -15,11 +16,7 @@ Bool aappli_(int ri) {
 
 // Local variables
    static Bool f;
-   extern void newsta_(int, int, int, int, int);
-   extern void rspeak_(int);
-   static int i__;
-   extern void bug_(int, int);
-   extern Bool moveto_(int, int);
+   static int i;
 
 // AAPPLI, PAGE 2
 
@@ -109,12 +106,12 @@ L2100:
       goto L2200;
    }
 // 						!WALK?
-   i__ = 784;
+   i = 784;
 // 						!ASSUME WONT.
    if (play_1.here == rindex_1.scorr && (prsvec_1.prso == xsrch_1.xnorth || prsvec_1.prso == xsrch_1.xenter) || play_1.here == rindex_1.ncorr && (prsvec_1.prso == xsrch_1.xsouth || prsvec_1.prso == xsrch_1.xenter)) {
-      i__ = 785;
+      i = 785;
    }
-   rspeak_(i__);
+   rspeak_(i);
    return ret_val;
 
 L2200:
@@ -136,18 +133,9 @@ void thiefd_(void) {
    int i__1, i__2;
 
 // Local variables
-   static int i__, j, nr;
-   extern Bool lit_(int);
+   static int i, j, nr;
    static Bool once;
-   extern Bool prob_(int, int);
-   extern Bool qhere_(int, int);
-   extern Bool winnin_(int, int);
    static int rhere;
-   extern void newsta_(int, int, int, int, int);
-   extern int robadv_(int, int, int, int);
-   extern int robrm_(int, int, int, int, int);
-   extern void rspeak_(int);
-   extern void rspsub_(int, int);
 
 // FUNCTIONS AND DATA
 
@@ -189,7 +177,7 @@ L1025:
    }
 L1050:
    i__1 = -oindex_1.thief;
-   i__ = robadv_(i__1, hack_1.thfpos, 0, 0);
+   i = robadv_(i__1, hack_1.thfpos, 0, 0);
 // 						!DROP VALUABLES.
    if (qhere_(oindex_1.egg, hack_1.thfpos)) {
       objcts_1.oflag2[oindex_1.egg - 1] |= oflags_1.openbt;
@@ -274,17 +262,17 @@ L1250:
    i__1 = -oindex_1.thief;
    i__2 = -oindex_1.thief;
    nr = robrm_(hack_1.thfpos, 100, 0, 0, i__1) + robadv_(play_1.winner, 0, 0, i__2);
-   i__ = 586;
+   i = 586;
 // 						!ROBBED EM.
    if (rhere != 0) {
-      i__ = 588;
+      i = 588;
    }
 // 						!WAS HE VISIBLE?
    if (nr != 0) {
-      ++i__;
+      ++i;
    }
 // 						!DID HE GET ANYTHING?
-   newsta_(oindex_1.thief, i__, 0, 0, 0);
+   newsta_(oindex_1.thief, i, 0, 0, 0);
 // 						!VANISH THIEF.
    if (qhere_(oindex_1.still, hack_1.thfpos) || objcts_1.oadv[oindex_1.still - 1] == -oindex_1.thief) {
       newsta_(oindex_1.still, 0, 0, oindex_1.thief, 0);
@@ -311,26 +299,26 @@ L1400:
       goto L1700;
    }
    i__1 = -oindex_1.thief;
-   i__ = robrm_(hack_1.thfpos, 75, 0, 0, i__1);
+   i = robrm_(hack_1.thfpos, 75, 0, 0, i__1);
 // 						!ROB ROOM 75%.
    if (hack_1.thfpos < rindex_1.maze1 || hack_1.thfpos > rindex_1.maz15 || play_1.here < rindex_1.maze1 || play_1.here > rindex_1.maz15) {
       goto L1500;
    }
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!BOTH IN MAZE.
-      if (!qhere_(i__, hack_1.thfpos) || prob_(60, 60) || (objcts_1.oflag1[i__ - 1] & oflags_1.visibt + oflags_1.takebt) != oflags_1.visibt + oflags_1.takebt) {
+      if (!qhere_(i, hack_1.thfpos) || prob_(60, 60) || (objcts_1.oflag1[i - 1] & oflags_1.visibt + oflags_1.takebt) != oflags_1.visibt + oflags_1.takebt) {
          goto L1450;
       }
-      rspsub_(590, objcts_1.odesc2[i__ - 1]);
+      rspsub_(590, objcts_1.odesc2[i - 1]);
 // 						!TAKE OBJECT.
       if (prob_(40, 20)) {
          goto L1700;
       }
       i__2 = -oindex_1.thief;
-      newsta_(i__, 0, 0, 0, i__2);
+      newsta_(i, 0, 0, 0, i__2);
 // 						!MOST OF THE TIME.
-      objcts_1.oflag2[i__ - 1] |= oflags_1.tchbt;
+      objcts_1.oflag2[i - 1] |= oflags_1.tchbt;
       goto L1700;
    L1450:
       ;
@@ -339,14 +327,14 @@ L1400:
 
 L1500:
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!NOT IN MAZE.
-      if (!qhere_(i__, hack_1.thfpos) || objcts_1.otval[i__ - 1] != 0 || prob_(80, 60) || (objcts_1.oflag1[i__ - 1] & oflags_1.visibt + oflags_1.takebt) != oflags_1.visibt + oflags_1.takebt) {
+      if (!qhere_(i, hack_1.thfpos) || objcts_1.otval[i - 1] != 0 || prob_(80, 60) || (objcts_1.oflag1[i - 1] & oflags_1.visibt + oflags_1.takebt) != oflags_1.visibt + oflags_1.takebt) {
          goto L1550;
       }
       i__2 = -oindex_1.thief;
-      newsta_(i__, 0, 0, 0, i__2);
-      objcts_1.oflag2[i__ - 1] |= oflags_1.tchbt;
+      newsta_(i, 0, 0, 0, i__2);
+      objcts_1.oflag2[i - 1] |= oflags_1.tchbt;
       goto L1700;
    L1550:
       ;
@@ -389,11 +377,11 @@ L1800:
       j = 0;
    }
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
-      if (objcts_1.oadv[i__ - 1] != -oindex_1.thief || prob_(70, 70) || objcts_1.otval[i__ - 1] > 0) {
+   for (i = 1; i <= i__1; ++i) {
+      if (objcts_1.oadv[i - 1] != -oindex_1.thief || prob_(70, 70) || objcts_1.otval[i - 1] > 0) {
          goto L1850;
       }
-      newsta_(i__, j, hack_1.thfpos, 0, 0);
+      newsta_(i, j, hack_1.thfpos, 0, 0);
       j = 0;
    L1850:
       ;

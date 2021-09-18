@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // FINDXT- FIND EXIT FROM ROOM
 
@@ -14,8 +15,7 @@ Bool findxt_(int dir, int rm) {
    Bool ret_val;
 
 // Local variables
-   static int i__, xi;
-   extern void bug_(int, int);
+   static int i, xi;
 
    ret_val = true;
 // 						!ASSUME WINS.
@@ -27,10 +27,10 @@ Bool findxt_(int dir, int rm) {
 // 						!NO EXITS?
 
 L100:
-   i__ = exits_1.travel[xi - 1];
+   i = exits_1.travel[xi - 1];
 // 						!GET ENTRY.
-   curxt_1.xroom1 = i__ & xpars_1.xrmask;
-   curxt_1.xtype = ((i__ & 32767) / xpars_1.xfshft & xpars_1.xfmask) + 1;
+   curxt_1.xroom1 = i & xpars_1.xrmask;
+   curxt_1.xtype = ((i & 32767) / xpars_1.xfshft & xpars_1.xfmask) + 1;
    switch (curxt_1.xtype) {
       case 1:
          goto L110;
@@ -53,10 +53,10 @@ L120:
 L110:
    xi += xpars_1.xelnt[curxt_1.xtype - 1];
 // 						!ADVANCE TO NEXT ENTRY.
-   if ((i__ & xpars_1.xdmask) == dir) {
+   if ((i & xpars_1.xdmask) == dir) {
       return ret_val;
    }
-   if ((i__ & xpars_1.xlflag) == 0) {
+   if ((i & xpars_1.xlflag) == 0) {
       goto L100;
    }
 L1000:
@@ -74,24 +74,24 @@ int fwim_(int f1, int f2, int rm, int con, int adv, Bool nocare) {
    int ret_val, i__1, i__2;
 
 // Local variables
-   static int i__, j;
+   static int i, j;
 
    ret_val = 0;
 // 						!ASSUME NOTHING.
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!LOOP
-      if ((rm == 0 || objcts_1.oroom[i__ - 1] != rm) && (adv == 0 || objcts_1.oadv[i__ - 1] != adv) && (con == 0 || objcts_1.ocan[i__ - 1] != con)) {
+      if ((rm == 0 || objcts_1.oroom[i - 1] != rm) && (adv == 0 || objcts_1.oadv[i - 1] != adv) && (con == 0 || objcts_1.ocan[i - 1] != con)) {
          goto L1000;
       }
 
    // OBJECT IS ON LIST... IS IT A MATCH?
 
-      if ((objcts_1.oflag1[i__ - 1] & oflags_1.visibt) == 0) {
+      if ((objcts_1.oflag1[i - 1] & oflags_1.visibt) == 0) {
          goto L1000;
       }
 // 	  IF(IAND(not(NOCARE),(IAND(OFLAG1(I),TAKEBT).EQ.0)) .OR.
-      if (!(nocare) && (objcts_1.oflag1[i__ - 1] & oflags_1.takebt) == 0 || (objcts_1.oflag1[i__ - 1] & f1) == 0 && (objcts_1.oflag2[i__ - 1] & f2) == 0) {
+      if (!(nocare) && (objcts_1.oflag1[i - 1] & oflags_1.takebt) == 0 || (objcts_1.oflag1[i - 1] & f1) == 0 && (objcts_1.oflag2[i - 1] & f2) == 0) {
          goto L500;
       }
       if (ret_val == 0) {
@@ -103,19 +103,19 @@ int fwim_(int f1, int f2, int rm, int con, int adv, Bool nocare) {
       return ret_val;
 
    L400:
-      ret_val = i__;
+      ret_val = i;
 // 						!NOTE MATCH.
 
 // DOES OBJECT CONTAIN A MATCH?
 
    L500:
-      if ((objcts_1.oflag2[i__ - 1] & oflags_1.openbt) == 0) {
+      if ((objcts_1.oflag2[i - 1] & oflags_1.openbt) == 0) {
          goto L1000;
       }
       i__2 = objcts_1.olnt;
       for (j = 1; j <= i__2; ++j) {
 // 						!NO, SEARCH CONTENTS.
-         if (objcts_1.ocan[j - 1] != i__ || (objcts_1.oflag1[j - 1] & oflags_1.visibt) == 0 || (objcts_1.oflag1[j - 1] & f1) == 0 && (objcts_1.oflag2[j - 1] & f2) == 0) {
+         if (objcts_1.ocan[j - 1] != i || (objcts_1.oflag1[j - 1] & oflags_1.visibt) == 0 || (objcts_1.oflag1[j - 1] & f1) == 0 && (objcts_1.oflag2[j - 1] & f2) == 0) {
             goto L700;
          }
          if (ret_val == 0) {
@@ -147,7 +147,6 @@ Bool yesno_(int q, int y, int n) {
 
 // Local variables
    static char ans[1];
-   extern void rspeak_(int);
 
 L100:
    rspeak_(q);

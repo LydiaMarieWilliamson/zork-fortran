@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // TAKE-- BASIC TAKE SEQUENCE
 
@@ -16,14 +17,6 @@ Bool take_(Bool flg) {
 
 // Local variables
    static int x, oa;
-   extern int rnd_(int);
-   extern Bool qhere_(int, int);
-   extern Bool objact_(/*int*/);
-   extern Bool oappli_(int, int);
-   extern void rspeak_(int);
-   extern int weight_(int, int, int);
-   extern void newsta_(int, int, int, int, int);
-   extern void scrupd_(int);
 
 // DECLARATIONS
 
@@ -116,13 +109,7 @@ Bool drop_(/*Bool z__*/) {
 
 // Local variables
    static Bool f;
-   static int i__, x;
-   extern Bool put_(/*Bool*/);
-   extern Bool objact_(/*int*/);
-   extern void rspsub_(int, int);
-   extern void newsta_(int, int, int, int, int);
-   extern void scrupd_(int);
-   extern void rspeak_(int);
+   static int i, x;
 
 // ROOMS
 
@@ -182,18 +169,18 @@ L400:
       return ret_val;
    }
 // 						!DID IT HANDLE?
-   i__ = 0;
+   i = 0;
 // 						!ASSUME NOTHING TO SAY.
    if (prsvec_1.prsa == vindex_1.dropw) {
-      i__ = 528;
+      i = 528;
    }
    if (prsvec_1.prsa == vindex_1.throww) {
-      i__ = 529;
+      i = 529;
    }
-   if (i__ != 0 && play_1.here == rindex_1.mtree) {
-      i__ = 659;
+   if (i != 0 && play_1.here == rindex_1.mtree) {
+      i = 659;
    }
-   rspsub_(i__, objcts_1.odesc2[prsvec_1.prso - 1]);
+   rspsub_(i, objcts_1.odesc2[prsvec_1.prso - 1]);
    return ret_val;
 
 L1000:
@@ -214,15 +201,6 @@ Bool put_(/*Bool flg*/) {
 // Local variables
    static int j, x;
    static int svi, svo;
-   extern Bool take_(Bool);
-   extern Bool qhere_(int, int);
-   extern void rspsb2_(int, int, int);
-   extern Bool objact_(/*int*/);
-   extern void rspeak_(int);
-   extern int weight_(int, int, int);
-   extern void rspsub_(int, int);
-   extern void scrupd_(int);
-   extern void newsta_(int, int, int, int, int);
 
 // MISCELLANEOUS VARIABLES
 
@@ -362,16 +340,9 @@ void valuac_(int v) {
 
 // Local variables
    static Bool f;
-   static int i__;
+   static int i;
    static Bool f1;
-   extern Bool lit_(int);
-   extern Bool put_(/*Bool*/);
-   extern Bool take_(Bool);
-   extern Bool drop_(/*Bool*/);
-   extern Bool qhere_(int, int);
    static int savep, saveh;
-   extern void rspsub_(int, int);
-   extern void rspeak_(int);
 
 // FUNCTIONS AND DATA
 
@@ -379,13 +350,13 @@ void valuac_(int v) {
 
    f = true;
 // 						!ASSUME NO ACTIONS.
-   i__ = 579;
+   i = 579;
 // 						!ASSUME NOT LIT.
    if (!lit_(play_1.here)) {
       goto L4000;
    }
 // 						!IF NOT LIT, PUNT.
-   i__ = 677;
+   i = 677;
 // 						!ASSUME WRONG VERB.
    savep = prsvec_1.prso;
 // 						!SAVE PRSO.
@@ -460,14 +431,14 @@ L2000:
    }
 
 L3000:
-   i__ = 581;
+   i = 581;
    if (savep == v) {
-      i__ = 582;
+      i = 582;
    }
 // 						!CHOOSE MESSAGE.
 L4000:
    if (f) {
-      rspeak_(i__);
+      rspeak_(i);
    }
 // 						!IF NOTHING, REPORT.
 }

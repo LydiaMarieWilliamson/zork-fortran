@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // TROLLP-	TROLL FUNCTION
 
@@ -14,12 +15,7 @@ Bool trollp_(/*int arg*/) {
    Bool ret_val;
 
 // Local variables
-   static int i__;
-   extern Bool prob_(int, int);
-   extern Bool qhere_(int, int);
-   extern void newsta_(int, int, int, int, int);
-   extern void rspeak_(int);
-   extern void rspsub_(int, int);
+   static int i;
 
 // TROLLP, PAGE 2
 
@@ -33,18 +29,18 @@ Bool trollp_(/*int arg*/) {
       goto L10;
    }
 // 						!GOT AXE?  NOTHING.
-   i__ = 433;
+   i = 433;
 // 						!ASSUME CANT GET.
    if (!qhere_(oindex_1.axe, play_1.here)) {
       goto L1050;
    }
 // 						!HERE?
-   i__ = 434;
+   i = 434;
 // 						!YES, RECOVER.
    newsta_(oindex_1.axe, 0, 0, oindex_1.troll, 0);
 L1050:
    if (qhere_(oindex_1.troll, play_1.here)) {
-      rspeak_(i__);
+      rspeak_(i);
    }
 // 						!IF PLAYER HERE.
    return ret_val;
@@ -131,13 +127,13 @@ L1700:
       goto L10;
    }
 // 						!NO OBJECT?
-   i__ = 440;
+   i = 440;
 // 						!ASSUME THROW.
    if (prsvec_1.prsa == vindex_1.givew) {
-      i__ = 441;
+      i = 441;
    }
 // 						!GIVE?
-   rspsub_(i__, objcts_1.odesc2[prsvec_1.prso - 1]);
+   rspsub_(i, objcts_1.odesc2[prsvec_1.prso - 1]);
 // 						!TROLL TAKES.
    if (prsvec_1.prso == oindex_1.knife) {
       goto L1900;
@@ -177,11 +173,7 @@ Bool cyclop_(/*int arg*/) {
    Bool ret_val;
 
 // Local variables
-   static int i__;
-   extern int rnd_(int);
-   extern void rspeak_(int);
-   extern void jigsup_(int);
-   extern void newsta_(int, int, int, int, int);
+   static int i;
 
 // CYCLOP, PAGE 2
 
@@ -257,14 +249,14 @@ L10:
    return ret_val;
 
 L400:
-   i__ = 192;
+   i = 192;
 // 						!ASSUME INEDIBLE.
    if (prsvec_1.prso == oindex_1.garli) {
-      i__ = 193;
+      i = 193;
    }
 // 						!GARLIC IS JOKE.
 L450:
-   rspeak_(i__);
+   rspeak_(i);
 // 						!DISDAIN IT.
    if (findex_1.rvcyc < 0) {
       --findex_1.rvcyc;
@@ -279,22 +271,22 @@ L450:
    return ret_val;
 
 L500:
-   i__ = 0;
+   i = 0;
 // 						!ASSUME NOT HANDLED.
    if (prsvec_1.prsa == vindex_1.hellow) {
       goto L450;
    }
 // 						!HELLO IS NO GO.
    if (prsvec_1.prsa == vindex_1.throww || prsvec_1.prsa == vindex_1.mungw) {
-      i__ = rnd_(2) + 200;
+      i = rnd_(2) + 200;
    }
    if (prsvec_1.prsa == vindex_1.takew) {
-      i__ = 202;
+      i = 202;
    }
    if (prsvec_1.prsa == vindex_1.tiew) {
-      i__ = 203;
+      i = 203;
    }
-   if (i__ <= 0) {
+   if (i <= 0) {
       goto L10;
    } else {
       goto L450;
@@ -313,12 +305,7 @@ Bool thiefp_(/*int arg*/) {
    Bool ret_val;
 
 // Local variables
-   extern void newsta_(int, int, int, int, int);
-   extern void rspeak_(int);
-   extern void rspsub_(int, int);
-   static int i__, j;
-   extern Bool prob_(int, int);
-   extern Bool qhere_(int, int);
+   static int i, j;
 
 // ROOMS
 
@@ -365,10 +352,10 @@ L100:
    objcts_1.oflag1[oindex_1.chali - 1] |= oflags_1.takebt;
    j = 0;
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!CARRYING ANYTHING?
 // L125:
-      if (objcts_1.oadv[i__ - 1] == -oindex_1.thief) {
+      if (objcts_1.oadv[i - 1] == -oindex_1.thief) {
          j = 500;
       }
    }
@@ -377,20 +364,20 @@ L100:
 
    j = 501;
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!LOOP.
-      if (i__ == oindex_1.chali || i__ == oindex_1.thief || play_1.here != rindex_1.treas || !qhere_(i__, play_1.here)) {
+      if (i == oindex_1.chali || i == oindex_1.thief || play_1.here != rindex_1.treas || !qhere_(i, play_1.here)) {
          goto L135;
       }
-      objcts_1.oflag1[i__ - 1] |= oflags_1.visibt;
-      rspsub_(j, objcts_1.odesc2[i__ - 1]);
+      objcts_1.oflag1[i - 1] |= oflags_1.visibt;
+      rspsub_(j, objcts_1.odesc2[i - 1]);
 // 						!DESCRIBE.
       j = 502;
       goto L150;
 
    L135:
-      if (objcts_1.oadv[i__ - 1] == -oindex_1.thief) {
-         newsta_(i__, 0, play_1.here, 0, 0);
+      if (objcts_1.oadv[i - 1] == -oindex_1.thief) {
+         newsta_(i, 0, play_1.here, 0, 0);
       }
    L150:
       ;
@@ -470,13 +457,13 @@ L650:
    j = 508;
 // 						!THIEF DROPS STUFF.
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
-      if (objcts_1.oadv[i__ - 1] != -oindex_1.thief) {
+   for (i = 1; i <= i__1; ++i) {
+      if (objcts_1.oadv[i - 1] != -oindex_1.thief) {
          goto L675;
       }
 // 						!THIEF CARRYING?
       j = 509;
-      newsta_(i__, 0, play_1.here, 0, 0);
+      newsta_(i, 0, play_1.here, 0, 0);
    L675:
       ;
    }

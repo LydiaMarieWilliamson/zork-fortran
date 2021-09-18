@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // RESIDENT SUBROUTINES FOR DUNGEON
 
@@ -14,7 +15,6 @@
 // 	CALL RSPEAK(MSGNUM)
 
 void rspeak_(int n) {
-   extern void rspsb2_(int, int, int);
 
    rspsb2_(n, 0, 0);
 }
@@ -26,7 +26,6 @@ void rspeak_(int n) {
 // 	CALL RSPSUB(MSGNUM,SUBNUM)
 
 void rspsub_(int n, int s1) {
-   extern void rspsb2_(int, int, int);
 
    rspsb2_(n, s1, 0);
 }
@@ -42,7 +41,7 @@ void rspsb2_(int n, int s1, int s2) {
    int i__1;
 
 // Local variables
-   static int i__, j, x, y, z__;
+   static int i, j, x, y, z__;
    static char b1[74], b2[74], b3[74];
    static int k1, k2, x1;
    static short jrec, oldrec, newrec;
@@ -83,9 +82,9 @@ void rspsb2_(int n, int s1, int s2) {
    EndInDU();
 
 L100:
-   for (i__ = 1; i__ <= 74; ++i__) {
-      x1 = (x & 31) + i__;
-      *(unsigned char *)&b1[i__ - 1] = (char)(*(unsigned char *)&b1[i__ - 1] ^ x1);
+   for (i = 1; i <= 74; ++i) {
+      x1 = (x & 31) + i;
+      *(unsigned char *)&b1[i - 1] = (char)(*(unsigned char *)&b1[i - 1] ^ x1);
 // L150:
    }
 
@@ -94,18 +93,18 @@ L200:
       goto L400;
    }
 // 						!ANY SUBSTITUTABLE?
-   for (i__ = 1; i__ <= 74; ++i__) {
+   for (i = 1; i <= 74; ++i) {
 // 						!YES, LOOK FOR #.
-      if (*(unsigned char *)&b1[i__ - 1] == '#') {
+      if (*(unsigned char *)&b1[i - 1] == '#') {
          goto L1000;
       }
 // L300:
    }
 
 L400:
-   for (i__ = 74; i__ >= 1; --i__) {
+   for (i = 74; i >= 1; --i) {
 // 						!BACKSCAN FOR BLANKS.
-      if (*(unsigned char *)&b1[i__ - 1] != ' ') {
+      if (*(unsigned char *)&b1[i - 1] != ' ') {
          goto L600;
       }
 // L500:
@@ -113,7 +112,7 @@ L400:
 
 L600:
    BegExSF(chan_1.outch, /*650*/"(1x,74a1)", 0);
-   i__1 = i__;
+   i__1 = i;
    for (j = 1; j <= i__1; ++j) {
       DoFio(1, b1 + (j - 1), sizeof b1[0]);
    }
@@ -146,7 +145,7 @@ L600:
 L1000:
    k2 = 1;
 // 						!TO
-   for (k1 = i__ + 1; k1 <= 74; ++k1) {
+   for (k1 = i + 1; k1 <= 74; ++k1) {
 // 						!COPY REST OF B1.
       *(unsigned char *)&b2[k2 - 1] = *(unsigned char *)&b1[k1 - 1];
       ++k2;
@@ -168,7 +167,7 @@ L1000:
 //   FILL REMAINDER OF B1 WITH CHARACTERS FROM B3:
 
    k2 = 1;
-   for (k1 = i__; k1 <= 74; ++k1) {
+   for (k1 = i; k1 <= 74; ++k1) {
       *(unsigned char *)&b1[k1 - 1] = *(unsigned char *)&b3[k2 - 1];
       ++k2;
 // L1180:
@@ -214,7 +213,6 @@ Bool objact_(/*int x*/) {
    Bool ret_val;
 
 // Local variables
-   extern Bool oappli_(int, int);
 
    ret_val = true;
 // 						!ASSUME WINS.
@@ -251,7 +249,6 @@ L200:
 
 void bug_(int a, int b) {
 // Local variables
-   extern void exit_(void);
 
    BegExSF(6, /*100*/"(\002 PROGRAM ERROR \002,i2,\002, PARAMETER=\002,i6)", 0);
    DoFio(1, &a, sizeof a);
@@ -271,7 +268,6 @@ void bug_(int a, int b) {
 
 void newsta_(int o, int r__, int rm, int cn, int ad) {
 // Local variables
-   extern void rspeak_(int);
 
    rspeak_(r__);
    objcts_1.oroom[o - 1] = rm;
@@ -289,7 +285,7 @@ Bool qhere_(int obj, int rm) {
    Bool ret_val;
 
 // Local variables
-   static int i__;
+   static int i;
 
    ret_val = true;
    if (objcts_1.oroom[obj - 1] == rm) {
@@ -297,9 +293,9 @@ Bool qhere_(int obj, int rm) {
    }
 // 						!IN ROOM?
    i__1 = oroom2_1.r2lnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!NO, SCH ROOM2.
-      if (oroom2_1.oroom2[i__ - 1] == obj && oroom2_1.rroom2[i__ - 1] == rm) {
+      if (oroom2_1.oroom2[i - 1] == obj && oroom2_1.rroom2[i - 1] == rm) {
          return ret_val;
       }
 // L100:
@@ -319,13 +315,13 @@ Bool qempty_(int obj) {
    Bool ret_val;
 
 // Local variables
-   static int i__;
+   static int i;
 
    ret_val = false;
 // 						!ASSUME LOSE.
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
-      if (objcts_1.ocan[i__ - 1] == obj) {
+   for (i = 1; i <= i__1; ++i) {
+      if (objcts_1.ocan[i - 1] == obj) {
          return ret_val;
       }
 // 						!INSIDE TARGET?
@@ -348,18 +344,9 @@ void jigsup_(int desc) {
    int i__1;
 
 // Local variables
-   extern void rspeak_(int);
-   extern void rspsub_(int, int);
-   extern void newsta_(int, int, int, int, int);
-   extern void scrupd_(int);
    static int nonofl;
-   extern void score_(Bool);
    static Bool f;
-   static int i__, j;
-   extern void exit_(void);
-   extern Bool qhere_(int, int);
-   extern Bool yesno_(int, int, int);
-   extern Bool moveto_(int, int);
+   static int i, j;
 
 // FUNCTIONS AND DATA
 
@@ -431,25 +418,25 @@ L100:
 // HIS VALUABLES ARE PLACED AT THE END OF THE MAZE.
 // REMAINING NON-VALUABLES ARE PLACED AT THE END OF THE MAZE.
 
-   i__ = 1;
+   i = 1;
    i__1 = objcts_1.olnt;
    for (j = 1; j <= i__1; ++j) {
 // 						!LOOP THRU OBJECTS.
       if (objcts_1.oadv[j - 1] != play_1.winner || objcts_1.otval[j - 1] != 0) {
          goto L200;
       }
-      ++i__;
-      if (i__ > 9) {
+      ++i;
+      if (i > 9) {
          goto L400;
       }
 // 						!MOVE TO RANDOM LOCATIONS.
-      newsta_(j, 0, rlist[i__ - 1], 0, 0);
+      newsta_(j, 0, rlist[i - 1], 0, 0);
    L200:
       ;
    }
 
 L400:
-   i__ = rooms_1.rlnt + 1;
+   i = rooms_1.rlnt + 1;
 // 						!NOW MOVE VALUABLES.
    nonofl = rflag_1.rair + rflag_1.rwater + rflag_1.rsacrd + rflag_1.rend;
 // 						!DONT MOVE HERE.
@@ -459,12 +446,12 @@ L400:
          goto L300;
       }
    L250:
-      --i__;
+      --i;
 // 						!FIND NEXT ROOM.
-      if ((rooms_1.rflag[i__ - 1] & nonofl) != 0) {
+      if ((rooms_1.rflag[i - 1] & nonofl) != 0) {
          goto L250;
       }
-      newsta_(j, 0, i__, 0, 0);
+      newsta_(j, 0, i, 0, 0);
 // 						!YES, MOVE.
    L300:
       ;
@@ -477,12 +464,12 @@ L400:
          goto L500;
       }
    L450:
-      --i__;
+      --i;
 // 						!FIND NEXT ROOM.
-      if ((rooms_1.rflag[i__ - 1] & nonofl) != 0) {
+      if ((rooms_1.rflag[i - 1] & nonofl) != 0) {
          goto L450;
       }
-      newsta_(j, 0, i__, 0, 0);
+      newsta_(j, 0, i, 0, 0);
    L500:
       ;
    }
@@ -515,15 +502,14 @@ int oactor_(int obj) {
    int ret_val, i__1;
 
 // Local variables
-   static int i__;
-   extern void bug_(int, int);
+   static int i;
 
    i__1 = advs_1.alnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!LOOP THRU ACTORS.
-      ret_val = i__;
+      ret_val = i;
 // 						!ASSUME FOUND.
-      if (advs_1.aobj[i__ - 1] == obj) {
+      if (advs_1.aobj[i - 1] == obj) {
          return ret_val;
       }
 // 						!FOUND IT?
@@ -543,16 +529,15 @@ Bool prob_(int g, int b) {
    Bool ret_val;
 
 // Local variables
-   static int i__;
-   extern int rnd_(int);
+   static int i;
 
-   i__ = g;
+   i = g;
 // 						!ASSUME GOOD LUCK.
    if (findex_1.badlkf) {
-      i__ = b;
+      i = b;
    }
 // 						!IF BAD, TOO BAD.
-   ret_val = rnd_(100) < i__;
+   ret_val = rnd_(100) < i;
 // 						!COMPUTE.
    return ret_val;
 }
@@ -567,13 +552,7 @@ Bool rmdesc_(int full) {
    Bool ret_val, L__1;
 
 // Local variables
-   static int i__, ra;
-   extern Bool lit_(int);
-   extern Bool prob_(int, int);
-   extern Bool rappli_(int);
-   extern void rspeak_(int);
-   extern void rspsub_(int, int);
-   extern void princr_(Bool, int);
+   static int i, ra;
 
 // FULL=	0/1/2/3=	SHORT/OBJ/ROOM/FULL
 
@@ -619,14 +598,14 @@ L300:
       goto L600;
    }
 // 						!OBJ ONLY?
-   i__ = rooms_1.rdesc2 - play_1.here;
+   i = rooms_1.rdesc2 - play_1.here;
 // 						!ASSUME SHORT DESC.
    if (full == 0 && (findex_1.superf || (rooms_1.rflag[play_1.here - 1] & rflag_1.rseen) != 0 && (findex_1.brieff || prob_(80, 80)))) {
       goto L400;
    }
-   i__ = rooms_1.rdesc1[play_1.here - 1];
+   i = rooms_1.rdesc1[play_1.here - 1];
 // 						!USE LONG.
-   if (i__ != 0 || ra == 0) {
+   if (i != 0 || ra == 0) {
       goto L400;
    }
 // 						!IF GOT DESC, SKIP.
@@ -641,7 +620,7 @@ L300:
    goto L500;
 
 L400:
-   rspeak_(i__);
+   rspeak_(i);
 // 						!OUTPUT DESCRIPTION.
 L500:
    if (advs_1.avehic[play_1.winner - 1] != 0) {
@@ -680,10 +659,6 @@ Bool rappli_(int ri) {
 
 // System generated locals
    Bool ret_val;
-
-// Local variables
-   extern Bool rappl1_(int);
-   extern Bool rappl2_(int);
 
    ret_val = true;
 // 						!ASSUME WINS.

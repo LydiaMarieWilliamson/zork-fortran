@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // MOVETO- MOVE PLAYER TO NEW ROOM
 
@@ -18,10 +19,6 @@ Bool moveto_(int nr, int who) {
    static Bool lhr;
    static Bool lnr, nlv;
    static int bits;
-   extern void rspeak_(int);
-   extern void scrupd_(int);
-   extern void newsta_(int, int, int, int, int);
-   extern void rspsub_(int, int);
 
 // MOVETO, PAGE 2
 
@@ -108,8 +105,7 @@ void score_(Bool flg) {
    int i__1;
 
 // Local variables
-   static int i__, as;
-   extern void rspeak_(int);
+   static int i, as;
 
 // FUNCTIONS AND DATA
 
@@ -144,14 +140,14 @@ void score_(Bool flg) {
       EndExSF();
    }
 
-   for (i__ = 1; i__ <= 10; ++i__) {
-      if (as * 20 / state_1.mxscor >= rank[i__ - 1]) {
+   for (i = 1; i <= 10; ++i) {
+      if (as * 20 / state_1.mxscor >= rank[i - 1]) {
          goto L50;
       }
 // L10:
    }
 L50:
-   i__1 = i__ + 484;
+   i__1 = i + 484;
    rspeak_(i__1);
    return;
 
@@ -169,14 +165,14 @@ L60:
    DoFio(1, &state_1.egmxsc, sizeof state_1.egmxsc);
    DoFio(1, &state_1.moves, sizeof state_1.moves);
    EndExSF();
-   for (i__ = 1; i__ <= 5; ++i__) {
-      if (state_1.egscor * 20 / state_1.egmxsc >= erank[i__ - 1]) {
+   for (i = 1; i <= 5; ++i) {
+      if (state_1.egscor * 20 / state_1.egmxsc >= erank[i - 1]) {
          goto L80;
       }
 // L70:
    }
 L80:
-   i__1 = i__ + 786;
+   i__1 = i + 786;
    rspeak_(i__1);
 }
 

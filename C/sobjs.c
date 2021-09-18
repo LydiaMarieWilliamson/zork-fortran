@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // SOBJS-	SIMPLE OBJECTS PROCESSOR
 // 	OBJECTS IN THIS MODULE CANNOT CALL RMINFO, JIGSUP,
@@ -18,21 +19,10 @@ Bool sobjs_(int ri, int arg) {
 
 // Local variables
    static Bool f;
-   extern void newsta_(int, int, int, int, int);
-   extern void rspeak_(int);
-   static int i__;
-   extern int robrm_(int, int, int, int, int);
-   extern int robadv_(int, int, int, int);
+   static int i;
    static int mroom;
-   extern void rspsub_(int, int);
    static int av;
-   extern void bug_(int, int);
-   extern int rnd_(int);
-   extern Bool lit_(int);
    static int odi2, odo2;
-   extern Bool qhere_(int, int);
-   extern Bool opncls_(int, int, int);
-   extern Bool moveto_(int, int);
 
 // FUNCTIONS AND DATA
 
@@ -323,8 +313,8 @@ L9300:
 // O8--	SKELETON
 
 L13000:
-   i__ = robrm_(play_1.here, 100, rindex_1.lld2, 0, 0) + robadv_(play_1.winner, rindex_1.lld2, 0, 0);
-   if (i__ != 0) {
+   i = robrm_(play_1.here, 100, rindex_1.lld2, 0, 0) + robadv_(play_1.winner, rindex_1.lld2, 0, 0);
+   if (i != 0) {
       rspeak_(162);
    }
 // 						!IF ROBBED, SAY SO.
@@ -338,16 +328,16 @@ L14000:
    }
    mroom = play_1.here ^ 1;
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!INTERCHANGE OBJS.
-      if (objcts_1.oroom[i__ - 1] == play_1.here) {
-         objcts_1.oroom[i__ - 1] = -1;
+      if (objcts_1.oroom[i - 1] == play_1.here) {
+         objcts_1.oroom[i - 1] = -1;
       }
-      if (objcts_1.oroom[i__ - 1] == mroom) {
-         objcts_1.oroom[i__ - 1] = play_1.here;
+      if (objcts_1.oroom[i - 1] == mroom) {
+         objcts_1.oroom[i - 1] = play_1.here;
       }
-      if (objcts_1.oroom[i__ - 1] == -1) {
-         objcts_1.oroom[i__ - 1] = mroom;
+      if (objcts_1.oroom[i - 1] == -1) {
+         objcts_1.oroom[i - 1] = mroom;
       }
 // L14100:
    }
@@ -360,13 +350,13 @@ L14500:
    if (prsvec_1.prsa != vindex_1.lookw && prsvec_1.prsa != vindex_1.lookiw && prsvec_1.prsa != vindex_1.examiw) {
       goto L14600;
    }
-   i__ = 164;
+   i = 164;
 // 						!MIRROR OK.
    if (findex_1.mirrmf) {
-      i__ = 165;
+      i = 165;
    }
 // 						!MIRROR DEAD.
-   rspeak_(i__);
+   rspeak_(i);
    return ret_val;
 
 L14600:
@@ -382,15 +372,15 @@ L14700:
    if (prsvec_1.prsa != vindex_1.mungw && prsvec_1.prsa != vindex_1.throww) {
       goto L10;
    }
-   i__ = 167;
+   i = 167;
 // 						!MIRROR BREAKS.
    if (findex_1.mirrmf) {
-      i__ = 168;
+      i = 168;
    }
 // 						!MIRROR ALREADY BROKEN.
    findex_1.mirrmf = true;
    findex_1.badlkf = true;
-   rspeak_(i__);
+   rspeak_(i);
    return ret_val;
 // SOBJS, PAGE 6
 
@@ -457,13 +447,13 @@ L16400:
 // O11--	GHOST FUNCTION
 
 L17000:
-   i__ = 178;
+   i = 178;
 // 						!ASSUME DIRECT.
    if (prsvec_1.prso != oindex_1.ghost) {
-      i__ = 179;
+      i = 179;
    }
 // 						!IF NOT, INDIRECT.
-   rspeak_(i__);
+   rspeak_(i);
    return ret_val;
 // 						!SPEAK AND EXIT.
 // SOBJS, PAGE 7
@@ -566,13 +556,13 @@ L28000:
    return ret_val;
 
 L28200:
-   i__ = 215;
+   i = 215;
 // 						!UNLOCKED, VIEW FRM CLR.
    if (play_1.here != rindex_1.clear) {
-      i__ = 216;
+      i = 216;
    }
 // 						!VIEW FROM BELOW.
-   ret_val = opncls_(oindex_1.grate, i__, 885);
+   ret_val = opncls_(oindex_1.grate, i, 885);
 // 						!OPEN/CLOSE.
    rooms_1.rflag[rindex_1.mgrat - 1] &= ~rflag_1.rlight;
    if ((objcts_1.oflag2[oindex_1.grate - 1] & oflags_1.openbt) != 0) {
@@ -615,24 +605,24 @@ L29200:
 // O18--	DURABLE DOOR
 
 L30000:
-   i__ = 0;
+   i = 0;
 // 						!ASSUME NO APPL.
    if (prsvec_1.prsa == vindex_1.openw) {
-      i__ = 221;
+      i = 221;
    }
 // 						!OPEN?
    if (prsvec_1.prsa == vindex_1.burnw) {
-      i__ = 222;
+      i = 222;
    }
 // 						!BURN?
    if (prsvec_1.prsa == vindex_1.mungw) {
-      i__ = rnd_(3) + 223;
+      i = rnd_(3) + 223;
    }
 // 						!MUNG?
-   if (i__ == 0) {
+   if (i == 0) {
       goto L10;
    }
-   rspeak_(i__);
+   rspeak_(i);
    return ret_val;
 
 // O19--	MASTER SWITCH
@@ -664,13 +654,13 @@ L31000:
 
 L31400:
    i__1 = objcts_1.olnt;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!KILL NONCOAL OBJECTS.
-      if (objcts_1.ocan[i__ - 1] != oindex_1.machi) {
+      if (objcts_1.ocan[i - 1] != oindex_1.machi) {
          goto L31450;
       }
 // 						!INSIDE MACHINE?
-      newsta_(i__, 0, 0, 0, 0);
+      newsta_(i, 0, 0, 0, 0);
 // 						!KILL OBJECT AND CONTENTS.
       newsta_(oindex_1.gunk, 0, 0, oindex_1.machi, 0);
 // 						!REDUCE TO GUNK.
@@ -733,11 +723,11 @@ L34000:
 
 L34100:
    rooms_1.rflag[play_1.here - 1] ^= rflag_1.rlight;
-   i__ = 230;
+   i = 230;
    if ((rooms_1.rflag[play_1.here - 1] & rflag_1.rlight) != 0) {
-      i__ = 231;
+      i = 231;
    }
-   rspeak_(i__);
+   rspeak_(i);
    return ret_val;
 
 L34200:
@@ -796,12 +786,12 @@ L36100:
    return ret_val;
 
 L36200:
-   i__ = 237;
+   i = 237;
 // 						!JOKES.
    if (prsvec_1.prsi != oindex_1.lungs) {
-      i__ = 303;
+      i = 303;
    }
-   rspsub_(i__, odi2);
+   rspsub_(i, odi2);
    return ret_val;
 
 // O23--	DEFLATED BOAT
@@ -923,31 +913,31 @@ L41600:
 // O26--	SAFE
 
 L42000:
-   i__ = 0;
+   i = 0;
 // 						!ASSUME UNPROCESSED.
    if (prsvec_1.prsa == vindex_1.takew) {
-      i__ = 251;
+      i = 251;
    }
 // 						!TAKE?
    if (prsvec_1.prsa == vindex_1.openw && findex_1.safef) {
-      i__ = 253;
+      i = 253;
    }
 // 						!OPEN AFTER BLAST?
    if (prsvec_1.prsa == vindex_1.openw && !findex_1.safef) {
-      i__ = 254;
+      i = 254;
    }
 // 						!OPEN BEFORE BLAST?
    if (prsvec_1.prsa == vindex_1.closew && findex_1.safef) {
-      i__ = 253;
+      i = 253;
    }
 // 						!CLOSE AFTER?
    if (prsvec_1.prsa == vindex_1.closew && !findex_1.safef) {
-      i__ = 255;
+      i = 255;
    }
-   if (i__ == 0) {
+   if (i == 0) {
       goto L10;
    }
-   rspeak_(i__);
+   rspeak_(i);
    return ret_val;
 
 // O27--	FUSE

@@ -42,57 +42,23 @@ with the system "f2c.h" directly added here and internalized as "F2C.h", where i
 The system-dependent part of the original "f2c.h" has already been removed from "F2C.h", since it's not used anywhere.
 Most of the ‟Fortran”-isms have also been removed from "F2C.h" and rendered in native C.
 
-Unused Variables
-────────────────
+Unused Variables and Function
+─────────────────────────────
 Because the original Fortran source ‟D”-commented out the ‟GDB” debug code.
-	dflag:		actors.f, blkdata.f, dinit.f, dmain.f, dsub.f, gdt.f, np1.f, np2.f, np3.f, np.f
-	rlight:		demons.f
-	rser:		demons.f
-	gdtstr:		dgame.f
-	datarry:	dinit.f
-	sysbuf:		np.f
+	dflag:		actors.c, blkdata.c, dinit.c, dmain.c, dsub.c, gdt.c, np1.c, np2.c, np3.c, np.c
+	rlight:		demons.c
+	rser:		demons.c
+	gdtstr:		dgame.c
+	datarry:	dinit.c
+	sysbuf:		np.c
+	gdt():		dgame.c
 
 Initialized Block Data
 ──────────────────────
-blkdata.f:	buzvoc, prpvoc, dirvoc, adjvoc, vrbvoc, objvoc
-dmain.f:	vers, hyper, bats, synflg, objflg, puzzle, screen,
+blkdata.c:	buzvoc, prpvoc, dirvoc, adjvoc, vrbvoc, objvoc
+dmain.c:	vers, hyper, bats, synflg, objflg, puzzle, screen,
 		aflags, aindex, cindex, oflags, oindex, rflag, rindex, vindex, xpars, xsrch,
 
-Main Program
-────────────
-dmain.f:	dungeo()
-
-Other Functions
-───────────────
-actors.f:	aappli() thiefd()
-ballop.f:	ballop()
-blkdata.f:	foo() foo()
-clockr.f:	cevapp() litint()
-demons.f:	fightd() blow() swordd() infest()
-dgame.f:	game() xendmv() xvehic()
-dinit.f:	init() protct()
-dso1.f:		princr() invent() princo()
-dso2.f:		moveto() score() scrupd()
-dso3.f:		findxt() fwim() yesno()
-dso4.f:		robadv() robrm() winnin() fights() vilstr()
-dso5.f:		gttime() opncls() lit() weight()
-dso6.f:		ghere() mrhere()
-dso7.f:		encryp() cpgoto() cpinfo()
-dsub.f:		rspeak() rspsub() rspsb2() objact() bug() newsta() qhere() qempty() jigsup() oactor() prob() rmdesc() rappli()
-dverb1.f:	take() drop() put() valuac()
-dverb2.f:	savegm() rstrgm() walk() cxappl()
-gdt.f:		gdt()
-lightp.f:	lightp()
-nobjs.f:	nobjs() mirpan()
-np1.f:		sparse()
-np2.f:		getobj() schlst() thisit()
-np3.f:		synmch() unpacks() syneql() takeit() gwim()
-np.f:		rdline() parse() orphan() lex()
-nrooms.f:	rappl2() lookto() ewtell()
-objcts.f:	oappli()
-rooms.f:	rappl1()
-rtim.f:		intime() inirnd() rnd() exit()
-sobjs.f:	sobjs()
-sverbs.f:	sverbs()
-verbs.f:	vappli() clockd()
-villns.f:	trollp() cyclop() thiefp()
+Functions
+─────────
+Separated out as ‟extern.h”.

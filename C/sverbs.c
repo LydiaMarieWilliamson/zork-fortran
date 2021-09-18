@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // SVERBS-	SIMPLE VERBS PROCESSOR
 // 	ALL VERBS IN THIS ROUTINE MUST BE INDEPENDANT
@@ -34,29 +35,13 @@ Bool sverbs_(int ri) {
 
 // Local variables
    static Bool f;
-   static int i__, j;
-   extern void rspeak_(int);
-   extern void jigsup_(int);
-   extern void newsta_(int, int, int, int, int);
-   extern void score_(Bool);
-   extern void rspsub_(int, int);
-   extern int gttime_(void);
+   static int i, j;
    static int k;
-   extern int fights_(int, Bool);
    static int l;
-   extern void encryp_(const char *, char * /*, size_t, size_t*/);
    static char ch[1 * 6];
    static int cp, wp;
-   extern void bug_(int, int);
-   extern int rnd_(int);
    static int odi2, odo2;
-   extern void exit_(void);
    static int newk;
-   extern Bool qhere_(int, int);
-   extern Bool yesno_(int, int, int);
-   extern Bool rmdesc_(int);
-   extern Bool findxt_(int, int);
-   extern Bool moveto_(int, int);
 
 // MISCELLANEOUS VARIABLES
 
@@ -165,15 +150,15 @@ Bool sverbs_(int ri) {
 // FIND PROPER ENTRY IN JOKES, USE IT TO SELECT STRING TO PRINT.
 
 L100:
-   i__ = jokes[ri - mxnop - 1];
+   i = jokes[ri - mxnop - 1];
 // 						!GET TABLE ENTRY.
-   j = i__ / 1000;
+   j = i / 1000;
 // 						!ISOLATE # STRINGS.
    if (j != 0) {
-      i__ = i__ % 1000 + rnd_(j);
+      i = i % 1000 + rnd_(j);
    }
 // 						!IF RANDOM, CHOOSE.
-   rspeak_(i__);
+   rspeak_(i);
 // 						!PRINT JOKE.
    return ret_val;
 // SVERBS, PAGE 2A
@@ -274,12 +259,12 @@ L5000:
 // V75--	SWIM.  ALWAYS A JOKE.
 
 L6000:
-   i__ = 330;
+   i = 330;
 // 						!ASSUME WATER.
    if ((rooms_1.rflag[play_1.here - 1] & rflag_1.rwater + rflag_1.rfill) == 0) {
-      i__ = rnd_(3) + 331;
+      i = rnd_(3) + 331;
    }
-   rspeak_(i__);
+   rspeak_(i);
    return ret_val;
 
 // V76--	GERONIMO.  IF IN BARREL, FATAL, ELSE JOKE.
@@ -393,13 +378,13 @@ L12050:
 // V82--	BLAST.  USUALLY A JOKE.
 
 L13000:
-   i__ = 342;
+   i = 342;
 // 						!DONT UNDERSTAND.
    if (prsvec_1.prso == oindex_1.safe) {
-      i__ = 252;
+      i = 252;
    }
 // 						!JOKE FOR SAFE.
-   rspeak_(i__);
+   rspeak_(i);
    return ret_val;
 
 // V83--	SCORE.  PRINT SCORE.
@@ -459,9 +444,9 @@ L17100:
       goto L17300;
    }
 // 						!ON OTHER SIDE OF SCOL?
-   for (i__ = 1; i__ <= 12; i__ += 3) {
+   for (i = 1; i <= 12; i += 3) {
 // 						!WALK THRU PROPER WALL?
-      if (screen_1.scolwl[i__ - 1] == play_1.here && screen_1.scolwl[i__] == prsvec_1.prso) {
+      if (screen_1.scolwl[i - 1] == play_1.here && screen_1.scolwl[i] == prsvec_1.prso) {
          goto L17500;
       }
 // L17200:
@@ -471,32 +456,32 @@ L17300:
    if ((objcts_1.oflag1[prsvec_1.prso - 1] & oflags_1.takebt) != 0) {
       goto L17400;
    }
-   i__ = 669;
+   i = 669;
 // 						!NO, JOKE.
    if (prsvec_1.prso == oindex_1.scol) {
-      i__ = 670;
+      i = 670;
    }
 // 						!SPECIAL JOKE FOR SCOL.
-   rspsub_(i__, odo2);
+   rspsub_(i, odo2);
    return ret_val;
 
 L17400:
-   i__ = 671;
+   i = 671;
 // 						!JOKE.
    if (objcts_1.oroom[prsvec_1.prso - 1] != 0) {
-      i__ = rnd_(5) + 552;
+      i = rnd_(5) + 552;
    }
 // 						!SPECIAL JOKES IF CARRY.
-   rspeak_(i__);
+   rspeak_(i);
    return ret_val;
 
 L17500:
-   prsvec_1.prso = screen_1.scolwl[i__ + 1];
+   prsvec_1.prso = screen_1.scolwl[i + 1];
 // 						!THRU SCOL WALL...
-   for (i__ = 1; i__ <= 8; i__ += 2) {
+   for (i = 1; i <= 8; i += 2) {
 // 						!FIND MATCHING ROOM.
-      if (prsvec_1.prso == screen_1.scoldr[i__ - 1]) {
-         screen_1.scolrm = screen_1.scoldr[i__];
+      if (prsvec_1.prso == screen_1.scoldr[i - 1]) {
+         screen_1.scolrm = screen_1.scoldr[i];
       }
 // L17600:
    }
@@ -513,13 +498,13 @@ L17500:
 // V87--	RING.  A JOKE.
 
 L18000:
-   i__ = 359;
+   i = 359;
 // 						!CANT RING.
    if (prsvec_1.prso == oindex_1.bell) {
-      i__ = 360;
+      i = 360;
    }
 // 						!DING, DONG.
-   rspeak_(i__);
+   rspeak_(i);
 // 						!JOKE.
    return ret_val;
 
@@ -569,12 +554,12 @@ L20000:
       return ret_val;
    }
 // 						!SHOVEL?
-   i__ = 392;
+   i = 392;
 // 						!ASSUME TOOL.
    if ((objcts_1.oflag1[prsvec_1.prso - 1] & oflags_1.toolbt) == 0) {
-      i__ = 393;
+      i = 393;
    }
-   rspsub_(i__, odo2);
+   rspsub_(i, odo2);
    return ret_val;
 
 // V90--	TIME.  PRINT OUT DURATION OF GAME.
@@ -582,21 +567,21 @@ L20000:
 L21000:
    k = gttime_();
 // 						!GET PLAY TIME.
-   i__ = k / 60;
+   i = k / 60;
    j = k % 60;
 
    BegExSF(chan_1.outch, /*21010*/"(\002 You have been playing Dungeon for \002,$)", 0);
    EndExSF();
-   if (i__ != 0) {
+   if (i != 0) {
       BegExSF(chan_1.outch, /*21011*/"(\002+\002,i3,\002 hour\002,$)", 0);
-      DoFio(1, &i__, sizeof i__);
+      DoFio(1, &i, sizeof i);
       EndExSF();
    }
-   if (i__ >= 2) {
+   if (i >= 2) {
       BegExSF(chan_1.outch, /*21012*/"(\002+s and \002,$)", 0);
       EndExSF();
    }
-   if (i__ == 1) {
+   if (i == 1) {
       BegExSF(chan_1.outch, /*21013*/"(\002+ and \002,$)", 0);
       EndExSF();
    }
@@ -702,12 +687,12 @@ L24200:
 // V94--	DIAGNOSE.
 
 L25000:
-   i__ = fights_(play_1.winner, false);
+   i = fights_(play_1.winner, false);
 // 						!GET FIGHTS STRENGTH.
    j = advs_1.astren[play_1.winner - 1];
 // 						!GET HEALTH.
 // Computing MIN
-   i__1 = i__ + j;
+   i__1 = i + j;
    k = min(i__1, 4);
 // 						!GET STATE.
    if (!cevent_1.cflag[cindex_1.cevcur - 1]) {
@@ -721,12 +706,12 @@ L25000:
    i__1 = l + 473;
    rspeak_(i__1);
 // 						!DESCRIBE HEALTH.
-   i__ = (-j - 1) * 30 + cevent_1.ctick[cindex_1.cevcur - 1];
+   i = (-j - 1) * 30 + cevent_1.ctick[cindex_1.cevcur - 1];
 // 						!COMPUTE WAIT.
 
    if (j != 0) {
       BegExSF(chan_1.outch, /*25100*/"(\002 You will be cured after \002,i3,\002 moves.\002)", 0);
-      DoFio(1, &i__, sizeof i__);
+      DoFio(1, &i, sizeof i);
       EndExSF();
    }
 
@@ -744,10 +729,10 @@ L25000:
 // V95--	INCANT
 
 L26000:
-   for (i__ = 1; i__ <= 6; ++i__) {
+   for (i = 1; i <= 6; ++i) {
 // 						!SET UP PARSE.
-      pv_2.p1[i__ - 1] = ' ';
-      pv_2.p2[i__ - 1] = ' ';
+      pv_2.p1[i - 1] = ' ';
+      pv_2.p2[i - 1] = ' ';
 // L26100:
    }
    wp = 1;
@@ -758,13 +743,13 @@ L26000:
       goto L26300;
    }
    i__1 = input_1.inlnt;
-   for (i__ = prsvec_1.prscon; i__ <= i__1; ++i__) {
+   for (i = prsvec_1.prscon; i <= i__1; ++i) {
 // 						!PARSE INPUT
-      if (*(unsigned char *)&input_1.inbuf[i__ - 1] == ',') {
+      if (*(unsigned char *)&input_1.inbuf[i - 1] == ',') {
          goto L26300;
       }
 // 						!END OF PHRASE?
-      if (*(unsigned char *)&input_1.inbuf[i__ - 1] != ' ') {
+      if (*(unsigned char *)&input_1.inbuf[i - 1] != ' ') {
          goto L26150;
       }
 // 						!SPACE?
@@ -775,11 +760,11 @@ L26000:
       goto L26200;
    L26150:
       if (wp == 1) {
-         pv_2.p1[cp - 1] = input_1.inbuf[i__ - 1];
+         pv_2.p1[cp - 1] = input_1.inbuf[i - 1];
       }
 // 						!STUFF INTO HOLDER.
       if (wp == 2) {
-         pv_2.p2[cp - 1] = input_1.inbuf[i__ - 1];
+         pv_2.p2[cp - 1] = input_1.inbuf[i - 1];
       }
 // Computing MIN
       i__2 = cp + 1;
@@ -837,8 +822,8 @@ L26600:
    if ((rooms_1.rflag[rindex_1.tstrs - 1] & rflag_1.rseen) != 0) {
       goto L26800;
    }
-   for (i__ = 1; i__ <= 6; ++i__) {
-      if (pv_2.p2[i__ - 1] != ch[i__ - 1]) {
+   for (i = 1; i <= 6; ++i) {
+      if (pv_2.p2[i - 1] != ch[i - 1]) {
          goto L26575;
       }
 // 						!WRONG.
@@ -879,21 +864,21 @@ L27100:
          goto L27300;
       }
 // 						!ONLY CHECK PROPER ANS.
-      i__ = prsvec_1.prscon - 1;
+      i = prsvec_1.prscon - 1;
 // 						!SCAN ANSWER.
       i__1 = newk - 1;
       for (l = k; l <= i__1; ++l) {
       L27150:
-         ++i__;
+         ++i;
 // 						!SKIP INPUT BLANKS.
-         if (i__ > input_1.inlnt) {
+         if (i > input_1.inlnt) {
             goto L27300;
          }
 // 						!END OF INPUT? LOSE.
-         if (*(unsigned char *)&input_1.inbuf[i__ - 1] == ' ') {
+         if (*(unsigned char *)&input_1.inbuf[i - 1] == ' ') {
             goto L27150;
          }
-         if (*(unsigned char *)&input_1.inbuf[i__ - 1] != *(unsigned char *)&ansstr[l - 1]) {
+         if (*(unsigned char *)&input_1.inbuf[i - 1] != *(unsigned char *)&ansstr[l - 1]) {
             goto L27300;
          }
    // L27200:

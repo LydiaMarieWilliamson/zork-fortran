@@ -1,5 +1,6 @@
 #include "F2C.h"
 #include "common.h"
+#include "extern.h"
 
 // GDT- GAME DEBUGGING TOOL
 
@@ -29,9 +30,7 @@ void gdt_(void) {
    int i__1, i__2;
 
 // Local variables
-   extern void newsta_(int, int, int, int, int);
-   extern void rspeak_(int);
-   static int i__, j, k, l, l1;
+   static int i, j, k, l, l1;
    static char cmd[2];
    static int fmax, smax;
 
@@ -74,14 +73,14 @@ L2000:
    }
 // 						!IGNORE BLANKS.
    i__1 = cmdmax;
-   for (i__ = 1; i__ <= i__1; ++i__) {
+   for (i = 1; i <= i__1; ++i) {
 // 						!LOOK IT UP.
-      if (CompS(cmd, dbgcmd + (i__ - 1 << 1), sizeof cmd) == 0) {
+      if (CompS(cmd, dbgcmd + (i - 1 << 1), sizeof cmd) == 0) {
          goto L2300;
       }
 // 						!FOUND?
 // 	  check for lower case command, as well
-      if (CompS(cmd, ldbgcmd + (i__ - 1 << 1), sizeof cmd) == 0) {
+      if (CompS(cmd, ldbgcmd + (i - 1 << 1), sizeof cmd) == 0) {
          goto L2300;
       }
 // L2100:
@@ -99,7 +98,7 @@ L2200:
 //L245:
 
 L2300:
-   switch (argtyp[i__ - 1] + 1) {
+   switch (argtyp[i - 1] + 1) {
       case 1:
          goto L2400;
       case 2:
@@ -144,7 +143,7 @@ L2500:
    DoFio(1, &j, sizeof j);
    EndInSF();
 L2400:
-   switch (i__) {
+   switch (i) {
       case 1:
          goto L10000;
       case 2:
@@ -237,11 +236,11 @@ L10000:
    EndExSF();
 // 						!COL HDRS.
    i__1 = k;
-   for (i__ = j; i__ <= i__1; ++i__) {
+   for (i = j; i <= i__1; ++i) {
       BegExSF(chan_1.outch, /*310*/"(1x,i3,4(1x,i6),1x,i6)", 0);
-      DoFio(1, &i__, sizeof i__);
+      DoFio(1, &i, sizeof i);
       for (l = 1; l <= 5; ++l) {
-         DoFio(1, &eqr[i__ + l * 200 - 201], sizeof eqr[0]);
+         DoFio(1, &eqr[i + l * 200 - 201], sizeof eqr[0]);
       }
       EndExSF();
 // L10100:
@@ -259,11 +258,11 @@ L11000:
    EndExSF();
 // 						!COL HDRS
    i__1 = k;
-   for (i__ = j; i__ <= i__1; ++i__) {
+   for (i = j; i <= i__1; ++i) {
       BegExSF(chan_1.outch, /*330*/"(1x,i3,3i6,i4,2i7,2i4,2i6,1x,3i4,i6)", 0);
-      DoFio(1, &i__, sizeof i__);
+      DoFio(1, &i, sizeof i);
       for (l = 1; l <= 14; ++l) {
-         DoFio(1, &eqo[i__ + l * 220 - 221], sizeof eqo[0]);
+         DoFio(1, &eqo[i + l * 220 - 221], sizeof eqo[0]);
       }
       EndExSF();
 // L11100:
@@ -280,11 +279,11 @@ L12000:
    BegExSF(chan_1.outch, /*340*/"(\002 AD#   ROOM  SCORE  VEHIC OBJECT ACTION  STREN  FLAGS\002)", 0);
    EndExSF();
    i__1 = k;
-   for (i__ = j; i__ <= i__1; ++i__) {
+   for (i = j; i <= i__1; ++i) {
       BegExSF(chan_1.outch, /*350*/"(1x,i3,6(1x,i6),1x,i6)", 0);
-      DoFio(1, &i__, sizeof i__);
+      DoFio(1, &i, sizeof i);
       for (l = 1; l <= 7; ++l) {
-         DoFio(1, &eqa[i__ + (l << 2) - 5], sizeof eqa[0]);
+         DoFio(1, &eqa[i + (l << 2) - 5], sizeof eqa[0]);
       }
       EndExSF();
 // L12100:
@@ -301,13 +300,13 @@ L13000:
    BegExSF(chan_1.outch, /*360*/"(\002 CL#   TICK ACTION  FLAG\002)", 0);
    EndExSF();
    i__1 = k;
-   for (i__ = j; i__ <= i__1; ++i__) {
+   for (i = j; i <= i__1; ++i) {
       BegExSF(chan_1.outch, /*370*/"(1x,i3,1x,i6,1x,i6,5x,l1)", 0);
-      DoFio(1, &i__, sizeof i__);
+      DoFio(1, &i, sizeof i);
       for (l = 1; l <= 2; ++l) {
-         DoFio(1, &eqc[i__ + l * 25 - 26], sizeof eqc[0]);
+         DoFio(1, &eqc[i + l * 25 - 26], sizeof eqc[0]);
       }
-      DoFio(1, &cevent_1.cflag[i__ - 1], sizeof cevent_1.cflag[0]);
+      DoFio(1, &cevent_1.cflag[i - 1], sizeof cevent_1.cflag[0]);
       EndExSF();
 // L13100:
    }
@@ -324,17 +323,17 @@ L14000:
    EndExSF();
 // 						!COL HDRS.
    i__1 = k;
-   for (i__ = j; i__ <= i__1; i__ += 10) {
+   for (i = j; i <= i__1; i += 10) {
 // 						!TEN PER LINE.
 // Computing MIN
-      i__2 = i__ + 9;
+      i__2 = i + 9;
       l = min(i__2, k);
 // 						!COMPUTE END OF LINE.
       BegExSF(chan_1.outch, /*390*/"(1x,i3,\002-\002,i3,3x,10i7)", 0);
-      DoFio(1, &i__, sizeof i__);
+      DoFio(1, &i, sizeof i);
       DoFio(1, &l, sizeof l);
       i__2 = l;
-      for (l1 = i__; l1 <= i__2; ++l1) {
+      for (l1 = i; l1 <= i__2; ++l1) {
          DoFio(1, &exits_1.travel[l1 - 1], sizeof exits_1.travel[0]);
       }
       EndExSF();
@@ -382,11 +381,11 @@ L17000:
    EndExSF();
 // 						!COL HDRS
    i__1 = k;
-   for (i__ = j; i__ <= i__1; ++i__) {
+   for (i = j; i <= i__1; ++i) {
       BegExSF(chan_1.outch, /*430*/"(1x,i3,5(1x,i6))", 0);
-      DoFio(1, &i__, sizeof i__);
+      DoFio(1, &i, sizeof i);
       for (l = 1; l <= 5; ++l) {
-         DoFio(1, &eqv[i__ + (l << 2) - 5], sizeof eqv[0]);
+         DoFio(1, &eqv[i + (l << 2) - 5], sizeof eqv[0]);
       }
       EndExSF();
 // L17100:
@@ -401,10 +400,10 @@ L18000:
    }
 // 						!ARGS VALID?
    i__1 = k;
-   for (i__ = j; i__ <= i__1; ++i__) {
+   for (i = j; i <= i__1; ++i) {
       BegExSF(chan_1.outch, /*440*/"(\002 Flag #\002,i2,\002 = \002,l1)", 0);
-      DoFio(1, &i__, sizeof i__);
-      DoFio(1, &flags[i__ - 1], sizeof flags[0]);
+      DoFio(1, &i, sizeof i);
+      DoFio(1, &flags[i - 1], sizeof flags[0]);
       EndExSF();
 // L18100:
    }
@@ -413,7 +412,6 @@ L18000:
 // DS-- DISPLAY STATE
 
 L19000:
-{
    BegExSF(chan_1.outch, /*450*/"(\002 Parse vector=\002,3(1x,i6),1x,l6,1x,i6)", 0);
    DoFio(1, &prsvec_1.prsa, sizeof prsvec_1.prsa);
    DoFio(1, &prsvec_1.prso, sizeof prsvec_1.prso);
@@ -444,7 +442,6 @@ L19000:
    DoFio(1, &screen_1.scolrm, sizeof screen_1.scolrm);
    DoFio(1, &screen_1.scolac, sizeof screen_1.scolac);
    EndExSF();
-}
    goto L2000;
 
 // GDT, PAGE 4
@@ -456,26 +453,20 @@ L20000:
       goto L2200;
    }
 // 						!ENTRY NO VALID?
-{
    BegExSF(chan_1.outch, /*480*/fmt_1, 0);
    DoFio(1, &flags[j - 1], sizeof flags[0]);
    EndExSF();
-}
 // 						!TYPE OLD, GET NEW.
-{
    BegInSF(chan_1.inpch, /*490*/"(l1)", 0);
    DoFio(1, &flags[j - 1], sizeof flags[0]);
    EndInSF();
-} 
    goto L2000;
 
 // 21000-- HELP
 
 L21000:
-{
    BegExSF(chan_1.outch, /*900*/"(\002 Valid commands are:\002/\002 AA- Alter ADVS\002/\002 AC- Alter CEVENT\002/\002 AF- Alter FINDEX\002/\002 AH- Alter HERE\002/\002 AN- Alter switches\002/\002 AO- Alter OBJCTS\002/\002 AR- Alter ROOMS\002/\002 AV- Alter VILLS\002/\002 AX- Alter EXITS\002/\002 AZ- Alter PUZZLE\002/\002 DA- Display ADVS\002/\002 DC- Display CEVENT\002/\002 DF- Display FINDEX\002/\002 DH- Display HACKS\002/\002 DL- Display lengths\002/\002 DM- Display RTEXT\002/\002 DN- Display switches\002/\002 DO- Display OBJCTS\002/\002 DP- Display parser\002/\002 DR- Display ROOMS\002/\002 DS- Display state\002/\002 DT- Display text\002/\002 DV- Display VILLS\002/\002 DX- Display EXITS\002/\002 DZ- Display PUZZLE\002/\002 D2- Display ROOM2\002/\002 EX- Exit\002/\002 HE- Type this message\002/\002 NC- No cyclops\002/\002 ND- No deaths\002/\002 NR- No robber\002/\002 NT- No troll\002/\002 PD- Program detail\002/\002 RC- Restore cyclops\002/\002 RD- Restore deaths\002/\002 RR- Restore robber\002/\002 RT- Restore troll\002/\002 TK- Take.\002)", 0);
    EndExSF();
-}
    goto L2000;
 
 // NR-- NO ROBBER
@@ -486,10 +477,8 @@ L22000:
    hack_1.thfact = false;
    newsta_(oindex_1.thief, 0, 0, 0, 0);
 // 						!VANISH THIEF.
-{
    BegExSF(chan_1.outch, /*500*/"(\002 No robber.\002)", 0);
    EndExSF();
-}
    goto L2000;
 
 // NT-- NO TROLL
@@ -497,10 +486,8 @@ L22000:
 L23000:
    findex_1.trollf = true;
    newsta_(oindex_1.troll, 0, 0, 0, 0);
-{
    BegExSF(chan_1.outch, /*510*/"(\002 No troll.\002)", 0);
    EndExSF();
-}
    goto L2000;
 
 // NC-- NO CYCLOPS
@@ -508,30 +495,24 @@ L23000:
 L24000:
    findex_1.cyclof = true;
    newsta_(oindex_1.cyclo, 0, 0, 0, 0);
-{
    BegExSF(chan_1.outch, /*520*/"(\002 No cyclops.\002)", 0);
    EndExSF();
-}
    goto L2000;
 
 // ND-- IMMORTALITY MODE
 
 L25000:
    debug_1.dbgflg = 1;
-{
    BegExSF(chan_1.outch, /*530*/"(\002 No deaths.\002)", 0);
    EndExSF();
-}
    goto L2000;
 
 // RR-- RESTORE ROBBER
 
 L26000:
    hack_1.thfact = true;
-{
    BegExSF(chan_1.outch, /*540*/"(\002 Restored robber.\002)", 0);
    EndExSF();
-}
    goto L2000;
 
 // RT-- RESTORE TROLL
@@ -539,10 +520,8 @@ L26000:
 L27000:
    findex_1.trollf = false;
    newsta_(oindex_1.troll, 0, rindex_1.mtrol, 0, 0);
-{
    BegExSF(chan_1.outch, /*550*/"(\002 Restored troll.\002)", 0);
    EndExSF();
-}
    goto L2000;
 
 // RC-- RESTORE CYCLOPS
@@ -551,20 +530,16 @@ L28000:
    findex_1.cyclof = false;
    findex_1.magicf = false;
    newsta_(oindex_1.cyclo, 0, rindex_1.mcycl, 0, 0);
-{
    BegExSF(chan_1.outch, /*560*/"(\002 Restored cyclops.\002)", 0);
    EndExSF();
-}
    goto L2000;
 
 // RD-- MORTAL MODE
 
 L29000:
    debug_1.dbgflg = 0;
-{
    BegExSF(chan_1.outch, /*570*/"(\002 Restored deaths.\002)", 0);
    EndExSF();
-}
    goto L2000;
 
 // GDT, PAGE 5
@@ -578,10 +553,8 @@ L30000:
 // 						!VALID OBJECT?
    newsta_(j, 0, 0, 0, play_1.winner);
 // 						!YES, TAKE OBJECT.
-{
    BegExSF(chan_1.outch, /*580*/"(\002 Taken.\002)", 0);
    EndExSF();
-}
 // 						!TELL.
    goto L2000;
 
@@ -598,17 +571,13 @@ L32000:
       goto L2200;
    }
 // 						!INDICES VALID?
-{
    BegExSF(chan_1.outch, /*590*/fmt_2, 0);
    DoFio(1, &eqr[j + k * 200 - 201], sizeof eqr[0]);
    EndExSF();
-}
 // 						!TYPE OLD, GET NEW.
-{
    BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
    DoFio(1, &eqr[j + k * 200 - 201], sizeof eqr[0]);
    EndInSF();
-}
    goto L2000;
 
 // AO-- ALTER OBJECT ENTRY
@@ -618,14 +587,12 @@ L33000:
       goto L2200;
    }
 // 						!INDICES VALID?
-{
    BegExSF(chan_1.outch, /*590*/fmt_2, 0);
    DoFio(1, &eqo[j + k * 220 - 221], sizeof eqo[0]);
    EndExSF();
    BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
    DoFio(1, &eqo[j + k * 220 - 221], sizeof eqo[0]);
    EndInSF();
-}
    goto L2000;
 
 // AA-- ALTER ADVS ENTRY
@@ -635,14 +602,12 @@ L34000:
       goto L2200;
    }
 // 						!INDICES VALID?
-{
    BegExSF(chan_1.outch, /*590*/fmt_2, 0);
    DoFio(1, &eqa[j + (k << 2) - 5], sizeof eqa[0]);
    EndExSF();
    BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
    DoFio(1, &eqa[j + (k << 2) - 5], sizeof eqa[0]);
    EndInSF();
-}
    goto L2000;
 
 // AC-- ALTER CLOCK EVENTS
@@ -656,25 +621,21 @@ L35000:
       goto L35500;
    }
 // 						!FLAGS ENTRY?
-{
    BegExSF(chan_1.outch, /*590*/fmt_2, 0);
    DoFio(1, &eqc[j + k * 25 - 26], sizeof eqc[0]);
    EndExSF();
    BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
    DoFio(1, &eqc[j + k * 25 - 26], sizeof eqc[0]);
    EndInSF();
-}
    goto L2000;
 
 L35500:
-{
    BegExSF(chan_1.outch, /*480*/fmt_1, 0);
    DoFio(1, &cevent_1.cflag[j - 1], sizeof cevent_1.cflag[0]);
    EndExSF();
    BegInSF(chan_1.inpch, /*490*/"(l1)", 0);
    DoFio(1, &cevent_1.cflag[j - 1], sizeof cevent_1.cflag[0]);
    EndInSF();
-}
    goto L2000;
 // GDT, PAGE 6
 
@@ -685,14 +646,12 @@ L36000:
       goto L2200;
    }
 // 						!ENTRY NO VALID?
-{
    BegExSF(chan_1.outch, /*610*/fmt_2, 0);
    DoFio(1, &exits_1.travel[j - 1], sizeof exits_1.travel[0]);
    EndExSF();
    BegInSF(chan_1.inpch, /*620*/"(i6)", 0);
    DoFio(1, &exits_1.travel[j - 1], sizeof exits_1.travel[0]);
    EndInSF();
-}
    goto L2000;
 
 // AV-- ALTER VILLAINS
@@ -702,14 +661,12 @@ L37000:
       goto L2200;
    }
 // 						!INDICES VALID?
-{
    BegExSF(chan_1.outch, /*590*/fmt_2, 0);
    DoFio(1, &eqv[j + (k << 2) - 5], sizeof eqv[0]);
    EndExSF();
    BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
    DoFio(1, &eqv[j + (k << 2) - 5], sizeof eqv[0]);
    EndInSF();
-}
    goto L2000;
 
 // D2-- DISPLAY ROOM2 LIST
@@ -719,11 +676,11 @@ L38000:
       goto L2200;
    }
    i__1 = k;
-   for (i__ = j; i__ <= i__1; ++i__) {
+   for (i = j; i <= i__1; ++i) {
       BegExSF(chan_1.outch, /*630*/"(\002 #\002,i2,\002   Room=\002,i6,\002   Obj=\002,i6)", 0);
-      DoFio(1, &i__, sizeof i__);
-      DoFio(1, &oroom2_1.rroom2[i__ - 1], sizeof oroom2_1.rroom2[0]);
-      DoFio(1, &oroom2_1.oroom2[i__ - 1], sizeof oroom2_1.oroom2[0]);
+      DoFio(1, &i, sizeof i);
+      DoFio(1, &oroom2_1.rroom2[i - 1], sizeof oroom2_1.rroom2[0]);
+      DoFio(1, &oroom2_1.oroom2[i - 1], sizeof oroom2_1.oroom2[0]);
       EndExSF();
 // L38100:
    }
@@ -737,10 +694,10 @@ L39000:
    }
 // 						!VALID?
    i__1 = k;
-   for (i__ = j; i__ <= i__1; ++i__) {
+   for (i = j; i <= i__1; ++i) {
       BegExSF(chan_1.outch, /*640*/"(\002 Switch #\002,i2,\002 = \002,i6)", 0);
-      DoFio(1, &i__, sizeof i__);
-      DoFio(1, &switch__[i__ - 1], sizeof switch__[0]);
+      DoFio(1, &i, sizeof i);
+      DoFio(1, &switch__[i - 1], sizeof switch__[0]);
       EndExSF();
 // L39100:
    }
@@ -753,14 +710,12 @@ L40000:
       goto L2200;
    }
 // 						!VALID ENTRY?
-{
    BegExSF(chan_1.outch, /*590*/fmt_2, 0);
    DoFio(1, &switch__[j - 1], sizeof switch__[0]);
    EndExSF();
    BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
    DoFio(1, &switch__[j - 1], sizeof switch__[0]);
    EndInSF();
-}
    goto L2000;
 
 // DM-- DISPLAY MESSAGES
@@ -770,20 +725,18 @@ L41000:
       goto L2200;
    }
 // 						!VALID LIMITS?
-{
    BegExSF(chan_1.outch, /*380*/fmt_0, 0);
    EndExSF();
-}
    i__1 = k;
-   for (i__ = j; i__ <= i__1; i__ += 10) {
+   for (i = j; i <= i__1; i += 10) {
 // Computing MIN
-      i__2 = i__ + 9;
+      i__2 = i + 9;
       l = min(i__2, k);
       BegExSF(chan_1.outch, /*650*/"(1x,i3,\002-\002,i3,3x,10(1x,i6))", 0);
-      DoFio(1, &i__, sizeof i__);
+      DoFio(1, &i, sizeof i);
       DoFio(1, &l, sizeof l);
       i__2 = l;
-      for (l1 = i__; l1 <= i__2; ++l1) {
+      for (l1 = i; l1 <= i__2; ++l1) {
          DoFio(1, &rmsg_1.rtext[l1 - 1], sizeof rmsg_1.rtext[0]);
       }
       EndExSF();
@@ -800,54 +753,46 @@ L42000:
 // AH--	ALTER HERE
 
 L43000:
-{
    BegExSF(chan_1.outch, /*590*/fmt_2, 0);
    DoFio(1, &play_1.here, sizeof play_1.here);
    EndExSF();
    BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
    DoFio(1, &play_1.here, sizeof play_1.here);
    EndInSF();
-}
    eqa[0] = play_1.here;
    goto L2000;
 
 // DP--	DISPLAY PARSER STATE
 
 L44000:
-{
    BegExSF(chan_1.outch, /*660*/"(\002 ORPHS= \002,i7,i7,4i7/\002 PV=    \002,i7,4i7/\002 SYN=   \002,6i7/15x,5i7)", 0);
    DoFio(5, orp, sizeof orp[0]);
    DoFio(1, &last_1.lastit, sizeof last_1.lastit);
    DoFio(5, pvec, sizeof pvec[0]);
    DoFio(11, syn, sizeof syn[0]);
    EndExSF();
-}
    goto L2000;
 
 // PD--	PROGRAM DETAIL DEBUG
 
 L45000:
-{
    BegExSF(chan_1.outch, /*610*/fmt_2, 0);
    DoFio(1, &debug_1.prsflg, sizeof debug_1.prsflg);
    EndExSF();
-}
 // 						!TYPE OLD, GET NEW.
-{
    BegInSF(chan_1.inpch, /*620*/"(i6)", 0);
    DoFio(1, &debug_1.prsflg, sizeof debug_1.prsflg);
    EndInSF();
-}
    goto L2000;
 
 // DZ--	DISPLAY PUZZLE ROOM
 
 L46000:
-   for (i__ = 1; i__ <= 64; i__ += 8) {
+   for (i = 1; i <= 64; i += 8) {
 // 						!DISPLAY PUZZLE
       BegExSF(chan_1.outch, /*670*/"(2x,8i3)", 0);
-      i__1 = i__ + 7;
-      for (j = i__; j <= i__1; ++j) {
+      i__1 = i + 7;
+      for (j = i; j <= i__1; ++j) {
          DoFio(1, &puzzle_1.cpvec[j - 1], sizeof puzzle_1.cpvec[0]);
       }
       EndExSF();
@@ -862,17 +807,13 @@ L47000:
       goto L2200;
    }
 // 						!VALID ENTRY?
-{
    BegExSF(chan_1.outch, /*590*/fmt_2, 0);
    DoFio(1, &puzzle_1.cpvec[j - 1], sizeof puzzle_1.cpvec[0]);
    EndExSF();
-}
 // 						!OUTPUT OLD,
-{
    BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
    DoFio(1, &puzzle_1.cpvec[j - 1], sizeof puzzle_1.cpvec[0]);
    EndInSF();
-}
    goto L2000;
 
 }
