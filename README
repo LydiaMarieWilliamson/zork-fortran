@@ -1,162 +1,55 @@
-This is a Fortran version of the source code for Zork, based ultimately on the original translation to Fortran from MDL.
-Further details on this may be found in ‟History”.
+This is a translation in progress into C of the Fortran source code in this archive,
+carried out with the aid of version 20190311 of f2c.
 
-In addition, the beginnings of a translation to C (separate from that described in ‟History”) are in the C subdirectory.
+A separate translation to C had been earlier done in 1991, using a less-developed version of f2c.
+It is being used as a guide and cross-check for this translation.
 
-The Makefile provided here (which subsumes the one described below) is set up for a linux::gfortran configuration.
-No additional measures have yet been added for the ‟GDB” in-program debugger, and it's possible that none may be.
-Script file inputs and outputs may be added to be used for regression testing.
-
-In addition, the readit.c program (described below) may be replaced by an actual glossary listing
-and/or (de)compiler for the *.dat files.
-As with other games, this contains the architecture of an entire world in it ...
-but also some fixed parameters that best belong in the source code files, instead.
-
-The first README addenda
-━━━━━━━━━━━━━━━━━━━━━━━━
-From Tom Almy:
-
-Running dungeon
-───────────────
-Run dungeon (also known as "ZORK") from the directory containing the *.dat files.
-
-This "mainframe zork" has everything contained in the commercial ZORK I, part of ZORK II, and the endgame from ZORK III.
-Some mainframe computers don't have this full version, so if your mainframe doesn't have the endgame,
-the bank of zork, and the puzzle room, you are in for some new challenges.
-
-BTW, the source files say copyright INFOCOM, but allow non-commercial use.
-This was the last version before INFOCOM went commercial.
-
-Compiling dungeon
-─────────────────
-The makefile will make dungeon.exe from the sources.
-
-You will need:
-∙	A UNIX like make (I use Don Kneller's NDMAKE)
-∙	Microsoft Fortran (versions 4 and 5 tested)
-
-I modified the sources only slightly from the distribution I received (which was intended for the VAX).
-Changes made:
-∙	INCLUDE statement syntax different
-∙	Continuation character moved from column 1 to 6 (boy is the VAXUNIX wierd!)
-∙	Bitwise logical function names changed.
-∙	GDT command always available if compiled with debug code present (see Makefile for instructions).
-
-All pretty trivial.
-
-Also, the program readit (compiled from readit.c) will allow printing out all the text strings in the game.
-This is useful for the cheaters among you, particularly those compiling in the GDT command. :-)
-
-The original README
-━━━━━━━━━━━━━━━━━━━
-This is a source file distribution for the game dungeon as implemented in f77 for Unix(R) systems.
-It is based on the game dungeon as distributed on a DECUS tape, circa 1980.
-It has been converted from the original DEC FORTRAN into something that is palatable to Unix f77.
-See the file ‟History” for some revision history and credit to those whose efforts have made this possible.
-
-Branch Note: this branch of Zork is being used as a starting point
-for translation C using a more up-to-date Fortran-to-C translator;
-and will be subject to a round of major recoding to bring it up to sync
-with our locally-maintained version of both this branch and the C branch.
-Both will be merged.
-
-Checkout the Makefile and adjust it to fit your system.
-The only things that should really need tweaking are the directory definitions and the ‟-D” defines.
-There is an example for both large address machines (e.g. Vax) that get the complete game
-and small address machines (e.g. Pdp-11) that get a modified game with minor functionality missing (to get it to fit).
-Also edit the include file ‟files.h” if necessary.
-
-All of the f77 files end in a '.f' extension to force f77 to invoke the C preprocessor for the #include files and #ifdefs.
-Most of the #ifdefs are for the PDP version (default non-pdp) and for debug (default off).
-
-Except for dtext.dat, all files in the distribution kit are ASCII.
-dtext.dat is a binary file consisting of 76-byte fixed length records.
-
-This has been compiled and tested on a PDP-11/44 Version 7, PDP-11/70 2.9bsd Vax-11/785 4.3bsd and Sun-3
-before the pdp and Vax sources were merged (see the file ‟History”).
-After the merge it was again tested on the Vax 11-785 4.3bsd.
-
-I/we consider my/our changes to be in the public domain.
-The original source, however, is copyright.
-	John Gilmore, Nebula Consultants
-	hoptoad!gnu
-	1986/11/11
-
-	Bill Randle
-	Tektronix, Inc.
-	billr@tekred.TEK.COM
-	1987/02/09
-
-Dungeon consists of the following files:
-	dmain.f			-program root
-	dgame.f			-main routine
-	dsub.f			-resident subroutines
-	dinit.f			-initialization routine
-	np.f			-parser, part 0
-	np1.f			-parser, part 1
-	np2.f			-parser, part 2
-	np3.f			-parser, part 3
-	gdt.f			-game debugging tool
-	verbs.f			-principal verbs
-	objcts.f		-principal objects
-	sverbs.f		-simple verbs
-	dverb1.f		-auxiliary verbs, part 1
-	dverb2.f		-auxiliary verbs, part 2
-	actors.f		-character processors
-	demons.f		-demon processors
-	clockr.f		-clock event processors
-	rooms.f			-room processors
-	nrooms.f		-new room processors
-	sobjs.f			-simple objects
-	nobjs.f			-new objects
-	ballop.f		-balloon processor
-	lightp.f		-light processors
-	villns.f		-villain processors
-	dso1.f			-overlaid subroutines, part 1
-	dso2.f			-overlaid subroutines, part 2
-	dso3.f			-overlaid subroutines, part 3
-	dso4.f			-overlaid subroutines, part 4
-	dso5.f			-overlaid subroutines, part 5
-	dso6.f			-overlaid subroutines, part 6
-	dso7.f			-overlaid subroutines, part 7
-	advers.h		-header file
-	clock.h			-header file
-	curxt.h			-header file
-	debug.h			-header file
-	exits.h			-header file
-	files.h			-header file for directory paths
-	flags.h			-header file
-	gamestate.h		-header file
-	io.h			-header file
-	objects.h		-header file
-	oflags.h		-header file
-	oindex.h		-header file
-	parser.h		-header file
-	puzzle.h		-header file
-	rflag.h			-header file
-	rindex.h		-header file
-	rooms.h			-header file
-	screen.h		-header file
-	state.h			-header file
-	verbs.h			-header file
-	villians.h		-header file
-	vocab.h			-header file
-	xpars.h			-header file
-	xsrch.h			-header file
-	cinit.c			-C routine to initialize game [pdp ver]
-	cio.c			-C routine for misc i/o [pdp version]
-	rtim.c			-C routines for system dependent functions
-	listen.c		-C co-process for reading keyboard [pdp]
-	cspeak.c		-C co-process for displaying messages [pdp]
-	speak.f			-lookup messages for speak process [pdp]
-	decode.c		-C routine to decode binary text file [debug]
-	dindx.dat		-initialization data base
-	dtext.dat		-main data base [binary file]
-	rtext.dat		-message index file [pdp version]
-	dungeon.sh		-shell script to invoke pdp version
-	dungeon.doc		-original documentation file
-	dungeon.6		-man page abstracted from dungeon.doc
-	Makefile		-Makefile for making pdp or vax versions
-	History			-Some revision history notes
-	PDP.doc			-Notes on the PDP-11/Unix conversion
-	README			-This file
+History
+───────
+2021/09/14	The raw translation of the Fortran source into C, using f2c (version 20190311).
+		Common Blocks are translated incorrectly and #include's are inserted in-line.
+		All of that has to be fixed and undone.
+		The file ‟Translate.log” contains some of the details provided by the translator.
+2021/09/14	A first Makefile has been added.
+		This assumes that the f2c library and the include file ‟f2c.h” have been installed
+		The file ‟Compile.log” contains some of the details provided by the first run of ‟make”.
+2021/09/14	The undefined function itime_() has been resolved with a ‟fallback” function ITime_().
+2021/09/14	The ‟f2c.h” file has been internalized as ‟F2C.h”.
+		Additional normalization has been done on the source code layout.
+2021/09/14	Most of ‟F2C.h” has been nativized to C and eliminated.
+2021/09/14	Move the declarations of ‟built-in” functions (defined in the f2c library) to "F2C.h".
+		Further information on the f2c library and utility may be found in https://www.netlib.org/f2c/f2c.pdf.
+2021/09/15	Collating the definitions of the common blocks into ‟common.c”.
+2021/09/15	Eliminated the duplicate common block definitions from ‟common.c”.
+		Compilation is now possible, but no baseline has yet been established.
+		Hidden size-dependencies for data I/O exist, which crash the file I/O.
+2021/09/15	Added the data/configuration files d{indx,text}.dat as symbolic links (for now).
+2021/09/15	Normalized the layout of the comments.
+2021/09/15	Strength reduction:
+		∙	lifted input-only function parameters to value parameters.
+		∙	lifted output-only parameters to return values, when singular.
+		∙	commented out unused parameters.
+		∙	eliminated ‟Void”, after reducing it to ‟void”.
+		No effect on the compile-time or run-time baselines.
+2021/09/16	Encapsulation of the f2c library in F2C.c; as a first step to nativizing and replacing it.
+		The program crashes occur in the f2c library functions, and these need to be replaced and fixed.
+2021/09/16	Elimination of static constant parameters.
+2021/09/16	Collating the in-line inserted ‟include” files; in preparation of removing them back to include files.
+2021/09/16	Regularized the translated copies of the ‟include” files and their common block and equivalence definitions.
+2021/09/17	The in-line versions of ‟parser.h” have been regularized and extracted, first.
+2021/09/17	The in-line versions of ‟vocab.h” have been regularized and extracted, next,
+		and combined with ‟parser.h” into ‟parse.h”.
+2021/09/17	The initializations and comments in blkdata.c have been realigned to the form they had originally in Fortran.
+		The extraneous includes in blkdata.c have been removed both here and in the Fortran version.
+2021/09/17	Documented the translation error in the original Fortran and C versions ‟blkdata.{f,c}” in ‟Translate.log”.
+2021/09/17	Collated the remaining in-line includes into ‟parse.h” and renamed the file ‟common.h”.
+		In the 1991 version of the C program, most of the role of its ‟parse.h” is played, here, by ‟blkdata.c”,
+		while its ‟vars.h” corresponds, here, to ‟common.h”.
+2021/09/18	Extracted the in-line include files out into ‟common.h”.
+		Regularized the names of the common block types.
+2021/09/18	Separated the external function declarations and the function list in ‟Translate.log” out to ‟extern.h”.
+2021/09/18	Correcting errors in blkdata.{c,f} (round 1 of 2).
+2021/09/18	Strength reduction:
+		∙	uninitialized ‟static” locals to ‟auto”
+		∙	initialized ‟static” scalar locals to ‟auto const”
+		∙	initialized ‟static” array locals to ‟static const”
