@@ -126,8 +126,7 @@ C
 	include 'advers.h'
 	include 'flags.h'
 C
-C FUNCTIONS AND DATA
-C
+C In-line function
 	QOPEN(O)=IAND(OFLAG2(O),OPENBT).NE.0
 C WALK, PAGE 2
 C

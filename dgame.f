@@ -23,8 +23,7 @@ C
 	include 'verbs.h'
 	include 'flags.h'
 C
-C FUNCTIONS AND DATA
-C
+C Initialized data
 	DATA SECHO/'E','C','H','O'/
 D	DATA GDTSTR/'G','D','T'/
 C GAME, PAGE 2

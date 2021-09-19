@@ -17,8 +17,7 @@ C
 	include 'verbs.h'
 	include 'flags.h'
 C
-C FUNCTIONS AND DATA
-C
+C In-line function
 	QON(R)=IAND(OFLAG1(R),ONBT).NE.0
 C LIGHTP, PAGE 2
 C

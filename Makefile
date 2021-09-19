@@ -32,8 +32,13 @@ FORS =  actors.f ballop.f clockr.f demons.f \
 $(APP): $(FORS)
 	$(FC) $(FFLAGS) -fbackslash $(DLINE) -o $(APP) $(FORS)
 
+test: $(APP)
+	./$(APP) <Test.in >Ex && diff -d Test.ex Ex && rm Ex
+
 clean:
 	rm -f $(APP)
+clobber: clean
+	rm -f Ex
 
 install: $(APP)
 	mkdir -p $(BINDIR) $(APPDIR)

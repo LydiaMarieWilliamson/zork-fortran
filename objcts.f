@@ -32,10 +32,11 @@ C
 	include 'verbs.h'
 	include 'flags.h'
 C
-C FUNCTIONS AND DATA
-C
+C In-line functions
 	QOPEN(R)=IAND(OFLAG2(R),OPENBT).NE.0
 	QON(R)=IAND(OFLAG1(R),ONBT).NE.0
+C
+C Initialized data
 	DATA MXSMP/99/
 C OAPPLI, PAGE 2
 C

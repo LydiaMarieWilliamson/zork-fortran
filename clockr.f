@@ -24,13 +24,13 @@ C
 	include 'advers.h'
 	include 'flags.h'
 C
-C FUNCTIONS AND DATA
-C
+C In-line functions
 	QOPEN(R)=(IAND(OFLAG2(R),OPENBT)).NE.0
 	QLEDGE(R)=(R.EQ.LEDG2).OR.(R.EQ.LEDG3).OR.(R.EQ.LEDG4).OR.
      &	(R.EQ.VLBOT)
 	QVAIR(R)=(R.EQ.VAIR1).OR.(R.EQ.VAIR2).OR.(R.EQ.VAIR3).OR.
      &	 (R.EQ.VAIR4)
+C Initialized data
 	DATA CNDTCK/50,20,10,5,0,156,156,156,157,0/
 	DATA LMPTCK/50,30,20,10,4,0,154,154,154,154,155,0/
 C CEVAPP, PAGE 2

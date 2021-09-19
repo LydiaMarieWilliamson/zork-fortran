@@ -32,12 +32,13 @@ C
 	include 'advers.h'
 	include 'flags.h'
 C
-C FUNCTIONS AND DATA
-C
+C In-line functions
 	VALID1(A1,L1)=(A1.GT.0).AND.(A1.LE.L1)
 	VALID2(A1,A2,L1)=VALID1(A1,L1).AND.VALID1(A2,L1).AND.
      &	(A1.LE.A2)
 	VALID3(A1,L1,A2,L2)=VALID1(A1,L1).AND.VALID1(A2,L2)
+C
+C Initialized data
 	DATA CMDMAX/38/
 	DATA DBGCMD/'DR','DO','DA','DC','DX','DH','DL','DV','DF','DS',
      &	'AF','HE','NR','NT','NC','ND','RR','RT','RC','RD',

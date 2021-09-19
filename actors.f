@@ -121,8 +121,7 @@ C
 	INCLUDE 'villians.h'
 	INCLUDE 'flags.h'
 C
-C FUNCTIONS AND DATA
-C
+C In-line function
 	QSTILL(R)=(QHERE(STILL,R).OR.(OADV(STILL).EQ.-THIEF))
 C THIEFD, PAGE 2
 C

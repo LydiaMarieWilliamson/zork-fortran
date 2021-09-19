@@ -26,11 +26,12 @@ C
 	include 'advers.h'
 	include 'verbs.h'
 C
-C FUNCTIONS AND DATA
-C
+C In-line functions
 	QOPEN(R)=IAND(OFLAG2(R),OPENBT).NE.0
 	EDIBLE(R)=IAND(OFLAG1(R),FOODBT).NE.0
 	DRKBLE(R)=IAND(OFLAG1(R),DRNKBT).NE.0
+C
+C Initialized data
 	DATA MXNOP/39/,MXSMP/99/
 C VAPPLI, PAGE 2
 C

@@ -82,8 +82,7 @@ C
 	include 'state.h'
 	include 'advers.h'
 C
-C FUNCTIONS AND DATA
-C
+C Initialized data
 	DATA SMAX/7/,SMIN/2/
 C
 	FIGHTS=SMIN+((((SMAX-SMIN)*ASCORE(H))+(MXSCOR/2))/MXSCOR)

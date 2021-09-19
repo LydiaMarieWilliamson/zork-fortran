@@ -262,8 +262,7 @@ C
 	include 'advers.h'
 	include 'flags.h'
 C
-C FUNCTIONS AND DATA
-C
+C Initialized data
 	DATA RLIST/8,6,36,35,34,4,34,6,5/
 C JIGSUP, PAGE 2
 C

@@ -23,9 +23,10 @@ C
 	include 'verbs.h'
 	include 'flags.h'
 C
-C FUNCTIONS AND DATA
-C
+C In-line function
 	QOPEN(R)=iand(OFLAG2(R),OPENBT).NE.0
+C
+C Initialized data
 	DATA NEWRMS/38/
 C RAPPL2, PAGE 2
 C

@@ -27,8 +27,7 @@ C
 	include 'oflags.h'
 	include 'verbs.h'
 C
-C FUNCTIONS AND DATA
-C
+C In-line function
 	QOPEN(O)=IAND(OFLAG2(O),OPENBT).NE.0
 C
 	OPNCLS=.TRUE.

@@ -42,9 +42,10 @@ C
 	include 'verbs.h'
 	include 'flags.h'
 C
-C FUNCTIONS AND DATA
-C
+C In-line function
 	QOPEN(R)=IAND(OFLAG2(R),OPENBT).NE.0
+C
+C Initialized data
 	DATA MXNOP/39/,MXJOKE/64/
 	DATA JOKES/4,5,3,304,305,306,307,308,309,310,311,312,
      &	313,5314,5319,324,325,883,884,120,120,0,0,0,0/

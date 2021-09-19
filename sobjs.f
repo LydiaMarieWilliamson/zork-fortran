@@ -27,8 +27,7 @@ C
 	include 'verbs.h'
 	include 'flags.h'
 C
-C FUNCTIONS AND DATA
-C
+C In-line function
 	QOPEN(R)=IAND(OFLAG2(R),OPENBT).NE.0
 C SOBJS, PAGE 2
 C

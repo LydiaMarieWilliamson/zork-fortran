@@ -76,8 +76,7 @@ C
 	include 'advers.h'
 	include 'flags.h'
 C
-C FUNCTIONS AND DATA
-C
+C Initialized data
 	DATA RANK/20,19,18,16,12,8,4,2,1,0/
 	DATA ERANK/20,15,10,5,0/
 C SCORE, PAGE 2

@@ -19,8 +19,7 @@ C
 C
 	include 'advers.h'
 C
-C FUNCTIONS AND DATA
-C
+C In-line function
 	QOPEN(O)=(IAND(OFLAG2(O),OPENBT).NE.0)
 C TAKE, PAGE 2
 C
@@ -160,8 +159,7 @@ C
 	include 'advers.h'
 	include 'verbs.h'
 C
-C FUNCTIONS AND DATA
-C
+C In-line function
 	QOPEN(R)=((IAND(OFLAG2(R),OPENBT)).NE.0)
 C PUT, PAGE 2
 C
@@ -263,8 +261,7 @@ C
 	include 'oflags.h'
 	include 'verbs.h'
 C
-C FUNCTIONS AND DATA
-C
+C In-line function
 	NOTVAL(R)=(SAVEP.EQ.V).AND.(OTVAL(R).LE.0)
 C VALUAC, PAGE 2
 C
