@@ -54,3 +54,5 @@ History
 		∙	initialized ‟static” scalar locals to ‟auto const”
 		∙	initialized ‟static” array locals to ‟static const”
 2021/09/18	Lifting constant common blocks to enum types (round 1 of 2).
+2021/09/19	Various other minor cleanups and repairs both here and in the 1990 C translation to bring them closer together.
+		Their only significant difference, at this point, is the I/O and the formats of the black-box *.dat file(s).
