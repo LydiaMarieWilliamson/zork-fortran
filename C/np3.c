@@ -16,7 +16,7 @@ static Bool takeit_(int, int);
 // THIS ROUTINE DETAILS ON BIT 4 OF PRSFLG
 
 Bool synmch_(/*int x*/) {
-// Initialized Data
+// Initialized data
 //   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
 // 	DATA R50MIN/1RA/
    const int r50min = 1600;
