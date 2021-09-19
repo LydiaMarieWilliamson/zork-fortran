@@ -8,8 +8,6 @@
 #include "extern.h"
 #include "common.h"
 
-// DECLARATIONS
-
 Bool rappl1_(int ri) {
 // System generated locals
    int i__1, i__2;

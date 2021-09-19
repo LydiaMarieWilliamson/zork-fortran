@@ -8,7 +8,7 @@
 #include "extern.h"
 #include "common.h"
 
-// DECLARATIONS
+static Bool lex_(char *, int, int *, int *, Bool/*, size_t*/);
 
 void rdline_(char *buffer, int length, int who, size_t buffer_unit) {
 // System generated locals
@@ -75,9 +75,6 @@ L250:
 }
 
 // PARSE-	TOP LEVEL PARSE ROUTINE
-
-// DECLARATIONS
-static Bool lex_(char *, int, int *, int *, Bool/*, size_t*/);
 
 // THIS ROUTINE DETAILS ON BIT 0 OF PRSFLG
 
@@ -153,8 +150,6 @@ L100:
 }
 
 // ORPHAN- SET UP NEW ORPHANS
-
-// DECLARATIONS
 
 void orphan_(int o1, int o2, int o3, int o4, int o5) {
 

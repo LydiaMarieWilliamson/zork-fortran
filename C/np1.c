@@ -8,8 +8,6 @@
 #include "extern.h"
 #include "common.h"
 
-// DECLARATIONS
-
 // THIS ROUTINE DETAILS ON BIT 2 OF PRSFLG
 
 int sparse_(int * lbuf, int llnt, Bool vbflag) {

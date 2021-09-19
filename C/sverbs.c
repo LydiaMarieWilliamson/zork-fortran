@@ -10,8 +10,6 @@
 #include "extern.h"
 #include "common.h"
 
-// DECLARATIONS
-
 Bool sverbs_(int ri) {
 // Initialized data
 

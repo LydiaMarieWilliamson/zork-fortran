@@ -8,8 +8,6 @@
 #include "extern.h"
 #include "common.h"
 
-// DECLARATIONS
-
 Bool ghere_(int obj, int rm) {
 // System generated locals
    Bool ret_val;
@@ -148,8 +146,6 @@ L11000:
 }
 
 // MRHERE--	IS MIRROR HERE?
-
-// DECLARATIONS
 
 int mrhere_(int rm) {
 // System generated locals

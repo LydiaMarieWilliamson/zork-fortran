@@ -8,8 +8,6 @@
 #include "extern.h"
 #include "common.h"
 
-// DECLARATIONS
-
 Bool oappli_(int ri, int arg) {
 // Initialized data
 

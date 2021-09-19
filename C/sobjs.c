@@ -10,8 +10,6 @@
 #include "extern.h"
 #include "common.h"
 
-// DECLARATIONS
-
 Bool sobjs_(int ri, int arg) {
 // System generated locals
    int i__1;

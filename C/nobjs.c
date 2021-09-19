@@ -10,7 +10,6 @@
 #include "extern.h"
 #include "common.h"
 
-// DECLARATIONS
 static Bool mirpan_(int, Bool);
 
 Bool nobjs_(int ri/*, int arg*/) {
@@ -863,8 +862,6 @@ L21200:
 }
 
 // MIRPAN--	PROCESSOR FOR GLOBAL MIRROR/PANEL
-
-// DECLARATIONS
 
 static Bool mirpan_(int st, Bool pnf) {
 // System generated locals

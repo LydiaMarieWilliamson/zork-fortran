@@ -46,8 +46,6 @@ void rspsb2_(int n, int s1, int s2) {
    int k1, k2, x1;
    short jrec, oldrec, newrec;
 
-// DECLARATIONS
-
 // CONVERT ALL ARGUMENTS FROM DICTIONARY NUMBERS (IF POSITIVE)
 // TO ABSOLUTE RECORD NUMBERS.
 
@@ -206,8 +204,6 @@ L1300:
 
 // OBJACT-- APPLY OBJECTS FROM PARSE VECTOR
 
-// DECLARATIONS
-
 Bool objact_(/*int x*/) {
 // System generated locals
    Bool ret_val;
@@ -277,8 +273,6 @@ void newsta_(int o, int r, int rm, int cn, int ad) {
 
 // QHERE-- TEST FOR OBJECT IN ROOM
 
-// DECLARATIONS
-
 Bool qhere_(int obj, int rm) {
 // System generated locals
    int i__1;
@@ -307,8 +301,6 @@ Bool qhere_(int obj, int rm) {
 
 // QEMPTY-- TEST FOR OBJECT EMPTY
 
-// DECLARATIONS
-
 Bool qempty_(int obj) {
 // System generated locals
    int i__1;
@@ -332,8 +324,6 @@ Bool qempty_(int obj) {
 }
 
 // JIGSUP- YOU ARE DEAD
-
-// DECLARATIONS
 
 void jigsup_(int desc) {
 // Initialized data
@@ -495,8 +485,6 @@ L1100:
 
 // OACTOR-	GET ACTOR ASSOCIATED WITH OBJECT
 
-// DECLARATIONS
-
 int oactor_(int obj) {
 // System generated locals
    int ret_val, i__1;
@@ -521,8 +509,6 @@ int oactor_(int obj) {
 }
 
 // PROB-		COMPUTE PROBABILITY
-
-// DECLARATIONS
 
 Bool prob_(int g, int b) {
 // System generated locals
@@ -555,8 +541,6 @@ Bool rmdesc_(int full) {
    int i, ra;
 
 // FULL=	0/1/2/3=	SHORT/OBJ/ROOM/FULL
-
-// DECLARATIONS
 
 // RMDESC, PAGE 2
 
@@ -649,8 +633,6 @@ L600:
 }
 
 // RAPPLI-	ROUTING ROUTINE FOR ROOM APPLICABLES
-
-// DECLARATIONS
 
 Bool rappli_(int ri) {
 // Initialized data

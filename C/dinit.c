@@ -8,7 +8,6 @@
 #include "extern.h"
 #include "common.h"
 
-// DECLARATIONS
 static Bool protct_(int);
 
 Bool init_(int x) {

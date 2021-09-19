@@ -18,8 +18,6 @@ Bool take_(Bool flg) {
 // Local variables
    int x, oa;
 
-// DECLARATIONS
-
 // FUNCTIONS AND DATA
 
 // TAKE, PAGE 2
@@ -100,8 +98,6 @@ L700:
 }
 
 // DROP- DROP VERB PROCESSOR
-
-// DECLARATIONS
 
 Bool drop_(/*Bool z*/) {
 // System generated locals
@@ -191,8 +187,6 @@ L1000:
 }
 
 // PUT- PUT VERB PROCESSOR
-
-// DECLARATIONS
 
 Bool put_(/*Bool flg*/) {
 // System generated locals
@@ -331,8 +325,6 @@ L1000:
 }
 
 // VALUAC- HANDLES VALUABLES/EVERYTHING
-
-// DECLARATIONS
 
 void valuac_(int v) {
 // System generated locals

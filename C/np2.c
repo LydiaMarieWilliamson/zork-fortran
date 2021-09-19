@@ -8,7 +8,6 @@
 #include "extern.h"
 #include "common.h"
 
-// DECLARATIONS
 static Bool thisit_(int, int, int, int);
 
 // THIS ROUTINE DETAILS ON BIT 3 OF PRSFLG
@@ -154,8 +153,6 @@ L1500:
 
 // SCHLST--	SEARCH FOR OBJECT
 
-// DECLARATIONS
-
 int schlst_(int oidx, int aidx, int rm, int cn, int ad, int spcobj) {
 // System generated locals
    int ret_val, i__1, i__2;
@@ -244,8 +241,6 @@ L2000:
 }
 
 // THISIT--	VALIDATE OBJECT VS DESCRIPTION
-
-// DECLARATIONS
 
 static Bool thisit_(int oidx, int aidx, int obj, int spcobj) {
 // Initialized data

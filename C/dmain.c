@@ -150,8 +150,6 @@ struct vindexCB vindex_ = (struct vindexCB){
 int MAIN__(void) {
    int x;
 
-// DECLARATIONS
-
 // DUNGEON, PAGE 3
 
 // 1) INITIALIZE DATA STRUCTURES

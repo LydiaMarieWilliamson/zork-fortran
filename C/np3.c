@@ -8,7 +8,6 @@
 #include "extern.h"
 #include "common.h"
 
-// DECLARATIONS
 static int unpacks_(int);
 static int gwim_(int, int, int);
 static Bool syneql_(int, int, int, int, int);
@@ -214,8 +213,6 @@ L5000:
 
 // UNPACKS-	UNPACK SYNTAX SPECIFICATION, ADV POINTER
 
-// DECLARATIONS
-
 static int unpacks_(int oldj) {
 // Local variables
    int i;
@@ -279,8 +276,6 @@ L200:
 
 // SYNEQL-	TEST FOR SYNTAX EQUALITY
 
-// DECLARATIONS
-
 static Bool syneql_(int prep, int obj, int sprep, int sfl1, int sfl2) {
 // System generated locals
    Bool ret_val;
@@ -301,8 +296,6 @@ L100:
 }
 
 // TAKEIT-	PARSER BASED TAKE OF OBJECT
-
-// DECLARATIONS
 
 static Bool takeit_(int obj, int sflag) {
 // System generated locals

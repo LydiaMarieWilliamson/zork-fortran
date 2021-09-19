@@ -1,9 +1,6 @@
 #include "F2C.h"
 #include "common.h"
 
-// block data foo
-// DECLARATIONS
-//
 // THIS ROUTINE DETAILS ON BIT 2 OF PRSFLG
 //
 // vocab.h:

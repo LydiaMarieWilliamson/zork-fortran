@@ -8,7 +8,6 @@
 #include "extern.h"
 #include "common.h"
 
-// DECLARATIONS
 static void lookto_(int, int, int, int, int);
 static void ewtell_(int, int);
 
@@ -436,8 +435,6 @@ L60100:
 
 // LOOKTO--	DESCRIBE VIEW IN MIRROR HALLWAY
 
-// DECLARATIONS
-
 static void lookto_(int nrm, int srm, int nt, int st, int ht) {
 // System generated locals
    int i__1;
@@ -515,8 +512,6 @@ L200:
 }
 
 // EWTELL--	DESCRIBE E/W NARROW ROOMS
-
-// DECLARATIONS
 
 static void ewtell_(int rm, int st) {
 // System generated locals

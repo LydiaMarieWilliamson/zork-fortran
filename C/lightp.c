@@ -8,8 +8,6 @@
 #include "extern.h"
 #include "common.h"
 
-// DECLARATIONS
-
 Bool lightp_(int obj) {
 // System generated locals
    Bool ret_val;

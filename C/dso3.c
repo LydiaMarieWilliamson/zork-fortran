@@ -8,8 +8,6 @@
 #include "extern.h"
 #include "common.h"
 
-// DECLARATIONS
-
 Bool findxt_(int dir, int rm) {
 // System generated locals
    Bool ret_val;
@@ -66,8 +64,6 @@ L1000:
 }
 
 // FWIM- FIND WHAT I MEAN
-
-// DECLARATIONS
 
 int fwim_(int f1, int f2, int rm, int con, int adv, Bool nocare) {
 // System generated locals

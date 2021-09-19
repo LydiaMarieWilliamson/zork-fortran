@@ -8,8 +8,6 @@
 #include "extern.h"
 #include "common.h"
 
-// DECLARATIONS
-
 Bool moveto_(int nr, int who) {
 // System generated locals
    Bool ret_val;
@@ -93,8 +91,6 @@ L800:
 
 // SCORE-- PRINT OUT CURRENT SCORE
 
-// DECLARATIONS
-
 void score_(Bool flg) {
 // Initialized data
 
@@ -177,8 +173,6 @@ L80:
 }
 
 // SCRUPD- UPDATE WINNER'S SCORE
-
-// DECLARATIONS
 
 void scrupd_(int n) {
 // Local variables

@@ -8,8 +8,6 @@
 #include "extern.h"
 #include "common.h"
 
-// DECLARATIONS
-
 Bool vappli_(int ri) {
 // Initialized data
 
@@ -1352,8 +1350,6 @@ L87500:
 }
 
 // CLOCKD- CLOCK DEMON FOR INTERMOVE CLOCK EVENTS
-
-// DECLARATIONS
 
 Bool clockd_(/*int x*/) {
 // System generated locals

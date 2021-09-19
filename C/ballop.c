@@ -8,8 +8,6 @@
 #include "extern.h"
 #include "common.h"
 
-// DECLARATIONS
-
 Bool ballop_(int arg) {
 // System generated locals
    Bool ret_val;

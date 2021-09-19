@@ -8,7 +8,6 @@
 #include "extern.h"
 #include "common.h"
 
-// DECLARATIONS
 static void litint_(int, int *, int, const int *, int);
 
 void cevapp_(int ri) {
@@ -767,8 +766,6 @@ L24100:
 }
 
 // LITINT-	LIGHT INTERRUPT PROCESSOR
-
-// DECLARATIONS
 
 static void litint_(int obj, int * ctr, int cev, const int * ticks, int tickln) {
 // Local variables

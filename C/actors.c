@@ -8,8 +8,6 @@
 #include "extern.h"
 #include "common.h"
 
-// DECLARATIONS
-
 Bool aappli_(int ri) {
 // System generated locals
    Bool ret_val;
@@ -125,8 +123,6 @@ L2200:
 }
 
 // THIEFD-	INTERMOVE THIEF DEMON
-
-// DECLARATIONS
 
 void thiefd_(void) {
 // System generated locals

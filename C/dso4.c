@@ -8,8 +8,6 @@
 #include "extern.h"
 #include "common.h"
 
-// DECLARATIONS
-
 int robadv_(int adv, int nr, int nc, int na) {
 // System generated locals
    int ret_val, i__1;
@@ -34,8 +32,6 @@ int robadv_(int adv, int nr, int nc, int na) {
 }
 
 // ROBRM-- STEAL ROOM VALUABLES
-
-// DECLARATIONS
 
 int robrm_(int rm, int pr, int nr, int nc, int na) {
 // System generated locals
@@ -71,8 +67,6 @@ int robrm_(int rm, int pr, int nr, int nc, int na) {
 }
 
 // WINNIN-- SEE IF VILLAIN IS WINNING
-
-// DECLARATIONS
 
 Bool winnin_(int vl, int hr) {
 // System generated locals
@@ -111,8 +105,6 @@ Bool winnin_(int vl, int hr) {
 
 // FIGHTS-- COMPUTE FIGHT STRENGTH
 
-// DECLARATIONS
-
 int fights_(int h, Bool flg) {
 // Initialized data
 
@@ -136,8 +128,6 @@ int fights_(int h, Bool flg) {
 }
 
 // VILSTR-	COMPUTE VILLAIN STRENGTH
-
-// DECLARATIONS
 
 int vilstr_(int v) {
 // System generated locals

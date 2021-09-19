@@ -8,7 +8,7 @@
 #include "extern.h"
 #include "common.h"
 
-// DECLARATIONS
+static Bool infest_(int);
 
 void fightd_(void) {
 // Initialized data
@@ -170,8 +170,6 @@ L2600:
 }
 
 // BLOW- STRIKE BLOW
-
-// DECLARATIONS
 
 int blow_(int h, int v, int rmk, Bool hflg, int out) {
 // Initialized data
@@ -546,9 +544,6 @@ L4600:
 
 // SWORDD- SWORD INTERMOVE DEMON
 
-// DECLARATIONS
-static Bool infest_(int);
-
 void swordd_(void) {
 // System generated locals
    int i__1, i__2;
@@ -618,8 +613,6 @@ L500:
 }
 
 // INFEST-	SUBROUTINE TO TEST FOR INFESTED ROOM
-
-// DECLARATIONS
 
 static Bool infest_(int r) {
 // System generated locals
