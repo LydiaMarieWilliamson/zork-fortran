@@ -11,10 +11,10 @@
 // DECLARATIONS
 
 int gttime_(void) {
-   int h__, m, s;
+   int h, m, s;
 
-   intime_(&h__, &m, &s);
-   int t = h__ * 60 + m - (time_1.shour * 60 + time_1.smin);
+   intime_(&h, &m, &s);
+   int t = h * 60 + m - (time_1.shour * 60 + time_1.smin);
    if (t < 0) {
       t += 1440;
    }

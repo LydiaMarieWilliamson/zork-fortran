@@ -155,10 +155,10 @@ L100:
    DoFio(1, ans, sizeof ans[0]);
    EndInSF();
 // 						!GET ANSWER
-   if (*(unsigned char *)ans == 'Y' || *(unsigned char *)ans == 'y') {
+   if (*ans == 'Y' || *ans == 'y') {
       goto L200;
    }
-   if (*(unsigned char *)ans == 'N' || *(unsigned char *)ans == 'n') {
+   if (*ans == 'N' || *ans == 'n') {
       goto L300;
    }
    rspeak_(6);

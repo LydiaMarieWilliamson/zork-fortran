@@ -10,6 +10,7 @@
 
 // DECLARATIONS
 static int unpacks_(int);
+static int gwim_(int, int, int);
 static Bool syneql_(int, int, int, int, int);
 static Bool takeit_(int, int);
 
@@ -17,6 +18,10 @@ static Bool takeit_(int, int);
 
 Bool synmch_(/*int x*/) {
 // Initialized data
+//   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
+
+// 	DATA R50MIN/1RA/
+
 
    const int r50min = 1600;
 
@@ -28,10 +33,6 @@ Bool synmch_(/*int x*/) {
    int j;
    int newj;
    int drive, limit, qprep, sprep, dforce;
-
-//   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
-
-// 	DATA R50MIN/1RA/
 
    ret_val = false;
 // D	DFLAG=IAND(PRSFLG, 16).NE.0
@@ -303,7 +304,7 @@ L100:
 
 // DECLARATIONS
 
-Bool takeit_(int obj, int sflag) {
+static Bool takeit_(int obj, int sflag) {
 // System generated locals
    Bool ret_val;
 
@@ -341,7 +342,7 @@ L500:
       goto L2000;
    }
 
-// SHOULD BE IN ROOM (VRBIT NE 0) AND CAN BE TAKEN (VTBIT NE 0)
+// SHOULD BE IN ROOM (RbitV NE 0) AND CAN BE TAKEN (TbitV NE 0)
 
    if (schlst_(0, 0, play_1.here, 0, 0, obj) <= 0) {
       goto L4000;
@@ -415,10 +416,7 @@ L4000:
 
 // GWIM- GET WHAT I MEAN IN AMBIGOUS SITUATIONS
 
-// DECLARATIONS
-static Bool takeit_(int, int);
-
-int gwim_(int sflag, int sfw1, int sfw2) {
+static int gwim_(int sflag, int sfw1, int sfw2) {
 // System generated locals
    int ret_val;
 

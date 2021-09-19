@@ -33,13 +33,13 @@ void encryp_(const char *inw, char *outw/*, size_t inw_unit, size_t outw_unit*/)
 // 						!POINTER IN KEYWORD.
    for (i = 1; i <= 6; ++i) {
 // 						!UNBIAS, COMPUTE SUMS.
-      *(unsigned char *)&ukeyw[i - 1] = (char)(*(unsigned char *)&keyw[i - 1] - 64);
-      if (*(unsigned char *)&inw[j] <= '@') {
+      ukeyw[i - 1] = (char)(keyw[i - 1] - 64);
+      if (inw[j] <= '@') {
          j = 1;
       }
 // 	  UINW(I)=char(ichar(INW(J))-64)
-      uinw[i - 1] = *(unsigned char *)&inw[j] - 64;
-      ukeyws += *(unsigned char *)&ukeyw[i - 1];
+      uinw[i - 1] = inw[j] - 64;
+      ukeyws += ukeyw[i - 1];
       uinws += uinw[i - 1];
       ++j;
 // L100:
@@ -48,12 +48,12 @@ void encryp_(const char *inw, char *outw/*, size_t inw_unit, size_t outw_unit*/)
    usum = uinws % 8 + (ukeyws % 8 << 3);
 // 						!COMPUTE MASK.
    for (i = 1; i <= 6; ++i) {
-      j = (uinw[i - 1] ^ *(unsigned char *)&ukeyw[i - 1] ^ usum) & 31;
+      j = (uinw[i - 1] ^ ukeyw[i - 1] ^ usum) & 31;
       usum = (usum + 1) % 32;
       if (j > 26) {
          j %= 26;
       }
-      *(unsigned char *)&outw[i] = (char)(max(1, j) + 64);
+      outw[i] = (char)(max(1, j) + 64);
 // L200:
    }
 }
@@ -111,7 +111,7 @@ void cpinfo_(int rmk, int st) {
    rspeak_(rmk);
    for (i = 1; i <= 8; ++i) {
       j = dgmoft[i - 1];
-      *(unsigned char *)&dgm[i - 1] = *(unsigned char *)&pict[puzzle_1.cpvec[st + j - 1] + 3];
+      dgm[i - 1] = pict[puzzle_1.cpvec[st + j - 1] + 3];
 // 						!GET PICTURE ELEMENT.
       if (abs(j) == 1 || abs(j) == 8) {
          goto L100;
@@ -123,7 +123,7 @@ void cpinfo_(int rmk, int st) {
 // 						!GET ORTHO DIR.
       l = j - k;
       if (puzzle_1.cpvec[st + k - 1] != 0 && puzzle_1.cpvec[st + l - 1] != 0) {
-         *(unsigned char *)&dgm[i - 1] = *(unsigned char *)&qmk[0];
+         dgm[i - 1] = qmk[0];
       }
    L100:
       ;

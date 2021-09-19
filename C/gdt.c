@@ -697,7 +697,7 @@ L39000:
    for (i = j; i <= i__1; ++i) {
       BegExSF(chan_1.outch, /*640*/"(\002 Switch #\002,i2,\002 = \002,i6)", 0);
       DoFio(1, &i, sizeof i);
-      DoFio(1, &switch__[i - 1], sizeof switch__[0]);
+      DoFio(1, &switch_[i - 1], sizeof switch_[0]);
       EndExSF();
 // L39100:
    }
@@ -711,10 +711,10 @@ L40000:
    }
 // 						!VALID ENTRY?
    BegExSF(chan_1.outch, /*590*/fmt_2, 0);
-   DoFio(1, &switch__[j - 1], sizeof switch__[0]);
+   DoFio(1, &switch_[j - 1], sizeof switch_[0]);
    EndExSF();
    BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
-   DoFio(1, &switch__[j - 1], sizeof switch__[0]);
+   DoFio(1, &switch_[j - 1], sizeof switch_[0]);
    EndInSF();
    goto L2000;
 

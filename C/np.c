@@ -170,7 +170,7 @@ void orphan_(int o1, int o2, int o3, int o4, int o5) {
 
 // THIS ROUTINE DETAILS ON BIT 1 OF PRSFLAG
 
-static Bool lex_(char *inbuf, int inlnt, int * outbuf, int * op, Bool vbflag/*, size_t inbuf_unit*/) {
+static Bool lex_(char *inbuf, int inlnt, int *outbuf, int *op, Bool vbflag/*, size_t inbuf_unit*/) {
 // Initialized data
 
    static const char dlimit[1 * 9] = "A" "Z" "x" "1" "9" "x" "-" "-" "x";
@@ -180,7 +180,7 @@ static Bool lex_(char *inbuf, int inlnt, int * outbuf, int * op, Bool vbflag/*, 
 
 // Local variables
    int i;
-   char j[1];
+   char j;
    int k, j1, j2, cp;
 
 // Parameter adjustments
@@ -211,25 +211,25 @@ L200:
       goto L1000;
    }
 // 						!END OF INPUT?
-   *j = inbuf[prsvec_1.prscon];
+   j = inbuf[prsvec_1.prscon];
 // 						!NO, GET CHARACTER,
    ++prsvec_1.prscon;
 // 						!ADVANCE PTR.
-   if (*j == '.') {
+   if (j == '.') {
       goto L1000;
    }
 // 						!END OF COMMAND?
-   if (*j == ',') {
+   if (j == ',') {
       goto L1000;
    }
 // 						!END OF COMMAND?
-   if (*j == ' ') {
+   if (j == ' ') {
       goto L6000;
    }
 // 						!SPACE?
    for (i = 1; i <= 9; i += 3) {
 // 						!SCH FOR CHAR.
-      if (*j >= dlimit[i - 1] && *j <= dlimit[i]) {
+      if (j >= dlimit[i - 1] && j <= dlimit[i]) {
          goto L4000;
       }
 // L500:
@@ -263,7 +263,7 @@ L1000:
 // LEGITIMATE CHARACTERS: LETTER, DIGIT, OR HYPHEN.
 
 L4000:
-   j1 = *j - dlimit[i + 1];
+   j1 = j - dlimit[i + 1];
 // D	IF(DFLAG) PRINT 20,J,J1,CP
 // D20	FORMAT(' LEX- CHAR= ',A1,2I7)
    if (cp >= 6) {

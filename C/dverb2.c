@@ -87,7 +87,7 @@ void savegm_(void) {
    EndExSU();
    BegExSU(1, 0, 0);
    DoUio(46, flags, sizeof flags[0]);
-   DoUio(22, switch__, sizeof switch__[0]);
+   DoUio(22, switch_, sizeof switch_[0]);
    DoUio(4, vill_1.vprob, sizeof vill_1.vprob[0]);
    DoUio(25, cevent_1.cflag, sizeof cevent_1.cflag[0]);
    DoUio(25, cevent_1.ctick, sizeof cevent_1.ctick[0]);
@@ -185,7 +185,7 @@ void rstrgm_(void) {
    EndInSU();
    BegInSU(1, 0, 0);
    DoUio(46, flags, sizeof flags[0]);
-   DoUio(22, switch__, sizeof switch__[0]);
+   DoUio(22, switch_, sizeof switch_[0]);
    DoUio(4, vill_1.vprob, sizeof vill_1.vprob[0]);
    DoUio(25, cevent_1.cflag, sizeof cevent_1.cflag[0]);
    DoUio(25, cevent_1.ctick, sizeof cevent_1.ctick[0]);

@@ -113,7 +113,7 @@ Bool winnin_(int vl, int hr) {
 
 // DECLARATIONS
 
-int fights_(int h__, Bool flg) {
+int fights_(int h, Bool flg) {
 // Initialized data
 
    const int smin = 2;
@@ -128,9 +128,9 @@ int fights_(int h__, Bool flg) {
 
 // FUNCTIONS AND DATA
 
-   ret_val = smin + ((smax - smin) * advs_1.ascore[(20 + (0 + (h__ - 1 << 2)) - 20) / 4] + state_1.mxscor / 2) / state_1.mxscor;
+   ret_val = smin + ((smax - smin) * advs_1.ascore[(20 + (0 + (h - 1 << 2)) - 20) / 4] + state_1.mxscor / 2) / state_1.mxscor;
    if (flg) {
-      ret_val += advs_1.astren[h__ - 1];
+      ret_val += advs_1.astren[h - 1];
    }
    return ret_val;
 }

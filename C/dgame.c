@@ -108,7 +108,7 @@ L1000:
 // 						!CHARGE FOR MOVES.
    for (i = 1; i <= 4; ++i) {
 // 						!INPUT = ECHO?
-      if (*(unsigned char *)&input_1.inbuf[i - 1] != *(unsigned char *)&secho[i - 1]) {
+      if (input_1.inbuf[i - 1] != secho[i - 1]) {
          goto L1300;
       }
 // L1100:
@@ -120,7 +120,7 @@ L1000:
 
    i__1 = input_1.inlnt;
    for (i = 5; i <= i__1; ++i) {
-      if (*(unsigned char *)&input_1.inbuf[i - 1] != ' ') {
+      if (input_1.inbuf[i - 1] != ' ') {
          goto L1300;
       }
 // L1200:
@@ -234,14 +234,14 @@ L2900:
 // DECLARATIONS
 static Bool xvehic_(int);
 
-static void xendmv_(Bool flag__) {
+static void xendmv_(Bool flag) {
 // Local variables
    Bool f;
 #if 0
    int x; //(@) Not actually used.
 #endif
 
-   if (!(flag__)) {
+   if (!(flag)) {
       rspeak_(341);
    }
 // 						!DEFAULT REMARK.

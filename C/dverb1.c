@@ -103,7 +103,7 @@ L700:
 
 // DECLARATIONS
 
-Bool drop_(/*Bool z__*/) {
+Bool drop_(/*Bool z*/) {
 // System generated locals
    Bool ret_val;
 

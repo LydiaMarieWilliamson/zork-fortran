@@ -22,12 +22,13 @@ Bool sverbs_(int ri) {
       313, 5314, 5319, 324, 325, 883, 884, 120, 120, 0, 0, 0, 0
    };
    static const int answer[28] = {
-      0, 6, 1, 6, 2, 5, 3, 5, 4, 3, 4, 6, 4, 6, 4, 5, 5, 5, 5, 4, 5, 6,
-      6, 10, 7, 4, 7, 6
+      0, 6, 1, 6, 2, 5, 3, 5, 4, 3, 4, 6, 4, 6,
+      4, 5, 5, 5, 5, 4, 5, 6, 6, 10, 7, 4, 7, 6
    };
    static const char ansstr[1 * 78] =
-      "T" "E" "M" "P" "L" "E" "F" "O" "R" "E" "S" "T" "3" "0" "0" "0" "3" "F" "L" "A" "S" "K" "R" "U" "B" "F" "O" "N" "D" "L" "E" "C" "A" "R" "R" "E" "S" "T" "O" "U" "C" "H" "B" "O" "N" "E" "S" "B" "O" "D" "Y" "S" "K" "E" "L" "E" "T" "R" "U" "S" "T" "Y"
-      "K" "N" "I" "F" "E" "N" "O" "N" "E" "N" "O" "W" "H" "E" "R" "\000";
+      "TEMPLE" "FOREST" "30003" "FLASK" "RUB" "FONDLE" "CARRES"
+      "TOUCH" "BONES" "BODY" "SKELET" "RUSTYKNIFE" "NONE" "NOWHER"
+      "\000";
 
 // System generated locals
    int i__1, i__2;
@@ -745,11 +746,11 @@ L26000:
    i__1 = input_1.inlnt;
    for (i = prsvec_1.prscon; i <= i__1; ++i) {
 // 						!PARSE INPUT
-      if (*(unsigned char *)&input_1.inbuf[i - 1] == ',') {
+      if (input_1.inbuf[i - 1] == ',') {
          goto L26300;
       }
 // 						!END OF PHRASE?
-      if (*(unsigned char *)&input_1.inbuf[i - 1] != ' ') {
+      if (input_1.inbuf[i - 1] != ' ') {
          goto L26150;
       }
 // 						!SPACE?
@@ -875,10 +876,10 @@ L27100:
             goto L27300;
          }
 // 						!END OF INPUT? LOSE.
-         if (*(unsigned char *)&input_1.inbuf[i - 1] == ' ') {
+         if (input_1.inbuf[i - 1] == ' ') {
             goto L27150;
          }
-         if (*(unsigned char *)&input_1.inbuf[i - 1] != *(unsigned char *)&ansstr[l - 1]) {
+         if (input_1.inbuf[i - 1] != ansstr[l - 1]) {
             goto L27300;
          }
    // L27200:

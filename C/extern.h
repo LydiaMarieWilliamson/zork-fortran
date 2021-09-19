@@ -108,7 +108,6 @@ int schlst_(int, int, int, int, int, int);
 
 // np3.c:
 Bool synmch_(/*int*/);
-int gwim_(int, int, int);
 
 // np.c:
 void rdline_(char *, int, int, size_t);

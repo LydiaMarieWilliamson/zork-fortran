@@ -133,8 +133,7 @@ L10:
 L100:
    if (ri < 32) {
       ret_val = sobjs_(ri, arg);
-   }
-   if (ri >= 32) {
+   } else {
       ret_val = nobjs_(ri/*, arg*/);
    }
    return ret_val;

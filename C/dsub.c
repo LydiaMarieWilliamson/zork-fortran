@@ -41,7 +41,7 @@ void rspsb2_(int n, int s1, int s2) {
    int i__1;
 
 // Local variables
-   int i, j, x, y, z__;
+   int i, j, x, y, z;
    char b1[74], b2[74], b3[74];
    int k1, k2, x1;
    short jrec, oldrec, newrec;
@@ -54,7 +54,7 @@ void rspsb2_(int n, int s1, int s2) {
    x = n;
 // 						!SET UP WORK VARIABLES.
    y = s1;
-   z__ = s2;
+   z = s2;
    if (x > 0) {
       x = rmsg_1.rtext[x - 1];
    }
@@ -62,13 +62,13 @@ void rspsb2_(int n, int s1, int s2) {
    if (y > 0) {
       y = rmsg_1.rtext[y - 1];
    }
-   if (z__ > 0) {
-      z__ = rmsg_1.rtext[z__ - 1];
+   if (z > 0) {
+      z = rmsg_1.rtext[z - 1];
    }
    x = abs(x);
 // 						!TAKE ABS VALUE.
    y = abs(y);
-   z__ = abs(z__);
+   z = abs(z);
    if (x == 0) {
       return;
    }
@@ -84,7 +84,7 @@ void rspsb2_(int n, int s1, int s2) {
 L100:
    for (i = 1; i <= 74; ++i) {
       x1 = (x & 31) + i;
-      *(unsigned char *)&b1[i - 1] = (char)(*(unsigned char *)&b1[i - 1] ^ x1);
+      b1[i - 1] = (char)(b1[i - 1] ^ x1);
 // L150:
    }
 
@@ -95,7 +95,7 @@ L200:
 // 						!ANY SUBSTITUTABLE?
    for (i = 1; i <= 74; ++i) {
 // 						!YES, LOOK FOR #.
-      if (*(unsigned char *)&b1[i - 1] == '#') {
+      if (b1[i - 1] == '#') {
          goto L1000;
       }
 // L300:
@@ -104,7 +104,7 @@ L200:
 L400:
    for (i = 74; i >= 1; --i) {
 // 						!BACKSCAN FOR BLANKS.
-      if (*(unsigned char *)&b1[i - 1] != ' ') {
+      if (b1[i - 1] != ' ') {
          goto L600;
       }
 // L500:
@@ -147,7 +147,7 @@ L1000:
 // 						!TO
    for (k1 = i + 1; k1 <= 74; ++k1) {
 // 						!COPY REST OF B1.
-      *(unsigned char *)&b2[k2 - 1] = *(unsigned char *)&b1[k1 - 1];
+      b2[k2 - 1] = b1[k1 - 1];
       ++k2;
 // L1100:
    }
@@ -160,7 +160,7 @@ L1000:
    EndInDU();
    for (k1 = 1; k1 <= 74; ++k1) {
       x1 = (y & 31) + k1;
-      *(unsigned char *)&b3[k1 - 1] = (char)(*(unsigned char *)&b3[k1 - 1] ^ x1);
+      b3[k1 - 1] = (char)(b3[k1 - 1] ^ x1);
 // L1150:
    }
 
@@ -168,7 +168,7 @@ L1000:
 
    k2 = 1;
    for (k1 = i; k1 <= 74; ++k1) {
-      *(unsigned char *)&b1[k1 - 1] = *(unsigned char *)&b3[k2 - 1];
+      b1[k1 - 1] = b3[k2 - 1];
       ++k2;
 // L1180:
    }
@@ -177,7 +177,7 @@ L1000:
 
    for (j = 74; j >= 1; --j) {
 // 						!ELIM TRAILING BLANKS.
-      if (*(unsigned char *)&b1[j - 1] != ' ') {
+      if (b1[j - 1] != ' ') {
          goto L1300;
       }
 // L1200:
@@ -190,14 +190,14 @@ L1300:
 // 						!FROM
    for (k2 = j + 1; k2 <= 74; ++k2) {
 // 						!COPY REST OF B1 BACK.
-      *(unsigned char *)&b1[k2 - 1] = *(unsigned char *)&b2[k1 - 1];
+      b1[k2 - 1] = b2[k1 - 1];
       ++k1;
 // L1400:
    }
 
-   y = z__;
+   y = z;
 // 						!SET UP FOR NEXT
-   z__ = 0;
+   z = 0;
 // 						!SUBSTITUTION AND
    goto L200;
 // 						!RECHECK LINE.
@@ -266,10 +266,10 @@ void bug_(int a, int b) {
 
 // 	CALL NEWSTA(OBJECT,STRING,NEWROOM,NEWCON,NEWADV)
 
-void newsta_(int o, int r__, int rm, int cn, int ad) {
+void newsta_(int o, int r, int rm, int cn, int ad) {
 // Local variables
 
-   rspeak_(r__);
+   rspeak_(r);
    objcts_1.oroom[o - 1] = rm;
    objcts_1.ocan[o - 1] = cn;
    objcts_1.oadv[o - 1] = ad;

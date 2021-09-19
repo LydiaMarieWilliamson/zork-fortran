@@ -303,7 +303,7 @@ extern struct findexCB {
 } findex_;
 #define findex_1 findex_
 #define flags ((Bool *)&findex_1)
-#define switch__ ((int *)&findex_1 + 46)
+#define switch_ ((int *)&findex_1 + 46)
 
 // debug.h:
 

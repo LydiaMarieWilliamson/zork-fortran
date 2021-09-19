@@ -137,7 +137,7 @@ L10000:
    i__1 = smax;
    for (i = 1; i <= i__1; ++i) {
 // 						!CLEAR SWITCHES.
-      switch__[i - 1] = 0;
+      switch_[i - 1] = 0;
 // L12:
    }
    findex_1.ormtch = 4;
