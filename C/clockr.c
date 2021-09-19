@@ -12,7 +12,6 @@ static void litint_(int, int *, int, const int *, int);
 
 void cevapp_(int ri) {
 // Initialized data
-
    static const int cndtck[10] = { 50, 20, 10, 5, 0, 156, 156, 156, 157, 0 };
    static const int lmptck[12] = { 50, 30, 20, 10, 4, 0, 154, 154, 154, 154, 155, 0 };
 
@@ -22,8 +21,6 @@ void cevapp_(int ri) {
 // Local variables
    Bool f;
    int i, j, bc, br;
-
-// FUNCTIONS AND DATA
 
 // CEVAPP, PAGE 2
 

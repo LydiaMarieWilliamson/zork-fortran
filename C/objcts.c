@@ -10,7 +10,6 @@
 
 Bool oappli_(int ri, int arg) {
 // Initialized data
-
    const int mxsmp = 99;
 
 // System generated locals
@@ -25,8 +24,6 @@ Bool oappli_(int ri, int arg) {
    int nloc;
 
 // PUZZLE ROOM
-
-// FUNCTIONS AND DATA
 
 // OAPPLI, PAGE 2
 

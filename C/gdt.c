@@ -10,7 +10,6 @@
 
 void gdt_(void) {
 // Initialized data
-
    const int cmdmax = 38;
    static char dbgcmd[2 * 38] = "DR" "DO" "DA" "DC" "DX" "DH" "DL" "DV" "DF" "DS" "AF" "HE" "NR" "NT" "NC" "ND" "RR" "RT" "RC" "RD" "TK" "EX" "AR" "AO" "AA" "AC" "AX" "AV" "D2" "DN" "AN" "DM" "DT" "AH" "DP" "PD" "DZ" "AZ";
    static char ldbgcmd[2 * 38] = "dr" "do" "da" "dc" "dx" "dh" "dl" "dv" "df" "ds" "af" "he" "nr" "nt" "nc" "nd" "rr" "rt" "rc" "rd" "tk" "ex" "ar" "ao" "aa" "ac" "ax" "av" "d2" "dn" "an" "dm" "dt" "ah" "dp" "pd" "dz" "az";
@@ -33,8 +32,6 @@ void gdt_(void) {
    int fmax, smax;
 
 // MISCELLANEOUS VARIABLES
-
-// FUNCTIONS AND DATA
 
 // GDT, PAGE 2
 

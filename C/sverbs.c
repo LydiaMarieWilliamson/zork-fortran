@@ -12,7 +12,6 @@
 
 Bool sverbs_(int ri) {
 // Initialized data
-
    const int mxnop = 39;
    const int mxjoke = 64;
    static const int jokes[25] = {
@@ -43,8 +42,6 @@ Bool sverbs_(int ri) {
    int newk;
 
 // MISCELLANEOUS VARIABLES
-
-// FUNCTIONS AND DATA
 
 // SVERBS, PAGE 2
 

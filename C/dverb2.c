@@ -210,8 +210,6 @@ Bool walk_(/*int x*/) {
 // System generated locals
    Bool ret_val;
 
-// FUNCTIONS AND DATA
-
 // WALK, PAGE 2
 
    ret_val = true;

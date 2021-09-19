@@ -28,8 +28,6 @@ Bool opncls_(int obj, int so, int sc) {
 
 // Local variables
 
-// FUNCTIONS AND DATA
-
    ret_val = true;
 // 						!ASSUME WINS.
    if (prsvec_1.prsa == vindex_1.closew) {

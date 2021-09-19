@@ -13,8 +13,11 @@ static Bool xvehic_(int);
 
 void game_(void) {
 // Initialized data
-
    static const char secho[1 * 4] = "E" "C" "H" "O";
+
+// D	Initialized Data
+// D	DATA GDTSTR/'G','D','T'/
+// GAME, PAGE 2
 
 // System generated locals
    int i__1;
@@ -22,11 +25,6 @@ void game_(void) {
 // Local variables
    Bool f;
    int i, j;
-
-// FUNCTIONS AND DATA
-
-// D	DATA GDTSTR/'G','D','T'/
-// GAME, PAGE 2
 
 // START UP, DESCRIBE CURRENT LOCATION.
 

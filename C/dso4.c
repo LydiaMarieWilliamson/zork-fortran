@@ -107,7 +107,6 @@ Bool winnin_(int vl, int hr) {
 
 int fights_(int h, Bool flg) {
 // Initialized data
-
    const int smin = 2;
    const int smax = 7;
 
@@ -117,8 +116,6 @@ int fights_(int h, Bool flg) {
 // Local variables
 
 // GAME STATE
-
-// FUNCTIONS AND DATA
 
    ret_val = smin + ((smax - smin) * advs_1.ascore[(20 + (0 + (h - 1 << 2)) - 20) / 4] + state_1.mxscor / 2) / state_1.mxscor;
    if (flg) {

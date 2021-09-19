@@ -167,7 +167,6 @@ void orphan_(int o1, int o2, int o3, int o4, int o5) {
 
 static Bool lex_(char *inbuf, int inlnt, int *outbuf, int *op, Bool vbflag/*, size_t inbuf_unit*/) {
 // Initialized data
-
    static const char dlimit[1 * 9] = "A" "Z" "x" "1" "9" "x" "-" "-" "x";
 
 // System generated locals

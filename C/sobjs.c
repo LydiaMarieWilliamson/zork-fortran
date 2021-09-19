@@ -22,8 +22,6 @@ Bool sobjs_(int ri, int arg) {
    int av;
    int odi2, odo2;
 
-// FUNCTIONS AND DATA
-
 // SOBJS, PAGE 2
 
    if (prsvec_1.prso > 220) {

@@ -12,7 +12,8 @@
 
 int sparse_(int * lbuf, int llnt, Bool vbflag) {
 // Initialized data
-
+//   THE FOLLOWING DATA STATEMENT ORIGINALLY WAS:
+// 	DATA R50MIN/1RA/,R50WAL/3RWAL/
    const int r50min = 1600;
    const int r50wal = 36852;
 
@@ -26,12 +27,6 @@ int sparse_(int * lbuf, int llnt, Bool vbflag) {
    int buzlnt, prplnt, dirlnt;
 
 // SPARSE, PAGE 2
-
-// FUNCTIONS AND DATA
-
-//   THE FOLLOWING DATA STATEMENT ORIGINALLY WAS:
-
-// 	DATA R50MIN/1RA/,R50WAL/3RWAL/
 
 // Parameter adjustments
    --lbuf;

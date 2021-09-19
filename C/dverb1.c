@@ -18,8 +18,6 @@ Bool take_(Bool flg) {
 // Local variables
    int x, oa;
 
-// FUNCTIONS AND DATA
-
 // TAKE, PAGE 2
 
    ret_val = false;
@@ -198,8 +196,6 @@ Bool put_(/*Bool flg*/) {
 
 // MISCELLANEOUS VARIABLES
 
-// FUNCTIONS AND DATA
-
 // PUT, PAGE 2
 
    ret_val = false;
@@ -335,8 +331,6 @@ void valuac_(int v) {
    int i;
    Bool f1;
    int savep, saveh;
-
-// FUNCTIONS AND DATA
 
 // VALUAC, PAGE 2
 

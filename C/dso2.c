@@ -93,7 +93,6 @@ L800:
 
 void score_(Bool flg) {
 // Initialized data
-
    static const int rank[10] = { 20, 19, 18, 16, 12, 8, 4, 2, 1, 0 };
    static const int erank[5] = { 20, 15, 10, 5, 0 };
 
@@ -102,8 +101,6 @@ void score_(Bool flg) {
 
 // Local variables
    int i, as;
-
-// FUNCTIONS AND DATA
 
 // SCORE, PAGE 2
 

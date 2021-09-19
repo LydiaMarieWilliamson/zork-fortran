@@ -133,8 +133,6 @@ void thiefd_(void) {
    Bool once;
    int rhere;
 
-// FUNCTIONS AND DATA
-
 // THIEFD, PAGE 2
 
 // D	DFLAG=IAND(PRSFLG, 32768).NE.0

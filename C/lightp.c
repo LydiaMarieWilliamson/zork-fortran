@@ -16,8 +16,6 @@ Bool lightp_(int obj) {
    int flobts;
    int i;
 
-// FUNCTIONS AND DATA
-
 // LIGHTP, PAGE 2
 
    ret_val = true;

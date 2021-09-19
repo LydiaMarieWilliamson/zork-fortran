@@ -10,7 +10,6 @@
 
 Bool vappli_(int ri) {
 // Initialized data
-
    const int mxnop = 39;
    const int mxsmp = 99;
 
@@ -24,8 +23,6 @@ Bool vappli_(int ri) {
    int i, j,/* x,*/ av;
    int rmk;
    int odi2, odo2;
-
-// FUNCTIONS AND DATA
 
 // VAPPLI, PAGE 2
 

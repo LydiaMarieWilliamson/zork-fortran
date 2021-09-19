@@ -21,8 +21,6 @@ Bool rappl1_(int ri) {
 
 // MISCELLANEOUS VARIABLES
 
-// FUNCTIONS AND DATA
-
 // RAPPL1, PAGE 2
 
    ret_val = true;

@@ -12,7 +12,6 @@ static Bool infest_(int);
 
 void fightd_(void) {
 // Initialized data
-
    const int rout = 1;
 
 // System generated locals
@@ -24,8 +23,6 @@ void fightd_(void) {
    int obj;
    int res;
    int out;
-
-// FUNCTIONS AND DATA
 
 // FIGHTD, PAGE 2
 
@@ -173,7 +170,6 @@ L2600:
 
 int blow_(int h, int v, int rmk, Bool hflg, int out) {
 // Initialized data
-
    const int rmiss = 0;
    const int rout = 1;
    const int rkill = 2;
@@ -212,8 +208,6 @@ int blow_(int h, int v, int rmk, Bool hflg, int out) {
 // 	LOGICAL PRSWON
 
 // MISCELLANEOUS VARIABLES
-
-// FUNCTIONS AND DATA
 
 // BLOW, PAGE 3
 

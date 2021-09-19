@@ -10,7 +10,6 @@
 
 void encryp_(const char *inw, char *outw/*, size_t inw_unit, size_t outw_unit*/) {
 // Initialized data
-
    static const char keyw[1 * 6] = "E" "C" "O" "R" "M" "S";
 
    int i, j, uinw[6], usum;
@@ -87,7 +86,6 @@ void cpgoto_(int st) {
 
 void cpinfo_(int rmk, int st) {
 // Initialized data
-
    static const int dgmoft[8] = { -9, -8, -7, -1, 1, 7, 8, 9 };
    static const char pict[1 * 5] = "S" "S" "S" " " "M";
    static const char qmk[1] = "?";
