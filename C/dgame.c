@@ -232,7 +232,6 @@ L2900:
 // XENDMV-	EXECUTE END OF MOVE FUNCTIONS.
 
 // DECLARATIONS
-static Bool xvehic_(int);
 
 static void xendmv_(Bool flag) {
 // Local variables

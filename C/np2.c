@@ -155,7 +155,6 @@ L1500:
 // SCHLST--	SEARCH FOR OBJECT
 
 // DECLARATIONS
-static Bool thisit_(int, int, int, int);
 
 int schlst_(int oidx, int aidx, int rm, int cn, int ad, int spcobj) {
 // System generated locals
