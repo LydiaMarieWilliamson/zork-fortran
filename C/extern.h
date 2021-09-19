@@ -66,7 +66,7 @@ void cpinfo(int, int);
 void rspeak(int);
 void rspsub(int, int);
 void rspsb2(int, int, int);
-Bool objact(/*int*/);
+Bool objact(void/*int*/);
 void bug(int, int);
 void newsta(int, int, int, int, int);
 Bool qhere(int, int);
@@ -79,14 +79,14 @@ Bool rappli(int);
 
 // dverb1.c:
 Bool take(Bool);
-Bool drop(/*Bool*/);
-Bool put(/*Bool*/);
+Bool drop(void/*Bool*/);
+Bool put(void/*Bool*/);
 void valuac(int);
 
 // dverb2.c:
 void savegm(void);
 void rstrgm(void);
-Bool walk(/*int*/);
+Bool walk(void/*int*/);
 
 #if 0
 // gdt.c:
@@ -107,7 +107,7 @@ int getobj(int, int, int);
 int schlst(int, int, int, int, int, int);
 
 // np3.c:
-Bool synmch(/*int*/);
+Bool synmch(void/*int*/);
 
 // np.c:
 void rdline(char *, int, int, size_t);
@@ -137,9 +137,9 @@ Bool sverbs(int);
 
 // verbs.c:
 Bool vappli(int);
-Bool clockd(/*int*/);
+Bool clockd(void/*int*/);
 
 // villns.c:
-Bool trollp(/*int*/);
-Bool cyclop(/*int*/);
-Bool thiefp(/*int*/);
+Bool trollp(void/*int*/);
+Bool cyclop(void/*int*/);
+Bool thiefp(void/*int*/);
