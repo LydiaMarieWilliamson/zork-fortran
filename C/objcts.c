@@ -1,12 +1,12 @@
-#include "F2C.h"
-#include "common.h"
-#include "extern.h"
-
 // OAPPLI- OBJECT SPECIAL ACTION ROUTINES
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
 // ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 // WRITTEN BY R. M. SUPNIK
+
+#include "F2C.h"
+#include "extern.h"
+#include "common.h"
 
 // DECLARATIONS
 
@@ -51,7 +51,7 @@ L5:
       odi2 = objcts_1.odesc2[prsvec_1.prsi - 1];
    }
    av = advs_1.avehic[play_1.winner - 1];
-   flobts = oflags_1.flambt + oflags_1.litebt + oflags_1.onbt;
+   flobts = FlamO + LiteO + OnO;
    ret_val = true;
 
    switch (ri - mxsmp) {
@@ -188,7 +188,7 @@ L5100:
       goto L5200;
    }
 // 						!INSIDE ANYTHING?
-   if ((objcts_1.oflag2[objcts_1.ocan[prsvec_1.prso - 1] - 1] & oflags_1.openbt) != 0) {
+   if ((objcts_1.oflag2[objcts_1.ocan[prsvec_1.prso - 1] - 1] & OpenO) != 0) {
       goto L5200;
    }
 // 						!YES, OPEN?
@@ -222,7 +222,7 @@ L5400:
    return ret_val;
 
 L5500:
-   if ((objcts_1.oflag2[oindex_1.bottl - 1] & oflags_1.openbt) != 0) {
+   if ((objcts_1.oflag2[oindex_1.bottl - 1] & OpenO) != 0) {
       goto L5550;
    }
 // 						!BOTTLE OPEN?
@@ -520,7 +520,7 @@ L39000:
    return ret_val;
 
 L39200:
-   objcts_1.oflag1[oindex_1.pot - 1] |= oflags_1.visibt;
+   objcts_1.oflag1[oindex_1.pot - 1] |= VisiO;
    findex_1.rainbf = !findex_1.rainbf;
 // 						!COMPLEMENT RAINBOW.
    i = 245;
@@ -592,7 +592,7 @@ L47000:
    newsta_(oindex_1.robot, 0, rindex_1.caged, 0, 0);
 // 						!MOVE ROBOT.
    advs_1.aroom[aindex_1.arobot - 1] = rindex_1.caged;
-   objcts_1.oflag1[oindex_1.robot - 1] |= oflags_1.ndscbt;
+   objcts_1.oflag1[oindex_1.robot - 1] |= NDscO;
    cevent_1.ctick[cindex_1.cevsph - 1] = 10;
 // 						!GET OUT IN 10 OR ELSE.
    return ret_val;
@@ -600,7 +600,7 @@ L47000:
 L47200:
    newsta_(oindex_1.spher, 0, 0, 0, 0);
 // 						!YOURE DEAD.
-   rooms_1.rflag[rindex_1.cager - 1] |= rflag_1.rmung;
+   rooms_1.rflag[rindex_1.cager - 1] |= MungR;
    rrand[rindex_1.cager - 1] = 147;
    jigsup_(148);
 // 						!MUNG PLAYER.
@@ -671,9 +671,9 @@ L48300:
 // 						!IRON BOX IN CAROUSEL?
    rspeak_(269);
 // 						!YES, THUMP.
-   objcts_1.oflag1[oindex_1.irbox - 1] ^= oflags_1.visibt;
+   objcts_1.oflag1[oindex_1.irbox - 1] ^= VisiO;
    if (findex_1.caroff) {
-      rooms_1.rflag[rindex_1.carou - 1] &= ~rflag_1.rseen;
+      rooms_1.rflag[rindex_1.carou - 1] &= ~SeenR;
    }
    return ret_val;
 
@@ -690,7 +690,7 @@ L49000:
    newsta_(oindex_1.flask, 270, 0, 0, 0);
 // 						!KILL FLASK.
 L49100:
-   rooms_1.rflag[play_1.here - 1] |= rflag_1.rmung;
+   rooms_1.rflag[play_1.here - 1] |= MungR;
    rrand[play_1.here - 1] = 271;
    jigsup_(272);
 // 						!POISONED.
@@ -742,7 +742,7 @@ L51000:
    }
    newsta_(oindex_1.ecake, 273, 0, 0, 0);
 // 						!VANISH CAKE.
-   objcts_1.oflag1[oindex_1.robot - 1] &= ~oflags_1.visibt;
+   objcts_1.oflag1[oindex_1.robot - 1] &= ~VisiO;
    ret_val = moveto_(rindex_1.alism, play_1.winner);
 // 						!MOVE TO ALICE SMALL.
    iz = 64;
@@ -781,7 +781,7 @@ L52200:
    }
    newsta_(oindex_1.pool, 280, 0, 0, 0);
 // 						!VANISH POOL.
-   objcts_1.oflag1[oindex_1.saffr - 1] |= oflags_1.visibt;
+   objcts_1.oflag1[oindex_1.saffr - 1] |= VisiO;
    return ret_val;
 
 L52300:
@@ -793,7 +793,7 @@ L52300:
    }
    newsta_(oindex_1.orice, 0, 0, 0, 0);
 // 						!VANISH ORANGE ICE.
-   rooms_1.rflag[play_1.here - 1] |= rflag_1.rmung;
+   rooms_1.rflag[play_1.here - 1] |= MungR;
    rrand[play_1.here - 1] = 281;
    jigsup_(282);
 // 						!VANISH ADVENTURER.
@@ -809,7 +809,7 @@ L52400:
       goto L52500;
    }
 // 						!IN REDUCED ROOM?
-   objcts_1.oflag1[oindex_1.robot - 1] |= oflags_1.visibt;
+   objcts_1.oflag1[oindex_1.robot - 1] |= VisiO;
    io = play_1.here;
    ret_val = moveto_(rindex_1.alice, play_1.winner);
    iz = 0;
@@ -1100,11 +1100,11 @@ L61000:
    }
 // 						!OPEN?
    i = 793;
-   if ((objcts_1.oflag2[oindex_1.tomb - 1] & oflags_1.openbt) != 0) {
+   if ((objcts_1.oflag2[oindex_1.tomb - 1] & OpenO) != 0) {
       i = 794;
    }
    rspeak_(i);
-   objcts_1.oflag2[oindex_1.tomb - 1] |= oflags_1.openbt;
+   objcts_1.oflag2[oindex_1.tomb - 1] |= OpenO;
    return ret_val;
 
 L61100:
@@ -1113,11 +1113,11 @@ L61100:
    }
 // 						!CLOSE?
    i = 795;
-   if ((objcts_1.oflag2[oindex_1.tomb - 1] & oflags_1.openbt) != 0) {
+   if ((objcts_1.oflag2[oindex_1.tomb - 1] & OpenO) != 0) {
       i = 796;
    }
    rspeak_(i);
-   objcts_1.oflag2[oindex_1.tomb - 1] &= ~oflags_1.openbt;
+   objcts_1.oflag2[oindex_1.tomb - 1] &= ~OpenO;
    if (play_1.here == rindex_1.crypt) {
       cevent_1.ctick[cindex_1.cevste - 1] = 3;
    }

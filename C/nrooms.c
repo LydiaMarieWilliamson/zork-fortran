@@ -1,12 +1,12 @@
-#include "F2C.h"
-#include "common.h"
-#include "extern.h"
-
 // RAPPL2- SPECIAL PURPOSE ROOM ROUTINES, PART 2
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
 // ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 // WRITTEN BY R. M. SUPNIK
+
+#include "F2C.h"
+#include "extern.h"
+#include "common.h"
 
 // DECLARATIONS
 static void lookto_(int, int, int, int, int);
@@ -213,7 +213,7 @@ L48000:
 // 						!LOOK?
    i = 46;
 // 						!CRYPT IS OPEN/CLOSED.
-   if ((objcts_1.oflag2[oindex_1.tomb - 1] & oflags_1.openbt) != 0) {
+   if ((objcts_1.oflag2[oindex_1.tomb - 1] & OpenO) != 0) {
       i = 12;
    }
    rspsub_(705, i);
@@ -230,7 +230,7 @@ L49000:
 // 						!DESCRIBE.
    i = 46;
 // 						!ODOOR IS OPEN/CLOSED.
-   if ((objcts_1.oflag2[oindex_1.odoor - 1] & oflags_1.openbt) != 0) {
+   if ((objcts_1.oflag2[oindex_1.odoor - 1] & OpenO) != 0) {
       i = 12;
    }
    if (findex_1.lcell == 4) {
@@ -258,7 +258,7 @@ L50100:
 // 						!LOOK?
    i = 46;
 // 						!QDOOR IS OPEN/CLOSED.
-   if ((objcts_1.oflag2[oindex_1.qdoor - 1] & oflags_1.openbt) != 0) {
+   if ((objcts_1.oflag2[oindex_1.qdoor - 1] & OpenO) != 0) {
       i = 12;
    }
    rspsub_(708, i);
@@ -286,7 +286,7 @@ L51000:
 // 						!OPEN IF INQ STARTED.
    j = 46;
 // 						!QDOOR IS OPEN/CLOSED.
-   if ((objcts_1.oflag2[oindex_1.qdoor - 1] & oflags_1.openbt) != 0) {
+   if ((objcts_1.oflag2[oindex_1.qdoor - 1] & OpenO) != 0) {
       j = 12;
    }
    rspsb2_(710, i, j);
@@ -300,7 +300,7 @@ L52000:
    }
 // 						!LOOK?
    i = 46;
-   if ((objcts_1.oflag2[oindex_1.cdoor - 1] & oflags_1.openbt) != 0) {
+   if ((objcts_1.oflag2[oindex_1.cdoor - 1] & OpenO) != 0) {
       i = 12;
    }
 // 						!CDOOR IS OPEN/CLOSED.
@@ -325,13 +325,13 @@ L54000:
 // 						!LOOK?
    i = 721;
 // 						!CDOOR IS OPEN/CLOSED.
-   if ((objcts_1.oflag2[oindex_1.cdoor - 1] & oflags_1.openbt) != 0) {
+   if ((objcts_1.oflag2[oindex_1.cdoor - 1] & OpenO) != 0) {
       i = 722;
    }
    rspeak_(i);
    i = 46;
 // 						!ODOOR IS OPEN/CLOSED.
-   if ((objcts_1.oflag2[oindex_1.odoor - 1] & oflags_1.openbt) != 0) {
+   if ((objcts_1.oflag2[oindex_1.odoor - 1] & OpenO) != 0) {
       i = 12;
    }
    if (findex_1.lcell == 4) {
@@ -358,7 +358,7 @@ L56000:
 // 						!LOOK?
    i = 46;
 // 						!ODOOR IS OPEN/CLOSED.
-   if ((objcts_1.oflag2[oindex_1.odoor - 1] & oflags_1.openbt) != 0) {
+   if ((objcts_1.oflag2[oindex_1.odoor - 1] & OpenO) != 0) {
       i = 12;
    }
    rspsub_(725, i);
@@ -386,7 +386,7 @@ L58000:
 // 						!LOOK?
    i = 46;
 // 						!TOMB IS OPEN/CLOSED.
-   if ((objcts_1.oflag2[oindex_1.tomb - 1] & oflags_1.openbt) != 0) {
+   if ((objcts_1.oflag2[oindex_1.tomb - 1] & OpenO) != 0) {
       i = 12;
    }
    rspsub_(792, i);
@@ -422,7 +422,7 @@ L60000:
 // 						!STARTED PUZZLE?
    rspeak_(868);
 // 						!NO, DESCRIBE.
-   if ((objcts_1.oflag2[oindex_1.warni - 1] & oflags_1.tchbt) != 0) {
+   if ((objcts_1.oflag2[oindex_1.warni - 1] & TChO) != 0) {
       rspeak_(869);
    }
    return ret_val;

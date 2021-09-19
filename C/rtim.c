@@ -1,6 +1,6 @@
 #include "F2C.h"
-#include "common.h"
 #include "extern.h"
+#include "common.h"
 
 #if 1
 //(@) Cheat, cheat! We make a ‟fallback” using a hack from the other repository.

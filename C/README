@@ -53,3 +53,4 @@ History
 		∙	uninitialized ‟static” locals to ‟auto”
 		∙	initialized ‟static” scalar locals to ‟auto const”
 		∙	initialized ‟static” array locals to ‟static const”
+2021/09/18	Lifting constant common blocks to enum types (round 1 of 2).

@@ -1,17 +1,13 @@
 #include "F2C.h"
-#include "common.h"
 #include "extern.h"
+#include "common.h"
 
 // parser.h:
 // common /synflg/
-struct synflgCB synflg_ = (struct synflgCB){
-   sdir: 16384, sind: 8192, sstd: 4096, sflip: 2048, sdriv: 1024, svmask: 511
-};
+// enum synflagCB; // Declared and defined in common.h.
 
 // common /objflg/
-struct objflgCB objflg_ = (struct objflgCB){
-   vabit: 16384, vrbit: 8192, vtbit: 4096, vcbit: 2048, vebit: 1024, vfbit: 512, vpmask: 511
-};
+// enum objflagCB; // Declared and defined in common.h.
 
 // screen.h:
 // common /screen/
@@ -56,10 +52,7 @@ struct hyperCB hyper_ = (struct hyperCB){
 
 // rflag.h:
 // common /rflag/
-struct rflagCB rflag_ = (struct rflagCB){
-   rseen: 32768, rlight: 16384, rland: 8192, rwater: 4096, rair: 2048, rsacrd: 1024,
-   rfill: 512, rmung: 256, rbuck: 128, rhouse: 64, rnwall: 32, rend: 16
-};
+// enum rflagCB; // Declared and defined in common.h.
 
 // rindex.h:
 // common /rindex/
@@ -92,12 +85,7 @@ struct xparsCB xpars_ = (struct xparsCB){
 
 // oflags.h:
 // common /oflags/
-struct oflagsCB oflags_ = (struct oflagsCB){
-   visibt: 32768, readbt: 16384, takebt: 8192, doorbt: 4096, tranbt: 2048, foodbt: 1024, ndscbt: 512, drnkbt: 256,
-   contbt: 128, litebt: 64, victbt: 32, burnbt: 16, flambt: 8, toolbt: 4, turnbt: 2, onbt: 1,
-   findbt: 32768, slepbt: 16384, scrdbt: 8192, tiebt: 4096, clmbbt: 2048, actrbt: 1024, weapbt: 512, fitebt: 256,
-   villbt: 128, stagbt: 64, trybt: 32, nochbt: 16, openbt: 8, tchbt: 4, vehbt: 2, schbt: 1
-};
+// enum oflagsCB; // Declared and defined in common.h.
 
 // oindex.h:
 // common /oindex/

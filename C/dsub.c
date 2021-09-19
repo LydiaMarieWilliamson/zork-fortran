@@ -1,12 +1,12 @@
-#include "F2C.h"
-#include "common.h"
-#include "extern.h"
-
 // RESIDENT SUBROUTINES FOR DUNGEON
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
 // ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 // WRITTEN BY R. M. SUPNIK
+
+#include "F2C.h"
+#include "extern.h"
+#include "common.h"
 
 // RSPEAK-- OUTPUT RANDOM MESSAGE ROUTINE
 
@@ -390,7 +390,7 @@ L100:
    for (j = 1; j <= i__1; ++j) {
 // 						!TURN OFF FIGHTING.
       if (qhere_(j, play_1.here)) {
-         objcts_1.oflag2[j - 1] &= ~oflags_1.fitebt;
+         objcts_1.oflag2[j - 1] &= ~FiteO;
       }
 // L50:
    }
@@ -405,8 +405,8 @@ L100:
    if (objcts_1.oadv[oindex_1.coffi - 1] == play_1.winner) {
       newsta_(oindex_1.coffi, 0, rindex_1.egypt, 0, 0);
    }
-   objcts_1.oflag2[oindex_1.door - 1] &= ~oflags_1.tchbt;
-   objcts_1.oflag1[oindex_1.robot - 1] = (objcts_1.oflag1[oindex_1.robot - 1] | oflags_1.visibt) & ~oflags_1.ndscbt;
+   objcts_1.oflag2[oindex_1.door - 1] &= ~TChO;
+   objcts_1.oflag1[oindex_1.robot - 1] = (objcts_1.oflag1[oindex_1.robot - 1] | VisiO) & ~NDscO;
    if (objcts_1.oroom[oindex_1.lamp - 1] != 0 || objcts_1.oadv[oindex_1.lamp - 1] == play_1.winner) {
       newsta_(oindex_1.lamp, 0, rindex_1.lroom, 0, 0);
    }
@@ -438,7 +438,7 @@ L100:
 L400:
    i = rooms_1.rlnt + 1;
 // 						!NOW MOVE VALUABLES.
-   nonofl = rflag_1.rair + rflag_1.rwater + rflag_1.rsacrd + rflag_1.rend;
+   nonofl = AirR + WaterR + SacrdR + EndR;
 // 						!DONT MOVE HERE.
    i__1 = objcts_1.olnt;
    for (j = 1; j <= i__1; ++j) {
@@ -600,7 +600,7 @@ L300:
 // 						!OBJ ONLY?
    i = rooms_1.rdesc2 - play_1.here;
 // 						!ASSUME SHORT DESC.
-   if (full == 0 && (findex_1.superf || (rooms_1.rflag[play_1.here - 1] & rflag_1.rseen) != 0 && (findex_1.brieff || prob_(80, 80)))) {
+   if (full == 0 && (findex_1.superf || (rooms_1.rflag[play_1.here - 1] & SeenR) != 0 && (findex_1.brieff || prob_(80, 80)))) {
       goto L400;
    }
    i = rooms_1.rdesc1[play_1.here - 1];
@@ -632,7 +632,7 @@ L600:
       L__1 = full != 0;
       princr_(L__1, play_1.here);
    }
-   rooms_1.rflag[play_1.here - 1] |= rflag_1.rseen;
+   rooms_1.rflag[play_1.here - 1] |= SeenR;
    if (full != 0 || ra == 0) {
       return ret_val;
    }

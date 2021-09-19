@@ -1,12 +1,12 @@
-#include "F2C.h"
-#include "common.h"
-#include "extern.h"
-
 // CEVAPP- CLOCK EVENT APPLICABLES
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
 // ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 // WRITTEN BY R. M. SUPNIK
+
+#include "F2C.h"
+#include "extern.h"
+#include "common.h"
 
 // DECLARATIONS
 static void litint_(int, int *, int, const int *, int);
@@ -115,7 +115,7 @@ L2000:
 // 						!IF NOT FULL, EXIT.
    cevent_1.ctick[cindex_1.cevmnt - 1] = 0;
 // 						!FULL, DISABLE CLOCK.
-   rooms_1.rflag[rindex_1.maint - 1] |= rflag_1.rmung;
+   rooms_1.rflag[rindex_1.maint - 1] |= MungR;
    rrand[rindex_1.maint - 1] = 80;
 // 						!SAY IT IS FULL OF WATER.
    if (play_1.here == rindex_1.maint) {
@@ -136,7 +136,7 @@ L3000:
 L4000:
    rspeak_(153);
 // 						!MATCH IS OUT.
-   objcts_1.oflag1[oindex_1.match - 1] &= ~oflags_1.onbt;
+   objcts_1.oflag1[oindex_1.match - 1] &= ~OnO;
    return;
 
 // CEV5--	CANDLE.  DESCRIBE GROWING DIMNESS.
@@ -162,7 +162,7 @@ L6000:
       goto L6700;
    }
 // 						!ON LEDGE?
-   if ((objcts_1.oflag2[oindex_1.recep - 1] & oflags_1.openbt) != 0 && findex_1.binff != 0) {
+   if ((objcts_1.oflag2[oindex_1.recep - 1] & OpenO) != 0 && findex_1.binff != 0) {
       goto L6500;
    }
 
@@ -319,7 +319,7 @@ L6750:
 // AT BOTTOM, GO UP IF INFLATED, DO NOTHING IF DEFLATED.
 
 L6800:
-   if (findex_1.binff == 0 || !((objcts_1.oflag2[oindex_1.recep - 1] & oflags_1.openbt) != 0)) {
+   if (findex_1.binff == 0 || !((objcts_1.oflag2[oindex_1.recep - 1] & OpenO) != 0)) {
       return;
    }
    state_1.bloc = rindex_1.vair1;
@@ -350,7 +350,7 @@ L7000:
    i__1 = objcts_1.olnt;
    for (i = 1; i <= i__1; ++i) {
 // 						!FIND BURNING OBJECT
-      if (oindex_1.recep == objcts_1.ocan[i - 1] && (objcts_1.oflag1[i - 1] & oflags_1.flambt) != 0) {
+      if (oindex_1.recep == objcts_1.ocan[i - 1] && (objcts_1.oflag1[i - 1] & FlamO) != 0) {
          goto L7200;
       }
 // L7100:
@@ -391,7 +391,7 @@ L8000:
    }
 // 						!BRICK ELSEWHERE?
 
-   rooms_1.rflag[play_1.here - 1] |= rflag_1.rmung;
+   rooms_1.rflag[play_1.here - 1] |= MungR;
    rrand[play_1.here - 1] = 114;
 // 						!MUNG ROOM.
    jigsup_(150);
@@ -415,7 +415,7 @@ L8100:
 // 						!WAS BRICK IN SAFE?
    newsta_(oindex_1.sslot, 0, 0, 0, 0);
 // 						!KILL SLOT.
-   objcts_1.oflag2[oindex_1.safe - 1] |= oflags_1.openbt;
+   objcts_1.oflag2[oindex_1.safe - 1] |= OpenO;
    findex_1.safef = true;
 // 						!INDICATE SAFE BLOWN.
    return;
@@ -424,7 +424,7 @@ L8200:
    i__1 = objcts_1.olnt;
    for (i = 1; i <= i__1; ++i) {
 // 						!BLEW WRONG ROOM.
-      if (qhere_(i, br) && (objcts_1.oflag1[i - 1] & oflags_1.takebt) != 0) {
+      if (qhere_(i, br) && (objcts_1.oflag1[i - 1] & TakeO) != 0) {
          newsta_(i, 0, 0, 0, 0);
       }
 // L8250:
@@ -455,7 +455,7 @@ L8500:
 // CEV9--	LEDGE MUNGE.
 
 L9000:
-   rooms_1.rflag[rindex_1.ledg4 - 1] |= rflag_1.rmung;
+   rooms_1.rflag[rindex_1.ledg4 - 1] |= MungR;
    rrand[rindex_1.ledg4 - 1] = 109;
    if (play_1.here == rindex_1.ledg4) {
       goto L9100;
@@ -501,7 +501,7 @@ L9300:
 // CEV10--	SAFE MUNG.
 
 L10000:
-   rooms_1.rflag[state_1.mungrm - 1] |= rflag_1.rmung;
+   rooms_1.rflag[state_1.mungrm - 1] |= MungR;
    rrand[state_1.mungrm - 1] = 114;
    if (play_1.here == state_1.mungrm) {
       goto L10100;
@@ -518,7 +518,7 @@ L10000:
 L10100:
    i = 116;
 // 						!HE'S DEAD,
-   if ((rooms_1.rflag[play_1.here - 1] & rflag_1.rhouse) != 0) {
+   if ((rooms_1.rflag[play_1.here - 1] & HouseR) != 0) {
       i = 117;
    }
    jigsup_(i);
@@ -560,7 +560,7 @@ L13000:
 // CEV14--	SPHERE.  IF EXPIRES, HE'S TRAPPED.
 
 L14000:
-   rooms_1.rflag[rindex_1.cager - 1] |= rflag_1.rmung;
+   rooms_1.rflag[rindex_1.cager - 1] |= MungR;
    rrand[rindex_1.cager - 1] = 147;
    jigsup_(148);
 // 						!MUNG PLAYER.
@@ -657,13 +657,13 @@ L20200:
    newsta_(oindex_1.sword, 0, 0, 0, aindex_1.player);
 // 						!GIVE HIM SWORD.
 
-   objcts_1.oflag1[oindex_1.lamp - 1] = (objcts_1.oflag1[oindex_1.lamp - 1] | oflags_1.litebt) & ~oflags_1.onbt;
-   objcts_1.oflag2[oindex_1.lamp - 1] |= oflags_1.tchbt;
+   objcts_1.oflag1[oindex_1.lamp - 1] = (objcts_1.oflag1[oindex_1.lamp - 1] | LiteO) & ~OnO;
+   objcts_1.oflag2[oindex_1.lamp - 1] |= TChO;
    cevent_1.cflag[cindex_1.cevlnt - 1] = false;
 // 						!LAMP IS GOOD AS NEW.
    cevent_1.ctick[cindex_1.cevlnt - 1] = 350;
    findex_1.orlamp = 0;
-   objcts_1.oflag2[oindex_1.sword - 1] |= oflags_1.tchbt;
+   objcts_1.oflag2[oindex_1.sword - 1] |= TChO;
    hack_1.swdact = true;
    hack_1.swdsta = 0;
 
@@ -785,7 +785,7 @@ static void litint_(int obj, int * ctr, int cev, const int * ticks, int tickln) 
       goto L100;
    }
 // 						!EXPIRED?
-   objcts_1.oflag1[obj - 1] &= ~(oflags_1.litebt + oflags_1.flambt + oflags_1.onbt);
+   objcts_1.oflag1[obj - 1] &= ~(LiteO + FlamO + OnO);
    if (objcts_1.oroom[obj - 1] == play_1.here || objcts_1.oadv[obj - 1] == play_1.winner) {
       rspsub_(293, objcts_1.odesc2[obj - 1]);
    }

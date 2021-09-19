@@ -1,7 +1,3 @@
-#include "F2C.h"
-#include "common.h"
-#include "extern.h"
-
 // SOBJS-	SIMPLE OBJECTS PROCESSOR
 // 	OBJECTS IN THIS MODULE CANNOT CALL RMINFO, JIGSUP,
 // 	MAJOR VERBS, OR OTHER NON-RESIDENT SUBROUTINES
@@ -9,6 +5,10 @@
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
 // ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 // WRITTEN BY R. M. SUPNIK
+
+#include "F2C.h"
+#include "extern.h"
+#include "common.h"
 
 // DECLARATIONS
 
@@ -193,8 +193,8 @@ L6100:
 // 						!ALREADY TIED?
    findex_1.domef = true;
 // 						!NO, TIE IT.
-   objcts_1.oflag1[oindex_1.rope - 1] |= oflags_1.ndscbt;
-   objcts_1.oflag2[oindex_1.rope - 1] |= oflags_1.clmbbt;
+   objcts_1.oflag1[oindex_1.rope - 1] |= NDscO;
+   objcts_1.oflag2[oindex_1.rope - 1] |= ClmbO;
    newsta_(oindex_1.rope, 137, rindex_1.dome, 0, 0);
    return ret_val;
 
@@ -219,8 +219,8 @@ L6200:
 L6250:
    findex_1.domef = false;
 // 						!YES, UNTIE IT.
-   objcts_1.oflag1[oindex_1.rope - 1] &= ~oflags_1.ndscbt;
-   objcts_1.oflag2[oindex_1.rope - 1] &= ~oflags_1.clmbbt;
+   objcts_1.oflag1[oindex_1.rope - 1] &= ~NDscO;
+   objcts_1.oflag2[oindex_1.rope - 1] &= ~ClmbO;
    rspeak_(139);
    return ret_val;
 
@@ -299,11 +299,11 @@ L9200:
    i__1 = findex_1.orrug + 145;
    rspeak_(i__1);
    findex_1.orrug = 1;
-   objcts_1.oflag1[oindex_1.door - 1] |= oflags_1.visibt;
+   objcts_1.oflag1[oindex_1.door - 1] |= VisiO;
    return ret_val;
 
 L9300:
-   if (prsvec_1.prsa != vindex_1.lookuw || findex_1.orrug != 0 || (objcts_1.oflag2[oindex_1.door - 1] & oflags_1.openbt) != 0) {
+   if (prsvec_1.prsa != vindex_1.lookuw || findex_1.orrug != 0 || (objcts_1.oflag2[oindex_1.door - 1] & OpenO) != 0) {
       goto L10;
    }
    rspeak_(345);
@@ -471,7 +471,7 @@ L21000:
 // O13--	CHALICE
 
 L23000:
-   if (prsvec_1.prsa != vindex_1.takew || objcts_1.ocan[prsvec_1.prso - 1] != 0 || objcts_1.oroom[prsvec_1.prso - 1] != rindex_1.treas || objcts_1.oroom[oindex_1.thief - 1] != rindex_1.treas || (objcts_1.oflag2[oindex_1.thief - 1] & oflags_1.fitebt) == 0 || !hack_1.thfact) {
+   if (prsvec_1.prsa != vindex_1.takew || objcts_1.ocan[prsvec_1.prso - 1] != 0 || objcts_1.oroom[prsvec_1.prso - 1] != rindex_1.treas || objcts_1.oroom[oindex_1.thief - 1] != rindex_1.treas || (objcts_1.oflag2[oindex_1.thief - 1] & FiteO) == 0 || !hack_1.thfact) {
       goto L10;
    }
    rspeak_(204);
@@ -521,9 +521,9 @@ L27100:
    findex_1.lwtidf = true;
 // 						!NO, EMPTY DAM.
    rspeak_(211);
-   objcts_1.oflag2[oindex_1.coffi - 1] &= ~oflags_1.scrdbt;
-   objcts_1.oflag1[oindex_1.trunk - 1] |= oflags_1.visibt;
-   rooms_1.rflag[rindex_1.reser - 1] = (rooms_1.rflag[rindex_1.reser - 1] | rflag_1.rland) & ~(rflag_1.rwater + rflag_1.rseen);
+   objcts_1.oflag2[oindex_1.coffi - 1] &= ~ScrDO;
+   objcts_1.oflag1[oindex_1.trunk - 1] |= VisiO;
+   rooms_1.rflag[rindex_1.reser - 1] = (rooms_1.rflag[rindex_1.reser - 1] | LandR) & ~(WaterR + SeenR);
    return ret_val;
 
 L27200:
@@ -531,9 +531,9 @@ L27200:
 // 						!YES, FILL DAM.
    rspeak_(212);
    if (qhere_(oindex_1.trunk, rindex_1.reser)) {
-      objcts_1.oflag1[oindex_1.trunk - 1] &= ~oflags_1.visibt;
+      objcts_1.oflag1[oindex_1.trunk - 1] &= ~VisiO;
    }
-   rooms_1.rflag[rindex_1.reser - 1] = (rooms_1.rflag[rindex_1.reser - 1] | rflag_1.rwater) & ~rflag_1.rland;
+   rooms_1.rflag[rindex_1.reser - 1] = (rooms_1.rflag[rindex_1.reser - 1] | WaterR) & ~LandR;
    return ret_val;
 
 L27500:
@@ -564,9 +564,9 @@ L28200:
 // 						!VIEW FROM BELOW.
    ret_val = opncls_(oindex_1.grate, i, 885);
 // 						!OPEN/CLOSE.
-   rooms_1.rflag[rindex_1.mgrat - 1] &= ~rflag_1.rlight;
-   if ((objcts_1.oflag2[oindex_1.grate - 1] & oflags_1.openbt) != 0) {
-      rooms_1.rflag[rindex_1.mgrat - 1] |= rflag_1.rlight;
+   rooms_1.rflag[rindex_1.mgrat - 1] &= ~LightR;
+   if ((objcts_1.oflag2[oindex_1.grate - 1] & OpenO) != 0) {
+      rooms_1.rflag[rindex_1.mgrat - 1] |= LightR;
    }
    if (!lit_(play_1.here)) {
       rspeak_(406);
@@ -590,7 +590,7 @@ L29100:
       goto L10;
    }
 // 						!FROM CELLAR?
-   if (prsvec_1.prsa != vindex_1.openw || (objcts_1.oflag2[oindex_1.door - 1] & oflags_1.openbt) != 0) {
+   if (prsvec_1.prsa != vindex_1.openw || (objcts_1.oflag2[oindex_1.door - 1] & OpenO) != 0) {
       goto L29200;
    }
    rspeak_(220);
@@ -636,7 +636,7 @@ L31000:
       goto L31500;
    }
 // 						!WITH SCREWDRIVER?
-   if ((objcts_1.oflag2[oindex_1.machi - 1] & oflags_1.openbt) != 0) {
+   if ((objcts_1.oflag2[oindex_1.machi - 1] & OpenO) != 0) {
       goto L31600;
    }
 // 						!LID UP?
@@ -722,9 +722,9 @@ L34000:
 // 						!NOT A BUTTON.
 
 L34100:
-   rooms_1.rflag[play_1.here - 1] ^= rflag_1.rlight;
+   rooms_1.rflag[play_1.here - 1] ^= LightR;
    i = 230;
-   if ((rooms_1.rflag[play_1.here - 1] & rflag_1.rlight) != 0) {
+   if ((rooms_1.rflag[play_1.here - 1] & LightR) != 0) {
       i = 231;
    }
    rspeak_(i);

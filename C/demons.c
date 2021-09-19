@@ -1,12 +1,12 @@
-#include "F2C.h"
-#include "common.h"
-#include "extern.h"
-
 // FIGHTD- INTERMOVE FIGHT DEMON
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
 // ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 // WRITTEN BY R. M. SUPNIK
+
+#include "F2C.h"
+#include "extern.h"
+#include "common.h"
 
 // DECLARATIONS
 
@@ -72,7 +72,7 @@ void fightd_(void) {
 // 						!NOTHING ELSE.
 
    L2050:
-      if ((objcts_1.oflag2[obj - 1] & oflags_1.fitebt) == 0) {
+      if ((objcts_1.oflag2[obj - 1] & FiteO) == 0) {
          goto L2100;
       }
       vill_1.vopps[i - 1] = obj;
@@ -90,13 +90,13 @@ void fightd_(void) {
          goto L2400;
       }
 // 						!OF FIGHTING.
-      objcts_1.oflag2[obj - 1] |= oflags_1.fitebt;
+      objcts_1.oflag2[obj - 1] |= FiteO;
       vill_1.vopps[i - 1] = obj;
 // 						!SET UP OPP.
       goto L2400;
 
    L2200:
-      if ((objcts_1.oflag2[obj - 1] & oflags_1.fitebt) == 0 || ra == 0) {
+      if ((objcts_1.oflag2[obj - 1] & FiteO) == 0 || ra == 0) {
          goto L2300;
       }
       prsvec_1.prsa = vindex_1.fightw;
@@ -108,7 +108,7 @@ void fightd_(void) {
       }
 // 						!TURN OFF ENGROSSED.
       advs_1.aflag[aindex_1.player - 1] &= ~aflags_1.astag;
-      objcts_1.oflag2[obj - 1] &= ~(oflags_1.stagbt + oflags_1.fitebt);
+      objcts_1.oflag2[obj - 1] &= ~(StagO + FiteO);
       if (objcts_1.ocapac[obj - 1] >= 0 || ra == 0) {
          goto L2400;
       }
@@ -241,7 +241,7 @@ int blow_(int h__, int v, int rmk, Bool hflg, int out) {
 
    pblose = 10;
 // 						!BAD LK PROB.
-   objcts_1.oflag2[v - 1] |= oflags_1.fitebt;
+   objcts_1.oflag2[v - 1] |= FiteO;
    if ((advs_1.aflag[h__ - 1] & aflags_1.astag) == 0) {
       goto L100;
    }
@@ -262,7 +262,7 @@ L100:
    i__1 = objcts_1.olnt;
    for (i = 1; i <= i__1; ++i) {
 // 						!SEARCH VILLAIN.
-      if (objcts_1.ocan[i - 1] == v && (objcts_1.oflag2[i - 1] & oflags_1.weapbt) != 0) {
+      if (objcts_1.ocan[i - 1] == v && (objcts_1.oflag2[i - 1] & WeapO) != 0) {
          dweap = i;
       }
 // L200:
@@ -290,10 +290,10 @@ L1000:
    pblose = 50;
 // 						!BAD LK PROB.
    advs_1.aflag[h__ - 1] &= ~aflags_1.astag;
-   if ((objcts_1.oflag2[v - 1] & oflags_1.stagbt) == 0) {
+   if ((objcts_1.oflag2[v - 1] & StagO) == 0) {
       goto L1200;
    }
-   objcts_1.oflag2[v - 1] &= ~oflags_1.stagbt;
+   objcts_1.oflag2[v - 1] &= ~StagO;
    rspsub_(594, dv);
 // 						!DESCRIBE.
    return ret_val;
@@ -308,7 +308,7 @@ L1200:
    }
 // 						!DONT ALLOW DEAD DEF.
    od = fights_(h__, false);
-   dweap = (i__1 = fwim_(0, oflags_1.weapbt, 0, 0, h__, true), abs(i__1));
+   dweap = (i__1 = fwim_(0, WeapO, 0, 0, h__, true), abs(i__1));
 // 						!FIND A WEAPON.
 // BLOW, PAGE 4
 
@@ -467,7 +467,7 @@ L3500:
    goto L4000;
 
 L3550:
-   objcts_1.oflag2[v - 1] |= oflags_1.stagbt;
+   objcts_1.oflag2[v - 1] |= StagO;
    goto L4000;
 
 L3600:
@@ -478,7 +478,7 @@ L3600:
       goto L4000;
    }
 // 						!IF HERO, DONE.
-   dweap = (i__1 = fwim_(0, oflags_1.weapbt, 0, 0, h__, true), abs(i__1));
+   dweap = (i__1 = fwim_(0, WeapO, 0, 0, h__, true), abs(i__1));
 // 						!GET NEW.
    if (dweap != 0) {
       rspsub_(605, objcts_1.odesc2[dweap - 1]);
@@ -498,7 +498,7 @@ L4000:
       goto L4100;
    }
 // 						!DEAD?
-   objcts_1.oflag2[v - 1] &= ~oflags_1.fitebt;
+   objcts_1.oflag2[v - 1] &= ~FiteO;
    rspsub_(572, dv);
 // 						!HE DIES.
    newsta_(v, 0, 0, 0, 0);

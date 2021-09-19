@@ -1,12 +1,12 @@
-#include "F2C.h"
-#include "common.h"
-#include "extern.h"
-
 // GHERE--	IS GLOBAL ACTUALLY IN THIS ROOM?
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
 // ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 // WRITTEN BY R. M. SUPNIK
+
+#include "F2C.h"
+#include "extern.h"
+#include "common.h"
 
 // DECLARATIONS
 
@@ -106,7 +106,7 @@ L5000:
 // 6000--	GLOBAL WATER
 
 L6000:
-   ret_val = (rooms_1.rflag[rm - 1] & rflag_1.rwater + rflag_1.rfill) != 0;
+   ret_val = (rooms_1.rflag[rm - 1] & WaterR + FillR) != 0;
    return ret_val;
 
 // 7000--	GLOBAL GUARDIANS

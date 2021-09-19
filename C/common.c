@@ -4,12 +4,11 @@
 #if 0
 // Already defined in blkdata.c:
 //	buzvoc, prpvoc, dirvoc, adjvoc, vrbvoc, objvoc
-#endif
-
-#if 0
 // Already defined in dmain.c:
-//	synflg, objflg, screen, puzzle, vers, bats, hyper, rflag, rindex,
-//	xpars, xsrch, oflags, oindex, cindex, aflags, aindex, vindex
+//	screen, puzzle, vers, bats, hyper, rindex,
+//	xpars, xsrch, oindex, cindex, aflags, aindex, vindex
+// Already redefined and declared as enum types in common.h:
+//	rflag, oflags, synflg, objflg
 #endif
 
 // Unlisted:

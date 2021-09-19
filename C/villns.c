@@ -1,12 +1,12 @@
-#include "F2C.h"
-#include "common.h"
-#include "extern.h"
-
 // TROLLP-	TROLL FUNCTION
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
 // ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 // WRITTEN BY R. M. SUPNIK
+
+#include "F2C.h"
+#include "extern.h"
+#include "common.h"
 
 // DECLARATIONS
 
@@ -61,7 +61,7 @@ L1200:
 // 						!OUT?
    findex_1.trollf = true;
 // 						!PERMIT EXITS.
-   objcts_1.oflag1[oindex_1.axe - 1] &= ~oflags_1.visibt;
+   objcts_1.oflag1[oindex_1.axe - 1] &= ~VisiO;
    objcts_1.odesc1[oindex_1.troll - 1] = 435;
 // 						!TROLL OUT.
    return ret_val;
@@ -73,7 +73,7 @@ L1300:
 // 						!WAKE UP?
    findex_1.trollf = false;
 // 						!FORBID EXITS.
-   objcts_1.oflag1[oindex_1.axe - 1] |= oflags_1.visibt;
+   objcts_1.oflag1[oindex_1.axe - 1] |= VisiO;
    objcts_1.odesc1[oindex_1.troll - 1] = 436;
 // 						!TROLL IN.
    if (qhere_(oindex_1.troll, play_1.here)) {
@@ -100,7 +100,7 @@ L1500:
 // 						!TROLL OUT?
    objcts_1.ocapac[oindex_1.troll - 1] = -objcts_1.ocapac[oindex_1.troll - 1];
 // 						!YES, WAKE HIM.
-   objcts_1.oflag1[oindex_1.axe - 1] |= oflags_1.visibt;
+   objcts_1.oflag1[oindex_1.axe - 1] |= VisiO;
    findex_1.trollf = false;
    objcts_1.odesc1[oindex_1.troll - 1] = 436;
    rspeak_(437);
@@ -146,7 +146,7 @@ L1700:
 L1900:
    rspeak_(443);
 // 						!KNIFE, THROWS IT BACK
-   objcts_1.oflag2[oindex_1.troll - 1] |= oflags_1.fitebt;
+   objcts_1.oflag2[oindex_1.troll - 1] |= FiteO;
    return ret_val;
 
 L2000:
@@ -191,7 +191,7 @@ Bool cyclop_(/*int arg*/) {
    rspeak_(187);
 // 						!DESCRIBE.
    findex_1.rvcyc = abs(findex_1.rvcyc);
-   objcts_1.oflag2[oindex_1.cyclo - 1] = (objcts_1.oflag2[oindex_1.cyclo - 1] | oflags_1.fitebt) & ~oflags_1.slepbt;
+   objcts_1.oflag2[oindex_1.cyclo - 1] = (objcts_1.oflag2[oindex_1.cyclo - 1] | FiteO) & ~SlepO;
    return ret_val;
 
 L100:
@@ -237,7 +237,7 @@ L300:
 // 						!DRINKS AND
    findex_1.cyclof = true;
 // 						!FALLS ASLEEP.
-   objcts_1.oflag2[oindex_1.cyclo - 1] = (objcts_1.oflag2[oindex_1.cyclo - 1] | oflags_1.slepbt) & ~oflags_1.fitebt;
+   objcts_1.oflag2[oindex_1.cyclo - 1] = (objcts_1.oflag2[oindex_1.cyclo - 1] | SlepO) & ~FiteO;
    return ret_val;
 
 L350:
@@ -349,7 +349,7 @@ L100:
 // 						!DEAD?
    hack_1.thfact = false;
 // 						!DISABLE DEMON.
-   objcts_1.oflag1[oindex_1.chali - 1] |= oflags_1.takebt;
+   objcts_1.oflag1[oindex_1.chali - 1] |= TakeO;
    j = 0;
    i__1 = objcts_1.olnt;
    for (i = 1; i <= i__1; ++i) {
@@ -369,7 +369,7 @@ L100:
       if (i == oindex_1.chali || i == oindex_1.thief || play_1.here != rindex_1.treas || !qhere_(i, play_1.here)) {
          goto L135;
       }
-      objcts_1.oflag1[i - 1] |= oflags_1.visibt;
+      objcts_1.oflag1[i - 1] |= VisiO;
       rspsub_(j, objcts_1.odesc2[i - 1]);
 // 						!DESCRIBE.
       j = 502;
@@ -408,8 +408,8 @@ L300:
 // 						!DISABLE DEMON.
    objcts_1.odesc1[oindex_1.thief - 1] = 504;
 // 						!CHANGE DESCRIPTION.
-   objcts_1.oflag1[oindex_1.still - 1] &= ~oflags_1.visibt;
-   objcts_1.oflag1[oindex_1.chali - 1] |= oflags_1.takebt;
+   objcts_1.oflag1[oindex_1.still - 1] &= ~VisiO;
+   objcts_1.oflag1[oindex_1.chali - 1] |= TakeO;
    return ret_val;
 
 L400:
@@ -425,9 +425,9 @@ L400:
 // 						!ENABLE DEMON.
    objcts_1.odesc1[oindex_1.thief - 1] = 503;
 // 						!CHANGE DESCRIPTION.
-   objcts_1.oflag1[oindex_1.still - 1] |= oflags_1.visibt;
+   objcts_1.oflag1[oindex_1.still - 1] |= VisiO;
    if (play_1.here == rindex_1.treas && qhere_(oindex_1.chali, play_1.here)) {
-      objcts_1.oflag1[oindex_1.chali - 1] &= ~oflags_1.takebt;
+      objcts_1.oflag1[oindex_1.chali - 1] &= ~TakeO;
    }
    return ret_val;
 
@@ -441,7 +441,7 @@ L500:
    return ret_val;
 
 L600:
-   if (prsvec_1.prsa != vindex_1.throww || prsvec_1.prso != oindex_1.knife || (objcts_1.oflag2[oindex_1.thief - 1] & oflags_1.fitebt) != 0) {
+   if (prsvec_1.prsa != vindex_1.throww || prsvec_1.prso != oindex_1.knife || (objcts_1.oflag2[oindex_1.thief - 1] & FiteO) != 0) {
       goto L700;
    }
    if (prob_(10, 10)) {
@@ -450,7 +450,7 @@ L600:
 // 						!THREW KNIFE, 10%?
    rspeak_(507);
 // 						!NO, JUST MAKES
-   objcts_1.oflag2[oindex_1.thief - 1] |= oflags_1.fitebt;
+   objcts_1.oflag2[oindex_1.thief - 1] |= FiteO;
    return ret_val;
 
 L650:
@@ -481,7 +481,7 @@ L700:
 // 						!WAKE HIM UP.
    objcts_1.ocapac[oindex_1.thief - 1] = -objcts_1.ocapac[oindex_1.thief - 1];
    hack_1.thfact = true;
-   objcts_1.oflag1[oindex_1.still - 1] |= oflags_1.visibt;
+   objcts_1.oflag1[oindex_1.still - 1] |= VisiO;
    objcts_1.odesc1[oindex_1.thief - 1] = 503;
    rspeak_(510);
 

@@ -1,12 +1,12 @@
-#include "F2C.h"
-#include "common.h"
-#include "extern.h"
-
 // PRINCR- PRINT CONTENTS OF ROOM
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
 // ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 // WRITTEN BY R. M. SUPNIK
+
+#include "F2C.h"
+#include "extern.h"
+#include "common.h"
 
 // DECLARATIONS
 
@@ -24,10 +24,10 @@ void princr_(Bool full, int rm) {
    i__1 = objcts_1.olnt;
    for (i = 1; i <= i__1; ++i) {
 // 						!LOOP ON OBJECTS
-      if (!qhere_(i, rm) || (objcts_1.oflag1[i - 1] & oflags_1.visibt + oflags_1.ndscbt) != oflags_1.visibt || i == advs_1.avehic[play_1.winner - 1]) {
+      if (!qhere_(i, rm) || (objcts_1.oflag1[i - 1] & VisiO + NDscO) != VisiO || i == advs_1.avehic[play_1.winner - 1]) {
          goto L500;
       }
-      if (!(full) && (findex_1.superf || findex_1.brieff && (rooms_1.rflag[play_1.here - 1] & rflag_1.rseen) != 0)) {
+      if (!(full) && (findex_1.superf || findex_1.brieff && (rooms_1.rflag[play_1.here - 1] & SeenR) != 0)) {
          goto L200;
       }
 
@@ -35,7 +35,7 @@ void princr_(Bool full, int rm) {
 
       k = objcts_1.odesco[i - 1];
 // 						!GET UNTOUCHED.
-      if (k == 0 || (objcts_1.oflag2[i - 1] & oflags_1.tchbt) != 0) {
+      if (k == 0 || (objcts_1.oflag2[i - 1] & TChO) != 0) {
          k = objcts_1.odesc1[i - 1];
       }
       rspeak_(k);
@@ -57,14 +57,14 @@ void princr_(Bool full, int rm) {
    i__1 = objcts_1.olnt;
    for (i = 1; i <= i__1; ++i) {
 // 						!LOOP ON OBJECTS.
-      if (!qhere_(i, rm) || (objcts_1.oflag1[i - 1] & oflags_1.visibt + oflags_1.ndscbt) != oflags_1.visibt) {
+      if (!qhere_(i, rm) || (objcts_1.oflag1[i - 1] & VisiO + NDscO) != VisiO) {
          goto L1000;
       }
-      if ((objcts_1.oflag2[i - 1] & oflags_1.actrbt) != 0) {
+      if ((objcts_1.oflag2[i - 1] & ActrO) != 0) {
          i__2 = oactor_(i);
          invent_(i__2);
       }
-      if ((objcts_1.oflag1[i - 1] & oflags_1.tranbt) == 0 && (objcts_1.oflag2[i - 1] & oflags_1.openbt) == 0 || qempty_(i)) {
+      if ((objcts_1.oflag1[i - 1] & TranO) == 0 && (objcts_1.oflag2[i - 1] & OpenO) == 0 || qempty_(i)) {
          goto L1000;
       }
 
@@ -111,7 +111,7 @@ void invent_(int adv) {
    i__1 = objcts_1.olnt;
    for (j = 1; j <= i__1; ++j) {
 // 						!LOOP
-      if (objcts_1.oadv[j - 1] != adv || (objcts_1.oflag1[j - 1] & oflags_1.visibt) == 0) {
+      if (objcts_1.oadv[j - 1] != adv || (objcts_1.oflag1[j - 1] & VisiO) == 0) {
          goto L10;
       }
       rspsub_(i, objcts_1.odesc2[advs_1.aobj[adv - 1] - 1]);
@@ -135,7 +135,7 @@ L25:
    i__1 = objcts_1.olnt;
    for (j = 1; j <= i__1; ++j) {
 // 						!LOOP.
-      if (objcts_1.oadv[j - 1] != adv || (objcts_1.oflag1[j - 1] & oflags_1.visibt) == 0 || (objcts_1.oflag1[j - 1] & oflags_1.tranbt) == 0 && (objcts_1.oflag2[j - 1] & oflags_1.openbt) == 0) {
+      if (objcts_1.oadv[j - 1] != adv || (objcts_1.oflag1[j - 1] & VisiO) == 0 || (objcts_1.oflag1[j - 1] & TranO) == 0 && (objcts_1.oflag2[j - 1] & OpenO) == 0) {
          goto L100;
       }
       if (!qempty_(j)) {

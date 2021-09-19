@@ -1,12 +1,12 @@
-#include "F2C.h"
-#include "common.h"
-#include "extern.h"
-
 // ENCRYP--	ENCRYPT PASSWORD
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
 // ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 // WRITTEN BY R. M. SUPNIK
+
+#include "F2C.h"
+#include "extern.h"
+#include "common.h"
 
 // DECLARATIONS
 
@@ -71,11 +71,11 @@ void cpgoto_(int st) {
 
 // CPGOTO, PAGE 2
 
-   rooms_1.rflag[rindex_1.cpuzz - 1] &= ~rflag_1.rseen;
+   rooms_1.rflag[rindex_1.cpuzz - 1] &= ~SeenR;
    i__1 = objcts_1.olnt;
    for (i = 1; i <= i__1; ++i) {
 // 						!RELOCATE OBJECTS.
-      if (objcts_1.oroom[i - 1] == rindex_1.cpuzz && (objcts_1.oflag2[i - 1] & oflags_1.actrbt + oflags_1.villbt) == 0) {
+      if (objcts_1.oroom[i - 1] == rindex_1.cpuzz && (objcts_1.oflag2[i - 1] & ActrO + VillO) == 0) {
          i__2 = findex_1.cphere * hyper_1.hfactr;
          newsta_(i, 0, i__2, 0, 0);
       }

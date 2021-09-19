@@ -1,7 +1,3 @@
-#include "F2C.h"
-#include "common.h"
-#include "extern.h"
-
 // NOBJS-	NEW OBJECTS PROCESSOR
 // 	OBJECTS IN THIS MODULE CANNOT CALL RMINFO, JIGSUP,
 // 	MAJOR VERBS, OR OTHER NON-RESIDENT SUBROUTINES
@@ -9,6 +5,10 @@
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
 // ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 // WRITTEN BY R. M. SUPNIK
+
+#include "F2C.h"
+#include "extern.h"
+#include "common.h"
 
 // DECLARATIONS
 static Bool mirpan_(int, Bool);
@@ -224,7 +224,7 @@ L4000:
    if (prsvec_1.prsa != vindex_1.openw || prsvec_1.prso != oindex_1.egg) {
       goto L4500;
    }
-   if (!((objcts_1.oflag2[oindex_1.egg - 1] & oflags_1.openbt) != 0)) {
+   if (!((objcts_1.oflag2[oindex_1.egg - 1] & OpenO) != 0)) {
       goto L4100;
    }
 // 						!OPEN ALREADY?
@@ -253,15 +253,15 @@ L4200:
 L4300:
    i = 652;
 // 						!MUNG MESSAGE.
-   if ((objcts_1.oflag1[prsvec_1.prsi - 1] & oflags_1.toolbt) != 0 || (objcts_1.oflag2[prsvec_1.prsi - 1] & oflags_1.weapbt) != 0) {
+   if ((objcts_1.oflag1[prsvec_1.prsi - 1] & ToolO) != 0 || (objcts_1.oflag2[prsvec_1.prsi - 1] & WeapO) != 0) {
       goto L4600;
    }
    i = 653;
 // 						!NOVELTY 1.
-   if ((objcts_1.oflag2[prsvec_1.prso - 1] & oflags_1.fitebt) != 0) {
+   if ((objcts_1.oflag2[prsvec_1.prso - 1] & FiteO) != 0) {
       i = 654;
    }
-   objcts_1.oflag2[prsvec_1.prso - 1] |= oflags_1.fitebt;
+   objcts_1.oflag2[prsvec_1.prso - 1] |= FiteO;
    rspsub_(i, odi2);
    return ret_val;
 
@@ -362,7 +362,7 @@ L7000:
    return ret_val;
 
 L7100:
-   if ((rooms_1.rflag[play_1.here - 1] & rflag_1.rnwall) == 0) {
+   if ((rooms_1.rflag[play_1.here - 1] & NWallR) == 0) {
       goto L10;
    }
    rspeak_(662);
@@ -463,7 +463,7 @@ L9400:
 // 						!DESCRIBE.
    princr_(true, play_1.here);
 // 						!PRINT ROOMS CONTENTS.
-   rooms_1.rflag[play_1.here - 1] |= rflag_1.rseen;
+   rooms_1.rflag[play_1.here - 1] |= SeenR;
    return ret_val;
 
 L9500:
@@ -643,7 +643,7 @@ L13100:
       goto L10;
    }
 // 						!OPEN/CLOSE?
-   if (play_1.here == rindex_1.ncell && (objcts_1.oflag2[oindex_1.odoor - 1] & oflags_1.openbt) != 0) {
+   if (play_1.here == rindex_1.ncell && (objcts_1.oflag2[oindex_1.odoor - 1] & OpenO) != 0) {
       rspeak_(766);
    }
    return ret_val;
@@ -716,7 +716,7 @@ L17000:
 // 						!PUSH?
    rspeak_(809);
 // 						!CLICK.
-   if ((objcts_1.oflag2[oindex_1.cdoor - 1] & oflags_1.openbt) != 0) {
+   if ((objcts_1.oflag2[oindex_1.cdoor - 1] & OpenO) != 0) {
       rspeak_(810);
    }
 // 						!CLOSE CELL DOOR.
@@ -724,7 +724,7 @@ L17000:
    i__1 = objcts_1.olnt;
    for (i = 1; i <= i__1; ++i) {
 // 						!RELOCATE OLD TO HYPER.
-      if (objcts_1.oroom[i - 1] == rindex_1.cell && (objcts_1.oflag1[i - 1] & oflags_1.doorbt) == 0) {
+      if (objcts_1.oroom[i - 1] == rindex_1.cell && (objcts_1.oflag1[i - 1] & DoorO) == 0) {
          i__2 = findex_1.lcell * hyper_1.hfactr;
          newsta_(i, 0, i__2, 0, 0);
       }
@@ -734,11 +734,11 @@ L17000:
 // L17100:
    }
 
-   objcts_1.oflag2[oindex_1.odoor - 1] &= ~oflags_1.openbt;
-   objcts_1.oflag2[oindex_1.cdoor - 1] &= ~oflags_1.openbt;
-   objcts_1.oflag1[oindex_1.odoor - 1] &= ~oflags_1.visibt;
+   objcts_1.oflag2[oindex_1.odoor - 1] &= ~OpenO;
+   objcts_1.oflag2[oindex_1.cdoor - 1] &= ~OpenO;
+   objcts_1.oflag1[oindex_1.odoor - 1] &= ~VisiO;
    if (findex_1.pnumb == 4) {
-      objcts_1.oflag1[oindex_1.odoor - 1] |= oflags_1.visibt;
+      objcts_1.oflag1[oindex_1.odoor - 1] |= VisiO;
    }
 
    if (advs_1.aroom[aindex_1.player - 1] != rindex_1.cell) {
@@ -749,7 +749,7 @@ L17000:
       goto L17200;
    }
 // 						!IN RIGHT CELL?
-   objcts_1.oflag1[oindex_1.odoor - 1] |= oflags_1.visibt;
+   objcts_1.oflag1[oindex_1.odoor - 1] |= VisiO;
    f = moveto_(rindex_1.ncell, aindex_1.player);
 // 						!YES, MOVETO NCELL.
    goto L17400;
@@ -841,11 +841,11 @@ L21000:
 // 						!KILL CARD.
    findex_1.cpoutf = true;
 // 						!OPEN DOOR.
-   objcts_1.oflag1[oindex_1.stldr - 1] &= ~oflags_1.visibt;
+   objcts_1.oflag1[oindex_1.stldr - 1] &= ~VisiO;
    return ret_val;
 
 L21100:
-   if ((objcts_1.oflag1[prsvec_1.prso - 1] & oflags_1.victbt) == 0 && (objcts_1.oflag2[prsvec_1.prso - 1] & oflags_1.villbt) == 0) {
+   if ((objcts_1.oflag1[prsvec_1.prso - 1] & VictO) == 0 && (objcts_1.oflag2[prsvec_1.prso - 1] & VillO) == 0) {
       goto L21200;
    }
    i__1 = rnd_(5) + 552;

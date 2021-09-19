@@ -1,12 +1,12 @@
-#include "F2C.h"
-#include "common.h"
-#include "extern.h"
-
 // ROBADV-- STEAL WINNER'S VALUABLES
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
 // ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 // WRITTEN BY R. M. SUPNIK
+
+#include "F2C.h"
+#include "extern.h"
+#include "common.h"
 
 // DECLARATIONS
 
@@ -21,7 +21,7 @@ int robadv_(int adv, int nr, int nc, int na) {
 // 						!COUNT OBJECTS
    i__1 = objcts_1.olnt;
    for (i = 1; i <= i__1; ++i) {
-      if (objcts_1.oadv[i - 1] != adv || objcts_1.otval[i - 1] <= 0 || (objcts_1.oflag2[i - 1] & oflags_1.scrdbt) != 0) {
+      if (objcts_1.oadv[i - 1] != adv || objcts_1.otval[i - 1] <= 0 || (objcts_1.oflag2[i - 1] & ScrDO) != 0) {
          goto L100;
       }
       newsta_(i, 0, nr, nc, na);
@@ -52,15 +52,15 @@ int robrm_(int rm, int pr, int nr, int nc, int na) {
       if (!qhere_(i, rm)) {
          goto L100;
       }
-      if (objcts_1.otval[i - 1] <= 0 || (objcts_1.oflag2[i - 1] & oflags_1.scrdbt) != 0 || (objcts_1.oflag1[i - 1] & oflags_1.visibt) == 0 || !prob_(pr, pr)) {
+      if (objcts_1.otval[i - 1] <= 0 || (objcts_1.oflag2[i - 1] & ScrDO) != 0 || (objcts_1.oflag1[i - 1] & VisiO) == 0 || !prob_(pr, pr)) {
          goto L50;
       }
       newsta_(i, 0, nr, nc, na);
       ++ret_val;
-      objcts_1.oflag2[i - 1] |= oflags_1.tchbt;
+      objcts_1.oflag2[i - 1] |= TChO;
       goto L100;
    L50:
-      if ((objcts_1.oflag2[i - 1] & oflags_1.actrbt) != 0) {
+      if ((objcts_1.oflag2[i - 1] & ActrO) != 0) {
          i__2 = oactor_(i);
          ret_val += robadv_(i__2, nr, nc, na);
       }

@@ -1,12 +1,12 @@
-#include "F2C.h"
-#include "common.h"
-#include "extern.h"
-
 // SAVE- SAVE GAME STATE
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
 // ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 // WRITTEN BY R. M. SUPNIK
+
+#include "F2C.h"
+#include "extern.h"
+#include "common.h"
 
 // DECLARATIONS
 
@@ -262,7 +262,7 @@ L300:
       goto L400;
    }
 // 						!DOOR... RETURNED ROOM?
-   if ((objcts_1.oflag2[curxt_1.xobj - 1] & oflags_1.openbt) != 0) {
+   if ((objcts_1.oflag2[curxt_1.xobj - 1] & OpenO) != 0) {
       goto L400;
    }
 // 						!NO, DOOR OPEN?
@@ -300,7 +300,7 @@ L525:
       curxt_1.xstrng = 680;
    }
 // 						!IF DOWN, CANT.
-   if ((rooms_1.rflag[play_1.here - 1] & rflag_1.rnwall) != 0) {
+   if ((rooms_1.rflag[play_1.here - 1] & NWallR) != 0) {
       curxt_1.xstrng = 524;
    }
    rspeak_(curxt_1.xstrng);
@@ -347,7 +347,7 @@ L800:
       goto L900;
    }
 // 						!DOOR... RETURNED ROOM?
-   if ((objcts_1.oflag2[curxt_1.xobj - 1] & oflags_1.openbt) != 0) {
+   if ((objcts_1.oflag2[curxt_1.xobj - 1] & OpenO) != 0) {
       goto L900;
    }
 // 						!NO, DOOR OPEN?
@@ -444,8 +444,7 @@ L2500:
 L5000:
    i = xpars_1.xelnt[xpars_1.xcond - 1] * rnd_(8);
 // 						!CHOOSE RANDOM EXIT.
-   curxt_1.xroom1 = exits_1.travel[rooms_1.rexit[play_1.here - 1] + i - 1]
-      & xpars_1.xrmask;
+   curxt_1.xroom1 = exits_1.travel[rooms_1.rexit[play_1.here - 1] + i - 1] & xpars_1.xrmask;
    ret_val = curxt_1.xroom1;
 // 						!RETURN EXIT.
    return ret_val;
@@ -477,8 +476,8 @@ L3000:
 // 						!NO LAMP?
    findex_1.litldf = true;
 // 						!HE CAN DO IT.
-   if ((objcts_1.oflag2[oindex_1.door - 1] & oflags_1.openbt) == 0) {
-      objcts_1.oflag2[oindex_1.door - 1] &= ~oflags_1.tchbt;
+   if ((objcts_1.oflag2[oindex_1.door - 1] & OpenO) == 0) {
+      objcts_1.oflag2[oindex_1.door - 1] &= ~TChO;
    }
    return ret_val;
 

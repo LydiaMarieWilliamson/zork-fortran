@@ -1,12 +1,12 @@
-#include "F2C.h"
-#include "common.h"
-#include "extern.h"
-
 // FINDXT- FIND EXIT FROM ROOM
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
 // ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 // WRITTEN BY R. M. SUPNIK
+
+#include "F2C.h"
+#include "extern.h"
+#include "common.h"
 
 // DECLARATIONS
 
@@ -87,11 +87,11 @@ int fwim_(int f1, int f2, int rm, int con, int adv, Bool nocare) {
 
    // OBJECT IS ON LIST... IS IT A MATCH?
 
-      if ((objcts_1.oflag1[i - 1] & oflags_1.visibt) == 0) {
+      if ((objcts_1.oflag1[i - 1] & VisiO) == 0) {
          goto L1000;
       }
 // 	  IF(IAND(not(NOCARE),(IAND(OFLAG1(I),TAKEBT).EQ.0)) .OR.
-      if (!(nocare) && (objcts_1.oflag1[i - 1] & oflags_1.takebt) == 0 || (objcts_1.oflag1[i - 1] & f1) == 0 && (objcts_1.oflag2[i - 1] & f2) == 0) {
+      if (!(nocare) && (objcts_1.oflag1[i - 1] & TakeO) == 0 || (objcts_1.oflag1[i - 1] & f1) == 0 && (objcts_1.oflag2[i - 1] & f2) == 0) {
          goto L500;
       }
       if (ret_val == 0) {
@@ -109,13 +109,13 @@ int fwim_(int f1, int f2, int rm, int con, int adv, Bool nocare) {
 // DOES OBJECT CONTAIN A MATCH?
 
    L500:
-      if ((objcts_1.oflag2[i - 1] & oflags_1.openbt) == 0) {
+      if ((objcts_1.oflag2[i - 1] & OpenO) == 0) {
          goto L1000;
       }
       i__2 = objcts_1.olnt;
       for (j = 1; j <= i__2; ++j) {
 // 						!NO, SEARCH CONTENTS.
-         if (objcts_1.ocan[j - 1] != i || (objcts_1.oflag1[j - 1] & oflags_1.visibt) == 0 || (objcts_1.oflag1[j - 1] & f1) == 0 && (objcts_1.oflag2[j - 1] & f2) == 0) {
+         if (objcts_1.ocan[j - 1] != i || (objcts_1.oflag1[j - 1] & VisiO) == 0 || (objcts_1.oflag1[j - 1] & f1) == 0 && (objcts_1.oflag2[j - 1] & f2) == 0) {
             goto L700;
          }
          if (ret_val == 0) {

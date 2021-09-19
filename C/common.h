@@ -99,16 +99,14 @@ extern struct syntaxCB {
 #define syn ((int *)&syntax_1)
 
 // common /synflg/
-extern struct synflgCB {
-   int sdir, sind, sstd, sflip, sdriv, svmask;
-} synflg_;
-#define synflg_1 synflg_
+enum synflgCB {
+   DirS = 0x4000, IndS = 0x2000, StdS = 0x1000, FlipS = 0x800, DrivS = 0x400, VMaskS = 0x1ff
+};
 
 // common /objflg/
-extern struct objflgCB {
-   int vabit, vrbit, vtbit, vcbit, vebit, vfbit, vpmask;
-} objflg_;
-#define objflg_1 objflg_
+enum objflgCB {
+   AbitV = 0x4000, RbitV = 0x2000, TbitV = 0x1000, CbitV = 0x800, EbitV = 0x400, FbitV = 0x200, PMaskV = 0x1ff
+};
 
 // vocab.h:
 
@@ -182,10 +180,11 @@ extern struct roomsCB {
 // rflag.h:
 
 // common /rflag/
-extern struct rflagCB {
-   int rseen, rlight, rland, rwater, rair, rsacrd, rfill, rmung, rbuck, rhouse, rnwall, rend;
-} rflag_;
-#define rflag_1 rflag_
+enum rflagCB {
+   SeenR = 0x8000, LightR = 0x4000, LandR = 0x2000, WaterR = 0x1000,
+   AirR = 0x800, SacrdR = 0x400, FillR = 0x200, MungR = 0x100,
+   BuckR = 0x80, HouseR = 0x40, NWallR = 0x20, EndR = 0x10
+};
 
 // rindex.h:
 
@@ -223,10 +222,16 @@ extern struct oroom2CB {
 // oflags.h:
 
 // common /oflags/
-extern struct oflagsCB {
-   int visibt, readbt, takebt, doorbt, tranbt, foodbt, ndscbt, drnkbt, contbt, litebt, victbt, burnbt, flambt, toolbt, turnbt, onbt, findbt, slepbt, scrdbt, tiebt, clmbbt, actrbt, weapbt, fitebt, villbt, stagbt, trybt, nochbt, openbt, tchbt, vehbt, schbt;
-} oflags_;
-#define oflags_1 oflags_
+enum oflagsCB {
+   VisiO = 0x8000, ReadO = 0x4000, TakeO = 0x2000, DoorO = 0x1000,
+   TranO = 0x800, FoodO = 0x400, NDscO = 0x200, DrnkO = 0x100,
+   ContO = 0x80, LiteO = 0x40, VictO = 0x20, BurnO = 0x10,
+   FlamO = 8, ToolO = 4, TurnO = 2, OnO = 1,
+   FindO = 0x8000, SlepO = 0x4000, ScrDO = 0x2000, TieO = 0x1000,
+   ClmbO = 0x800, ActrO = 0x400, WeapO = 0x200, FiteO = 0x100,
+   VillO = 0x80, StagO = 0x40, TryO = 0x20, NoChO = 0x10,
+   OpenO = 8, TChO = 4, VehO = 2, SchO = 1
+};
 
 // oindex.h:
 

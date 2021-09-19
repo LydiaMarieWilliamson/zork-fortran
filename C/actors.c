@@ -1,12 +1,12 @@
-#include "F2C.h"
-#include "common.h"
-#include "extern.h"
-
 // AAPPLI- APPLICABLES FOR ADVENTURERS
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
 // ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 // WRITTEN BY R. M. SUPNIK
+
+#include "F2C.h"
+#include "extern.h"
+#include "common.h"
 
 // DECLARATIONS
 
@@ -61,8 +61,8 @@ L1000:
 // 						!ALSO MOVE ROBOT/ADV.
    findex_1.cagesf = true;
 // 						!CAGE SOLVED.
-   objcts_1.oflag1[oindex_1.robot - 1] &= ~oflags_1.ndscbt;
-   objcts_1.oflag1[oindex_1.spher - 1] |= oflags_1.takebt;
+   objcts_1.oflag1[oindex_1.robot - 1] &= ~NDscO;
+   objcts_1.oflag1[oindex_1.spher - 1] |= TakeO;
    return ret_val;
 
 L1200:
@@ -94,7 +94,7 @@ L1400:
 // A2--	MASTER.  PROCESS MOST COMMANDS GIVEN TO MASTER.
 
 L2000:
-   if ((objcts_1.oflag2[oindex_1.qdoor - 1] & oflags_1.openbt) != 0) {
+   if ((objcts_1.oflag2[oindex_1.qdoor - 1] & OpenO) != 0) {
       goto L2100;
    }
    rspeak_(783);
@@ -180,7 +180,7 @@ L1050:
    i = robadv_(i__1, hack_1.thfpos, 0, 0);
 // 						!DROP VALUABLES.
    if (qhere_(oindex_1.egg, hack_1.thfpos)) {
-      objcts_1.oflag2[oindex_1.egg - 1] |= oflags_1.openbt;
+      objcts_1.oflag2[oindex_1.egg - 1] |= OpenO;
    }
    goto L1700;
 
@@ -191,7 +191,7 @@ L1100:
       goto L1700;
    }
 // 						!IF TREAS ROOM, NOTHING.
-   if ((rooms_1.rflag[hack_1.thfpos - 1] & rflag_1.rlight) != 0) {
+   if ((rooms_1.rflag[hack_1.thfpos - 1] & LightR) != 0) {
       goto L1400;
    }
 // D	IF(DFLAG) PRINT 20
@@ -215,7 +215,7 @@ L1100:
    return;
 
 L1150:
-   if (rhere == 0 || (objcts_1.oflag2[oindex_1.thief - 1] & oflags_1.fitebt) == 0) {
+   if (rhere == 0 || (objcts_1.oflag2[oindex_1.thief - 1] & FiteO) == 0) {
       goto L1200;
    }
    if (winnin_(oindex_1.thief, play_1.winner)) {
@@ -224,7 +224,7 @@ L1150:
 // 						!WINNING?
    newsta_(oindex_1.thief, 584, 0, 0, 0);
 // 						!NO, VANISH THIEF.
-   objcts_1.oflag2[oindex_1.thief - 1] &= ~oflags_1.fitebt;
+   objcts_1.oflag2[oindex_1.thief - 1] &= ~FiteO;
    if (qhere_(oindex_1.still, hack_1.thfpos) || objcts_1.oadv[oindex_1.still - 1] == -oindex_1.thief) {
       newsta_(oindex_1.still, 0, 0, oindex_1.thief, 0);
    }
@@ -295,7 +295,7 @@ L1400:
    if (qhere_(oindex_1.still, hack_1.thfpos) || objcts_1.oadv[oindex_1.still - 1] == -oindex_1.thief) {
       newsta_(oindex_1.still, 0, 0, oindex_1.thief, 0);
    }
-   if ((rooms_1.rflag[hack_1.thfpos - 1] & rflag_1.rseen) == 0) {
+   if ((rooms_1.rflag[hack_1.thfpos - 1] & SeenR) == 0) {
       goto L1700;
    }
    i__1 = -oindex_1.thief;
@@ -307,7 +307,7 @@ L1400:
    i__1 = objcts_1.olnt;
    for (i = 1; i <= i__1; ++i) {
 // 						!BOTH IN MAZE.
-      if (!qhere_(i, hack_1.thfpos) || prob_(60, 60) || (objcts_1.oflag1[i - 1] & oflags_1.visibt + oflags_1.takebt) != oflags_1.visibt + oflags_1.takebt) {
+      if (!qhere_(i, hack_1.thfpos) || prob_(60, 60) || (objcts_1.oflag1[i - 1] & VisiO + TakeO) != VisiO + TakeO) {
          goto L1450;
       }
       rspsub_(590, objcts_1.odesc2[i - 1]);
@@ -318,7 +318,7 @@ L1400:
       i__2 = -oindex_1.thief;
       newsta_(i, 0, 0, 0, i__2);
 // 						!MOST OF THE TIME.
-      objcts_1.oflag2[i - 1] |= oflags_1.tchbt;
+      objcts_1.oflag2[i - 1] |= TChO;
       goto L1700;
    L1450:
       ;
@@ -329,12 +329,12 @@ L1500:
    i__1 = objcts_1.olnt;
    for (i = 1; i <= i__1; ++i) {
 // 						!NOT IN MAZE.
-      if (!qhere_(i, hack_1.thfpos) || objcts_1.otval[i - 1] != 0 || prob_(80, 60) || (objcts_1.oflag1[i - 1] & oflags_1.visibt + oflags_1.takebt) != oflags_1.visibt + oflags_1.takebt) {
+      if (!qhere_(i, hack_1.thfpos) || objcts_1.otval[i - 1] != 0 || prob_(80, 60) || (objcts_1.oflag1[i - 1] & VisiO + TakeO) != VisiO + TakeO) {
          goto L1550;
       }
       i__2 = -oindex_1.thief;
       newsta_(i, 0, 0, 0, i__2);
-      objcts_1.oflag2[i - 1] |= oflags_1.tchbt;
+      objcts_1.oflag2[i - 1] |= TChO;
       goto L1700;
    L1550:
       ;
@@ -356,7 +356,7 @@ L1750:
    if (hack_1.thfpos <= 0) {
       hack_1.thfpos = rooms_1.rlnt;
    }
-   if ((rooms_1.rflag[hack_1.thfpos - 1] & rflag_1.rland + rflag_1.rsacrd + rflag_1.rend) != rflag_1.rland) {
+   if ((rooms_1.rflag[hack_1.thfpos - 1] & LandR + SacrdR + EndR) != LandR) {
       goto L1750;
    }
    hack_1.thfflg = false;

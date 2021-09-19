@@ -49,7 +49,7 @@ C
 pv_:		actors ballop blkdata demons dgame dinit dmain dso4 dso5 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 np nrooms objcts rooms sobjs sverbs verbs villns
 syntax_:	actors ballop blkdata demons dgame dinit dmain dso4 dso5 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 np nrooms objcts rooms sobjs sverbs verbs villns
 
-Defined in dmain.c:
+Converted to enumerated types, defined in common.h:
 synflg_:	actors ballop blkdata demons dgame dinit dmain dso4 dso5 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 np nrooms objcts rooms sobjs sverbs verbs villns
 objflg_:	actors ballop blkdata demons dgame dinit dmain dso4 dso5 dsub dverb1 dverb2 gdt lightp nobjs np1 np2 np3 np nrooms objcts rooms sobjs sverbs verbs villns
 
@@ -73,7 +73,7 @@ rooms_:		actors ballop clockr dgame dinit dmain dso1 dso2 dso3 dso5 dso6 dso7 ds
 
 (rflag.h)
 ─────────
-Defined in dmain.c:
+Converted to an enumerated type, defined in common.h:
 rflag_:		actors ballop clockr dinit dmain dso1 dso2 dso5 dso6 dso7 dsub dverb2 nobjs nrooms objcts rooms sobjs sverbs verbs
 
 (rindex.h)
@@ -93,7 +93,7 @@ oroom2_:	actors ballop blkdata clockr demons dgame dinit dmain dso1 dso2 dso3 ds
 
 (oflags.h)
 ──────────
-Defined in dmain.c:
+Converted to an enumerated type, defined in common.h:
 oflags_:	actors ballop clockr demons dgame dmain dso1 dso3 dso4 dso5 dso7 dsub dverb1 dverb2 lightp nobjs np2 np3 nrooms objcts rooms sobjs sverbs verbs villns
 
 (oindex.h)

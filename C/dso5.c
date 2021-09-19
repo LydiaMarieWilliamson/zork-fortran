@@ -1,10 +1,10 @@
-#include "F2C.h"
-#include "common.h"
-#include "extern.h"
-
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
 // ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 // WRITTEN BY R. M. SUPNIK
+
+#include "F2C.h"
+#include "extern.h"
+#include "common.h"
 
 // GTTIME-- GET TOTAL TIME PLAYED
 
@@ -49,21 +49,21 @@ Bool opncls_(int obj, int so, int sc) {
    return ret_val;
 
 L50:
-   if ((objcts_1.oflag2[obj - 1] & oflags_1.openbt) != 0) {
+   if ((objcts_1.oflag2[obj - 1] & OpenO) != 0) {
       goto L200;
    }
 // 						!OPEN... IS IT?
    rspeak_(so);
-   objcts_1.oflag2[obj - 1] |= oflags_1.openbt;
+   objcts_1.oflag2[obj - 1] |= OpenO;
    return ret_val;
 
 L100:
-   if (!((objcts_1.oflag2[obj - 1] & oflags_1.openbt) != 0)) {
+   if (!((objcts_1.oflag2[obj - 1] & OpenO) != 0)) {
       goto L200;
    }
 // 						!CLOSE... IS IT?
    rspeak_(sc);
-   objcts_1.oflag2[obj - 1] &= ~oflags_1.openbt;
+   objcts_1.oflag2[obj - 1] &= ~OpenO;
    return ret_val;
 
 L200:
@@ -87,7 +87,7 @@ Bool lit_(int rm) {
 
    ret_val = true;
 // 						!ASSUME WINS
-   if ((rooms_1.rflag[rm - 1] & rflag_1.rlight) != 0) {
+   if ((rooms_1.rflag[rm - 1] & LightR) != 0) {
       return ret_val;
    }
 
@@ -112,10 +112,10 @@ Bool lit_(int rm) {
 // OBJ IN ROOM OR ON ADV IN ROOM
 
    L100:
-      if ((objcts_1.oflag1[i - 1] & oflags_1.onbt) != 0) {
+      if ((objcts_1.oflag1[i - 1] & OnO) != 0) {
          return ret_val;
       }
-      if ((objcts_1.oflag1[i - 1] & oflags_1.visibt) == 0 || (objcts_1.oflag1[i - 1] & oflags_1.tranbt) == 0 && (objcts_1.oflag2[i - 1] & oflags_1.openbt) == 0) {
+      if ((objcts_1.oflag1[i - 1] & VisiO) == 0 || (objcts_1.oflag1[i - 1] & TranO) == 0 && (objcts_1.oflag2[i - 1] & OpenO) == 0) {
          goto L1000;
       }
 
@@ -123,7 +123,7 @@ Bool lit_(int rm) {
 
       i__2 = objcts_1.olnt;
       for (j = 1; j <= i__2; ++j) {
-         if (objcts_1.ocan[j - 1] == i && (objcts_1.oflag1[j - 1] & oflags_1.onbt) != 0) {
+         if (objcts_1.ocan[j - 1] == i && (objcts_1.oflag1[j - 1] & OnO) != 0) {
             return ret_val;
          }
    // L500:

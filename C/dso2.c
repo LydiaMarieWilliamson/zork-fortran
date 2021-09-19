@@ -1,12 +1,12 @@
-#include "F2C.h"
-#include "common.h"
-#include "extern.h"
-
 // MOVETO- MOVE PLAYER TO NEW ROOM
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
 // ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 // WRITTEN BY R. M. SUPNIK
+
+#include "F2C.h"
+#include "extern.h"
+#include "common.h"
 
 // DECLARATIONS
 
@@ -24,8 +24,8 @@ Bool moveto_(int nr, int who) {
 
    ret_val = false;
 // 						!ASSUME FAILS.
-   lhr = (rooms_1.rflag[play_1.here - 1] & rflag_1.rland) != 0;
-   lnr = (rooms_1.rflag[nr - 1] & rflag_1.rland) != 0;
+   lhr = (rooms_1.rflag[play_1.here - 1] & LandR) != 0;
+   lnr = (rooms_1.rflag[nr - 1] & LandR) != 0;
    j = advs_1.avehic[who - 1];
 // 						!HIS VEHICLE
 
@@ -45,26 +45,26 @@ L100:
    bits = 0;
 // 						!ASSUME NOWHERE.
    if (j == oindex_1.rboat) {
-      bits = rflag_1.rwater;
+      bits = WaterR;
    }
 // 						!IN BOAT?
    if (j == oindex_1.ballo) {
-      bits = rflag_1.rair;
+      bits = AirR;
    }
 // 						!IN BALLOON?
    if (j == oindex_1.bucke) {
-      bits = rflag_1.rbuck;
+      bits = BuckR;
    }
 // 						!IN BUCKET?
    nlv = (rooms_1.rflag[nr - 1] & bits) == 0;
-   if (!lnr && nlv || lnr && lhr && nlv && bits != rflag_1.rland) {
+   if (!lnr && nlv || lnr && lhr && nlv && bits != LandR) {
       goto L800;
    }
 
 L500:
    ret_val = true;
 // 						!MOVE SHOULD SUCCEED.
-   if ((rooms_1.rflag[nr - 1] & rflag_1.rmung) == 0) {
+   if ((rooms_1.rflag[nr - 1] & MungR) == 0) {
       goto L600;
    }
    rspeak_(rrand[nr - 1]);

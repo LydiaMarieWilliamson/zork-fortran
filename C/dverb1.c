@@ -1,12 +1,12 @@
-#include "F2C.h"
-#include "common.h"
-#include "extern.h"
-
 // TAKE-- BASIC TAKE SEQUENCE
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
 // ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 // WRITTEN BY R. M. SUPNIK
+
+#include "F2C.h"
+#include "extern.h"
+#include "common.h"
 
 // TAKE AN OBJECT (FOR VERBS TAKE, PUT, DROP, READ, ETC.)
 
@@ -48,7 +48,7 @@ L100:
    return ret_val;
 
 L400:
-   if ((objcts_1.oflag1[prsvec_1.prso - 1] & oflags_1.takebt) != 0) {
+   if ((objcts_1.oflag1[prsvec_1.prso - 1] & TakeO) != 0) {
       goto L500;
    }
    if (!oappli_(oa, 0)) {
@@ -86,7 +86,7 @@ L700:
 // 						!DID IT HANDLE?
    newsta_(prsvec_1.prso, 0, 0, 0, play_1.winner);
 // 						!TAKE OBJECT FOR WINNER.
-   objcts_1.oflag2[prsvec_1.prso - 1] |= oflags_1.tchbt;
+   objcts_1.oflag2[prsvec_1.prso - 1] |= TChO;
    scrupd_(objcts_1.ofval[prsvec_1.prso - 1]);
 // 						!UPDATE SCORE.
    objcts_1.ofval[prsvec_1.prso - 1] = 0;
@@ -127,7 +127,7 @@ Bool drop_(/*Bool z__*/) {
       goto L1000;
    }
 // 						!IS HE CARRYING CON?
-   if ((objcts_1.oflag2[x - 1] & oflags_1.openbt) != 0) {
+   if ((objcts_1.oflag2[x - 1] & OpenO) != 0) {
       goto L300;
    }
    rspsub_(525, objcts_1.odesc2[x - 1]);
@@ -163,7 +163,7 @@ L400:
 // 						!SCORE OBJECT.
    objcts_1.ofval[prsvec_1.prso - 1] = 0;
 // 						!CANT BE SCORED AGAIN.
-   objcts_1.oflag2[prsvec_1.prso - 1] |= oflags_1.tchbt;
+   objcts_1.oflag2[prsvec_1.prso - 1] |= TChO;
 
    if (objact_(/*x*/)) {
       return ret_val;
@@ -220,7 +220,7 @@ Bool put_(/*Bool flg*/) {
    return ret_val;
 
 L200:
-   if ((objcts_1.oflag2[prsvec_1.prsi - 1] & oflags_1.openbt) != 0 || (objcts_1.oflag1[prsvec_1.prsi - 1] & oflags_1.doorbt + oflags_1.contbt) != 0 || (objcts_1.oflag2[prsvec_1.prsi - 1] & oflags_1.vehbt) != 0) {
+   if ((objcts_1.oflag2[prsvec_1.prsi - 1] & OpenO) != 0 || (objcts_1.oflag1[prsvec_1.prsi - 1] & DoorO + ContO) != 0 || (objcts_1.oflag2[prsvec_1.prsi - 1] & VehO) != 0) {
       goto L300;
    }
    rspeak_(561);
@@ -228,7 +228,7 @@ L200:
    return ret_val;
 
 L300:
-   if ((objcts_1.oflag2[prsvec_1.prsi - 1] & oflags_1.openbt) != 0) {
+   if ((objcts_1.oflag2[prsvec_1.prsi - 1] & OpenO) != 0) {
       goto L400;
    }
 // 						!IS IT OPEN?
@@ -302,7 +302,7 @@ L800:
       goto L1000;
    }
 // 						!INSIDE?
-   if ((objcts_1.oflag2[objcts_1.ocan[prsvec_1.prso - 1] - 1] & oflags_1.openbt) != 0) {
+   if ((objcts_1.oflag2[objcts_1.ocan[prsvec_1.prso - 1] - 1] & OpenO) != 0) {
       goto L900;
    }
 // 						!OPEN?
@@ -314,7 +314,7 @@ L900:
    scrupd_(objcts_1.ofval[prsvec_1.prso - 1]);
 // 						!SCORE OBJECT.
    objcts_1.ofval[prsvec_1.prso - 1] = 0;
-   objcts_1.oflag2[prsvec_1.prso - 1] |= oflags_1.tchbt;
+   objcts_1.oflag2[prsvec_1.prso - 1] |= TChO;
    newsta_(prsvec_1.prso, 0, 0, 0, play_1.winner);
 // 						!TEMPORARILY ON WINNER.
 
@@ -371,10 +371,10 @@ void valuac_(int v) {
    i__1 = objcts_1.olnt;
    for (prsvec_1.prso = 1; prsvec_1.prso <= i__1; ++prsvec_1.prso) {
 // 						!LOOP THRU OBJECTS.
-      if (!qhere_(prsvec_1.prso, play_1.here) || (objcts_1.oflag1[prsvec_1.prso - 1] & oflags_1.visibt) == 0 || (objcts_1.oflag2[prsvec_1.prso - 1] & oflags_1.actrbt) != 0 || savep == v && objcts_1.otval[prsvec_1.prso - 1] <= 0) {
+      if (!qhere_(prsvec_1.prso, play_1.here) || (objcts_1.oflag1[prsvec_1.prso - 1] & VisiO) == 0 || (objcts_1.oflag2[prsvec_1.prso - 1] & ActrO) != 0 || savep == v && objcts_1.otval[prsvec_1.prso - 1] <= 0) {
          goto L500;
       }
-      if ((objcts_1.oflag1[prsvec_1.prso - 1] & oflags_1.takebt) == 0 && (objcts_1.oflag2[prsvec_1.prso - 1] & oflags_1.trybt) == 0) {
+      if ((objcts_1.oflag1[prsvec_1.prso - 1] & TakeO) == 0 && (objcts_1.oflag2[prsvec_1.prso - 1] & TryO) == 0) {
          goto L500;
       }
       f = false;
@@ -417,7 +417,7 @@ L2000:
    i__1 = objcts_1.olnt;
    for (prsvec_1.prso = 1; prsvec_1.prso <= i__1; ++prsvec_1.prso) {
 // 						!LOOP THRU OBJECTS.
-      if (objcts_1.oadv[prsvec_1.prso - 1] != play_1.winner || prsvec_1.prso == prsvec_1.prsi || savep == v && objcts_1.otval[prsvec_1.prso - 1] <= 0 || (objcts_1.oflag1[prsvec_1.prso - 1] & oflags_1.visibt) == 0) {
+      if (objcts_1.oadv[prsvec_1.prso - 1] != play_1.winner || prsvec_1.prso == prsvec_1.prsi || savep == v && objcts_1.otval[prsvec_1.prso - 1] <= 0 || (objcts_1.oflag1[prsvec_1.prso - 1] & VisiO) == 0) {
          goto L2500;
       }
       f = false;

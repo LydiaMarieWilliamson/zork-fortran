@@ -1,12 +1,12 @@
-#include "F2C.h"
-#include "common.h"
-#include "extern.h"
-
 // GAME- MAIN COMMAND LOOP FOR DUNGEON
 
 // COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
 // ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
 // WRITTEN BY R. M. SUPNIK
+
+#include "F2C.h"
+#include "extern.h"
+#include "common.h"
 
 // DECLARATIONS
 static void xendmv_(Bool);
@@ -129,7 +129,7 @@ L1000:
    rspeak_(571);
 // 						!KILL THE ECHO.
    findex_1.echof = true;
-   objcts_1.oflag2[oindex_1.bar - 1] &= ~oflags_1.scrdbt;
+   objcts_1.oflag2[oindex_1.bar - 1] &= ~ScrDO;
    prsvec_1.prswon = true;
 // 						!FAKE OUT PARSER.
    prsvec_1.prscon = 1;
@@ -163,7 +163,7 @@ L1400:
 // NOTE THAT WE CANNOT BE IN THE ECHO ROOM.
 
 L2000:
-   if ((objcts_1.oflag2[prsvec_1.prso - 1] & oflags_1.actrbt) != 0) {
+   if ((objcts_1.oflag2[prsvec_1.prso - 1] & ActrO) != 0) {
       goto L2100;
    }
    rspeak_(602);
