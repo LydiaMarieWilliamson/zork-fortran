@@ -1,3 +1,26 @@
+// The functions for dungeon.
+// Assumes C99, which is now (well into the 21st century) POSIX.
+// That means: boolean types, function prototypes, "rb" and "wb" for fopen, "const", "void", etc.
+#include <stdbool.h>
+#include <stdlib.h> // For abs().
+
+#define BINREAD "rb"
+#define BINWRITE "wb"
+
+typedef int Bool;
+
+#define min(A, B)	((A) <= (B)? (A): (B))
+#define max(A, B)	((A) >= (B)? (A): (B))
+
+// local.c:
+Bool protected_(void);
+Bool wizard(void);
+
+// supp.c:
+void more_init(void);
+void more_output(const char *);
+void more_input(void);
+
 // actors.c:
 Bool aappli(int);
 void thiefd(void);
@@ -17,13 +40,7 @@ void swordd(void);
 void game_(void);
 
 // dinit.c:
-Bool init(int);
-
-#if 0
-// dmain.c:
-// The main program.
-int dungeo(void)
-#endif
+Bool init(void);
 
 // dso1.c:
 void princr(Bool, int);
@@ -58,7 +75,7 @@ Bool ghere(int, int);
 int mrhere(int);
 
 // dso7.c:
-void encryp(const char *, char * /*, size_t, size_t*/);
+void encryp(const char *, char *);
 void cpgoto(int);
 void cpinfo(int, int);
 
@@ -66,7 +83,7 @@ void cpinfo(int, int);
 void rspeak(int);
 void rspsub(int, int);
 void rspsb2(int, int, int);
-Bool objact(/*int*/);
+Bool objact(void/*int*/);
 void bug(int, int);
 void newsta(int, int, int, int, int);
 Bool qhere(int, int);
@@ -79,19 +96,17 @@ Bool rappli(int);
 
 // dverb1.c:
 Bool take(Bool);
-Bool drop(/*Bool*/);
-Bool put(/*Bool*/);
+Bool drop(void/*Bool*/);
+Bool put(void/*Bool*/);
 void valuac(int);
 
 // dverb2.c:
 void savegm(void);
 void rstrgm(void);
-Bool walk(/*int*/);
+Bool walk(void/*int*/);
 
-#if 0
 // gdt.c:
-void gdt(void)
-#endif
+void gdt(void);
 
 // lightp.c:
 Bool lightp(int);
@@ -100,18 +115,18 @@ Bool lightp(int);
 Bool nobjs(int/*, int*/);
 
 // np1.c:
-int sparse(int *, int, Bool);
+int sparse(const int *, int, Bool);
 
 // np2.c:
 int getobj(int, int, int);
 int schlst(int, int, int, int, int, int);
 
 // np3.c:
-Bool synmch(/*int*/);
+Bool synmch(void/*int*/);
 
 // np.c:
-void rdline(char *, int, int, size_t);
-Bool parse(char *, int, Bool/*, size_t*/);
+void rdline(char *, int);
+Bool parse(char *, Bool);
 void orphan(int, int, int, int, int);
 
 // nrooms.c:
@@ -124,8 +139,7 @@ Bool oappli(int, int);
 Bool rappl1(int);
 
 // rtim.c:
-void intime(int *, int *, int *);
-void inirnd(int);
+void itime(int *, int *, int *);
 int rnd(int);
 void exit_(void);
 
@@ -137,9 +151,9 @@ Bool sverbs(int);
 
 // verbs.c:
 Bool vappli(int);
-Bool clockd(/*int*/);
+Bool clockd(void/*int*/);
 
 // villns.c:
-Bool trollp(/*int*/);
-Bool cyclop(/*int*/);
-Bool thiefp(/*int*/);
+Bool trollp(void/*int*/);
+Bool cyclop(void/*int*/);
+Bool thiefp(void/*int*/);
