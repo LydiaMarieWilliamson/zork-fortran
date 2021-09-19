@@ -1,4 +1,4 @@
-Compiler warnings:
+Pending compiler warnings:
 ∙	Fortran 2018 dropped support for Arithmetic IF statements.
 	demons.f:
 		│  258 | 2100    IF(DEF-2) 2200,2300,2400
@@ -19,7 +19,3 @@ Compiler warnings:
 		│  627 | 27300   K=NEWK
 	villns.f:
 		│  256 | 125       IF(OADV(I).EQ.-THIEF) J=500
-∙	The initialization strings at † were truncated to fit the variable (1/2).
-	dso7.f:
-		│   94 |         DATA QMK/'??'†/
-		│   93 |         DATA PICT/'SS'†,'SS'†,'SS'†,'  '†,'MM'†/
