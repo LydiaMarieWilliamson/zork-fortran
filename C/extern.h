@@ -1,23 +1,23 @@
 // actors.c:
-Bool aappli_(int);
-void thiefd_(void);
+Bool aappli(int);
+void thiefd(void);
 
 // ballop.c:
-Bool ballop_(int);
+Bool ballop(int);
 
 // clockr.c:
-void cevapp_(int);
+void cevapp(int);
 
 // demons.c:
-void fightd_(void);
-int blow_(int, int, int, Bool, int);
-void swordd_(void);
+void fightd(void);
+int blow(int, int, int, Bool, int);
+void swordd(void);
 
 // dgame.c:
 void game_(void);
 
 // dinit.c:
-Bool init_(int);
+Bool init(int);
 
 #if 0
 // dmain.c:
@@ -26,120 +26,120 @@ int dungeo(void)
 #endif
 
 // dso1.c:
-void princr_(Bool, int);
-void invent_(int);
-void princo_(int, int);
+void princr(Bool, int);
+void invent(int);
+void princo(int, int);
 
 // dso2.c:
-Bool moveto_(int, int);
-void score_(Bool);
-void scrupd_(int);
+Bool moveto(int, int);
+void score(Bool);
+void scrupd(int);
 
 // dso3.c:
-Bool findxt_(int, int);
-int fwim_(int, int, int, int, int, Bool);
-Bool yesno_(int, int, int);
+Bool findxt(int, int);
+int fwim(int, int, int, int, int, Bool);
+Bool yesno(int, int, int);
 
 // dso4.c:
-int robadv_(int, int, int, int);
-int robrm_(int, int, int, int, int);
-Bool winnin_(int, int);
-int fights_(int, Bool);
-int vilstr_(int);
+int robadv(int, int, int, int);
+int robrm(int, int, int, int, int);
+Bool winnin(int, int);
+int fights(int, Bool);
+int vilstr(int);
 
 // dso5.c:
-int gttime_(void);
-Bool opncls_(int, int, int);
-Bool lit_(int);
-int weight_(int, int, int);
+int gttime(void);
+Bool opncls(int, int, int);
+Bool lit(int);
+int weight(int, int, int);
 
 // dso6.c:
-Bool ghere_(int, int);
-int mrhere_(int);
+Bool ghere(int, int);
+int mrhere(int);
 
 // dso7.c:
-void encryp_(const char *, char * /*, size_t, size_t*/);
-void cpgoto_(int);
-void cpinfo_(int, int);
+void encryp(const char *, char * /*, size_t, size_t*/);
+void cpgoto(int);
+void cpinfo(int, int);
 
 // dsub.c:
-void rspeak_(int);
-void rspsub_(int, int);
-void rspsb2_(int, int, int);
-Bool objact_(/*int*/);
-void bug_(int, int);
-void newsta_(int, int, int, int, int);
-Bool qhere_(int, int);
-Bool qempty_(int);
-void jigsup_(int);
-int oactor_(int);
-Bool prob_(int, int);
-Bool rmdesc_(int);
-Bool rappli_(int);
+void rspeak(int);
+void rspsub(int, int);
+void rspsb2(int, int, int);
+Bool objact(/*int*/);
+void bug(int, int);
+void newsta(int, int, int, int, int);
+Bool qhere(int, int);
+Bool qempty(int);
+void jigsup(int);
+int oactor(int);
+Bool prob(int, int);
+Bool rmdesc(int);
+Bool rappli(int);
 
 // dverb1.c:
-Bool take_(Bool);
-Bool drop_(/*Bool*/);
-Bool put_(/*Bool*/);
-void valuac_(int);
+Bool take(Bool);
+Bool drop(/*Bool*/);
+Bool put(/*Bool*/);
+void valuac(int);
 
 // dverb2.c:
-void savegm_(void);
-void rstrgm_(void);
-Bool walk_(/*int*/);
+void savegm(void);
+void rstrgm(void);
+Bool walk(/*int*/);
 
 #if 0
 // gdt.c:
-void gdt_(void)
+void gdt(void)
 #endif
 
 // lightp.c:
-Bool lightp_(int);
+Bool lightp(int);
 
 // nobjs.c:
-Bool nobjs_(int/*, int*/);
+Bool nobjs(int/*, int*/);
 
 // np1.c:
-int sparse_(int *, int, Bool);
+int sparse(int *, int, Bool);
 
 // np2.c:
-int getobj_(int, int, int);
-int schlst_(int, int, int, int, int, int);
+int getobj(int, int, int);
+int schlst(int, int, int, int, int, int);
 
 // np3.c:
-Bool synmch_(/*int*/);
+Bool synmch(/*int*/);
 
 // np.c:
-void rdline_(char *, int, int, size_t);
-Bool parse_(char *, int, Bool/*, size_t*/);
-void orphan_(int, int, int, int, int);
+void rdline(char *, int, int, size_t);
+Bool parse(char *, int, Bool/*, size_t*/);
+void orphan(int, int, int, int, int);
 
 // nrooms.c:
-Bool rappl2_(int);
+Bool rappl2(int);
 
 // objcts.c:
-Bool oappli_(int, int);
+Bool oappli(int, int);
 
 // rooms.c:
-Bool rappl1_(int);
+Bool rappl1(int);
 
 // rtim.c:
-void intime_(int *, int *, int *);
-void inirnd_(int);
-int rnd_(int);
+void intime(int *, int *, int *);
+void inirnd(int);
+int rnd(int);
 void exit_(void);
 
 // sobjs.c:
-Bool sobjs_(int, int);
+Bool sobjs(int, int);
 
 // sverbs.c:
-Bool sverbs_(int);
+Bool sverbs(int);
 
 // verbs.c:
-Bool vappli_(int);
-Bool clockd_(/*int*/);
+Bool vappli(int);
+Bool clockd(/*int*/);
 
 // villns.c:
-Bool trollp_(/*int*/);
-Bool cyclop_(/*int*/);
-Bool thiefp_(/*int*/);
+Bool trollp(/*int*/);
+Bool cyclop(/*int*/);
+Bool thiefp(/*int*/);

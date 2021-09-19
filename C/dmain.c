@@ -11,7 +11,7 @@
 
 // screen.h:
 // common /screen/
-struct screenCB screen_ = (struct screenCB){
+struct screenCB screen = (struct screenCB){
    fromdr: 0, scolrm: 0, scolac: 0,
    scoldr: { 1024, 153, 5120, 154, 3072, 152, 7168, 151 },
    scolwl: { 151, 207, 3072, 152, 208, 7168, 153, 206, 5120, 154, 205, 1024 }
@@ -19,7 +19,7 @@ struct screenCB screen_ = (struct screenCB){
 
 // puzzle.h:
 // common /puzzle/
-struct puzzleCB puzzle_ = (struct puzzleCB){
+struct puzzleCB puzzle = (struct puzzleCB){
    cpdr: { 1024, -8, 2048, -7, 3072, 1, 4096, 9, 5120, 8, 6144, 7, 7168, -1, 8192, -9 },
    cpwl: { 205, -8, 206, 8, 207, 1, 208, -1 },
    cpvec: {
@@ -31,7 +31,7 @@ struct puzzleCB puzzle_ = (struct puzzleCB){
 };
 
 // common /vers/
-union versCB vers_ = {
+union versCB vers = {
 // int vmaj;
    2,
 // int vmin;
@@ -41,12 +41,12 @@ union versCB vers_ = {
 };
 
 // common /bats/
-struct batsCB bats_ = (struct batsCB){
+struct batsCB bats = (struct batsCB){
    batdrp: { 66, 67, 68, 69, 70, 71, 72, 65, 73 }
 };
 
 // common /hyper/
-struct hyperCB hyper_ = (struct hyperCB){
+struct hyperCB hyper = (struct hyperCB){
    hfactr: 500
 };
 
@@ -70,14 +70,14 @@ struct rindexCB rindex_ = (struct rindexCB){
 
 // xsrch.h:
 // common /xsrch/
-struct xsrchCB xsrch_ = (struct xsrchCB){
+struct xsrchCB xsrch = (struct xsrchCB){
    xmin: 1024, xmax: 16384, xdown: 10240, xup: 9216, xnorth: 1024,
    xsouth: 5120, xenter: 13312, xexit: 14336, xeast: 3072, xwest: 7168
 };
 
 // xpars.h:
 // common /xpars/
-struct xparsCB xpars_ = (struct xparsCB){
+struct xparsCB xpars = (struct xparsCB){
    xrmask: 255, xdmask: 31744, xfmask: 3, xfshft: 256, xashft: 256,
    xelnt: { 1, 2, 3, 3 },
    xnorm: 1, xno: 2, xcond: 3, xdoor: 4, xlflag: 32768
@@ -89,7 +89,7 @@ struct xparsCB xpars_ = (struct xparsCB){
 
 // oindex.h:
 // common /oindex/
-struct oindexCB oindex_ = (struct oindexCB){
+struct oindexCB oindex = (struct oindexCB){
    garli: 2, food: 3, gunk: 4, coal: 5, machi: 7, diamo: 8, tcase: 9, bottl: 10,
    water: 11, rope: 12, knife: 13, sword: 14, lamp: 15, blamp: 16, rug: 17, leave: 18,
    troll: 19, axe: 20, rknif: 21, keys: 23, ice: 30, bar: 26, coffi: 33, torch: 34,
@@ -109,7 +109,7 @@ struct oindexCB oindex_ = (struct oindexCB){
 
 // clock.h:
 // common /cindex/
-struct cindexCB cindex_ = (struct cindexCB){
+struct cindexCB cindex = (struct cindexCB){
    cevcur: 1, cevmnt: 2, cevlnt: 3, cevmat: 4, cevcnd: 5, cevbal: 6, cevbrn: 7, cevfus: 8,
    cevled: 9, cevsaf: 10, cevvlg: 11, cevgno: 12, cevbuc: 13, cevsph: 14, cevegh: 15, cevfor: 16,
    cevscl: 17, cevzgi: 18, cevzgo: 19, cevste: 20, cevmrs: 21, cevpin: 22, cevinq: 23, cevfol: 24
@@ -117,18 +117,18 @@ struct cindexCB cindex_ = (struct cindexCB){
 
 // advers.h:
 // common /aflags/
-struct aflagsCB aflags_ = (struct aflagsCB){
+struct aflagsCB aflags = (struct aflagsCB){
    astag: 32768
 };
 
 // common /aindex/
-struct aindexCB aindex_ = (struct aindexCB){
+struct aindexCB aindex = (struct aindexCB){
    player: 1, arobot: 2, amastr: 3
 };
 
 // verbs.h:
 // common /vindex/
-struct vindexCB vindex_ = (struct vindexCB){
+struct vindexCB vindex = (struct vindexCB){
    cintw: 1, deadxw: 2, frstqw: 3, inxw: 4, outxw: 5, walkiw: 6, fightw: 7, foow: 8,
    meltw: 101, readw: 100, inflaw: 102, deflaw: 103, alarmw: 104, exorcw: 105, plugw: 106, kickw: 107,
    wavew: 108, raisew: 109, lowerw: 110, rubw: 111, pushw: 112, untiew: 113, tiew: 114, tieupw: 115,
@@ -155,7 +155,7 @@ int MAIN__(void) {
 // 1) INITIALIZE DATA STRUCTURES
 // 2) PLAY GAME
 
-   if (init_(x)) {
+   if (init(x)) {
       game_();
    }
 // 						!IF INIT, PLAY GAME.
@@ -173,7 +173,7 @@ int MAIN__(void) {
 // FLAGS
 
 // Main program alias
-int dungeo_(void) {
+int dungeo(void) {
    MAIN__();
    return 0;
 }

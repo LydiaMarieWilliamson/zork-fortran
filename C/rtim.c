@@ -5,31 +5,31 @@
 #if 1
 //(@) Cheat, cheat! We make a ‟fallback” using a hack from the other repository.
 #include <time.h>
-void ITime_(int HMS[3]) {
+void ITime(int HMS[3]) {
    time_t Now; time(&Now);
    struct tm *HereNow = localtime(&Now);
    HMS[0] = HereNow->tm_hour, HMS[1] = HereNow->tm_min, HMS[2] = HereNow->tm_sec;
 }
 #else
-extern int /* Subroutine */ itime_(int *);
-#   define ITime_(HMS) ((void)(itime_(HMS)))
+extern int /* Subroutine */ itime(int *);
+#   define ITime(HMS) ((void)(itime(HMS)))
 #endif
 
-void intime_(int * hours, int * minutes, int * seconds) {
+void intime(int * hours, int * minutes, int * seconds) {
    int tarray[3];
 
 // 	CALL GETTIM(HOURS, MINUTES, SECONDS, HUNDREDTHS)
-   ITime_(tarray);
+   ITime(tarray);
    *hours = tarray[0];
    *minutes = tarray[1];
    *seconds = tarray[2];
 }
 
-void inirnd_(int seed) {
+void inirnd(int seed) {
    random_1.seedy = seed;
 }
 
-int rnd_(int maxval) {
+int rnd(int maxval) {
 // System generated locals
    int ret_val;
 

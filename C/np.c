@@ -8,9 +8,9 @@
 #include "extern.h"
 #include "common.h"
 
-static Bool lex_(char *, int, int *, int *, Bool/*, size_t*/);
+static Bool lex(char *, int, int *, int *, Bool/*, size_t*/);
 
-void rdline_(char *buffer, int length, int who, size_t buffer_unit) {
+void rdline(char *buffer, int length, int who, size_t buffer_unit) {
 // System generated locals
    int i__1;
 
@@ -78,7 +78,7 @@ L250:
 
 // THIS ROUTINE DETAILS ON BIT 0 OF PRSFLG
 
-Bool parse_(char *inbuf, int inlnt, Bool vbflag/*, size_t inbuf_unit*/) {
+Bool parse(char *inbuf, int inlnt, Bool vbflag/*, size_t inbuf_unit*/) {
 // System generated locals
    int i__1;
    Bool ret_val;
@@ -100,10 +100,10 @@ Bool parse_(char *inbuf, int inlnt, Bool vbflag/*, size_t inbuf_unit*/) {
    prsvec_1.prsi = 0;
    prsvec_1.prso = 0;
 
-   if (!lex_(inbuf + 1, inlnt, outbuf, &outlnt, vbflag/*, inbuf_unit*/)) {
+   if (!lex(inbuf + 1, inlnt, outbuf, &outlnt, vbflag/*, inbuf_unit*/)) {
       goto L100;
    }
-   if ((i__1 = sparse_(outbuf, outlnt, vbflag)) < 0) {
+   if ((i__1 = sparse(outbuf, outlnt, vbflag)) < 0) {
       goto L100;
    } else if (i__1 == 0) {
       goto L200;
@@ -119,7 +119,7 @@ L200:
       goto L350;
    }
 // 						!ECHO MODE, FORCE FAIL.
-   if (!synmch_(/*x*/)) {
+   if (!synmch(/*x*/)) {
       goto L100;
    }
 // 						!DO SYN MATCH.
@@ -132,7 +132,7 @@ L200:
 L300:
    ret_val = true;
 L350:
-   orphan_(0, 0, 0, 0, 0);
+   orphan(0, 0, 0, 0, 0);
 // 						!CLEAR ORPHANS.
 // D	if(dflag) write(0,*) 'parse good'
 // D	IF(DFLAG) PRINT 10,PARSE,PRSA,PRSO,PRSI
@@ -151,7 +151,7 @@ L100:
 
 // ORPHAN- SET UP NEW ORPHANS
 
-void orphan_(int o1, int o2, int o3, int o4, int o5) {
+void orphan(int o1, int o2, int o3, int o4, int o5) {
 
    orphs_1.oflag = o1;
 // 						!SET UP NEW ORPHANS.
@@ -165,7 +165,7 @@ void orphan_(int o1, int o2, int o3, int o4, int o5) {
 
 // THIS ROUTINE DETAILS ON BIT 1 OF PRSFLAG
 
-static Bool lex_(char *inbuf, int inlnt, int *outbuf, int *op, Bool vbflag/*, size_t inbuf_unit*/) {
+static Bool lex(char *inbuf, int inlnt, int *outbuf, int *op, Bool vbflag/*, size_t inbuf_unit*/) {
 // Initialized data
    static const char dlimit[1 * 9] = "A" "Z" "x" "1" "9" "x" "-" "-" "x";
 
@@ -230,7 +230,7 @@ L200:
    }
 
    if (vbflag) {
-      rspeak_(601);
+      rspeak(601);
    }
 // 						!GREEK TO ME, FAIL.
    return ret_val;

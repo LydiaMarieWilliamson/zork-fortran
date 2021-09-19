@@ -8,7 +8,7 @@
 #include "extern.h"
 #include "common.h"
 
-void gdt_(void) {
+void gdt(void) {
 // Initialized data
    const int cmdmax = 38;
    static char dbgcmd[2 * 38] = "DR" "DO" "DA" "DC" "DX" "DH" "DL" "DV" "DF" "DS" "AF" "HE" "NR" "NT" "NC" "ND" "RR" "RT" "RC" "RD" "TK" "EX" "AR" "AO" "AA" "AC" "AX" "AV" "D2" "DN" "AN" "DM" "DT" "AH" "DP" "PD" "DZ" "AZ";
@@ -470,7 +470,7 @@ L22000:
    hack_1.thfflg = false;
 // 						!DISABLE ROBBER.
    hack_1.thfact = false;
-   newsta_(oindex_1.thief, 0, 0, 0, 0);
+   newsta(oindex_1.thief, 0, 0, 0, 0);
 // 						!VANISH THIEF.
    BegExSF(chan_1.outch, /*500*/"(\002 No robber.\002)", 0);
    EndExSF();
@@ -480,7 +480,7 @@ L22000:
 
 L23000:
    findex_1.trollf = true;
-   newsta_(oindex_1.troll, 0, 0, 0, 0);
+   newsta(oindex_1.troll, 0, 0, 0, 0);
    BegExSF(chan_1.outch, /*510*/"(\002 No troll.\002)", 0);
    EndExSF();
    goto L2000;
@@ -489,7 +489,7 @@ L23000:
 
 L24000:
    findex_1.cyclof = true;
-   newsta_(oindex_1.cyclo, 0, 0, 0, 0);
+   newsta(oindex_1.cyclo, 0, 0, 0, 0);
    BegExSF(chan_1.outch, /*520*/"(\002 No cyclops.\002)", 0);
    EndExSF();
    goto L2000;
@@ -514,7 +514,7 @@ L26000:
 
 L27000:
    findex_1.trollf = false;
-   newsta_(oindex_1.troll, 0, rindex_1.mtrol, 0, 0);
+   newsta(oindex_1.troll, 0, rindex_1.mtrol, 0, 0);
    BegExSF(chan_1.outch, /*550*/"(\002 Restored troll.\002)", 0);
    EndExSF();
    goto L2000;
@@ -524,7 +524,7 @@ L27000:
 L28000:
    findex_1.cyclof = false;
    findex_1.magicf = false;
-   newsta_(oindex_1.cyclo, 0, rindex_1.mcycl, 0, 0);
+   newsta(oindex_1.cyclo, 0, rindex_1.mcycl, 0, 0);
    BegExSF(chan_1.outch, /*560*/"(\002 Restored cyclops.\002)", 0);
    EndExSF();
    goto L2000;
@@ -546,7 +546,7 @@ L30000:
       goto L2200;
    }
 // 						!VALID OBJECT?
-   newsta_(j, 0, 0, 0, play_1.winner);
+   newsta(j, 0, 0, 0, play_1.winner);
 // 						!YES, TAKE OBJECT.
    BegExSF(chan_1.outch, /*580*/"(\002 Taken.\002)", 0);
    EndExSF();
@@ -742,7 +742,7 @@ L41000:
 // DT-- DISPLAY TEXT
 
 L42000:
-   rspeak_(j);
+   rspeak(j);
    goto L2000;
 
 // AH--	ALTER HERE

@@ -13,7 +13,7 @@ History
 2021/09/14	A first Makefile has been added.
 		This assumes that the f2c library and the include file ‟f2c.h” have been installed
 		The file ‟Compile.log” contains some of the details provided by the first run of ‟make”.
-2021/09/14	The undefined function itime_() has been resolved with a ‟fallback” function ITime_().
+2021/09/14	The undefined function itime() has been resolved with a ‟fallback” function ITime().
 2021/09/14	The ‟f2c.h” file has been internalized as ‟F2C.h”.
 		Additional normalization has been done on the source code layout.
 2021/09/14	Most of ‟F2C.h” has been nativized to C and eliminated.
@@ -56,3 +56,5 @@ History
 2021/09/18	Lifting constant common blocks to enum types (round 1 of 2).
 2021/09/19	Various other minor cleanups and repairs both here and in the 1991 C translation to bring them closer together.
 		Their only significant difference, at this point, is the I/O and the formats of the black-box *.dat file(s).
+2021/09/19	All the final ‟_”'s produced for globals by the translator were removed, except where names conflict.
+		That includes any references to the names listed in this and other log and documentation files.

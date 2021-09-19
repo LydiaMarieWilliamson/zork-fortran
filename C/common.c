@@ -14,7 +14,7 @@
 // Unlisted:
 // common /star/
 // int mbase, strbit;
-struct starCB star_;
+struct starCB star;
 
 // common /time/
 // int pltime, shour, smin, ssec;
@@ -29,40 +29,40 @@ struct randomCB random_;
 // int prsa, prsi, prso;
 // Bool prswon;
 // int prscon;
-struct prsvecCB prsvec_;
+struct prsvecCB prsvec;
 
 // common /orphs/
 // int oflag, oact, oslot, oprep, oname;
-struct orphsCB orphs_;
+struct orphsCB orphs;
 
 // common /last/
 // int lastit;
-struct lastCB last_;
+struct lastCB last;
 
 // common /pv/
 // int act, o1, o2, p1, p2;
 // int act, o1, o2; char p1[6], p2[6]; // In sverbs.c, only.
-union pvCB pv_;
+union pvCB pv;
 
 // common /syntax/
 // int vflag, dobj, dfl1, dfl2, dfw1, dfw2, iobj, ifl1, ifl2, ifw1, ifw2;
-struct syntaxCB syntax_;
+struct syntaxCB syntax;
 
 // gamestat.h:
 // common /play/
 // int winner, here;
 // Bool telflg;
-struct playCB play_;
+struct playCB play;
 
 // rooms.h:
 // common /rooms/
 // int rlnt, rdesc2, rdesc1[200], rexit[200], ractio[200], rval[200], rflag[200];
-struct roomsCB rooms_;
+struct roomsCB rooms;
 
 // objects.h:
 // common /objcts/
 // int olnt, odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220], oroom[220], oadv[220], ocan[220], oread[220];
-struct objctsCB objcts_;
+struct objctsCB objcts;
 
 // common /oroom2/
 // int r2lnt, oroom2[20], rroom2[20];
@@ -72,61 +72,61 @@ struct oroom2CB oroom2_;
 // common /cevent/
 // int clnt, ctick[25], cactio[25];
 // Bool cflag[25];
-struct ceventCB cevent_;
+struct ceventCB cevent;
 
 // advers.h:
 // common /advs/
 // int alnt, aroom[4], ascore[4], avehic[4], aobj[4], aactio[4], astren[4], aflag[4];
-struct advsCB advs_;
+struct advsCB advs;
 
 // flags.h:
 // common /findex/
 // Bool trollf, cagesf, bucktf, caroff, carozf, lwtidf, domef, glacrf, echof, riddlf, lldf, cyclof, magicf, litldf, safef, gnomef, gnodrf, mirrmf, egyptf, onpolf, blabf, brieff, superf, buoyf, grunlf, gatef, rainbf, cagetf, empthf, deflaf, glacmf, frobzf, endgmf, badlkf, thfenf, singsf, mrpshf, mropnf, wdopnf, mr1f, mr2f, inqstf, follwf, spellf, cpoutf, cpushf;
 // int btief, binff, rvmnt, rvclr, rvcyc, rvsnd, rvgua, orrug, orcand, ormtch, orlamp, mdir, mloc, poleuf, quesno, nqatt, corrct, lcell, pnumb, acell, dcell, cphere;
-struct findexCB findex_;
+struct findexCB findex;
 
 // debug.h:
 // common /debug/
 // int dbgflg, prsflg, gdtflg;
-struct debugCB debug_;
+struct debugCB debug;
 
 // villians.h:
 // common /hack/
 // int thfpos;
 // Bool thfflg, thfact, swdact;
 // int swdsta;
-struct hackCB hack_;
+struct hackCB hack;
 
 // common /vill/
 // int vlnt, villns[4], vprob[4], vopps[4], vbest[4], vmelee[4];
-struct villCB vill_;
+struct villCB vill;
 
 // state.h:
 // common /state/
 // int moves, deaths, rwscor, mxscor, mxload, ltshft, bloc, mungrm, hs, egscor, egmxsc;
-struct stateCB state_;
+struct stateCB state;
 
 // curxt.h:
 // common /curxt/
 // int xtype, xroom1, xstrng, xactio, xobj;
-struct curxtCB curxt_;
+struct curxtCB curxt;
 
 // io.h:
 // common /input/
 // int inlnt;
 // char inbuf[78];
-struct inputCB input_;
+struct inputCB input;
 
 // common /chan/
 // int inpch, outch, dbch;
-struct chanCB chan_;
+struct chanCB chan;
 
 // mindex.h:
 // common /rmsg/
 // int mlnt, rtext[1820];
-struct rmsgCB rmsg_;
+struct rmsgCB rmsg;
 
 // exits.h:
 // common /exits/
 // int xlnt, travel[900];
-struct exitsCB exits_;
+struct exitsCB exits;

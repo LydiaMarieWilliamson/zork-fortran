@@ -8,9 +8,9 @@
 #include "extern.h"
 #include "common.h"
 
-static int cxappl_(int);
+static int cxappl(int);
 
-void savegm_(void) {
+void savegm(void) {
 // System generated locals
    int i__1;
 
@@ -28,7 +28,7 @@ void savegm_(void) {
       goto L100;
    }
 
-   i = gttime_();
+   i = gttime();
 // 						!GET TIME.
    BegExSU(1, 0, 0);
    DoUio(1, &vers_2.vmaj, sizeof vers_2.vmaj);
@@ -94,17 +94,17 @@ void savegm_(void) {
    EndExSU();
 
    CloseF(1);
-   rspeak_(597);
+   rspeak(597);
    return;
 
 L100:
-   rspeak_(598);
+   rspeak(598);
 // 						!CANT DO IT.
 }
 
 // RESTORE- RESTORE GAME STATE
 
-void rstrgm_(void) {
+void rstrgm(void) {
 // System generated locals
    int i__1;
 
@@ -190,23 +190,23 @@ void rstrgm_(void) {
    EndInSU();
 
    CloseF(1);
-   rspeak_(599);
+   rspeak(599);
    return;
 
 L100:
-   rspeak_(598);
+   rspeak(598);
 // 						!CANT DO IT.
    return;
 
 L200:
-   rspeak_(600);
+   rspeak(600);
 // 						!OBSOLETE VERSION
    CloseF(1);
 }
 
 // WALK- MOVE IN SPECIFIED DIRECTION
 
-Bool walk_(/*int x*/) {
+Bool walk(/*int x*/) {
 // System generated locals
    Bool ret_val;
 
@@ -214,10 +214,10 @@ Bool walk_(/*int x*/) {
 
    ret_val = true;
 // 						!ASSUME WINS.
-   if (play_1.winner != aindex_1.player || lit_(play_1.here) || prob_(25, 25)) {
+   if (play_1.winner != aindex_1.player || lit(play_1.here) || prob(25, 25)) {
       goto L500;
    }
-   if (!findxt_(prsvec_1.prso, play_1.here)) {
+   if (!findxt(prsvec_1.prso, play_1.here)) {
       goto L450;
    }
 // 						!INVALID EXIT? GRUE
@@ -233,10 +233,10 @@ Bool walk_(/*int x*/) {
          goto L300;
    }
 // 						!DECODE EXIT TYPE.
-   bug_(9, curxt_1.xtype);
+   bug(9, curxt_1.xtype);
 
 L100:
-   if (cxappl_(curxt_1.xactio) != 0) {
+   if (cxappl(curxt_1.xactio) != 0) {
       goto L400;
    }
 // 						!CEXIT... RETURNED ROOM?
@@ -245,13 +245,13 @@ L100:
    }
 // 						!NO, FLAG ON?
 L200:
-   jigsup_(523);
+   jigsup(523);
 // 						!BAD EXIT, GRUE
 // 						!
    return ret_val;
 
 L300:
-   if (cxappl_(curxt_1.xactio) != 0) {
+   if (cxappl(curxt_1.xactio) != 0) {
       goto L400;
    }
 // 						!DOOR... RETURNED ROOM?
@@ -259,18 +259,18 @@ L300:
       goto L400;
    }
 // 						!NO, DOOR OPEN?
-   jigsup_(523);
+   jigsup(523);
 // 						!BAD EXIT, GRUE
 // 						!
    return ret_val;
 
 L400:
-   if (lit_(curxt_1.xroom1)) {
+   if (lit(curxt_1.xroom1)) {
       goto L900;
    }
 // 						!VALID ROOM, IS IT LIT?
 L450:
-   jigsup_(522);
+   jigsup(522);
 // 						!NO, GRUE
 // 						!
    return ret_val;
@@ -278,7 +278,7 @@ L450:
 // ROOM IS LIT, OR WINNER IS NOT PLAYER (NO GRUE).
 
 L500:
-   if (findxt_(prsvec_1.prso, play_1.here)) {
+   if (findxt(prsvec_1.prso, play_1.here)) {
       goto L550;
    }
 // 						!EXIT EXIST?
@@ -296,7 +296,7 @@ L525:
    if ((rooms_1.rflag[play_1.here - 1] & NWallR) != 0) {
       curxt_1.xstrng = 524;
    }
-   rspeak_(curxt_1.xstrng);
+   rspeak(curxt_1.xstrng);
    prsvec_1.prscon = 1;
 // 						!STOP CMD STREAM.
    return ret_val;
@@ -313,10 +313,10 @@ L550:
          goto L800;
    }
 // 						!BRANCH ON EXIT TYPE.
-   bug_(9, curxt_1.xtype);
+   bug(9, curxt_1.xtype);
 
 L700:
-   if (cxappl_(curxt_1.xactio) != 0) {
+   if (cxappl(curxt_1.xactio) != 0) {
       goto L900;
    }
 // 						!CEXIT... RETURNED ROOM?
@@ -329,14 +329,14 @@ L600:
       goto L525;
    }
 // 						!IF NO REASON, USE STD.
-   rspeak_(curxt_1.xstrng);
+   rspeak(curxt_1.xstrng);
 // 						!DENY EXIT.
    prsvec_1.prscon = 1;
 // 						!STOP CMD STREAM.
    return ret_val;
 
 L800:
-   if (cxappl_(curxt_1.xactio) != 0) {
+   if (cxappl(curxt_1.xactio) != 0) {
       goto L900;
    }
 // 						!DOOR... RETURNED ROOM?
@@ -348,16 +348,16 @@ L800:
       curxt_1.xstrng = 525;
    }
 // 						!IF NO REASON, USE STD.
-   rspsub_(curxt_1.xstrng, objcts_1.odesc2[curxt_1.xobj - 1]);
+   rspsub(curxt_1.xstrng, objcts_1.odesc2[curxt_1.xobj - 1]);
    prsvec_1.prscon = 1;
 // 						!STOP CMD STREAM.
    return ret_val;
 
 L900:
-   ret_val = moveto_(curxt_1.xroom1, play_1.winner);
+   ret_val = moveto(curxt_1.xroom1, play_1.winner);
 // 						!MOVE TO ROOM.
    if (ret_val) {
-      ret_val = rmdesc_(0);
+      ret_val = rmdesc(0);
    }
 // 						!DESCRIBE ROOM.
    return ret_val;
@@ -365,7 +365,7 @@ L900:
 
 // CXAPPL- CONDITIONAL EXIT PROCESSORS
 
-static int cxappl_(int ri) {
+static int cxappl(int ri) {
 // System generated locals
    int ret_val, i__1;
 
@@ -412,7 +412,7 @@ static int cxappl_(int ri) {
       case 14:
          goto L14000;
    }
-   bug_(5, ri);
+   bug(5, ri);
 
 // C1- COFFIN-CURE
 
@@ -430,10 +430,10 @@ L2000:
    }
 // 						!IF FLIPPED, NOTHING.
 L2500:
-   rspeak_(121);
+   rspeak(121);
 // 						!SPIN THE COMPASS.
 L5000:
-   i = xpars_1.xelnt[xpars_1.xcond - 1] * rnd_(8);
+   i = xpars_1.xelnt[xpars_1.xcond - 1] * rnd(8);
 // 						!CHOOSE RANDOM EXIT.
    curxt_1.xroom1 = exits_1.travel[rooms_1.rexit[play_1.here - 1] + i - 1] & xpars_1.xrmask;
    ret_val = curxt_1.xroom1;
@@ -549,7 +549,7 @@ L8300:
 // C9-	FROBOZZ FLAG (MIRIN)
 
 L9000:
-   if (mrhere_(play_1.here) != 1) {
+   if (mrhere(play_1.here) != 1) {
       goto L9100;
    }
 // 						!MIRROR 1 HERE?
@@ -605,7 +605,7 @@ L10200:
       curxt_1.xroom1 = findex_1.mloc - 1;
    }
 // 						!IF S.
-   rspeak_(818);
+   rspeak(818);
 // 						!CLOSE DOOR.
    findex_1.wdopnf = false;
    ret_val = curxt_1.xroom1;
@@ -657,7 +657,7 @@ L14000:
       return ret_val;
    }
 // 						!LADDER HERE?
-   rspeak_(882);
+   rspeak(882);
 // 						!YOU WIN.
    findex_1.frobzf = true;
 // 						!LET HIM OUT.
@@ -698,7 +698,7 @@ L14400:
    return ret_val;
 
 L14500:
-   cpgoto_(nxt);
+   cpgoto(nxt);
 // 						!MOVE TO STATE.
    curxt_1.xroom1 = rindex_1.cpuzz;
 // 						!STAY IN ROOM.

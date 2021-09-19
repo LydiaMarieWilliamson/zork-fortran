@@ -7,7 +7,7 @@
 //
 // BUZZ WORDS--	IGNORED IN SYNTACTIC PROCESSING
 //
-struct buzvocCB buzvoc_ = (struct buzvocCB){
+struct buzvocCB buzvoc = (struct buzvocCB){
 //   THE FOLLOWING DATA STATEMENT WAS CONVERTED FROM:
 //
 // 	DATA BVOC/3RAND,0,2RBY,0,2RIS,0,1RA,0,
@@ -21,7 +21,7 @@ struct buzvocCB buzvoc_ = (struct buzvocCB){
 
 // PREPOSITIONS--	MAPS PREPOSITIONS TO INDICES
 //
-struct prpvocCB prpvoc_ = (struct prpvocCB){
+struct prpvocCB prpvoc = (struct prpvocCB){
 //   THE FOLLOWING DATA STATEMENT WAS CONVERTED FROM:
 //
 // 	DATA PVOC/3ROVE,1RR,1,3RWIT,1RH,2,3RUSI,2RNG,2,3RTHR,3ROUG,2,
@@ -40,7 +40,7 @@ struct prpvocCB prpvoc_ = (struct prpvocCB){
 //
 // DIRECTIONS--	MAPS DIRECTIONS TO INDICES
 //
-struct dirvocCB dirvoc_ = (struct dirvocCB){
+struct dirvocCB dirvoc = (struct dirvocCB){
 //   THE FOLLOWING DATA STATEMENT WAS CONVERTED FROM:
 //
 // 	DATA DVOC/1RN,0,"2000,3RNOR,2RTH,"2000,1RS,0,"12000,
@@ -79,7 +79,7 @@ struct dirvocCB dirvoc_ = (struct dirvocCB){
 // FOLLOWS-- ALL ADJECTIVES ARE .GE. 1RA (1600), WHILE ALL OBJECTS
 // ARE .LE. OLNT (255 MAX).
 //
-struct adjvocCB adjvoc_ = (struct adjvocCB){
+struct adjvocCB adjvoc = (struct adjvocCB){
 //   THE DATA STATEMENT BELOW WAS CONVERTED FROM:
 //
 // 	DATA AVOC1/3RBRO,2RWN,1,81,3RELO,3RNGA,1,3RHOT,0,3,3RPEP,3RPER,3,
@@ -246,7 +246,7 @@ struct adjvocCB adjvoc_ = (struct adjvocCB){
 //
 // SPARSE, PAGE 5
 //
-struct vrbvocCB vrbvoc_ = (struct vrbvocCB){
+struct vrbvocCB vrbvoc = (struct vrbvocCB){
 //   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
 //
 // 	DATA VVOC1/3RBRI,2REF,1,70,3RVER,3RBOS,1,71,
@@ -565,7 +565,7 @@ struct vrbvocCB vrbvoc_ = (struct vrbvocCB){
 // SAME FORMAT AS AVOC.
 //
 //
-struct objvocCB objvoc_ = (struct objvocCB){
+struct objvocCB objvoc = (struct objvocCB){
 //   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
 //
 // 	DATA OVOC1/3RBAG,0,1,25,100,3RSAC,1RK,1,3RGAR,3RLIC,2,

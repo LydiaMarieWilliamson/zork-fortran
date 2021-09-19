@@ -8,7 +8,7 @@
 #include "extern.h"
 #include "common.h"
 
-void princr_(Bool full, int rm) {
+void princr(Bool full, int rm) {
 // System generated locals
    int i__1, i__2;
 
@@ -22,7 +22,7 @@ void princr_(Bool full, int rm) {
    i__1 = objcts_1.olnt;
    for (i = 1; i <= i__1; ++i) {
 // 						!LOOP ON OBJECTS
-      if (!qhere_(i, rm) || (objcts_1.oflag1[i - 1] & VisiO + NDscO) != VisiO || i == advs_1.avehic[play_1.winner - 1]) {
+      if (!qhere(i, rm) || (objcts_1.oflag1[i - 1] & VisiO + NDscO) != VisiO || i == advs_1.avehic[play_1.winner - 1]) {
          goto L500;
       }
       if (!(full) && (findex_1.superf || findex_1.brieff && (rooms_1.rflag[play_1.here - 1] & SeenR) != 0)) {
@@ -36,13 +36,13 @@ void princr_(Bool full, int rm) {
       if (k == 0 || (objcts_1.oflag2[i - 1] & TChO) != 0) {
          k = objcts_1.odesc1[i - 1];
       }
-      rspeak_(k);
+      rspeak(k);
 // 						!DESCRIBE.
       goto L500;
 // DO SHORT DESCRIPTION OF OBJECT.
 
    L200:
-      rspsub_(j, objcts_1.odesc2[i - 1]);
+      rspsub(j, objcts_1.odesc2[i - 1]);
 // 						!YOU CAN SEE IT.
       j = 502;
 
@@ -55,14 +55,14 @@ void princr_(Bool full, int rm) {
    i__1 = objcts_1.olnt;
    for (i = 1; i <= i__1; ++i) {
 // 						!LOOP ON OBJECTS.
-      if (!qhere_(i, rm) || (objcts_1.oflag1[i - 1] & VisiO + NDscO) != VisiO) {
+      if (!qhere(i, rm) || (objcts_1.oflag1[i - 1] & VisiO + NDscO) != VisiO) {
          goto L1000;
       }
       if ((objcts_1.oflag2[i - 1] & ActrO) != 0) {
-         i__2 = oactor_(i);
-         invent_(i__2);
+         i__2 = oactor(i);
+         invent(i__2);
       }
-      if ((objcts_1.oflag1[i - 1] & TranO) == 0 && (objcts_1.oflag2[i - 1] & OpenO) == 0 || qempty_(i)) {
+      if ((objcts_1.oflag1[i - 1] & TranO) == 0 && (objcts_1.oflag2[i - 1] & OpenO) == 0 || qempty(i)) {
          goto L1000;
       }
 
@@ -78,7 +78,7 @@ void princr_(Bool full, int rm) {
          goto L1000;
       }
    L600:
-      princo_(i, j);
+      princo(i, j);
 // 						!PRINT CONTENTS.
 
    L1000:
@@ -89,7 +89,7 @@ void princr_(Bool full, int rm) {
 
 // INVENT- PRINT CONTENTS OF ADVENTURER
 
-void invent_(int adv) {
+void invent(int adv) {
 // System generated locals
    int i__1;
 
@@ -110,9 +110,9 @@ void invent_(int adv) {
       if (objcts_1.oadv[j - 1] != adv || (objcts_1.oflag1[j - 1] & VisiO) == 0) {
          goto L10;
       }
-      rspsub_(i, objcts_1.odesc2[advs_1.aobj[adv - 1] - 1]);
+      rspsub(i, objcts_1.odesc2[advs_1.aobj[adv - 1] - 1]);
       i = 0;
-      rspsub_(502, objcts_1.odesc2[j - 1]);
+      rspsub(502, objcts_1.odesc2[j - 1]);
    L10:
       ;
    }
@@ -122,7 +122,7 @@ void invent_(int adv) {
    }
 // 						!ANY OBJECTS?
    if (adv == aindex_1.player) {
-      rspeak_(578);
+      rspeak(578);
    }
 // 						!NO, TELL HIM.
    return;
@@ -134,8 +134,8 @@ L25:
       if (objcts_1.oadv[j - 1] != adv || (objcts_1.oflag1[j - 1] & VisiO) == 0 || (objcts_1.oflag1[j - 1] & TranO) == 0 && (objcts_1.oflag2[j - 1] & OpenO) == 0) {
          goto L100;
       }
-      if (!qempty_(j)) {
-         princo_(j, 573);
+      if (!qempty(j)) {
+         princo(j, 573);
       }
 // 						!IF NOT EMPTY, LIST.
    L100:
@@ -145,20 +145,20 @@ L25:
 
 // PRINCO-	PRINT CONTENTS OF OBJECT
 
-void princo_(int obj, int desc) {
+void princo(int obj, int desc) {
 // System generated locals
    int i__1;
 
 // Local variables
    int i;
 
-   rspsub_(desc, objcts_1.odesc2[obj - 1]);
+   rspsub(desc, objcts_1.odesc2[obj - 1]);
 // 						!PRINT HEADER.
    i__1 = objcts_1.olnt;
    for (i = 1; i <= i__1; ++i) {
 // 						!LOOP THRU.
       if (objcts_1.ocan[i - 1] == obj) {
-         rspsub_(502, objcts_1.odesc2[i - 1]);
+         rspsub(502, objcts_1.odesc2[i - 1]);
       }
 // L100:
    }

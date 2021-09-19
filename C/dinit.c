@@ -8,9 +8,9 @@
 #include "extern.h"
 #include "common.h"
 
-static Bool protct_(int);
+static Bool protct(int);
 
-Bool init_(int x) {
+Bool init(int x) {
 // Format strings
    static char fmt_0[] = "(\002 Suddenly a sinister, wraithlike figure appears before \002,\002you,\002/\002 seeming to float in the air.  In a low, sorrowful voice\002,\002 he says,\002/\002 \"Alas, the very nature of the world has changed, \002,\002and the dungeon\002/\002 cannot be found.  All must now pass away.\"\002,\002  Raising his oaken staff\002/\002 in farewell, he fades into the \002,\002spreading darkness.  In his place\002/\002 appears a tastefully \002,\002lettered sign reading:\002//23x,\002INITIALIZATION FAILURE\002//\002 The darkness becomes all encompassing, and your vision fails.\002)";
 
@@ -29,7 +29,7 @@ Bool init_(int x) {
 
 // FIRST CHECK FOR PROTECTION VIOLATION
 
-   if (protct_(x)) {
+   if (protct(x)) {
       goto L10000;
    }
 // 						!PROTECTION VIOLATION?
@@ -348,7 +348,7 @@ L10000:
 // SET UP TO PLAY THE GAME.
 
 L1025:
-   intime_(&time_1.shour, &time_1.smin, &time_1.ssec);
+   intime(&time_1.shour, &time_1.smin, &time_1.ssec);
 // 						!GET TIME AND DATE.
 // 	CALL IDATE(I,J,K)
 // 	CALL IDATE(DATARRY(1))
@@ -356,7 +356,7 @@ L1025:
 //     &	or(SHOUR,or(SMIN,SSEC)))
 // 	NEW WAY TO INITIALIZE /+TAA+/
    i__1 = time_1.shour * 3600 + time_1.smin * 60 + time_1.ssec;
-   inirnd_(i__1);
+   inirnd(i__1);
 
    play_1.winner = aindex_1.player;
    last_1.lastit = advs_1.aobj[aindex_1.player - 1];
@@ -420,7 +420,7 @@ L1950:
 
 // AT THE MOMENT, PLAY IS PERMITTED UNDER ALL CIRCUMSTANCES.
 
-static Bool protct_(int x) {
+static Bool protct(int x) {
 // System generated locals
    Bool ret_val;
 
