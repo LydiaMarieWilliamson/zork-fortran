@@ -9,6 +9,3 @@ Pending compiler warnings:
 			│ 1000    IF(O1) 3000,500,3000
 			│         IF(ROBJ) 500,50,200
 	villns.f:	│         IF(I) 10,10,450
-∙	Fortran 2018 dropped support for DO statements ending in labelled statements other than END DO or CONTINUE.
-	sverbs.f:	│ 27300   K=NEWK
-	villns.f:	│ 125       IF(OADV(I).EQ.-THIEF) J=500
