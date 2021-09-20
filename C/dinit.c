@@ -232,7 +232,9 @@ L10000:
 // this way, the wizard doesn't have to recompile to use gdt
 
 // 	Changed by TAA so that always in wizard ID
-// D	gdtflg=1
+#ifdef ALLOW_GDT
+   debug_1.gdtflg = 1;
+#endif
 
    screen_1.fromdr = 0;
 // 						!INIT SCOL GOODIES.
@@ -262,8 +264,9 @@ L10000:
    if (i__1 != 0) {
       goto L1950;
    }
-// D	PRINT 150
-// D150	FORMAT(' RESTORING FROM "dindx.dat"')
+#ifdef ALLOW_GDT
+   print(" RESTORING FROM \"dindx.dat\"");
+#endif
    BegInSF(1, /*130*/"(i6)", 0);
    DoFio(1, &state_1.mxscor, sizeof state_1.mxscor);
    DoFio(1, &star_1.strbit, sizeof star_1.strbit);
@@ -364,21 +367,22 @@ L1025:
    state_1.bloc = objcts_1.oroom[oindex_1.ballo - 1];
    ret_val = true;
 
-// D	PRINT 1050,RLNT,RMAX,XLNT,XMAX,OLNT,OMAX,MLNT,MMAX,
-// D    &  VLNT,VMAX,ALNT,AMAX,CLNT,CMAX,R2LNT,R2MAX
-// D1050	FORMAT(' USED:'/1X,I5,' OF',I5,' ROOMS'/
-// D    &  1X,I5,' OF',I5,' EXITS'/
-// D    &  1X,I5,' OF',I5,' OBJECTS'/
-// D    &  1X,I5,' OF',I5,' MESSAGES'/
-// D    &  1X,I5,' OF',I5,' VILLAINS'/
-// D    &  1X,I5,' OF',I5,' ADVENTURERS'/
-// D    &  1X,I5,' OF',I5,' CLOCK EVENTS'/
-// D    &  1X,I5,' OF',I5,' ROOM2 SLOTS')
-// D	PRINT 1150,MXSCOR,EGMXSC,RECNO,RDESC2,MBASE,STRBIT
-// D1150	FORMAT(' MAX SCORE=',I5/' EG SCORE=',I5/
-// D    &  ' MAX RECNO=',I5/' RDESC2 BASE=',I5/
-// D    &  ' MELEE START=',I5/' STAR MASK=',I7)
-// D	PAUSE 1
+#ifdef ALLOW_GDT
+   print(
+      " USED:%/"
+      "%1X%I5 OF%I5 ROOMS%/"	"%1X%I5 OF%I5 EXITS%/"		"%1X%I5 OF%I5 OBJECTS%/"	"%1X%I5 OF%I5 MESSAGES%/"
+      "%1X%I5 OF%I5 VILLAINS%/"	"%1X%I5 OF%I5 ADVENTURERS%/"	"%1X%I5 OF%I5 CLOCK EVENTS%/"	"%1X%I5 OF%I5 ROOM2 SLOTS",
+      rooms_1.rlnt, rmax,	exits_1.xlnt, xmax,		objcts_1.olnt, omax,		rmsg_1.mlnt, mmax,
+      vill_1.vlnt, vmax,	advs_1.alnt, amax,		cevent_1.clnt, cmax,		oroom2_1.r2lnt, r2max
+   );
+   print(
+      " MAX SCORE=%I5%/"	" EG SCORE=%I5%/"	" MAX RECNO=%I5%/"
+      " RDESC2 BASE=%I5%/"	" MELEE START=%I5%/"	" STAR MASK=%I7",
+      state_1.mxscor,		state_1.egmxsc,		recno,
+      rooms_1.rdesc2,		star_1.mbase,		star_1.strbit
+   );
+   pause(1)
+#endif
 
    return ret_val;
 // INIT, PAGE 6

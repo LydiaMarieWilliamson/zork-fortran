@@ -84,7 +84,9 @@ Bool parse(char *inbuf, int inlnt, Bool vbflag/*, size_t inbuf_unit*/) {
    int x;
    int outbuf[40], outlnt;
 
-// D	DFLAG=IAND(PRSFLG,1).NE.0
+#ifdef ALLOW_GDT
+   dflag = (debug_1.prsflg & 1) != 0;
+#endif
 
 // Parameter adjustments
    --inbuf;
@@ -131,17 +133,20 @@ L300:
 L350:
    orphan(0, 0, 0, 0, 0);
 // 						!CLEAR ORPHANS.
-// D	if(dflag) write(0,*) 'parse good'
-// D	IF(DFLAG) PRINT 10,PARSE,PRSA,PRSO,PRSI
-// D10	FORMAT(' PARSE RESULTS- ',L7,3I7)
+#ifdef ALLOW_GDT
+   if (dflag) write(0, *, "parse good");
+   if (dflag) print(" PARSE RESULTS- %L7%3I7", ret_val, prsvec_1.prsa, prsvec_1.prso, prsvec_1.prsi);
+#endif
    return ret_val;
 
 // PARSE FAILS, DISALLOW CONTINUATION
 
 L100:
    prsvec_1.prscon = 1;
-// D	if(dflag) write(0,*) 'parse failed'
-// D	IF(DFLAG) PRINT 10,PARSE,PRSA,PRSO,PRSI
+#ifdef ALLOW_GDT
+   if (dflag) write(0, *, "parse failed");
+   if (dflag) print(" PARSE RESULTS- %L7%3I7", ret_val, prsvec_1.prsa, prsvec_1.prso, prsvec_1.prsi);
+#endif
    return ret_val;
 }
 
@@ -182,7 +187,9 @@ static Bool lex(char *inbuf, int inlnt, int *outbuf, int *op, Bool vbflag/*, siz
 // L100:
    }
 
-// D	DFLAG=IAND(PRSFLG,2).NE.0
+#ifdef ALLOW_GDT
+   dflag = (debug_1.prsflg & 2) != 0;
+#endif
    ret_val = false;
 // 						!ASSUME LEX FAILS.
    *op = -1;
@@ -243,16 +250,18 @@ L1000:
    }
 // 						!ANY LAST WORD?
    ret_val = true;
-// D	IF(DFLAG) PRINT 10,CP,OP,PRSCON,(OUTBUF(I),I=1,OP+1)
-// D10	FORMAT(' LEX RESULTS- ',3I7/1X,10I7)
+#ifdef ALLOW_GDT
+   if (dflag) print(" LEX RESULTS- %3I7%/%1X%10I7", cp, *op, prsvec_1.prscon, (outbuf[i - 1], i = 1, *op + 1));
+#endif
    return ret_val;
 
 // LEGITIMATE CHARACTERS: LETTER, DIGIT, OR HYPHEN.
 
 L4000:
    j1 = j - dlimit[i + 1];
-// D	IF(DFLAG) PRINT 20,J,J1,CP
-// D20	FORMAT(' LEX- CHAR= ',A1,2I7)
+#ifdef ALLOW_GDT
+   if (dflag) print(" LEX- CHAR= %A1%2I7", j, j1, cp);
+#endif
    if (cp >= 6) {
       goto L200;
    }

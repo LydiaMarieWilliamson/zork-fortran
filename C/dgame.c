@@ -14,8 +14,10 @@ void game_(void) {
 // Initialized data
    static const char secho[1 * 4] = "E" "C" "H" "O";
 
-// D	Initialized Data
-// D	DATA GDTSTR/'G','D','T'/
+#ifdef ALLOW_GDT
+// Initialized Data
+   static const char gdtstr[1 * 3] = "G" "D" "T";
+#endif
 // GAME, PAGE 2
 
 // System generated locals
@@ -43,14 +45,17 @@ L100:
       rdline(input_1.inbuf, input_1.inlnt, 1, sizeof input_1.inbuf[0]);
    }
 
-// D   DO 150 I=1,3
+#ifdef ALLOW_GDT
+   for (i = 1; i <= 3; i++) {
 //                                             !CALL ON GDT?
-// D     IF(INBUF(I+PRSCON-1).NE.GDTSTR(I)) GO TO 200
-// D150        CONTINUE
-// D   CALL GDT
+      if (input_1.inbuf[i + prsvec_1.prscon - 2] != gdtstr[i - 1]) goto L200;
+// L150: continue;
+   }
+   gdt();
 //                                             !YES, INVOKE.
-// D   GO TO 100
+   goto L100;
 //                                             !ONWARD.
+#endif
 
 //L200:
    ++state_1.moves;

@@ -59,3 +59,4 @@ History
 2021/09/19	All the final ‟_”'s produced for globals by the translator were removed, except where names conflict.
 		That includes any references to the names listed in this and other log and documentation files.
 2021/09/19-20	Regularizing the file and function header comments - in both the old and new C translations and Fortran original.
+2021/09/20	Fix up the ‟debug” statements and translate their I/O statements into ‟pidgin-C”.

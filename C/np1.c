@@ -45,7 +45,9 @@ int sparse(int * lbuf, int llnt, Bool vbflag) {
    pv_1.o2 = 0;
    pv_1.p1 = 0;
    pv_1.p2 = 0;
-// D	DFLAG=IAND(PRSFLG,4).NE.0
+#ifdef ALLOW_GDT
+   dflag = (debug_1.prsflg & 4) != 0;
+#endif
 
    buzlnt = 20;
    prplnt = 48;
@@ -60,7 +62,9 @@ int sparse(int * lbuf, int llnt, Bool vbflag) {
       lbuf1 = lbuf[i];
 // 						!GET CURRENT TOKEN.
       lbuf2 = lbuf[i + 1];
-// D	  if(DFLAG) write(0,*) 'lbuf1=',lbuf1,' lbuf2=',lbuf2
+#ifdef ALLOW_GDT
+      if (dflag) write(0, *, "lbuf1=", lbuf1, " lbuf2=", lbuf2);
+#endif
       if (lbuf1 == 0) {
          goto L1500;
       }
@@ -175,8 +179,9 @@ int sparse(int * lbuf, int llnt, Bool vbflag) {
    L600:
       obj = getobj(j, adj, 0);
 // 						!IDENTIFY OBJECT.
-// D	  IF(DFLAG) PRINT 60,J,OBJ
-// D60	  FORMAT(' SPARSE- OBJ AT ',I6,'  OBJ= ',I6)
+#ifdef ALLOW_GDT
+      if (dflag) print(" SPARSE- OBJ AT %I6  OBJ= %I6", 60, j, obj);
+#endif
       if (obj <= 0) {
          goto L6000;
       }
@@ -221,8 +226,9 @@ int sparse(int * lbuf, int llnt, Bool vbflag) {
       prsvec_1.prsa = vindex_1.walkw;
       prsvec_1.prso = dirvoc_1.dvoc[j + 1];
       ret_val = 1;
-// D	IF(DFLAG) PRINT 10,J
-// D10	FORMAT(' SPARSE- DIR AT ',I6)
+#ifdef ALLOW_GDT
+      if (dflag) print(" SPARSE- DIR AT %I6", j);
+#endif
       return ret_val;
 
 // 3000--	ACTION
@@ -230,9 +236,10 @@ int sparse(int * lbuf, int llnt, Bool vbflag) {
    L3000:
       pv_1.act = j;
       orphs_1.oact = 0;
-// D	IF(DFLAG) PRINT 20,J
-// D20	FORMAT(' SPARSE- ACT AT ',I6)
-// D	if(dflag) write(0,*) 'count=',vvoc(j+2),' vnr=',vvoc(j+3)
+#ifdef ALLOW_GDT
+      if (dflag) print(" SPARSE- ACT AT %I6", j);
+      if (dflag) write(0, *, "count=", vvoc[j + 1], " vnr=", vvoc[j + 2]);
+#endif
       goto L1000;
 
 // 4000--	PREPOSITION
@@ -243,8 +250,9 @@ int sparse(int * lbuf, int llnt, Bool vbflag) {
       }
       prep = prpvoc_1.pvoc[j + 1];
       adj = 0;
-// D	IF(DFLAG) PRINT 30,J
-// D30	FORMAT(' SPARSE- PREP AT ',I6)
+#ifdef ALLOW_GDT
+      if (dflag) print(" SPARSE- PREP AT %I6", j);
+#endif
       goto L1000;
 
    L4500:
@@ -258,8 +266,9 @@ int sparse(int * lbuf, int llnt, Bool vbflag) {
    L5000:
       adj = j;
       j = orphs_1.oname & orphs_1.oflag;
-// D	IF(DFLAG) PRINT 40,ADJ,J
-// D40	FORMAT(' SPARSE- ADJ AT ',I6,' ORPHAN= ',I6)
+#ifdef ALLOW_GDT
+      if (dflag) print(" SPARSE- ADJ AT %I6 ORPHAN= %I6", adj, j);
+#endif
       if (j != 0 && i >= llnt) {
          goto L600;
       }
@@ -360,9 +369,10 @@ L1500:
 
 L1750:
 // 						!WIN.
-// D	IF(DFLAG) PRINT 70,ACT,O1,O2,P1,P2
-// D70	FORMAT(' SPARSE RESULTS- ',5I7)
-// D	if(dflag) write(0,*) 'sparse=',sparse
+#ifdef ALLOW_GDT
+   if (dflag) print(" SPARSE RESULTS- %5I7", pv_1.act, pv_1.o1, pv_1.o2, pv_1.p1, pv_1.p2);
+   if (dflag) write(0, *, "sparse=", sparse);
+#endif
    return ret_val;
 // 						!LOSE.
 

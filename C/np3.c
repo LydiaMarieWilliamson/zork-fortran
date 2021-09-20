@@ -29,8 +29,10 @@ Bool synmch(/*int x*/) {
    int drive, limit, qprep, sprep, dforce;
 
    ret_val = false;
-// D	DFLAG=IAND(PRSFLG, 16).NE.0
-// D	if(DFLAG)write(0,*) 'synflags=',DirS,IndS,StdS,FlipS,DrivS,VMaskS
+#ifdef ALLOW_GDT
+   dflag = (debug_1.prsflg & 16) != 0;
+   if (dflag) write(0, *, "synflags=", DirS, IndS, StdS, FlipS, DrivS, VMaskS);
+#endif
    j = pv_1.act;
 // 						!SET UP PTR TO SYNTAX.
    drive = 0;
@@ -52,13 +54,16 @@ L100:
 L200:
    newj = unpacks(j);
 // 						!UNPACK SYNTAX.
-// D	IF(DFLAG) PRINT 60,O1,P1,DOBJ,DFL1,DFL2
-// D60	FORMAT(' SYNMCH INPUTS TO SYNEQL- ',5I7)
+#ifdef ALLOW_GDT
+   if (dflag) print(" SYNMCH INPUTS TO SYNEQL- %5I7", pv_1.o1, pv_1.p1, syntax_1.dobj, syntax_1.dfl1, syntax_1.dfl2);
+#endif
    sprep = syntax_1.dobj & PMaskV;
    if (!syneql(pv_1.p1, pv_1.o1, syntax_1.dobj, syntax_1.dfl1, syntax_1.dfl2)) {
       goto L1000;
    }
-// D	IF(DFLAG) PRINT 60,O2,P2,IOBJ,IFL1,IFL2
+#ifdef ALLOW_GDT
+   if (dflag) print(" SYNMCH INPUTS TO SYNEQL- %5I7", pv_1.o2, pv_1.p2, syntax_1.iobj, syntax_1.ifl1, syntax_1.ifl2);
+#endif
    sprep = syntax_1.iobj & PMaskV;
    if (syneql(pv_1.p2, pv_1.o2, syntax_1.iobj, syntax_1.ifl1, syntax_1.ifl2)) {
       goto L6000;
@@ -98,8 +103,9 @@ L3000:
 // MATCH HAS FAILED.  IF DEFAULT SYNTAX EXISTS, TRY TO SNARF
 // ORPHANS OR GWIMS, OR MAKE NEW ORPHANS.
 
-// D	IF(DFLAG) PRINT 20,DRIVE,DFORCE
-// D20	FORMAT(' SYNMCH, DRIVE=',2I6)
+#ifdef ALLOW_GDT
+   if (dflag) print(" SYNMCH, DRIVE=%2I6", drive, dforce);
+#endif
    if (drive == 0) {
       drive = dforce;
    }
@@ -133,8 +139,9 @@ L3000:
 L3500:
    pv_1.o1 = gwim(syntax_1.dobj, syntax_1.dfw1, syntax_1.dfw2);
 // 						!GET GWIM.
-// D	IF(DFLAG) PRINT 30,O1
-// D30	FORMAT(' SYNMCH- DO GWIM= ',I6)
+#ifdef ALLOW_GDT
+   if (dflag) print(" SYNMCH- DO GWIM= %I6", pv_1.o1);
+#endif
    if (pv_1.o1 > 0) {
       goto L4000;
    }
@@ -152,8 +159,9 @@ L4000:
    }
    pv_1.o2 = gwim(syntax_1.iobj, syntax_1.ifw1, syntax_1.ifw2);
 // 						!GWIM.
-// D	IF(DFLAG) PRINT 40,O2
-// D40	FORMAT(' SYNMCH- IO GWIM= ',I6)
+#ifdef ALLOW_GDT
+   if (dflag) print(" SYNMCH- IO GWIM= %I6", pv_1.o2);
+#endif
    if (pv_1.o2 > 0) {
       goto L6000;
    }
@@ -200,8 +208,9 @@ L5000:
    }
 // 						!TRY TAKE.
    ret_val = true;
-// D	IF(DFLAG) PRINT 50,SYNMCH,PRSA,PRSO,PRSI,ACT,O1,O2
-// D50	FORMAT(' SYNMCH- RESULTS ',L1,6I7)
+#ifdef ALLOW_GDT
+   if (dflag) print(" SYNMCH- RESULTS %L1%6I7", ret_val, prsvec_1.prsa, prsvec_1.prso, prsvec_1.prsi, pv_1.act, pv_1.o1, pv_1.o2);
+#endif
    return ret_val;
 }
 

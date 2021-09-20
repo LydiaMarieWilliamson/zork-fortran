@@ -24,7 +24,9 @@ int getobj(int oidx, int aidx, int spcobj) {
 
 // GETOBJ, PAGE 2
 
-// D	DFLAG=IAND(PRSFLG, 8).NE.0
+#ifdef ALLOW_GDT
+   dflag = (debug_1.prsflg & 8) != 0;
+#endif
 
    chomp = false;
    av = advs_1.avehic[play_1.winner - 1];
@@ -37,8 +39,9 @@ int getobj(int oidx, int aidx, int spcobj) {
 
    obj = schlst(oidx, aidx, play_1.here, 0, 0, spcobj);
 // 						!SEARCH ROOM.
-// D	IF(DFLAG) PRINT 10,OBJ
-// D10	FORMAT(' SCHLST- ROOM SCH ',I6)
+#ifdef ALLOW_GDT
+   if (dflag) print(" SCHLST- ROOM SCH %I6", obj);
+#endif
    if (obj < 0) {
       goto L1000;
    } else if (obj == 0) {
@@ -65,8 +68,9 @@ L200:
 // 						!IN VEHICLE?
    nobj = schlst(oidx, aidx, 0, av, 0, spcobj);
 // 						!SEARCH VEHICLE.
-// D	IF(DFLAG) PRINT 20,NOBJ
-// D20	FORMAT(' SCHLST- VEH SCH  ',I6)
+#ifdef ALLOW_GDT
+   if (dflag) print(" SCHLST- VEH SCH  %I6", nobj);
+#endif
    if (nobj < 0) {
       goto L1100;
    } else if (nobj == 0) {
@@ -91,8 +95,9 @@ L300:
 L400:
    nobj = schlst(oidx, aidx, 0, 0, play_1.winner, spcobj);
 // 						!SEARCH ADVENTURER.
-// D	IF(DFLAG) PRINT 30,NOBJ
-// D30	FORMAT(' SCHLST- ADV SCH  ',I6)
+#ifdef ALLOW_GDT
+   if (dflag) print(" SCHLST- ADV SCH  %I6", nobj);
+#endif
    if (nobj < 0) {
       goto L1100;
    } else if (nobj == 0) {
@@ -144,8 +149,9 @@ L1000:
 
 L1500:
 // 						!END OF SEARCH.
-// D	IF(DFLAG) PRINT 40,GETOBJ
-// D40	FORMAT(' SCHLST- RESULT   ',I6)
+#ifdef ALLOW_GDT
+   if (dflag) print(" SCHLST- RESULT   %I6", ret_val);
+#endif
    return ret_val;
 }
 

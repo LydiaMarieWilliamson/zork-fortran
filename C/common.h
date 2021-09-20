@@ -287,6 +287,9 @@ extern struct debugCB {
    int dbgflg, prsflg, gdtflg;
 } debug;
 #define debug_1 debug
+#ifdef ALLOW_GDT
+bool dflag;
+#endif
 
 // villians.h:
 // Villains And Demons
