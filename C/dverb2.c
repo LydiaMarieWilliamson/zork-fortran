@@ -21,7 +21,7 @@ void savegm(void) {
 
    prsvec_1.prswon = false;
 // 						!DISABLE GAME.
-// Note: save file format is different for PDP vs. non-PDP versions
+// Note: save file format is different for PDP versus non-PDP versions
 
    i__1 = OpenF(1, "dsave.dat", "UNKNOWN", "SEQUENTIAL", "UNFORMATTED", 0);
    if (i__1 != 0) {
@@ -114,7 +114,7 @@ void rstrgm(void) {
 
    prsvec_1.prswon = false;
 // 						!DISABLE GAME.
-// Note: save file format is different for PDP vs. non-PDP versions
+// Note: save file format is different for PDP versus non-PDP versions
 
    i__1 = OpenF(1, "dsave.dat", "OLD", "SEQUENTIAL", "UNFORMATTED", 0);
    if (i__1 != 0) {

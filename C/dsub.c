@@ -9,21 +9,21 @@
 // Resident subroutines for dungeon
 
 // Output random message routine
-// Called by:
+// Called as:
 // 	rspeak(MsgNum);
 void rspeak(int n) {
    rspsb2(n, 0, 0);
 }
 
 // Output random message with substitutable argument
-// Called by:
+// Called as:
 // 	rspsub(MsgNum, SubNum);
 void rspsub(int n, int s1) {
    rspsb2(n, s1, 0);
 }
 
 // Output random message with up to two substitutable arguments
-// Called by:
+// Called as:
 // 	rspsb2(MsgNum, SubNum1, SubNum2);
 void rspsb2(int n, int s1, int s2) {
 // System generated locals
@@ -225,7 +225,7 @@ L200:
 }
 
 // Report fatal system error
-// Called by:
+// Called as:
 // 	bug(No, Par)
 void bug(int a, int b) {
 // Local variables
@@ -241,7 +241,7 @@ void bug(int a, int b) {
 }
 
 // Set new status for object
-// Called by:
+// Called as:
 // 	newsta(Object, String, NewRoom, NewCon, NewAdv)
 void newsta(int o, int r, int rm, int cn, int ad) {
 // Local variables

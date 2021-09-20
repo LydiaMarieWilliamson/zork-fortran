@@ -26,7 +26,7 @@ C
 C
 	PRSWON=.FALSE.
 C						!DISABLE GAME.
-C Note: save file format is different for PDP vs. non-PDP versions
+C Note: save file format is different for PDP versus non-PDP versions
 C
 	OPEN (UNIT=1,file='dsave.dat',ACCESS='SEQUENTIAL',
      &	status='UNKNOWN',FORM='UNFORMATTED',ERR=100)
@@ -76,7 +76,7 @@ C
 C
 	PRSWON=.FALSE.
 C						!DISABLE GAME.
-C Note: save file format is different for PDP vs. non-PDP versions
+C Note: save file format is different for PDP versus non-PDP versions
 C
 	OPEN (UNIT=1,file='dsave.dat',ACCESS='SEQUENTIAL',
      &	status='OLD',FORM='UNFORMATTED',ERR=100)

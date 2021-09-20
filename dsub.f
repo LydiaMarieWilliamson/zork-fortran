@@ -6,7 +6,7 @@ C
 C Resident subroutines for dungeon
 C
 C Output random message routine
-C Called by:
+C Called as:
 C	CALL RSPEAK(MSGNUM)
 	SUBROUTINE RSPEAK(N)
 	IMPLICIT INTEGER(A-Z)
@@ -16,7 +16,7 @@ C
 	END
 C
 C Output random message with substitutable argument
-C Called by:
+C Called as:
 C	CALL RSPSUB(MSGNUM,SUBNUM)
 	SUBROUTINE RSPSUB(N,S1)
 	IMPLICIT INTEGER(A-Z)
@@ -26,7 +26,7 @@ C
 	END
 C
 C Output random message with up to two substitutable arguments
-C Called by:
+C Called as:
 C	CALL RSPSB2(MSGNUM,SUBNUM1,SUBNUM2)
 	SUBROUTINE    RSPSB2(N,S1,S2)
 	IMPLICIT      INTEGER(A-Z)
@@ -173,7 +173,7 @@ C						!LOSES.
 	END
 C
 C Report fatal system error
-C Called by:
+C Called as:
 C	CALL BUG(NO,PAR)
 	SUBROUTINE BUG(A,B)
 	IMPLICIT INTEGER(A-Z)

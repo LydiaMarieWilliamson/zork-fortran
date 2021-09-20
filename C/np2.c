@@ -234,7 +234,7 @@ L2000:
    return ret_val;
 }
 
-// Validate object vs description
+// Validate object versus description
 static Bool thisit(int oidx, int aidx, int obj, int spcobj) {
 // Initialized data
 //    The following data statement used radix-50 notation (R50MIN/1RA/)

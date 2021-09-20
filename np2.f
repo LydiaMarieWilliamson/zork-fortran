@@ -169,7 +169,7 @@ C						!AMB RETURN.
 	RETURN
 	END
 C
-C Validate object vs description
+C Validate object versus description
 	LOGICAL  FUNCTION  THISIT(OIDX,AIDX,OBJ,SPCOBJ)
 	IMPLICIT INTEGER(A-Z)
 	LOGICAL  NOTEST
