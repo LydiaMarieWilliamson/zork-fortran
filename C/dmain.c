@@ -144,7 +144,7 @@ struct vindexCB vindex = (struct vindexCB){
    windw: 155, clmbw: 156, clmbuw: 157, clmbdw: 158, trntow: 159
 };
 
-// DUNGEON-- MAIN PROGRAM
+// Main program
 int MAIN__(void) {
 #if 0
    int x;

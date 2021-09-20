@@ -8,7 +8,7 @@
 
 static Bool lex(char *, int, int *, int *, Bool/*, size_t*/);
 
-// RDLINE-	READ INPUT LINE
+// Read input line
 void rdline(char *buffer, int length, int who, size_t buffer_unit) {
 // System generated locals
    int i__1;
@@ -73,8 +73,8 @@ L250:
 // 						!RESTART LEX SCAN.
 }
 
-// PARSE-	TOP LEVEL PARSE ROUTINE
-// THIS ROUTINE DETAILS ON BIT 0 OF PRSFLG
+// Top level parse routine
+// This routine details on bit 0 of prsflg
 Bool parse(char *inbuf, int inlnt, Bool vbflag/*, size_t inbuf_unit*/) {
 // System generated locals
    int i__1;
@@ -145,7 +145,7 @@ L100:
    return ret_val;
 }
 
-// ORPHAN- SET UP NEW ORPHANS
+// Set up new orphans
 void orphan(int o1, int o2, int o3, int o4, int o5) {
 
    orphs_1.oflag = o1;
@@ -156,8 +156,8 @@ void orphan(int o1, int o2, int o3, int o4, int o5) {
    orphs_1.oname = o5;
 }
 
-// LEX-	LEXICAL ANALYZER
-// THIS ROUTINE DETAILS ON BIT 1 OF PRSFLAG
+// Lexical analyzer
+// This routine details on bit 1 of prsflag
 static Bool lex(char *inbuf, int inlnt, int *outbuf, int *op, Bool vbflag/*, size_t inbuf_unit*/) {
 // Initialized data
    static const char dlimit[1 * 9] = "A" "Z" "x" "1" "9" "x" "-" "-" "x";

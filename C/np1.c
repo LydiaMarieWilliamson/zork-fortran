@@ -6,11 +6,11 @@
 #include "extern.h"
 #include "common.h"
 
-// SPARSE-	START OF PARSE
-// THIS ROUTINE DETAILS ON BIT 2 OF PRSFLG
+// Start of parse
+// This routine details on bit 2 of prsflg
 int sparse(int * lbuf, int llnt, Bool vbflag) {
 // Initialized data
-//   THE FOLLOWING DATA STATEMENT ORIGINALLY WAS:
+//   The following data statement originally was:
 // 	DATA R50MIN/1RA/,R50WAL/3RWAL/
    const int r50min = 1600;
    const int r50wal = 36852;

@@ -5,23 +5,23 @@
 #include "F2C.h"
 #include "common.h"
 
-// THIS ROUTINE DETAILS ON BIT 2 OF PRSFLG
+// This routine details on bit 2 of prsflg
 
 // vocab.h:
-// BUZZ WORDS--	IGNORED IN SYNTACTIC PROCESSING
+// Buzz words: ignored in syntactic processing
 struct buzvocCB buzvoc = (struct buzvocCB){
-//   THE FOLLOWING DATA STATEMENT WAS CONVERTED FROM:
+   bvoc: {
+//   The following data statement was converted from:
 //	DATA BVOC/3RAND,0,2RBY,0,2RIS,0,1RA,0,
 //     & 2RAN,0,3RTHE,0,3RRUN,0,2RGO,0,3RPRO,3RCEE,0,0/
-   bvoc: {
       2164, 0, 4200, 0, 15160, 0, 1600, 0,
       2160, 0, 32325, 0, 29654, 0, 11800, 0, 26335, 5005, 0, 0
    }
 };
 
-// PREPOSITIONS--	MAPS PREPOSITIONS TO INDICES
+// Prepositions: maps prepositions to indices
 struct prpvocCB prpvoc = (struct prpvocCB){
-//   THE FOLLOWING DATA STATEMENT WAS CONVERTED FROM:
+//   The following data statement was converted from:
 //	DATA PVOC/3ROVE,1RR,1,3RWIT,1RH,2,3RUSI,2RNG,2,3RTHR,3ROUG,2,
 //     & 2RAT,0,3,2RTO,0,4,2RIN,0,5,3RINS,3RIDE,5,3RINT,1RO,5,
 //     & 3RDOW,1RN,6,2RUP,0,7,3RUND,2RER,8,2ROF,0,9,2RON,0,10,
@@ -34,9 +34,9 @@ struct prpvocCB prpvoc = (struct prpvocCB){
    }
 };
 
-// DIRECTIONS--	MAPS DIRECTIONS TO INDICES
+// Directions: maps directions to indices
 struct dirvocCB dirvoc = (struct dirvocCB){
-//   THE FOLLOWING DATA STATEMENT WAS CONVERTED FROM:
+//   The following data statement was converted from:
 //	DATA DVOC/1RN,0,"2000,3RNOR,2RTH,"2000,1RS,0,"12000,
 //     & 1RE,0,"6000,3REAS,1RT,"6000,1RW,0,"16000,3RWES,1RT,"16000,
 //     & 2RSE,0,"10000,2RSW,0,"14000,
@@ -63,15 +63,12 @@ struct dirvocCB dirvoc = (struct dirvocCB){
 
 // SPARSE, PAGE 3
 
-// ADJECTIVES--	MAPS ADJECTIVES TO OBJECT NUMBERS
-// EACH ENTRY IS VARIABLE LENGTH AND CONSISTS OF A TWO WORD
-// ADJECTIVE IN RADIX-50 FOLLOWED BY ONE OR MORE OBJECT NUMBERS.
-// NOTE THAT ADJECTIVES CAN BE DISTINGUISHED FROM OBJECTS AS
-// FOLLOWS-- ALL ADJECTIVES ARE .GE. 1RA (1600), WHILE ALL OBJECTS
-// ARE .LE. OLNT (255 MAX).
-//
+// Adjectives: maps adjectives to object numbers
+// Each entry is variable length and consists of a two word adjective in radix-50 followed by one or more object numbers.
+// Note that adjectives can be distinguished from objects as follows:
+// all adjectives are ≥ 1ra (1600), while all objects are ≤ olnt (255 max).
 struct adjvocCB adjvoc = (struct adjvocCB){
-//   THE DATA STATEMENT BELOW WAS CONVERTED FROM:
+//   The data statement below was converted from:
 //	DATA AVOC1/3RBRO,2RWN,1,81,3RELO,3RNGA,1,3RHOT,0,3,3RPEP,3RPER,3,
 //     & 3RVIT,3RREO,4,3RJAD,1RE,6,3RHUG,1RE,8,3RENO,3RRMO,8,122,
 //     & 3RTRO,3RPHY,9,3RCLE,2RAR,10,3RLAR,2RGE,12,26,47,95,96,123,
@@ -111,7 +108,7 @@ struct adjvocCB adjvoc = (struct adjvocCB){
       35579, 5421, 55, 35563, 15021, 62,
       11681, 31160, 10, 126, 132, 32721, 25600, 66
    },
-//   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
+//   The following data statement was originally:
 //	DATA AVOC2/3RFRO,2RNT,68,3RSTO,2RNE,69,150,214,3RMAN,3RGLE,72,
 //     & 3RRED,0,79,94,140,161,170,171,3RYEL,3RLOW,80,159,
 //     & 3RBLU,1RE,82,112,114,141,
@@ -142,7 +139,7 @@ struct adjvocCB adjvoc = (struct adjvocCB){
       28858, 8000, 134, 24092, 24567, 135, 8060, 43725, 138,
       8060, 21000, 138, 24721, 22685, 139, 8123, 12800, 141
    },
-//   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
+//   The following data statement was originally:
 //	DATA AVOC3/3RROC,2RKY,147,3RSHE,2RER,147,
 //     & 3R200,0,148,3RNEA,1RT,148,3RSHI,3RMME,151,
 //     & 3RZUR,3RICH,152,3RBIR,2RDS,153,154,155,
@@ -175,51 +172,45 @@ struct adjvocCB adjvoc = (struct adjvocCB){
 
 // SPARSE, PAGE 4
 
-// VERBS--	MAPS VERBS TO SYNTAX SLOTS
-// EACH ENTRY IS VARIABLE LENGTH AND CONSISTS OF ONE OR MORE
-// TWO WORD VERBS IN RADIX-50 FOLLOWED BY A SYNTAX WORD COUNT
-// FOLLOWED BY ONE OR MORE SYNTAXES.  NOTE THAT VERBS CAN BE
-// DISTINGUISHED FROM WORD COUNTS AS FOLLOWS--
-// ALL VERBS ARE .GE. 1RA (1600), WHILE ALL SYNTAX WORD COUNTS
-// ARE .LE. 255.
-//
-// SYNTAX ENTRIES CONSIST OF A FLAG WORD FOLLOWED BY 0, 1, OR 2
-// OBJECT DESCRIPTIONS.  THE FLAG WORD HAS THE FOLLOWING FORMAT--
-//
-// BIT <14>	IF 1, SYNTAX INCLUDES DIRECT OBJECT
-// BIT <13>	IF 1, SYNTAX INCLUDES INDIRECT OBJECT
-// BIT <12>	IF 1, DIRECT OBJECT IS IMPLICIT (STANDARD FORM)
-// BIT <11>	IF 1, DIRECT AND INDIRECT OBJECT MUST BE SWAPPED AFTER SYNTAX PROCESSING
-// BIT <10>	IF 1, THIS IS DEFAULT SYNTAX FOR ORPHANERY
-// BITS <8:0>	VERB NUMBER FOR VAPPLI
-//
-// OBJECT DESCRIPTIONS CONSIST OF A FLAG WORD AND TWO FWIM WORDS.
-// THE FLAG WORD HAS THE FOLLOWING FORMAT--
-//
-// BIT <14>	IF 1, SEARCH ADVENTURER FOR OBJECT
-// BIT <13>	IF 1, SEARCH ROOM FOR OBJECT
-// BIT <12>	IF 1, PARSER WILL TRY TO TAKE OBJECT
-// BIT <11>	IF 1, ADVENTURER MUST HAVE OBJECT
-// BIT <10>	IF 1, QUALIFYING BITS (NORMALLY -1,-1) ARE SAME AS FWIM BITS
-// BIT <9>	IF 1, OBJECT MUST BE REACHABLE
-// BITS <8:0>	PREPOSITION NUMBER FOR SYNMCH
-//
-// THE FWIM WORDS HAVE THE SAME FORMAT AS THE TWO OBJECT FLAG WORDS.
-//
-// NOTE THAT BITS 12 AND 11 OF OBJECT DESCRIPTIONS ACTUALLY HAVE
-// FOUR DISTINCT STATES--
-//
-//	BIT 12	BIT 11	MDLDESC		INTERPRETATION
-//	------	------	-------		---------------
-//	  0	  0	 --		NO PARSER ACTION
-//	  0	  1	 HAVE		ADVENTURER MUST HAVE OBJECT
-//	  1	  0	 TRY		TRY TO TAKE, DONT CARE IF FAIL
-//	  1	  1	 TAKE		TRY TO TAKE, CARE IF FAIL
-//
+// Verbs: maps verbs to syntax slots
+// Each entry is variable length and consists of one or more two word verbs in radix-50
+// followed by a syntax word count followed by one or more syntaxes.
+// Note that verbs can be distinguished from word counts as follows:
+// all verbs are ≥ 1ra (1600), while all syntax word counts are ≤ 255.
+
+// Syntax entries consist of a flag word followed by 0, 1, or 2 object descriptions.
+// The flag word has the following format:
+//	Bit <14>	If 1, syntax includes direct object
+//	Bit <13>	If 1, syntax includes indirect object
+//	Bit <12>	If 1, direct object is implicit (standard form)
+//	Bit <11>	If 1, direct and indirect object must be swapped after syntax processing
+//	Bit <10>	If 1, this is default syntax for orphanery
+//	Bits <8:0>	Verb number for vappli
+
+// Object descriptions consist of a flag word and two fwim words.
+// The flag word has the following format:
+//	Bit <14>	If 1, search adventurer for object
+//	Bit <13>	If 1, search room for object
+//	Bit <12>	If 1, parser will try to take object
+//	Bit <11>	If 1, adventurer must have object
+//	Bit <10>	If 1, qualifying bits (normally -1,-1) are same as fwim bits
+//	Bit <9>		If 1, object must be reachable
+//	Bits <8:0>	Preposition number for synmch
+
+// The fwim words have the same format as the two object flag words.
+
+// Note that bits 12 and 11 of object descriptions actually have four distinct states:
+//	Bit 12	Bit 11	mdldesc		Interpretation
+//	──────	──────	───────		───────────────
+//	0	0	−		No parser action
+//	0	1	Have		Adventurer must have object
+//	1	0	Try		Try to take, don't care if fail
+//	1	1	Take		Try to take, care if fail
+
 // SPARSE, PAGE 5
 
 struct vrbvocCB vrbvoc = (struct vrbvocCB){
-//   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
+//   The following data statement was originally:
 //	DATA VVOC1/3RBRI,2REF,1,70,3RVER,3RBOS,1,71,
 //     & 3RSUP,3RERB,1,72,3RSTA,1RY,1,73,3RVER,3RSIO,1,74,
 //     & 3RSWI,1RM,3RBAT,2RHE,3RWAD,1RE,1,75,3RGER,3RONI,1,76,
@@ -240,7 +231,7 @@ struct vrbvocCB vrbvoc = (struct vrbvocCB){
       13179, 32618, 34244, 2405, 1, 42, 3243, 17600, 1, 43,
       30767, 12800, 21653, 3685, 1, 44
    },
-//   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
+//   The following data statement was originally:
 //	DATA VVOC1A/3RCHO,2RMP,3RLOS,1RE,3RBAR,1RF,1,45,
 //     & 3RDUN,3RGEO,1,46,3RFRO,3RBOZ,1,47,3RFOO,0,3RBLE,3RTCH,
 //     & 3RBAR,0,1,48,3RREP,3RENT,1,49,3RHOU,2RRS,3RSCH,3REDU,1,50,
@@ -263,7 +254,7 @@ struct vrbvocCB vrbvoc = (struct vrbvocCB){
       14400, 0, 1, 133, 36849, 32000, 1, 128,
       14963, 2180, 1, 95, 2179, 37018, 1, 96,
    },
-//   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
+//   The following data statement was originally:
 //	DATA VVOC1B/3RAGA,2RIN,1,57,3RNOO,2RBJ,1,58,
 //     & 3RBUG,0,3RGRI,2RPE,3RCOM,3RPLA,1,59,
 //     & 3RFEA,3RTUR,3RCOM,3RMEN,3RSUG,3RGES,3RIDE,1RA,1,60,
@@ -274,7 +265,7 @@ struct vrbvocCB vrbvoc = (struct vrbvocCB){
       9801, 32858, 5413, 21014, 31247, 11419, 14565, 1600, 1, 60,
       29415, 20800, 1, 65, 24090, 8140, 1, 66, 29361, 21000, 1, 67
    },
-//   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
+//   The following data statement was originally:
 //	DATA VVOC2/3RDEF,3RLAT,1,"50147,
 //     & 3RDES,3RCRI,3RWHA,1RT,3REXA,3RMIN,1,"50170,
 //     & 3RFIL,1RL,11,"60206,"61000,"200,0,"61002,"400,0,
@@ -301,7 +292,7 @@ struct vrbvocCB vrbvoc = (struct vrbvocCB){
       34180, 14600, 10325, 8000, 1, 20593, 36852, 17600, 9, 20622,
       16470, 25090, -1, -1, 16470, 25093, -1, -1
    },
-//   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
+//   The following data statement was originally:
 //	DATA VVOC3/3RATT,3RACK,3RFIG,2RHT,3RINJ,3RURE,3RHIT,0,3RHUR,1RT,
 //     & 7,"60215,"21000,0,"200,"44002,0,"1000,
 //     & 3RBOA,2RRD,4,"40202,"21000,0,"2,
@@ -338,7 +329,7 @@ struct vrbvocCB vrbvoc = (struct vrbvocCB){
       4, 16519, 31232, 1024, 0,
       8980, 14967, 7021, 30600, 4, 16508, 31232, 64, 0
    },
-//   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
+//   The following data statement was originally:
 //	DATA VVOC4/3RGIV,1RE,3RHAN,1RD,3RDON,3RATE,11,"72222,"21004,
 //     & "40,0,"64222,"21000,"40,0,"61000,-1,-1,
 //     & 3RHEL,2RLO,2RHI,0,2,"2227,"50227,
@@ -373,7 +364,7 @@ struct vrbvocCB vrbvoc = (struct vrbvocCB){
       25088, 64, 0, 22530, 8, 0,
       19803, 17600, 4, 16476, 8192, -1, -1
    },
-//   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
+//   The following data statement was originally:
 //	DATA VVOC5/3RLOO,1RK,1RL,0,3RSTA,2RRE,3RGAZ,1RE,
 //     & 13,"167,"40167,"60003,-1,-1,
 //     & "40231,"61010,-1,-1,"40230,"60005,-1,-1,
@@ -412,7 +403,7 @@ struct vrbvocCB vrbvoc = (struct vrbvocCB){
       24723, 17408, 256, 0, 24581, -1, -1,
       26453, 25600, 4, 24730, 24583, -1, -1
    },
-//   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
+//   The following data statement was originally:
 //	DATA VVOC6/3RPUT,0,3RINS,3RERT,3RSTU,2RFF,3RPLA,2RCE,
 //     & 8,"72220,"61005,-1,-1,
 //     & "40221,"61006,-1,-1,
@@ -445,7 +436,7 @@ struct vrbvocCB vrbvoc = (struct vrbvocCB){
       32338, 24920, 13658, 19200, 5141, 5240, 14, 24724, 18432, -1, -1,
       8707, 32, 0, 24724, 18432, -1, -1, 8706, 32, 0
    },
-//   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
+//   The following data statement was originally:
 //	DATA VVOC7/3RTIE,0,3RFAS,3RTEN,11,"70162,"61004,-1,-1,
 //     & "60163,"21000,"40,0,"65002,"4,0,
 //     & 3RTUR,1RN,3RSET,0,22,"62164,"61000,"2,0,
@@ -479,10 +470,10 @@ struct vrbvocCB vrbvoc = (struct vrbvocCB){
 
 // SPARSE, PAGE 6
 
-// OBJECTS--	MAPS OBJECTS TO OBJECT INDICES
-// SAME FORMAT AS AVOC.
+// Objects: maps objects to object indices
+// Same format as avoc.
 struct objvocCB objvoc = (struct objvocCB){
-//   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
+//   The following data statement was originally:
 //	DATA OVOC1/3RBAG,0,1,25,100,3RSAC,1RK,1,3RGAR,3RLIC,2,
 //     & 3RCLO,2RVE,2,3RFOO,1RD,3,3RSAN,3RDWI,3,3RLUN,2RCH,3,
 //     & 3RDIN,3RNER,3,
@@ -517,7 +508,7 @@ struct objvocCB objvoc = (struct objvocCB){
       19401, 35419, 18, 19401, 9600, 18, 32735, 19680, 19,
       2565, 0, 20, 6774, 22618, 3
    },
-//   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
+//   The following data statement was originally:
 //	DATA OVOC2/3RKEY,1RS,23,3RKEY,0,23,
 //     & 3RSET,0,23,3RBON,2RES,24,3RSKE,3RLET,24,3RBOD,1RY,24,73,
 //     & 3RCOI,2RNS,25,3RBAR,0,26,165,168,
@@ -546,7 +537,7 @@ struct objvocCB objvoc = (struct objvocCB){
       32741, 22840, 45, 5125, 31200, 45, 3412, 19200, 46,
       3815, 17600, 47, 49, 114, 115, 116, 117, 3562, 19400, 47
    },
-//   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
+//   The following data statement was originally:
 //	DATA OVOC3/3RGOO,3RDBO,47,3RCAN,3RDLE,48,3RPAI,1RR,48,
 //     & 3RGUI,3RDEB,49,
 //     & 3RGUI,2RDE,49,3RPAP,2RER,50,122,143,186,3RNEW,3RSPA,50,
@@ -581,7 +572,7 @@ struct objvocCB objvoc = (struct objvocCB){
       11414, 32485, 61, 20854, 0, 61, 32341, 11200, 61,
       3247, 20854, 61, 31209, 19685, 62
    },
-//   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
+//   The following data statement was originally:
 //	DATA OVOC4/3RWIN,3RDOW,63,3RBOL,1RT,64,3RNUT,0,64,
 //     & 3RGRA,2RTE,65,3RGRA,3RTIN,65,3RDOO,1RR,66,67,68,69,
 //     & 164,172,173,174,175,189,3RTRA,3RPDO,66,
@@ -612,7 +603,7 @@ struct objvocCB objvoc = (struct objvocCB){
       3801, 32000, 87, 88, 90, 26081, 31209, 87, 88,
       26453, 25600, 89
    },
-//   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
+//   The following data statement was originally:
 //	DATA OVOC5/3RAIR,3RPUM,89,3RAIR,3R$PU,89,3RLAB,2REL,91,112,
 //     & 3RFIN,3REPR,91,3RSTI,2RCK,92,3RBAR,3RREL,93,3RBUO,1RY,94,
 //     & 3REME,3RRAL,95,3RSHO,3RVEL,96,3RGUA,2RNO,97,3RCRA,1RP,97,
@@ -639,7 +630,7 @@ struct objvocCB objvoc = (struct objvocCB){
       32613, 3200, 119, 5545, 26400, 119, 11921, 35400, 119, 13001, 7160, 120,
       26212, 8760, 120, 14936, 19413, 120
    },
-//   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
+//   The following data statement was originally:
 //	DATA OVOC6/3RLOS,3RERS,120,3RCOK,2RES,121,
 //     & 3RLIS,3RTIN,122,3RSTA,2RCK,122,
 //     & 3RPRI,3RNTO,122,
@@ -668,7 +659,7 @@ struct objvocCB objvoc = (struct objvocCB){
       29402, 24800, 142, 29402, 4200, 142,
       6136, 24000, 142, 30084, 51200, 142
    },
-//   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
+//   The following data statement was originally:
 //	DATA OVOC6A/3RPAN,2REL,159,160,161,162,163,164,213,
 //     & 3RPOL,1RE,166,167,3RTBA,1RR,168,3RT$B,2RAR,168,
 //     & 3RARR,2ROW,169,3RPOI,2RNT,169,3RBEA,1RM,171,
@@ -691,7 +682,7 @@ struct objvocCB objvoc = (struct objvocCB){
       36858, 22774, 186, 30889, 32000, 187,
       15200, 0, 192, 32321, 32000, 192, 32329, 30400, 192
    },
-//   THE FOLLOWING DATA STATEMENT WAS ORIGINALLY:
+//   The following data statement was originally:
 //	DATA OVOC7/2RME,0,193,3RMYS,3RELF,193,3RCRE,3RTIN,193,
 //     & 3RALL,0,194,3REVE,3RRYT,194,
 //     & 3RTRE,3RASU,195,3RVAL,3RUAB,195,3RSAI,3RLOR,196,3RTEE,2RTH,197,

@@ -6,24 +6,25 @@
 #include "extern.h"
 #include "common.h"
 
-// RESIDENT SUBROUTINES FOR DUNGEON
-// RSPEAK-- OUTPUT RANDOM MESSAGE ROUTINE
-// CALLED BY--
-// 	CALL RSPEAK(MSGNUM)
+// Resident subroutines for dungeon
+
+// Output random message routine
+// Called by:
+// 	rspeak(MsgNum);
 void rspeak(int n) {
    rspsb2(n, 0, 0);
 }
 
-// RSPSUB-- OUTPUT RANDOM MESSAGE WITH SUBSTITUTABLE ARGUMENT
-// CALLED BY--
-// 	CALL RSPSUB(MSGNUM,SUBNUM)
+// Output random message with substitutable argument
+// Called by:
+// 	rspsub(MsgNum, SubNum);
 void rspsub(int n, int s1) {
    rspsb2(n, s1, 0);
 }
 
-// RSPSB2-- OUTPUT RANDOM MESSAGE WITH UP TO TWO SUBSTITUTABLE ARGUMENTS
-// CALLED BY--
-// 	CALL RSPSB2(MSGNUM,SUBNUM1,SUBNUM2)
+// Output random message with up to two substitutable arguments
+// Called by:
+// 	rspsb2(MsgNum, SubNum1, SubNum2);
 void rspsb2(int n, int s1, int s2) {
 // System generated locals
    int i__1;
@@ -189,7 +190,7 @@ L1300:
 // 						!RECHECK LINE.
 }
 
-// OBJACT-- APPLY OBJECTS FROM PARSE VECTOR
+// Apply objects from parse vector
 Bool objact(/*int x*/) {
 // System generated locals
    Bool ret_val;
@@ -223,9 +224,9 @@ L200:
    return ret_val;
 }
 
-// BUG-- REPORT FATAL SYSTEM ERROR
-// CALLED BY--
-// 	CALL BUG(NO,PAR)
+// Report fatal system error
+// Called by:
+// 	bug(No, Par)
 void bug(int a, int b) {
 // Local variables
 
@@ -239,9 +240,9 @@ void bug(int a, int b) {
    exit_();
 }
 
-// NEWSTA-- SET NEW STATUS FOR OBJECT
-// CALLED BY--
-// 	CALL NEWSTA(OBJECT,STRING,NEWROOM,NEWCON,NEWADV)
+// Set new status for object
+// Called by:
+// 	newsta(Object, String, NewRoom, NewCon, NewAdv)
 void newsta(int o, int r, int rm, int cn, int ad) {
 // Local variables
 
@@ -251,7 +252,7 @@ void newsta(int o, int r, int rm, int cn, int ad) {
    objcts_1.oadv[o - 1] = ad;
 }
 
-// QHERE-- TEST FOR OBJECT IN ROOM
+// Test for object in room
 Bool qhere(int obj, int rm) {
 // System generated locals
    int i__1;
@@ -278,7 +279,7 @@ Bool qhere(int obj, int rm) {
    return ret_val;
 }
 
-// QEMPTY-- TEST FOR OBJECT EMPTY
+// Test for object empty
 Bool qempty(int obj) {
 // System generated locals
    int i__1;
@@ -301,7 +302,7 @@ Bool qempty(int obj) {
    return ret_val;
 }
 
-// JIGSUP- YOU ARE DEAD
+// You are dead
 void jigsup(int desc) {
 // Initialized data
    static const int rlist[9] = { 8, 6, 36, 35, 34, 4, 34, 6, 5 };
@@ -456,7 +457,7 @@ L1100:
    exit_();
 }
 
-// OACTOR-	GET ACTOR ASSOCIATED WITH OBJECT
+// Get actor associated with object
 int oactor(int obj) {
 // System generated locals
    int ret_val, i__1;
@@ -480,7 +481,7 @@ int oactor(int obj) {
    return ret_val;
 }
 
-// PROB-		COMPUTE PROBABILITY
+// Compute probability
 Bool prob(int g, int b) {
 // System generated locals
    Bool ret_val;
@@ -499,9 +500,9 @@ Bool prob(int g, int b) {
    return ret_val;
 }
 
-// RMDESC-- PRINT ROOM DESCRIPTION
-// RMDESC PRINTS A DESCRIPTION OF THE CURRENT ROOM.
-// IT IS ALSO THE PROCESSOR FOR VERBS 'LOOK' AND 'EXAMINE'.
+// Print room description
+// rmdesc() prints a description of the current room.
+// It is also the processor for verbs ‛LOOK’ and ‛EXAMINE’.
 Bool rmdesc(int full) {
 // System generated locals
    Bool ret_val, L__1;
@@ -600,7 +601,7 @@ L600:
    return ret_val;
 }
 
-// RAPPLI-	ROUTING ROUTINE FOR ROOM APPLICABLES
+// Routing routine for room applicables
 Bool rappli(int ri) {
 // Initialized data
    const int newrms = 38;

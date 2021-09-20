@@ -8,7 +8,7 @@
 
 static Bool infest(int);
 
-// FIGHTD- INTERMOVE FIGHT DEMON
+// Intermove fight demon
 void fightd(void) {
 // Initialized data
    const int rout = 1;
@@ -165,7 +165,7 @@ L2600:
 // 						!IF STILL OUT, GO AGAIN.
 }
 
-// BLOW- STRIKE BLOW
+// Strike blow
 int blow(int h, int v, int rmk, Bool hflg, int out) {
 // Initialized data
    const int rmiss = 0;
@@ -537,7 +537,7 @@ L4600:
    return ret_val;
 }
 
-// SWORDD- SWORD INTERMOVE DEMON
+// Sword intermove demon
 void swordd(void) {
 // System generated locals
    int i__1, i__2;
@@ -606,7 +606,7 @@ L500:
 // 						!DISABLE DEMON.
 }
 
-// INFEST-	SUBROUTINE TO TEST FOR INFESTED ROOM
+// Subroutine to test for infested room
 static Bool infest(int r) {
 // System generated locals
    Bool ret_val;

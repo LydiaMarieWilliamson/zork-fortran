@@ -6,7 +6,7 @@
 #include "extern.h"
 #include "common.h"
 
-// GDT- GAME DEBUGGING TOOL
+// Game debugging tool
 void gdt(void) {
 // Initialized data
    const int cmdmax = 38;

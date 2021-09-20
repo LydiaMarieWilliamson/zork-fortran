@@ -6,7 +6,7 @@
 #include "extern.h"
 #include "common.h"
 
-// GHERE--	IS GLOBAL ACTUALLY IN THIS ROOM?
+// Is global actually in this room?
 Bool ghere(int obj, int rm) {
 // System generated locals
    Bool ret_val;
@@ -143,7 +143,7 @@ L11000:
    return ret_val;
 }
 
-// MRHERE--	IS MIRROR HERE?
+// Is mirror here?
 int mrhere(int rm) {
 // System generated locals
    int ret_val, i__1;
