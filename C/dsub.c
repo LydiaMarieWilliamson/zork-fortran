@@ -226,7 +226,7 @@ L200:
 
 // Report fatal system error
 // Called as:
-// 	bug(No, Par)
+// 	bug(No, Par);
 void bug(int a, int b) {
 // Local variables
 
@@ -242,7 +242,7 @@ void bug(int a, int b) {
 
 // Set new status for object
 // Called as:
-// 	newsta(Object, String, NewRoom, NewCon, NewAdv)
+// 	newsta(Object, String, NewRoom, NewCon, NewAdv);
 void newsta(int o, int r, int rm, int cn, int ad) {
 // Local variables
 
