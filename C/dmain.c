@@ -1,3 +1,7 @@
+// Copyright (c) 1980, InfoCom Computers and Communications, Cambridge MA 02142
+// All rights reserved, commercial usage strictly prohibited.
+// Written by R. M. Supnik.
+// Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 #include "F2C.h"
 #include "extern.h"
 #include "common.h"
@@ -141,12 +145,6 @@ struct vindexCB vindex = (struct vindexCB){
 };
 
 // DUNGEON-- MAIN PROGRAM
-
-// COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
-// ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
-// WRITTEN BY R. M. SUPNIK
-
-// Main program
 int MAIN__(void) {
    int x;
 

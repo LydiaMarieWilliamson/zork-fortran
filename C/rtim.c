@@ -1,3 +1,4 @@
+// Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 #include "F2C.h"
 #include "extern.h"
 #include "common.h"

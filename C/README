@@ -58,3 +58,4 @@ History
 		Their only significant difference, at this point, is the I/O and the formats of the black-box *.dat file(s).
 2021/09/19	All the final ‟_”'s produced for globals by the translator were removed, except where names conflict.
 		That includes any references to the names listed in this and other log and documentation files.
+2021/09/19	Regularizing the file and function header comments - in both the old and new C translations and Fortran original.

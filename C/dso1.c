@@ -1,13 +1,12 @@
-// PRINCR- PRINT CONTENTS OF ROOM
-
-// COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
-// ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
-// WRITTEN BY R. M. SUPNIK
-
+// Copyright (c) 1980, InfoCom Computers and Communications, Cambridge MA 02142
+// All rights reserved, commercial usage strictly prohibited.
+// Written by R. M. Supnik.
+// Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 #include "F2C.h"
 #include "extern.h"
 #include "common.h"
 
+// PRINCR- PRINT CONTENTS OF ROOM
 void princr(Bool full, int rm) {
 // System generated locals
    int i__1, i__2;
@@ -84,11 +83,9 @@ void princr(Bool full, int rm) {
    L1000:
       ;
    }
-
 }
 
 // INVENT- PRINT CONTENTS OF ADVENTURER
-
 void invent(int adv) {
 // System generated locals
    int i__1;
@@ -144,7 +141,6 @@ L25:
 }
 
 // PRINCO-	PRINT CONTENTS OF OBJECT
-
 void princo(int obj, int desc) {
 // System generated locals
    int i__1;

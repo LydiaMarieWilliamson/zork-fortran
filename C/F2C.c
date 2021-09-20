@@ -1,8 +1,8 @@
+// Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 #include "F2C.h"
 #include <string.h>
 
 // A wrapper for the built-in functions defined in the f2c library.
-
 // I/O stuff.
 #ifdef f2c_i2
 // for -i2

@@ -1,6 +1,3 @@
-#ifndef OnceOnlyF2C_h
-#define OnceOnlyF2C_h
-
 // Based on f2c.h: The Standard Fortran to C header file.
 #include <stdbool.h>
 #include <stdlib.h>
@@ -29,5 +26,3 @@ int BegExSF(int Unit, char *Format, int Rec);
 int EndExSF(void);
 int BegExSU(int Unit, char *Format, int Rec);
 int EndExSU(void);
-
-#endif // OnceOnly

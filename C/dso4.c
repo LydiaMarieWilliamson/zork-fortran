@@ -1,13 +1,12 @@
-// ROBADV-- STEAL WINNER'S VALUABLES
-
-// COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
-// ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
-// WRITTEN BY R. M. SUPNIK
-
+// Copyright (c) 1980, InfoCom Computers and Communications, Cambridge MA 02142
+// All rights reserved, commercial usage strictly prohibited.
+// Written by R. M. Supnik.
+// Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 #include "F2C.h"
 #include "extern.h"
 #include "common.h"
 
+// ROBADV-- STEAL WINNER'S VALUABLES
 int robadv(int adv, int nr, int nc, int na) {
 // System generated locals
    int ret_val, i__1;
@@ -32,7 +31,6 @@ int robadv(int adv, int nr, int nc, int na) {
 }
 
 // ROBRM-- STEAL ROOM VALUABLES
-
 int robrm(int rm, int pr, int nr, int nc, int na) {
 // System generated locals
    int ret_val, i__1, i__2;
@@ -67,7 +65,6 @@ int robrm(int rm, int pr, int nr, int nc, int na) {
 }
 
 // WINNIN-- SEE IF VILLAIN IS WINNING
-
 Bool winnin(int vl, int hr) {
 // System generated locals
    Bool ret_val;
@@ -104,7 +101,6 @@ Bool winnin(int vl, int hr) {
 }
 
 // FIGHTS-- COMPUTE FIGHT STRENGTH
-
 int fights(int h, Bool flg) {
 // Initialized data
    const int smin = 2;
@@ -125,7 +121,6 @@ int fights(int h, Bool flg) {
 }
 
 // VILSTR-	COMPUTE VILLAIN STRENGTH
-
 int vilstr(int v) {
 // System generated locals
    int ret_val, i__1, i__2, i__3;

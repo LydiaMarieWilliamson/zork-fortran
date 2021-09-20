@@ -1,15 +1,14 @@
-// FIGHTD- INTERMOVE FIGHT DEMON
-
-// COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
-// ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
-// WRITTEN BY R. M. SUPNIK
-
+// Copyright (c) 1980, InfoCom Computers and Communications, Cambridge MA 02142
+// All rights reserved, commercial usage strictly prohibited.
+// Written by R. M. Supnik.
+// Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 #include "F2C.h"
 #include "extern.h"
 #include "common.h"
 
 static Bool infest(int);
 
+// FIGHTD- INTERMOVE FIGHT DEMON
 void fightd(void) {
 // Initialized data
    const int rout = 1;
@@ -533,7 +532,6 @@ L4600:
    jigsup(596);
    ret_val = -1;
    return ret_val;
-
 }
 
 // SWORDD- SWORD INTERMOVE DEMON

@@ -1,8 +1,7 @@
-// SAVE- SAVE GAME STATE
-
-// COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
-// ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
-// WRITTEN BY R. M. SUPNIK
+// Copyright (c) 1980, InfoCom Computers and Communications, Cambridge MA 02142
+// All rights reserved, commercial usage strictly prohibited.
+// Written by R. M. Supnik.
+// Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 
 #include "F2C.h"
 #include "extern.h"
@@ -10,6 +9,7 @@
 
 static int cxappl(int);
 
+// SAVE- SAVE GAME STATE
 void savegm(void) {
 // System generated locals
    int i__1;
@@ -103,7 +103,6 @@ L100:
 }
 
 // RESTORE- RESTORE GAME STATE
-
 void rstrgm(void) {
 // System generated locals
    int i__1;
@@ -205,7 +204,6 @@ L200:
 }
 
 // WALK- MOVE IN SPECIFIED DIRECTION
-
 Bool walk(/*int x*/) {
 // System generated locals
    Bool ret_val;
@@ -364,7 +362,6 @@ L900:
 }
 
 // CXAPPL- CONDITIONAL EXIT PROCESSORS
-
 static int cxappl(int ri) {
 // System generated locals
    int ret_val, i__1;
@@ -704,5 +701,4 @@ L14500:
 // 						!STAY IN ROOM.
    ret_val = curxt_1.xroom1;
    return ret_val;
-
 }
