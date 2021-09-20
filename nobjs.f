@@ -3,9 +3,9 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C NOBJS-	NEW OBJECTS PROCESSOR
-C	OBJECTS IN THIS MODULE CANNOT CALL RMINFO, JIGSUP,
-C	MAJOR VERBS, OR OTHER NON-RESIDENT SUBROUTINES
+C New objects processor
+C	Objects in this module cannot call RMINFO, JIGSUP,
+C	major verbs, or other non-resident subroutines
 	LOGICAL FUNCTION NOBJS(RI,ARG)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL QOPEN,MOVETO,F
@@ -595,7 +595,7 @@ C						!DESCRIBE.
 	RETURN
 	END
 C
-C MIRPAN--	PROCESSOR FOR GLOBAL MIRROR/PANEL
+C Processor for global mirror/panel
 	LOGICAL FUNCTION MIRPAN(ST,PNF)
 	IMPLICIT INTEGER(A-Z)
 	LOGICAL PNF

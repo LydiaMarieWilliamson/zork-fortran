@@ -3,7 +3,7 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C RAPPL2- SPECIAL PURPOSE ROOM ROUTINES, PART 2
+C Special purpose room routines, part 2
 	LOGICAL FUNCTION RAPPL2(RI)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL QOPEN,QHERE
@@ -275,7 +275,7 @@ C						!DESCRIBE ROOM.
 	RETURN
 	END
 C
-C LOOKTO--	DESCRIBE VIEW IN MIRROR HALLWAY
+C Describe view in mirror hallway
 	SUBROUTINE LOOKTO(NRM,SRM,NT,ST,HT)
 	IMPLICIT INTEGER(A-Z)
 	include 'gamestat.h'
@@ -324,7 +324,7 @@ C						!DESCRIBE HALLS.
 	RETURN
 	END
 C
-C EWTELL--	DESCRIBE E/W NARROW ROOMS
+C Describe E/W narrow rooms
 	SUBROUTINE EWTELL(RM,ST)
 	IMPLICIT INTEGER(A-Z)
 	LOGICAL M1

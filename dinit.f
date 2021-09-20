@@ -3,7 +3,7 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C INIT-- DUNGEON INITIALIZATION SUBROUTINE
+C Dungeon initialization subroutine
 	LOGICAL FUNCTION INIT(X)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL PROTCT
@@ -338,11 +338,11 @@ C
      &' The darkness becomes all encompassing, and your vision fails.')
 	END
 C
-C PROTCT-- CHECK FOR USER VIOLATION
-C THIS ROUTINE SHOULD BE MODIFIED IF YOU WISH TO ADD SYSTEM
-C DEPENDANT PROTECTION AGAINST ABUSE.
+C Check for user violation
+C This routine should be modified if you wish to add system
+C dependent protection against abuse.
 C
-C AT THE MOMENT, PLAY IS PERMITTED UNDER ALL CIRCUMSTANCES.
+C At the moment, play is permitted under all circumstances.
 	LOGICAL FUNCTION PROTCT(X)
 	IMPLICIT INTEGER(A-Z)
 C

@@ -3,8 +3,8 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C SYNMCH--	SYNTAX MATCHER
-C THIS ROUTINE DETAILS ON BIT 4 OF PRSFLG
+C Syntax matcher
+C This routine details on bit 4 of PRSFLG
 	LOGICAL FUNCTION SYNMCH()
 	IMPLICIT INTEGER(A-Z)
 	LOGICAL SYNEQL,TAKEIT
@@ -153,7 +153,7 @@ D50	FORMAT(' SYNMCH- RESULTS ',L1,6I7)
 	RETURN
 	END
 C
-C UNPACKS-	UNPACK SYNTAX SPECIFICATION, ADV POINTER
+C Unpack syntax specification, adv pointer
 	SUBROUTINE UNPACKS(OLDJ,J)
 	IMPLICIT INTEGER(A-Z)
 	include 'vocab.h'
@@ -202,7 +202,7 @@ C						!YES.
 	RETURN
 	END
 C
-C SYNEQL-	TEST FOR SYNTAX EQUALITY
+C Test for syntax equality
 	LOGICAL FUNCTION SYNEQL(PREP,OBJ,SPREP,SFL1,SFL2)
 	IMPLICIT INTEGER(A-Z)
 	include 'objects.h'
@@ -219,7 +219,7 @@ C
 	RETURN
 	END
 C
-C TAKEIT-	PARSER BASED TAKE OF OBJECT
+C Parser based take of object
 	LOGICAL FUNCTION TAKEIT(OBJ,SFLAG)
 	IMPLICIT INTEGER(A-Z)
 	include 'parser.h'
@@ -302,7 +302,7 @@ C						!SUCCESS.
 	RETURN
 	END
 C
-C GWIM- GET WHAT I MEAN IN AMBIGOUS SITUATIONS
+C Get what I mean in ambigous situations
 	INTEGER FUNCTION GWIM(SFLAG,SFW1,SFW2)
 	IMPLICIT INTEGER(A-Z)
 	LOGICAL TAKEIT,NOCARE

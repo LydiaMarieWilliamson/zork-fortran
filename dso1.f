@@ -3,7 +3,7 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C PRINCR- PRINT CONTENTS OF ROOM
+C Print contents of room
 	SUBROUTINE PRINCR(FULL,RM)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL QEMPTY,QHERE,FULL
@@ -68,7 +68,7 @@ C
 	RETURN
 	END
 C
-C INVENT- PRINT CONTENTS OF ADVENTURER
+C Print contents of adventurer
 	SUBROUTINE INVENT(ADV)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL QEMPTY
@@ -109,7 +109,7 @@ C						!IF NOT EMPTY, LIST.
 	RETURN
 	END
 C
-C PRINCO-	PRINT CONTENTS OF OBJECT
+C Print contents of object
 	SUBROUTINE PRINCO(OBJ,DESC)
 	IMPLICIT INTEGER(A-Z)
 	include 'objects.h'

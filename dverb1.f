@@ -3,8 +3,8 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C TAKE-- BASIC TAKE SEQUENCE
-C TAKE AN OBJECT (FOR VERBS TAKE, PUT, DROP, READ, ETC.)
+C Basic take sequence
+C Take an object (for verbs take, put, drop, read, etc.)
 	LOGICAL FUNCTION TAKE(FLG)
 C
 	IMPLICIT INTEGER (A-Z)
@@ -74,7 +74,7 @@ C						!TELL TAKEN.
 	RETURN
 	END
 C
-C DROP- DROP VERB PROCESSOR
+C Drop verb processor
 	LOGICAL FUNCTION DROP(Z)
 	IMPLICIT INTEGER (A-Z)
         LOGICAL Z
@@ -141,7 +141,7 @@ C						!DONT HAVE IT.
 	RETURN
 	END
 C
-C PUT- PUT VERB PROCESSOR
+C Put verb processor
 	LOGICAL FUNCTION PUT(FLG)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL TAKE,QOPEN,QHERE,OBJACT,FLG
@@ -247,7 +247,7 @@ C						!CONTAINED INSIDE.
 	RETURN
 	END
 C
-C VALUAC- HANDLES VALUABLES/EVERYTHING
+C Handles valuables/everything
 	SUBROUTINE VALUAC(V)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL LIT,F,F1,TAKE,PUT,DROP,NOTVAL,QHERE

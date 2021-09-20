@@ -3,7 +3,7 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C VAPPLI- MAIN VERB PROCESSING ROUTINE
+C Main verb processing routine
 	LOGICAL FUNCTION VAPPLI(RI)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL LIT,OBJACT
@@ -862,7 +862,7 @@ C						!IN SPECIFIED DIR.
 	RETURN
 	END
 C
-C CLOCKD- CLOCK DEMON FOR INTERMOVE CLOCK EVENTS
+C Clock demon for intermove clock events
 	LOGICAL FUNCTION CLOCKD(X)
 	IMPLICIT INTEGER (A-Z)
 C

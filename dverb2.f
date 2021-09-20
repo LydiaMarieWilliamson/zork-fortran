@@ -3,7 +3,7 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C SAVE- SAVE GAME STATE
+C Save game state
 	SUBROUTINE SAVEGM
 	IMPLICIT INTEGER (A-Z)
 	include 'parser.h'
@@ -53,7 +53,7 @@ C						!CANT DO IT.
 	RETURN
 	END
 C
-C RESTORE- RESTORE GAME STATE
+C Restore game state
 	SUBROUTINE RSTRGM
 	IMPLICIT INTEGER (A-Z)
 	include 'parser.h'
@@ -108,7 +108,7 @@ C						!OBSOLETE VERSION
 	RETURN
 	END
 C
-C WALK- MOVE IN SPECIFIED DIRECTION
+C Move in specified direction
 	LOGICAL FUNCTION WALK(X)
 	IMPLICIT INTEGER(A-Z)
 	LOGICAL FINDXT,QOPEN,LIT,PROB,MOVETO,RMDESC
@@ -216,7 +216,7 @@ C						!DESCRIBE ROOM.
 	RETURN
 	END
 C
-C CXAPPL- CONDITIONAL EXIT PROCESSORS
+C Conditional exit processors
 	INTEGER FUNCTION CXAPPL(RI)
 	IMPLICIT INTEGER (A-Z)
 	include 'gamestat.h'

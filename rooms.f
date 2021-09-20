@@ -3,7 +3,7 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C RAPPL1- SPECIAL PURPOSE ROOM ROUTINES, PART 1
+C Special purpose room routines, part 1
 	LOGICAL FUNCTION RAPPL1(RI)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL QOPEN,QON,QHERE,PROB,F

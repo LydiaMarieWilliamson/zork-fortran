@@ -3,7 +3,7 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C TROLLP-	TROLL FUNCTION
+C Troll function
 	LOGICAL FUNCTION TROLLP(ARG)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL QHERE,PROB
@@ -115,7 +115,7 @@ C						!COULDNT HANDLE IT.
 	RETURN
 	END
 C
-C CYCLOP-	CYCLOPS FUNCTION
+C Cyclops function
 	LOGICAL FUNCTION CYCLOP(ARG)
 	IMPLICIT INTEGER (A-Z)
 	include 'parser.h'
@@ -199,7 +199,7 @@ C						!HELLO IS NO GO.
 C						!SEE IF HANDLED.
 	END
 C
-C THIEFP-	THIEF FUNCTION
+C Thief function
 	LOGICAL FUNCTION THIEFP(ARG)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL QHERE,PROB

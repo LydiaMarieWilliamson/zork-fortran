@@ -3,7 +3,7 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C DUNGEON-- MAIN PROGRAM
+C Main program
 	PROGRAM DUNGEO
 C
 C DUNGEON, PAGE 3

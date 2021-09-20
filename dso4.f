@@ -3,7 +3,7 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C ROBADV-- STEAL WINNER'S VALUABLES
+C Steal winner's valuables
 	INTEGER FUNCTION ROBADV(ADV,NR,NC,NA)
 	IMPLICIT INTEGER (A-Z)
 	include 'objects.h'
@@ -21,7 +21,7 @@ C						!STEAL OBJECT
 	RETURN
 	END
 C
-C ROBRM-- STEAL ROOM VALUABLES
+C Steal room valuables
 	INTEGER FUNCTION ROBRM(RM,PR,NR,NC,NA)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL PROB,QHERE
@@ -46,7 +46,7 @@ C						!LOOP ON OBJECTS.
 	RETURN
 	END
 C
-C WINNIN-- SEE IF VILLAIN IS WINNING
+C See if villain is winning
 	LOGICAL FUNCTION WINNIN(VL,HR)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL PROB
@@ -72,7 +72,7 @@ C						!ANY VILLAIN STRENGTH.
 	RETURN
 	END
 C
-C FIGHTS-- COMPUTE FIGHT STRENGTH
+C Compute fight strength
 	INTEGER FUNCTION FIGHTS(H,FLG)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL FLG
@@ -90,7 +90,7 @@ C
 	RETURN
 	END
 C
-C VILSTR-	COMPUTE VILLAIN STRENGTH
+C Compute villain strength
 	INTEGER FUNCTION VILSTR(V)
 	IMPLICIT INTEGER (A-Z)
 	include 'parser.h'

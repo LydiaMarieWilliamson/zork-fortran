@@ -3,7 +3,7 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C OAPPLI- OBJECT SPECIAL ACTION ROUTINES
+C Object special action routines
 	LOGICAL FUNCTION OAPPLI(RI,ARG)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL SOBJS,NOBJS

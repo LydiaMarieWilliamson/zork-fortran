@@ -3,7 +3,7 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C AAPPLI- APPLICABLES FOR ADVENTURERS
+C Applicables for adventurers
 	LOGICAL FUNCTION AAPPLI(RI)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL F,MOVETO
@@ -104,7 +104,7 @@ C						!MASTER CANT DO IT.
 	RETURN
 	END
 C
-C THIEFD-	INTERMOVE THIEF DEMON
+C Intermove thief demon
 	SUBROUTINE THIEFD
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL ONCE,PROB,QHERE,QSTILL,LIT,WINNIN

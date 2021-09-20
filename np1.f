@@ -3,8 +3,8 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C SPARSE-	START OF PARSE
-C THIS ROUTINE DETAILS ON BIT 2 OF PRSFLG
+C Start of parse
+C This routine details on bit 2 of PRSFLG
 	INTEGER  FUNCTION  SPARSE(LBUF,LLNT,VBFLAG)
 	IMPLICIT INTEGER(A-Z)
 	INTEGER  LBUF(40)

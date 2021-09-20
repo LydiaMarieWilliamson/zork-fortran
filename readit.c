@@ -5,23 +5,18 @@ struct frec {
    char c[74];
 } rec;
 
-void main() {
-   FILE *fp;
-
-   char *cp, buf[75];
-   int i, x, mask, c;
-
-   fp = fopen("dtext.dat", "rb");
-   x = 0;
-   buf[74] = 0;
-   while (fread(&rec, sizeof(rec), 1, fp) == 1) {
+int main(void) {
+   FILE *fp = fopen("dtext.dat", "rb");
+   int x = 0;
+   char buf[75]; buf[74] = '\0';
+   while (fread(&rec, sizeof rec, 1, fp) == 1) {
       x++;
-      for (i = 1; i < 75; i++) {
-         mask = (x & 31) + i;
+      for (int i = 1; i < 75; i++) {
+         int mask = (x&31) + i;
          buf[i - 1] = rec.c[i - 1] ^ mask;
       }
-      cp = &buf[73];
-      while (*cp == ' ') *cp-- = 0;
+      for (char *cp = &buf[73]; *cp == ' '; cp--) *cp = '\0';
       printf("%d %s\n", rec.indx, buf);
    }
+   return 0;
 }

@@ -3,7 +3,7 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C GHERE--	IS GLOBAL ACTUALLY IN THIS ROOM?
+C Is global actually in this room?
 	LOGICAL FUNCTION GHERE(OBJ,RM)
 	IMPLICIT INTEGER(A-Z)
 	include 'rooms.h'
@@ -82,7 +82,7 @@ C
 	RETURN
 	END
 C
-C MRHERE--	IS MIRROR HERE?
+C Is mirror here?
 	INTEGER FUNCTION MRHERE(RM)
 	IMPLICIT INTEGER(A-Z)
 C

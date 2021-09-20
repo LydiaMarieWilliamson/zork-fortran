@@ -3,7 +3,7 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C LIGHTP-	LIGHT PROCESSOR
+C Light processor
 	LOGICAL FUNCTION LIGHTP(OBJ)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL QON

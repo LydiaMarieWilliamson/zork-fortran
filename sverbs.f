@@ -3,9 +3,9 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C SVERBS-	SIMPLE VERBS PROCESSOR
-C	ALL VERBS IN THIS ROUTINE MUST BE INDEPENDANT
-C	OF OBJECT ACTIONS
+C Simple verbs processor
+C	All verbs in this routine must be independent
+C	of object actions
 	LOGICAL FUNCTION SVERBS(RI)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL MOVETO,YESNO

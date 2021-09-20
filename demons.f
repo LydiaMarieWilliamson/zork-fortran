@@ -3,7 +3,7 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C FIGHTD- INTERMOVE FIGHT DEMON
+C Intermove fight demon
 	SUBROUTINE FIGHTD
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL PROB,OAPPLI
@@ -120,7 +120,7 @@ C						!IF STILL OUT, GO AGAIN.
 	RETURN
 	END
 C
-C BLOW- STRIKE BLOW
+C Strike blow
 	INTEGER FUNCTION BLOW(H,V,RMK,HFLG,OUT)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL HFLG,OAPPLI,PROB
@@ -370,7 +370,7 @@ C						!HE'S DEAD.
 	RETURN
 	END
 C
-C SWORDD- SWORD INTERMOVE DEMON
+C Sword intermove demon
 	SUBROUTINE SWORDD
 	IMPLICIT INTEGER(A-Z)
 	LOGICAL INFEST,FINDXT
@@ -414,7 +414,7 @@ C						!DROPPED SWORD,
 	RETURN
 	END
 C						!DISABLE DEMON.
-C INFEST-	SUBROUTINE TO TEST FOR INFESTED ROOM
+C Subroutine to test for infested room
 	LOGICAL FUNCTION INFEST(R)
 	IMPLICIT INTEGER(A-Z)
 C

@@ -3,7 +3,7 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C MOVETO- MOVE PLAYER TO NEW ROOM
+C Move player to new room
 	LOGICAL FUNCTION MOVETO(NR,WHO)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL NLV,LHR,LNR
@@ -64,7 +64,7 @@ C						!WRONG VEHICLE.
 	RETURN
 	END
 C
-C SCORE-- PRINT OUT CURRENT SCORE
+C Print out current score
 	SUBROUTINE SCORE(FLG)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL FLG
@@ -113,7 +113,7 @@ C
 150	FORMAT(' Your score in the endgame is',$)
 	END
 C
-C SCRUPD- UPDATE WINNER'S SCORE
+C Update winner's score
 	SUBROUTINE SCRUPD(N)
 	IMPLICIT INTEGER (A-Z)
 	include 'gamestat.h'

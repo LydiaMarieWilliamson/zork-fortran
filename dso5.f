@@ -3,7 +3,7 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C GTTIME-- GET TOTAL TIME PLAYED
+C Get total time played
  	SUBROUTINE GTTIME(T)
  	IMPLICIT INTEGER(A-Z)
 C
@@ -16,7 +16,7 @@ C
  	RETURN
  	END
 C
-C OPNCLS-- PROCESS OPEN/CLOSE FOR DOORS
+C Process open/close for doors
 	LOGICAL FUNCTION OPNCLS(OBJ,SO,SC)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL QOPEN
@@ -55,7 +55,7 @@ C						!DUMMY.
 	RETURN
 	END
 C
-C LIT-- IS ROOM LIT?
+C Is room lit?
 	LOGICAL FUNCTION LIT(RM)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL QHERE
@@ -98,7 +98,7 @@ C
 	RETURN
 	END
 C
-C WEIGHT- RETURNS SUM OF WEIGHT OF QUALIFYING OBJECTS
+C Returns sum of weight of qualifying objects
 	INTEGER FUNCTION WEIGHT(RM,CN,AD)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL QHERE

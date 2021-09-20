@@ -3,7 +3,7 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C GAME- MAIN COMMAND LOOP FOR DUNGEON
+C Main command loop for dungeon
 	SUBROUTINE GAME
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL RMDESC,VAPPLI,RAPPLI,AAPPLI
@@ -164,7 +164,7 @@ C						!ALL OR VALUABLES.
 	GO TO 350
 	END
 C
-C XENDMV-	EXECUTE END OF MOVE FUNCTIONS.
+C Execute end of move functions.
 	SUBROUTINE XENDMV(FLAG)
 	IMPLICIT INTEGER(A-Z)
 	LOGICAL F,CLOCKD,FLAG,XVEHIC
@@ -186,7 +186,7 @@ C						!VEHICLE READOUT.
 	RETURN
 	END
 C
-C XVEHIC- EXECUTE VEHICLE FUNCTION
+C Execute vehicle function
 	LOGICAL FUNCTION XVEHIC(N)
 	IMPLICIT INTEGER(A-Z)
 	LOGICAL OAPPLI

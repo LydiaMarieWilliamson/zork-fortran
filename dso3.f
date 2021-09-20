@@ -3,7 +3,7 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C FINDXT- FIND EXIT FROM ROOM
+C Find exit from room
 	LOGICAL FUNCTION FINDXT(DIR,RM)
 	IMPLICIT INTEGER (A-Z)
 	include 'rooms.h'
@@ -39,7 +39,7 @@ C						!YES, LOSE.
 	RETURN
 	END
 C
-C FWIM- FIND WHAT I MEAN
+C Find what I mean
 	INTEGER FUNCTION FWIM(F1,F2,RM,CON,ADV,NOCARE)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL NOCARE
@@ -89,8 +89,8 @@ C
 	RETURN
 	END
 C
-C YESNO- OBTAIN YES/NO ANSWER
-C CALLED BY-
+C Obtain yes/no answer
+C Called by:
 C	YES-IS-TRUE=YESNO(QUESTION,YES-STRING,NO-STRING)
 	LOGICAL FUNCTION YESNO(Q,Y,N)
 	IMPLICIT INTEGER(A-Z)

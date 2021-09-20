@@ -3,7 +3,7 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C GDT- GAME DEBUGGING TOOL
+C Game debugging tool
 	SUBROUTINE GDT
 	IMPLICIT INTEGER (A-Z)
 	CHARACTER*2 DBGCMD(38),CMD

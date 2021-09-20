@@ -3,7 +3,7 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C ENCRYP--	ENCRYPT PASSWORD
+C Encrypt password
 	SUBROUTINE ENCRYP(INW,OUTW)
 	IMPLICIT INTEGER(A-Z)
 	CHARACTER INW(6),OUTW(6)
@@ -39,7 +39,7 @@ C						!COMPUTE MASK.
 	RETURN
 	END
 C
-C CPGOTO--	MOVE TO NEXT STATE IN PUZZLE ROOM
+C Move to next state in puzzle room
 	SUBROUTINE CPGOTO(ST)
 	IMPLICIT INTEGER(A-Z)
 C
@@ -65,7 +65,7 @@ C						!RELOCATE OBJECTS.
 	RETURN
 	END
 C
-C CPINFO--	DESCRIBE PUZZLE ROOM
+C Describe puzzle room
 	SUBROUTINE CPINFO(RMK,ST)
 	IMPLICIT INTEGER(A-Z)
 	INTEGER DGMOFT(8)

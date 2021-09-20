@@ -3,7 +3,7 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-C CEVAPP- CLOCK EVENT APPLICABLES
+C Clock event applicables
 	SUBROUTINE CEVAPP(RI)
 	IMPLICIT INTEGER (A-Z)
 	INTEGER CNDTCK(10),LMPTCK(12)
@@ -554,7 +554,7 @@ C						!MOVE MASTER PLAYER.
 	RETURN
 	END
 C
-C LITINT-	LIGHT INTERRUPT PROCESSOR
+C Light interrupt processor
 	SUBROUTINE LITINT(OBJ,CTR,CEV,TICKS,TICKLN)
 	IMPLICIT INTEGER (A-Z)
 	INTEGER TICKS(TICKLN)
