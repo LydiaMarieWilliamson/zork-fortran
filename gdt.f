@@ -1,9 +1,9 @@
+C Copyright (c) 1980, InfoCom Computers and Communications, Cambridge MA 02142
+C All rights reserved, commercial usage strictly prohibited.
+C Written by R. M. Supnik.
+C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
+C
 C GDT- GAME DEBUGGING TOOL
-C
-C COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
-C ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
-C WRITTEN BY R. M. SUPNIK
-C
 	SUBROUTINE GDT
 	IMPLICIT INTEGER (A-Z)
 	CHARACTER*2 DBGCMD(38),CMD
@@ -529,5 +529,4 @@ C						!VALID ENTRY?
 C						!OUTPUT OLD,
 	READ(INPCH,600) CPVEC(J)
 	GO TO 2000
-C
 	END

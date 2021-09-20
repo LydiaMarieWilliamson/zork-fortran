@@ -1,9 +1,9 @@
+C Copyright (c) 1980, InfoCom Computers and Communications, Cambridge MA 02142
+C All rights reserved, commercial usage strictly prohibited.
+C Written by R. M. Supnik.
+C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
+C
 C INIT-- DUNGEON INITIALIZATION SUBROUTINE
-C
-C COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
-C ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
-C WRITTEN BY R. M. SUPNIK
-C
 	LOGICAL FUNCTION INIT(X)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL PROTCT
@@ -336,15 +336,13 @@ C
      &'spreading darkness.  In his place'/' appears a tastefully ',
      &'lettered sign reading:'//23X,'INITIALIZATION FAILURE'//
      &' The darkness becomes all encompassing, and your vision fails.')
-C
 	END
-C PROTCT-- CHECK FOR USER VIOLATION
 C
+C PROTCT-- CHECK FOR USER VIOLATION
 C THIS ROUTINE SHOULD BE MODIFIED IF YOU WISH TO ADD SYSTEM
 C DEPENDANT PROTECTION AGAINST ABUSE.
 C
 C AT THE MOMENT, PLAY IS PERMITTED UNDER ALL CIRCUMSTANCES.
-C
 	LOGICAL FUNCTION PROTCT(X)
 	IMPLICIT INTEGER(A-Z)
 C

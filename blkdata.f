@@ -1,3 +1,8 @@
+C Copyright (c) 1980, InfoCom Computers and Communications, Cambridge MA 02142
+C All rights reserved, commercial usage strictly prohibited.
+C Written by R. M. Supnik.
+C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
+C
 	BLOCK DATA foo
 C THIS ROUTINE DETAILS ON BIT 2 OF PRSFLG
 C

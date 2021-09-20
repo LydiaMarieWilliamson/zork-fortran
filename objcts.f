@@ -1,9 +1,9 @@
+C Copyright (c) 1980, InfoCom Computers and Communications, Cambridge MA 02142
+C All rights reserved, commercial usage strictly prohibited.
+C Written by R. M. Supnik.
+C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
+C
 C OAPPLI- OBJECT SPECIAL ACTION ROUTINES
-C
-C COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
-C ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
-C WRITTEN BY R. M. SUPNIK
-C
 	LOGICAL FUNCTION OAPPLI(RI,ARG)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL SOBJS,NOBJS
@@ -799,5 +799,4 @@ C						!TO ANTEROOM.
 	F=RMDESC(3)
 C						!DESCRIBE.
 	RETURN
-C
 	END

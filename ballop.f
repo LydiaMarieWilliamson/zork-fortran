@@ -1,9 +1,9 @@
+C Copyright (c) 1980, InfoCom Computers and Communications, Cambridge MA 02142
+C All rights reserved, commercial usage strictly prohibited.
+C Written by R. M. Supnik.
+C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
+C
 C BALLOP-	BALLOON FUNCTION
-C
-C COPYRIGHT 1980, INFOCOM COMPUTERS AND COMMUNICATIONS, CAMBRIDGE MA. 02142
-C ALL RIGHTS RESERVED, COMMERCIAL USAGE STRICTLY PROHIBITED
-C WRITTEN BY R. M. SUPNIK
-C
 	LOGICAL FUNCTION BALLOP(ARG)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL FINDXT,QEMPTY
@@ -96,5 +96,4 @@ C
      &	(IAND(RFLAG(HERE),RLAND).NE.0))
      &	CTICK(CEVBAL)=3
 	GO TO 10
-C
 	END
