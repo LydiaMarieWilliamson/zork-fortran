@@ -17,7 +17,7 @@ void swordd(void);
 void game_(void);
 
 // dinit.c:
-Bool init(int);
+Bool init(void/*int*/);
 
 #if 0
 // dmain.c:

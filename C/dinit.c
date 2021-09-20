@@ -6,10 +6,10 @@
 #include "extern.h"
 #include "common.h"
 
-static Bool protct(int);
+static Bool protct(void/*int*/);
 
 // INIT-- DUNGEON INITIALIZATION SUBROUTINE
-Bool init(int x) {
+Bool init(void/*int x*/) {
 // Format strings
    static char fmt_0[] = "(\002 Suddenly a sinister, wraithlike figure appears before \002,\002you,\002/\002 seeming to float in the air.  In a low, sorrowful voice\002,\002 he says,\002/\002 \"Alas, the very nature of the world has changed, \002,\002and the dungeon\002/\002 cannot be found.  All must now pass away.\"\002,\002  Raising his oaken staff\002/\002 in farewell, he fades into the \002,\002spreading darkness.  In his place\002/\002 appears a tastefully \002,\002lettered sign reading:\002//23x,\002INITIALIZATION FAILURE\002//\002 The darkness becomes all encompassing, and your vision fails.\002)";
 
@@ -28,7 +28,7 @@ Bool init(int x) {
 
 // FIRST CHECK FOR PROTECTION VIOLATION
 
-   if (protct(x)) {
+   if (protct(/*x*/)) {
       goto L10000;
    }
 // 						!PROTECTION VIOLATION?
@@ -416,7 +416,7 @@ L1950:
 // DEPENDANT PROTECTION AGAINST ABUSE.
 
 // AT THE MOMENT, PLAY IS PERMITTED UNDER ALL CIRCUMSTANCES.
-static Bool protct(int x) {
+static Bool protct(void/*int x*/) {
 // System generated locals
    Bool ret_val;
 

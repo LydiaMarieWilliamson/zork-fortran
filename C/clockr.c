@@ -762,7 +762,7 @@ L24100:
 }
 
 // LITINT-	LIGHT INTERRUPT PROCESSOR
-static void litint(int obj, int * ctr, int cev, const int * ticks, int tickln) {
+static void litint(int obj, int *ctr, int cev, const int *ticks, int tickln) {
 // Local variables
 
 // Parameter adjustments

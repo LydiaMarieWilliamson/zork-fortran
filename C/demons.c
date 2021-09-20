@@ -166,7 +166,6 @@ L2600:
 }
 
 // BLOW- STRIKE BLOW
-
 int blow(int h, int v, int rmk, Bool hflg, int out) {
 // Initialized data
    const int rmiss = 0;
@@ -180,15 +179,19 @@ int blow(int h, int v, int rmk, Bool hflg, int out) {
    static const int def2r[4] = { 13, 23, 24, 25 };
    static const int def3r[5] = { 35, 36, 46, 47, 57 };
    static const int rvectr[66] = {
-      0, 0, 0, 0, 5, 5, 1, 1, 2, 2, 2, 2, 0, 0, 0, 0, 0, 5, 5, 3, 3, 1,
-      0, 0, 0, 5, 5, 3, 3, 3, 1, 2, 2, 2, 0, 0, 0, 0, 0, 5, 5, 3, 3, 4, 4, 0, 0, 0, 5, 5, 3, 3, 3, 4, 4,
-      4, 0, 5, 5, 3, 3, 3, 3, 4, 4, 4
+      0, 0, 0, 0, 5, 5, 1, 1, 2, 2, 2, 2,
+      0, 0, 0, 0, 0, 5, 5, 3, 3, 1,
+      0, 0, 0, 5, 5, 3, 3, 3, 1, 2, 2, 2,
+      0, 0, 0, 0, 0, 5, 5, 3, 3, 4, 4,
+      0, 0, 0, 5, 5, 3, 3, 3, 4, 4, 4,
+      0, 5, 5, 3, 3, 3, 3, 4, 4, 4
    };
    static const int rstate[45] = {
-      5000, 3005, 3008, 4011, 3015, 3018, 1021, 0, 0, 5022,
-      3027, 3030, 4033, 3037, 3040, 1043, 0, 0, 4044, 2048, 4050, 4054, 5058, 4063,
-      4067, 3071, 1074, 4075, 1079, 4080, 4084, 4088, 4092, 4096, 4100, 1104, 4105,
-      2109, 4111, 4115, 4119, 4123, 4127, 3131, 3134
+      5000, 3005, 3008, 4011, 3015, 3018, 1021, 0, 0,
+      5022, 3027, 3030, 4033, 3037, 3040, 1043, 0, 0,
+      4044, 2048, 4050, 4054, 5058, 4063, 4067, 3071, 1074,
+      4075, 1079, 4080, 4084, 4088, 4092, 4096, 4100, 1104,
+      4105, 2109, 4111, 4115, 4119, 4123, 4127, 3131, 3134
    };
 
 // System generated locals
@@ -535,7 +538,6 @@ L4600:
 }
 
 // SWORDD- SWORD INTERMOVE DEMON
-
 void swordd(void) {
 // System generated locals
    int i__1, i__2;
@@ -605,7 +607,6 @@ L500:
 }
 
 // INFEST-	SUBROUTINE TO TEST FOR INFESTED ROOM
-
 static Bool infest(int r) {
 // System generated locals
    Bool ret_val;
@@ -616,8 +617,7 @@ static Bool infest(int r) {
 
    if (!findex_1.endgmf) {
       ret_val = objcts_1.oroom[oindex_1.cyclo - 1] == r || objcts_1.oroom[oindex_1.troll - 1] == r || objcts_1.oroom[oindex_1.thief - 1] == r && hack_1.thfact;
-   }
-   if (findex_1.endgmf) {
+   } else {
       ret_val = r == rindex_1.mrg || r == rindex_1.mrge || r == rindex_1.mrgw || r == rindex_1.inmir && findex_1.mloc == rindex_1.mrg;
    }
    return ret_val;

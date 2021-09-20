@@ -146,14 +146,16 @@ struct vindexCB vindex = (struct vindexCB){
 
 // DUNGEON-- MAIN PROGRAM
 int MAIN__(void) {
+#if 0
    int x;
+#endif
 
 // DUNGEON, PAGE 3
 
 // 1) INITIALIZE DATA STRUCTURES
 // 2) PLAY GAME
 
-   if (init(x)) {
+   if (init(/*x*/)) {
       game_();
    }
 // 						!IF INIT, PLAY GAME.
