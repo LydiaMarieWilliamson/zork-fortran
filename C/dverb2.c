@@ -115,7 +115,7 @@ void rstrgm(void) {
 // open(unit:1, file:"dsave.dat", access:"SEQUENTIAL", status:"OLD", form:"UNFORMATTED", err:L100); //F
    if (OpenF(1, "dsave.dat", "OLD", "SEQUENTIAL", "UNFORMATTED", 0) != 0) goto L100;
 
-// read(1, &i, &j, &j); //F
+// read(1, &i, &j, &k); //F
    BegInSU(1, 0, 0), DoUio(1, &i, sizeof i), DoUio(1, &j, sizeof j), DoUio(1, &k, sizeof k), EndInSU();
    if (i != vers_2.vmaj || j != vers_2.vmin) {
       goto L200;
