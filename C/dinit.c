@@ -244,106 +244,110 @@ L10000:
 
 // NOW RESTORE FROM EXISTING INDEX FILE.
 
-// 	OPEN(UNIT=1,file='/usr/share/games/dungeon/dindx.dat',
-   i__1 = OpenF(1, "dindx.dat", "OLD", "SEQUENTIAL", "FORMATTED", 0);
-   if (i__1 != 0) {
-      goto L1900;
-   }
+#if 0
+// open(unit:1,file:"/usr/share/games/dungeon/dindx.dat", //F
+//    status:"OLD", form:"FORMATTED", access:"SEQUENTIAL", err:L1900 //F
+// ); //F
+   if (OpenF(1, "/usr/share/games/dungeon/dindx.dat", "OLD", "SEQUENTIAL", "FORMATTED", 0) != 0) goto L1900;
+#else
+// open(unit:1,file:"dindx.dat", //F
+//    status:"OLD", form:"FORMATTED", access:"SEQUENTIAL", err:L1900 //F
+// ); //F
+   if (OpenF(1, "dindx.dat", "OLD", "SEQUENTIAL", "FORMATTED", 0) != 0) goto L1900;
+#endif
 
-   BegInSF(1, /*130*/"(i6)", 0);
-   DoFio(1, &i, sizeof i);
-   DoFio(1, &j, sizeof j);
-   DoFio(1, &k, sizeof k);
-   EndInSF();
+// read(1, "%I6", &i, &j, &k); //F
+   BegInSF(1, /*130*/"(i6)", 0), DoFio(1, &i, sizeof i), DoFio(1, &j, sizeof j), DoFio(1, &k, sizeof k), EndInSF();
 // 						!GET VERSION.
    if (i != vers_2.vmaj || j != vers_2.vmin) {
       goto L1925;
    }
-// 	OPEN(UNIT=DBCH,file='/usr/share/games/dungeon/dtext.dat',
-   i__1 = OpenF(chan_1.dbch, "dtext.dat", "OLD", "DIRECT", "UNFORMATTED", 76);
-   if (i__1 != 0) {
-      goto L1950;
-   }
+#if 0
+// open(unit:chan_1.dbch, file:"/usr/share/games/dungeon/dtext.dat", //F
+//    status:"old", form:"unformatted", access:"direct", //F
+//    recl:76, err:L1950 //F
+// ); //F
+   if (OpenF(chan_1.dbch, "/usr/share/games/dungeon/dtext.dat", "OLD", "DIRECT", "UNFORMATTED", 76) != 0) goto L1950;
+#else
+// open(unit:chan_1.dbch, file:"dtext.dat", //F
+//    status:"old", form:"unformatted", access:"direct", //F
+//    recl:76, err:L1950 //F
+// ); //F
+   if (OpenF(chan_1.dbch, "dtext.dat", "OLD", "DIRECT", "UNFORMATTED", 76) != 0) goto L1950;
+#endif
 #ifdef ALLOW_GDT
    print(" RESTORING FROM \"dindx.dat\"");
 #endif
+// // const char *Fmt = "%I8"; //F
+// const char *Fmt = "%I6"; //F
+// read(1, Fmt, &state_1.mxscor, &star_1.strbit, &state_1.egmxsc); //F
    BegInSF(1, /*130*/"(i6)", 0);
-   DoFio(1, &state_1.mxscor, sizeof state_1.mxscor);
-   DoFio(1, &star_1.strbit, sizeof star_1.strbit);
+   DoFio(1, &state_1.mxscor, sizeof state_1.mxscor), DoFio(1, &star_1.strbit, sizeof star_1.strbit);
    DoFio(1, &state_1.egmxsc, sizeof state_1.egmxsc);
    EndInSF();
+// read(1, Fmt, &rooms_1.rlnt, &rooms_1.rdesc2, rooms_1.rdesc1, rooms_1.rexit, rooms_1.ractio, rooms_1.rval, rooms_1.rflag); //F
    BegInSF(1, /*130*/"(i6)", 0);
    DoFio(1, &rooms_1.rlnt, sizeof rooms_1.rlnt);
-   DoFio(1, &rooms_1.rdesc2, sizeof rooms_1.rdesc2);
-   DoFio(200, rooms_1.rdesc1, sizeof rooms_1.rdesc1[0]);
-   DoFio(200, rooms_1.rexit, sizeof rooms_1.rexit[0]);
-   DoFio(200, rooms_1.ractio, sizeof rooms_1.ractio[0]);
-   DoFio(200, rooms_1.rval, sizeof rooms_1.rval[0]);
-   DoFio(200, rooms_1.rflag, sizeof rooms_1.rflag[0]);
+   DoFio(1, &rooms_1.rdesc2, sizeof rooms_1.rdesc2), DoFio(200, rooms_1.rdesc1, sizeof rooms_1.rdesc1[0]);
+   DoFio(200, rooms_1.rexit, sizeof rooms_1.rexit[0]), DoFio(200, rooms_1.ractio, sizeof rooms_1.ractio[0]);
+   DoFio(200, rooms_1.rval, sizeof rooms_1.rval[0]), DoFio(200, rooms_1.rflag, sizeof rooms_1.rflag[0]);
    EndInSF();
+// read(1, Fmt, &exits_1.xlnt, exits_1.travel); //F
    BegInSF(1, /*130*/"(i6)", 0);
-   DoFio(1, &exits_1.xlnt, sizeof exits_1.xlnt);
-   DoFio(900, exits_1.travel, sizeof exits_1.travel[0]);
+   DoFio(1, &exits_1.xlnt, sizeof exits_1.xlnt), DoFio(900, exits_1.travel, sizeof exits_1.travel[0]);
    EndInSF();
+// read(1, Fmt, //F
+//    objcts_1.olnt, objcts_1.odesc1, objcts_1.odesc2, objcts_1.odesco, objcts_1.oactio, objcts_1.oflag1, objcts_1.oflag2, //F
+//    objcts_1.ofval, objcts_1.otval, objcts_1.osize, objcts_1.ocapac, objcts_1.oroom, objcts_1.oadv, objcts_1.ocan, objcts_1.oread //F
+// ); //F
    BegInSF(1, /*130*/"(i6)", 0);
    DoFio(1, &objcts_1.olnt, sizeof objcts_1.olnt);
-   DoFio(220, objcts_1.odesc1, sizeof objcts_1.odesc1[0]);
-   DoFio(220, objcts_1.odesc2, sizeof objcts_1.odesc2[0]);
-   DoFio(220, objcts_1.odesco, sizeof objcts_1.odesco[0]);
-   DoFio(220, objcts_1.oactio, sizeof objcts_1.oactio[0]);
-   DoFio(220, objcts_1.oflag1, sizeof objcts_1.oflag1[0]);
-   DoFio(220, objcts_1.oflag2, sizeof objcts_1.oflag2[0]);
-   DoFio(220, objcts_1.ofval, sizeof objcts_1.ofval[0]);
-   DoFio(220, objcts_1.otval, sizeof objcts_1.otval[0]);
-   DoFio(220, objcts_1.osize, sizeof objcts_1.osize[0]);
-   DoFio(220, objcts_1.ocapac, sizeof objcts_1.ocapac[0]);
-   DoFio(220, objcts_1.oroom, sizeof objcts_1.oroom[0]);
-   DoFio(220, objcts_1.oadv, sizeof objcts_1.oadv[0]);
-   DoFio(220, objcts_1.ocan, sizeof objcts_1.ocan[0]);
-   DoFio(220, objcts_1.oread, sizeof objcts_1.oread[0]);
+   DoFio(220, objcts_1.odesc1, sizeof objcts_1.odesc1[0]), DoFio(220, objcts_1.odesc2, sizeof objcts_1.odesc2[0]);
+   DoFio(220, objcts_1.odesco, sizeof objcts_1.odesco[0]), DoFio(220, objcts_1.oactio, sizeof objcts_1.oactio[0]);
+   DoFio(220, objcts_1.oflag1, sizeof objcts_1.oflag1[0]), DoFio(220, objcts_1.oflag2, sizeof objcts_1.oflag2[0]);
+   DoFio(220, objcts_1.ofval, sizeof objcts_1.ofval[0]), DoFio(220, objcts_1.otval, sizeof objcts_1.otval[0]);
+   DoFio(220, objcts_1.osize, sizeof objcts_1.osize[0]), DoFio(220, objcts_1.ocapac, sizeof objcts_1.ocapac[0]);
+   DoFio(220, objcts_1.oroom, sizeof objcts_1.oroom[0]), DoFio(220, objcts_1.oadv, sizeof objcts_1.oadv[0]);
+   DoFio(220, objcts_1.ocan, sizeof objcts_1.ocan[0]), DoFio(220, objcts_1.oread, sizeof objcts_1.oread[0]);
    EndInSF();
+// read(1, Fmt, &oroom2_1.r2lnt, oroom2_1.oroom2, oroom2_1.rroom2); //F
    BegInSF(1, /*130*/"(i6)", 0);
    DoFio(1, &oroom2_1.r2lnt, sizeof oroom2_1.r2lnt);
-   DoFio(20, oroom2_1.oroom2, sizeof oroom2_1.oroom2[0]);
-   DoFio(20, oroom2_1.rroom2, sizeof oroom2_1.rroom2[0]);
+   DoFio(20, oroom2_1.oroom2, sizeof oroom2_1.oroom2[0]), DoFio(20, oroom2_1.rroom2, sizeof oroom2_1.rroom2[0]);
    EndInSF();
+// read(1, Fmt, &cevent_1.clnt, cevent_1.ctick, cevent_1.cactio); //F
    BegInSF(1, /*130*/"(i6)", 0);
    DoFio(1, &cevent_1.clnt, sizeof cevent_1.clnt);
-   DoFio(25, cevent_1.ctick, sizeof cevent_1.ctick[0]);
-   DoFio(25, cevent_1.cactio, sizeof cevent_1.cactio[0]);
+   DoFio(25, cevent_1.ctick, sizeof cevent_1.ctick[0]), DoFio(25, cevent_1.cactio, sizeof cevent_1.cactio[0]);
    EndInSF();
+// read(1, "%L4", cevent_1.cflag); //F
    BegInSF(1, /*135*/"(l4)", 0);
    DoFio(25, cevent_1.cflag, sizeof cevent_1.cflag[0]);
    EndInSF();
+// read(1, Fmt, &vill_1.vlnt, vill_1.villns, vill_1.vprob, vill_1.vopps, vill_1.vbest, vill_1.vmelee); //F
    BegInSF(1, /*130*/"(i6)", 0);
-   DoFio(1, &vill_1.vlnt, sizeof vill_1.vlnt);
-   DoFio(4, vill_1.villns, sizeof vill_1.villns[0]);
-   DoFio(4, vill_1.vprob, sizeof vill_1.vprob[0]);
-   DoFio(4, vill_1.vopps, sizeof vill_1.vopps[0]);
-   DoFio(4, vill_1.vbest, sizeof vill_1.vbest[0]);
-   DoFio(4, vill_1.vmelee, sizeof vill_1.vmelee[0]);
+   DoFio(1, &vill_1.vlnt, sizeof vill_1.vlnt), DoFio(4, vill_1.villns, sizeof vill_1.villns[0]);
+   DoFio(4, vill_1.vprob, sizeof vill_1.vprob[0]), DoFio(4, vill_1.vopps, sizeof vill_1.vopps[0]);
+   DoFio(4, vill_1.vbest, sizeof vill_1.vbest[0]), DoFio(4, vill_1.vmelee, sizeof vill_1.vmelee[0]);
    EndInSF();
+// read(1, Fmt, &advs_1.alnt, advs_1.aroom, advs_1.ascore, advs_1.avehic, advs_1.aobj, advs_1.aactio, advs_1.astren, advs_1.aflag); //F
    BegInSF(1, /*130*/"(i6)", 0);
-   DoFio(1, &advs_1.alnt, sizeof advs_1.alnt);
-   DoFio(4, advs_1.aroom, sizeof advs_1.aroom[0]);
-   DoFio(4, advs_1.ascore, sizeof advs_1.ascore[0]);
-   DoFio(4, advs_1.avehic, sizeof advs_1.avehic[0]);
-   DoFio(4, advs_1.aobj, sizeof advs_1.aobj[0]);
-   DoFio(4, advs_1.aactio, sizeof advs_1.aactio[0]);
-   DoFio(4, advs_1.astren, sizeof advs_1.astren[0]);
-   DoFio(4, advs_1.aflag, sizeof advs_1.aflag[0]);
+   DoFio(1, &advs_1.alnt, sizeof advs_1.alnt), DoFio(4, advs_1.aroom, sizeof advs_1.aroom[0]);
+   DoFio(4, advs_1.ascore, sizeof advs_1.ascore[0]), DoFio(4, advs_1.avehic, sizeof advs_1.avehic[0]);
+   DoFio(4, advs_1.aobj, sizeof advs_1.aobj[0]), DoFio(4, advs_1.aactio, sizeof advs_1.aactio[0]);
+   DoFio(4, advs_1.astren, sizeof advs_1.astren[0]), DoFio(4, advs_1.aflag, sizeof advs_1.aflag[0]);
    EndInSF();
+// read(1, Fmt, &star_1.mbase, &rmsg_1.mlnt, rmsg_1.rtext); //F
    BegInSF(1, /*130*/"(i6)", 0);
    DoFio(1, &star_1.mbase, sizeof star_1.mbase);
-   DoFio(1, &rmsg_1.mlnt, sizeof rmsg_1.mlnt);
-   DoFio(1820, rmsg_1.rtext, sizeof rmsg_1.rtext[0]);
+   DoFio(1, &rmsg_1.mlnt, sizeof rmsg_1.mlnt), DoFio(1820, rmsg_1.rtext, sizeof rmsg_1.rtext[0]);
    EndInSF();
 
+// close(1); //F
    CloseF(1);
    goto L1025;
 // 						!INIT DONE.
 
-// 130	FORMAT(I8)
 // INIT, PAGE 5
 
 // THE INTERNAL DATA BASE IS NOW ESTABLISHED.

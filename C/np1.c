@@ -8,7 +8,7 @@
 
 // Start of parse
 // This routine details on bit 2 of prsflg
-int sparse(int * lbuf, int llnt, Bool vbflag) {
+int sparse(int *lbuf, int llnt, Bool vbflag) {
 // Initialized data
 //   The following data statement originally was:
 // 	DATA R50MIN/1RA/,R50WAL/3RWAL/

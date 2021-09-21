@@ -8,6 +8,7 @@
 
 // Game debugging tool
 void gdt(void) {
+#ifdef ALLOW_GDT
 // Initialized data
    const int cmdmax = 38;
    static char dbgcmd[2 * 38] =
@@ -62,9 +63,8 @@ L2000:
    BegExSF(chan_1.outch, /*200*/"(\002 GDT>\002,$)", 0);
    EndExSF();
 // 						!OUTPUT PROMPT.
-   BegInSF(chan_1.inpch, /*210*/"(a2)", 0);
-   DoFio(1, cmd, sizeof cmd);
-   EndInSF();
+// read(chan_1.inpch, "%A2", cmd); //F
+   BegInSF(chan_1.inpch, /*210*/"(a2)", 0), DoFio(1, cmd, sizeof cmd), EndInSF();
 // 						!GET COMMAND.
    if (CompS(cmd, "  ", sizeof cmd) == 0) {
       goto L2000;
@@ -114,20 +114,16 @@ L2700:
    BegExSF(chan_1.outch, /*245*/"(\002 Idx,Ary:  \002,$)", 0);
    EndExSF();
 // 						!TYPE 3, REQUEST ARRAY COORDS.
-   BegInSF(chan_1.inpch, /*230*/"(2i6)", 0);
-   DoFio(1, &j, sizeof j);
-   DoFio(1, &k, sizeof k);
-   EndInSF();
+// read(chan_1.inpch, "%2I6", &j, &k); //F
+   BegInSF(chan_1.inpch, /*230*/"(2i6)", 0), DoFio(1, &j, sizeof j), DoFio(1, &k, sizeof k), EndInSF();
    goto L2400;
 
 L2600:
    BegExSF(chan_1.outch, /*225*/"(\002 Limits:   \002,$)", 0);
    EndExSF();
 // 						!TYPE 2, READ BOUNDS.
-   BegInSF(chan_1.inpch, /*230*/"(2i6)", 0);
-   DoFio(1, &j, sizeof j);
-   DoFio(1, &k, sizeof k);
-   EndInSF();
+// read(chan_1.inpch, "%2I6", &j, &k); //F
+   BegInSF(chan_1.inpch, /*230*/"(2i6)", 0), DoFio(1, &j, sizeof j), DoFio(1, &k, sizeof k), EndInSF();
    if (k == 0) {
       k = j;
    }
@@ -137,9 +133,8 @@ L2500:
    BegExSF(chan_1.outch, /*235*/"(\002 Entry:    \002,$)", 0);
    EndExSF();
 // 						!TYPE 1, READ ENTRY NO.
-   BegInSF(chan_1.inpch, /*240*/"(i6)", 0);
-   DoFio(1, &j, sizeof j);
-   EndInSF();
+// read(chan_1.inpch, "%I6", &j); //F
+   BegInSF(chan_1.inpch, /*240*/"(i6)", 0), DoFio(1, &j, sizeof j), EndInSF();
 L2400:
    switch (i) {
       case 1:
@@ -238,7 +233,7 @@ L10000:
       BegExSF(chan_1.outch, /*310*/"(1x,i3,4(1x,i6),1x,i6)", 0);
       DoFio(1, &i, sizeof i);
       for (l = 1; l <= 5; ++l) {
-         DoFio(1, &eqr[i + l * 200 - 201], sizeof eqr[0]);
+         DoFio(1, &eqr[i - 1 + 200 * (l - 1)], sizeof eqr[0]);
       }
       EndExSF();
 // L10100:
@@ -260,7 +255,7 @@ L11000:
       BegExSF(chan_1.outch, /*330*/"(1x,i3,3i6,i4,2i7,2i4,2i6,1x,3i4,i6)", 0);
       DoFio(1, &i, sizeof i);
       for (l = 1; l <= 14; ++l) {
-         DoFio(1, &eqo[i + l * 220 - 221], sizeof eqo[0]);
+         DoFio(1, &eqo[i - 1 + 220 * (l - 1)], sizeof eqo[0]);
       }
       EndExSF();
 // L11100:
@@ -281,7 +276,7 @@ L12000:
       BegExSF(chan_1.outch, /*350*/"(1x,i3,6(1x,i6),1x,i6)", 0);
       DoFio(1, &i, sizeof i);
       for (l = 1; l <= 7; ++l) {
-         DoFio(1, &eqa[i + (l << 2) - 5], sizeof eqa[0]);
+         DoFio(1, &eqa[i - 1 + ((l - 1) << 2)], sizeof eqa[0]);
       }
       EndExSF();
 // L12100:
@@ -302,7 +297,7 @@ L13000:
       BegExSF(chan_1.outch, /*370*/"(1x,i3,1x,i6,1x,i6,5x,l1)", 0);
       DoFio(1, &i, sizeof i);
       for (l = 1; l <= 2; ++l) {
-         DoFio(1, &eqc[i + l * 25 - 26], sizeof eqc[0]);
+         DoFio(1, &eqc[i - 1 + 25 * (l - 1)], sizeof eqc[0]);
       }
       DoFio(1, &cevent_1.cflag[i - 1], sizeof cevent_1.cflag[0]);
       EndExSF();
@@ -383,7 +378,7 @@ L17000:
       BegExSF(chan_1.outch, /*430*/"(1x,i3,5(1x,i6))", 0);
       DoFio(1, &i, sizeof i);
       for (l = 1; l <= 5; ++l) {
-         DoFio(1, &eqv[i + (l << 2) - 5], sizeof eqv[0]);
+         DoFio(1, &eqv[i - 1 + ((l - 1) << 2)], sizeof eqv[0]);
       }
       EndExSF();
 // L17100:
@@ -455,9 +450,8 @@ L20000:
    DoFio(1, &flags[j - 1], sizeof flags[0]);
    EndExSF();
 // 						!TYPE OLD, GET NEW.
-   BegInSF(chan_1.inpch, /*490*/"(l1)", 0);
-   DoFio(1, &flags[j - 1], sizeof flags[0]);
-   EndInSF();
+// read(chan_1.inpch, "%L1", &flags[j - 1]); //F
+   BegInSF(chan_1.inpch, /*490*/"(l1)", 0), DoFio(1, &flags[j - 1], sizeof flags[0]), EndInSF();
    goto L2000;
 
 // 21000-- HELP
@@ -570,12 +564,11 @@ L32000:
    }
 // 						!INDICES VALID?
    BegExSF(chan_1.outch, /*590*/fmt_2, 0);
-   DoFio(1, &eqr[j + k * 200 - 201], sizeof eqr[0]);
+   DoFio(1, &eqr[j - 1 + 200 * (k - 1)], sizeof eqr[0]);
    EndExSF();
 // 						!TYPE OLD, GET NEW.
-   BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
-   DoFio(1, &eqr[j + k * 200 - 201], sizeof eqr[0]);
-   EndInSF();
+// read(chan_1.inpch, "%I6", &eqr[j - 1 + 200 * (k - 1)]); //F
+   BegInSF(chan_1.inpch, /*600*/"(i6)", 0), DoFio(1, &eqr[j - 1 + 200 * (k - 1)], sizeof eqr[0]), EndInSF();
    goto L2000;
 
 // AO-- ALTER OBJECT ENTRY
@@ -586,11 +579,10 @@ L33000:
    }
 // 						!INDICES VALID?
    BegExSF(chan_1.outch, /*590*/fmt_2, 0);
-   DoFio(1, &eqo[j + k * 220 - 221], sizeof eqo[0]);
+   DoFio(1, &eqo[j - 1 + 220 * (k - 1)], sizeof eqo[0]);
    EndExSF();
-   BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
-   DoFio(1, &eqo[j + k * 220 - 221], sizeof eqo[0]);
-   EndInSF();
+// read(chan_1.inpch, "%I6", &eqo[j - 1 + 220 * (k - 1)]); //F
+   BegInSF(chan_1.inpch, /*600*/"(i6)", 0), DoFio(1, &eqo[j - 1 + 220 * (k - 1)], sizeof eqo[0]), EndInSF();
    goto L2000;
 
 // AA-- ALTER ADVS ENTRY
@@ -601,11 +593,10 @@ L34000:
    }
 // 						!INDICES VALID?
    BegExSF(chan_1.outch, /*590*/fmt_2, 0);
-   DoFio(1, &eqa[j + (k << 2) - 5], sizeof eqa[0]);
+   DoFio(1, &eqa[j - 1 + ((k - 1) << 2)], sizeof eqa[0]);
    EndExSF();
-   BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
-   DoFio(1, &eqa[j + (k << 2) - 5], sizeof eqa[0]);
-   EndInSF();
+// read(chan_1.inpch, "%I6", &eqa[j - 1 + ((k - 1) << 2)]); //F
+   BegInSF(chan_1.inpch, /*600*/"(i6)", 0), DoFio(1, &eqa[j - 1 + ((k - 1) << 2)], sizeof eqa[0]), EndInSF();
    goto L2000;
 
 // AC-- ALTER CLOCK EVENTS
@@ -620,20 +611,18 @@ L35000:
    }
 // 						!FLAGS ENTRY?
    BegExSF(chan_1.outch, /*590*/fmt_2, 0);
-   DoFio(1, &eqc[j + k * 25 - 26], sizeof eqc[0]);
+   DoFio(1, &eqc[j - 1 + 25 * (k - 1)], sizeof eqc[0]);
    EndExSF();
-   BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
-   DoFio(1, &eqc[j + k * 25 - 26], sizeof eqc[0]);
-   EndInSF();
+// read(chan_1.inpch, "%I6", &eqc[j - 1 + 25 * (k - 1)]); //F
+   BegInSF(chan_1.inpch, /*600*/"(i6)", 0), DoFio(1, &eqc[j - 1 + 25 * (k - 1)], sizeof eqc[0]), EndInSF();
    goto L2000;
 
 L35500:
    BegExSF(chan_1.outch, /*480*/fmt_1, 0);
    DoFio(1, &cevent_1.cflag[j - 1], sizeof cevent_1.cflag[0]);
    EndExSF();
-   BegInSF(chan_1.inpch, /*490*/"(l1)", 0);
-   DoFio(1, &cevent_1.cflag[j - 1], sizeof cevent_1.cflag[0]);
-   EndInSF();
+// read(chan_1.inpch, "%L1", &cevent_1.cflag); //F
+   BegInSF(chan_1.inpch, /*490*/"(l1)", 0), DoFio(1, &cevent_1.cflag[j - 1], sizeof cevent_1.cflag[0]), EndInSF();
    goto L2000;
 // GDT, PAGE 6
 
@@ -647,9 +636,8 @@ L36000:
    BegExSF(chan_1.outch, /*610*/fmt_2, 0);
    DoFio(1, &exits_1.travel[j - 1], sizeof exits_1.travel[0]);
    EndExSF();
-   BegInSF(chan_1.inpch, /*620*/"(i6)", 0);
-   DoFio(1, &exits_1.travel[j - 1], sizeof exits_1.travel[0]);
-   EndInSF();
+// read(chan_1.inpch, "%I6", &exits_1.travel[j - 1]); //F
+   BegInSF(chan_1.inpch, /*620*/"(i6)", 0), DoFio(1, &exits_1.travel[j - 1], sizeof exits_1.travel[0]), EndInSF();
    goto L2000;
 
 // AV-- ALTER VILLAINS
@@ -660,11 +648,10 @@ L37000:
    }
 // 						!INDICES VALID?
    BegExSF(chan_1.outch, /*590*/fmt_2, 0);
-   DoFio(1, &eqv[j + (k << 2) - 5], sizeof eqv[0]);
+   DoFio(1, &eqv[j - 1 + ((k - 1) << 2)], sizeof eqv[0]);
    EndExSF();
-   BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
-   DoFio(1, &eqv[j + (k << 2) - 5], sizeof eqv[0]);
-   EndInSF();
+// read(chan_1.inpch, "%I6", &eqv[j - 1 + ((k - 1) << 2)]); //F
+   BegInSF(chan_1.inpch, /*600*/"(i6)", 0), DoFio(1, &eqv[j - 1 + ((k - 1) << 2)], sizeof eqv[0]), EndInSF();
    goto L2000;
 
 // D2-- DISPLAY ROOM2 LIST
@@ -711,9 +698,8 @@ L40000:
    BegExSF(chan_1.outch, /*590*/fmt_2, 0);
    DoFio(1, &switch_[j - 1], sizeof switch_[0]);
    EndExSF();
-   BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
-   DoFio(1, &switch_[j - 1], sizeof switch_[0]);
-   EndInSF();
+// read(chan_1.inpch, "%I6", &switch_[j - 1]); //F
+   BegInSF(chan_1.inpch, /*600*/"(i6)", 0), DoFio(1, &switch_[j - 1], sizeof switch_[0]), EndInSF();
    goto L2000;
 
 // DM-- DISPLAY MESSAGES
@@ -754,9 +740,8 @@ L43000:
    BegExSF(chan_1.outch, /*590*/fmt_2, 0);
    DoFio(1, &play_1.here, sizeof play_1.here);
    EndExSF();
-   BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
-   DoFio(1, &play_1.here, sizeof play_1.here);
-   EndInSF();
+// read(chan_1.inpch, "%I6", &play_1.here); //F
+   BegInSF(chan_1.inpch, /*600*/"(i6)", 0), DoFio(1, &play_1.here, sizeof play_1.here), EndInSF();
    eqa[0] = play_1.here;
    goto L2000;
 
@@ -778,9 +763,8 @@ L45000:
    DoFio(1, &debug_1.prsflg, sizeof debug_1.prsflg);
    EndExSF();
 // 						!TYPE OLD, GET NEW.
-   BegInSF(chan_1.inpch, /*620*/"(i6)", 0);
-   DoFio(1, &debug_1.prsflg, sizeof debug_1.prsflg);
-   EndInSF();
+// read(chan_1.inpch, "%I6", &debug_1.prsflg); //F
+   BegInSF(chan_1.inpch, /*620*/"(i6)", 0), DoFio(1, &debug_1.prsflg, sizeof debug_1.prsflg), EndInSF();
    goto L2000;
 
 // DZ--	DISPLAY PUZZLE ROOM
@@ -809,8 +793,8 @@ L47000:
    DoFio(1, &puzzle_1.cpvec[j - 1], sizeof puzzle_1.cpvec[0]);
    EndExSF();
 // 						!OUTPUT OLD,
-   BegInSF(chan_1.inpch, /*600*/"(i6)", 0);
-   DoFio(1, &puzzle_1.cpvec[j - 1], sizeof puzzle_1.cpvec[0]);
-   EndInSF();
+// read(chan_1.inpch, "%I6", &puzzle_1.cpvec[j - 1]); //F
+   BegInSF(chan_1.inpch, /*600*/"(i6)", 0), DoFio(1, &puzzle_1.cpvec[j - 1], sizeof puzzle_1.cpvec[0]), EndInSF();
    goto L2000;
+#endif
 }

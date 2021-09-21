@@ -396,6 +396,7 @@ L15000:
       return ret_val;
    }
 // 						!ASK FOR Y/N DECISION.
+// close(chan_1.dbch); //F
    CloseF(chan_1.dbch);
    exit_();
 // 						!BYE.

@@ -33,9 +33,8 @@ L10:
    EndExSF();
 // 						!PROMPT FOR GAME.
 L90:
-   BegInSF(chan_1.inpch, /*100*/"(78a1)", 0);
-   DoFio(78, buffer + 1, buffer_unit);
-   EndInSF();
+// read(char_1.inpch, "%78A1", buffer); //F
+   BegInSF(chan_1.inpch, /*100*/"(78a1)", 0), DoFio(78, buffer + 1, buffer_unit), EndInSF();
    for (length = 78; length >= 1; --(length)) {
       if (buffer[length] != ' ') {
          goto L250;

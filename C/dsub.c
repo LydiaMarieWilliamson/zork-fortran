@@ -63,10 +63,8 @@ void rspsb2(int n, int s1, int s2) {
    play_1.telflg = true;
 // 						!SAID SOMETHING.
 
-   BegInDU(chan_1.dbch, 0, x);
-   DoUio(1, &oldrec, sizeof oldrec);
-   DoUio(1, b1, sizeof b1);
-   EndInDU();
+// read(unit:chan_1.dbch, rec:x, &oldrec, b1); //F
+   BegInDU(chan_1.dbch, 0, x), DoUio(1, &oldrec, sizeof oldrec), DoUio(1, b1, sizeof b1), EndInDU();
 
 L100:
    for (i = 1; i <= 74; ++i) {
@@ -106,10 +104,8 @@ L600:
    EndExSF();
    ++x;
 // 						!ON TO NEXT RECORD.
-   BegInDU(chan_1.dbch, 0, x);
-   DoUio(1, &newrec, sizeof newrec);
-   DoUio(1, b1, sizeof b1);
-   EndInDU();
+// read(unit:chan_1.dbch, rec:1, &newrec, b1); //F
+   BegInDU(chan_1.dbch, 0, x), DoUio(1, &newrec, sizeof newrec), DoUio(1, b1, sizeof b1), EndInDU();
    if (oldrec == newrec) {
       goto L100;
    }
@@ -141,10 +137,8 @@ L1000:
 
 //   READ SUBSTITUTE STRING INTO B3, AND DECRYPT IT:
 
-   BegInDU(chan_1.dbch, 0, y);
-   DoUio(1, &jrec, sizeof jrec);
-   DoUio(1, b3, sizeof b3);
-   EndInDU();
+// read(unit:chan_1.dbch, rec:y, &jrec, b3); //F
+   BegInDU(chan_1.dbch, 0, y), DoUio(1, &jrec, sizeof jrec), DoUio(1, b3, sizeof b3), EndInDU();
    for (k1 = 1; k1 <= 74; ++k1) {
       x1 = (y & 31) + k1;
       b3[k1 - 1] = (char)(b3[k1 - 1] ^ x1);
@@ -453,6 +447,7 @@ L1000:
 L1100:
    score(false);
 // 						!TELL SCORE.
+// close(chan_1.dbch); //F
    CloseF(chan_1.dbch);
    exit_();
 }
