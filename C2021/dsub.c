@@ -64,7 +64,7 @@ void rspsb2(int n, int s1, int s2) {
 // 						!SAID SOMETHING.
 
 // read(unit:chan_1.dbch, rec:x, &oldrec, b1); //F
-   BegInDU(chan_1.dbch, 0, x), DoUio(1, &oldrec, sizeof oldrec), DoUio(1, b1, sizeof b1), EndInDU();
+   BegInDU(chan_1.dbch, NULL, x), DoUio(1, &oldrec, sizeof oldrec), DoUio(1, b1, sizeof b1), EndInDU();
 
 L100:
    for (i = 1; i <= 74; ++i) {
@@ -96,16 +96,15 @@ L400:
    }
 
 L600:
-   BegExSF(chan_1.outch, /*650*/"(1x,74a1)", 0);
+// write(chan_1.outch, "%1X%74A1", (b1(j:j), j = 1, i)); //F
+   BegExSF(chan_1.outch, "(1x,74a1)", 0);
    i__1 = i;
-   for (j = 1; j <= i__1; ++j) {
-      DoFio(1, b1 + (j - 1), sizeof b1[0]);
-   }
+   for (j = 1; j <= i__1; ++j) DoFio(1, &b1[j - 1], 1*sizeof b1[0]);
    EndExSF();
    ++x;
 // 						!ON TO NEXT RECORD.
 // read(unit:chan_1.dbch, rec:1, &newrec, b1); //F
-   BegInDU(chan_1.dbch, 0, x), DoUio(1, &newrec, sizeof newrec), DoUio(1, b1, sizeof b1), EndInDU();
+   BegInDU(chan_1.dbch, NULL, x), DoUio(1, &newrec, sizeof newrec), DoUio(1, b1, sizeof b1), EndInDU();
    if (oldrec == newrec) {
       goto L100;
    }
@@ -138,7 +137,7 @@ L1000:
 //   READ SUBSTITUTE STRING INTO B3, AND DECRYPT IT:
 
 // read(unit:chan_1.dbch, rec:y, &jrec, b3); //F
-   BegInDU(chan_1.dbch, 0, y), DoUio(1, &jrec, sizeof jrec), DoUio(1, b3, sizeof b3), EndInDU();
+   BegInDU(chan_1.dbch, NULL, y), DoUio(1, &jrec, sizeof jrec), DoUio(1, b3, sizeof b3), EndInDU();
    for (k1 = 1; k1 <= 74; ++k1) {
       x1 = (y & 31) + k1;
       b3[k1 - 1] = (char)(b3[k1 - 1] ^ x1);
@@ -224,9 +223,9 @@ L200:
 void bug(int a, int b) {
 // Local variables
 
-   BegExSF(6, /*100*/"(\002 PROGRAM ERROR \002,i2,\002, PARAMETER=\002,i6)", 0);
-   DoFio(1, &a, sizeof a);
-   DoFio(1, &b, sizeof b);
+// print(" PROGRAM ERROR %I2, PARAMETER=%I6", a, b); //F
+   BegExSF(6, "(\2 PROGRAM ERROR \2,i2,\2, PARAMETER=\2,i6)", 0);
+   DoFio(1, &a, sizeof a), DoFio(1, &b, sizeof b);
    EndExSF();
    if (debug_1.dbgflg != 0) {
       return;

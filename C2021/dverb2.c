@@ -26,32 +26,49 @@ void savegm(void) {
 #define PutVar(Var) DoUio(1, (void *)&(Var), sizeof (Var))
 #define PutArr(N, Buf) DoUio((N), (void *)(Buf), sizeof (Buf)[0])
 
-   BegExSU(1, 0, 0);
+// write(1, vers_1.vmaj, vers_1.vmin, vers_1.vedit); //F
+   BegExSU(1, NULL, 0);
    PutVar(vers_1.vmaj), PutVar(vers_1.vmin), PutVar(vers_1.vedit);
    EndExSU();
-   BegExSU(1, 0, 0);
-   PutVar(play_1.winner), PutVar(play_1.here), PutVar(hack_1.thfpos), PutVar(play_1.telflg), PutVar(hack_1.thfflg);
-   PutVar(hack_1.thfact), PutVar(hack_1.swdact), PutVar(hack_1.swdsta), PutArr(64, puzzle_1.cpvec);
+// write(1, //F
+//    play_1.winner, play_1.here, hack_1.thfpos, play_1.telflg, hack_1.thfflg, hack_1.thfact, //F
+//    hack_1.swdact, hack_1.swdsta, puzzle_1.cpvec //F
+// ); //F
+   BegExSU(1, NULL, 0);
+   PutVar(play_1.winner), PutVar(play_1.here), PutVar(hack_1.thfpos);
+   PutVar(play_1.telflg), PutVar(hack_1.thfflg), PutVar(hack_1.thfact);
+   PutVar(hack_1.swdact), PutVar(hack_1.swdsta), PutArr(64, puzzle_1.cpvec);
    EndExSU();
-   BegExSU(1, 0, 0);
+// write(1, //F
+//    PlTime, state_1.moves, state_1.deaths, state_1.rwscor, state_1.egscor, state_1.mxload, //F
+//    state_1.ltshft, state_1.bloc, state_1.mungrm, state_1.hs, screen_1.fromdr, screen_1.scolrm, screen_1.scolac //F
+// ); //F
+   BegExSU(1, NULL, 0);
    PutVar(PlTime), PutVar(state_1.moves), PutVar(state_1.deaths), PutVar(state_1.rwscor);
    PutVar(state_1.egscor), PutVar(state_1.mxload);
-   PutVar(state_1.ltshft), PutVar(state_1.bloc), PutVar(state_1.mungrm), PutVar(state_1.hs), PutVar(screen_1.fromdr);
-   PutVar(screen_1.scolrm), PutVar(screen_1.scolac);
+   PutVar(state_1.ltshft), PutVar(state_1.bloc), PutVar(state_1.mungrm), PutVar(state_1.hs),
+   PutVar(screen_1.fromdr), PutVar(screen_1.scolrm), PutVar(screen_1.scolac);
    EndExSU();
-   BegExSU(1, 0, 0);
+// write(1, //F
+//   objcts_1.odesc1, objcts_1.odesc2, objcts_1.oflag1, objcts_1.oflag2, objcts_1.ofval, objcts_1.otval, //F
+//   objcts_1.osize, objcts_1.ocapac, objcts_1.oroom, objcts_1.oadv, objcts_1.ocan //F
+// ); //F
+   BegExSU(1, NULL, 0);
    PutArr(220, objcts_1.odesc1), PutArr(220, objcts_1.odesc2), PutArr(220, objcts_1.oflag1), PutArr(220, objcts_1.oflag2);
    PutArr(220, objcts_1.ofval), PutArr(220, objcts_1.otval);
    PutArr(220, objcts_1.osize), PutArr(220, objcts_1.ocapac);
    PutArr(220, objcts_1.oroom), PutArr(220, objcts_1.oadv), PutArr(220, objcts_1.ocan);
    EndExSU();
-   BegExSU(1, 0, 0);
+// write(1, rooms_1.rval, rooms_1.rflag); //F
+   BegExSU(1, NULL, 0);
    PutArr(200, rooms_1.rval), PutArr(200, rooms_1.rflag);
    EndExSU();
-   BegExSU(1, 0, 0);
+// write(1, advs_1.aroom, advs_1.ascore, advs_1.avehic, advs_1.astren, advs_1.aflag); //F
+   BegExSU(1, NULL, 0);
    PutArr(4, advs_1.aroom), PutArr(4, advs_1.ascore), PutArr(4, advs_1.avehic), PutArr(4, advs_1.astren), PutArr(4, advs_1.aflag);
    EndExSU();
-   BegExSU(1, 0, 0);
+// write(1, flags, switch_, vill_1.vprob, cevent_1.cflag, cevent_1.ctick); //F
+   BegExSU(1, NULL, 0);
    PutArr(46, flags), PutArr(22, switch_), PutArr(4, vill_1.vprob), PutArr(25, cevent_1.cflag), PutArr(25, cevent_1.ctick);
    EndExSU();
 
@@ -80,22 +97,23 @@ void rstrgm(void) {
 #define GetArr(N, Buf) DoUio((N), (void *)(Buf), sizeof (Buf)[0])
 
 // read(1, &Maj, &Min, &Edit); //F
-   int Maj, Min, Edit; BegInSU(1, 0, 0), GetVar(Maj), GetVar(Min), GetVar(Edit), EndInSU();
+   int Maj, Min, Edit; BegInSU(1, NULL, 0), GetVar(Maj), GetVar(Min), GetVar(Edit), EndInSU();
    if (Maj != vers_1.vmaj || Min != vers_1.vmin) goto L200;
 
 // read(1, //F
 //    &play_1.winner, &play_1.here, &hack_1.thfpos, &play_1.telflg, &play_1.thfflg, &hack_1.thfflg, //F
 //    &hack_1.swdact, &hack_1.swdsta, &puzzle_1.cpvec //F
 // ); //F
-   BegInSU(1, 0, 0);
-   GetVar(play_1.winner), GetVar(play_1.here), GetVar(hack_1.thfpos), GetVar(play_1.telflg), GetVar(hack_1.thfflg);
-   GetVar(hack_1.thfact), GetVar(hack_1.swdact), GetVar(hack_1.swdsta), GetArr(64, puzzle_1.cpvec);
+   BegInSU(1, NULL, 0);
+   GetVar(play_1.winner), GetVar(play_1.here), GetVar(hack_1.thfpos);
+   GetVar(play_1.telflg), GetVar(hack_1.thfflg), GetVar(hack_1.thfact);
+   GetVar(hack_1.swdact), GetVar(hack_1.swdsta), GetArr(64, puzzle_1.cpvec);
    EndInSU();
 // read(1, //F
 //    &time_1.pltime, &state_1.moves, &state_1.deaths, &state_1.rwscor, &state_1.egscor, &state_1.mxload, //F
 //    &state_1.ltshft, &state_1.bloc, &state_1.mungrm, &state_1.hs, &state_1.fromdr, &state_1.scolrm, &state_1.scolac //F
 // ); //F
-   BegInSU(1, 0, 0);
+   BegInSU(1, NULL, 0);
    GetVar(time_1.pltime), GetVar(state_1.moves), GetVar(state_1.deaths), GetVar(state_1.rwscor);
    GetVar(state_1.egscor), GetVar(state_1.mxload);
    GetVar(state_1.ltshft), GetVar(state_1.bloc), GetVar(state_1.mungrm), GetVar(state_1.hs), GetVar(screen_1.fromdr);
@@ -105,22 +123,22 @@ void rstrgm(void) {
 //    &objcts_1.odesc1, &objcts_1.odesc2, &objcts_1.oflag1, &objcts_1.oflag2, &objcts_1.ofval, &objcts_1.otval, //F
 //    &objcts_1.osize, &objcts_1.ocapac, &objcts_1.oroom, &objcts_1.oadv, &objcts_1.ocan //F
 // ); //F
-   BegInSU(1, 0, 0);
+   BegInSU(1, NULL, 0);
    GetArr(220, objcts_1.odesc1), GetArr(220, objcts_1.odesc2), GetArr(220, objcts_1.oflag1), GetArr(220, objcts_1.oflag2);
    GetArr(220, objcts_1.ofval), GetArr(220, objcts_1.otval);
    GetArr(220, objcts_1.osize), GetArr(220, objcts_1.ocapac);
    GetArr(220, objcts_1.oroom), GetArr(220, objcts_1.oadv), GetArr(220, objcts_1.ocan);
    EndInSU();
 // read(1, rooms_1.rval, rooms_1.rflag); //F
-   BegInSU(1, 0, 0);
+   BegInSU(1, NULL, 0);
    GetArr(200, rooms_1.rval), GetArr(200, rooms_1.rflag);
    EndInSU();
 // read(1, &advs_1.aroom, &advs_1.ascore, &advs_1.avehic, &advs_1.astren, &advs_1.aflag); //F
-   BegInSU(1, 0, 0);
+   BegInSU(1, NULL, 0);
    GetArr(4, advs_1.aroom), GetArr(4, advs_1.ascore), GetArr(4, advs_1.avehic), GetArr(4, advs_1.astren), GetArr(4, advs_1.aflag);
    EndInSU();
 // read(1, flags, switch_, &vill_1.vprob, cevent_1.cflag, cevent_1.ctick); //F
-   BegInSU(1, 0, 0);
+   BegInSU(1, NULL, 0);
    GetArr(46, flags), GetArr(22, switch_), GetArr(4, vill_1.vprob), GetArr(25, cevent_1.cflag), GetArr(25, cevent_1.ctick);
    EndInSU();
 

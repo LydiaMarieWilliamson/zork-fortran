@@ -219,12 +219,10 @@ int blow(int h, int v, int rmk, Bool hflg, int out) {
 // 						!DESCRIPTION.
    ret_val = rmiss;
 // 						!ASSUME NO RESULT.
-   BegExSF(6, /*10*/"(\002 BLOW 10-- \002,3i7,l7,i7)", 0);
-   DoFio(1, &h, sizeof h);
-   DoFio(1, &v, sizeof v);
-   DoFio(1, &rmk, sizeof rmk);
-   DoFio(1, &hflg, sizeof hflg);
-   DoFio(1, &out, sizeof out);
+// print(" BLOW 10-- %3I7%L7%I7", h, v, rmk, hflg, out); //F
+   BegExSF(6, "(\2 BLOW 10-- \2,3i7,l7,i7)", 0);
+   DoFio(1, &h, sizeof h), DoFio(1, &v, sizeof v), DoFio(1, &rmk, sizeof rmk);
+   DoFio(1, &hflg, sizeof hflg), DoFio(1, &out, sizeof out);
    EndExSF();
    if (!(hflg)) {
       goto L1000;
@@ -310,12 +308,10 @@ L1200:
 // ATT MUST BE > 0.
 
 L2000:
-   BegExSF(6, /*2050*/"(\002 BLOW 2050-- \002,5i7)", 0);
-   DoFio(1, &att, sizeof att);
-   DoFio(1, &oa, sizeof oa);
-   DoFio(1, &def, sizeof def);
-   DoFio(1, &od, sizeof od);
-   DoFio(1, &dweap, sizeof dweap);
+// print(" BLOW 2050-- %5I7", att, oa, def, od, dweap); //F
+   BegExSF(6, "(\2 BLOW 2050-- \2,5i7)", 0);
+   DoFio(1, &att, sizeof att), DoFio(1, &oa, sizeof oa), DoFio(1, &def, sizeof def);
+   DoFio(1, &od, sizeof od), DoFio(1, &dweap, sizeof dweap);
    EndExSF();
    if (def > 0) {
       goto L2100;
@@ -391,11 +387,9 @@ L2600:
    if (!(hflg) && dweap != 0) {
       j = objcts_1.odesc2[dweap - 1];
    }
-   BegExSF(6, /*2650*/"(\002 BLOW 2650-- \002,5i7)", 0);
-   DoFio(1, &res, sizeof res);
-   DoFio(1, &mi, sizeof mi);
-   DoFio(1, &i, sizeof i);
-   DoFio(1, &j, sizeof j);
+// print(" BLOW 2650-- %5I7", res, mi, i, j, star_i.mbase); //F
+   BegExSF(6, "(\2 BLOW 2650-- \2,5i7)", 0);
+   DoFio(1, &res, sizeof res), DoFio(1, &mi, sizeof mi), DoFio(1, &i, sizeof i), DoFio(1, &j, sizeof j);
    DoFio(1, &star_1.mbase, sizeof star_1.mbase);
    EndExSF();
    rspsub(i, j);

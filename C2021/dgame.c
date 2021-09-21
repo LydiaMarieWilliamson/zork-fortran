@@ -148,11 +148,10 @@ L1300:
 // 						!VALID EXIT?
 
 L1400:
-   BegExSF(chan_1.outch, /*1410*/"(1x,78a1)", 0);
+// write(chan_1.outch, "%1X%78A1", (input_1.inbuf(j), j = 1, input_1.inlnt)); //F
+   BegExSF(chan_1.outch, "(1x,78a1)", 0);
    i__1 = input_1.inlnt;
-   for (j = 1; j <= i__1; ++j) {
-      DoFio(1, input_1.inbuf + (j - 1), sizeof input_1.inbuf[0]);
-   }
+   for (j = 1; j <= i__1; ++j) DoFio(1, input_1.inbuf + (j - 1), sizeof input_1.inbuf[0]);
    EndExSF();
    play_1.telflg = true;
 // 						!INDICATE OUTPUT.

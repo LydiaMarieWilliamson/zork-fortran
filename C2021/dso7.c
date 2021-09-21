@@ -117,9 +117,19 @@ void cpinfo(int rmk, int st) {
    L100:
       ;
    }
-   BegExSF(chan_1.outch, /*10*/"(\002       |\002,a2,1x,a2,1x,a2,\002|\002/,\002 West  |\002,a2,\002 .. \002,a2,\002|  East\002,/\002       |\002,a2,1x,a2,1x,a2,\002|\002)", 0);
-   DoFio(8, dgm, sizeof dgm[0]);
-   EndExSF();
+// write(chan_1.outch, //F
+//    "       |%A2%1X%A2%1X%A2|%/" //F
+//    " West  |%A2 .. %A2|  East%/" //F
+//    "       |%A2%1X%A2%1X%A2|", //F
+//    dgm //F
+// ); //F
+   BegExSF(chan_1.outch,
+      "("
+      "\2       |\2,a2,1x,a2,1x,a2,\2|\2/,"
+      "\2 West  |\2,a2,\2 .. \2,a2,\2|  East\2,/"
+      "\2       |\2,a2,1x,a2,1x,a2,\2|\2"
+      ")", 0
+   ), DoFio(8, dgm, sizeof dgm[0]), EndExSF();
 
    if (st == 10) {
       rspeak(870);

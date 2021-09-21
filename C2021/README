@@ -61,3 +61,4 @@ History
 2021/09/19-20	Regularizing the file and function header comments - in both the old and new C translations and Fortran original.
 2021/09/20	Fix up the ‟debug” statements and translate their I/O statements into ‟pidgin-C”.
 2021/09/20-21	Aligning the file I/O between the C translations and Fortran original: file open, close and read.
+2021/09/21	Aligning the file I/O between the C translations and Fortran original: file write.

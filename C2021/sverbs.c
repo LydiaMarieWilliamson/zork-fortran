@@ -242,7 +242,8 @@ L4100:
 // V74--	VERSION.  PRINT INFO.
 
 L5000:
-   BegExSF(chan_1.outch, /*5010*/"(\002 V\002,i1,\002.\002,i2,a1)", 0);
+// write(chan_1.outch, " V%I1.%I2%A1", vers_2.vmaj, vers_2.vmin, vers_2.vedit); //F
+   BegExSF(chan_1.outch, "(\2 V\2,i1,\2.\2,i2,a1)", 0);
    DoFio(1, &vers_2.vmaj, sizeof vers_2.vmaj);
    DoFio(1, &vers_2.vmin, sizeof vers_2.vmin);
    DoFio(1, vers_2.vedit, sizeof vers_2.vedit[0]);
@@ -565,31 +566,18 @@ L21000:
    i = k / 60;
    j = k % 60;
 
-   BegExSF(chan_1.outch, /*21010*/"(\002 You have been playing Dungeon for \002,$)", 0);
-   EndExSF();
-   if (i != 0) {
-      BegExSF(chan_1.outch, /*21011*/"(\002+\002,i3,\002 hour\002,$)", 0);
-      DoFio(1, &i, sizeof i);
-      EndExSF();
-   }
-   if (i >= 2) {
-      BegExSF(chan_1.outch, /*21012*/"(\002+s and \002,$)", 0);
-      EndExSF();
-   }
-   if (i == 1) {
-      BegExSF(chan_1.outch, /*21013*/"(\002+ and \002,$)", 0);
-      EndExSF();
-   }
-   if (j == 1) {
-      BegExSF(chan_1.outch, /*21014*/"(\002+\002,i2,\002 minute.\002)", 0);
-      DoFio(1, &j, sizeof j);
-      EndExSF();
-   }
-   if (j != 1) {
-      BegExSF(chan_1.outch, /*21015*/"(\002+\002,i2,\002 minutes.\002)", 0);
-      DoFio(1, &j, sizeof j);
-      EndExSF();
-   }
+// write(chan_1.outch, " You have been playing Dungeon for %$"); //F
+   BegExSF(chan_1.outch, "(\2 You have been playing Dungeon for \2,$)", 0), EndExSF();
+// if (i != 0) write(chan_1.outch, "+%I3 hour%$", i); //F
+// if (i >= 2) write(chan_1.outch, "+s and %$"); //F
+// if (i == 1) write(chan_1.outch, "+ and %$"); //F
+   if (i != 0) BegExSF(chan_1.outch, "(\2+\2,i3,\2 hour\2,$)", 0), DoFio(1, &i, sizeof i), EndExSF();
+   if (i >= 2) BegExSF(chan_1.outch, "(\2+s and \2,$)", 0), EndExSF();
+   if (i == 1) BegExSF(chan_1.outch, "(\2+ and \2,$)", 0), EndExSF();
+// if (j == 1) write(chan_1.outch, "+%I2 minute.", j); //F
+// if (j != 1) write(chan_1.outch, "+%I2 minutes.", j); //F
+   if (j == 1) BegExSF(chan_1.outch, "(\2+\2,i2,\2 minute.\2)", 0), DoFio(1, &j, sizeof j), EndExSF();
+   if (j != 1) BegExSF(chan_1.outch, "(\2+\2,i2,\2 minutes.\2)", 0), DoFio(1, &j, sizeof j), EndExSF();
    play_1.telflg = true;
    return ret_val;
 
@@ -705,9 +693,8 @@ L25000:
 // 						!COMPUTE WAIT.
 
    if (j != 0) {
-      BegExSF(chan_1.outch, /*25100*/"(\002 You will be cured after \002,i3,\002 moves.\002)", 0);
-      DoFio(1, &i, sizeof i);
-      EndExSF();
+//    write(chan_1.outch, " You will be cured after %I3 moves.", I); //F
+      BegExSF(chan_1.outch, "(\2 You will be cured after \2,i3,\2 moves.\2)", 0), DoFio(1, &i, sizeof i), EndExSF();
    }
 
    i__1 = k + 478;
@@ -796,9 +783,9 @@ L26400:
    findex_1.spellf = true;
 // 						!TELL HIM.
    play_1.telflg = true;
-   BegExSF(chan_1.outch, /*26510*/"(\002 A hollow voice replies:  \"\002,6a1,1x,6a1,\002\".\002)", 0);
-   DoFio(6, pv_2.p1, sizeof pv_2.p1[0]);
-   DoFio(6, ch, sizeof ch[0]);
+// write(chan_1.outch," A hollow voice replies:  \"%6A1%1X%6A1\".", pv_2.p1, ch); //F
+   BegExSF(chan_1.outch, "(\2 A hollow voice replies:  \"\2,6a1,1x,6a1,\2\".\2)", 0);
+   DoFio(6, pv_2.p1, sizeof pv_2.p1[0]), DoFio(6, ch, sizeof ch[0]);
    EndExSF();
 
    return ret_val;

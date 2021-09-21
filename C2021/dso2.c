@@ -109,25 +109,21 @@ void score(Bool flg) {
    }
 // 						!ENDGAME?
    if (flg) {
-      BegExSF(chan_1.outch, /*100*/"(\002 Your score would be\002,$)", 0);
-      EndExSF();
-   }
-   if (!(flg)) {
-      BegExSF(chan_1.outch, /*110*/"(\002 Your score is\002,$)", 0);
-      EndExSF();
+//    write(chan_1.outch, " Your score would be%$"); //F
+      BegExSF(chan_1.outch, "(\2 Your score would be\2,$)", 0), EndExSF();
+   } else {
+//    write(chan_1.outch, " Your score is%$"); //F
+      BegExSF(chan_1.outch, "(\2 Your score is\2,$)", 0), EndExSF();
    }
    if (state_1.moves != 1) {
-      BegExSF(chan_1.outch, /*120*/"(i4,\002 [total of\002,i4,\002 points], in\002,i5,\002 moves.\002)", 0);
-      DoFio(1, &as, sizeof as);
-      DoFio(1, &state_1.mxscor, sizeof state_1.mxscor);
-      DoFio(1, &state_1.moves, sizeof state_1.moves);
+//    write(chan_1.outch, "%I4 [total of%I4 points], in%I5 moves."); //F
+      BegExSF(chan_1.outch, "(i4,\2 [total of\2,i4,\2 points], in\2,i5,\2 moves.\2)", 0);
+      DoFio(1, &as, sizeof as), DoFio(1, &state_1.mxscor, sizeof state_1.mxscor), DoFio(1, &state_1.moves, sizeof state_1.moves);
       EndExSF();
-   }
-   if (state_1.moves == 1) {
-      BegExSF(chan_1.outch, /*130*/"(i4,\002 [total of\002,i4,\002 points], in\002,i5,\002 move.\002)", 0);
-      DoFio(1, &as, sizeof as);
-      DoFio(1, &state_1.mxscor, sizeof state_1.mxscor);
-      DoFio(1, &state_1.moves, sizeof state_1.moves);
+   } else {
+//    write(chan_1.outch, "%I4 [total of%I4 points], in%I5 move."); //F
+      BegExSF(chan_1.outch, "(i4,\2 [total of\2,i4,\2 points], in\2,i5,\2 move.\2)", 0);
+      DoFio(1, &as, sizeof as), DoFio(1, &state_1.mxscor, sizeof state_1.mxscor), DoFio(1, &state_1.moves, sizeof state_1.moves);
       EndExSF();
    }
 
@@ -144,16 +140,17 @@ L50:
 
 L60:
    if (flg) {
-      BegExSF(chan_1.outch, /*140*/"(\002 Your score in the endgame would be\002,$)", 0);
-      EndExSF();
+//    write(chan_1.outch, " Your score in the endgame would be%$"); //F
+      BegExSF(chan_1.outch, "(\2 Your score in the endgame would be\2,$)", 0), EndExSF();
+   } else {
+//    write(chan_1.outch, " Your score in the endgame is%$"); //F
+      BegExSF(chan_1.outch, "(\2 Your score in the endgame is\2,$)", 0), EndExSF();
    }
-   if (!(flg)) {
-      BegExSF(chan_1.outch, /*150*/"(\002 Your score in the endgame is\002,$)", 0);
-      EndExSF();
-   }
-   BegExSF(chan_1.outch, /*120*/"(i4,\002 [total of\002,i4,\002 points], in\002,i5,\002 moves.\002)", 0);
-   DoFio(1, &state_1.egscor, sizeof state_1.egscor);
-   DoFio(1, &state_1.egmxsc, sizeof state_1.egmxsc);
+// write(chan_1.outch, "%I4 [total of%I4 points], in%I5 moves.", //F
+//    state_1.egscor, state_1.egmxsc, state_1.moves //F
+// ); //F
+   BegExSF(chan_1.outch, "(i4,\2 [total of\2,i4,\2 points], in\2,i5,\2 moves.\2)", 0);
+   DoFio(1, &state_1.egscor, sizeof state_1.egscor), DoFio(1, &state_1.egmxsc, sizeof state_1.egmxsc);
    DoFio(1, &state_1.moves, sizeof state_1.moves);
    EndExSF();
    for (i = 1; i <= 5; ++i) {
