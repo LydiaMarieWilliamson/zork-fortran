@@ -10,9 +10,6 @@ static Bool protct(void/*int*/);
 
 // Dungeon initialization subroutine
 Bool init(void/*int x*/) {
-// Format strings
-   static char fmt_0[] = "(\002 Suddenly a sinister, wraithlike figure appears before \002,\002you,\002/\002 seeming to float in the air.  In a low, sorrowful voice\002,\002 he says,\002/\002 \"Alas, the very nature of the world has changed, \002,\002and the dungeon\002/\002 cannot be found.  All must now pass away.\"\002,\002  Raising his oaken staff\002/\002 in farewell, he fades into the \002,\002spreading darkness.  In his place\002/\002 appears a tastefully \002,\002lettered sign reading:\002//23x,\002INITIALIZATION FAILURE\002//\002 The darkness becomes all encompassing, and your vision fails.\002)";
-
 // System generated locals
    int i__1;
    Bool ret_val;
@@ -396,9 +393,7 @@ L1025:
 L1900:
    BegExSF(6, /*910*/"(\002 I can't open \002,\002dindx.dat\002,\002.\002)", 0);
    EndExSF();
-   BegExSF(6, /*980*/fmt_0, 0);
-   EndExSF();
-   return ret_val;
+   goto L1975;
 L1925:
    BegExSF(6, /*920*/"(\002 \"dindx.dat\" is version \002,i1,\002.\002,i1,a1,\002.\002/\002 I require version \002,i1,\002.\002,i1,a1,\002.\002)", 0);
    DoFio(1, &i, sizeof i);
@@ -406,13 +401,12 @@ L1925:
    DoFio(1, &k, sizeof k);
    DoFio(1, &vers_1.vmaj, sizeof vers_1.vmaj), DoFio(1, &vers_1.vmin, sizeof vers_1.vmin), DoFio(1, &vers_1.vedit, sizeof vers_1.vedit);
    EndExSF();
-   BegExSF(6, /*980*/fmt_0, 0);
-   EndExSF();
-   return ret_val;
+   goto L1975;
 L1950:
    BegExSF(6, /*960*/"(\002 I can't open \002,\002dtext.dat\002,\002.\002)", 0);
    EndExSF();
-   BegExSF(6, /*980*/fmt_0, 0);
+L1975:
+   BegExSF(6, /*980*/"(\002 Suddenly a sinister, wraithlike figure appears before \002,\002you,\002/\002 seeming to float in the air.  In a low, sorrowful voice\002,\002 he says,\002/\002 \"Alas, the very nature of the world has changed, \002,\002and the dungeon\002/\002 cannot be found.  All must now pass away.\"\002,\002  Raising his oaken staff\002/\002 in farewell, he fades into the \002,\002spreading darkness.  In his place\002/\002 appears a tastefully \002,\002lettered sign reading:\002//23x,\002INITIALIZATION FAILURE\002//\002 The darkness becomes all encompassing, and your vision fails.\002)", 0);
    EndExSF();
    return ret_val;
 }
