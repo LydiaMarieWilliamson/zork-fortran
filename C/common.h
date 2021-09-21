@@ -20,11 +20,11 @@ extern struct randomCB {
 // common /vers/
 extern union versCB {
    struct {
-      int vmaj, vmin;
-      char vedit[1];
+      int vmaj, vmin, vedit;
    } _1;
    struct {
-      int vmaj, vmin, vedit;
+      int vmaj, vmin;
+      char vedit[1];
    } _2;
 } vers;
 #define vers_1 (vers._1)

@@ -259,7 +259,7 @@ L10000:
 // read(1, "%I6", &i, &j, &k); //F
    BegInSF(1, /*130*/"(i6)", 0), DoFio(1, &i, sizeof i), DoFio(1, &j, sizeof j), DoFio(1, &k, sizeof k), EndInSF();
 // 						!GET VERSION.
-   if (i != vers_2.vmaj || j != vers_2.vmin) {
+   if (i != vers_1.vmaj || j != vers_1.vmin) {
       goto L1925;
    }
 #if 0
@@ -404,9 +404,7 @@ L1925:
    DoFio(1, &i, sizeof i);
    DoFio(1, &j, sizeof j);
    DoFio(1, &k, sizeof k);
-   DoFio(1, &vers_2.vmaj, sizeof vers_2.vmaj);
-   DoFio(1, &vers_2.vmin, sizeof vers_2.vmin);
-   DoFio(1, &vers_2.vedit, sizeof vers_2.vedit);
+   DoFio(1, &vers_1.vmaj, sizeof vers_1.vmaj), DoFio(1, &vers_1.vmin, sizeof vers_1.vmin), DoFio(1, &vers_1.vedit, sizeof vers_1.vedit);
    EndExSF();
    BegExSF(6, /*980*/fmt_0, 0);
    EndExSF();

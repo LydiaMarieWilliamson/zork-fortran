@@ -243,9 +243,9 @@ L4100:
 
 L5000:
    BegExSF(chan_1.outch, /*5010*/"(\002 V\002,i1,\002.\002,i2,a1)", 0);
-   DoFio(1, &vers_1.vmaj, sizeof vers_1.vmaj);
-   DoFio(1, &vers_1.vmin, sizeof vers_1.vmin);
-   DoFio(1, vers_1.vedit, sizeof vers_1.vedit[0]);
+   DoFio(1, &vers_2.vmaj, sizeof vers_2.vmaj);
+   DoFio(1, &vers_2.vmin, sizeof vers_2.vmin);
+   DoFio(1, vers_2.vedit, sizeof vers_2.vedit[0]);
    EndExSF();
    play_1.telflg = true;
    return ret_val;

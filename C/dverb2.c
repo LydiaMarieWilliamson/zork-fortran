@@ -15,7 +15,7 @@ void savegm(void) {
    int i__1;
 
 // Local variables
-   int i;
+   int PlTime;
 
 // MISCELLANEOUS VARIABLES
 
@@ -26,69 +26,46 @@ void savegm(void) {
 // open(unit:1, file:"dsave.dat", access:"SEQUENTIAL", status:"UNKNOWN", form:"UNFORMATTED", err:L100); //F
    if (OpenF(1, "dsave.dat", "UNKNOWN", "SEQUENTIAL", "UNFORMATTED", 0) != 0) goto L100;
 
-   i = gttime();
+   PlTime = gttime();
 // 						!GET TIME.
    BegExSU(1, 0, 0);
-   DoUio(1, &vers_2.vmaj, sizeof vers_2.vmaj);
-   DoUio(1, &vers_2.vmin, sizeof vers_2.vmin);
-   DoUio(1, &vers_2.vedit, sizeof vers_2.vedit);
+   DoUio(1, &vers_1.vmaj, sizeof vers_1.vmaj), DoUio(1, &vers_1.vmin, sizeof vers_1.vmin), DoUio(1, &vers_1.vedit, sizeof vers_1.vedit);
    EndExSU();
    BegExSU(1, 0, 0);
-   DoUio(1, &play_1.winner, sizeof play_1.winner);
-   DoUio(1, &play_1.here, sizeof play_1.here);
-   DoUio(1, &hack_1.thfpos, sizeof hack_1.thfpos);
-   DoUio(1, &play_1.telflg, sizeof play_1.telflg);
-   DoUio(1, &hack_1.thfflg, sizeof hack_1.thfflg);
-   DoUio(1, &hack_1.thfact, sizeof hack_1.thfact);
-   DoUio(1, &hack_1.swdact, sizeof hack_1.swdact);
-   DoUio(1, &hack_1.swdsta, sizeof hack_1.swdsta);
+   DoUio(1, &play_1.winner, sizeof play_1.winner), DoUio(1, &play_1.here, sizeof play_1.here);
+   DoUio(1, &hack_1.thfpos, sizeof hack_1.thfpos), DoUio(1, &play_1.telflg, sizeof play_1.telflg);
+   DoUio(1, &hack_1.thfflg, sizeof hack_1.thfflg), DoUio(1, &hack_1.thfact, sizeof hack_1.thfact);
+   DoUio(1, &hack_1.swdact, sizeof hack_1.swdact), DoUio(1, &hack_1.swdsta, sizeof hack_1.swdsta);
    DoUio(64, puzzle_1.cpvec, sizeof puzzle_1.cpvec[0]);
    EndExSU();
    BegExSU(1, 0, 0);
-   DoUio(1, &i, sizeof i);
-   DoUio(1, &state_1.moves, sizeof state_1.moves);
-   DoUio(1, &state_1.deaths, sizeof state_1.deaths);
-   DoUio(1, &state_1.rwscor, sizeof state_1.rwscor);
-   DoUio(1, &state_1.egscor, sizeof state_1.egscor);
-   DoUio(1, &state_1.mxload, sizeof state_1.mxload);
-   DoUio(1, &state_1.ltshft, sizeof state_1.ltshft);
-   DoUio(1, &state_1.bloc, sizeof state_1.bloc);
-   DoUio(1, &state_1.mungrm, sizeof state_1.mungrm);
-   DoUio(1, &state_1.hs, sizeof state_1.hs);
+   DoUio(1, &PlTime, sizeof PlTime), DoUio(1, &state_1.moves, sizeof state_1.moves);
+   DoUio(1, &state_1.deaths, sizeof state_1.deaths), DoUio(1, &state_1.rwscor, sizeof state_1.rwscor);
+   DoUio(1, &state_1.egscor, sizeof state_1.egscor), DoUio(1, &state_1.mxload, sizeof state_1.mxload);
+   DoUio(1, &state_1.ltshft, sizeof state_1.ltshft), DoUio(1, &state_1.bloc, sizeof state_1.bloc);
+   DoUio(1, &state_1.mungrm, sizeof state_1.mungrm), DoUio(1, &state_1.hs, sizeof state_1.hs);
    DoUio(1, &screen_1.fromdr, sizeof screen_1.fromdr);
-   DoUio(1, &screen_1.scolrm, sizeof screen_1.scolrm);
-   DoUio(1, &screen_1.scolac, sizeof screen_1.scolac);
+   DoUio(1, &screen_1.scolrm, sizeof screen_1.scolrm), DoUio(1, &screen_1.scolac, sizeof screen_1.scolac);
    EndExSU();
    BegExSU(1, 0, 0);
-   DoUio(220, objcts_1.odesc1, sizeof objcts_1.odesc1[0]);
-   DoUio(220, objcts_1.odesc2, sizeof objcts_1.odesc2[0]);
-   DoUio(220, objcts_1.oflag1, sizeof objcts_1.oflag1[0]);
-   DoUio(220, objcts_1.oflag2, sizeof objcts_1.oflag2[0]);
-   DoUio(220, objcts_1.ofval, sizeof objcts_1.ofval[0]);
-   DoUio(220, objcts_1.otval, sizeof objcts_1.otval[0]);
-   DoUio(220, objcts_1.osize, sizeof objcts_1.osize[0]);
-   DoUio(220, objcts_1.ocapac, sizeof objcts_1.ocapac[0]);
-   DoUio(220, objcts_1.oroom, sizeof objcts_1.oroom[0]);
-   DoUio(220, objcts_1.oadv, sizeof objcts_1.oadv[0]);
+   DoUio(220, objcts_1.odesc1, sizeof objcts_1.odesc1[0]), DoUio(220, objcts_1.odesc2, sizeof objcts_1.odesc2[0]);
+   DoUio(220, objcts_1.oflag1, sizeof objcts_1.oflag1[0]), DoUio(220, objcts_1.oflag2, sizeof objcts_1.oflag2[0]);
+   DoUio(220, objcts_1.ofval, sizeof objcts_1.ofval[0]), DoUio(220, objcts_1.otval, sizeof objcts_1.otval[0]);
+   DoUio(220, objcts_1.osize, sizeof objcts_1.osize[0]), DoUio(220, objcts_1.ocapac, sizeof objcts_1.ocapac[0]);
+   DoUio(220, objcts_1.oroom, sizeof objcts_1.oroom[0]), DoUio(220, objcts_1.oadv, sizeof objcts_1.oadv[0]);
    DoUio(220, objcts_1.ocan, sizeof objcts_1.ocan[0]);
    EndExSU();
    BegExSU(1, 0, 0);
-   DoUio(200, rooms_1.rval, sizeof rooms_1.rval[0]);
-   DoUio(200, rooms_1.rflag, sizeof rooms_1.rflag[0]);
+   DoUio(200, rooms_1.rval, sizeof rooms_1.rval[0]), DoUio(200, rooms_1.rflag, sizeof rooms_1.rflag[0]);
    EndExSU();
    BegExSU(1, 0, 0);
-   DoUio(4, advs_1.aroom, sizeof advs_1.aroom[0]);
-   DoUio(4, advs_1.ascore, sizeof advs_1.ascore[0]);
-   DoUio(4, advs_1.avehic, sizeof advs_1.avehic[0]);
-   DoUio(4, advs_1.astren, sizeof advs_1.astren[0]);
+   DoUio(4, advs_1.aroom, sizeof advs_1.aroom[0]), DoUio(4, advs_1.ascore, sizeof advs_1.ascore[0]);
+   DoUio(4, advs_1.avehic, sizeof advs_1.avehic[0]), DoUio(4, advs_1.astren, sizeof advs_1.astren[0]);
    DoUio(4, advs_1.aflag, sizeof advs_1.aflag[0]);
    EndExSU();
    BegExSU(1, 0, 0);
-   DoUio(46, flags, sizeof flags[0]);
-   DoUio(22, switch_, sizeof switch_[0]);
-   DoUio(4, vill_1.vprob, sizeof vill_1.vprob[0]);
-   DoUio(25, cevent_1.cflag, sizeof cevent_1.cflag[0]);
-   DoUio(25, cevent_1.ctick, sizeof cevent_1.ctick[0]);
+   DoUio(46, flags, sizeof flags[0]), DoUio(22, switch_, sizeof switch_[0]), DoUio(4, vill_1.vprob, sizeof vill_1.vprob[0]);
+   DoUio(25, cevent_1.cflag, sizeof cevent_1.cflag[0]), DoUio(25, cevent_1.ctick, sizeof cevent_1.ctick[0]);
    EndExSU();
 
 // close(unit:1); //F
@@ -104,7 +81,7 @@ L100:
 // Restore game state
 void rstrgm(void) {
 // Local variables
-   int i, j, k;
+   int Maj, Min, Edit;
 
 // MISCELLANEOUS VARIABLES
 
@@ -115,9 +92,9 @@ void rstrgm(void) {
 // open(unit:1, file:"dsave.dat", access:"SEQUENTIAL", status:"OLD", form:"UNFORMATTED", err:L100); //F
    if (OpenF(1, "dsave.dat", "OLD", "SEQUENTIAL", "UNFORMATTED", 0) != 0) goto L100;
 
-// read(1, &i, &j, &k); //F
-   BegInSU(1, 0, 0), DoUio(1, &i, sizeof i), DoUio(1, &j, sizeof j), DoUio(1, &k, sizeof k), EndInSU();
-   if (i != vers_2.vmaj || j != vers_2.vmin) {
+// read(1, &Maj, &Min, &Edit); //F
+   BegInSU(1, 0, 0), DoUio(1, &Maj, sizeof Maj), DoUio(1, &Min, sizeof Min), DoUio(1, &Edit, sizeof Edit), EndInSU();
+   if (Maj != vers_1.vmaj || Min != vers_1.vmin) {
       goto L200;
    }
 
