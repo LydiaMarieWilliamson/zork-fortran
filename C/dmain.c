@@ -40,8 +40,8 @@ union versCB vers = {
    2,
 // int vmin;
    6,
-// char vedit[1];
-   { "A" }
+// int vedit;
+   'A'
 };
 
 // common /bats/
