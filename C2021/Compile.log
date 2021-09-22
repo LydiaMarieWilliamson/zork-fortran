@@ -5,7 +5,7 @@ rtim.c:		ITime() for itime()
 Wrapper Functions
 ━━━━━━━━━━━━━━━━━
 (These will all be replaced by fallback functions.)
-F2C.c:		DoFio() for do_fio()
+local.c:	DoFio() for do_fio()
 		DoUio() for do_uio()
 		CompS() for s_cmp()
 		StopS() for s_stop()
