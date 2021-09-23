@@ -1,0 +1,69 @@
+History
+───────
+2021/09/14	The raw translation of the Fortran source into C, using f2c (version 20190311).
+		Common Blocks are translated incorrectly and #include's are inserted in-line.
+		All of that has to be fixed and undone.
+		The file ‟Translate.log” contains some of the details provided by the translator.
+2021/09/14	A first Makefile has been added.
+		This assumes that the f2c library and the include file ‟f2c.h” have been installed
+		The file ‟Compile.log” contains some of the details provided by the first run of ‟make”.
+2021/09/14	The undefined function itime() has been resolved with a ‟fallback” function ITime().
+2021/09/14	The ‟f2c.h” file has been internalized as ‟F2C.h”.
+		Additional normalization has been done on the source code layout.
+2021/09/14	Most of ‟F2C.h” has been nativized to C and eliminated.
+2021/09/14	Move the declarations of ‟built-in” functions (defined in the f2c library) to "F2C.h".
+		Further information on the f2c library and utility may be found in https://www.netlib.org/f2c/f2c.pdf.
+2021/09/15	Collating the definitions of the common blocks into ‟common.c”.
+2021/09/15	Eliminated the duplicate common block definitions from ‟common.c”.
+		Compilation is now possible, but no baseline has yet been established.
+		Hidden size-dependencies for data I/O exist, which crash the file I/O.
+2021/09/15	Added the data/configuration files d{indx,text}.dat as symbolic links (for now).
+2021/09/15	Normalized the layout of the comments.
+2021/09/15	Strength reduction:
+		∙	lifted input-only function parameters to value parameters.
+		∙	lifted output-only parameters to return values, when singular.
+		∙	commented out unused parameters.
+		∙	eliminated ‟Void”, after reducing it to ‟void”.
+		No effect on the compile-time or run-time baselines.
+2021/09/16	Encapsulation of the f2c library in F2C.c; as a first step to nativizing and replacing it.
+		The program crashes occur in the f2c library functions, and these need to be replaced and fixed.
+2021/09/16	Elimination of static constant parameters.
+2021/09/16	Collating the in-line inserted ‟include” files; in preparation of removing them back to include files.
+2021/09/16	Regularized the translated copies of the ‟include” files and their common block and equivalence definitions.
+2021/09/17	The in-line versions of ‟parser.h” have been regularized and extracted, first.
+2021/09/17	The in-line versions of ‟vocab.h” have been regularized and extracted, next,
+		and combined with ‟parser.h” into ‟parse.h”.
+2021/09/17	The initializations and comments in blkdata.c have been realigned to the form they had originally in Fortran.
+		The extraneous includes in blkdata.c have been removed both here and in the Fortran version.
+2021/09/17	Documented the translation error in the original Fortran and C versions ‟blkdata.{f,c}” in ‟Translate.log”.
+2021/09/17	Collated the remaining in-line includes into ‟parse.h” and renamed the file ‟common.h”.
+		In the 1991 version of the C program, most of the role of its ‟parse.h” is played, here, by ‟blkdata.c”,
+		while its ‟vars.h” corresponds, here, to ‟common.h”.
+2021/09/18	Extracted the in-line include files out into ‟common.h”.
+		Regularized the names of the common block types.
+2021/09/18	Separated the external function declarations and the function list in ‟Translate.log” out to ‟extern.h”.
+2021/09/18	Correcting errors in blkdata.{c,f} (round 1 of 2).
+2021/09/18	Strength reduction:
+		∙	uninitialized ‟static” locals to ‟auto”
+		∙	initialized ‟static” scalar locals to ‟auto const”
+		∙	initialized ‟static” array locals to ‟static const”
+2021/09/18	Lifting constant common blocks to enum types (round 1 of 2).
+2021/09/19	Various other minor cleanups and repairs both here and in the 1991 C translation to bring them closer together.
+		Their only significant difference, at this point, is the I/O and the formats of the black-box *.dat file(s).
+2021/09/19	All the final ‟_”'s produced for globals by the translator were removed, except where names conflict.
+		That includes any references to the names listed in this and other log and documentation files.
+2021/09/19-20	Regularizing the file and function header comments - in both the old and new C translations and Fortran original.
+2021/09/20	Fix up the ‟debug” statements and translate their I/O statements into ‟pidgin-C”.
+2021/09/20-21	Aligning the file I/O between the C translations and Fortran original: file open, close and read.
+2021/09/21	Aligning the file I/O between the C translations and Fortran original: file write.
+2021/09/21-22	Reconciling the *.{c,h} files between the 1991 and 2021 translations (the first round).
+		The segment in dsub.{c,f} responsible for producing variations in text output has been marked.
+		This is the reason that ‟Test.in” will produce different results on different runs
+		for the Fortran version (and the 2021 C translation, once a run-time baseline is established).
+		1991: The remnant of the ‟f2c.h” declarations present in ‟extern.h” are specially marked.
+		2021: The include of ‟F2C.h” is (mostly) internalized in ‟extern.h”.
+		1991: A missing print statement for ‟cevent” has been added into the debug routine in gdt.c.
+		2021: The pv union has been remade a struct, with the elimination of pv_2 from sverbs.c.
+		1991: Initialized definitions in ‟common.c” have been put back into ‟dmain.c”.
+		1991: Missing comments from the Fortran original have been restored.
+		2021: Extra commnents from the Fortran original and translator have been removed.
