@@ -208,7 +208,7 @@ int blow(int h, int v, int rmk, Bool hflg, int out) {
 
 // BLOW, PAGE 3
 
-   ra = objcts_1.oactio[(2644 + (0 + (v - 1 << 2)) - 2644) / 4];
+   ra = objcts_1.oactio[(v - 1 << 2) / 4];
 // 						!GET VILLAIN ACTION,
    dv = objcts_1.odesc2[v - 1];
 // 						!DESCRIPTION.

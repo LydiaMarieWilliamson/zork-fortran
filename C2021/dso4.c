@@ -108,7 +108,7 @@ int fights(int h, Bool flg) {
 // System generated locals
    int ret_val;
 
-   ret_val = smin + ((smax - smin) * advs_1.ascore[(20 + (0 + (h - 1 << 2)) - 20) / 4] + state_1.mxscor / 2) / state_1.mxscor;
+   ret_val = smin + ((smax - smin) * advs_1.ascore[(h - 1 << 2) / 4] + state_1.mxscor / 2) / state_1.mxscor;
    if (flg) {
       ret_val += advs_1.astren[h - 1];
    }
