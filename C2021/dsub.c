@@ -42,14 +42,14 @@ void rspsb2(int n, int s1, int s2) {
    y = s1;
    z = s2;
    if (x > 0) {
-      x = rmsg_1.rtext[x - 1];
+      x = rmsg.rtext[x - 1];
    }
 // 						!IF >0, LOOK UP IN RTEXT.
    if (y > 0) {
-      y = rmsg_1.rtext[y - 1];
+      y = rmsg.rtext[y - 1];
    }
    if (z > 0) {
-      z = rmsg_1.rtext[z - 1];
+      z = rmsg.rtext[z - 1];
    }
    x = abs(x);
 // 						!TAKE ABS VALUE.
@@ -59,11 +59,11 @@ void rspsb2(int n, int s1, int s2) {
       return;
    }
 // 						!ANYTHING TO DO?
-   play_1.telflg = true;
+   play.telflg = true;
 // 						!SAID SOMETHING.
 
-// read(unit:chan_1.dbch, rec:x, &oldrec, b1); //F
-   BegInDU(chan_1.dbch, NULL, x), DoUio(1, &oldrec, sizeof oldrec), DoUio(1, b1, sizeof b1), EndInDU();
+// read(unit:chan.dbch, rec:x, &oldrec, b1); //F
+   BegInDU(chan.dbch, NULL, x), DoUio(1, &oldrec, sizeof oldrec), DoUio(1, b1, sizeof b1), EndInDU();
 
 L100:
    for (i = 1; i <= 74; ++i) {
@@ -95,15 +95,15 @@ L400:
    }
 
 L600:
-// write(chan_1.outch, "%1X%74A1", (b1(j:j), j = 1, i)); //F
-   BegExSF(chan_1.outch, "(1x,74a1)", 0);
+// write(chan.outch, "%1X%74A1", (b1(j:j), j = 1, i)); //F
+   BegExSF(chan.outch, "(1x,74a1)", 0);
    i__1 = i;
    for (j = 1; j <= i__1; ++j) DoFio(1, &b1[j - 1], 1*sizeof b1[0]);
    EndExSF();
    ++x;
 // 						!ON TO NEXT RECORD.
-// read(unit:chan_1.dbch, rec:1, &newrec, b1); //F
-   BegInDU(chan_1.dbch, NULL, x), DoUio(1, &newrec, sizeof newrec), DoUio(1, b1, sizeof b1), EndInDU();
+// read(unit:chan.dbch, rec:1, &newrec, b1); //F
+   BegInDU(chan.dbch, NULL, x), DoUio(1, &newrec, sizeof newrec), DoUio(1, b1, sizeof b1), EndInDU();
    if (oldrec == newrec) {
       goto L100;
    }
@@ -135,8 +135,8 @@ L1000:
 
 //   READ SUBSTITUTE STRING INTO B3, AND DECRYPT IT:
 
-// read(unit:chan_1.dbch, rec:y, &jrec, b3); //F
-   BegInDU(chan_1.dbch, NULL, y), DoUio(1, &jrec, sizeof jrec), DoUio(1, b3, sizeof b3), EndInDU();
+// read(unit:chan.dbch, rec:y, &jrec, b3); //F
+   BegInDU(chan.dbch, NULL, y), DoUio(1, &jrec, sizeof jrec), DoUio(1, b3, sizeof b3), EndInDU();
    for (k1 = 1; k1 <= 74; ++k1) {
       x1 = (y & 31) + k1;
       b3[k1 - 1] = (char)(b3[k1 - 1] ^ x1);
@@ -189,21 +189,21 @@ Bool objact(/*int x*/) {
 
    ret_val = true;
 // 						!ASSUME WINS.
-   if (prsvec_1.prsi == 0) {
+   if (prsvec.prsi == 0) {
       goto L100;
    }
 // 						!IND OBJECT?
-   if (oappli(objcts_1.oactio[prsvec_1.prsi - 1], 0)) {
+   if (oappli(objcts.oactio[prsvec.prsi - 1], 0)) {
       return ret_val;
    }
 // 						!YES, LET IT HANDLE.
 
 L100:
-   if (prsvec_1.prso == 0) {
+   if (prsvec.prso == 0) {
       goto L200;
    }
 // 						!DIR OBJECT?
-   if (oappli(objcts_1.oactio[prsvec_1.prso - 1], 0)) {
+   if (oappli(objcts.oactio[prsvec.prso - 1], 0)) {
       return ret_val;
    }
 // 						!YES, LET IT HANDLE.
@@ -224,7 +224,7 @@ void bug(int a, int b) {
    BegExSF(6, "(\2 PROGRAM ERROR \2,i2,\2, PARAMETER=\2,i6)", 0);
    DoFio(1, &a, sizeof a), DoFio(1, &b, sizeof b);
    EndExSF();
-   if (debug_1.dbgflg != 0) {
+   if (debug.dbgflg != 0) {
       return;
    }
    exit_();
@@ -235,9 +235,9 @@ void bug(int a, int b) {
 // 	newsta(Object, String, NewRoom, NewCon, NewAdv);
 void newsta(int o, int r, int rm, int cn, int ad) {
    rspeak(r);
-   objcts_1.oroom[o - 1] = rm;
-   objcts_1.ocan[o - 1] = cn;
-   objcts_1.oadv[o - 1] = ad;
+   objcts.oroom[o - 1] = rm;
+   objcts.ocan[o - 1] = cn;
+   objcts.oadv[o - 1] = ad;
 }
 
 // Test for object in room
@@ -250,14 +250,14 @@ Bool qhere(int obj, int rm) {
    int i;
 
    ret_val = true;
-   if (objcts_1.oroom[obj - 1] == rm) {
+   if (objcts.oroom[obj - 1] == rm) {
       return ret_val;
    }
 // 						!IN ROOM?
-   i__1 = oroom2_1.r2lnt;
+   i__1 = oroom2_.r2lnt;
    for (i = 1; i <= i__1; ++i) {
 // 						!NO, SCH ROOM2.
-      if (oroom2_1.oroom2[i - 1] == obj && oroom2_1.rroom2[i - 1] == rm) {
+      if (oroom2_.oroom2[i - 1] == obj && oroom2_.rroom2[i - 1] == rm) {
          return ret_val;
       }
 // L100:
@@ -278,9 +278,9 @@ Bool qempty(int obj) {
 
    ret_val = false;
 // 						!ASSUME LOSE.
-   i__1 = objcts_1.olnt;
+   i__1 = objcts.olnt;
    for (i = 1; i <= i__1; ++i) {
-      if (objcts_1.ocan[i - 1] == obj) {
+      if (objcts.ocan[i - 1] == obj) {
          return ret_val;
       }
 // 						!INSIDE TARGET?
@@ -307,26 +307,26 @@ void jigsup(int desc) {
 
    rspeak(desc);
 // 						!DESCRIBE SAD STATE.
-   prsvec_1.prscon = 1;
+   prsvec.prscon = 1;
 // 						!STOP PARSER.
-   if (debug_1.dbgflg != 0) {
+   if (debug.dbgflg != 0) {
       return;
    }
 // 						!IF DBG, EXIT.
-   advs_1.avehic[play_1.winner - 1] = 0;
+   advs.avehic[play.winner - 1] = 0;
 // 						!GET RID OF VEHICLE.
-   if (play_1.winner == aindex_1.player) {
+   if (play.winner == aindex.player) {
       goto L100;
    }
 // 						!HIMSELF?
-   rspsub(432, objcts_1.odesc2[advs_1.aobj[play_1.winner - 1] - 1]);
+   rspsub(432, objcts.odesc2[advs.aobj[play.winner - 1] - 1]);
 // 						!NO, SAY WHO DIED.
-   newsta(advs_1.aobj[play_1.winner - 1], 0, 0, 0, 0);
+   newsta(advs.aobj[play.winner - 1], 0, 0, 0, 0);
 // 						!SEND TO HYPER SPACE.
    return;
 
 L100:
-   if (findex_1.endgmf) {
+   if (findex.endgmf) {
       goto L900;
    }
 // 						!NO RECOVERY IN END GAME.
@@ -334,7 +334,7 @@ L100:
 // always exit for plopbot's purposes
    goto L1000;
 #else
-   if (state_1.deaths >= 2) {
+   if (state.deaths >= 2) {
       goto L1000;
    }
 #endif
@@ -344,29 +344,29 @@ L100:
    }
 // 						!CONTINUE?
 
-   i__1 = objcts_1.olnt;
+   i__1 = objcts.olnt;
    for (j = 1; j <= i__1; ++j) {
 // 						!TURN OFF FIGHTING.
-      if (qhere(j, play_1.here)) {
-         objcts_1.oflag2[j - 1] &= ~FiteO;
+      if (qhere(j, play.here)) {
+         objcts.oflag2[j - 1] &= ~FiteO;
       }
 // L50:
    }
 
-   ++state_1.deaths;
+   ++state.deaths;
    scrupd(-10);
 // 						!CHARGE TEN POINTS.
-   f = moveto(rindex_1.fore1, play_1.winner);
+   f = moveto(rindex_.fore1, play.winner);
 // 						!REPOSITION HIM.
-   findex_1.egyptf = true;
+   findex.egyptf = true;
 // 						!RESTORE COFFIN.
-   if (objcts_1.oadv[oindex_1.coffi - 1] == play_1.winner) {
-      newsta(oindex_1.coffi, 0, rindex_1.egypt, 0, 0);
+   if (objcts.oadv[oindex.coffi - 1] == play.winner) {
+      newsta(oindex.coffi, 0, rindex_.egypt, 0, 0);
    }
-   objcts_1.oflag2[oindex_1.door - 1] &= ~TChO;
-   objcts_1.oflag1[oindex_1.robot - 1] = (objcts_1.oflag1[oindex_1.robot - 1] | VisiO) & ~NDscO;
-   if (objcts_1.oroom[oindex_1.lamp - 1] != 0 || objcts_1.oadv[oindex_1.lamp - 1] == play_1.winner) {
-      newsta(oindex_1.lamp, 0, rindex_1.lroom, 0, 0);
+   objcts.oflag2[oindex.door - 1] &= ~TChO;
+   objcts.oflag1[oindex.robot - 1] = (objcts.oflag1[oindex.robot - 1] | VisiO) & ~NDscO;
+   if (objcts.oroom[oindex.lamp - 1] != 0 || objcts.oadv[oindex.lamp - 1] == play.winner) {
+      newsta(oindex.lamp, 0, rindex_.lroom, 0, 0);
    }
 
 // NOW REDISTRIBUTE HIS VALUABLES AND OTHER BELONGINGS.
@@ -377,10 +377,10 @@ L100:
 // REMAINING NON-VALUABLES ARE PLACED AT THE END OF THE MAZE.
 
    i = 1;
-   i__1 = objcts_1.olnt;
+   i__1 = objcts.olnt;
    for (j = 1; j <= i__1; ++j) {
 // 						!LOOP THRU OBJECTS.
-      if (objcts_1.oadv[j - 1] != play_1.winner || objcts_1.otval[j - 1] != 0) {
+      if (objcts.oadv[j - 1] != play.winner || objcts.otval[j - 1] != 0) {
          goto L200;
       }
       ++i;
@@ -394,19 +394,19 @@ L100:
    }
 
 L400:
-   i = rooms_1.rlnt + 1;
+   i = rooms.rlnt + 1;
 // 						!NOW MOVE VALUABLES.
    nonofl = AirR + WaterR + SacrdR + EndR;
 // 						!DONT MOVE HERE.
-   i__1 = objcts_1.olnt;
+   i__1 = objcts.olnt;
    for (j = 1; j <= i__1; ++j) {
-      if (objcts_1.oadv[j - 1] != play_1.winner || objcts_1.otval[j - 1] == 0) {
+      if (objcts.oadv[j - 1] != play.winner || objcts.otval[j - 1] == 0) {
          goto L300;
       }
    L250:
       --i;
 // 						!FIND NEXT ROOM.
-      if ((rooms_1.rflag[i - 1] & nonofl) != 0) {
+      if ((rooms.rflag[i - 1] & nonofl) != 0) {
          goto L250;
       }
       newsta(j, 0, i, 0, 0);
@@ -415,16 +415,16 @@ L400:
       ;
    }
 
-   i__1 = objcts_1.olnt;
+   i__1 = objcts.olnt;
    for (j = 1; j <= i__1; ++j) {
 // 						!NOW GET RID OF REMAINDER.
-      if (objcts_1.oadv[j - 1] != play_1.winner) {
+      if (objcts.oadv[j - 1] != play.winner) {
          goto L500;
       }
    L450:
       --i;
 // 						!FIND NEXT ROOM.
-      if ((rooms_1.rflag[i - 1] & nonofl) != 0) {
+      if ((rooms.rflag[i - 1] & nonofl) != 0) {
          goto L450;
       }
       newsta(j, 0, i, 0, 0);
@@ -446,8 +446,8 @@ L1000:
 L1100:
    score(false);
 // 						!TELL SCORE.
-// close(chan_1.dbch); //F
-   CloseF(chan_1.dbch);
+// close(chan.dbch); //F
+   CloseF(chan.dbch);
    exit_();
 }
 
@@ -459,12 +459,12 @@ int oactor(int obj) {
 // Local variables
    int i;
 
-   i__1 = advs_1.alnt;
+   i__1 = advs.alnt;
    for (i = 1; i <= i__1; ++i) {
 // 						!LOOP THRU ACTORS.
       ret_val = i;
 // 						!ASSUME FOUND.
-      if (advs_1.aobj[i - 1] == obj) {
+      if (advs.aobj[i - 1] == obj) {
          return ret_val;
       }
 // 						!FOUND IT?
@@ -485,7 +485,7 @@ Bool prob(int g, int b) {
 
    i = g;
 // 						!ASSUME GOOD LUCK.
-   if (findex_1.badlkf) {
+   if (findex.badlkf) {
       i = b;
    }
 // 						!IF BAD, TOO BAD.
@@ -510,27 +510,27 @@ Bool rmdesc(int full) {
 
    ret_val = true;
 // 						!ASSUME WINS.
-   if (prsvec_1.prso < xsrch_1.xmin) {
+   if (prsvec.prso < xsrch.xmin) {
       goto L50;
    }
 // 						!IF DIRECTION,
-   screen_1.fromdr = prsvec_1.prso;
+   screen.fromdr = prsvec.prso;
 // 						!SAVE AND
-   prsvec_1.prso = 0;
+   prsvec.prso = 0;
 // 						!CLEAR.
 L50:
-   if (play_1.here == advs_1.aroom[aindex_1.player - 1]) {
+   if (play.here == advs.aroom[aindex.player - 1]) {
       goto L100;
    }
 // 						!PLAYER JUST MOVE?
    rspeak(2);
 // 						!NO, JUST SAY DONE.
-   prsvec_1.prsa = vindex_1.walkiw;
+   prsvec.prsa = vindex.walkiw;
 // 						!SET UP WALK IN ACTION.
    return ret_val;
 
 L100:
-   if (lit(play_1.here)) {
+   if (lit(play.here)) {
       goto L300;
    }
 // 						!LIT?
@@ -540,13 +540,13 @@ L100:
    return ret_val;
 
 L300:
-   ra = rooms_1.ractio[play_1.here - 1];
+   ra = rooms.ractio[play.here - 1];
 // 						!GET ROOM ACTION.
    if (full == 1) {
       goto L600;
    }
 // 						!OBJ ONLY?
-   i = rooms_1.rdesc2 - play_1.here;
+   i = rooms.rdesc2 - play.here;
 // 						!ASSUME SHORT DESC.
 // The following comment, in the 1991 C translation, was inherited from a later version of the original Fortran source.
 // 2021/09/22 Darth Spectra
@@ -554,27 +554,27 @@ L300:
 // I don't either like or understand this, so the mod. ensures VERBOSE works all the time.
 // 1987/10/22 jmh@ukc.ac.uk
 #if 0
-   if (full == 0 && (findex_1.superf || (rooms_1.rflag[play_1.here - 1] & SeenR) != 0 && findex_1.brieff)) {
+   if (full == 0 && (findex.superf || (rooms.rflag[play.here - 1] & SeenR) != 0 && findex.brieff)) {
       goto L400;
    }
 #else
-   if (full == 0 && (findex_1.superf || (rooms_1.rflag[play_1.here - 1] & SeenR) != 0 && (findex_1.brieff || prob(80, 80)))) {
+   if (full == 0 && (findex.superf || (rooms.rflag[play.here - 1] & SeenR) != 0 && (findex.brieff || prob(80, 80)))) {
       goto L400;
    }
 #endif
-   i = rooms_1.rdesc1[play_1.here - 1];
+   i = rooms.rdesc1[play.here - 1];
 // 						!USE LONG.
    if (i != 0 || ra == 0) {
       goto L400;
    }
 // 						!IF GOT DESC, SKIP.
-   prsvec_1.prsa = vindex_1.lookw;
+   prsvec.prsa = vindex.lookw;
 // 						!PRETEND LOOK AROUND.
    if (!rappli(ra)) {
       goto L100;
    }
 // 						!ROOM HANDLES, NEW DESC?
-   prsvec_1.prsa = vindex_1.foow;
+   prsvec.prsa = vindex.foow;
 // 						!NOP PARSER.
    goto L500;
 
@@ -582,27 +582,27 @@ L400:
    rspeak(i);
 // 						!OUTPUT DESCRIPTION.
 L500:
-   if (advs_1.avehic[play_1.winner - 1] != 0) {
-      rspsub(431, objcts_1.odesc2[advs_1.avehic[play_1.winner - 1] - 1]);
+   if (advs.avehic[play.winner - 1] != 0) {
+      rspsub(431, objcts.odesc2[advs.avehic[play.winner - 1] - 1]);
    }
 
 L600:
    if (full != 2) {
       L__1 = full != 0;
-      princr(L__1, play_1.here);
+      princr(L__1, play.here);
    }
-   rooms_1.rflag[play_1.here - 1] |= SeenR;
+   rooms.rflag[play.here - 1] |= SeenR;
    if (full != 0 || ra == 0) {
       return ret_val;
    }
 // 						!ANYTHING MORE?
-   prsvec_1.prsa = vindex_1.walkiw;
+   prsvec.prsa = vindex.walkiw;
 // 						!GIVE HIM A SURPISE.
    if (!rappli(ra)) {
       goto L100;
    }
 // 						!ROOM HANDLES, NEW DESC?
-   prsvec_1.prsa = vindex_1.foow;
+   prsvec.prsa = vindex.foow;
    return ret_val;
 }
 

@@ -80,3 +80,5 @@ History
 		This is a bona fide upgrade: it goes beyond the Fortran original and 1991 C translation.
 2021/09/23	Reconciling the remaining differences between the translations of the common blocks (/vers/).
 		Changing vedit, in /vers/ (back) to character, from integer.
+2021/09/23	Simplifying the translations of the common blocks:
+		∙	removing excess "#defines"-s and de-mangling names/aliases,

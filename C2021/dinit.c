@@ -73,57 +73,57 @@ L10000:
    r2max = 20;
    dirmax = 15;
 
-   rmsg_1.mlnt = 0;
+   rmsg.mlnt = 0;
 // 						!INIT ARRAY COUNTERS.
-   objcts_1.olnt = 0;
-   rooms_1.rlnt = 0;
-   vill_1.vlnt = 0;
-   advs_1.alnt = 0;
-   cevent_1.clnt = 0;
-   exits_1.xlnt = 1;
-   oroom2_1.r2lnt = 0;
+   objcts.olnt = 0;
+   rooms.rlnt = 0;
+   vill.vlnt = 0;
+   advs.alnt = 0;
+   cevent.clnt = 0;
+   exits.xlnt = 1;
+   oroom2_.r2lnt = 0;
 
-   state_1.ltshft = 10;
+   state.ltshft = 10;
 // 						!SET UP STATE VARIABLES.
-   state_1.mxscor = state_1.ltshft;
-   state_1.egscor = 0;
-   state_1.egmxsc = 0;
-   state_1.mxload = 100;
-   state_1.rwscor = 0;
-   state_1.deaths = 0;
-   state_1.moves = 0;
-   time_1.pltime = 0;
-   state_1.mungrm = 0;
-   state_1.hs = 0;
-   prsvec_1.prsa = 0;
+   state.mxscor = state.ltshft;
+   state.egscor = 0;
+   state.egmxsc = 0;
+   state.mxload = 100;
+   state.rwscor = 0;
+   state.deaths = 0;
+   state.moves = 0;
+   time_.pltime = 0;
+   state.mungrm = 0;
+   state.hs = 0;
+   prsvec.prsa = 0;
 // 						!CLEAR PARSE VECTOR.
-   prsvec_1.prsi = 0;
-   prsvec_1.prso = 0;
-   prsvec_1.prscon = 1;
-   orphs_1.oflag = 0;
+   prsvec.prsi = 0;
+   prsvec.prso = 0;
+   prsvec.prscon = 1;
+   orphs.oflag = 0;
 // 						!CLEAR ORPHANS.
-   orphs_1.oact = 0;
-   orphs_1.oslot = 0;
-   orphs_1.oprep = 0;
-   orphs_1.oname = 0;
-   hack_1.thfflg = false;
+   orphs.oact = 0;
+   orphs.oslot = 0;
+   orphs.oprep = 0;
+   orphs.oname = 0;
+   hack.thfflg = false;
 // 						!THIEF NOT INTRODUCED BUT
-   hack_1.thfact = true;
+   hack.thfact = true;
 // 						!IS ACTIVE.
-   hack_1.swdact = false;
+   hack.swdact = false;
 // 						!SWORD IS INACTIVE.
-   hack_1.swdsta = 0;
+   hack.swdsta = 0;
 // 						!SWORD IS OFF.
 
    recno = 1;
 // 						!INIT DB FILE POINTER.
-   star_1.mbase = 0;
+   star.mbase = 0;
 // 						!INIT MELEE BASE.
 //   LOGICAL UNIT NRS: 5=STDIN, 6=STDOUT
-   chan_1.inpch = 5;
+   chan.inpch = 5;
 // 						!TTY INPUT
-   chan_1.outch = 6;
-   chan_1.dbch = 2;
+   chan.outch = 6;
+   chan.dbch = 2;
 // 						!DATA BASE.
 // INIT, PAGE 3
 
@@ -132,9 +132,9 @@ L10000:
    i__1 = cmax;
    for (i = 1; i <= i__1; ++i) {
 // 						!CLEAR CLOCK EVENTS
-      cevent_1.cflag[i - 1] = false;
-      cevent_1.ctick[i - 1] = 0;
-      cevent_1.cactio[i - 1] = 0;
+      cevent.cflag[i - 1] = false;
+      cevent.ctick[i - 1] = 0;
+      cevent.cactio[i - 1] = 0;
 // L5:
    }
 
@@ -144,123 +144,123 @@ L10000:
       flags[i - 1] = false;
 // L10:
    }
-   findex_1.buoyf = true;
+   findex.buoyf = true;
 // 						!SOME START AS TRUE.
-   findex_1.egyptf = true;
-   findex_1.cagetf = true;
-   findex_1.mr1f = true;
-   findex_1.mr2f = true;
-   findex_1.follwf = true;
+   findex.egyptf = true;
+   findex.cagetf = true;
+   findex.mr1f = true;
+   findex.mr2f = true;
+   findex.follwf = true;
    i__1 = smax;
    for (i = 1; i <= i__1; ++i) {
 // 						!CLEAR SWITCHES.
       switch_[i - 1] = 0;
 // L12:
    }
-   findex_1.ormtch = 4;
+   findex.ormtch = 4;
 // 						!NUMBER OF MATCHES.
-   findex_1.lcell = 1;
-   findex_1.pnumb = 1;
-   findex_1.mdir = 270;
-   findex_1.mloc = rindex_1.mrb;
-   findex_1.cphere = 10;
+   findex.lcell = 1;
+   findex.pnumb = 1;
+   findex.mdir = 270;
+   findex.mloc = rindex_.mrb;
+   findex.cphere = 10;
 
    i__1 = r2max;
    for (i = 1; i <= i__1; ++i) {
 // 						!CLEAR ROOM 2 ARRAY.
-      oroom2_1.rroom2[i - 1] = 0;
-      oroom2_1.oroom2[i - 1] = 0;
+      oroom2_.rroom2[i - 1] = 0;
+      oroom2_.oroom2[i - 1] = 0;
 // L15:
    }
 
    i__1 = xmax;
    for (i = 1; i <= i__1; ++i) {
 // 						!CLEAR TRAVEL ARRAY.
-      exits_1.travel[i - 1] = 0;
+      exits.travel[i - 1] = 0;
 // L20:
    }
 
    i__1 = vmax;
    for (i = 1; i <= i__1; ++i) {
 // 						!CLEAR VILLAINS ARRAYS.
-      vill_1.vopps[i - 1] = 0;
-      vill_1.vprob[i - 1] = 0;
-      vill_1.villns[i - 1] = 0;
-      vill_1.vbest[i - 1] = 0;
-      vill_1.vmelee[i - 1] = 0;
+      vill.vopps[i - 1] = 0;
+      vill.vprob[i - 1] = 0;
+      vill.villns[i - 1] = 0;
+      vill.vbest[i - 1] = 0;
+      vill.vmelee[i - 1] = 0;
 // L30:
    }
 
    i__1 = omax;
    for (i = 1; i <= i__1; ++i) {
 // 						!CLEAR OBJECT ARRAYS.
-      objcts_1.odesc1[i - 1] = 0;
-      objcts_1.odesc2[i - 1] = 0;
-      objcts_1.odesco[i - 1] = 0;
-      objcts_1.oread[i - 1] = 0;
-      objcts_1.oactio[i - 1] = 0;
-      objcts_1.oflag1[i - 1] = 0;
-      objcts_1.oflag2[i - 1] = 0;
-      objcts_1.ofval[i - 1] = 0;
-      objcts_1.otval[i - 1] = 0;
-      objcts_1.osize[i - 1] = 0;
-      objcts_1.ocapac[i - 1] = 0;
-      objcts_1.ocan[i - 1] = 0;
-      objcts_1.oadv[i - 1] = 0;
-      objcts_1.oroom[i - 1] = 0;
+      objcts.odesc1[i - 1] = 0;
+      objcts.odesc2[i - 1] = 0;
+      objcts.odesco[i - 1] = 0;
+      objcts.oread[i - 1] = 0;
+      objcts.oactio[i - 1] = 0;
+      objcts.oflag1[i - 1] = 0;
+      objcts.oflag2[i - 1] = 0;
+      objcts.ofval[i - 1] = 0;
+      objcts.otval[i - 1] = 0;
+      objcts.osize[i - 1] = 0;
+      objcts.ocapac[i - 1] = 0;
+      objcts.ocan[i - 1] = 0;
+      objcts.oadv[i - 1] = 0;
+      objcts.oroom[i - 1] = 0;
 // L40:
    }
 
-   rooms_1.rdesc2 = 0;
+   rooms.rdesc2 = 0;
 // 						!CLEAR DESC BASE PTR.
    i__1 = rmax;
    for (i = 1; i <= i__1; ++i) {
 // 						!CLEAR ROOM ARRAYS.
-      rooms_1.rdesc1[i - 1] = 0;
-      rooms_1.ractio[i - 1] = 0;
-      rooms_1.rflag[i - 1] = 0;
-      rooms_1.rval[i - 1] = 0;
-      rooms_1.rexit[i - 1] = 0;
+      rooms.rdesc1[i - 1] = 0;
+      rooms.ractio[i - 1] = 0;
+      rooms.rflag[i - 1] = 0;
+      rooms.rval[i - 1] = 0;
+      rooms.rexit[i - 1] = 0;
 // L50:
    }
 
    i__1 = mmax;
    for (i = 1; i <= i__1; ++i) {
 // 						!CLEAR MESSAGE DIRECTORY.
-      rmsg_1.rtext[i - 1] = 0;
+      rmsg.rtext[i - 1] = 0;
 // L60:
    }
 
    i__1 = amax;
    for (i = 1; i <= i__1; ++i) {
 // 						!CLEAR ADVENTURER'S ARRAYS.
-      advs_1.aroom[i - 1] = 0;
-      advs_1.ascore[i - 1] = 0;
-      advs_1.avehic[i - 1] = 0;
-      advs_1.aobj[i - 1] = 0;
-      advs_1.aactio[i - 1] = 0;
-      advs_1.astren[i - 1] = 0;
-      advs_1.aflag[i - 1] = 0;
+      advs.aroom[i - 1] = 0;
+      advs.ascore[i - 1] = 0;
+      advs.avehic[i - 1] = 0;
+      advs.aobj[i - 1] = 0;
+      advs.aactio[i - 1] = 0;
+      advs.astren[i - 1] = 0;
+      advs.aflag[i - 1] = 0;
 // L70:
    }
 
-   debug_1.dbgflg = 0;
-   debug_1.prsflg = 0;
+   debug.dbgflg = 0;
+   debug.prsflg = 0;
 
 // allow setting gdtflg true if user id matches wizard id
 // this way, the wizard doesn't have to recompile to use gdt
 
 #ifdef ALLOW_GDT
 // 	Changed by TAA so that always in wizard ID
-   debug_1.gdtflg = 1;
+   debug.gdtflg = 1;
 #else
-   debug_1.gdtflg = 0;
+   debug.gdtflg = 0;
 #endif
 
-   screen_1.fromdr = 0;
+   screen.fromdr = 0;
 // 						!INIT SCOL GOODIES.
-   screen_1.scolrm = 0;
-   screen_1.scolac = 0;
+   screen.scolrm = 0;
+   screen.scolac = 0;
 // INIT, PAGE 4
 
 // NOW RESTORE FROM EXISTING INDEX FILE.
@@ -280,88 +280,88 @@ L10000:
 // read(1, "%I6", &i, &j, &k); //F
    BegInSF(1, "(i6)", 0), DoFio(1, &i, sizeof i), DoFio(1, &j, sizeof j), DoFio(1, &k, sizeof k), EndInSF();
 // 						!GET VERSION.
-   if (i != vers_1.vmaj || j != vers_1.vmin) {
+   if (i != vers.vmaj || j != vers.vmin) {
       goto L1925;
    }
 #if 0
-// open(unit:chan_1.dbch, file:"/usr/share/games/dungeon/dtext.dat", //F
+// open(unit:chan.dbch, file:"/usr/share/games/dungeon/dtext.dat", //F
 //    status:"old", form:"unformatted", access:"direct", //F
 //    recl:76, err:L1950 //F
 // ); //F
-   if (OpenF(chan_1.dbch, "/usr/share/games/dungeon/dtext.dat", "OLD", "DIRECT", "UNFORMATTED", 76) != 0) goto L1950;
+   if (OpenF(chan.dbch, "/usr/share/games/dungeon/dtext.dat", "OLD", "DIRECT", "UNFORMATTED", 76) != 0) goto L1950;
 #else
-// open(unit:chan_1.dbch, file:"dtext.dat", //F
+// open(unit:chan.dbch, file:"dtext.dat", //F
 //    status:"old", form:"unformatted", access:"direct", //F
 //    recl:76, err:L1950 //F
 // ); //F
-   if (OpenF(chan_1.dbch, "dtext.dat", "OLD", "DIRECT", "UNFORMATTED", 76) != 0) goto L1950;
+   if (OpenF(chan.dbch, "dtext.dat", "OLD", "DIRECT", "UNFORMATTED", 76) != 0) goto L1950;
 #endif
 #ifdef ALLOW_GDT
 // print(" RESTORING FROM \"dindx.dat\""); //F
 #endif
 // // const char *Fmt = "%I8"; //F
 // const char *Fmt = "%I6"; //F
-// read(1, Fmt, &state_1.mxscor, &star_1.strbit, &state_1.egmxsc); //F
+// read(1, Fmt, &state.mxscor, &star.strbit, &state.egmxsc); //F
    BegInSF(1, "(i6)", 0);
-   DoFio(1, &state_1.mxscor, sizeof state_1.mxscor), DoFio(1, &star_1.strbit, sizeof star_1.strbit);
-   DoFio(1, &state_1.egmxsc, sizeof state_1.egmxsc);
+   DoFio(1, &state.mxscor, sizeof state.mxscor), DoFio(1, &star.strbit, sizeof star.strbit);
+   DoFio(1, &state.egmxsc, sizeof state.egmxsc);
    EndInSF();
-// read(1, Fmt, &rooms_1.rlnt, &rooms_1.rdesc2, rooms_1.rdesc1, rooms_1.rexit, rooms_1.ractio, rooms_1.rval, rooms_1.rflag); //F
+// read(1, Fmt, &rooms.rlnt, &rooms.rdesc2, rooms.rdesc1, rooms.rexit, rooms.ractio, rooms.rval, rooms.rflag); //F
    BegInSF(1, "(i6)", 0);
-   DoFio(1, &rooms_1.rlnt, sizeof rooms_1.rlnt);
-   DoFio(1, &rooms_1.rdesc2, sizeof rooms_1.rdesc2), DoFio(200, rooms_1.rdesc1, sizeof rooms_1.rdesc1[0]);
-   DoFio(200, rooms_1.rexit, sizeof rooms_1.rexit[0]), DoFio(200, rooms_1.ractio, sizeof rooms_1.ractio[0]);
-   DoFio(200, rooms_1.rval, sizeof rooms_1.rval[0]), DoFio(200, rooms_1.rflag, sizeof rooms_1.rflag[0]);
+   DoFio(1, &rooms.rlnt, sizeof rooms.rlnt);
+   DoFio(1, &rooms.rdesc2, sizeof rooms.rdesc2), DoFio(200, rooms.rdesc1, sizeof rooms.rdesc1[0]);
+   DoFio(200, rooms.rexit, sizeof rooms.rexit[0]), DoFio(200, rooms.ractio, sizeof rooms.ractio[0]);
+   DoFio(200, rooms.rval, sizeof rooms.rval[0]), DoFio(200, rooms.rflag, sizeof rooms.rflag[0]);
    EndInSF();
-// read(1, Fmt, &exits_1.xlnt, exits_1.travel); //F
+// read(1, Fmt, &exits.xlnt, exits.travel); //F
    BegInSF(1, "(i6)", 0);
-   DoFio(1, &exits_1.xlnt, sizeof exits_1.xlnt), DoFio(900, exits_1.travel, sizeof exits_1.travel[0]);
+   DoFio(1, &exits.xlnt, sizeof exits.xlnt), DoFio(900, exits.travel, sizeof exits.travel[0]);
    EndInSF();
 // read(1, Fmt, //F
-//    objcts_1.olnt, objcts_1.odesc1, objcts_1.odesc2, objcts_1.odesco, objcts_1.oactio, objcts_1.oflag1, objcts_1.oflag2, //F
-//    objcts_1.ofval, objcts_1.otval, objcts_1.osize, objcts_1.ocapac, objcts_1.oroom, objcts_1.oadv, objcts_1.ocan, objcts_1.oread //F
+//    objcts.olnt, objcts.odesc1, objcts.odesc2, objcts.odesco, objcts.oactio, objcts.oflag1, objcts.oflag2, //F
+//    objcts.ofval, objcts.otval, objcts.osize, objcts.ocapac, objcts.oroom, objcts.oadv, objcts.ocan, objcts.oread //F
 // ); //F
    BegInSF(1, "(i6)", 0);
-   DoFio(1, &objcts_1.olnt, sizeof objcts_1.olnt);
-   DoFio(220, objcts_1.odesc1, sizeof objcts_1.odesc1[0]), DoFio(220, objcts_1.odesc2, sizeof objcts_1.odesc2[0]);
-   DoFio(220, objcts_1.odesco, sizeof objcts_1.odesco[0]), DoFio(220, objcts_1.oactio, sizeof objcts_1.oactio[0]);
-   DoFio(220, objcts_1.oflag1, sizeof objcts_1.oflag1[0]), DoFio(220, objcts_1.oflag2, sizeof objcts_1.oflag2[0]);
-   DoFio(220, objcts_1.ofval, sizeof objcts_1.ofval[0]), DoFio(220, objcts_1.otval, sizeof objcts_1.otval[0]);
-   DoFio(220, objcts_1.osize, sizeof objcts_1.osize[0]), DoFio(220, objcts_1.ocapac, sizeof objcts_1.ocapac[0]);
-   DoFio(220, objcts_1.oroom, sizeof objcts_1.oroom[0]), DoFio(220, objcts_1.oadv, sizeof objcts_1.oadv[0]);
-   DoFio(220, objcts_1.ocan, sizeof objcts_1.ocan[0]), DoFio(220, objcts_1.oread, sizeof objcts_1.oread[0]);
+   DoFio(1, &objcts.olnt, sizeof objcts.olnt);
+   DoFio(220, objcts.odesc1, sizeof objcts.odesc1[0]), DoFio(220, objcts.odesc2, sizeof objcts.odesc2[0]);
+   DoFio(220, objcts.odesco, sizeof objcts.odesco[0]), DoFio(220, objcts.oactio, sizeof objcts.oactio[0]);
+   DoFio(220, objcts.oflag1, sizeof objcts.oflag1[0]), DoFio(220, objcts.oflag2, sizeof objcts.oflag2[0]);
+   DoFio(220, objcts.ofval, sizeof objcts.ofval[0]), DoFio(220, objcts.otval, sizeof objcts.otval[0]);
+   DoFio(220, objcts.osize, sizeof objcts.osize[0]), DoFio(220, objcts.ocapac, sizeof objcts.ocapac[0]);
+   DoFio(220, objcts.oroom, sizeof objcts.oroom[0]), DoFio(220, objcts.oadv, sizeof objcts.oadv[0]);
+   DoFio(220, objcts.ocan, sizeof objcts.ocan[0]), DoFio(220, objcts.oread, sizeof objcts.oread[0]);
    EndInSF();
-// read(1, Fmt, &oroom2_1.r2lnt, oroom2_1.oroom2, oroom2_1.rroom2); //F
+// read(1, Fmt, &oroom2_.r2lnt, oroom2_.oroom2, oroom2_.rroom2); //F
    BegInSF(1, "(i6)", 0);
-   DoFio(1, &oroom2_1.r2lnt, sizeof oroom2_1.r2lnt);
-   DoFio(20, oroom2_1.oroom2, sizeof oroom2_1.oroom2[0]), DoFio(20, oroom2_1.rroom2, sizeof oroom2_1.rroom2[0]);
+   DoFio(1, &oroom2_.r2lnt, sizeof oroom2_.r2lnt);
+   DoFio(20, oroom2_.oroom2, sizeof oroom2_.oroom2[0]), DoFio(20, oroom2_.rroom2, sizeof oroom2_.rroom2[0]);
    EndInSF();
-// read(1, Fmt, &cevent_1.clnt, cevent_1.ctick, cevent_1.cactio); //F
+// read(1, Fmt, &cevent.clnt, cevent.ctick, cevent.cactio); //F
    BegInSF(1, "(i6)", 0);
-   DoFio(1, &cevent_1.clnt, sizeof cevent_1.clnt);
-   DoFio(25, cevent_1.ctick, sizeof cevent_1.ctick[0]), DoFio(25, cevent_1.cactio, sizeof cevent_1.cactio[0]);
+   DoFio(1, &cevent.clnt, sizeof cevent.clnt);
+   DoFio(25, cevent.ctick, sizeof cevent.ctick[0]), DoFio(25, cevent.cactio, sizeof cevent.cactio[0]);
    EndInSF();
-// read(1, "%L4", cevent_1.cflag); //F
+// read(1, "%L4", cevent.cflag); //F
    BegInSF(1, "(l4)", 0);
-   DoFio(25, cevent_1.cflag, sizeof cevent_1.cflag[0]);
+   DoFio(25, cevent.cflag, sizeof cevent.cflag[0]);
    EndInSF();
-// read(1, Fmt, &vill_1.vlnt, vill_1.villns, vill_1.vprob, vill_1.vopps, vill_1.vbest, vill_1.vmelee); //F
+// read(1, Fmt, &vill.vlnt, vill.villns, vill.vprob, vill.vopps, vill.vbest, vill.vmelee); //F
    BegInSF(1, "(i6)", 0);
-   DoFio(1, &vill_1.vlnt, sizeof vill_1.vlnt), DoFio(4, vill_1.villns, sizeof vill_1.villns[0]);
-   DoFio(4, vill_1.vprob, sizeof vill_1.vprob[0]), DoFio(4, vill_1.vopps, sizeof vill_1.vopps[0]);
-   DoFio(4, vill_1.vbest, sizeof vill_1.vbest[0]), DoFio(4, vill_1.vmelee, sizeof vill_1.vmelee[0]);
+   DoFio(1, &vill.vlnt, sizeof vill.vlnt), DoFio(4, vill.villns, sizeof vill.villns[0]);
+   DoFio(4, vill.vprob, sizeof vill.vprob[0]), DoFio(4, vill.vopps, sizeof vill.vopps[0]);
+   DoFio(4, vill.vbest, sizeof vill.vbest[0]), DoFio(4, vill.vmelee, sizeof vill.vmelee[0]);
    EndInSF();
-// read(1, Fmt, &advs_1.alnt, advs_1.aroom, advs_1.ascore, advs_1.avehic, advs_1.aobj, advs_1.aactio, advs_1.astren, advs_1.aflag); //F
+// read(1, Fmt, &advs.alnt, advs.aroom, advs.ascore, advs.avehic, advs.aobj, advs.aactio, advs.astren, advs.aflag); //F
    BegInSF(1, "(i6)", 0);
-   DoFio(1, &advs_1.alnt, sizeof advs_1.alnt), DoFio(4, advs_1.aroom, sizeof advs_1.aroom[0]);
-   DoFio(4, advs_1.ascore, sizeof advs_1.ascore[0]), DoFio(4, advs_1.avehic, sizeof advs_1.avehic[0]);
-   DoFio(4, advs_1.aobj, sizeof advs_1.aobj[0]), DoFio(4, advs_1.aactio, sizeof advs_1.aactio[0]);
-   DoFio(4, advs_1.astren, sizeof advs_1.astren[0]), DoFio(4, advs_1.aflag, sizeof advs_1.aflag[0]);
+   DoFio(1, &advs.alnt, sizeof advs.alnt), DoFio(4, advs.aroom, sizeof advs.aroom[0]);
+   DoFio(4, advs.ascore, sizeof advs.ascore[0]), DoFio(4, advs.avehic, sizeof advs.avehic[0]);
+   DoFio(4, advs.aobj, sizeof advs.aobj[0]), DoFio(4, advs.aactio, sizeof advs.aactio[0]);
+   DoFio(4, advs.astren, sizeof advs.astren[0]), DoFio(4, advs.aflag, sizeof advs.aflag[0]);
    EndInSF();
-// read(1, Fmt, &star_1.mbase, &rmsg_1.mlnt, rmsg_1.rtext); //F
+// read(1, Fmt, &star.mbase, &rmsg.mlnt, rmsg.rtext); //F
    BegInSF(1, "(i6)", 0);
-   DoFio(1, &star_1.mbase, sizeof star_1.mbase);
-   DoFio(1, &rmsg_1.mlnt, sizeof rmsg_1.mlnt), DoFio(1820, rmsg_1.rtext, sizeof rmsg_1.rtext[0]);
+   DoFio(1, &star.mbase, sizeof star.mbase);
+   DoFio(1, &rmsg.mlnt, sizeof rmsg.mlnt), DoFio(1820, rmsg.rtext, sizeof rmsg.rtext[0]);
    EndInSF();
 
 // close(1); //F
@@ -375,21 +375,21 @@ L10000:
 // SET UP TO PLAY THE GAME.
 
 L1025:
-   intime(&time_1.shour, &time_1.smin, &time_1.ssec);
+   intime(&time_.shour, &time_.smin, &time_.ssec);
 // 						!GET TIME AND DATE.
 // 	CALL IDATE(I,J,K)
 // 	CALL IDATE(DATARRY(1))
 // 	CALL INIRND(or(DATARRY(1),or(DATARRY(2),DATARRY(3))),
 //     &	or(SHOUR,or(SMIN,SSEC)))
 // 	NEW WAY TO INITIALIZE /+TAA+/
-   i__1 = time_1.shour * 3600 + time_1.smin * 60 + time_1.ssec;
+   i__1 = time_.shour * 3600 + time_.smin * 60 + time_.ssec;
    inirnd(i__1);
 
-   play_1.winner = aindex_1.player;
-   last_1.lastit = advs_1.aobj[aindex_1.player - 1];
-   play_1.here = advs_1.aroom[play_1.winner - 1];
-   hack_1.thfpos = objcts_1.oroom[oindex_1.thief - 1];
-   state_1.bloc = objcts_1.oroom[oindex_1.ballo - 1];
+   play.winner = aindex.player;
+   last.lastit = advs.aobj[aindex.player - 1];
+   play.here = advs.aroom[play.winner - 1];
+   hack.thfpos = objcts.oroom[oindex.thief - 1];
+   state.bloc = objcts.oroom[oindex.ballo - 1];
    ret_val = true;
 
 #ifdef ALLOW_GDT
@@ -397,14 +397,14 @@ L1025:
 //    " USED:%/" //F
 //    "%1X%I5 OF%I5 ROOMS%/"	"%1X%I5 OF%I5 EXITS%/"		"%1X%I5 OF%I5 OBJECTS%/"	"%1X%I5 OF%I5 MESSAGES%/" //F
 //    "%1X%I5 OF%I5 VILLAINS%/"	"%1X%I5 OF%I5 ADVENTURERS%/"	"%1X%I5 OF%I5 CLOCK EVENTS%/"	"%1X%I5 OF%I5 ROOM2 SLOTS", //F
-//    rooms_1.rlnt, rmax,	exits_1.xlnt, xmax,		objcts_1.olnt, omax,		rmsg_1.mlnt, mmax, //F
-//    vill_1.vlnt, vmax,	advs_1.alnt, amax,		cevent_1.clnt, cmax,		oroom2_1.r2lnt, r2max //F
+//    rooms.rlnt, rmax,	exits.xlnt, xmax,		objcts.olnt, omax,		rmsg.mlnt, mmax, //F
+//    vill.vlnt, vmax,	advs.alnt, amax,		cevent.clnt, cmax,		oroom2_.r2lnt, r2max //F
 // ); //F
 // print( //F
 //    " MAX SCORE=%I5%/"	" EG SCORE=%I5%/"	" MAX RECNO=%I5%/" //F
 //    " RDESC2 BASE=%I5%/"	" MELEE START=%I5%/"	" STAR MASK=%I7", //F
-//    state_1.mxscor,		state_1.egmxsc,		recno, //F
-//    rooms_1.rdesc2,		star_1.mbase,		star_1.strbit //F
+//    state.mxscor,		state.egmxsc,		recno, //F
+//    rooms.rdesc2,		star.mbase,		star.strbit //F
 // ); //F
 // pause(1); //F
 #endif
@@ -422,11 +422,11 @@ L1925:
 // print(
 //    " \"dindx.dat\" is version %I1.%I1%A1.%/" //F
 //    "  I require version %I1.%I1%A1.", //F
-//    i, j, k, vers_1.vmaj, vers_1.vmin, vers_1.vedit //F
+//    i, j, k, vers.vmaj, vers.vmin, vers.vedit //F
 // ); //F
    BegExSF(6, "(\2 \"dindx.dat\" is version \2,i1,\2.\2,i1,a1,\2.\2/\2 I require version \2,i1,\2.\2,i1,a1,\2.\2)", 0);
    DoFio(1, &i, sizeof i), DoFio(1, &j, sizeof j), DoFio(1, &k, sizeof k);
-{  int Edit = vers_1.vedit; DoFio(1, &vers_1.vmaj, sizeof vers_1.vmaj), DoFio(1, &vers_1.vmin, sizeof vers_1.vmin), DoFio(1, &Edit, sizeof Edit); }
+{  int Edit = vers.vedit; DoFio(1, &vers.vmaj, sizeof vers.vmaj), DoFio(1, &vers.vmin, sizeof vers.vmin), DoFio(1, &Edit, sizeof Edit); }
    EndExSF();
    goto L1975;
 L1950:

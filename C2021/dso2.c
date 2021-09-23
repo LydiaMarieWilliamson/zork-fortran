@@ -20,9 +20,9 @@ Bool moveto(int nr, int who) {
 
    ret_val = false;
 // 						!ASSUME FAILS.
-   lhr = (rooms_1.rflag[play_1.here - 1] & LandR) != 0;
-   lnr = (rooms_1.rflag[nr - 1] & LandR) != 0;
-   j = advs_1.avehic[who - 1];
+   lhr = (rooms.rflag[play.here - 1] & LandR) != 0;
+   lnr = (rooms.rflag[nr - 1] & LandR) != 0;
+   j = advs.avehic[who - 1];
 // 						!HIS VEHICLE
 
    if (j != 0) {
@@ -40,19 +40,19 @@ Bool moveto(int nr, int who) {
 L100:
    bits = 0;
 // 						!ASSUME NOWHERE.
-   if (j == oindex_1.rboat) {
+   if (j == oindex.rboat) {
       bits = WaterR;
    }
 // 						!IN BOAT?
-   if (j == oindex_1.ballo) {
+   if (j == oindex.ballo) {
       bits = AirR;
    }
 // 						!IN BALLOON?
-   if (j == oindex_1.bucke) {
+   if (j == oindex.bucke) {
       bits = BuckR;
    }
 // 						!IN BUCKET?
-   nlv = (rooms_1.rflag[nr - 1] & bits) == 0;
+   nlv = (rooms.rflag[nr - 1] & bits) == 0;
    if (!lnr && nlv || lnr && lhr && nlv && bits != LandR) {
       goto L800;
    }
@@ -60,7 +60,7 @@ L100:
 L500:
    ret_val = true;
 // 						!MOVE SHOULD SUCCEED.
-   if ((rooms_1.rflag[nr - 1] & MungR) == 0) {
+   if ((rooms.rflag[nr - 1] & MungR) == 0) {
       goto L600;
    }
    rspeak(rrand[nr - 1]);
@@ -68,21 +68,21 @@ L500:
    return ret_val;
 
 L600:
-   if (who != aindex_1.player) {
-      newsta(advs_1.aobj[who - 1], 0, nr, 0, 0);
+   if (who != aindex.player) {
+      newsta(advs.aobj[who - 1], 0, nr, 0, 0);
    }
    if (j != 0) {
       newsta(j, 0, nr, 0, 0);
    }
-   play_1.here = nr;
-   advs_1.aroom[who - 1] = play_1.here;
-   scrupd(rooms_1.rval[nr - 1]);
+   play.here = nr;
+   advs.aroom[who - 1] = play.here;
+   scrupd(rooms.rval[nr - 1]);
 // 						!SCORE ROOM
-   rooms_1.rval[nr - 1] = 0;
+   rooms.rval[nr - 1] = 0;
    return ret_val;
 
 L800:
-   rspsub(428, objcts_1.odesc2[j - 1]);
+   rspsub(428, objcts.odesc2[j - 1]);
 // 						!WRONG VEHICLE.
    return ret_val;
 }
@@ -101,34 +101,34 @@ void score(Bool flg) {
 
 // SCORE, PAGE 2
 
-   as = advs_1.ascore[(play_1.winner - 1 << 2) / 4];
+   as = advs.ascore[(play.winner - 1 << 2) / 4];
 
-   if (findex_1.endgmf) {
+   if (findex.endgmf) {
       goto L60;
    }
 // 						!ENDGAME?
 // if (flg) //F
-//    write(chan_1.outch, " Your score would be%$"); //F
+//    write(chan.outch, " Your score would be%$"); //F
 // else //F
-//    write(chan_1.outch, " Your score is%$"); //F
+//    write(chan.outch, " Your score is%$"); //F
    if (flg)
-      BegExSF(chan_1.outch, "(\2 Your score would be\2,$)", 0);
+      BegExSF(chan.outch, "(\2 Your score would be\2,$)", 0);
    else
-      BegExSF(chan_1.outch, "(\2 Your score is\2,$)", 0);
+      BegExSF(chan.outch, "(\2 Your score is\2,$)", 0);
    EndExSF();
-// if (state_1.moves != 1) //F
-//    write(chan_1.outch, "%I4 [total of%I4 points], in%I5 moves."); //F
+// if (state.moves != 1) //F
+//    write(chan.outch, "%I4 [total of%I4 points], in%I5 moves."); //F
 // else //F
-//    write(chan_1.outch, "%I4 [total of%I4 points], in%I5 move."); //F
-   if (state_1.moves != 1)
-      BegExSF(chan_1.outch, "(i4,\2 [total of\2,i4,\2 points], in\2,i5,\2 moves.\2)", 0);
+//    write(chan.outch, "%I4 [total of%I4 points], in%I5 move."); //F
+   if (state.moves != 1)
+      BegExSF(chan.outch, "(i4,\2 [total of\2,i4,\2 points], in\2,i5,\2 moves.\2)", 0);
    else
-      BegExSF(chan_1.outch, "(i4,\2 [total of\2,i4,\2 points], in\2,i5,\2 move.\2)", 0);
-   DoFio(1, &as, sizeof as), DoFio(1, &state_1.mxscor, sizeof state_1.mxscor), DoFio(1, &state_1.moves, sizeof state_1.moves);
+      BegExSF(chan.outch, "(i4,\2 [total of\2,i4,\2 points], in\2,i5,\2 move.\2)", 0);
+   DoFio(1, &as, sizeof as), DoFio(1, &state.mxscor, sizeof state.mxscor), DoFio(1, &state.moves, sizeof state.moves);
    EndExSF();
 
    for (i = 1; i <= 10; ++i) {
-      if (as * 20 / state_1.mxscor >= rank[i - 1]) {
+      if (as * 20 / state.mxscor >= rank[i - 1]) {
          goto L50;
       }
 // L10:
@@ -140,22 +140,22 @@ L50:
 
 L60:
 // if (flg) //F
-//    write(chan_1.outch, " Your score in the endgame would be%$"); //F
+//    write(chan.outch, " Your score in the endgame would be%$"); //F
 // else //F
-//    write(chan_1.outch, " Your score in the endgame is%$"); //F
+//    write(chan.outch, " Your score in the endgame is%$"); //F
    if (flg)
-      BegExSF(chan_1.outch, "(\2 Your score in the endgame would be\2,$)", 0), EndExSF();
+      BegExSF(chan.outch, "(\2 Your score in the endgame would be\2,$)", 0), EndExSF();
    else
-      BegExSF(chan_1.outch, "(\2 Your score in the endgame is\2,$)", 0), EndExSF();
-// write(chan_1.outch, "%I4 [total of%I4 points], in%I5 moves.", //F
-//    state_1.egscor, state_1.egmxsc, state_1.moves //F
+      BegExSF(chan.outch, "(\2 Your score in the endgame is\2,$)", 0), EndExSF();
+// write(chan.outch, "%I4 [total of%I4 points], in%I5 moves.", //F
+//    state.egscor, state.egmxsc, state.moves //F
 // ); //F
-   BegExSF(chan_1.outch, "(i4,\2 [total of\2,i4,\2 points], in\2,i5,\2 moves.\2)", 0);
-   DoFio(1, &state_1.egscor, sizeof state_1.egscor), DoFio(1, &state_1.egmxsc, sizeof state_1.egmxsc);
-   DoFio(1, &state_1.moves, sizeof state_1.moves);
+   BegExSF(chan.outch, "(i4,\2 [total of\2,i4,\2 points], in\2,i5,\2 moves.\2)", 0);
+   DoFio(1, &state.egscor, sizeof state.egscor), DoFio(1, &state.egmxsc, sizeof state.egmxsc);
+   DoFio(1, &state.moves, sizeof state.moves);
    EndExSF();
    for (i = 1; i <= 5; ++i) {
-      if (state_1.egscor * 20 / state_1.egmxsc >= erank[i - 1]) {
+      if (state.egscor * 20 / state.egmxsc >= erank[i - 1]) {
          goto L80;
       }
 // L70:
@@ -167,23 +167,23 @@ L80:
 
 // Update winner's score
 void scrupd(int n) {
-   if (findex_1.endgmf) {
+   if (findex.endgmf) {
       goto L100;
    }
 // 						!ENDGAME?
-   advs_1.ascore[play_1.winner - 1] += n;
+   advs.ascore[play.winner - 1] += n;
 // 						!UPDATE SCORE
-   state_1.rwscor += n;
+   state.rwscor += n;
 // 						!UPDATE RAW SCORE
-   if (advs_1.ascore[play_1.winner - 1] < state_1.mxscor - state_1.deaths * 10) {
+   if (advs.ascore[play.winner - 1] < state.mxscor - state.deaths * 10) {
       return;
    }
-   cevent_1.cflag[cindex_1.cevegh - 1] = true;
+   cevent.cflag[cindex.cevegh - 1] = true;
 // 						!TURN ON END GAME
-   cevent_1.ctick[cindex_1.cevegh - 1] = 15;
+   cevent.ctick[cindex.cevegh - 1] = 15;
    return;
 
 L100:
-   state_1.egscor += n;
+   state.egscor += n;
 // 						!UPDATE EG SCORE.
 }

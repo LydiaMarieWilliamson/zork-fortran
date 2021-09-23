@@ -44,12 +44,12 @@ void gdt(void) {
 // 						!SET ARRAY LIMITS.
    smax = 22;
 
-   if (debug_1.gdtflg != 0) {
+   if (debug.gdtflg != 0) {
       goto L2000;
    }
 // 						!IF OK, SKIP.
-// write(chan_1.outch, " You are not an authorized user."); //F
-   BegExSF(chan_1.outch, "(\2 You are not an authorized user.\2)", 0), EndExSF();
+// write(chan.outch, " You are not an authorized user."); //F
+   BegExSF(chan.outch, "(\2 You are not an authorized user.\2)", 0), EndExSF();
 // 						!NOT AN IMPLEMENTER.
    return;
 // 						!BOOT HIM OFF
@@ -59,11 +59,11 @@ void gdt(void) {
 // HERE TO GET NEXT COMMAND
 
 L2000:
-// write(chan_1.outch, " GDT>%$"); //F
-   BegExSF(chan_1.outch, "(\2 GDT>\2,$)", 0), EndExSF();
+// write(chan.outch, " GDT>%$"); //F
+   BegExSF(chan.outch, "(\2 GDT>\2,$)", 0), EndExSF();
 // 						!OUTPUT PROMPT.
-// read(chan_1.inpch, "%A2", cmd); //F
-   BegInSF(chan_1.inpch, "(a2)", 0), DoFio(1, cmd, sizeof cmd), EndInSF();
+// read(chan.inpch, "%A2", cmd); //F
+   BegInSF(chan.inpch, "(a2)", 0), DoFio(1, cmd, sizeof cmd), EndInSF();
 // 						!GET COMMAND.
    if (CompS(cmd, "  ", sizeof cmd) == 0) {
       goto L2000;
@@ -83,8 +83,8 @@ L2000:
 // L2100:
    }
 L2200:
-// write(chan_1.outch, " ?"); //F
-   BegExSF(chan_1.outch, "(\2 ?\2)", 0), EndExSF();
+// write(chan.outch, " ?"); //F
+   BegExSF(chan.outch, "(\2 ?\2)", 0), EndExSF();
 // 						!NO, LOSE.
    goto L2000;
 
@@ -110,30 +110,30 @@ L2300:
 // 						!ILLEGAL TYPE.
 
 L2700:
-// write(chan_1.outch, " Idx,Ary:  %$"); //F
-   BegExSF(chan_1.outch, "(\2 Idx,Ary:  \2,$)", 0), EndExSF();
+// write(chan.outch, " Idx,Ary:  %$"); //F
+   BegExSF(chan.outch, "(\2 Idx,Ary:  \2,$)", 0), EndExSF();
 // 						!TYPE 3, REQUEST ARRAY COORDS.
-// read(chan_1.inpch, "%2I6", &j, &k); //F
-   BegInSF(chan_1.inpch, "(2i6)", 0), DoFio(1, &j, sizeof j), DoFio(1, &k, sizeof k), EndInSF();
+// read(chan.inpch, "%2I6", &j, &k); //F
+   BegInSF(chan.inpch, "(2i6)", 0), DoFio(1, &j, sizeof j), DoFio(1, &k, sizeof k), EndInSF();
    goto L2400;
 
 L2600:
-// write(chan_1.outch, " Limits:   %$"); //F
-   BegExSF(chan_1.outch, "(\2 Limits:   \2,$)", 0), EndExSF();
+// write(chan.outch, " Limits:   %$"); //F
+   BegExSF(chan.outch, "(\2 Limits:   \2,$)", 0), EndExSF();
 // 						!TYPE 2, READ BOUNDS.
-// read(chan_1.inpch, "%2I6", &j, &k); //F
-   BegInSF(chan_1.inpch, "(2i6)", 0), DoFio(1, &j, sizeof j), DoFio(1, &k, sizeof k), EndInSF();
+// read(chan.inpch, "%2I6", &j, &k); //F
+   BegInSF(chan.inpch, "(2i6)", 0), DoFio(1, &j, sizeof j), DoFio(1, &k, sizeof k), EndInSF();
    if (k == 0) {
       k = j;
    }
    goto L2400;
 
 L2500:
-// write(chan_1.outch, " Entry:    %$"); //F
-   BegExSF(chan_1.outch, "(\2 Entry:    \2,$)", 0), EndExSF();
+// write(chan.outch, " Entry:    %$"); //F
+   BegExSF(chan.outch, "(\2 Entry:    \2,$)", 0), EndExSF();
 // 						!TYPE 1, READ ENTRY NO.
-// read(chan_1.inpch, "%I6", &j); //F
-   BegInSF(chan_1.inpch, "(i6)", 0), DoFio(1, &j, sizeof j), EndInSF();
+// read(chan.inpch, "%I6", &j); //F
+   BegInSF(chan.inpch, "(i6)", 0), DoFio(1, &j, sizeof j), EndInSF();
 L2400:
    switch (i) {
       case 1:
@@ -220,17 +220,17 @@ L2400:
 // DR-- DISPLAY ROOMS
 
 L10000:
-   if (!(j > 0 && j <= rooms_1.rlnt && (k > 0 && k <= rooms_1.rlnt) && j <= k)) {
+   if (!(j > 0 && j <= rooms.rlnt && (k > 0 && k <= rooms.rlnt) && j <= k)) {
       goto L2200;
    }
 // 						!ARGS VALID?
-// write(chan_1.outch, " RM#  DESC1  EXITS ACTION  VALUE  FLAGS"); //F
-   BegExSF(chan_1.outch, "(\2 RM#  DESC1  EXITS ACTION  VALUE  FLAGS\2)", 0), EndExSF();
+// write(chan.outch, " RM#  DESC1  EXITS ACTION  VALUE  FLAGS"); //F
+   BegExSF(chan.outch, "(\2 RM#  DESC1  EXITS ACTION  VALUE  FLAGS\2)", 0), EndExSF();
 // 						!COL HDRS.
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
-//    write(chan_1.outch, "%1X%I3%4(1X,I6)%1X%I6", i, (eqr(i, l), l = 1, 5)); //F
-      BegExSF(chan_1.outch, "(1x,i3,4(1x,i6),1x,i6)", 0), DoFio(1, &i, sizeof i);
+//    write(chan.outch, "%1X%I3%4(1X,I6)%1X%I6", i, (eqr(i, l), l = 1, 5)); //F
+      BegExSF(chan.outch, "(1x,i3,4(1x,i6),1x,i6)", 0), DoFio(1, &i, sizeof i);
       for (l = 1; l <= 5; ++l) DoFio(1, &eqr[i - 1 + 200 * (l - 1)], sizeof eqr[0]);
       EndExSF();
 // L10100:
@@ -240,17 +240,17 @@ L10000:
 // DO-- DISPLAY OBJECTS
 
 L11000:
-   if (!(j > 0 && j <= objcts_1.olnt && (k > 0 && k <= objcts_1.olnt) && j <= k)) {
+   if (!(j > 0 && j <= objcts.olnt && (k > 0 && k <= objcts.olnt) && j <= k)) {
       goto L2200;
    }
 // 						!ARGS VALID?
-// write(chan_1.outch, " OB# DESC1 DESC2 DESCO ACT FLAGS1 FLAGS2 FVL TVL SIZE CAPAC ROOM ADV CON  READ"); //F
-   BegExSF(chan_1.outch, "(\2 OB# DESC1 DESC2 DESCO ACT FLAGS1 FLAGS2 FVL TVL  SIZE CAPAC ROOM ADV CON  READ\2)", 0), EndExSF();
+// write(chan.outch, " OB# DESC1 DESC2 DESCO ACT FLAGS1 FLAGS2 FVL TVL SIZE CAPAC ROOM ADV CON  READ"); //F
+   BegExSF(chan.outch, "(\2 OB# DESC1 DESC2 DESCO ACT FLAGS1 FLAGS2 FVL TVL  SIZE CAPAC ROOM ADV CON  READ\2)", 0), EndExSF();
 // 						!COL HDRS
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
-//    write(chan_1.outch, "%1X%I3%3I6%I4%2I7%2I4%2I6%1X%3I4%I6", i, (eqo(i, l), l = 1, 14)); //F
-      BegExSF(chan_1.outch, "(1x,i3,3i6,i4,2i7,2i4,2i6,1x,3i4,i6)", 0), DoFio(1, &i, sizeof i);
+//    write(chan.outch, "%1X%I3%3I6%I4%2I7%2I4%2I6%1X%3I4%I6", i, (eqo(i, l), l = 1, 14)); //F
+      BegExSF(chan.outch, "(1x,i3,3i6,i4,2i7,2i4,2i6,1x,3i4,i6)", 0), DoFio(1, &i, sizeof i);
       for (l = 1; l <= 14; ++l) DoFio(1, &eqo[i - 1 + 220 * (l - 1)], sizeof eqo[0]);
       EndExSF();
 // L11100:
@@ -260,16 +260,16 @@ L11000:
 // DA-- DISPLAY ADVENTURERS
 
 L12000:
-   if (!(j > 0 && j <= advs_1.alnt && (k > 0 && k <= advs_1.alnt) && j <= k)) {
+   if (!(j > 0 && j <= advs.alnt && (k > 0 && k <= advs.alnt) && j <= k)) {
       goto L2200;
    }
 // 						!ARGS VALID?
-// write(chan_1.outch, " AD#   ROOM  SCORE  VEHIC OBJECT ACTION  STREN  FLAGS"); //F
-   BegExSF(chan_1.outch, "(\2 AD#   ROOM  SCORE  VEHIC OBJECT ACTION  STREN  FLAGS\2)", 0), EndExSF();
+// write(chan.outch, " AD#   ROOM  SCORE  VEHIC OBJECT ACTION  STREN  FLAGS"); //F
+   BegExSF(chan.outch, "(\2 AD#   ROOM  SCORE  VEHIC OBJECT ACTION  STREN  FLAGS\2)", 0), EndExSF();
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
-//    write(chan_1.outch, "%1X%I3%6(1X,I6)%1X%I6", i, (eqa(i, l), l = 1, 7)); //F
-      BegExSF(chan_1.outch, "(1x,i3,6(1x,i6),1x,i6)", 0), DoFio(1, &i, sizeof i);
+//    write(chan.outch, "%1X%I3%6(1X,I6)%1X%I6", i, (eqa(i, l), l = 1, 7)); //F
+      BegExSF(chan.outch, "(1x,i3,6(1x,i6),1x,i6)", 0), DoFio(1, &i, sizeof i);
       for (l = 1; l <= 7; ++l) DoFio(1, &eqa[i - 1 + ((l - 1) << 2)], sizeof eqa[0]);
       EndExSF();
 // L12100:
@@ -279,18 +279,18 @@ L12000:
 // DC-- DISPLAY CLOCK EVENTS
 
 L13000:
-   if (!(j > 0 && j <= cevent_1.clnt && (k > 0 && k <= cevent_1.clnt) && j <= k)) {
+   if (!(j > 0 && j <= cevent.clnt && (k > 0 && k <= cevent.clnt) && j <= k)) {
       goto L2200;
    }
 // 						!ARGS VALID?
-// write(chan_1.outch, " CL#   TICK ACTION  FLAG"); //F
-   BegExSF(chan_1.outch, "(\2 CL#   TICK ACTION  FLAG\2)", 0), EndExSF();
+// write(chan.outch, " CL#   TICK ACTION  FLAG"); //F
+   BegExSF(chan.outch, "(\2 CL#   TICK ACTION  FLAG\2)", 0), EndExSF();
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
-//    write(chan_1.outch, "%1X%I3%1X%I6%1X%I6%5X%L1", i, (eqc(i, l), l = 1, 2), cflag(i)); //F
-      BegExSF(chan_1.outch, "(1x,i3,1x,i6,1x,i6,5x,l1)", 0), DoFio(1, &i, sizeof i);
+//    write(chan.outch, "%1X%I3%1X%I6%1X%I6%5X%L1", i, (eqc(i, l), l = 1, 2), cflag(i)); //F
+      BegExSF(chan.outch, "(1x,i3,1x,i6,1x,i6,5x,l1)", 0), DoFio(1, &i, sizeof i);
       for (l = 1; l <= 2; ++l) DoFio(1, &eqc[i - 1 + 25 * (l - 1)], sizeof eqc[0]);
-      DoFio(1, &cevent_1.cflag[i - 1], sizeof cevent_1.cflag[0]);
+      DoFio(1, &cevent.cflag[i - 1], sizeof cevent.cflag[0]);
       EndExSF();
 // L13100:
    }
@@ -299,12 +299,12 @@ L13000:
 // DX-- DISPLAY EXITS
 
 L14000:
-   if (!(j > 0 && j <= exits_1.xlnt && (k > 0 && k <= exits_1.xlnt) && j <= k)) {
+   if (!(j > 0 && j <= exits.xlnt && (k > 0 && k <= exits.xlnt) && j <= k)) {
       goto L2200;
    }
 // 						!ARGS VALID?
-// write(chan_1.outch, Format0); //F
-   BegExSF(chan_1.outch, Format0, 0), EndExSF();
+// write(chan.outch, Format0); //F
+   BegExSF(chan.outch, Format0, 0), EndExSF();
 // 						!COL HDRS.
    i__1 = k;
    for (i = j; i <= i__1; i += 10) {
@@ -313,10 +313,10 @@ L14000:
       i__2 = i + 9;
       l = min(i__2, k);
 // 						!COMPUTE END OF LINE.
-//    write(chan_1.outch, "%1X%I3-%I3%3X%10I7", i, l, (travel(l1), l1 = i, l)); //F
-      BegExSF(chan_1.outch, "(1x,i3,\2-\2,i3,3x,10i7)", 0), DoFio(1, &i, sizeof i), DoFio(1, &l, sizeof l);
+//    write(chan.outch, "%1X%I3-%I3%3X%10I7", i, l, (travel(l1), l1 = i, l)); //F
+      BegExSF(chan.outch, "(1x,i3,\2-\2,i3,3x,10i7)", 0), DoFio(1, &i, sizeof i), DoFio(1, &l, sizeof l);
       i__2 = l;
-      for (l1 = i; l1 <= i__2; ++l1) DoFio(1, &exits_1.travel[l1 - 1], sizeof exits_1.travel[0]);
+      for (l1 = i; l1 <= i__2; ++l1) DoFio(1, &exits.travel[l1 - 1], sizeof exits.travel[0]);
       EndExSF();
 // L14100:
    }
@@ -325,41 +325,41 @@ L14000:
 // DH-- DISPLAY HACKS
 
 L15000:
-// write(chan_1.outch, " THFPOS=%I6, THFFLG=%L2,THFACT=%L2%/ SWDACT=%L2, SWDSTA=%I2", thfpos, thfflg, thfact, swdact, swdsta); //F
-   BegExSF(chan_1.outch, "(\2 THFPOS=\2,i6,\2, THFFLG=\2,l2,\2,THFACT=\2,l2/\2 SWDACT=\2,l2,\2, SWDSTA=\2,i2)", 0);
-   DoFio(1, &hack_1.thfpos, sizeof hack_1.thfpos), DoFio(1, &hack_1.thfflg, sizeof hack_1.thfflg);
-   DoFio(1, &hack_1.thfact, sizeof hack_1.thfact);
-   DoFio(1, &hack_1.swdact, sizeof hack_1.swdact), DoFio(1, &hack_1.swdsta, sizeof hack_1.swdsta);
+// write(chan.outch, " THFPOS=%I6, THFFLG=%L2,THFACT=%L2%/ SWDACT=%L2, SWDSTA=%I2", thfpos, thfflg, thfact, swdact, swdsta); //F
+   BegExSF(chan.outch, "(\2 THFPOS=\2,i6,\2, THFFLG=\2,l2,\2,THFACT=\2,l2/\2 SWDACT=\2,l2,\2, SWDSTA=\2,i2)", 0);
+   DoFio(1, &hack.thfpos, sizeof hack.thfpos), DoFio(1, &hack.thfflg, sizeof hack.thfflg);
+   DoFio(1, &hack.thfact, sizeof hack.thfact);
+   DoFio(1, &hack.swdact, sizeof hack.swdact), DoFio(1, &hack.swdsta, sizeof hack.swdsta);
    EndExSF();
    goto L2000;
 
 // DL-- DISPLAY LENGTHS
 
 L16000:
-// write(chan_1.outch, " R=%I6, X=%I6, O=%I6, C=%I6%/ V=%I6, A=%I6, M=%I6, R2=%I5%/ MBASE=%I6, STRBIT=%I6", rlnt, xlnt, olnt, clnt, vlnt, alnt, mlnt, r2lnt, mbase, strbit); //F
-   BegExSF(chan_1.outch, "(\2 R=\2,i6,\2, X=\2,i6,\2, O=\2,i6,\2, C=\2,i6/\2 V=\2,i6,\2, A=\2,i6,\2, M=\2,i6,\2, R2=\2,i5/\2 MBASE=\2,i6,\2, STRBIT=\2,i6)", 0);
-   DoFio(1, &rooms_1.rlnt, sizeof rooms_1.rlnt), DoFio(1, &exits_1.xlnt, sizeof exits_1.xlnt);
-   DoFio(1, &objcts_1.olnt, sizeof objcts_1.olnt), DoFio(1, &cevent_1.clnt, sizeof cevent_1.clnt);
-   DoFio(1, &vill_1.vlnt, sizeof vill_1.vlnt), DoFio(1, &advs_1.alnt, sizeof advs_1.alnt);
-   DoFio(1, &rmsg_1.mlnt, sizeof rmsg_1.mlnt), DoFio(1, &oroom2_1.r2lnt, sizeof oroom2_1.r2lnt);
-   DoFio(1, &star_1.mbase, sizeof star_1.mbase), DoFio(1, &star_1.strbit, sizeof star_1.strbit);
+// write(chan.outch, " R=%I6, X=%I6, O=%I6, C=%I6%/ V=%I6, A=%I6, M=%I6, R2=%I5%/ MBASE=%I6, STRBIT=%I6", rlnt, xlnt, olnt, clnt, vlnt, alnt, mlnt, r2lnt, mbase, strbit); //F
+   BegExSF(chan.outch, "(\2 R=\2,i6,\2, X=\2,i6,\2, O=\2,i6,\2, C=\2,i6/\2 V=\2,i6,\2, A=\2,i6,\2, M=\2,i6,\2, R2=\2,i5/\2 MBASE=\2,i6,\2, STRBIT=\2,i6)", 0);
+   DoFio(1, &rooms.rlnt, sizeof rooms.rlnt), DoFio(1, &exits.xlnt, sizeof exits.xlnt);
+   DoFio(1, &objcts.olnt, sizeof objcts.olnt), DoFio(1, &cevent.clnt, sizeof cevent.clnt);
+   DoFio(1, &vill.vlnt, sizeof vill.vlnt), DoFio(1, &advs.alnt, sizeof advs.alnt);
+   DoFio(1, &rmsg.mlnt, sizeof rmsg.mlnt), DoFio(1, &oroom2_.r2lnt, sizeof oroom2_.r2lnt);
+   DoFio(1, &star.mbase, sizeof star.mbase), DoFio(1, &star.strbit, sizeof star.strbit);
    EndExSF();
    goto L2000;
 
 // DV-- DISPLAY VILLAINS
 
 L17000:
-   if (!(j > 0 && j <= vill_1.vlnt && (k > 0 && k <= vill_1.vlnt) && j <= k)) {
+   if (!(j > 0 && j <= vill.vlnt && (k > 0 && k <= vill.vlnt) && j <= k)) {
       goto L2200;
    }
 // 						!ARGS VALID?
-// write(chan_1.outch, " VL# OBJECT   PROB   OPPS   BEST  MELEE"); //F
-   BegExSF(chan_1.outch, "(\2 VL# OBJECT   PROB   OPPS   BEST  MELEE\2)", 0), EndExSF();
+// write(chan.outch, " VL# OBJECT   PROB   OPPS   BEST  MELEE"); //F
+   BegExSF(chan.outch, "(\2 VL# OBJECT   PROB   OPPS   BEST  MELEE\2)", 0), EndExSF();
 // 						!COL HDRS
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
-//    write(chan_1.outch, "%1X%I3%5(1X,I6)", i, (eqv(i, l), l = 1, 5)); //F
-      BegExSF(chan_1.outch, "(1x,i3,5(1x,i6))", 0), DoFio(1, &i, sizeof i);
+//    write(chan.outch, "%1X%I3%5(1X,I6)", i, (eqv(i, l), l = 1, 5)); //F
+      BegExSF(chan.outch, "(1x,i3,5(1x,i6))", 0), DoFio(1, &i, sizeof i);
       for (l = 1; l <= 5; ++l) DoFio(1, &eqv[i - 1 + ((l - 1) << 2)], sizeof eqv[0]);
       EndExSF();
 // L17100:
@@ -375,8 +375,8 @@ L18000:
 // 						!ARGS VALID?
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
-//    write(chan_1.outch, " Flag #%I2 = %L1", i, flags(i)); //F
-      BegExSF(chan_1.outch, "(\2 Flag #\2,i2,\2 = \2,l1)", 0);
+//    write(chan.outch, " Flag #%I2 = %L1", i, flags(i)); //F
+      BegExSF(chan.outch, "(\2 Flag #\2,i2,\2 = \2,l1)", 0);
       DoFio(1, &i, sizeof i), DoFio(1, &flags[i - 1], sizeof flags[0]);
       EndExSF();
 // L18100:
@@ -386,30 +386,30 @@ L18000:
 // DS-- DISPLAY STATE
 
 L19000:
-// write(chan_1.outch, " Parse vector=%3(1X,I6)%1X%L6%1X%I6", prsa, prso, prsi, prswon, prscon); //F
-   BegExSF(chan_1.outch, "(\2 Parse vector=\2,3(1x,i6),1x,l6,1x,i6)", 0);
-   DoFio(1, &prsvec_1.prsa, sizeof prsvec_1.prsa), DoFio(1, &prsvec_1.prso, sizeof prsvec_1.prso);
-   DoFio(1, &prsvec_1.prsi, sizeof prsvec_1.prsi);
-   DoFio(1, &prsvec_1.prswon, sizeof prsvec_1.prswon), DoFio(1, &prsvec_1.prscon, sizeof prsvec_1.prscon);
+// write(chan.outch, " Parse vector=%3(1X,I6)%1X%L6%1X%I6", prsa, prso, prsi, prswon, prscon); //F
+   BegExSF(chan.outch, "(\2 Parse vector=\2,3(1x,i6),1x,l6,1x,i6)", 0);
+   DoFio(1, &prsvec.prsa, sizeof prsvec.prsa), DoFio(1, &prsvec.prso, sizeof prsvec.prso);
+   DoFio(1, &prsvec.prsi, sizeof prsvec.prsi);
+   DoFio(1, &prsvec.prswon, sizeof prsvec.prswon), DoFio(1, &prsvec.prscon, sizeof prsvec.prscon);
    EndExSF();
-// write(chan_1.outch, " Play vector= %2(1X,I6)%1X%L6", winner, here, telflg); //F
-   BegExSF(chan_1.outch, "(\2 Play vector= \2,2(1x,i6),1x,l6)", 0);
-   DoFio(1, &play_1.winner, sizeof play_1.winner), DoFio(1, &play_1.here, sizeof play_1.here);
-   DoFio(1, &play_1.telflg, sizeof play_1.telflg);
+// write(chan.outch, " Play vector= %2(1X,I6)%1X%L6", winner, here, telflg); //F
+   BegExSF(chan.outch, "(\2 Play vector= \2,2(1x,i6),1x,l6)", 0);
+   DoFio(1, &play.winner, sizeof play.winner), DoFio(1, &play.here, sizeof play.here);
+   DoFio(1, &play.telflg, sizeof play.telflg);
    EndExSF();
-// write(chan_1.outch, " State vector=%9(1X,I6)%/%14X%2(1X,I6)", moves, deaths, rwscor, mxscor, mxload, ltshft, bloc, mungrm, hs, egscor, egmxsc); //F
-   BegExSF(chan_1.outch, "(\2 State vector=\2,9(1x,i6)/14x,2(1x,i6))", 0);
-   DoFio(1, &state_1.moves, sizeof state_1.moves), DoFio(1, &state_1.deaths, sizeof state_1.deaths);
-   DoFio(1, &state_1.rwscor, sizeof state_1.rwscor), DoFio(1, &state_1.mxscor, sizeof state_1.mxscor);
-   DoFio(1, &state_1.mxload, sizeof state_1.mxload), DoFio(1, &state_1.ltshft, sizeof state_1.ltshft);
-   DoFio(1, &state_1.bloc, sizeof state_1.bloc), DoFio(1, &state_1.mungrm, sizeof state_1.mungrm);
-   DoFio(1, &state_1.hs, sizeof state_1.hs);
-   DoFio(1, &state_1.egscor, sizeof state_1.egscor), DoFio(1, &state_1.egmxsc, sizeof state_1.egmxsc);
+// write(chan.outch, " State vector=%9(1X,I6)%/%14X%2(1X,I6)", moves, deaths, rwscor, mxscor, mxload, ltshft, bloc, mungrm, hs, egscor, egmxsc); //F
+   BegExSF(chan.outch, "(\2 State vector=\2,9(1x,i6)/14x,2(1x,i6))", 0);
+   DoFio(1, &state.moves, sizeof state.moves), DoFio(1, &state.deaths, sizeof state.deaths);
+   DoFio(1, &state.rwscor, sizeof state.rwscor), DoFio(1, &state.mxscor, sizeof state.mxscor);
+   DoFio(1, &state.mxload, sizeof state.mxload), DoFio(1, &state.ltshft, sizeof state.ltshft);
+   DoFio(1, &state.bloc, sizeof state.bloc), DoFio(1, &state.mungrm, sizeof state.mungrm);
+   DoFio(1, &state.hs, sizeof state.hs);
+   DoFio(1, &state.egscor, sizeof state.egscor), DoFio(1, &state.egmxsc, sizeof state.egmxsc);
    EndExSF();
-// write(chan_1.outch, " Scol vector= %1X%I6%2(1X,I6)", fromdr, scolrm, scolac); //F
-   BegExSF(chan_1.outch, "(\2 Scol vector= \2,1x,i6,2(1x,i6))", 0);
-   DoFio(1, &screen_1.fromdr, sizeof screen_1.fromdr);
-   DoFio(1, &screen_1.scolrm, sizeof screen_1.scolrm), DoFio(1, &screen_1.scolac, sizeof screen_1.scolac);
+// write(chan.outch, " Scol vector= %1X%I6%2(1X,I6)", fromdr, scolrm, scolac); //F
+   BegExSF(chan.outch, "(\2 Scol vector= \2,1x,i6,2(1x,i6))", 0);
+   DoFio(1, &screen.fromdr, sizeof screen.fromdr);
+   DoFio(1, &screen.scolrm, sizeof screen.scolrm), DoFio(1, &screen.scolac, sizeof screen.scolac);
    EndExSF();
    goto L2000;
 
@@ -422,17 +422,17 @@ L20000:
       goto L2200;
    }
 // 						!ENTRY NO VALID?
-// write(chan_1.outch, Format1, flags(j)); //F
-   BegExSF(chan_1.outch, Format1, 0), DoFio(1, &flags[j - 1], sizeof flags[0]), EndExSF();
+// write(chan.outch, Format1, flags(j)); //F
+   BegExSF(chan.outch, Format1, 0), DoFio(1, &flags[j - 1], sizeof flags[0]), EndExSF();
 // 						!TYPE OLD, GET NEW.
-// read(chan_1.inpch, "%L1", &flags(j)); //F
-   BegInSF(chan_1.inpch, "(l1)", 0), DoFio(1, &flags[j - 1], sizeof flags[0]), EndInSF();
+// read(chan.inpch, "%L1", &flags(j)); //F
+   BegInSF(chan.inpch, "(l1)", 0), DoFio(1, &flags[j - 1], sizeof flags[0]), EndInSF();
    goto L2000;
 
 // 21000-- HELP
 
 L21000:
-// write(chan_1.outch, //F
+// write(chan.outch, //F
 //    " Valid commands are:%/" //F
 //    " AA- Alter ADVS%/"		" AC- Alter CEVENT%/"		" AF- Alter FINDEX%/" //F
 //    " AH- Alter HERE%/"		" AN- Alter switches%/"		" AO- Alter OBJCTS%/" //F
@@ -448,7 +448,7 @@ L21000:
 //    " RC- Restore cyclops%/"		" RD- Restore deaths%/"		" RR- Restore robber%/" //F
 //    " RT- Restore troll%/"		" TK- Take." //F
 // ); //F
-   BegExSF(chan_1.outch,
+   BegExSF(chan.outch,
       "("
       "\2 Valid commands are:\2/"
       "\2 AA- Alter ADVS\2/"	"\2 AC- Alter CEVENT\2/"		"\2 AF- Alter FINDEX\2/"
@@ -472,74 +472,74 @@ L21000:
 // NR-- NO ROBBER
 
 L22000:
-   hack_1.thfflg = false;
+   hack.thfflg = false;
 // 						!DISABLE ROBBER.
-   hack_1.thfact = false;
-   newsta(oindex_1.thief, 0, 0, 0, 0);
+   hack.thfact = false;
+   newsta(oindex.thief, 0, 0, 0, 0);
 // 						!VANISH THIEF.
-// write(chan_1.outch, " No robber."); //F
-   BegExSF(chan_1.outch, "(\2 No robber.\2)", 0), EndExSF();
+// write(chan.outch, " No robber."); //F
+   BegExSF(chan.outch, "(\2 No robber.\2)", 0), EndExSF();
    goto L2000;
 
 // NT-- NO TROLL
 
 L23000:
-   findex_1.trollf = true;
-   newsta(oindex_1.troll, 0, 0, 0, 0);
-// write(chan_1.outch, " No troll."); //F
-   BegExSF(chan_1.outch, "(\2 No troll.\2)", 0), EndExSF();
+   findex.trollf = true;
+   newsta(oindex.troll, 0, 0, 0, 0);
+// write(chan.outch, " No troll."); //F
+   BegExSF(chan.outch, "(\2 No troll.\2)", 0), EndExSF();
    goto L2000;
 
 // NC-- NO CYCLOPS
 
 L24000:
-   findex_1.cyclof = true;
-   newsta(oindex_1.cyclo, 0, 0, 0, 0);
-// write(chan_1.outch, " No cyclops."); //F
-   BegExSF(chan_1.outch, "(\2 No cyclops.\2)", 0), EndExSF();
+   findex.cyclof = true;
+   newsta(oindex.cyclo, 0, 0, 0, 0);
+// write(chan.outch, " No cyclops."); //F
+   BegExSF(chan.outch, "(\2 No cyclops.\2)", 0), EndExSF();
    goto L2000;
 
 // ND-- IMMORTALITY MODE
 
 L25000:
-   debug_1.dbgflg = 1;
-// write(chan_1.outch, " No deaths."); //F
-   BegExSF(chan_1.outch, "(\2 No deaths.\2)", 0), EndExSF();
+   debug.dbgflg = 1;
+// write(chan.outch, " No deaths."); //F
+   BegExSF(chan.outch, "(\2 No deaths.\2)", 0), EndExSF();
    goto L2000;
 
 // RR-- RESTORE ROBBER
 
 L26000:
-   hack_1.thfact = true;
-// write(chan_1.outch, " Restored robber."); //F
-   BegExSF(chan_1.outch, "(\2 Restored robber.\2)", 0), EndExSF();
+   hack.thfact = true;
+// write(chan.outch, " Restored robber."); //F
+   BegExSF(chan.outch, "(\2 Restored robber.\2)", 0), EndExSF();
    goto L2000;
 
 // RT-- RESTORE TROLL
 
 L27000:
-   findex_1.trollf = false;
-   newsta(oindex_1.troll, 0, rindex_1.mtrol, 0, 0);
-// write(chan_1.outch, " Restored troll."); //F
-   BegExSF(chan_1.outch, "(\2 Restored troll.\2)", 0), EndExSF();
+   findex.trollf = false;
+   newsta(oindex.troll, 0, rindex_.mtrol, 0, 0);
+// write(chan.outch, " Restored troll."); //F
+   BegExSF(chan.outch, "(\2 Restored troll.\2)", 0), EndExSF();
    goto L2000;
 
 // RC-- RESTORE CYCLOPS
 
 L28000:
-   findex_1.cyclof = false;
-   findex_1.magicf = false;
-   newsta(oindex_1.cyclo, 0, rindex_1.mcycl, 0, 0);
-// write(chan_1.outch, " Restored cyclops."); //F
-   BegExSF(chan_1.outch, "(\2 Restored cyclops.\2)", 0), EndExSF();
+   findex.cyclof = false;
+   findex.magicf = false;
+   newsta(oindex.cyclo, 0, rindex_.mcycl, 0, 0);
+// write(chan.outch, " Restored cyclops."); //F
+   BegExSF(chan.outch, "(\2 Restored cyclops.\2)", 0), EndExSF();
    goto L2000;
 
 // RD-- MORTAL MODE
 
 L29000:
-   debug_1.dbgflg = 0;
-// write(chan_1.outch, " Restored deaths."); //F
-   BegExSF(chan_1.outch, "(\2 Restored deaths.\2)", 0), EndExSF();
+   debug.dbgflg = 0;
+// write(chan.outch, " Restored deaths."); //F
+   BegExSF(chan.outch, "(\2 Restored deaths.\2)", 0), EndExSF();
    goto L2000;
 
 // GDT, PAGE 5
@@ -547,67 +547,67 @@ L29000:
 // TK-- TAKE
 
 L30000:
-   if (!(j > 0 && j <= objcts_1.olnt)) {
+   if (!(j > 0 && j <= objcts.olnt)) {
       goto L2200;
    }
 // 						!VALID OBJECT?
-   newsta(j, 0, 0, 0, play_1.winner);
+   newsta(j, 0, 0, 0, play.winner);
 // 						!YES, TAKE OBJECT.
-// write(chan_1.outch, " Taken."); //F
-   BegExSF(chan_1.outch, "(\2 Taken.\2)", 0), EndExSF();
+// write(chan.outch, " Taken."); //F
+   BegExSF(chan.outch, "(\2 Taken.\2)", 0), EndExSF();
 // 						!TELL.
    goto L2000;
 
 // EX-- GOODBYE
 
 L31000:
-   prsvec_1.prscon = 1;
+   prsvec.prscon = 1;
    return;
 
 // AR--	ALTER ROOM ENTRY
 
 L32000:
-   if (!(j > 0 && j <= rooms_1.rlnt && (k > 0 && k <= 5))) {
+   if (!(j > 0 && j <= rooms.rlnt && (k > 0 && k <= 5))) {
       goto L2200;
    }
 // 						!INDICES VALID?
-// write(chan_1.outch, Format2, eqr(j, k)); //F
-   BegExSF(chan_1.outch, Format2, 0), DoFio(1, &eqr[j - 1 + 200 * (k - 1)], sizeof eqr[0]), EndExSF();
+// write(chan.outch, Format2, eqr(j, k)); //F
+   BegExSF(chan.outch, Format2, 0), DoFio(1, &eqr[j - 1 + 200 * (k - 1)], sizeof eqr[0]), EndExSF();
 // 						!TYPE OLD, GET NEW.
-// read(chan_1.inpch, "%I6", &eqr(j, k)); //F
-   BegInSF(chan_1.inpch, "(i6)", 0), DoFio(1, &eqr[j - 1 + 200 * (k - 1)], sizeof eqr[0]), EndInSF();
+// read(chan.inpch, "%I6", &eqr(j, k)); //F
+   BegInSF(chan.inpch, "(i6)", 0), DoFio(1, &eqr[j - 1 + 200 * (k - 1)], sizeof eqr[0]), EndInSF();
    goto L2000;
 
 // AO-- ALTER OBJECT ENTRY
 
 L33000:
-   if (!(j > 0 && j <= objcts_1.olnt && (k > 0 && k <= 14))) {
+   if (!(j > 0 && j <= objcts.olnt && (k > 0 && k <= 14))) {
       goto L2200;
    }
 // 						!INDICES VALID?
-// write(chan_1.outch, Format2, eqo(j, k)); //F
-   BegExSF(chan_1.outch, Format2, 0), DoFio(1, &eqo[j - 1 + 220 * (k - 1)], sizeof eqo[0]), EndExSF();
-// read(chan_1.inpch, "%I6", &eqo(j, k)); //F
-   BegInSF(chan_1.inpch, "(i6)", 0), DoFio(1, &eqo[j - 1 + 220 * (k - 1)], sizeof eqo[0]), EndInSF();
+// write(chan.outch, Format2, eqo(j, k)); //F
+   BegExSF(chan.outch, Format2, 0), DoFio(1, &eqo[j - 1 + 220 * (k - 1)], sizeof eqo[0]), EndExSF();
+// read(chan.inpch, "%I6", &eqo(j, k)); //F
+   BegInSF(chan.inpch, "(i6)", 0), DoFio(1, &eqo[j - 1 + 220 * (k - 1)], sizeof eqo[0]), EndInSF();
    goto L2000;
 
 // AA-- ALTER ADVS ENTRY
 
 L34000:
-   if (!(j > 0 && j <= advs_1.alnt && (k > 0 && k <= 7))) {
+   if (!(j > 0 && j <= advs.alnt && (k > 0 && k <= 7))) {
       goto L2200;
    }
 // 						!INDICES VALID?
-// write(chan_1.outch, Format2, eqa(j, k)); //F
-   BegExSF(chan_1.outch, Format2, 0), DoFio(1, &eqa[j - 1 + ((k - 1) << 2)], sizeof eqa[0]), EndExSF();
-// read(chan_1.inpch, "%I6", &eqa(j, k)); //F
-   BegInSF(chan_1.inpch, "(i6)", 0), DoFio(1, &eqa[j - 1 + ((k - 1) << 2)], sizeof eqa[0]), EndInSF();
+// write(chan.outch, Format2, eqa(j, k)); //F
+   BegExSF(chan.outch, Format2, 0), DoFio(1, &eqa[j - 1 + ((k - 1) << 2)], sizeof eqa[0]), EndExSF();
+// read(chan.inpch, "%I6", &eqa(j, k)); //F
+   BegInSF(chan.inpch, "(i6)", 0), DoFio(1, &eqa[j - 1 + ((k - 1) << 2)], sizeof eqa[0]), EndInSF();
    goto L2000;
 
 // AC-- ALTER CLOCK EVENTS
 
 L35000:
-   if (!(j > 0 && j <= cevent_1.clnt && (k > 0 && k <= 3))) {
+   if (!(j > 0 && j <= cevent.clnt && (k > 0 && k <= 3))) {
       goto L2200;
    }
 // 						!INDICES VALID?
@@ -615,59 +615,59 @@ L35000:
       goto L35500;
    }
 // 						!FLAGS ENTRY?
-// write(chan_1.outch, Format2, eqc(j, k)); //F
-   BegExSF(chan_1.outch, Format2, 0), DoFio(1, &eqc[j - 1 + 25 * (k - 1)], sizeof eqc[0]), EndExSF();
-// read(chan_1.inpch, "%I6", &eqc(j, k)); //F
-   BegInSF(chan_1.inpch, "(i6)", 0), DoFio(1, &eqc[j - 1 + 25 * (k - 1)], sizeof eqc[0]), EndInSF();
+// write(chan.outch, Format2, eqc(j, k)); //F
+   BegExSF(chan.outch, Format2, 0), DoFio(1, &eqc[j - 1 + 25 * (k - 1)], sizeof eqc[0]), EndExSF();
+// read(chan.inpch, "%I6", &eqc(j, k)); //F
+   BegInSF(chan.inpch, "(i6)", 0), DoFio(1, &eqc[j - 1 + 25 * (k - 1)], sizeof eqc[0]), EndInSF();
    goto L2000;
 
 L35500:
-// write(chan_1.outch, Format1, cflag(j)); //F
-   BegExSF(chan_1.outch, Format1, 0), DoFio(1, &cevent_1.cflag[j - 1], sizeof cevent_1.cflag[0]), EndExSF();
-// read(chan_1.inpch, "%L1", &cevent_1.cflag); //F
-   BegInSF(chan_1.inpch, "(l1)", 0), DoFio(1, &cevent_1.cflag[j - 1], sizeof cevent_1.cflag[0]), EndInSF();
+// write(chan.outch, Format1, cflag(j)); //F
+   BegExSF(chan.outch, Format1, 0), DoFio(1, &cevent.cflag[j - 1], sizeof cevent.cflag[0]), EndExSF();
+// read(chan.inpch, "%L1", &cevent.cflag); //F
+   BegInSF(chan.inpch, "(l1)", 0), DoFio(1, &cevent.cflag[j - 1], sizeof cevent.cflag[0]), EndInSF();
    goto L2000;
 // GDT, PAGE 6
 
 // AX-- ALTER EXITS
 
 L36000:
-   if (!(j > 0 && j <= exits_1.xlnt)) {
+   if (!(j > 0 && j <= exits.xlnt)) {
       goto L2200;
    }
 // 						!ENTRY NO VALID?
-// write(chan_1.outch, Format2, travel(j)); //F
-   BegExSF(chan_1.outch, Format2, 0), DoFio(1, &exits_1.travel[j - 1], sizeof exits_1.travel[0]), EndExSF();
-// read(chan_1.inpch, "%I6", &exits_1.travel(j)); //F
-   BegInSF(chan_1.inpch, "(i6)", 0), DoFio(1, &exits_1.travel[j - 1], sizeof exits_1.travel[0]), EndInSF();
+// write(chan.outch, Format2, travel(j)); //F
+   BegExSF(chan.outch, Format2, 0), DoFio(1, &exits.travel[j - 1], sizeof exits.travel[0]), EndExSF();
+// read(chan.inpch, "%I6", &exits.travel(j)); //F
+   BegInSF(chan.inpch, "(i6)", 0), DoFio(1, &exits.travel[j - 1], sizeof exits.travel[0]), EndInSF();
    goto L2000;
 
 // AV-- ALTER VILLAINS
 
 L37000:
-   if (!(j > 0 && j <= vill_1.vlnt && (k > 0 && k <= 5))) {
+   if (!(j > 0 && j <= vill.vlnt && (k > 0 && k <= 5))) {
       goto L2200;
    }
 // 						!INDICES VALID?
-// write(chan_1.outch, Format2, eqv(j, k)); //F
-   BegExSF(chan_1.outch, Format2, 0), DoFio(1, &eqv[j - 1 + ((k - 1) << 2)], sizeof eqv[0]), EndExSF();
-// read(chan_1.inpch, "%I6", &eqv(j, k)); //F
-   BegInSF(chan_1.inpch, "(i6)", 0), DoFio(1, &eqv[j - 1 + ((k - 1) << 2)], sizeof eqv[0]), EndInSF();
+// write(chan.outch, Format2, eqv(j, k)); //F
+   BegExSF(chan.outch, Format2, 0), DoFio(1, &eqv[j - 1 + ((k - 1) << 2)], sizeof eqv[0]), EndExSF();
+// read(chan.inpch, "%I6", &eqv(j, k)); //F
+   BegInSF(chan.inpch, "(i6)", 0), DoFio(1, &eqv[j - 1 + ((k - 1) << 2)], sizeof eqv[0]), EndInSF();
    goto L2000;
 
 // D2-- DISPLAY ROOM2 LIST
 
 L38000:
-   if (!(j > 0 && j <= oroom2_1.r2lnt && (k > 0 && k <= oroom2_1.r2lnt) && j <= k)) {
+   if (!(j > 0 && j <= oroom2_.r2lnt && (k > 0 && k <= oroom2_.r2lnt) && j <= k)) {
       goto L2200;
    }
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
-//    write(chan_1.outch, " #%I2   Room=%I6   Obj=%I6", i, rroom2(i), oroom2(i)); //F
-      BegExSF(chan_1.outch, "(\2 #\2,i2,\2   Room=\2,i6,\2   Obj=\2,i6)", 0);
+//    write(chan.outch, " #%I2   Room=%I6   Obj=%I6", i, rroom2(i), oroom2(i)); //F
+      BegExSF(chan.outch, "(\2 #\2,i2,\2   Room=\2,i6,\2   Obj=\2,i6)", 0);
       DoFio(1, &i, sizeof i);
-      DoFio(1, &oroom2_1.rroom2[i - 1], sizeof oroom2_1.rroom2[0]);
-      DoFio(1, &oroom2_1.oroom2[i - 1], sizeof oroom2_1.oroom2[0]);
+      DoFio(1, &oroom2_.rroom2[i - 1], sizeof oroom2_.rroom2[0]);
+      DoFio(1, &oroom2_.oroom2[i - 1], sizeof oroom2_.oroom2[0]);
       EndExSF();
 // L38100:
    }
@@ -682,8 +682,8 @@ L39000:
 // 						!VALID?
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
-//    write(chan_1.outch, " Switch #%I2 = %I6", i, switch_(i)); //F
-      BegExSF(chan_1.outch, "(\2 Switch #\2,i2,\2 = \2,i6)", 0);
+//    write(chan.outch, " Switch #%I2 = %I6", i, switch_(i)); //F
+      BegExSF(chan.outch, "(\2 Switch #\2,i2,\2 = \2,i6)", 0);
       DoFio(1, &i, sizeof i), DoFio(1, &switch_[i - 1], sizeof switch_[0]);
       EndExSF();
 // L39100:
@@ -697,30 +697,30 @@ L40000:
       goto L2200;
    }
 // 						!VALID ENTRY?
-// write(chan_1.outch, Format2, switch_(j)); //F
-   BegExSF(chan_1.outch, Format2, 0), DoFio(1, &switch_[j - 1], sizeof switch_[0]), EndExSF();
-// read(chan_1.inpch, "%I6", &switch_(j)); //F
-   BegInSF(chan_1.inpch, "(i6)", 0), DoFio(1, &switch_[j - 1], sizeof switch_[0]), EndInSF();
+// write(chan.outch, Format2, switch_(j)); //F
+   BegExSF(chan.outch, Format2, 0), DoFio(1, &switch_[j - 1], sizeof switch_[0]), EndExSF();
+// read(chan.inpch, "%I6", &switch_(j)); //F
+   BegInSF(chan.inpch, "(i6)", 0), DoFio(1, &switch_[j - 1], sizeof switch_[0]), EndInSF();
    goto L2000;
 
 // DM-- DISPLAY MESSAGES
 
 L41000:
-   if (!(j > 0 && j <= rmsg_1.mlnt && (k > 0 && k <= rmsg_1.mlnt) && j <= k)) {
+   if (!(j > 0 && j <= rmsg.mlnt && (k > 0 && k <= rmsg.mlnt) && j <= k)) {
       goto L2200;
    }
 // 						!VALID LIMITS?
-// write(chan_1.outch, Format0); //F
-   BegExSF(chan_1.outch, Format0, 0), EndExSF();
+// write(chan.outch, Format0); //F
+   BegExSF(chan.outch, Format0, 0), EndExSF();
    i__1 = k;
    for (i = j; i <= i__1; i += 10) {
 // Computing MIN
       i__2 = i + 9;
       l = min(i__2, k);
-//    write(chan_1.outch, "%1X%I3"-%I3%3X%10(1X,I6)", i, l, (rtext(l1), l1 = i, l)); //F
-      BegExSF(chan_1.outch, "(1x,i3,\2-\2,i3,3x,10(1x,i6))", 0), DoFio(1, &i, sizeof i), DoFio(1, &l, sizeof l);
+//    write(chan.outch, "%1X%I3"-%I3%3X%10(1X,I6)", i, l, (rtext(l1), l1 = i, l)); //F
+      BegExSF(chan.outch, "(1x,i3,\2-\2,i3,3x,10(1x,i6))", 0), DoFio(1, &i, sizeof i), DoFio(1, &l, sizeof l);
       i__2 = l;
-      for (l1 = i; l1 <= i__2; ++l1) DoFio(1, &rmsg_1.rtext[l1 - 1], sizeof rmsg_1.rtext[0]);
+      for (l1 = i; l1 <= i__2; ++l1) DoFio(1, &rmsg.rtext[l1 - 1], sizeof rmsg.rtext[0]);
       EndExSF();
 // L41100:
    }
@@ -735,19 +735,19 @@ L42000:
 // AH--	ALTER HERE
 
 L43000:
-// write(chan_1.outch, Format2, here); //F
-   BegExSF(chan_1.outch, Format2, 0), DoFio(1, &play_1.here, sizeof play_1.here), EndExSF();
-// read(chan_1.inpch, "%I6", &play_1.here); //F
-   BegInSF(chan_1.inpch, "(i6)", 0), DoFio(1, &play_1.here, sizeof play_1.here), EndInSF();
-   eqa[0] = play_1.here;
+// write(chan.outch, Format2, here); //F
+   BegExSF(chan.outch, Format2, 0), DoFio(1, &play.here, sizeof play.here), EndExSF();
+// read(chan.inpch, "%I6", &play.here); //F
+   BegInSF(chan.inpch, "(i6)", 0), DoFio(1, &play.here, sizeof play.here), EndInSF();
+   eqa[0] = play.here;
    goto L2000;
 
 // DP--	DISPLAY PARSER STATE
 
 L44000:
-// write(chan_1.outch, " ORPHS= %I7%I7%4I7%/ PV=    %I7%4I7%/ SYN=   %6I7%/%15X%5I7", orp, lastit, pvec, syn); //F
-   BegExSF(chan_1.outch, "(\2 ORPHS= \2,i7,i7,4i7/\2 PV=    \2,i7,4i7/\2 SYN=   \2,6i7/15x,5i7)", 0);
-   DoFio(5, orp, sizeof orp[0]), DoFio(1, &last_1.lastit, sizeof last_1.lastit);
+// write(chan.outch, " ORPHS= %I7%I7%4I7%/ PV=    %I7%4I7%/ SYN=   %6I7%/%15X%5I7", orp, lastit, pvec, syn); //F
+   BegExSF(chan.outch, "(\2 ORPHS= \2,i7,i7,4i7/\2 PV=    \2,i7,4i7/\2 SYN=   \2,6i7/15x,5i7)", 0);
+   DoFio(5, orp, sizeof orp[0]), DoFio(1, &last.lastit, sizeof last.lastit);
    DoFio(5, pvec, sizeof pvec[0]), DoFio(11, syn, sizeof syn[0]);
    EndExSF();
    goto L2000;
@@ -755,11 +755,11 @@ L44000:
 // PD--	PROGRAM DETAIL DEBUG
 
 L45000:
-// write(chan_1.outch, Format2, prsflg); //F
-   BegExSF(chan_1.outch, Format2, 0), DoFio(1, &debug_1.prsflg, sizeof debug_1.prsflg), EndExSF();
+// write(chan.outch, Format2, prsflg); //F
+   BegExSF(chan.outch, Format2, 0), DoFio(1, &debug.prsflg, sizeof debug.prsflg), EndExSF();
 // 						!TYPE OLD, GET NEW.
-// read(chan_1.inpch, "%I6", &debug_1.prsflg); //F
-   BegInSF(chan_1.inpch, "(i6)", 0), DoFio(1, &debug_1.prsflg, sizeof debug_1.prsflg), EndInSF();
+// read(chan.inpch, "%I6", &debug.prsflg); //F
+   BegInSF(chan.inpch, "(i6)", 0), DoFio(1, &debug.prsflg, sizeof debug.prsflg), EndInSF();
    goto L2000;
 
 // DZ--	DISPLAY PUZZLE ROOM
@@ -767,10 +767,10 @@ L45000:
 L46000:
    for (i = 1; i <= 64; i += 8) {
 // 						!DISPLAY PUZZLE
-//    write(chan_1.outch, "%2X%8I3", (cpvec(j), j = i, i + 7)); //F
-      BegExSF(chan_1.outch, "(2x,8i3)", 0);
+//    write(chan.outch, "%2X%8I3", (cpvec(j), j = i, i + 7)); //F
+      BegExSF(chan.outch, "(2x,8i3)", 0);
       i__1 = i + 7;
-      for (j = i; j <= i__1; ++j) DoFio(1, &puzzle_1.cpvec[j - 1], sizeof puzzle_1.cpvec[0]);
+      for (j = i; j <= i__1; ++j) DoFio(1, &puzzle.cpvec[j - 1], sizeof puzzle.cpvec[0]);
       EndExSF();
 // L46100:
    }
@@ -783,11 +783,11 @@ L47000:
       goto L2200;
    }
 // 						!VALID ENTRY?
-// write(chan_1.outch, Format2, cpvec(j)); //F
-   BegExSF(chan_1.outch, Format2, 0), DoFio(1, &puzzle_1.cpvec[j - 1], sizeof puzzle_1.cpvec[0]), EndExSF();
+// write(chan.outch, Format2, cpvec(j)); //F
+   BegExSF(chan.outch, Format2, 0), DoFio(1, &puzzle.cpvec[j - 1], sizeof puzzle.cpvec[0]), EndExSF();
 // 						!OUTPUT OLD,
-// read(chan_1.inpch, "%I6", &puzzle_1.cpvec(j)); //F
-   BegInSF(chan_1.inpch, "(i6)", 0), DoFio(1, &puzzle_1.cpvec[j - 1], sizeof puzzle_1.cpvec[0]), EndInSF();
+// read(chan.inpch, "%I6", &puzzle.cpvec(j)); //F
+   BegInSF(chan.inpch, "(i6)", 0), DoFio(1, &puzzle.cpvec[j - 1], sizeof puzzle.cpvec[0]), EndInSF();
    goto L2000;
 #endif
 }

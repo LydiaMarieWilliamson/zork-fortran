@@ -26,15 +26,15 @@ void intime(int * hours, int * minutes, int * seconds) {
 }
 
 void inirnd(int seed) {
-   random_1.seedy = seed;
+   random_.seedy = seed;
 }
 
 int rnd(int maxval) {
 // System generated locals
    int ret_val;
 
-   random_1.seedy = random_1.seedy * 1059 + 17 & 2147483647;
-   ret_val = random_1.seedy / 100 % maxval;
+   random_.seedy = random_.seedy * 1059 + 17 & 2147483647;
+   ret_val = random_.seedy / 100 % maxval;
    return ret_val;
 }
 

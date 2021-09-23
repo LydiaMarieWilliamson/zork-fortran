@@ -34,12 +34,12 @@ L5:
    }
 // 						!SEE WHO TO PROMPT FOR.
 L10:
-// write(chan_1.outch, " >%$"); //F
-   BegExSF(chan_1.outch, "(\2 >\2,$)", 0), EndExSF();
+// write(chan.outch, " >%$"); //F
+   BegExSF(chan.outch, "(\2 >\2,$)", 0), EndExSF();
 // 						!PROMPT FOR GAME.
 L90:
 // read(char_1.inpch, "%78A1", buffer); //F
-   BegInSF(chan_1.inpch, "(78a1)", 0), DoFio(78, buffer + 1, buffer_unit), EndInSF();
+   BegInSF(chan.inpch, "(78a1)", 0), DoFio(78, buffer + 1, buffer_unit), EndInSF();
    for (length = 78; length >= 1; --(length)) {
       if (buffer[length] != ' ') {
          goto L250;
@@ -76,7 +76,7 @@ L250:
    if (length == 0) {
       goto L5;
    }
-   prsvec_1.prscon = 1;
+   prsvec.prscon = 1;
 // 						!RESTART LEX SCAN.
 }
 
@@ -94,7 +94,7 @@ Bool parse(char *inbuf, int inlnt, Bool vbflag/*, size_t inbuf_unit*/) {
    int outbuf[40], outlnt;
 
 #ifdef ALLOW_GDT
-// dflag = (debug_1.prsflg & 1) != 0; //F
+// dflag = (debug.prsflg & 1) != 0; //F
 #endif
 
 // Parameter adjustments
@@ -103,10 +103,10 @@ Bool parse(char *inbuf, int inlnt, Bool vbflag/*, size_t inbuf_unit*/) {
 // Function Body
    ret_val = false;
 // 						!ASSUME FAILS.
-   prsvec_1.prsa = 0;
+   prsvec.prsa = 0;
 // 						!ZERO OUTPUTS.
-   prsvec_1.prsi = 0;
-   prsvec_1.prso = 0;
+   prsvec.prsi = 0;
+   prsvec.prso = 0;
 
    if (!lex(inbuf + 1, inlnt, outbuf, &outlnt, vbflag/*, inbuf_unit*/)) {
       goto L100;
@@ -131,8 +131,8 @@ L200:
       goto L100;
    }
 // 						!DO SYN MATCH.
-   if (prsvec_1.prso > 0 && prsvec_1.prso < xsrch_1.xmin) {
-      last_1.lastit = prsvec_1.prso;
+   if (prsvec.prso > 0 && prsvec.prso < xsrch.xmin) {
+      last.lastit = prsvec.prso;
    }
 
 // SUCCESSFUL PARSE OR SUCCESSFUL VALIDATION
@@ -144,29 +144,29 @@ L350:
 // 						!CLEAR ORPHANS.
 #ifdef ALLOW_GDT
 // if (dflag) write(0, *, "parse good"); //F
-// if (dflag) print(" PARSE RESULTS- %L7%3I7", ret_val, prsvec_1.prsa, prsvec_1.prso, prsvec_1.prsi); //F
+// if (dflag) print(" PARSE RESULTS- %L7%3I7", ret_val, prsvec.prsa, prsvec.prso, prsvec.prsi); //F
 #endif
    return ret_val;
 
 // PARSE FAILS, DISALLOW CONTINUATION
 
 L100:
-   prsvec_1.prscon = 1;
+   prsvec.prscon = 1;
 #ifdef ALLOW_GDT
 // if (dflag) write(0, *, "parse failed"); //F
-// if (dflag) print(" PARSE RESULTS- %L7%3I7", ret_val, prsvec_1.prsa, prsvec_1.prso, prsvec_1.prsi); //F
+// if (dflag) print(" PARSE RESULTS- %L7%3I7", ret_val, prsvec.prsa, prsvec.prso, prsvec.prsi); //F
 #endif
    return ret_val;
 }
 
 // Set up new orphans
 void orphan(int o1, int o2, int o3, int o4, int o5) {
-   orphs_1.oflag = o1;
+   orphs.oflag = o1;
 // 						!SET UP NEW ORPHANS.
-   orphs_1.oact = o2;
-   orphs_1.oslot = o3;
-   orphs_1.oprep = o4;
-   orphs_1.oname = o5;
+   orphs.oact = o2;
+   orphs.oslot = o3;
+   orphs.oprep = o4;
+   orphs.oname = o5;
 }
 
 // Lexical analyzer
@@ -196,7 +196,7 @@ static Bool lex(char *inbuf, int inlnt, int *outbuf, int *op, Bool vbflag/*, siz
    }
 
 #ifdef ALLOW_GDT
-// dflag = (debug_1.prsflg & 2) != 0; //F
+// dflag = (debug.prsflg & 2) != 0; //F
 #endif
    ret_val = false;
 // 						!ASSUME LEX FAILS.
@@ -209,13 +209,13 @@ L50:
 // 						!CHAR PTR=0.
 
 L200:
-   if (prsvec_1.prscon > inlnt) {
+   if (prsvec.prscon > inlnt) {
       goto L1000;
    }
 // 						!END OF INPUT?
-   j = inbuf[prsvec_1.prscon];
+   j = inbuf[prsvec.prscon];
 // 						!NO, GET CHARACTER,
-   ++prsvec_1.prscon;
+   ++prsvec.prscon;
 // 						!ADVANCE PTR.
    if (j == '.') {
       goto L1000;
@@ -246,8 +246,8 @@ L200:
 // END OF INPUT, SEE IF PARTIAL WORD AVAILABLE.
 
 L1000:
-   if (prsvec_1.prscon > inlnt) {
-      prsvec_1.prscon = 1;
+   if (prsvec.prscon > inlnt) {
+      prsvec.prscon = 1;
    }
 // 						!FORCE PARSE RESTART.
    if (cp == 0 && *op == 1) {
@@ -259,7 +259,7 @@ L1000:
 // 						!ANY LAST WORD?
    ret_val = true;
 #ifdef ALLOW_GDT
-// if (dflag) print(" LEX RESULTS- %3I7%/%1X%10I7", cp, *op, prsvec_1.prscon, (outbuf[i - 1], i = 1, *op + 1)); //F
+// if (dflag) print(" LEX RESULTS- %3I7%/%1X%10I7", cp, *op, prsvec.prscon, (outbuf[i - 1], i = 1, *op + 1)); //F
 #endif
    return ret_val;
 
