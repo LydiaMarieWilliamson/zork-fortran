@@ -41,20 +41,18 @@ Bool init(void/*int x*/) {
 //    "he grabs you by the neck all grows dim about you." //F
 // ); //F
    BegExSF(6,
-      "("
-      "\2 There appears before you a threatening figure clad \2,\2all over\2/"
-      "\2 in heavy black armor.  His legs seem like the \2,\2massive trunk\2/"
-      "\2 of the oak tree.  His broad shoulders and \2,\2helmeted head loom\2/"
-      "\2 high over your own puny frame, and \2,\2you realize that his powerful\2/"
-      "\2 arms could easily crush the \2,\2very life from your body.  There\2/"
-      "\2 hangs from his belt a \2,\2veritable arsenal of deadly weapons:\2/"
-      "\2 sword, mace, ball \2,\2and chain, dagger, lance, and trident.\2/"
-      "\2 He speaks with a \2,\2commanding voice:\2/"
-      "/"
-      "20x,\2\"You shall not pass.\"\2/"
-      "/"
-      "\2 As \2,\2he grabs you by the neck all grows dim about you.\2"
-      ")", 0
+      "(\2"
+      " There appears before you a threatening figure clad \2,\2"
+      "all over\2/\2 in heavy black armor.  His legs seem like the \2,\2"
+      "massive trunk\2/\2 of the oak tree.  His broad shoulders and \2,\2"
+      "helmeted head loom\2/\2 high over your own puny frame, and \2,\2"
+      "you realize that his powerful\2/\2 arms could easily crush the \2,\2"
+      "very life from your body.  There\2/\2 hangs from his belt a \2,\2"
+      "veritable arsenal of deadly weapons:\2/\2 sword, mace, ball \2,\2"
+      "and chain, dagger, lance, and trident.\2/\2 He speaks with a \2,\2"
+      "commanding voice:\2//20x,\2\"You shall not pass.\"\2//\2 As \2,\2"
+      "he grabs you by the neck all grows dim about you."
+      "\2)", 0
    );
    EndExSF();
    exit_();
@@ -254,9 +252,11 @@ L10000:
 // allow setting gdtflg true if user id matches wizard id
 // this way, the wizard doesn't have to recompile to use gdt
 
-// 	Changed by TAA so that always in wizard ID
 #ifdef ALLOW_GDT
+// 	Changed by TAA so that always in wizard ID
    debug_1.gdtflg = 1;
+#else
+   debug_1.gdtflg = 0;
 #endif
 
    screen_1.fromdr = 0;
@@ -417,11 +417,15 @@ L1025:
 // ERRORS-- INIT FAILS.
 
 L1900:
-// print(" I can't open " "dindx.dat" "."); //F
+// print(" I can't open ","dindx.dat","."); //F
    BegExSF(6, "(\2 I can't open \2,\2dindx.dat\2,\2.\2)", 0), EndExSF();
    goto L1975;
 L1925:
-// print(" \"dindx.dat\" is version %I1.%I1%A1.%/  I require version %I1.%I1%A1.", i, j, k, vers_1.vmaj, vers_1.vmin, vers_1.vedit); //F
+// print(
+//    " \"dindx.dat\" is version %I1.%I1%A1.%/" //F
+//    "  I require version %I1.%I1%A1.", //F
+//    i, j, k, vers_1.vmaj, vers_1.vmin, vers_1.vedit //F
+// ); //F
    BegExSF(6, "(\2 \"dindx.dat\" is version \2,i1,\2.\2,i1,a1,\2.\2/\2 I require version \2,i1,\2.\2,i1,a1,\2.\2)", 0);
    DoFio(1, &i, sizeof i), DoFio(1, &j, sizeof j), DoFio(1, &k, sizeof k);
    DoFio(1, &vers_1.vmaj, sizeof vers_1.vmaj), DoFio(1, &vers_1.vmin, sizeof vers_1.vmin), DoFio(1, &vers_1.vedit, sizeof vers_1.vedit);
@@ -432,12 +436,12 @@ L1950:
    BegExSF(6, "(\2 I can't open \2,\2dtext.dat\2,\2.\2)", 0), EndExSF();
 L1975:
 // print( //F
-//    " Suddenly a sinister, wraithlike figure appears before " //F
-//    "you,%/ seeming to float in the air.  In a low, sorrowful voice" //F
-//    " he says,%/ \"Alas, the very nature of the world has changed, " //F
-//    "and the dungeon%/ cannot be found.  All must now pass away.\"" //F
-//    "  Raising his oaken staff%/ in farewell, he fades into the " //F
-//    "spreading darkness.  In his place%/ appears a tastefully " //F
+//    " Suddenly a sinister, wraithlike figure appears before ", //F
+//    "you,%/ seeming to float in the air.  In a low, sorrowful voice", //F
+//    " he says,%/ \"Alas, the very nature of the world has changed, ", //F
+//    "and the dungeon%/ cannot be found.  All must now pass away.\"", //F
+//    "  Raising his oaken staff%/ in farewell, he fades into the ", //F
+//    "spreading darkness.  In his place%/ appears a tastefully ", //F
 //    "lettered sign reading:%/%/%23XINITIALIZATION FAILURE%/%/" //F
 //    " The darkness becomes all encompassing, and your vision fails." //F
 // ); //F

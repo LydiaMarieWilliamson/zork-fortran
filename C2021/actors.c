@@ -132,7 +132,7 @@ void thiefd(void) {
 // THIEFD, PAGE 2
 
 #ifdef ALLOW_GDT
-   dflag = (debug_1.prsflg & 32768) != 0;
+// dflag = (debug_1.prsflg & 32768) != 0; //F
 #endif
 // 						!SET UP DETAIL FLAG.
    once = false;
@@ -156,7 +156,7 @@ L1025:
 // THIEF IS IN TREASURE ROOM, AND WINNER IS NOT.
 
 #ifdef ALLOW_GDT
-   if (dflag) print(" THIEFD-- IN TREASURE ROOM");
+// if (dflag) print(" THIEFD-- IN TREASURE ROOM"); //F
 #endif
    if (rhere == 0) {
       goto L1050;
@@ -188,7 +188,7 @@ L1100:
       goto L1400;
    }
 #ifdef ALLOW_GDT
-   if (dflag) print(" THIEFD-- IN ADV ROOM");
+// if (dflag) print(" THIEFD-- IN ADV ROOM"); //F
 #endif
    if (hack_1.thfflg) {
       goto L1300;
@@ -285,7 +285,7 @@ L1400:
 // 						!VANISH.
    rhere = 0;
 #ifdef ALLOW_GDT
-   if (dflag) print(" THIEFD-- IN ROOM %I4", hack_1.thfpos);
+// if (dflag) print(" THIEFD-- IN ROOM %I4", hack_1.thfpos); //F
 #endif
    if (qhere(oindex_1.still, hack_1.thfpos) || objcts_1.oadv[oindex_1.still - 1] == -oindex_1.thief) {
       newsta(oindex_1.still, 0, 0, oindex_1.thief, 0);

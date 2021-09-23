@@ -21,7 +21,6 @@ void gdt(void) {
       0, 1, 0, 3, 3, 3, 3, 1, 3, 2, 2, 1, 2, 1, 0, 0, 0, 0, 1
    };
 
-// Format strings
 // static char Format0[] = "   RANGE   CONTENTS"; //F
 // static char Format1[] = " Old=%L2%6XNew= %$"; //F
 // static char Format2[] = " Old= %I6%6XNew= %$"; //F
@@ -248,8 +247,7 @@ L11000:
    }
 // 						!ARGS VALID?
 // write(chan_1.outch, " OB# DESC1 DESC2 DESCO ACT FLAGS1 FLAGS2 FVL TVL SIZE CAPAC ROOM ADV CON  READ"); //F
-   BegExSF(chan_1.outch, "(\2 OB# DESC1 DESC2 DESCO ACT FLAGS1 FLAGS2 FVL TVL  SIZE CAPAC ROOM ADV CON  READ\2)", 0);
-   EndExSF();
+   BegExSF(chan_1.outch, "(\2 OB# DESC1 DESC2 DESCO ACT FLAGS1 FLAGS2 FVL TVL  SIZE CAPAC ROOM ADV CON  READ\2)", 0), EndExSF();
 // 						!COL HDRS
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
@@ -701,7 +699,7 @@ L40000:
       goto L2200;
    }
 // 						!VALID ENTRY?
-// write(chan_1.outch, Format2, switch_(j); //F
+// write(chan_1.outch, Format2, switch_(j)); //F
    BegExSF(chan_1.outch, Format2, 0), DoFio(1, &switch_[j - 1], sizeof switch_[0]), EndExSF();
 // read(chan_1.inpch, "%I6", &switch_(j)); //F
    BegInSF(chan_1.inpch, "(i6)", 0), DoFio(1, &switch_[j - 1], sizeof switch_[0]), EndInSF();

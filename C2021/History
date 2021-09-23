@@ -57,13 +57,17 @@ History
 2021/09/20-21	Aligning the file I/O between the C translations and Fortran original: file open, close and read.
 2021/09/21	Aligning the file I/O between the C translations and Fortran original: file write.
 2021/09/21-22	Reconciling the *.{c,h} files between the 1991 and 2021 translations (the first round).
-		The segment in dsub.{c,f} responsible for producing variations in text output has been marked.
-		This is the reason that ‟Test.in” will produce different results on different runs
-		for the Fortran version (and the 2021 C translation, once a run-time baseline is established).
 		1991: The remnant of the ‟f2c.h” declarations present in ‟extern.h” are specially marked.
 		2021: The include of ‟F2C.h” is (mostly) internalized in ‟extern.h”.
+		The corresponding Makefiles brought closer in line.
 		1991: A missing print statement for ‟cevent” has been added into the debug routine in gdt.c.
 		2021: The pv union has been remade a struct, with the elimination of pv_2 from sverbs.c.
 		1991: Initialized definitions in ‟common.c” have been put back into ‟dmain.c”.
+2021/09/23	Reconciling differences in the order and layout of I/O statements (but not yet their actual coding).
+		Reconciling differences between the order and initializations of declarations between the two.
+		Reconciling the *.{c,h} files between the 1991 and 2021 translations (the second round).
+		The segment in dsub.{c,f} responsible for producing variations in text output has been marked.
+		This is the reason that ‟Test.in” will produce different results on different runs
+		for the Fortran version (and the 2021 C translation, once a run-time baseline is established).
 		1991: Missing comments from the Fortran original have been restored.
 		2021: Extra commnents from the Fortran original and translator have been removed.

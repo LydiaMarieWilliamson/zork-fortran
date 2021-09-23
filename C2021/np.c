@@ -83,7 +83,7 @@ Bool parse(char *inbuf, int inlnt, Bool vbflag/*, size_t inbuf_unit*/) {
    int outbuf[40], outlnt;
 
 #ifdef ALLOW_GDT
-   dflag = (debug_1.prsflg & 1) != 0;
+// dflag = (debug_1.prsflg & 1) != 0; //F
 #endif
 
 // Parameter adjustments
@@ -132,8 +132,8 @@ L350:
    orphan(0, 0, 0, 0, 0);
 // 						!CLEAR ORPHANS.
 #ifdef ALLOW_GDT
-   if (dflag) write(0, *, "parse good");
-   if (dflag) print(" PARSE RESULTS- %L7%3I7", ret_val, prsvec_1.prsa, prsvec_1.prso, prsvec_1.prsi);
+// if (dflag) write(0, *, "parse good"); //F
+// if (dflag) print(" PARSE RESULTS- %L7%3I7", ret_val, prsvec_1.prsa, prsvec_1.prso, prsvec_1.prsi); //F
 #endif
    return ret_val;
 
@@ -142,15 +142,14 @@ L350:
 L100:
    prsvec_1.prscon = 1;
 #ifdef ALLOW_GDT
-   if (dflag) write(0, *, "parse failed");
-   if (dflag) print(" PARSE RESULTS- %L7%3I7", ret_val, prsvec_1.prsa, prsvec_1.prso, prsvec_1.prsi);
+// if (dflag) write(0, *, "parse failed"); //F
+// if (dflag) print(" PARSE RESULTS- %L7%3I7", ret_val, prsvec_1.prsa, prsvec_1.prso, prsvec_1.prsi); //F
 #endif
    return ret_val;
 }
 
 // Set up new orphans
 void orphan(int o1, int o2, int o3, int o4, int o5) {
-
    orphs_1.oflag = o1;
 // 						!SET UP NEW ORPHANS.
    orphs_1.oact = o2;
@@ -186,7 +185,7 @@ static Bool lex(char *inbuf, int inlnt, int *outbuf, int *op, Bool vbflag/*, siz
    }
 
 #ifdef ALLOW_GDT
-   dflag = (debug_1.prsflg & 2) != 0;
+// dflag = (debug_1.prsflg & 2) != 0; //F
 #endif
    ret_val = false;
 // 						!ASSUME LEX FAILS.
@@ -249,7 +248,7 @@ L1000:
 // 						!ANY LAST WORD?
    ret_val = true;
 #ifdef ALLOW_GDT
-   if (dflag) print(" LEX RESULTS- %3I7%/%1X%10I7", cp, *op, prsvec_1.prscon, (outbuf[i - 1], i = 1, *op + 1));
+// if (dflag) print(" LEX RESULTS- %3I7%/%1X%10I7", cp, *op, prsvec_1.prscon, (outbuf[i - 1], i = 1, *op + 1)); //F
 #endif
    return ret_val;
 
@@ -258,7 +257,7 @@ L1000:
 L4000:
    j1 = j - dlimit[i + 1];
 #ifdef ALLOW_GDT
-   if (dflag) print(" LEX- CHAR= %A1%2I7", j, j1, cp);
+// if (dflag) print(" LEX- CHAR= %A1%2I7", j, j1, cp); //F
 #endif
    if (cp >= 6) {
       goto L200;
