@@ -46,14 +46,14 @@ L100:
 
 #ifdef ALLOW_GDT
    for (i = 1; i <= 3; i++) {
-//                                             !CALL ON GDT?
+// 						!CALL ON GDT?
       if (input_1.inbuf[i + prsvec_1.prscon - 2] != gdtstr[i - 1]) goto L200;
 // L150: continue;
    }
    gdt();
-//                                             !YES, INVOKE.
+// 						!YES, INVOKE.
    goto L100;
-//                                             !ONWARD.
+// 						!ONWARD.
 #endif
 
 //L200:

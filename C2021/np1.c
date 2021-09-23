@@ -165,7 +165,7 @@ int sparse(int *lbuf, int llnt, Bool vbflag) {
          goto L450;
       }
 
-   // NOT RECOGNIZABLE
+// NOT RECOGNIZABLE
 
       if (vbflag) {
          rspeak(601);

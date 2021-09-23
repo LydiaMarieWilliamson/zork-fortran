@@ -27,7 +27,7 @@ void princr(Bool full, int rm) {
          goto L200;
       }
 
-   // DO LONG DESCRIPTION OF OBJECT.
+// DO LONG DESCRIPTION OF OBJECT.
 
       k = objcts_1.odesco[i - 1];
 // 						!GET UNTOUCHED.
@@ -64,7 +64,7 @@ void princr(Bool full, int rm) {
          goto L1000;
       }
 
-   // OBJECT IS NOT EMPTY AND IS OPEN OR TRANSPARENT.
+// OBJECT IS NOT EMPTY AND IS OPEN OR TRANSPARENT.
 
       j = 573;
       if (i != oindex_1.tcase) {

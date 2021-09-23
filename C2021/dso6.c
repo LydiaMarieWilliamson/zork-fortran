@@ -10,8 +10,6 @@ Bool ghere(int obj, int rm) {
 // System generated locals
    Bool ret_val;
 
-// Local variables
-
 // GHERE, PAGE 2
 
    ret_val = true;
@@ -146,10 +144,6 @@ L11000:
 int mrhere(int rm) {
 // System generated locals
    int ret_val, i__1;
-
-// Local variables
-
-// ROOMS
 
 // MRHERE, PAGE 2
 

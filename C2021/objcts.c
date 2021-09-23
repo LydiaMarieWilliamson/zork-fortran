@@ -21,8 +21,6 @@ Bool oappli(int ri, int arg) {
    int odi2, odo2;
    int nloc;
 
-// PUZZLE ROOM
-
 // OAPPLI, PAGE 2
 
    if (ri == 0) {

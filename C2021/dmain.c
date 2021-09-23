@@ -162,7 +162,7 @@ struct vindexCB vindex = (struct vindexCB){
 // Main program: dungeo
 int MAIN__(void) {
 #if 0
-   int x;
+   int x; //(@) Not actually used.
 #endif
 
 // DUNGEON, PAGE 3

@@ -78,12 +78,12 @@ int fwim(int f1, int f2, int rm, int con, int adv, Bool nocare) {
          goto L1000;
       }
 
-   // OBJECT IS ON LIST... IS IT A MATCH?
+// OBJECT IS ON LIST... IS IT A MATCH?
 
       if ((objcts_1.oflag1[i - 1] & VisiO) == 0) {
          goto L1000;
       }
-// 	  IF(IAND(not(NOCARE),(IAND(OFLAG1(I),TAKEBT).EQ.0)) .OR.
+//    if ((~(nocare) & (objcts_1.oflag1[i - 1] & TakeO) == 0) || ⋯) {
       if (!(nocare) && (objcts_1.oflag1[i - 1] & TakeO) == 0 || (objcts_1.oflag1[i - 1] & f1) == 0 && (objcts_1.oflag2[i - 1] & f2) == 0) {
          goto L500;
       }

@@ -197,18 +197,14 @@ int blow(int h, int v, int rmk, Bool hflg, int out) {
    int ret_val, i__1, i__2;
 
 // Local variables
-   Bool f;
    int i, j, oa, ra, od, mi, dv, def;
    int tbl;
    int att, res;
    int dweap;
    int pblose;
 
-// PARSE VECTOR
-
-// 	LOGICAL PRSWON
-
 // MISCELLANEOUS VARIABLES
+   Bool f;
 
 // BLOW, PAGE 3
 
@@ -603,10 +599,6 @@ L500:
 static Bool infest(int r) {
 // System generated locals
    Bool ret_val;
-
-// Local variables
-
-// ROOMS
 
    if (!findex_1.endgmf) {
       ret_val = objcts_1.oroom[oindex_1.cyclo - 1] == r || objcts_1.oroom[oindex_1.troll - 1] == r || objcts_1.oroom[oindex_1.thief - 1] == r && hack_1.thfact;

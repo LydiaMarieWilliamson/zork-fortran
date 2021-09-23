@@ -17,8 +17,6 @@ Bool rappl1(int ri) {
    int j;
    int chbt;
 
-// MISCELLANEOUS VARIABLES
-
 // RAPPL1, PAGE 2
 
    ret_val = true;
@@ -746,7 +744,7 @@ L27000:
       objcts_1.oflag1[oindex_1.chali - 1] &= ~TakeO;
    }
 
-//     VANISH EVERYTHING IN ROOM
+// 	VANISH EVERYTHING IN ROOM
 
    j = 0;
 // 						!ASSUME NOTHING TO VANISH.

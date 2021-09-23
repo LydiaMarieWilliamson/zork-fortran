@@ -32,7 +32,7 @@ void encryp(const char *inw, char *outw/*, size_t inw_unit, size_t outw_unit*/) 
       if (inw[j] <= '@') {
          j = 1;
       }
-// 	  UINW(I)=char(ichar(INW(J))-64)
+//    uinw[i - 1] = (char)(inw[j]) - 64)
       uinw[i - 1] = inw[j] - 64;
       ukeyws += ukeyw[i - 1];
       uinws += uinw[i - 1];
@@ -89,10 +89,6 @@ void cpinfo(int rmk, int st) {
 // Local variables
    int i, j, k, l;
    char dgm[1 * 8];
-
-// PUZZLE ROOM
-
-// FUNCTIONS AND LOCAL DATA
 
 // CPINFO, PAGE 2
 

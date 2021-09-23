@@ -22,8 +22,6 @@ Bool nobjs(int ri/*, int arg*/) {
    int av, wl;
    int nxt, odi2, odo2;
 
-// MISCELLANEOUS VARIABLES
-
 // NOBJS, PAGE 2
 
    if (prsvec_1.prso != 0) {

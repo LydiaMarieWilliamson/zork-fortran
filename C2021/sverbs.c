@@ -39,8 +39,6 @@ Bool sverbs(int ri) {
    int odi2, odo2;
    int newk;
 
-// MISCELLANEOUS VARIABLES
-
 // SVERBS, PAGE 2
 
    ret_val = true;
@@ -778,8 +776,12 @@ L26400:
       goto L26550;
    }
 // 						!HE'S TRYING TO LEARN.
+#if 0
 // The following line fixes a nice bug in the UNIX version! /+ TAA +/
-// 	IF(IAND(RFLAG(TSTRS),RSEEN).EQ.0) GO TO 26575
+   if ((rooms_1.rflag[rindex_1.tstrs - 1] & SeenR) == 0) {
+      goto L26575;
+   }
+#endif
    findex_1.spellf = true;
 // 						!TELL HIM.
    play_1.telflg = true;

@@ -36,8 +36,6 @@ void gdt(void) {
    char cmd[2];
    int fmax, smax;
 
-// MISCELLANEOUS VARIABLES
-
 // GDT, PAGE 2
 
 // FIRST, VALIDATE THAT THE CALLER IS AN IMPLEMENTER.

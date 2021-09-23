@@ -21,8 +21,6 @@ Bool rappl2(int ri) {
    int i;
    int j;
 
-// ROOMS
-
 // RAPPL2, PAGE 2
 
    ret_val = true;
@@ -511,8 +509,6 @@ static void ewtell(int rm, int st) {
 // Local variables
    int i;
    Bool m1;
-
-// ROOMS
 
 // EWTELL, PAGE 2
 

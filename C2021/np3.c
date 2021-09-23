@@ -279,8 +279,6 @@ static Bool syneql(int prep, int obj, int sprep, int sfl1, int sfl2) {
 // System generated locals
    Bool ret_val;
 
-// Local variables
-
    if (obj == 0) {
       goto L100;
    }

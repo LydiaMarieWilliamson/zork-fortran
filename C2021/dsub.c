@@ -187,8 +187,6 @@ Bool objact(/*int x*/) {
 // System generated locals
    Bool ret_val;
 
-// Local variables
-
    ret_val = true;
 // 						!ASSUME WINS.
    if (prsvec_1.prsi == 0) {
@@ -236,8 +234,6 @@ void bug(int a, int b) {
 // Called as:
 // 	newsta(Object, String, NewRoom, NewCon, NewAdv);
 void newsta(int o, int r, int rm, int cn, int ad) {
-// Local variables
-
    rspeak(r);
    objcts_1.oroom[o - 1] = rm;
    objcts_1.ocan[o - 1] = cn;
@@ -334,9 +330,14 @@ L100:
       goto L900;
    }
 // 						!NO RECOVERY IN END GAME.
+#if 0
+// always exit for plopbot's purposes
+   goto L1000;
+#else
    if (state_1.deaths >= 2) {
       goto L1000;
    }
+#endif
 // 						!DEAD TWICE? KICK HIM OFF.
    if (!yesno(10, 9, 8)) {
       goto L1100;
@@ -547,9 +548,20 @@ L300:
 // 						!OBJ ONLY?
    i = rooms_1.rdesc2 - play_1.here;
 // 						!ASSUME SHORT DESC.
+// The following comment, in the 1991 C translation, was inherited from a later version of the original Fortran source.
+// 2021/09/22 Darth Spectra
+// The next line means that when you request VERBOSE mode, you only get long room descriptions 20% of the time.
+// I don't either like or understand this, so the mod. ensures VERBOSE works all the time.
+// 1987/10/22 jmh@ukc.ac.uk
+#if 0
+   if (full == 0 && (findex_1.superf || (rooms_1.rflag[play_1.here - 1] & SeenR) != 0 && findex_1.brieff)) {
+      goto L400;
+   }
+#else
    if (full == 0 && (findex_1.superf || (rooms_1.rflag[play_1.here - 1] & SeenR) != 0 && (findex_1.brieff || prob(80, 80)))) {
       goto L400;
    }
+#endif
    i = rooms_1.rdesc1[play_1.here - 1];
 // 						!USE LONG.
    if (i != 0 || ra == 0) {

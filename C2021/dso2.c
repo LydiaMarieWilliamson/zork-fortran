@@ -167,8 +167,6 @@ L80:
 
 // Update winner's score
 void scrupd(int n) {
-// Local variables
-
    if (findex_1.endgmf) {
       goto L100;
    }

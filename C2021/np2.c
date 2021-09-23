@@ -19,8 +19,6 @@ int getobj(int oidx, int aidx, int spcobj) {
    int nobj;
    Bool chomp;
 
-// MISCELLANEOUS VARIABLES
-
 // GETOBJ, PAGE 2
 
 #ifdef ALLOW_GDT

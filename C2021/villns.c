@@ -296,8 +296,6 @@ Bool thiefp(/*int arg*/) {
 // Local variables
    int i, j;
 
-// ROOMS
-
 // THIEFP, PAGE 2
 
    ret_val = true;

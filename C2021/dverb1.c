@@ -100,8 +100,6 @@ Bool drop(/*Bool z*/) {
    Bool f;
    int i, x;
 
-// ROOMS
-
 // DROP, PAGE 2
 
    ret_val = true;
@@ -186,8 +184,6 @@ Bool put(/*Bool flg*/) {
 // Local variables
    int j, x;
    int svi, svo;
-
-// MISCELLANEOUS VARIABLES
 
 // PUT, PAGE 2
 

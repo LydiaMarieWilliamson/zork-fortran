@@ -9,8 +9,6 @@ static int cxappl(int);
 
 // Save game state
 void savegm(void) {
-// MISCELLANEOUS VARIABLES
-
    prsvec_1.prswon = false;
 // 						!DISABLE GAME.
 // Note: save file format is different for PDP versus non-PDP versions
@@ -82,8 +80,6 @@ L100:
 
 // Restore game state
 void rstrgm(void) {
-// MISCELLANEOUS VARIABLES
-
    prsvec_1.prswon = false;
 // 						!DISABLE GAME.
 // Note: save file format is different for PDP versus non-PDP versions

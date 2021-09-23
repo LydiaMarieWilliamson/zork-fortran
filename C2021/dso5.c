@@ -23,8 +23,6 @@ Bool opncls(int obj, int so, int sc) {
    int i__1;
    Bool ret_val;
 
-// Local variables
-
    ret_val = true;
 // 						!ASSUME WINS.
    if (prsvec_1.prsa == vindex_1.closew) {
@@ -107,7 +105,7 @@ Bool lit(int rm) {
          goto L1000;
       }
 
-   // OBJ IS VISIBLE AND OPEN OR TRANSPARENT
+// OBJ IS VISIBLE AND OPEN OR TRANSPARENT
 
       i__2 = objcts_1.olnt;
       for (j = 1; j <= i__2; ++j) {

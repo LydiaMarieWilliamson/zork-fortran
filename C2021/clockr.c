@@ -762,8 +762,6 @@ L24100:
 
 // Light interrupt processor
 static void litint(int obj, int *ctr, int cev, const int *ticks, int tickln) {
-// Local variables
-
 // Parameter adjustments
    --ticks;
 

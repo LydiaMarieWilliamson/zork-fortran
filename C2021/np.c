@@ -4,6 +4,9 @@
 // Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 #include "extern.h"
 #include "common.h"
+#if 0
+#include <stdlib.h> // For system(); // C99 is assumed.
+#endif
 
 static Bool lex(char *, int, int *, int *, Bool/*, size_t*/);
 
@@ -13,6 +16,9 @@ void rdline(char *buffer, int length, int who, size_t buffer_unit) {
    int i__1;
 
 // Local variables
+#if 0
+   static char sysbuf[1 * 78];
+#endif
    int i;
 
 // Parameter adjustments
@@ -43,18 +49,21 @@ L90:
    goto L5;
 // 						!TRY AGAIN.
 
+L250:
+#if 0
 // 	check for shell escape here before things are
 // 	converted to upper case
 
 // NO SHELL ESCAPE /+TAA+/
-L250:
-// 250	if (buffer(1) .ne. '!') go to 300
-// 	do 275 j=2,length
-// 	  sysbuf(j-1:j-1) = buffer(j)
-// 275	continue
-// 	sysbuf(j:j) = char(0)
-// 	call system(sysbuf)
-// 	go to 5
+   if (buffer[0] != '!') goto L300;
+   for (j = 2; j <= length; j++) {
+      sysbuf[j - 2] = buffer[j - 1];
+// L275:
+   }
+   sysbuf[j - 1] = '\0';
+   system(sysbuf);
+   goto L5;
+#endif
 // CONVERT TO UPPER CASE
 //L300:
    i__1 = length;

@@ -18,8 +18,6 @@ Bool init(void/*int x*/) {
    int i, j, k;
    int mmax, omax, rmax, vmax, amax, cmax, fmax, smax;
 
-// MISCELLANEOUS VARIABLES
-
 // INIT, PAGE 2
 
 // FIRST CHECK FOR PROTECTION VIOLATION

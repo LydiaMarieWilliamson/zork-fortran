@@ -16,7 +16,7 @@ Addenda (2021/09/17-2021/09/18):
 	∙	(3RMIN, 21175): Mismatched value (it should be 21174).
 
 	The first two of these inconsistencies were corrected by the 1991 translation to C,
-	and have been repaired here - both in the Fortran original and the new C translation.
+	and have been repaired here - both in the Fortran original and the new C translatin.
 	The ‟1RS” in (1RS, 29560) was already changed to ‟2RRS”.
 	This involved words starting in ‟HOURS⋯”, but did not affect them, since the mistake was in the comment, not the code.
 	The 256656 in (3RPAP, 256656) was already changed to 25656, is for words beginning in ‟PAPER⋯” and affects the code.
