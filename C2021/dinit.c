@@ -162,7 +162,7 @@ L10000:
    findex.lcell = 1;
    findex.pnumb = 1;
    findex.mdir = 270;
-   findex.mloc = rindex_.mrb;
+   findex.mloc = MrBrX;
    findex.cphere = 10;
 
    i__1 = r2max;
@@ -280,7 +280,7 @@ L10000:
 // read(1, "%I6", &i, &j, &k); //F
    BegInSF(1, "(i6)", 0), DoFio(1, &i, sizeof i), DoFio(1, &j, sizeof j), DoFio(1, &k, sizeof k), EndInSF();
 // 						!GET VERSION.
-   if (i != vers.vmaj || j != vers.vmin) {
+   if (i != vmaj || j != vmin) {
       goto L1925;
    }
 #if 0
@@ -385,11 +385,11 @@ L1025:
    i__1 = time_.shour * 3600 + time_.smin * 60 + time_.ssec;
    inirnd(i__1);
 
-   play.winner = aindex.player;
-   last.lastit = advs.aobj[aindex.player - 1];
+   play.winner = PlayerAX;
+   last.lastit = advs.aobj[PlayerAX - 1];
    play.here = advs.aroom[play.winner - 1];
-   hack.thfpos = objcts.oroom[oindex.thief - 1];
-   state.bloc = objcts.oroom[oindex.ballo - 1];
+   hack.thfpos = objcts.oroom[ThiefOX - 1];
+   state.bloc = objcts.oroom[BalloOX - 1];
    ret_val = true;
 
 #ifdef ALLOW_GDT
@@ -422,11 +422,11 @@ L1925:
 // print(
 //    " \"dindx.dat\" is version %I1.%I1%A1.%/" //F
 //    "  I require version %I1.%I1%A1.", //F
-//    i, j, k, vers.vmaj, vers.vmin, vers.vedit //F
+//    i, j, k, vmaj, vmin, vedit //F
 // ); //F
    BegExSF(6, "(\2 \"dindx.dat\" is version \2,i1,\2.\2,i1,a1,\2.\2/\2 I require version \2,i1,\2.\2,i1,a1,\2.\2)", 0);
    DoFio(1, &i, sizeof i), DoFio(1, &j, sizeof j), DoFio(1, &k, sizeof k);
-{  int Edit = vers.vedit; DoFio(1, &vers.vmaj, sizeof vers.vmaj), DoFio(1, &vers.vmin, sizeof vers.vmin), DoFio(1, &Edit, sizeof Edit); }
+{  int Edit = vedit; DoFio(1, &vmaj, sizeof vmaj), DoFio(1, &vmin, sizeof vmin), DoFio(1, &Edit, sizeof Edit); }
    EndExSF();
    goto L1975;
 L1950:

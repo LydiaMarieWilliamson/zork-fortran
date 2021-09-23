@@ -475,7 +475,7 @@ L22000:
    hack.thfflg = false;
 // 						!DISABLE ROBBER.
    hack.thfact = false;
-   newsta(oindex.thief, 0, 0, 0, 0);
+   newsta(ThiefOX, 0, 0, 0, 0);
 // 						!VANISH THIEF.
 // write(chan.outch, " No robber."); //F
    BegExSF(chan.outch, "(\2 No robber.\2)", 0), EndExSF();
@@ -485,7 +485,7 @@ L22000:
 
 L23000:
    findex.trollf = true;
-   newsta(oindex.troll, 0, 0, 0, 0);
+   newsta(TrollOX, 0, 0, 0, 0);
 // write(chan.outch, " No troll."); //F
    BegExSF(chan.outch, "(\2 No troll.\2)", 0), EndExSF();
    goto L2000;
@@ -494,7 +494,7 @@ L23000:
 
 L24000:
    findex.cyclof = true;
-   newsta(oindex.cyclo, 0, 0, 0, 0);
+   newsta(CycloOX, 0, 0, 0, 0);
 // write(chan.outch, " No cyclops."); //F
    BegExSF(chan.outch, "(\2 No cyclops.\2)", 0), EndExSF();
    goto L2000;
@@ -519,7 +519,7 @@ L26000:
 
 L27000:
    findex.trollf = false;
-   newsta(oindex.troll, 0, rindex_.mtrol, 0, 0);
+   newsta(TrollOX, 0, MTrolRX, 0, 0);
 // write(chan.outch, " Restored troll."); //F
    BegExSF(chan.outch, "(\2 Restored troll.\2)", 0), EndExSF();
    goto L2000;
@@ -529,7 +529,7 @@ L27000:
 L28000:
    findex.cyclof = false;
    findex.magicf = false;
-   newsta(oindex.cyclo, 0, rindex_.mcycl, 0, 0);
+   newsta(CycloOX, 0, MCyclRX, 0, 0);
 // write(chan.outch, " Restored cyclops."); //F
    BegExSF(chan.outch, "(\2 Restored cyclops.\2)", 0), EndExSF();
    goto L2000;

@@ -185,7 +185,7 @@ int sparse(int *lbuf, int llnt, Bool vbflag) {
          goto L6000;
       }
 // 						!IF LE, COULDNT.
-      if (obj != oindex.itobj) {
+      if (obj != ItObjOX) {
          goto L650;
       }
 // 						!"IT"?
@@ -222,7 +222,7 @@ int sparse(int *lbuf, int llnt, Bool vbflag) {
 // 2000--	DIRECTION
 
    L2000:
-      prsvec.prsa = vindex.walkw;
+      prsvec.prsa = WalkW;
       prsvec.prso = dvoc[j + 1];
       ret_val = 1;
 #ifdef ALLOW_GDT
