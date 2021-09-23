@@ -20,7 +20,7 @@ Bool nobjs(int ri/*, int arg*/) {
    int i;
    int j;
    int av, wl;
-   int nxt, odi2, odo2;
+   int nxt, odi2 = 0, odo2 = 0;
 
 // NOBJS, PAGE 2
 

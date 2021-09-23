@@ -20,7 +20,7 @@ Bool vappli(int ri) {
    Bool f;
    int i, j,/* x,*/ av;
    int rmk;
-   int odi2, odo2;
+   int odi2 = 0, odo2 = 0;
 
 // VAPPLI, PAGE 2
 

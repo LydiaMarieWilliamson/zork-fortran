@@ -18,7 +18,7 @@ Bool oappli(int ri, int arg) {
    Bool f;
    int flobts, i;
    int j,/* x,*/ av, io, ir, iz;
-   int odi2, odo2;
+   int odi2 = 0, odo2 = 0;
    int nloc;
 
 // OAPPLI, PAGE 2

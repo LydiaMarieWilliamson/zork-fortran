@@ -36,7 +36,7 @@ Bool sverbs(int ri) {
    char ch[1 * 6];
    int cp, wp;
    char pp1[1 * 6], pp2[1 * 6];
-   int odi2, odo2;
+   int odi2 = 0, odo2 = 0;
    int newk;
 
 // SVERBS, PAGE 2

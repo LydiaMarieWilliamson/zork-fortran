@@ -17,7 +17,7 @@ Bool sobjs(int ri, int arg) {
    int i;
    int mroom;
    int av;
-   int odi2, odo2;
+   int odi2 = 0, odo2 = 0;
 
 // SOBJS, PAGE 2
 

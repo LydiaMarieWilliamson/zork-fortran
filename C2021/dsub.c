@@ -454,7 +454,7 @@ L1100:
 // Get actor associated with object
 int oactor(int obj) {
 // System generated locals
-   int ret_val, i__1;
+   int ret_val = 1, i__1;
 
 // Local variables
    int i;

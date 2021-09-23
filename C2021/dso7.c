@@ -8,7 +8,7 @@
 // Encrypt password
 void encryp(const char *inw, char *outw/*, size_t inw_unit, size_t outw_unit*/) {
 // Initialized data
-   static const char keyw[1 * 6] = "E" "C" "O" "R" "M" "S";
+   const char keyw[1 * 6] = "E" "C" "O" "R" "M" "S";
 
    int i, j, uinw[6], usum;
    char ukeyw[1 * 6];
@@ -81,14 +81,14 @@ void cpgoto(int st) {
 
 // Describe puzzle room
 void cpinfo(int rmk, int st) {
+// Local variables
+   int i, j, k, l;
+   char dgm[1 * 8];
+
 // Initialized data
    static const int dgmoft[8] = { -9, -8, -7, -1, 1, 7, 8, 9 };
    static const char pict[1 * 5] = "S" "S" "S" " " "M";
    static const char qmk[1] = "?";
-
-// Local variables
-   int i, j, k, l;
-   char dgm[1 * 8];
 
 // CPINFO, PAGE 2
 

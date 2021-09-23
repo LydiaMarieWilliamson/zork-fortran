@@ -182,7 +182,10 @@ Bool put(/*Bool flg*/) {
    Bool ret_val;
 
 // Local variables
-   int j, x;
+   int j;
+#if 0
+   int x; //(@) No longer used.
+#endif
    int svi, svo;
 
 // PUT, PAGE 2

@@ -10,21 +10,20 @@ static Bool xvehic(int);
 
 // Main command loop for dungeon
 void game_(void) {
-// Initialized data
-   static const char secho[1 * 4] = "E" "C" "H" "O";
-
-#ifdef ALLOW_GDT
-// Initialized Data
-   static const char gdtstr[1 * 3] = "G" "D" "T";
-#endif
-// GAME, PAGE 2
-
 // System generated locals
    int i__1;
 
 // Local variables
    Bool f;
    int i, j;
+
+// Initialized data
+   static const char secho[1 * 4] = "E" "C" "H" "O";
+#ifdef ALLOW_GDT
+// Initialized Data
+   static const char gdtstr[1 * 3] = "G" "D" "T";
+#endif
+// GAME, PAGE 2
 
 // START UP, DESCRIBE CURRENT LOCATION.
 

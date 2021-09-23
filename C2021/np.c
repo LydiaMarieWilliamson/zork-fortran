@@ -88,7 +88,9 @@ Bool parse(char *inbuf, int inlnt, Bool vbflag/*, size_t inbuf_unit*/) {
    Bool ret_val;
 
 // Local variables
-   int x;
+#if 0
+   int x; //(@) Actually unused.
+#endif
    int outbuf[40], outlnt;
 
 #ifdef ALLOW_GDT
