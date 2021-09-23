@@ -73,7 +73,7 @@ int sparse(int *lbuf, int llnt, Bool vbflag) {
 
       i__2 = buzlnt;
       for (j = 1; j <= i__2; j += 2) {
-         if (lbuf1 == buzvoc_1.bvoc[j - 1] && lbuf2 == buzvoc_1.bvoc[j]) {
+         if (lbuf1 == bvoc[j - 1] && lbuf2 == bvoc[j]) {
             goto L1000;
          }
    // L50:
@@ -112,7 +112,7 @@ int sparse(int *lbuf, int llnt, Bool vbflag) {
       i__2 = dirlnt;
       for (j = 1; j <= i__2; j += 3) {
 // 						!THEN CHK FOR DIR.
-         if (lbuf1 == dirvoc_1.dvoc[j - 1] && lbuf2 == dirvoc_1.dvoc[j]) {
+         if (lbuf1 == dvoc[j - 1] && lbuf2 == dvoc[j]) {
             goto L2000;
          }
    // L100:
@@ -124,7 +124,7 @@ int sparse(int *lbuf, int llnt, Bool vbflag) {
       i__2 = prplnt;
       for (j = 1; j <= i__2; j += 3) {
 // 						!LOOK FOR PREPOSITION.
-         if (lbuf1 == prpvoc_1.pvoc[j - 1] && lbuf2 == prpvoc_1.pvoc[j]) {
+         if (lbuf1 == pvoc[j - 1] && lbuf2 == pvoc[j]) {
             goto L4000;
          }
    // L250:
@@ -223,7 +223,7 @@ int sparse(int *lbuf, int llnt, Bool vbflag) {
 
    L2000:
       prsvec_1.prsa = vindex_1.walkw;
-      prsvec_1.prso = dirvoc_1.dvoc[j + 1];
+      prsvec_1.prso = dvoc[j + 1];
       ret_val = 1;
 #ifdef ALLOW_GDT
 //    if (dflag) print(" SPARSE- DIR AT %I6", j); //F
@@ -247,7 +247,7 @@ int sparse(int *lbuf, int llnt, Bool vbflag) {
       if (prep != 0) {
          goto L4500;
       }
-      prep = prpvoc_1.pvoc[j + 1];
+      prep = pvoc[j + 1];
       adj = 0;
 #ifdef ALLOW_GDT
 //    if (dflag) print(" SPARSE- PREP AT %I6", j); //F

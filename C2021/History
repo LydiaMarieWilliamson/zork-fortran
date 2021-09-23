@@ -76,3 +76,5 @@ History
 		The Fortran original split the large arrays {a,o,v}voc[] into tables bundled into common blocks,
 		probably to overcome limitations on table sizes.
 		The 1991 C translation reintegrated the tables and translated then as such, instead of as common blocks.
+2021/09/23	Lifting the common blocks {dir,prp,buz}voc, respectively, to constant integer arrays {d,p,b}voc[].
+		This is a bona fide upgrade: it goes beyond the Fortran original and 1991 C translation.

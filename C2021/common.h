@@ -114,23 +114,14 @@ enum objflgCB {
 
 // vocab.h:
 // Vocabularies
-// common /buzvoc/
-extern struct buzvocCB {
-   int bvoc[20];
-} buzvoc;
-#define buzvoc_1 buzvoc
+// common /buzvoc/ int bvoc[20];
+extern const int bvoc[];
 
-// common /prpvoc/
-extern struct prpvocCB {
-   int pvoc[45];
-} prpvoc;
-#define prpvoc_1 prpvoc
+// common /prpvoc/ int pvoc[45];
+extern const int pvoc[];
 
-// common /dirvoc/
-extern struct dirvocCB {
-   int dvoc[75];
-} dirvoc;
-#define dirvoc_1 dirvoc
+// common /dirvoc/ int dvoc[75];
+extern const int dvoc[];
 
 // common /adjvoc/ int avoc1[184], avoc2[114], avoc3[106], avocnd;
 // int avoc[450]; // equivalence (avoc[1], adjvoc_1.avoc1[1]);
