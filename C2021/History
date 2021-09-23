@@ -71,3 +71,4 @@ History
 		for the Fortran version (and the 2021 C translation, once a run-time baseline is established).
 		1991: Missing comments from the Fortran original have been restored.
 		2021: Extra commnents from the Fortran original and translator have been removed.
+		2021: Removed a bug in rooms.{c,f} arising from ‟TCHBT” being mistyped as ‟CHBT” in rooms.f and mistranslated.

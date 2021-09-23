@@ -15,7 +15,6 @@ Bool rappl1(int ri) {
    Bool f;
    int i;
    int j;
-   int chbt;
 
 // RAPPL1, PAGE 2
 
@@ -218,7 +217,7 @@ L4500:
    if ((objcts_1.oflag2[oindex_1.door - 1] & OpenO + TChO) != OpenO) {
       return ret_val;
    }
-   objcts_1.oflag2[oindex_1.door - 1] = objcts_1.oflag2[oindex_1.door - 1] & chbt & ~OpenO;
+   objcts_1.oflag2[oindex_1.door - 1] = objcts_1.oflag2[oindex_1.door - 1] & TChO & ~OpenO;
    rspeak(22);
 // 						!SLAM AND BOLT DOOR.
    return ret_val;
