@@ -25,15 +25,14 @@ C						!PROMPT FOR GAME.
 200	CONTINUE
 	GO TO 5
 C						!TRY AGAIN.
-
+250	CONTINUE
 C
 C	check for shell escape here before things are
 C	converted to upper case
 C
 C NO SHELL ESCAPE /*TAA*/
-
-250	CONTINUE
-C250	if (buffer(1) .ne. '!') go to 300
+C
+C   	if (buffer(1) .ne. '!') go to 300
 C	do 275 j=2,length
 C	  sysbuf(j-1:j-1) = buffer(j)
 C275	continue
