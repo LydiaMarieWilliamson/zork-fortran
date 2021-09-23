@@ -24,7 +24,7 @@ void savegm(void) {
 
 // write(1, vers_1.vmaj, vers_1.vmin, vers_1.vedit); //F
    BegExSU(1, NULL, 0);
-   PutVar(vers_1.vmaj), PutVar(vers_1.vmin), PutVar(vers_1.vedit);
+{  int Edit = vers_1.vedit; PutVar(vers_1.vmaj), PutVar(vers_1.vmin), PutVar(Edit); }
    EndExSU();
 // write(1, //F
 //    play_1.winner, play_1.here, hack_1.thfpos, play_1.telflg, hack_1.thfflg, hack_1.thfact, //F

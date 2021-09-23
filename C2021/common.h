@@ -31,7 +31,8 @@ extern struct randomCB {
 
 // common /vers/
 extern struct versCB {
-   int vmaj, vmin, vedit;
+   int vmaj, vmin;
+   char vedit;
 } vers;
 #define vers_1 vers
 

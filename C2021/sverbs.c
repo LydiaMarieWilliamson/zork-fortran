@@ -244,7 +244,7 @@ L5000:
    BegExSF(chan_1.outch, "(\2 V\2,i1,\2.\2,i2,a1)", 0);
    DoFio(1, &vers_1.vmaj, sizeof vers_1.vmaj);
    DoFio(1, &vers_1.vmin, sizeof vers_1.vmin);
-{  char Edit = vers_1.vedit; DoFio(1, &Edit, sizeof Edit); }
+   DoFio(1, &vers_1.vedit, sizeof vers_1.vedit);
    EndExSF();
    play_1.telflg = true;
    return ret_val;
