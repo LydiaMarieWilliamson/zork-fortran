@@ -132,29 +132,17 @@ extern struct dirvocCB {
 } dirvoc;
 #define dirvoc_1 dirvoc
 
-// common /adjvoc/
-extern struct adjvocCB {
-   int avoc1[184], avoc2[114], avoc3[106], avocnd;
-} adjvoc;
-#define adjvoc_1 adjvoc
+// common /adjvoc/ int avoc1[184], avoc2[114], avoc3[106], avocnd;
 // int avoc[450]; // equivalence (avoc[1], adjvoc_1.avoc1[1]);
-#define avoc ((int *)&adjvoc_1)
+extern const int avoc[];
 
-// common /vrbvoc/
-extern struct vrbvocCB {
-   int vvoc1[92], vvoc1a[108], vvoc1b[38], vvoc2[104], vvoc3[136], vvoc4[116], vvoc5[134], vvoc6[117], vvoc7[89], vvocnd;
-} vrbvoc;
-#define vrbvoc_1 vrbvoc
+// common /vrbvoc/ int vvoc1[92], vvoc1a[108], vvoc1b[38], vvoc2[104], vvoc3[136], vvoc4[116], vvoc5[134], vvoc6[117], vvoc7[89], vvocnd;
 // int vvoc[950]; // equivalence (vvoc[1], vrbvoc_1.vvoc1[1]);
-#define vvoc ((int *)&vrbvoc_1)
+extern const int vvoc[];
 
-// common /objvoc/
-extern struct objvocCB {
-   int ovoc1[159], ovoc2[144], ovoc3[150], ovoc4[128], ovoc5[111], ovoc6[104], ovoc6a[97], ovoc7[127], ovocnd;
-} objvoc;
-#define objvoc_1 objvoc
+// common /objvoc/ int ovoc1[159], ovoc2[144], ovoc3[150], ovoc4[128], ovoc5[111], ovoc6[104], ovoc6a[97], ovoc7[127], ovocnd;
 // int ovoc[1050]; // equivalence (ovoc[1], objvoc_1.ovoc1[1]);
-#define ovoc ((int *)&objvoc_1)
+extern const int ovoc[];
 
 // gamestat.h:
 // Game State
