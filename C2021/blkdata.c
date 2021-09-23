@@ -5,21 +5,27 @@
 #include "F2C.h"
 #include "common.h"
 
+// The parsing structures used by dungeon.
+// These structures are only used by the parsing routines.
+// They are in their own file since they are so large.
+
 // This routine details on bit 2 of prsflg
 
 // vocab.h:
 // Buzz words: ignored in syntactic processing
+// common /buzvoc/
 struct buzvocCB buzvoc = (struct buzvocCB){
-   bvoc: {
 //   The following data statement was converted from:
 //	DATA BVOC/3RAND,0,2RBY,0,2RIS,0,1RA,0,
 //     & 2RAN,0,3RTHE,0,3RRUN,0,2RGO,0,3RPRO,3RCEE,0,0/
+   bvoc: {
       2164, 0, 4200, 0, 15160, 0, 1600, 0,
       2160, 0, 32325, 0, 29654, 0, 11800, 0, 26335, 5005, 0, 0
    }
 };
 
 // Prepositions: maps prepositions to indices
+// common /provoc/
 struct prpvocCB prpvoc = (struct prpvocCB){
 //   The following data statement was converted from:
 //	DATA PVOC/3ROVE,1RR,1,3RWIT,1RH,2,3RUSI,2RNG,2,3RTHR,3ROUG,2,
@@ -35,6 +41,7 @@ struct prpvocCB prpvoc = (struct prpvocCB){
 };
 
 // Directions: maps directions to indices
+// common /dirvoc/
 struct dirvocCB dirvoc = (struct dirvocCB){
 //   The following data statement was converted from:
 //	DATA DVOC/1RN,0,"2000,3RNOR,2RTH,"2000,1RS,0,"12000,
@@ -67,6 +74,9 @@ struct dirvocCB dirvoc = (struct dirvocCB){
 // Each entry is variable length and consists of a two word adjective in radix-50 followed by one or more object numbers.
 // Note that adjectives can be distinguished from objects as follows:
 // all adjectives are ≥ 1ra (1600), while all objects are ≤ olnt (255 max).
+
+// common /adjvoc/ int avoc1[184], avoc2[114], avoc3[106], avocnd;
+// int avoc[450]; // equivalence (avoc[1], adjvoc_1.avoc1[1]);
 struct adjvocCB adjvoc = (struct adjvocCB){
 //   The data statement below was converted from:
 //	DATA AVOC1/3RBRO,2RWN,1,81,3RELO,3RNGA,1,3RHOT,0,3,3RPEP,3RPER,3,
@@ -209,6 +219,8 @@ struct adjvocCB adjvoc = (struct adjvocCB){
 
 // SPARSE, PAGE 5
 
+// common /vrbvoc/ int vvoc1[92], vvoc1a[108], vvoc1b[38], vvoc2[104], vvoc3[136], vvoc4[116], vvoc5[134], vvoc6[117], vvoc7[89], vvocnd;
+// int vvoc[950]; // equivalence (vvoc[1], vrbvoc_1.vvoc1[1]);
 struct vrbvocCB vrbvoc = (struct vrbvocCB){
 //   The following data statement was originally:
 //	DATA VVOC1/3RBRI,2REF,1,70,3RVER,3RBOS,1,71,
@@ -472,6 +484,8 @@ struct vrbvocCB vrbvoc = (struct vrbvocCB){
 
 // Objects: maps objects to object indices
 // Same format as avoc.
+// common /objvoc/ ovoc1[159], ovoc2[144], ovoc3[150], ovoc4[128], ovoc5[111], ovoc6[104], ovoc6a[97], ovoc7[127], ovocnd;
+// int ovoc[1050]; // equivalence (ovoc[1], objvoc_1.ovoc1[1]);
 struct objvocCB objvoc = (struct objvocCB){
 //   The following data statement was originally:
 //	DATA OVOC1/3RBAG,0,1,25,100,3RSAC,1RK,1,3RGAR,3RLIC,2,

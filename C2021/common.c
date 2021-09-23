@@ -5,21 +5,20 @@
 #include "F2C.h"
 #include "common.h"
 
-#if 0
+// The common block initializations and variable definitions used in dungeon
+
+// These are the definitions of the common blocks corresponding to the ‟data” statements in the orignal Fortran source,
+// as well as the definition of the common block variables.
+
 // Already defined in blkdata.c:
 //	buzvoc, prpvoc, dirvoc, adjvoc, vrbvoc, objvoc
 // Already defined in dmain.c:
-//	screen, puzzle, vers, bats, hyper, rindex,
+//	screen, puzzle, star, vers, bats, hyper, rindex,
 //	xpars, xsrch, oindex, cindex, aflags, aindex, vindex
 // Already redefined and declared as enum types in common.h:
 //	rflag, oflags, synflg, objflg
-#endif
 
 // Unlisted:
-// common /star/
-// int mbase, strbit;
-struct starCB star;
-
 // common /time/
 // int pltime, shour, smin, ssec;
 struct timeCB time_;
@@ -45,8 +44,7 @@ struct lastCB last;
 
 // common /pv/
 // int act, o1, o2, p1, p2;
-// int act, o1, o2; char p1[6], p2[6]; // In sverbs.c, only.
-union pvCB pv;
+struct pvCB pv;
 
 // common /syntax/
 // int vflag, dobj, dfl1, dfl2, dfw1, dfw2, iobj, ifl1, ifl2, ifw1, ifw2;

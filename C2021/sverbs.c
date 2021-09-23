@@ -36,6 +36,7 @@ Bool sverbs(int ri) {
    int l;
    char ch[1 * 6];
    int cp, wp;
+   char pp1[1 * 6], pp2[1 * 6];
    int odi2, odo2;
    int newk;
 
@@ -713,8 +714,8 @@ L25000:
 L26000:
    for (i = 1; i <= 6; ++i) {
 // 						!SET UP PARSE.
-      pv_2.p1[i - 1] = ' ';
-      pv_2.p2[i - 1] = ' ';
+      pp1[i - 1] = ' ';
+      pp2[i - 1] = ' ';
 // L26100:
    }
    wp = 1;
@@ -742,11 +743,11 @@ L26000:
       goto L26200;
    L26150:
       if (wp == 1) {
-         pv_2.p1[cp - 1] = input_1.inbuf[i - 1];
+         pp1[cp - 1] = input_1.inbuf[i - 1];
       }
 // 						!STUFF INTO HOLDER.
       if (wp == 2) {
-         pv_2.p2[cp - 1] = input_1.inbuf[i - 1];
+         pp2[cp - 1] = input_1.inbuf[i - 1];
       }
 // Computing MIN
       i__2 = cp + 1;
@@ -758,7 +759,7 @@ L26000:
 L26300:
    prsvec_1.prscon = 1;
 // 						!KILL REST OF LINE.
-   if (pv_2.p1[0] != ' ') {
+   if (pp1[0] != ' ') {
       goto L26400;
    }
 // 						!ANY INPUT?
@@ -767,9 +768,9 @@ L26300:
    return ret_val;
 
 L26400:
-   encryp(pv_2.p1, ch/*, sizeof pv_2.p1[0], sizeof ch[0]*/);
+   encryp(pp1, ch/*, sizeof pp1[0], sizeof ch[0]*/);
 // 						!COMPUTE RESPONSE.
-   if (pv_2.p2[0] != ' ') {
+   if (pp2[0] != ' ') {
       goto L26600;
    }
 // 						!TWO PHRASES?
@@ -783,9 +784,9 @@ L26400:
    findex_1.spellf = true;
 // 						!TELL HIM.
    play_1.telflg = true;
-// write(chan_1.outch," A hollow voice replies:  \"%6A1%1X%6A1\".", pv_2.p1, ch); //F
+// write(chan_1.outch," A hollow voice replies:  \"%6A1%1X%6A1\".", pp1, ch); //F
    BegExSF(chan_1.outch, "(\2 A hollow voice replies:  \"\2,6a1,1x,6a1,\2\".\2)", 0);
-   DoFio(6, pv_2.p1, sizeof pv_2.p1[0]), DoFio(6, ch, sizeof ch[0]);
+   DoFio(6, pp1, sizeof pp1[0]), DoFio(6, ch, sizeof ch[0]);
    EndExSF();
 
    return ret_val;
@@ -805,7 +806,7 @@ L26600:
       goto L26800;
    }
    for (i = 1; i <= 6; ++i) {
-      if (pv_2.p2[i - 1] != ch[i - 1]) {
+      if (pp2[i - 1] != ch[i - 1]) {
          goto L26575;
       }
 // 						!WRONG.

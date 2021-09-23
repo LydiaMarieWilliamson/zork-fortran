@@ -1,3 +1,15 @@
+// Copyright (c) 1980, InfoCom Computers and Communications, Cambridge MA 02142
+// All rights reserved, commercial usage strictly prohibited.
+// Written by R. M. Supnik.
+// Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
+
+// The common block structures and variable declarations used in dungeon.
+
+// These are the structures which encapsulate the variables contained in common blocks, in the original Fortran source,
+// as well as #defines that which corresponds to the aliasing given by the ‟equivalence” statements in the source.
+// Everything is collated together because it was never really modular in the first place:
+// most includes were included in most Fortran files.
+
 // Unlisted:
 // common /star/
 extern struct starCB {
@@ -68,23 +80,16 @@ extern struct lastCB {
 #define last_1 last
 
 // common /pv/
-extern union pvCB {
-   struct {
-      int act, o1, o2, p1, p2;
-   } _1;
-   struct { // Used only in sverbs.c, and only for p1[] and p2[].
-      int act, o1, o2;
-      char p1[6], p2[6];
-   } _2;
+extern struct pvCB {
+   int act, o1, o2, p1, p2;
 } pv;
-#define pv_1 (pv._1)
+#define pv_1 pv
 // int objvec[2]; // equivalence (objvec[1], pv_1.o1);
 #define objvec ((int *)&pv_1 + 1)
 // int prpvec[2]; // equivalence (prpvec[1], pv_1.p1);
 #define prpvec ((int *)&pv_1 + 3)
 // int pvec[5]; // equivalence (pvec, pv_1.act);
 #define pvec ((int *)&pv_1)
-#define pv_2 (pv._2)
 
 // common /syntax/
 extern struct syntaxCB {
@@ -95,11 +100,13 @@ extern struct syntaxCB {
 // int syn[11]; // equivalence (syntax_1.vflag, syn);
 #define syn ((int *)&syntax_1)
 
+// Syntax flags
 // common /synflg/
 enum synflgCB {
    DirS = 0x4000, IndS = 0x2000, StdS = 0x1000, FlipS = 0x800, DrivS = 0x400, VMaskS = 0x1ff
 };
 
+// Object flags
 // common /objflg/
 enum objflgCB {
    AbitV = 0x4000, RbitV = 0x2000, TbitV = 0x1000, CbitV = 0x800, EbitV = 0x400, FbitV = 0x200, PMaskV = 0x1ff
@@ -169,6 +176,7 @@ extern struct roomsCB {
 #define rrand ((int *)&rooms_1 + 602)
 
 // rflag.h:
+// Room flags
 // common /rflag/
 enum rflagCB {
    SeenR = 0x8000, LightR = 0x4000, LandR = 0x2000, WaterR = 0x1000,
@@ -206,6 +214,7 @@ extern struct oroom2CB {
 #define oroom2_1 oroom2_
 
 // oflags.h:
+// Object flags
 // common /oflags/
 enum oflagsCB {
    VisiO = 0x8000, ReadO = 0x4000, TakeO = 0x2000, DoorO = 0x1000,
@@ -266,7 +275,7 @@ extern struct aindexCB {
 // Verbs
 // common /vindex/
 extern struct vindexCB {
-   int cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, meltw, readw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw, openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw, clmbuw, clmbdw, trntow;
+   int cintw, deadxw, frstqw, inxw, outxw, walkiw, fightw, foow, readw, meltw, inflaw, deflaw, alarmw, exorcw, plugw, kickw, wavew, raisew, lowerw, rubw, pushw, untiew, tiew, tieupw, turnw, breatw, knockw, lookw, examiw, shakew, movew, trnonw, trnofw, openw, closew, findw, waitw, spinw, boardw, unboaw, takew, invenw, fillw, eatw, drinkw, burnw, mungw, killw, attacw, swingw, walkw, tellw, putw, dropw, givew, pourw, throww, digw, leapw, stayw, follow, hellow, lookiw, lookuw, pumpw, windw, clmbw, clmbuw, clmbdw, trntow;
 } vindex;
 #define vindex_1 vindex
 
@@ -350,7 +359,8 @@ extern struct chanCB {
 // Screen Of Light
 // common /screen/
 extern struct screenCB {
-   int fromdr, scolrm, scolac, scoldr[8], scolwl[12];
+   int fromdr, scolrm, scolac;
+   int scoldr[8], scolwl[12];
 } screen;
 #define screen_1 screen
 
@@ -374,6 +384,7 @@ extern struct exitsCB {
 // Puzzle Room State
 // common /puzzle/
 extern struct puzzleCB {
-   int cpdr[16], cpwl[8], cpvec[64];
+   int cpdr[16], cpwl[8];
+   int cpvec[64];
 } puzzle;
 #define puzzle_1 puzzle

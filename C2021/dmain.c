@@ -6,12 +6,46 @@
 #include "extern.h"
 #include "common.h"
 
+// These are the initialized definitions of the common blocks corresponding to the ‟data” statements in the orignal Fortran source,
+// as well as the definition of the common block variables.
+
+// MISCELLANEOUS VARIABLES
+
+// Unlisted:
+// common /star/
+// int mbase, strbit;
+struct starCB star;
+
+// DUNGEON, PAGE 2
+
+// DATA STATEMENTS FOR CONSTANT ARRAYS
+
+// common /vers/
+union versCB vers = {
+// int vmaj;
+   2,
+// int vmin;
+   6,
+// int vedit;
+   'A'
+};
+
+// common /bats/
+struct batsCB bats = (struct batsCB){
+   batdrp: { 66, 67, 68, 69, 70, 71, 72, 65, 73 }
+};
+
+// common /hyper/
+struct hyperCB hyper = (struct hyperCB){
+   hfactr: 500
+};
+
 // parser.h:
 // common /synflg/
-// enum synflagCB; // Declared and defined in common.h.
+// enum synflgCB; // Declared and defined in common.h.
 
 // common /objflg/
-// enum objflagCB; // Declared and defined in common.h.
+// enum objflgCB; // Declared and defined in common.h.
 
 // screen.h:
 // common /screen/
@@ -34,26 +68,6 @@ struct puzzleCB puzzle = (struct puzzleCB){
    }
 };
 
-// common /vers/
-union versCB vers = {
-// int vmaj;
-   2,
-// int vmin;
-   6,
-// int vedit;
-   'A'
-};
-
-// common /bats/
-struct batsCB bats = (struct batsCB){
-   batdrp: { 66, 67, 68, 69, 70, 71, 72, 65, 73 }
-};
-
-// common /hyper/
-struct hyperCB hyper = (struct hyperCB){
-   hfactr: 500
-};
-
 // rflag.h:
 // common /rflag/
 // enum rflagCB; // Declared and defined in common.h.
@@ -61,14 +75,16 @@ struct hyperCB hyper = (struct hyperCB){
 // rindex.h:
 // common /rindex/
 struct rindexCB rindex_ = (struct rindexCB){
-   whous: 2, lroom: 8, cella: 9, mtrol: 10, maze1: 11, mgrat: 25, maz15: 30, fore1: 31, fore3: 33, clear: 36,
-   reser: 40, strea: 42, egypt: 44, echor: 49, tshaf: 61, bshaf: 76, mmach: 77, dome: 79, mtorc: 80, carou: 83,
-   riddl: 91, lld2: 94, temp1: 96, temp2: 97, maint: 100, blroo: 102, treas: 103, rivr1: 107, rivr2: 108, rivr3: 109,
-   mcycl: 101, rivr4: 112, rivr5: 113, fchmp: 114, falls: 120, mbarr: 119, mrain: 121, pog: 122, vlbot: 126, vair1: 127,
-   vair2: 128, vair3: 129, vair4: 130, ledg2: 131, ledg3: 132, ledg4: 133, msafe: 135, cager: 140, caged: 141, twell: 142,
-   bwell: 143, alice: 144, alism: 145, alitr: 146, mtree: 147, bkent: 148, bkvw: 151, bktwi: 153, bkvau: 154, bkbox: 155,
-   crypt: 157, tstrs: 158, mrant: 159, mreye: 160, mra: 161, mrb: 162, mrc: 163, mrg: 164, mrd: 165, fdoor: 166,
-   mrae: 167, mrce: 171, mrcw: 172, mrge: 173, mrgw: 174, mrdw: 176, inmir: 177, scorr: 179, ncorr: 182, parap: 183,
+   whous: 2, lroom: 8, cella: 9, mtrol: 10, maze1: 11, mgrat: 25, maz15: 30, fore1: 31,
+   fore3: 33, clear: 36, reser: 40, strea: 42, egypt: 44, echor: 49, tshaf: 61, bshaf: 76,
+   mmach: 77, dome: 79, mtorc: 80, carou: 83, riddl: 91, lld2: 94, temp1: 96, temp2: 97,
+   maint: 100, blroo: 102, treas: 103, rivr1: 107, rivr2: 108, rivr3: 109, mcycl: 101, rivr4: 112,
+   rivr5: 113, fchmp: 114, falls: 120, mbarr: 119, mrain: 121, pog: 122, vlbot: 126, vair1: 127,
+   vair2: 128, vair3: 129, vair4: 130, ledg2: 131, ledg3: 132, ledg4: 133, msafe: 135, cager: 140,
+   caged: 141, twell: 142, bwell: 143, alice: 144, alism: 145, alitr: 146, mtree: 147, bkent: 148,
+   bkvw: 151, bktwi: 153, bkvau: 154, bkbox: 155, crypt: 157, tstrs: 158, mrant: 159, mreye: 160,
+   mra: 161, mrb: 162, mrc: 163, mrg: 164, mrd: 165, fdoor: 166, mrae: 167, mrce: 171,
+   mrcw: 172, mrge: 173, mrgw: 174, mrdw: 176, inmir: 177, scorr: 179, ncorr: 182, parap: 183,
    cell: 184, pcell: 185, ncell: 186, cpant: 188, cpout: 189, cpuzz: 190
 };
 
@@ -134,14 +150,14 @@ struct aindexCB aindex = (struct aindexCB){
 // common /vindex/
 struct vindexCB vindex = (struct vindexCB){
    cintw: 1, deadxw: 2, frstqw: 3, inxw: 4, outxw: 5, walkiw: 6, fightw: 7, foow: 8,
-   meltw: 101, readw: 100, inflaw: 102, deflaw: 103, alarmw: 104, exorcw: 105, plugw: 106, kickw: 107,
+   readw: 100, meltw: 101, inflaw: 102, deflaw: 103, alarmw: 104, exorcw: 105, plugw: 106, kickw: 107,
    wavew: 108, raisew: 109, lowerw: 110, rubw: 111, pushw: 112, untiew: 113, tiew: 114, tieupw: 115,
    turnw: 116, breatw: 117, knockw: 118, lookw: 119, examiw: 120, shakew: 121, movew: 122, trnonw: 123,
    trnofw: 124, openw: 125, closew: 126, findw: 127, waitw: 128, spinw: 129, boardw: 130, unboaw: 131,
    takew: 132, invenw: 133, fillw: 134, eatw: 135, drinkw: 136, burnw: 137, mungw: 138, killw: 139,
-   attacw: 141, swingw: 140, walkw: 142, tellw: 143, putw: 144, dropw: 145, givew: 146, pourw: 147, throww: 148,
-   digw: 89, leapw: 91, stayw: 73, follow: 85, hellow: 151, lookiw: 152, lookuw: 153, pumpw: 154,
-   windw: 155, clmbw: 156, clmbuw: 157, clmbdw: 158, trntow: 159
+   attacw: 141, swingw: 140, walkw: 142, tellw: 143, putw: 144, dropw: 145, givew: 146, pourw: 147,
+   throww: 148, digw: 89, leapw: 91, stayw: 73, follow: 85, hellow: 151, lookiw: 152, lookuw: 153,
+   pumpw: 154, windw: 155, clmbw: 156, clmbuw: 157, clmbdw: 158, trntow: 159
 };
 
 // Main program
