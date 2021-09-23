@@ -433,6 +433,14 @@ C						!GET ROOM ACTION.
 C						!OBJ ONLY?
 	I=RDESC2-HERE
 C						!ASSUME SHORT DESC.
+C 2021/09/21 Darth Spectra (Lydia Marie Williamson):
+C The following comment, referring to the .OR.PROB(80,80) below,
+C was found in the 1991 C translation:
+C The next line means that when you request VERBOSE mode,
+C you only get long room descriptions 20% of the time.
+C I don't either like or understand this,
+C so the modification ensures VERBOSE works all the time.
+C 1987/10/22 jmh@ukc.ac.uk
 	IF((FULL.EQ.0)
      &	.AND.(SUPERF.OR.(((IAND(RFLAG(HERE),RSEEN)).NE.0)
      &	        .AND.(BRIEFF.OR.PROB(80,80)))))       GO TO 400
