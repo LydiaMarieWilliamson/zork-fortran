@@ -2,7 +2,6 @@
 // All rights reserved, commercial usage strictly prohibited.
 // Written by R. M. Supnik.
 // Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
-#include "F2C.h"
 #include "extern.h"
 #include "common.h"
 
@@ -160,7 +159,7 @@ struct vindexCB vindex = (struct vindexCB){
    pumpw: 154, windw: 155, clmbw: 156, clmbuw: 157, clmbdw: 158, trntow: 159
 };
 
-// Main program
+// Main program: dungeo
 int MAIN__(void) {
 #if 0
    int x;
@@ -177,19 +176,5 @@ int MAIN__(void) {
 // 						!IF INIT, PLAY GAME.
    exit_();
 // 						!DONE
-   return 0;
-}
-
-// MISCELLANEOUS VARIABLES
-
-// DUNGEON, PAGE 2
-
-// DATA STATEMENTS FOR CONSTANT ARRAYS
-
-// FLAGS
-
-// Main program alias
-int dungeo(void) {
-   MAIN__();
    return 0;
 }

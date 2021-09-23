@@ -2,8 +2,6 @@
 // All rights reserved, commercial usage strictly prohibited.
 // Written by R. M. Supnik.
 // Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
-
-#include "F2C.h"
 #include "extern.h"
 #include "common.h"
 

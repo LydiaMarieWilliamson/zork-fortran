@@ -1,4 +1,6 @@
 // Based on f2c.h: The Standard Fortran to C header file.
+// Assumes C99, which is now (well into the 21st century) POSIX.
+// That means: boolean types, function prototypes, "rb" and "wb" for fopen, "const", "void", etc.
 #include <stdbool.h>
 #include <stdlib.h>
 

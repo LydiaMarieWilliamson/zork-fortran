@@ -1,3 +1,11 @@
+// Copyright (c) 1980, InfoCom Computers and Communications, Cambridge MA 02142
+// All rights reserved, commercial usage strictly prohibited.
+// Written by R. M. Supnik.
+// Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
+
+// The functions for dungeon.
+#include "F2C.h"
+
 // actors.c:
 Bool aappli(int);
 void thiefd(void);
@@ -18,12 +26,6 @@ void game_(void);
 
 // dinit.c:
 Bool init(void/*int*/);
-
-#if 0
-// dmain.c:
-// The main program.
-int dungeo(void)
-#endif
 
 // dso1.c:
 void princr(Bool, int);
@@ -88,10 +90,8 @@ void savegm(void);
 void rstrgm(void);
 Bool walk(void/*int*/);
 
-#if 0
 // gdt.c:
-void gdt(void)
-#endif
+void gdt(void);
 
 // lightp.c:
 Bool lightp(int);
