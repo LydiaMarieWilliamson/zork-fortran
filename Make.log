@@ -5,7 +5,4 @@ Pending compiler warnings:
 	np2.f:		│         IF(OBJ) 1000,200,100
 			│         IF(NOBJ) 1100,400,300
 			│         IF(NOBJ) 1100,600,500
-	np3.f:		│         IF(O2) 3000,500,3000
-			│ 1000    IF(O1) 3000,500,3000
-			│         IF(ROBJ) 500,50,200
-	villns.f:	│         IF(I) 10,10,450
+	np3.f:		│         IF(ROBJ) 500,50,200
