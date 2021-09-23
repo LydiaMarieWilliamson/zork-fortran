@@ -240,11 +240,11 @@ L4100:
 // V74--	VERSION.  PRINT INFO.
 
 L5000:
-// write(chan_1.outch, " V%I1.%I2%A1", vers_2.vmaj, vers_2.vmin, vers_2.vedit); //F
+// write(chan_1.outch, " V%I1.%I2%A1", vers_1.vmaj, vers_1.vmin, vers_1.vedit); //F
    BegExSF(chan_1.outch, "(\2 V\2,i1,\2.\2,i2,a1)", 0);
-   DoFio(1, &vers_2.vmaj, sizeof vers_2.vmaj);
-   DoFio(1, &vers_2.vmin, sizeof vers_2.vmin);
-   DoFio(1, vers_2.vedit, sizeof vers_2.vedit[0]);
+   DoFio(1, &vers_1.vmaj, sizeof vers_1.vmaj);
+   DoFio(1, &vers_1.vmin, sizeof vers_1.vmin);
+{  char Edit = vers_1.vedit; DoFio(1, &Edit, sizeof Edit); }
    EndExSF();
    play_1.telflg = true;
    return ret_val;

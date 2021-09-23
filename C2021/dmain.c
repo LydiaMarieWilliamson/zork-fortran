@@ -20,13 +20,8 @@ struct starCB star;
 // DATA STATEMENTS FOR CONSTANT ARRAYS
 
 // common /vers/
-union versCB vers = {
-// int vmaj;
-   2,
-// int vmin;
-   6,
-// int vedit;
-   'A'
+struct versCB vers = (struct versCB){
+   vmaj: 2, vmin: 6, vedit: 'A'
 };
 
 // common /bats/

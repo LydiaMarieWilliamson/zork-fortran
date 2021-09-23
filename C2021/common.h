@@ -30,17 +30,10 @@ extern struct randomCB {
 #define random_1 random_
 
 // common /vers/
-extern union versCB {
-   struct {
-      int vmaj, vmin, vedit;
-   } _1;
-   struct {
-      int vmaj, vmin;
-      char vedit[1];
-   } _2;
+extern struct versCB {
+   int vmaj, vmin, vedit;
 } vers;
-#define vers_1 (vers._1)
-#define vers_2 (vers._2)
+#define vers_1 vers
 
 // common /hyper/
 extern struct hyperCB {
