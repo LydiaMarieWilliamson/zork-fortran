@@ -25,7 +25,7 @@ struct buzvocCB buzvoc = (struct buzvocCB){
 };
 
 // Prepositions: maps prepositions to indices
-// common /provoc/
+// common /prpvoc/
 struct prpvocCB prpvoc = (struct prpvocCB){
 //   The following data statement was converted from:
 //	DATA PVOC/3ROVE,1RR,1,3RWIT,1RH,2,3RUSI,2RNG,2,3RTHR,3ROUG,2,
