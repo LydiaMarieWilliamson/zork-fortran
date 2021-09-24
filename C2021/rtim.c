@@ -12,7 +12,7 @@ void ITime(int HMS[3]) {
 }
 #else
 extern int /* Subroutine */ itime(int *);
-#   define ITime(HMS) ((void)(itime(HMS)))
+#   define ITime(HMS) ((void)itime(HMS))
 #endif
 
 void intime(int * hours, int * minutes, int * seconds) {
