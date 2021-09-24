@@ -1,7 +1,8 @@
 #include <stdio.h>
+#include <stdint.h>
 
 struct frec {
-   int indx;
+   int_least16_t indx;
    char c[74];
 } rec;
 
@@ -16,7 +17,7 @@ int main(void) {
          buf[i - 1] = rec.c[i - 1] ^ mask;
       }
       for (char *cp = &buf[73]; *cp == ' '; cp--) *cp = '\0';
-      printf("%d %s\n", rec.indx, buf);
+      printf("%4d %4d: %s\n", x, (int)rec.indx, buf);
    }
    return 0;
 }
