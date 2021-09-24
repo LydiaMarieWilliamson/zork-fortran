@@ -83,3 +83,5 @@ History
 2021/09/23	Simplifying the translations of the common blocks:
 		∙	removing excess "#defines"-s and de-mangling names/aliases,
 		∙	lifting constant common blocks to enums, constant arrays or constants, wherever possible.
+2021/09/24	Recoding of the (translations of the) Arithmetic IF statements
+2021/09/24	Further simplification and reduction of the I/O-related f2c library routines.
