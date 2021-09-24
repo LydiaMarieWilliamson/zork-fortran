@@ -1,8 +1,7 @@
-Pending compiler warnings:
+Former compiler warnings:
 ∙	Fortran 2018 dropped support for Arithmetic IF statements.
-	demons.f:	│ 2100    IF(DEF-2) 2200,2300,2400
-	np.f:		│         IF(SPARSE(OUTBUF,OUTLNT,VBFLAG)) 100,200,300
-	np2.f:		│         IF(OBJ) 1000,200,100
-			│         IF(NOBJ) 1100,400,300
-			│         IF(NOBJ) 1100,600,500
-	np3.f:		│         IF(ROBJ) 500,50,200
+	demons.f [1], np.f [1], np2.f [3], np3.f [3], villns.f [1]: resolved.
+∙	Fortran 2018 dropped support for DO statements ending in labelled statements other than END DO or CONTINUE.
+	sverbs.f [1], villns.f [1]: resolved
+∙	Initialization strings were truncated to fit the variable being initialized.
+	dso7.f [6]: resolved.
