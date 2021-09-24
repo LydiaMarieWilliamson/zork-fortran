@@ -84,7 +84,7 @@ L250:
 // This routine details on bit 0 of prsflg
 Bool parse(char *inbuf, int inlnt, Bool vbflag/*, size_t inbuf_unit*/) {
 // System generated locals
-   int i__1;
+   int SparseRet;
    Bool ret_val;
 
 // Local variables
@@ -111,13 +111,8 @@ Bool parse(char *inbuf, int inlnt, Bool vbflag/*, size_t inbuf_unit*/) {
    if (!lex(inbuf + 1, inlnt, outbuf, &outlnt, vbflag/*, inbuf_unit*/)) {
       goto L100;
    }
-   if ((i__1 = sparse(outbuf, outlnt, vbflag)) < 0) {
-      goto L100;
-   } else if (i__1 == 0) {
-      goto L200;
-   } else {
-      goto L300;
-   }
+   SparseRet = sparse(outbuf, outlnt, vbflag);
+   if (SparseRet < 0) goto L100; else if (SparseRet > 0) goto L300;/* else if (SparseRet == 0) goto L200;*/
 // 						!DO SYN SCAN.
 
 // PARSE REQUIRES VALIDATION
