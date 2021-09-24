@@ -35,11 +35,11 @@ L5:
 // 						!SEE WHO TO PROMPT FOR.
 L10:
 // write(chan.outch, " >%$"); //F
-   BegExSF(chan.outch, "(\2 >\2,$)", 0), EndExSF();
+   BegExSF(chan.outch, "(\2 >\2,$)"), EndExSF();
 // 						!PROMPT FOR GAME.
 L90:
 // read(chan.inpch, "%78A1", buffer); //F
-   BegInSF(chan.inpch, "(78a1)", 0), DoFio(78, buffer + 1, buffer_unit), EndInSF();
+   BegInSF(chan.inpch, "(78a1)"), DoFio(78, buffer + 1, buffer_unit), EndInSF();
    for (length = 78; length >= 1; --(length)) {
       if (buffer[length] != ' ') {
          goto L250;

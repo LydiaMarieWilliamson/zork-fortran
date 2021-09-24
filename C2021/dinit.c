@@ -50,7 +50,7 @@ Bool init(void/*int x*/) {
       "and chain, dagger, lance, and trident.\2/\2 He speaks with a \2,\2"
       "commanding voice:\2//20x,\2\"You shall not pass.\"\2//\2 As \2,\2"
       "he grabs you by the neck all grows dim about you."
-      "\2)", 0
+      "\2)"
    );
    EndExSF();
    exit_();
@@ -278,7 +278,7 @@ L10000:
 #endif
 
 // read(1, "%I6", &i, &j, &k); //F
-   BegInSF(1, "(i6)", 0), DoFio(1, &i, sizeof i), DoFio(1, &j, sizeof j), DoFio(1, &k, sizeof k), EndInSF();
+   BegInSF(1, "(i6)"), DoFio(1, &i, sizeof i), DoFio(1, &j, sizeof j), DoFio(1, &k, sizeof k), EndInSF();
 // 						!GET VERSION.
    if (i != vmaj || j != vmin) {
       goto L1925;
@@ -302,26 +302,26 @@ L10000:
 // // const char *Fmt = "%I8"; //F
 // const char *Fmt = "%I6"; //F
 // read(1, Fmt, &state.mxscor, &star.strbit, &state.egmxsc); //F
-   BegInSF(1, "(i6)", 0);
+   BegInSF(1, "(i6)");
    DoFio(1, &state.mxscor, sizeof state.mxscor), DoFio(1, &star.strbit, sizeof star.strbit);
    DoFio(1, &state.egmxsc, sizeof state.egmxsc);
    EndInSF();
 // read(1, Fmt, &rooms.rlnt, &rooms.rdesc2, rooms.rdesc1, rooms.rexit, rooms.ractio, rooms.rval, rooms.rflag); //F
-   BegInSF(1, "(i6)", 0);
+   BegInSF(1, "(i6)");
    DoFio(1, &rooms.rlnt, sizeof rooms.rlnt);
    DoFio(1, &rooms.rdesc2, sizeof rooms.rdesc2), DoFio(200, rooms.rdesc1, sizeof rooms.rdesc1[0]);
    DoFio(200, rooms.rexit, sizeof rooms.rexit[0]), DoFio(200, rooms.ractio, sizeof rooms.ractio[0]);
    DoFio(200, rooms.rval, sizeof rooms.rval[0]), DoFio(200, rooms.rflag, sizeof rooms.rflag[0]);
    EndInSF();
 // read(1, Fmt, &exits.xlnt, exits.travel); //F
-   BegInSF(1, "(i6)", 0);
+   BegInSF(1, "(i6)");
    DoFio(1, &exits.xlnt, sizeof exits.xlnt), DoFio(900, exits.travel, sizeof exits.travel[0]);
    EndInSF();
 // read(1, Fmt, //F
 //    objcts.olnt, objcts.odesc1, objcts.odesc2, objcts.odesco, objcts.oactio, objcts.oflag1, objcts.oflag2, //F
 //    objcts.ofval, objcts.otval, objcts.osize, objcts.ocapac, objcts.oroom, objcts.oadv, objcts.ocan, objcts.oread //F
 // ); //F
-   BegInSF(1, "(i6)", 0);
+   BegInSF(1, "(i6)");
    DoFio(1, &objcts.olnt, sizeof objcts.olnt);
    DoFio(220, objcts.odesc1, sizeof objcts.odesc1[0]), DoFio(220, objcts.odesc2, sizeof objcts.odesc2[0]);
    DoFio(220, objcts.odesco, sizeof objcts.odesco[0]), DoFio(220, objcts.oactio, sizeof objcts.oactio[0]);
@@ -332,34 +332,34 @@ L10000:
    DoFio(220, objcts.ocan, sizeof objcts.ocan[0]), DoFio(220, objcts.oread, sizeof objcts.oread[0]);
    EndInSF();
 // read(1, Fmt, &oroom2_.r2lnt, oroom2_.oroom2, oroom2_.rroom2); //F
-   BegInSF(1, "(i6)", 0);
+   BegInSF(1, "(i6)");
    DoFio(1, &oroom2_.r2lnt, sizeof oroom2_.r2lnt);
    DoFio(20, oroom2_.oroom2, sizeof oroom2_.oroom2[0]), DoFio(20, oroom2_.rroom2, sizeof oroom2_.rroom2[0]);
    EndInSF();
 // read(1, Fmt, &cevent.clnt, cevent.ctick, cevent.cactio); //F
-   BegInSF(1, "(i6)", 0);
+   BegInSF(1, "(i6)");
    DoFio(1, &cevent.clnt, sizeof cevent.clnt);
    DoFio(25, cevent.ctick, sizeof cevent.ctick[0]), DoFio(25, cevent.cactio, sizeof cevent.cactio[0]);
    EndInSF();
 // read(1, "%L4", cevent.cflag); //F
-   BegInSF(1, "(l4)", 0);
+   BegInSF(1, "(l4)");
    DoFio(25, cevent.cflag, sizeof cevent.cflag[0]);
    EndInSF();
 // read(1, Fmt, &vill.vlnt, vill.villns, vill.vprob, vill.vopps, vill.vbest, vill.vmelee); //F
-   BegInSF(1, "(i6)", 0);
+   BegInSF(1, "(i6)");
    DoFio(1, &vill.vlnt, sizeof vill.vlnt), DoFio(4, vill.villns, sizeof vill.villns[0]);
    DoFio(4, vill.vprob, sizeof vill.vprob[0]), DoFio(4, vill.vopps, sizeof vill.vopps[0]);
    DoFio(4, vill.vbest, sizeof vill.vbest[0]), DoFio(4, vill.vmelee, sizeof vill.vmelee[0]);
    EndInSF();
 // read(1, Fmt, &advs.alnt, advs.aroom, advs.ascore, advs.avehic, advs.aobj, advs.aactio, advs.astren, advs.aflag); //F
-   BegInSF(1, "(i6)", 0);
+   BegInSF(1, "(i6)");
    DoFio(1, &advs.alnt, sizeof advs.alnt), DoFio(4, advs.aroom, sizeof advs.aroom[0]);
    DoFio(4, advs.ascore, sizeof advs.ascore[0]), DoFio(4, advs.avehic, sizeof advs.avehic[0]);
    DoFio(4, advs.aobj, sizeof advs.aobj[0]), DoFio(4, advs.aactio, sizeof advs.aactio[0]);
    DoFio(4, advs.astren, sizeof advs.astren[0]), DoFio(4, advs.aflag, sizeof advs.aflag[0]);
    EndInSF();
 // read(1, Fmt, &star.mbase, &rmsg.mlnt, rmsg.rtext); //F
-   BegInSF(1, "(i6)", 0);
+   BegInSF(1, "(i6)");
    DoFio(1, &star.mbase, sizeof star.mbase);
    DoFio(1, &rmsg.mlnt, sizeof rmsg.mlnt), DoFio(1820, rmsg.rtext, sizeof rmsg.rtext[0]);
    EndInSF();
@@ -416,7 +416,7 @@ L1025:
 
 L1900:
 // print(" I can't open ","dindx.dat","."); //F
-   BegExSF(6, "(\2 I can't open \2,\2dindx.dat\2,\2.\2)", 0), EndExSF();
+   BegExSF(6, "(\2 I can't open \2,\2dindx.dat\2,\2.\2)"), EndExSF();
    goto L1975;
 L1925:
 // print(
@@ -424,14 +424,14 @@ L1925:
 //    "  I require version %I1.%I1%A1.", //F
 //    i, j, k, vmaj, vmin, vedit //F
 // ); //F
-   BegExSF(6, "(\2 \"dindx.dat\" is version \2,i1,\2.\2,i1,a1,\2.\2/\2 I require version \2,i1,\2.\2,i1,a1,\2.\2)", 0);
+   BegExSF(6, "(\2 \"dindx.dat\" is version \2,i1,\2.\2,i1,a1,\2.\2/\2 I require version \2,i1,\2.\2,i1,a1,\2.\2)");
    DoFio(1, &i, sizeof i), DoFio(1, &j, sizeof j), DoFio(1, &k, sizeof k);
 {  int Edit = vedit; DoFio(1, &vmaj, sizeof vmaj), DoFio(1, &vmin, sizeof vmin), DoFio(1, &Edit, sizeof Edit); }
    EndExSF();
    goto L1975;
 L1950:
 // print(" I can't open ","dtext.dat","."); //F
-   BegExSF(6, "(\2 I can't open \2,\2dtext.dat\2,\2.\2)", 0), EndExSF();
+   BegExSF(6, "(\2 I can't open \2,\2dtext.dat\2,\2.\2)"), EndExSF();
 L1975:
 // print( //F
 //    " Suddenly a sinister, wraithlike figure appears before ", //F
@@ -444,16 +444,16 @@ L1975:
 //    " The darkness becomes all encompassing, and your vision fails." //F
 // ); //F
    BegExSF(6,
-      "("
-      "\2 Suddenly a sinister, wraithlike figure appears before \2,"
-      "\2you,\2/\2 seeming to float in the air.  In a low, sorrowful voice\2,"
-      "\2 he says,\2/\2 \"Alas, the very nature of the world has changed, \2,"
-      "\2and the dungeon\2/\2 cannot be found.  All must now pass away.\"\2,"
-      "\2  Raising his oaken staff\2/\2 in farewell, he fades into the \2,"
-      "\2spreading darkness.  In his place\2/\2 appears a tastefully \2,"
-      "\2lettered sign reading:\2//23x,\2INITIALIZATION FAILURE\2//"
-      "\2 The darkness becomes all encompassing, and your vision fails.\2"
-      ")", 0
+      "(\2"
+      " Suddenly a sinister, wraithlike figure appears before \2,\2"
+      "you,\2/\2 seeming to float in the air.  In a low, sorrowful voice\2,\2"
+      " he says,\2/\2 \"Alas, the very nature of the world has changed, \2,\2"
+      "and the dungeon\2/\2 cannot be found.  All must now pass away.\"\2,\2"
+      "  Raising his oaken staff\2/\2 in farewell, he fades into the \2,\2"
+      "spreading darkness.  In his place\2/\2 appears a tastefully \2,\2"
+      "lettered sign reading:\2//23x,\2INITIALIZATION FAILURE\2//\2"
+      " The darkness becomes all encompassing, and your vision fails."
+      "\2)"
    ), EndExSF();
    return ret_val;
 }

@@ -119,11 +119,11 @@ void cpinfo(int rmk, int st) {
 //    dgm //F
 // ); //F
    BegExSF(chan.outch,
-      "("
-      "\2       |\2,a2,1x,a2,1x,a2,\2|\2/,"
-      "\2 West  |\2,a2,\2 .. \2,a2,\2|  East\2,/"
-      "\2       |\2,a2,1x,a2,1x,a2,\2|\2"
-      ")", 0
+      "(\2"
+      "       |\2,a2,1x,a2,1x,a2,\2|\2/,\2"
+      " West  |\2,a2,\2 .. \2,a2,\2|  East\2,/\2"
+      "       |\2,a2,1x,a2,1x,a2,\2|"
+      "\2)"
    ), DoFio(8, dgm, sizeof dgm[0]), EndExSF();
 
    if (st == 10) {

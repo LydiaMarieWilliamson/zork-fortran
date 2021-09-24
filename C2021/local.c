@@ -72,9 +72,9 @@ typedef struct {
    Int _Rec;
 } cilist;
 
-int BegInDU(int Unit, char *Format, int Rec) {
+int BegInDU(int Unit, int Rec) {
    int s_rdue(cilist *);
-   cilist L = (cilist){_Err: (Bit)false, _Unit: (Int)Unit, _End: (Bit)false, _Format: Format, _Rec: (Int)Rec};
+   cilist L = (cilist){_Err: (Bit)false, _Unit: (Int)Unit, _End: (Bit)false, _Format: NULL, _Rec: (Int)Rec};
    return s_rdue(&L);
 }
 
@@ -83,9 +83,9 @@ int EndInDU(void) {
    return e_rdue();
 }
 
-int BegInSF(int Unit, char *Format, int Rec) {
+int BegInSF(int Unit, char *Format) {
    int s_rsfe(cilist *);
-   cilist L = (cilist){_Err: (Bit)false, _Unit: (Int)Unit, _End: (Bit)false, _Format: Format, _Rec: (Int)Rec};
+   cilist L = (cilist){_Err: (Bit)false, _Unit: (Int)Unit, _End: (Bit)false, _Format: Format, _Rec: (Int)0};
    return s_rsfe(&L);
 }
 
@@ -94,9 +94,9 @@ int EndInSF(void) {
    return e_rsfe();
 }
 
-int BegInSU(int Unit, char *Format, int Rec) {
+int BegInSU(int Unit) {
    int s_rsue(cilist *);
-   cilist L = (cilist){_Err: (Bit)false, _Unit: (Int)Unit, _End: (Bit)false, _Format: Format, _Rec: (Int)Rec};
+   cilist L = (cilist){_Err: (Bit)false, _Unit: (Int)Unit, _End: (Bit)false, _Format: NULL, _Rec: (Int)0};
    return s_rsue(&L);
 }
 
@@ -105,9 +105,9 @@ int EndInSU(void) {
    return e_rsue();
 }
 
-int BegExSF(int Unit, char *Format, int Rec) {
+int BegExSF(int Unit, char *Format) {
    int s_wsfe(cilist *);
-   cilist L = (cilist){_Err: (Bit)false, _Unit: (Int)Unit, _End: (Bit)false, _Format: Format, _Rec: (Int)Rec};
+   cilist L = (cilist){_Err: (Bit)false, _Unit: (Int)Unit, _End: (Bit)false, _Format: Format, _Rec: (Int)0};
    return s_wsfe(&L);
 }
 
@@ -116,9 +116,9 @@ int EndExSF(void) {
    return e_wsfe();
 }
 
-int BegExSU(int Unit, char *Format, int Rec) {
+int BegExSU(int Unit) {
    int s_wsue(cilist *);
-   cilist L = (cilist){_Err: (Bit)false, _Unit: (Int)Unit, _End: (Bit)false, _Format: Format, _Rec: (Int)Rec};
+   cilist L = (cilist){_Err: (Bit)false, _Unit: (Int)Unit, _End: (Bit)false, _Format: NULL, _Rec: (Int)0};
    return s_wsue(&L);
 }
 

@@ -23,14 +23,14 @@ void savegm(void) {
 #define PutArr(N, Buf) DoUio((N), (void *)(Buf), sizeof (Buf)[0])
 
 // write(1, vmaj, vmin, vedit); //F
-   BegExSU(1, NULL, 0);
+   BegExSU(1);
 {  int Edit = vedit; PutVar(vmaj), PutVar(vmin), PutVar(Edit); }
    EndExSU();
 // write(1, //F
 //    play.winner, play.here, hack.thfpos, play.telflg, hack.thfflg, hack.thfact, //F
 //    hack.swdact, hack.swdsta, puzzle.cpvec //F
 // ); //F
-   BegExSU(1, NULL, 0);
+   BegExSU(1);
    PutVar(play.winner), PutVar(play.here), PutVar(hack.thfpos);
    PutVar(play.telflg), PutVar(hack.thfflg), PutVar(hack.thfact);
    PutVar(hack.swdact), PutVar(hack.swdsta), PutArr(64, puzzle.cpvec);
@@ -39,7 +39,7 @@ void savegm(void) {
 //    PlTime, state.moves, state.deaths, state.rwscor, state.egscor, state.mxload, //F
 //    state.ltshft, state.bloc, state.mungrm, state.hs, screen.fromdr, screen.scolrm, screen.scolac //F
 // ); //F
-   BegExSU(1, NULL, 0);
+   BegExSU(1);
    PutVar(PlTime), PutVar(state.moves), PutVar(state.deaths), PutVar(state.rwscor);
    PutVar(state.egscor), PutVar(state.mxload);
    PutVar(state.ltshft), PutVar(state.bloc), PutVar(state.mungrm), PutVar(state.hs),
@@ -49,22 +49,22 @@ void savegm(void) {
 //   objcts.odesc1, objcts.odesc2, objcts.oflag1, objcts.oflag2, objcts.ofval, objcts.otval, //F
 //   objcts.osize, objcts.ocapac, objcts.oroom, objcts.oadv, objcts.ocan //F
 // ); //F
-   BegExSU(1, NULL, 0);
+   BegExSU(1);
    PutArr(220, objcts.odesc1), PutArr(220, objcts.odesc2), PutArr(220, objcts.oflag1), PutArr(220, objcts.oflag2);
    PutArr(220, objcts.ofval), PutArr(220, objcts.otval);
    PutArr(220, objcts.osize), PutArr(220, objcts.ocapac);
    PutArr(220, objcts.oroom), PutArr(220, objcts.oadv), PutArr(220, objcts.ocan);
    EndExSU();
 // write(1, rooms.rval, rooms.rflag); //F
-   BegExSU(1, NULL, 0);
+   BegExSU(1);
    PutArr(200, rooms.rval), PutArr(200, rooms.rflag);
    EndExSU();
 // write(1, advs.aroom, advs.ascore, advs.avehic, advs.astren, advs.aflag); //F
-   BegExSU(1, NULL, 0);
+   BegExSU(1);
    PutArr(4, advs.aroom), PutArr(4, advs.ascore), PutArr(4, advs.avehic), PutArr(4, advs.astren), PutArr(4, advs.aflag);
    EndExSU();
 // write(1, flags, switch_, vill.vprob, cevent.cflag, cevent.ctick); //F
-   BegExSU(1, NULL, 0);
+   BegExSU(1);
    PutArr(46, flags), PutArr(22, switch_), PutArr(4, vill.vprob), PutArr(25, cevent.cflag), PutArr(25, cevent.ctick);
    EndExSU();
 
@@ -91,14 +91,14 @@ void rstrgm(void) {
 #define GetArr(N, Buf) DoUio((N), (void *)(Buf), sizeof (Buf)[0])
 
 // read(1, &Maj, &Min, &Edit); //F
-   int Maj, Min, Edit; BegInSU(1, NULL, 0), GetVar(Maj), GetVar(Min), GetVar(Edit), EndInSU();
+   int Maj, Min, Edit; BegInSU(1), GetVar(Maj), GetVar(Min), GetVar(Edit), EndInSU();
    if (Maj != vmaj || Min != vmin) goto L200;
 
 // read(1, //F
 //    &play.winner, &play.here, &hack.thfpos, &play.telflg, &play.thfflg, &hack.thfflg, //F
 //    &hack.swdact, &hack.swdsta, &puzzle.cpvec //F
 // ); //F
-   BegInSU(1, NULL, 0);
+   BegInSU(1);
    GetVar(play.winner), GetVar(play.here), GetVar(hack.thfpos);
    GetVar(play.telflg), GetVar(hack.thfflg), GetVar(hack.thfact);
    GetVar(hack.swdact), GetVar(hack.swdsta), GetArr(64, puzzle.cpvec);
@@ -107,7 +107,7 @@ void rstrgm(void) {
 //    &time_.pltime, &state.moves, &state.deaths, &state.rwscor, &state.egscor, &state.mxload, //F
 //    &state.ltshft, &state.bloc, &state.mungrm, &state.hs, &state.fromdr, &state.scolrm, &state.scolac //F
 // ); //F
-   BegInSU(1, NULL, 0);
+   BegInSU(1);
    GetVar(time_.pltime), GetVar(state.moves), GetVar(state.deaths), GetVar(state.rwscor);
    GetVar(state.egscor), GetVar(state.mxload);
    GetVar(state.ltshft), GetVar(state.bloc), GetVar(state.mungrm), GetVar(state.hs), GetVar(screen.fromdr);
@@ -117,22 +117,22 @@ void rstrgm(void) {
 //    &objcts.odesc1, &objcts.odesc2, &objcts.oflag1, &objcts.oflag2, &objcts.ofval, &objcts.otval, //F
 //    &objcts.osize, &objcts.ocapac, &objcts.oroom, &objcts.oadv, &objcts.ocan //F
 // ); //F
-   BegInSU(1, NULL, 0);
+   BegInSU(1);
    GetArr(220, objcts.odesc1), GetArr(220, objcts.odesc2), GetArr(220, objcts.oflag1), GetArr(220, objcts.oflag2);
    GetArr(220, objcts.ofval), GetArr(220, objcts.otval);
    GetArr(220, objcts.osize), GetArr(220, objcts.ocapac);
    GetArr(220, objcts.oroom), GetArr(220, objcts.oadv), GetArr(220, objcts.ocan);
    EndInSU();
 // read(1, rooms.rval, rooms.rflag); //F
-   BegInSU(1, NULL, 0);
+   BegInSU(1);
    GetArr(200, rooms.rval), GetArr(200, rooms.rflag);
    EndInSU();
 // read(1, &advs.aroom, &advs.ascore, &advs.avehic, &advs.astren, &advs.aflag); //F
-   BegInSU(1, NULL, 0);
+   BegInSU(1);
    GetArr(4, advs.aroom), GetArr(4, advs.ascore), GetArr(4, advs.avehic), GetArr(4, advs.astren), GetArr(4, advs.aflag);
    EndInSU();
 // read(1, flags, switch_, &vill.vprob, cevent.cflag, cevent.ctick); //F
-   BegInSU(1, NULL, 0);
+   BegInSU(1);
    GetArr(46, flags), GetArr(22, switch_), GetArr(4, vill.vprob), GetArr(25, cevent.cflag), GetArr(25, cevent.ctick);
    EndInSU();
 

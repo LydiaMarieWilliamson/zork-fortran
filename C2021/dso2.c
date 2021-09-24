@@ -112,18 +112,18 @@ void score(Bool flg) {
 // else //F
 //    write(chan.outch, " Your score is%$"); //F
    if (flg)
-      BegExSF(chan.outch, "(\2 Your score would be\2,$)", 0);
+      BegExSF(chan.outch, "(\2 Your score would be\2,$)");
    else
-      BegExSF(chan.outch, "(\2 Your score is\2,$)", 0);
+      BegExSF(chan.outch, "(\2 Your score is\2,$)");
    EndExSF();
 // if (state.moves != 1) //F
 //    write(chan.outch, "%I4 [total of%I4 points], in%I5 moves."); //F
 // else //F
 //    write(chan.outch, "%I4 [total of%I4 points], in%I5 move."); //F
    if (state.moves != 1)
-      BegExSF(chan.outch, "(i4,\2 [total of\2,i4,\2 points], in\2,i5,\2 moves.\2)", 0);
+      BegExSF(chan.outch, "(i4,\2 [total of\2,i4,\2 points], in\2,i5,\2 moves.\2)");
    else
-      BegExSF(chan.outch, "(i4,\2 [total of\2,i4,\2 points], in\2,i5,\2 move.\2)", 0);
+      BegExSF(chan.outch, "(i4,\2 [total of\2,i4,\2 points], in\2,i5,\2 move.\2)");
    DoFio(1, &as, sizeof as), DoFio(1, &state.mxscor, sizeof state.mxscor), DoFio(1, &state.moves, sizeof state.moves);
    EndExSF();
 
@@ -144,13 +144,13 @@ L60:
 // else //F
 //    write(chan.outch, " Your score in the endgame is%$"); //F
    if (flg)
-      BegExSF(chan.outch, "(\2 Your score in the endgame would be\2,$)", 0), EndExSF();
+      BegExSF(chan.outch, "(\2 Your score in the endgame would be\2,$)"), EndExSF();
    else
-      BegExSF(chan.outch, "(\2 Your score in the endgame is\2,$)", 0), EndExSF();
+      BegExSF(chan.outch, "(\2 Your score in the endgame is\2,$)"), EndExSF();
 // write(chan.outch, "%I4 [total of%I4 points], in%I5 moves.", //F
 //    state.egscor, state.egmxsc, state.moves //F
 // ); //F
-   BegExSF(chan.outch, "(i4,\2 [total of\2,i4,\2 points], in\2,i5,\2 moves.\2)", 0);
+   BegExSF(chan.outch, "(i4,\2 [total of\2,i4,\2 points], in\2,i5,\2 moves.\2)");
    DoFio(1, &state.egscor, sizeof state.egscor), DoFio(1, &state.egmxsc, sizeof state.egmxsc);
    DoFio(1, &state.moves, sizeof state.moves);
    EndExSF();
