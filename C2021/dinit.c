@@ -2,20 +2,67 @@
 // All rights reserved, commercial usage strictly prohibited.
 // Written by R. M. Supnik.
 // Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
+#include <stdio.h>
 #include "extern.h"
 #include "common.h"
 
 static Bool protct(void/*int*/);
 
+static FILE *OpenInF(const char *File, const char *Mode) { return fopen((File), (Mode)); }
+
+#ifndef StoryFile
+#   if defined unix
+#      define StoryFile "/usr/share/games/dungeon/dtext.dat"
+#   else
+#      error I need a definition for StoryFile
+#   endif
+#endif
+#ifndef IndexFile
+#   if defined unix
+#      define IndexFile "/usr/share/games/dungeon/dindx.dat"
+#   else
+#      error I need a definition for IndexFile
+#   endif
+#endif
+#ifndef MyStoryFile
+#   define MyStoryFile "dtext.dat"
+#endif
+#ifndef MyIndexFile
+#   define MyIndexFile "dindx.dat"
+#endif
+
+static unsigned IOErrs = 0U;
+
+// Read an integer from a line in the index file
+static int GetWord(FILE *InF) {
+   int A = 0, n = fscanf(InF, "%6d\n", &A);
+   if (n < 1) IOErrs++;
+   return A;
+}
+
+// Read a number of integers from separate lines in the index file
+static void GetWords(int Lim, int *WordP, FILE *InF) {
+   while (Lim-- > 0) *WordP++ = GetWord(InF);
+}
+
+// Read a number of boolean valies from separate lines in the index file
+static void GetFlags(int Lim, Bool *FlagP, FILE *InF) {
+   while (Lim-- > 0) {
+      char Ch = '\0'; int n = fscanf(InF, " %c\n", &Ch);
+      if (n < 1 || (Ch != 'T' && Ch != 'F')) IOErrs++;
+      *FlagP++ = Ch == 'T';
+   }
+}
+
 // Dungeon initialization subroutine
 Bool init(void/*int x*/) {
 // System generated locals
-   int i__1;
    Bool ret_val;
 
 // Local variables
    int xmax, r2max, dirmax, recno;
-   int i, j, k;
+   int Maj, Min, Edit;
+   FILE *IndexF;
    int mmax, omax, rmax, vmax, amax, cmax, fmax, smax;
 
 // INIT, PAGE 2
@@ -119,29 +166,21 @@ L10000:
 // 						!INIT DB FILE POINTER.
    star.mbase = 0;
 // 						!INIT MELEE BASE.
-//   LOGICAL UNIT NRS: 5=STDIN, 6=STDOUT
-   chan.inpch = 5;
-// 						!TTY INPUT
-   chan.outch = 6;
-   chan.dbch = 2;
-// 						!DATA BASE.
 // INIT, PAGE 3
 
 // INIT ALL ARRAYS.
 
-   i__1 = cmax;
-   for (i = 1; i <= i__1; ++i) {
+   for (int c = 0; c < cmax; c++) {
 // 						!CLEAR CLOCK EVENTS
-      cevent.cflag[i - 1] = false;
-      cevent.ctick[i - 1] = 0;
-      cevent.cactio[i - 1] = 0;
+      cevent.cflag[c] = false;
+      cevent.ctick[c] = 0;
+      cevent.cactio[c] = 0;
 // L5:
    }
 
-   i__1 = fmax;
-   for (i = 1; i <= i__1; ++i) {
+   for (int f = 0; f < fmax; f++) {
 // 						!CLEAR FLAGS.
-      flags[i - 1] = false;
+      flags[f] = false;
 // L10:
    }
    findex.buoyf = true;
@@ -151,10 +190,9 @@ L10000:
    findex.mr1f = true;
    findex.mr2f = true;
    findex.follwf = true;
-   i__1 = smax;
-   for (i = 1; i <= i__1; ++i) {
+   for (int s = 0; s < smax; s++) {
 // 						!CLEAR SWITCHES.
-      switch_[i - 1] = 0;
+      switch_[s] = 0;
 // L12:
    }
    findex.ormtch = 4;
@@ -165,82 +203,75 @@ L10000:
    findex.mloc = MrBrX;
    findex.cphere = 10;
 
-   i__1 = r2max;
-   for (i = 1; i <= i__1; ++i) {
+   for (int r2 = 0; r2 < r2max; r2++) {
 // 						!CLEAR ROOM 2 ARRAY.
-      oroom2_.rroom2[i - 1] = 0;
-      oroom2_.oroom2[i - 1] = 0;
+      oroom2_.rroom2[r2] = 0;
+      oroom2_.oroom2[r2] = 0;
 // L15:
    }
 
-   i__1 = xmax;
-   for (i = 1; i <= i__1; ++i) {
+   for (int x = 0; x < xmax; x++) {
 // 						!CLEAR TRAVEL ARRAY.
-      exits.travel[i - 1] = 0;
+      exits.travel[x] = 0;
 // L20:
    }
 
-   i__1 = vmax;
-   for (i = 1; i <= i__1; ++i) {
+   for (int v = 0; v < vmax; v++) {
 // 						!CLEAR VILLAINS ARRAYS.
-      vill.vopps[i - 1] = 0;
-      vill.vprob[i - 1] = 0;
-      vill.villns[i - 1] = 0;
-      vill.vbest[i - 1] = 0;
-      vill.vmelee[i - 1] = 0;
+      vill.vopps[v] = 0;
+      vill.vprob[v] = 0;
+      vill.villns[v] = 0;
+      vill.vbest[v] = 0;
+      vill.vmelee[v] = 0;
 // L30:
    }
 
-   i__1 = omax;
-   for (i = 1; i <= i__1; ++i) {
+   for (int o = 0; o < omax; o++) {
 // 						!CLEAR OBJECT ARRAYS.
-      objcts.odesc1[i - 1] = 0;
-      objcts.odesc2[i - 1] = 0;
-      objcts.odesco[i - 1] = 0;
-      objcts.oread[i - 1] = 0;
-      objcts.oactio[i - 1] = 0;
-      objcts.oflag1[i - 1] = 0;
-      objcts.oflag2[i - 1] = 0;
-      objcts.ofval[i - 1] = 0;
-      objcts.otval[i - 1] = 0;
-      objcts.osize[i - 1] = 0;
-      objcts.ocapac[i - 1] = 0;
-      objcts.ocan[i - 1] = 0;
-      objcts.oadv[i - 1] = 0;
-      objcts.oroom[i - 1] = 0;
+      objcts.odesc1[o] = 0;
+      objcts.odesc2[o] = 0;
+      objcts.odesco[o] = 0;
+      objcts.oread[o] = 0;
+      objcts.oactio[o] = 0;
+      objcts.oflag1[o] = 0;
+      objcts.oflag2[o] = 0;
+      objcts.ofval[o] = 0;
+      objcts.otval[o] = 0;
+      objcts.osize[o] = 0;
+      objcts.ocapac[o] = 0;
+      objcts.ocan[o] = 0;
+      objcts.oadv[o] = 0;
+      objcts.oroom[o] = 0;
 // L40:
    }
 
    rooms.rdesc2 = 0;
 // 						!CLEAR DESC BASE PTR.
-   i__1 = rmax;
-   for (i = 1; i <= i__1; ++i) {
+   for (int r = 0; r < rmax; r++) {
 // 						!CLEAR ROOM ARRAYS.
-      rooms.rdesc1[i - 1] = 0;
-      rooms.ractio[i - 1] = 0;
-      rooms.rflag[i - 1] = 0;
-      rooms.rval[i - 1] = 0;
-      rooms.rexit[i - 1] = 0;
+      rooms.rdesc1[r] = 0;
+      rooms.ractio[r] = 0;
+      rooms.rflag[r] = 0;
+      rooms.rval[r] = 0;
+      rooms.rexit[r] = 0;
 // L50:
    }
 
-   i__1 = mmax;
-   for (i = 1; i <= i__1; ++i) {
+   for (int m = 0; m < mmax; m++) {
 // 						!CLEAR MESSAGE DIRECTORY.
-      rmsg.rtext[i - 1] = 0;
+      rmsg.rtext[m] = 0;
 // L60:
    }
 
-   i__1 = amax;
-   for (i = 1; i <= i__1; ++i) {
+   for (int a = 0; a < amax; a++) {
 // 						!CLEAR ADVENTURER'S ARRAYS.
-      advs.aroom[i - 1] = 0;
-      advs.ascore[i - 1] = 0;
-      advs.avehic[i - 1] = 0;
-      advs.aobj[i - 1] = 0;
-      advs.aactio[i - 1] = 0;
-      advs.astren[i - 1] = 0;
-      advs.aflag[i - 1] = 0;
+      advs.aroom[a] = 0;
+      advs.ascore[a] = 0;
+      advs.avehic[a] = 0;
+      advs.aobj[a] = 0;
+      advs.aactio[a] = 0;
+      advs.astren[a] = 0;
+      advs.aflag[a] = 0;
 // L70:
    }
 
@@ -265,125 +296,84 @@ L10000:
 
 // NOW RESTORE FROM EXISTING INDEX FILE.
 
-#if 0
-// open(unit:1,file:"/usr/share/games/dungeon/dindx.dat", //F
-//    status:"OLD", form:"FORMATTED", access:"SEQUENTIAL", err:L1900 //F
-// ); //F
-   if (OpenF(1, "/usr/share/games/dungeon/dindx.dat", "OLD", "SEQUENTIAL", "FORMATTED", 0) != 0) goto L1900;
-#else
-// open(unit:1,file:"dindx.dat", //F
-//    status:"OLD", form:"FORMATTED", access:"SEQUENTIAL", err:L1900 //F
-// ); //F
-   if (OpenF(1, "dindx.dat", "OLD", "SEQUENTIAL", "FORMATTED", 0) != 0) goto L1900;
-#endif
+// open(unit:1, file:MyIndexFile, status:"OLD", form:"FORMATTED", access:"SEQUENTIAL", err:L1900); //F
+   if ((IndexF = OpenInF(MyIndexFile, "r")) == NULL && (IndexF = OpenInF(IndexFile, "r")) == NULL) goto L1900;
 
-// read(1, "%I6", &i, &j, &k); //F
-   BegInSF(1, "(i6)"), DoFio(1, &i, sizeof i), DoFio(1, &j, sizeof j), DoFio(1, &k, sizeof k), EndInSF();
+// read(1, "%I6", &Maj, &Min, &Edit); //F
+   Maj = GetWord(IndexF), Min = GetWord(IndexF), Edit = GetWord(IndexF);
 // 						!GET VERSION.
-   if (i != vmaj || j != vmin) {
+   if (Maj != vmaj || Min != vmin) {
       goto L1925;
    }
-#if 0
-// open(unit:chan.dbch, file:"/usr/share/games/dungeon/dtext.dat", //F
-//    status:"old", form:"unformatted", access:"direct", //F
-//    recl:76, err:L1950 //F
-// ); //F
-   if (OpenF(chan.dbch, "/usr/share/games/dungeon/dtext.dat", "OLD", "DIRECT", "UNFORMATTED", 76) != 0) goto L1950;
-#else
-// open(unit:chan.dbch, file:"dtext.dat", //F
-//    status:"old", form:"unformatted", access:"direct", //F
-//    recl:76, err:L1950 //F
-// ); //F
-   if (OpenF(chan.dbch, "dtext.dat", "OLD", "DIRECT", "UNFORMATTED", 76) != 0) goto L1950;
-#endif
+// open(unit:storych, file:MyStoryFile, status:"old", form:"unformatted", access:"direct", recl:76, err:L1950); //F
+   if ((StoryF = OpenInF(MyStoryFile, "rb")) == NULL && (StoryF = OpenInF(StoryFile, "rb")) == NULL) goto L1950;
 #ifdef ALLOW_GDT
-// print(" RESTORING FROM \"dindx.dat\""); //F
+// print(" RESTORING FROM \"" IndexFile "\""); //F
 #endif
 // // const char *Fmt = "%I8"; //F
 // const char *Fmt = "%I6"; //F
 // read(1, Fmt, &state.mxscor, &star.strbit, &state.egmxsc); //F
-   BegInSF(1, "(i6)");
-   DoFio(1, &state.mxscor, sizeof state.mxscor), DoFio(1, &star.strbit, sizeof star.strbit);
-   DoFio(1, &state.egmxsc, sizeof state.egmxsc);
-   EndInSF();
+   state.mxscor = GetWord(IndexF), star.strbit = GetWord(IndexF), state.egmxsc = GetWord(IndexF);
 // read(1, Fmt, &rooms.rlnt, &rooms.rdesc2, rooms.rdesc1, rooms.rexit, rooms.ractio, rooms.rval, rooms.rflag); //F
-   BegInSF(1, "(i6)");
-   DoFio(1, &rooms.rlnt, sizeof rooms.rlnt);
-   DoFio(1, &rooms.rdesc2, sizeof rooms.rdesc2), DoFio(200, rooms.rdesc1, sizeof rooms.rdesc1[0]);
-   DoFio(200, rooms.rexit, sizeof rooms.rexit[0]), DoFio(200, rooms.ractio, sizeof rooms.ractio[0]);
-   DoFio(200, rooms.rval, sizeof rooms.rval[0]), DoFio(200, rooms.rflag, sizeof rooms.rflag[0]);
-   EndInSF();
+   rooms.rlnt = GetWord(IndexF);
+   rooms.rdesc2 = GetWord(IndexF), GetWords(rmax, rooms.rdesc1, IndexF);
+   GetWords(rmax, rooms.rexit, IndexF), GetWords(rmax, rooms.ractio, IndexF);
+   GetWords(rmax, rooms.rval, IndexF), GetWords(rmax, rooms.rflag, IndexF);
 // read(1, Fmt, &exits.xlnt, exits.travel); //F
-   BegInSF(1, "(i6)");
-   DoFio(1, &exits.xlnt, sizeof exits.xlnt), DoFio(900, exits.travel, sizeof exits.travel[0]);
-   EndInSF();
+   exits.xlnt = GetWord(IndexF), GetWords(xmax, exits.travel, IndexF);
 // read(1, Fmt, //F
 //    objcts.olnt, objcts.odesc1, objcts.odesc2, objcts.odesco, objcts.oactio, objcts.oflag1, objcts.oflag2, //F
 //    objcts.ofval, objcts.otval, objcts.osize, objcts.ocapac, objcts.oroom, objcts.oadv, objcts.ocan, objcts.oread //F
 // ); //F
-   BegInSF(1, "(i6)");
-   DoFio(1, &objcts.olnt, sizeof objcts.olnt);
-   DoFio(220, objcts.odesc1, sizeof objcts.odesc1[0]), DoFio(220, objcts.odesc2, sizeof objcts.odesc2[0]);
-   DoFio(220, objcts.odesco, sizeof objcts.odesco[0]), DoFio(220, objcts.oactio, sizeof objcts.oactio[0]);
-   DoFio(220, objcts.oflag1, sizeof objcts.oflag1[0]), DoFio(220, objcts.oflag2, sizeof objcts.oflag2[0]);
-   DoFio(220, objcts.ofval, sizeof objcts.ofval[0]), DoFio(220, objcts.otval, sizeof objcts.otval[0]);
-   DoFio(220, objcts.osize, sizeof objcts.osize[0]), DoFio(220, objcts.ocapac, sizeof objcts.ocapac[0]);
-   DoFio(220, objcts.oroom, sizeof objcts.oroom[0]), DoFio(220, objcts.oadv, sizeof objcts.oadv[0]);
-   DoFio(220, objcts.ocan, sizeof objcts.ocan[0]), DoFio(220, objcts.oread, sizeof objcts.oread[0]);
-   EndInSF();
+   objcts.olnt = GetWord(IndexF);
+   GetWords(omax, objcts.odesc1, IndexF), GetWords(omax, objcts.odesc2, IndexF);
+   GetWords(omax, objcts.odesco, IndexF), GetWords(omax, objcts.oactio, IndexF);
+   GetWords(omax, objcts.oflag1, IndexF), GetWords(omax, objcts.oflag2, IndexF);
+   GetWords(omax, objcts.ofval, IndexF), GetWords(omax, objcts.otval, IndexF);
+   GetWords(omax, objcts.osize, IndexF), GetWords(omax, objcts.ocapac, IndexF);
+   GetWords(omax, objcts.oroom, IndexF), GetWords(omax, objcts.oadv, IndexF);
+   GetWords(omax, objcts.ocan, IndexF), GetWords(omax, objcts.oread, IndexF);
 // read(1, Fmt, &oroom2_.r2lnt, oroom2_.oroom2, oroom2_.rroom2); //F
-   BegInSF(1, "(i6)");
-   DoFio(1, &oroom2_.r2lnt, sizeof oroom2_.r2lnt);
-   DoFio(20, oroom2_.oroom2, sizeof oroom2_.oroom2[0]), DoFio(20, oroom2_.rroom2, sizeof oroom2_.rroom2[0]);
-   EndInSF();
+   oroom2_.r2lnt = GetWord(IndexF);
+   GetWords(r2max, oroom2_.oroom2, IndexF), GetWords(r2max, oroom2_.rroom2, IndexF);
 // read(1, Fmt, &cevent.clnt, cevent.ctick, cevent.cactio); //F
-   BegInSF(1, "(i6)");
-   DoFio(1, &cevent.clnt, sizeof cevent.clnt);
-   DoFio(25, cevent.ctick, sizeof cevent.ctick[0]), DoFio(25, cevent.cactio, sizeof cevent.cactio[0]);
-   EndInSF();
+   cevent.clnt = GetWord(IndexF);
+   GetWords(cmax, cevent.ctick, IndexF), GetWords(cmax, cevent.cactio, IndexF);
 // read(1, "%L4", cevent.cflag); //F
-   BegInSF(1, "(l4)");
-   DoFio(25, cevent.cflag, sizeof cevent.cflag[0]);
-   EndInSF();
+   GetFlags(cmax, cevent.cflag, IndexF);
 // read(1, Fmt, &vill.vlnt, vill.villns, vill.vprob, vill.vopps, vill.vbest, vill.vmelee); //F
-   BegInSF(1, "(i6)");
-   DoFio(1, &vill.vlnt, sizeof vill.vlnt), DoFio(4, vill.villns, sizeof vill.villns[0]);
-   DoFio(4, vill.vprob, sizeof vill.vprob[0]), DoFio(4, vill.vopps, sizeof vill.vopps[0]);
-   DoFio(4, vill.vbest, sizeof vill.vbest[0]), DoFio(4, vill.vmelee, sizeof vill.vmelee[0]);
-   EndInSF();
+   vill.vlnt = GetWord(IndexF), GetWords(vmax, vill.villns, IndexF);
+   GetWords(vmax, vill.vprob, IndexF), GetWords(vmax, vill.vopps, IndexF);
+   GetWords(vmax, vill.vbest, IndexF), GetWords(vmax, vill.vmelee, IndexF);
 // read(1, Fmt, &advs.alnt, advs.aroom, advs.ascore, advs.avehic, advs.aobj, advs.aactio, advs.astren, advs.aflag); //F
-   BegInSF(1, "(i6)");
-   DoFio(1, &advs.alnt, sizeof advs.alnt), DoFio(4, advs.aroom, sizeof advs.aroom[0]);
-   DoFio(4, advs.ascore, sizeof advs.ascore[0]), DoFio(4, advs.avehic, sizeof advs.avehic[0]);
-   DoFio(4, advs.aobj, sizeof advs.aobj[0]), DoFio(4, advs.aactio, sizeof advs.aactio[0]);
-   DoFio(4, advs.astren, sizeof advs.astren[0]), DoFio(4, advs.aflag, sizeof advs.aflag[0]);
-   EndInSF();
+   advs.alnt = GetWord(IndexF), GetWords(amax, advs.aroom, IndexF);
+   GetWords(amax, advs.ascore, IndexF), GetWords(amax, advs.avehic, IndexF);
+   GetWords(amax, advs.aobj, IndexF), GetWords(amax, advs.aactio, IndexF);
+   GetWords(amax, advs.astren, IndexF), GetWords(amax, advs.aflag, IndexF);
 // read(1, Fmt, &star.mbase, &rmsg.mlnt, rmsg.rtext); //F
-   BegInSF(1, "(i6)");
-   DoFio(1, &star.mbase, sizeof star.mbase);
-   DoFio(1, &rmsg.mlnt, sizeof rmsg.mlnt), DoFio(1820, rmsg.rtext, sizeof rmsg.rtext[0]);
-   EndInSF();
+   star.mbase = GetWord(IndexF);
+   rmsg.mlnt = GetWord(IndexF), GetWords(mmax, rmsg.rtext, IndexF);
 
 // close(1); //F
-   CloseF(1);
-   goto L1025;
+   fclose(IndexF);
 // 						!INIT DONE.
+   if (IOErrs > 0) {
+      goto L1940;
+   }
 
 // INIT, PAGE 5
 
 // THE INTERNAL DATA BASE IS NOW ESTABLISHED.
 // SET UP TO PLAY THE GAME.
 
-L1025:
+// L1025:
    intime(&time_.shour, &time_.smin, &time_.ssec);
 // 						!GET TIME AND DATE.
-// 	CALL IDATE(I,J,K)
-// 	CALL IDATE(DATARRY(1))
-// 	CALL INIRND(or(DATARRY(1),or(DATARRY(2),DATARRY(3))),
-//     &	or(SHOUR,or(SMIN,SSEC)))
+// idate(I,J,K)
+// idate(datarry[0])
+// inirnd(datarry[0] | datarry[1] | datarry[2], shour | smin | ssec)
 // 	NEW WAY TO INITIALIZE /+TAA+/
-   i__1 = time_.shour * 3600 + time_.smin * 60 + time_.ssec;
-   inirnd(i__1);
+   inirnd(time_.shour * 3600 + time_.smin * 60 + time_.ssec);
 
    play.winner = PlayerAX;
    last.lastit = advs.aobj[PlayerAX - 1];
@@ -415,23 +405,25 @@ L1025:
 // ERRORS-- INIT FAILS.
 
 L1900:
-// print(" I can't open ","dindx.dat","."); //F
-   BegExSF(6, "(\2 I can't open \2,\2dindx.dat\2,\2.\2)"), EndExSF();
+// print(" I can't open ",MyIndexFile,"."); //F
+   BegExSF(6, "(\2 I can't open \2,\2" MyIndexFile "\2,\2.\2)"), EndExSF();
    goto L1975;
 L1925:
 // print(
-//    " \"dindx.dat\" is version %I1.%I1%A1.%/" //F
+//    " \"" MyIndexFile "\" is version %I1.%I1%A1.%/" //F
 //    "  I require version %I1.%I1%A1.", //F
-//    i, j, k, vmaj, vmin, vedit //F
+//    Maj, Min, Edit, vmaj, vmin, vedit //F
 // ); //F
-   BegExSF(6, "(\2 \"dindx.dat\" is version \2,i1,\2.\2,i1,a1,\2.\2/\2 I require version \2,i1,\2.\2,i1,a1,\2.\2)");
-   DoFio(1, &i, sizeof i), DoFio(1, &j, sizeof j), DoFio(1, &k, sizeof k);
-{  int Edit = vedit; DoFio(1, &vmaj, sizeof vmaj), DoFio(1, &vmin, sizeof vmin), DoFio(1, &Edit, sizeof Edit); }
+   BegExSF(6, "(\2 \"" MyIndexFile "\" is version \2,i1,\2.\2,i1,a1,\2.\2/\2 I require version \2,i1,\2.\2,i1,a1,\2.\2)");
+   DoFio(1, &Maj, sizeof Maj), DoFio(1, &Min, sizeof Min), DoFio(1, &Edit, sizeof Edit);
+{  int EditV = vedit; DoFio(1, &vmaj, sizeof vmaj), DoFio(1, &vmin, sizeof vmin), DoFio(1, &EditV, sizeof EditV); }
    EndExSF();
    goto L1975;
+L1940:
+   BegExSF(6, "(\2 I can't read \2,\2" MyIndexFile "\2,\2: %I1 errors found.\2)"), DoFio(1, &IOErrs, sizeof IOErrs), EndExSF();
 L1950:
-// print(" I can't open ","dtext.dat","."); //F
-   BegExSF(6, "(\2 I can't open \2,\2dtext.dat\2,\2.\2)"), EndExSF();
+// print(" I can't open ",MyStoryFile,"."); //F
+   BegExSF(6, "(\2 I can't open \2,\2" MyStoryFile "\2,\2.\2)"), EndExSF();
 L1975:
 // print( //F
 //    " Suddenly a sinister, wraithlike figure appears before ", //F

@@ -85,3 +85,6 @@ History
 		∙	lifting constant common blocks to enums, constant arrays or constants, wherever possible.
 2021/09/24	Recoding of the (translations of the) Arithmetic IF statements
 2021/09/24	Further simplification and reduction of the I/O-related f2c library routines.
+2021/09/24	Most of the file I/O in ‟F2C.h” has been nativized and eliminated.
+		The I/O for the index and save files is now operational.
+		The I/O for the story file is partially operational.

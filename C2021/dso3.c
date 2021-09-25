@@ -141,8 +141,8 @@ Bool yesno(int q, int y, int n) {
 L100:
    rspeak(q);
 // 						!ASK
-// read(chan.inpch, "%A1", &ans); //F
-   BegInSF(chan.inpch, "(a1)"), DoFio(1, &ans, ans), EndInSF();
+// read(inpch, "%A1", &ans); //F
+   BegInSF(inpch, "(a1)"), DoFio(1, &ans, ans), EndInSF();
 // 						!GET ANSWER
    if (ans == 'Y' || ans == 'y') {
       goto L200;

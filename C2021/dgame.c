@@ -146,8 +146,8 @@ L1300:
 // 						!VALID EXIT?
 
 L1400:
-// write(chan.outch, "%1X%78A1", (input.inbuf(j), j = 1, input.inlnt)); //F
-   BegExSF(chan.outch, "(1x,78a1)");
+// write(outch, "%1X%78A1", (input.inbuf(j), j = 1, input.inlnt)); //F
+   BegExSF(outch, "(1x,78a1)");
    i__1 = input.inlnt;
    for (j = 1; j <= i__1; ++j) DoFio(1, input.inbuf + (j - 1), sizeof input.inbuf[0]);
    EndExSF();

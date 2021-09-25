@@ -122,8 +122,8 @@ struct curxtCB curxt;
 struct inputCB input;
 
 // common /chan/
-// int inpch, outch, dbch;
-struct chanCB chan;
+// enum chanCB; // Declared and defined in common.h.
+FILE *StoryF;
 
 // mindex.h:
 // common /rmsg/

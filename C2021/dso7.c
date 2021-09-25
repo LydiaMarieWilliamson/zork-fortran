@@ -112,13 +112,13 @@ void cpinfo(int rmk, int st) {
    L100:
       ;
    }
-// write(chan.outch, //F
+// write(outch, //F
 //    "       |%A2%1X%A2%1X%A2|%/" //F
 //    " West  |%A2 .. %A2|  East%/" //F
 //    "       |%A2%1X%A2%1X%A2|", //F
 //    dgm //F
 // ); //F
-   BegExSF(chan.outch,
+   BegExSF(outch,
       "(\2"
       "       |\2,a2,1x,a2,1x,a2,\2|\2/,\2"
       " West  |\2,a2,\2 .. \2,a2,\2|  East\2,/\2"

@@ -2,8 +2,22 @@
 // All rights reserved, commercial usage strictly prohibited.
 // Written by R. M. Supnik.
 // Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
+#include <stdio.h> // Particularly for: SEEK_SET and fseek().
+#include <stdint.h>
 #include "extern.h"
 #include "common.h"
+
+void GetRec(FILE *InF, int X, short *IxP, char Buf[74]) {
+// read(unit:InUnit, rec:X, IxP, Buf); //F
+   struct {
+      int_least16_t Ix;
+      char Buf[74];
+   } Rec;
+   if (fseek(InF, 76L*(X - 1), SEEK_SET) == EOF) fprintf(stderr, "Error seeking database loc %d\n", X), exit_();
+   if (fread(&Rec, sizeof Rec, 1, InF) != 1) fprintf(stderr, "Error reading database loc %d\n", X), exit_();
+   *IxP = Rec.Ix;
+   for (int b = 0; b < 74; b++) Buf[b] = Rec.Buf[b];
+}
 
 // Resident subroutines for dungeon
 
@@ -62,8 +76,8 @@ void rspsb2(int n, int s1, int s2) {
    play.telflg = true;
 // 						!SAID SOMETHING.
 
-// read(unit:chan.dbch, rec:x, &oldrec, b1); //F
-   BegInDU(chan.dbch, x), DoUio(1, &oldrec, sizeof oldrec), DoUio(1, b1, sizeof b1), EndInDU();
+// read(unit:storych, rec:x, &oldrec, b1); //F
+   GetRec(StoryF, x, &oldrec, b1);
 
 L100:
    for (i = 1; i <= 74; ++i) {
@@ -95,15 +109,15 @@ L400:
    }
 
 L600:
-// write(chan.outch, "%1X%74A1", (b1[j - 1], j = 1, i)); //F
-   BegExSF(chan.outch, "(1x,74a1)");
+// write(outch, "%1X%74A1", (b1[j - 1], j = 1, i)); //F
+   BegExSF(outch, "(1x,74a1)");
    i__1 = i;
    for (j = 1; j <= i__1; ++j) DoFio(1, &b1[j - 1], 1*sizeof b1[0]);
    EndExSF();
    ++x;
 // 						!ON TO NEXT RECORD.
-// read(unit:chan.dbch, rec:1, &newrec, b1); //F
-   BegInDU(chan.dbch, x), DoUio(1, &newrec, sizeof newrec), DoUio(1, b1, sizeof b1), EndInDU();
+// read(unit:storych, rec:x, &newrec, b1); //F
+   GetRec(StoryF, x, &newrec, b1);
    if (oldrec == newrec) {
       goto L100;
    }
@@ -135,8 +149,8 @@ L1000:
 
 //   READ SUBSTITUTE STRING INTO B3, AND DECRYPT IT:
 
-// read(unit:chan.dbch, rec:y, &jrec, b3); //F
-   BegInDU(chan.dbch, y), DoUio(1, &jrec, sizeof jrec), DoUio(1, b3, sizeof b3), EndInDU();
+// read(unit:storych, rec:y, &jrec, b3); //F
+   GetRec(StoryF, y, &jrec, b3);
    for (k1 = 1; k1 <= 74; ++k1) {
       x1 = (y & 31) + k1;
       b3[k1 - 1] = (char)(b3[k1 - 1] ^ x1);
@@ -446,8 +460,8 @@ L1000:
 L1100:
    score(false);
 // 						!TELL SCORE.
-// close(chan.dbch); //F
-   CloseF(chan.dbch);
+// close(storych); //F
+   fclose(StoryF);
    exit_();
 }
 
