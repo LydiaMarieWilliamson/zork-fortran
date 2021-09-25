@@ -41,13 +41,14 @@ as well as the following include:
 
 	#include "f2c.h"
 
-which has been changed to
+which was changed to
 
 	#include "F2C.h"
 
-with the system "f2c.h" directly added here and internalized as "F2C.h", where it will be whittled away.
-The system-dependent part of the original "f2c.h" has already been removed from "F2C.h", since it's not used anywhere.
-Most of the ‟Fortran”-isms have also been removed from "F2C.h" and rendered in native C.
+with the system ‟f2c.h” directly added here and internalized as ‟F2C.h”, where it was whittled away.
+The system-dependent part of the original ‟f2c.h” had already been removed from ‟F2C.h”, since it's not used anywhere.
+Most of the ‟Fortran”-isms had also been removed from ‟F2C.h” and rendered in native C.
+The remnant of ‟F2C.h” has since been moved into ‟extern.h”.
 
 Unused Variables and Function
 ─────────────────────────────

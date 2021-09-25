@@ -51,3 +51,5 @@ clean:
 	rm -f $(OBJS)
 clobber: clean undat
 	rm -f $(APP)
+
+$(OBJS): extern.h common.h

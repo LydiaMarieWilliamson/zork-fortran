@@ -89,3 +89,4 @@ History
 		The I/O for the index and save files is now operational.
 		The I/O for the story file is partially operational.
 2021/09/25	Elimination of the remaining non-I/O functions from ‟F2C.h”.
+		Elimination of the remainder of ‟F2C.h”, with its merger into ‟extern.h”.

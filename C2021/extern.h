@@ -4,7 +4,28 @@
 // Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 
 // The functions for dungeon.
-#include "F2C.h"
+
+// The remnant of f2c.h (begin)
+// Assumes C99, which is now (well into the 21st century) POSIX.
+// That means: boolean types, function prototypes, ‟rb” and ‟wb” for fopen(), ‟const”, ‟void”, etc.
+#include <stdbool.h>
+#include <stdlib.h>
+
+// This type will be nativized to ‟bool”, after it's made OK to do so.
+typedef int Bool; // Logical.
+
+#define abs(X)		((X) >= 0? (X): -(X))
+#define min(A, B)	((A) <= (B)? (A): (B))
+#define max(A, B)	((A) >= (B)? (A): (B))
+
+// local.c:
+// A wrapper for the built-in functions defined in the f2c library.
+int DoFio(size_t N, void *X, size_t dN);
+int BegInSF(int Unit, char *Format);
+int EndInSF(void);
+int BegExSF(int Unit, char *Format);
+int EndExSF(void);
+// The remnant of f2c.h (end)
 
 // actors.c:
 Bool aappli(int);
