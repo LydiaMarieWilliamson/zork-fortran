@@ -13,8 +13,6 @@ typedef long Bool; // Logical.
 
 // A wrapper for the built-in functions defined in the f2c library.
 int DoFio(size_t N, void *X, size_t dN);
-int CompS(char *A, char *B, size_t N);
-void StopS(char *A, size_t N);
 int BegInSF(int Unit, char *Format);
 int EndInSF(void);
 int BegExSF(int Unit, char *Format);

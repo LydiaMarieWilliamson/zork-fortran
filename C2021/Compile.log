@@ -5,22 +5,13 @@ rtim.c:		ITime() for itime()
 Wrapper Functions
 ━━━━━━━━━━━━━━━━━
 (These will all be replaced by fallback functions.)
-local.c:	DoFio() for do_fio()
-		DoUio() for do_uio()
-		CompS() for s_cmp()
-		StopS() for s_stop()
-		OpenF() for f_open()
-		CloseF() for f_clos()
-		BegInDU() for s_rdue()
-		EndInDU() for e_rdue()
-		BegInSF() for s_rsfe()
-		EndInSF() for e_rsfe()
-		BegInSU() for s_rsue()
-		EndInSU() for e_rsue()
-		BegExSF() for s_wsfe()
-		EndExSF() for e_wsfe()
-		BegExSU() for s_wsue()
-		EndExSU() for e_wsue()
+local.c:	{Get,Put}{Arr,Var}() for do_uio()
+		more_input() for s_r{s,d}{u,f}e(); do_fio(); ⋯; do_fio(); e_r{s,d}{u,f}e();
+		more_output() for s_w{s,d}{u,f}e(); do_fio(); ⋯; do_fio(); e_w{s,d}{u,f}e();
+C99 library:	strncmp() for s_cmp()
+		fopen() for f_open()
+		fclose() for f_clos()
+		exit() for s_stop()
 
 Common Blocks
 ━━━━━━━━━━━━━
@@ -30,6 +21,8 @@ Unlisted
 ────────
 star:		demons dinit dmain dso6 dverb1 gdt np2 np3 verbs
 time_:		dinit dso5 dverb2
+
+Defined and used only in rtim.c:
 random_:	rtim
 
 Defined in dmain.c:

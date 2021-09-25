@@ -17,18 +17,6 @@ int DoFio(size_t N, void *X, size_t dN) {
    return do_fio(&n, x, dn);
 }
 
-int CompS(char *A, char *B, size_t N) {
-   int s_cmp(char *, char *, SizeT, SizeT);
-   SizeT n = (SizeT)N;
-   return s_cmp(A, B, n, n);
-}
-
-void StopS(char *A, size_t N) {
-   int /* Subroutine */ s_stop(char *, SizeT);
-   SizeT n = (size_t)N;
-   (void)s_stop(A, n);
-}
-
 typedef struct {
    Bit _Err;
    Int _Unit;

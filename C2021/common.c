@@ -22,10 +22,6 @@
 // int pltime, shour, smin, ssec;
 struct timeCB time_;
 
-// common /random/
-// int seedy;
-struct randomCB random_;
-
 // parser.h:
 // common /prsvec/
 // int prsa, prsi, prso;

@@ -23,11 +23,6 @@ extern struct timeCB {
    int pltime, shour, smin, ssec;
 } time_;
 
-// common /random/
-extern struct randomCB {
-   int seedy;
-} random_;
-
 // common /vers/
 extern /*const*/ int vmaj, vmin;
 extern /*const*/ char vedit;

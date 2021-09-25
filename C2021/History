@@ -88,3 +88,4 @@ History
 2021/09/24	Most of the file I/O in ‟F2C.h” has been nativized and eliminated.
 		The I/O for the index and save files is now operational.
 		The I/O for the story file is partially operational.
+2021/09/25	Elimination of the remaining non-I/O functions from ‟F2C.h”.

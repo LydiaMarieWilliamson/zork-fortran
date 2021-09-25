@@ -65,19 +65,19 @@ L2000:
 // read(inpch, "%A2", cmd); //F
    BegInSF(inpch, "(a2)"), DoFio(1, cmd, sizeof cmd), EndInSF();
 // 						!GET COMMAND.
-   if (CompS(cmd, "  ", sizeof cmd) == 0) {
+   if (strncmp(cmd, "  ", sizeof cmd) == 0) {
       goto L2000;
    }
 // 						!IGNORE BLANKS.
    i__1 = cmdmax;
    for (i = 1; i <= i__1; ++i) {
 // 						!LOOK IT UP.
-      if (CompS(cmd, dbgcmd + (i - 1 << 1), sizeof cmd) == 0) {
+      if (strncmp(cmd, &dbgcmd[i - 1 << 1], sizeof cmd) == 0) {
          goto L2300;
       }
 // 						!FOUND?
 // 	  check for lower case command, as well
-      if (CompS(cmd, ldbgcmd + (i - 1 << 1), sizeof cmd) == 0) {
+      if (strncmp(cmd, &ldbgcmd[i - 1 << 1], sizeof cmd) == 0) {
          goto L2300;
       }
 // L2100:
