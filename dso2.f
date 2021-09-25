@@ -72,7 +72,7 @@ C Print out current score
 	include 'gamestat.h'
 	include 'state.h'
 C
-	COMMON /CHAN/ INPCH,OUTCH,DBCH
+	COMMON /CHAN/ INPCH,OUTCH,STORYCH
 	include 'advers.h'
 	include 'flags.h'
 C

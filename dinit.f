@@ -121,7 +121,7 @@ C   LOGICAL UNIT NRS: 5=STDIN, 6=STDOUT
 	INPCH=5
 C						!TTY INPUT
 	OUTCH=6
-	DBCH=2
+	STORYCH=2
 C						!DATA BASE.
 C INIT, PAGE 3
 C
@@ -247,8 +247,8 @@ C						!GET VERSION.
 	IF((I.NE.VMAJ).OR.(J.NE.VMIN))
      &	GO TO 1925
 
-C	OPEN(UNIT=DBCH,file='/usr/share/games/dungeon/dtext.dat',
-	OPEN(UNIT=DBCH,file='dtext.dat',
+C	OPEN(UNIT=STORYCH,file='/usr/share/games/dungeon/dtext.dat',
+	OPEN(UNIT=STORYCH,file='dtext.dat',
      &	status='OLD',FORM='UNFORMATTED',ACCESS='DIRECT',
      &	recl=76,ERR=1950)
 

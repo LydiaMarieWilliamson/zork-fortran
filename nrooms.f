@@ -234,7 +234,7 @@ C
 C						!WALKIN?
 	CALL RSPEAK(726)
 	CALL SCORE(.FALSE.)
-C moved to exit routine	CLOSE(DBCH)
+C moved to exit routine	CLOSE(STORYCH)
 	CALL EXIT
 C
 C R58--	TOMB ROOM
