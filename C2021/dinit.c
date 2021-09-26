@@ -2,13 +2,8 @@
 // All rights reserved, commercial usage strictly prohibited.
 // Written by R. M. Supnik.
 // Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
-#include <stdio.h>
 #include "extern.h"
 #include "common.h"
-
-static Bool protct(void/*int*/);
-
-static FILE *OpenInF(const char *File, const char *Mode) { return fopen((File), (Mode)); }
 
 #ifndef StoryFile
 #   if defined unix
@@ -30,29 +25,6 @@ static FILE *OpenInF(const char *File, const char *Mode) { return fopen((File), 
 #ifndef MyIndexFile
 #   define MyIndexFile "dindx.dat"
 #endif
-
-static unsigned IOErrs = 0U;
-
-// Read an integer from a line in the index file
-static int GetWord(FILE *InF) {
-   int A = 0, n = fscanf(InF, "%6d\n", &A);
-   if (n < 1) IOErrs++;
-   return A;
-}
-
-// Read a number of integers from separate lines in the index file
-static void GetWords(int Lim, int *WordP, FILE *InF) {
-   while (Lim-- > 0) *WordP++ = GetWord(InF);
-}
-
-// Read a number of boolean valies from separate lines in the index file
-static void GetFlags(int Lim, Bool *FlagP, FILE *InF) {
-   while (Lim-- > 0) {
-      char Ch = '\0'; int n = fscanf(InF, " %c\n", &Ch);
-      if (n < 1 || (Ch != 'T' && Ch != 'F')) IOErrs++;
-      *FlagP++ = Ch == 'T';
-   }
-}
 
 // Dungeon initialization subroutine
 Bool init(void/*int x*/) {
@@ -447,16 +419,5 @@ L1975:
       " The darkness becomes all encompassing, and your vision fails."
       "\2)"
    ), EndExSF();
-   return ret_val;
-}
-
-// Check for user violation
-// This routine should be modified if you wish to add system dependent protection against abuse.
-// At the moment, play is permitted under all circumstances.
-static Bool protct(void/*int x*/) {
-// System generated locals
-   Bool ret_val;
-
-   ret_val = true;
    return ret_val;
 }

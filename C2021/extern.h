@@ -9,17 +9,25 @@
 // Assumes C99, which is now (well into the 21st century) POSIX.
 // That means: boolean types, function prototypes, ‟rb” and ‟wb” for fopen(), ‟const”, ‟void”, etc.
 #include <stdbool.h>
-#include <stdlib.h>
+#include <stdlib.h> // For abs().
+#include <stdio.h>
 
 // This type will be nativized to ‟bool”, after it's made OK to do so.
 typedef int Bool; // Logical.
 
-#define abs(X)		((X) >= 0? (X): -(X))
 #define min(A, B)	((A) <= (B)? (A): (B))
 #define max(A, B)	((A) >= (B)? (A): (B))
 
 // local.c:
-// A wrapper for the built-in functions defined in the f2c library.
+Bool protct(void/*int*/);
+
+// The remnant of f2c.h (begin)
+extern unsigned IOErrs;
+FILE *OpenInF(const char *File, const char *Mode);
+int GetWord(FILE *InF);
+void GetWords(int Lim, int *WordP, FILE *InF);
+void GetFlags(int Lim, Bool *FlagP, FILE *InF);
+
 int DoFio(size_t N, void *X, size_t dN);
 int BegInSF(int Unit, char *Format);
 int EndInSF(void);
