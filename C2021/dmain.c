@@ -102,7 +102,7 @@ const int STagA = 0100000;
 // enum vindexCB; // Declared and defined in common.h.
 
 // Main program: dungeo
-int MAIN__(void) {
+int main(void) {
 #if 0
    int x; //(@) Not actually used.
 #endif

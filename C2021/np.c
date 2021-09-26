@@ -39,7 +39,7 @@ L10:
 // 						!PROMPT FOR GAME.
 L90:
 // read(inpch, "%78A1", buffer); //F
-   BegInSF(inpch, "(78a1)"), DoFio(length, buffer + 1, buffer_unit), EndInSF();
+   if (more_input(buffer, length) == NULL) exit_();
    for (; length >= 1; --(length)) {
       if (buffer[length] != ' ') {
          goto L250;

@@ -310,12 +310,10 @@ extern struct inputCB {
 } input;
 
 // common /chan/
-enum chanCB {
-//   LOGICAL UNIT NRS: 5=STDIN, 6=STDOUT
-   inpch = 5,
+// LOGICAL UNIT NRS: 5=STDIN, 6=STDOUT
+// extern FILE *stdin;
 //                                              !TTY INPUT
 // extern FILE *stdout;
-};
 extern FILE *StoryF;
 //                                              !DATA BASE.
 

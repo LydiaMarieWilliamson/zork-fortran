@@ -35,6 +35,7 @@ void gdt(void) {
    int i, j, k, l, l1;
    char cmd[2];
    int fmax, smax;
+   char buf[80];
 
 // GDT, PAGE 2
 
@@ -63,7 +64,7 @@ L2000:
    printf(" GDT>"), fflush(stdout);
 // 						!OUTPUT PROMPT.
 // read(inpch, "%A2", cmd); //F
-   BegInSF(inpch, "(a2)"), DoFio(1, cmd, sizeof cmd), EndInSF();
+   more_input(buf, sizeof buf), strncpy(cmd, buf, sizeof cmd);
 // 						!GET COMMAND.
    if (strncmp(cmd, "  ", sizeof cmd) == 0) {
       goto L2000;
@@ -114,7 +115,8 @@ L2700:
    printf(" Idx,Ary:  "), fflush(stdout);
 // 						!TYPE 3, REQUEST ARRAY COORDS.
 // read(inpch, "%2I6", &j, &k); //F
-   BegInSF(inpch, "(2i6)"), DoFio(1, &j, sizeof j), DoFio(1, &k, sizeof k), EndInSF();
+   more_input(buf, sizeof buf); for (char *BP = buf; *BP != '\0'; BP++) if (*BP == ',') *BP = ' ';
+   j = 0, k = 0, sscanf(buf, "%d %d", &j, &k);
    goto L2400;
 
 L2600:
@@ -122,7 +124,8 @@ L2600:
    printf(" Limits:   "), fflush(stdout);
 // 						!TYPE 2, READ BOUNDS.
 // read(inpch, "%2I6", &j, &k); //F
-   BegInSF(inpch, "(2i6)"), DoFio(1, &j, sizeof j), DoFio(1, &k, sizeof k), EndInSF();
+   more_input(buf, sizeof buf); for (char *BP = buf; *BP != '\0'; BP++) if (*BP == ',') *BP = ' ';
+   j = 0, k = 0, sscanf(buf, "%d %d", &j, &k);
    if (k == 0) {
       k = j;
    }
@@ -133,7 +136,7 @@ L2500:
    printf(" Entry:    "), fflush(stdout);
 // 						!TYPE 1, READ ENTRY NO.
 // read(inpch, "%I6", &j); //F
-   BegInSF(inpch, "(i6)"), DoFio(1, &j, sizeof j), EndInSF();
+   more_input(buf, sizeof buf), j = 0, sscanf(buf, "%d", &j);
 L2400:
    switch (i) {
       case 1:
@@ -406,7 +409,13 @@ L20000:
    printf(Format1, flags[j - 1] ? 'T' : 'F'), fflush(stdout);
 // 						!TYPE OLD, GET NEW.
 // read(inpch, "%L1", &flags(j)); //F
-   BegInSF(inpch, "(l1)"), DoFio(1, &flags[j - 1], sizeof flags[0]), EndInSF();
+   more_input(buf, sizeof buf)
+   for (char *BP = buf, Ch; (Ch = tolower(*BP)) != '\0'; BP++)
+      if (!isspace(Ch)) {
+         if (Ch == 't') flags[j - 1] = true;
+         else if (Ch == 'f') flags[j - 1] = false;
+         break;
+      }
    goto L2000;
 
 // 21000-- HELP
@@ -550,7 +559,7 @@ L32000:
    printf(Format2, eqr[j - 1 + 200 * (k - 1)]), fflush(stdout);
 // 						!TYPE OLD, GET NEW.
 // read(inpch, "%I6", &eqr(j, k)); //F
-   BegInSF(inpch, "(i6)"), DoFio(1, &eqr[j - 1 + 200 * (k - 1)], sizeof eqr[0]), EndInSF();
+   more_input(buf, sizeof buf), sscanf(buf, "%d", &eqr[j - 1 + 200 * (k - 1)]);
    goto L2000;
 
 // AO-- ALTER OBJECT ENTRY
@@ -563,7 +572,7 @@ L33000:
 // write(outch, Format2, eqo(j, k)); //F
    printf(Format2, eqo[j - 1 + 220 * (k - 1)]), fflush(stdout);
 // read(inpch, "%I6", &eqo(j, k)); //F
-   BegInSF(inpch, "(i6)"), DoFio(1, &eqo[j - 1 + 220 * (k - 1)], sizeof eqo[0]), EndInSF();
+   more_input(buf, sizeof buf), sscanf(buf, "%d", &eqo[j - 1 + 220 * (k - 1)]);
    goto L2000;
 
 // AA-- ALTER ADVS ENTRY
@@ -576,7 +585,7 @@ L34000:
 // write(outch, Format2, eqa(j, k)); //F
    printf(Format2, eqa[j - 1 + ((k - 1) << 2)]), fflush(stdout);
 // read(inpch, "%I6", &eqa(j, k)); //F
-   BegInSF(inpch, "(i6)"), DoFio(1, &eqa[j - 1 + ((k - 1) << 2)], sizeof eqa[0]), EndInSF();
+   more_input(buf, sizeof buf), sscanf(buf, "%d", &eqa[j - 1 + ((k - 1) << 2)]);
    goto L2000;
 
 // AC-- ALTER CLOCK EVENTS
@@ -593,14 +602,20 @@ L35000:
 // write(outch, Format2, eqc(j, k)); //F
    printf(Format2, eqc[j - 1 + 25 * (k - 1)]), fflush(stdout);
 // read(inpch, "%I6", &eqc(j, k)); //F
-   BegInSF(inpch, "(i6)"), DoFio(1, &eqc[j - 1 + 25 * (k - 1)], sizeof eqc[0]), EndInSF();
+   more_input(buf, sizeof buf), sscanf(buf, "%d", &eqc[j - 1 + 25 * (k - 1)]);
    goto L2000;
 
 L35500:
 // write(outch, Format1, cflag(j)); //F
    printf(Format1, cevent.cflag[j - 1] ? 'T' : 'F'), fflush(stdout);
 // read(inpch, "%L1", &cevent.cflag); //F
-   BegInSF(inpch, "(l1)"), DoFio(1, &cevent.cflag[j - 1], sizeof cevent.cflag[0]), EndInSF();
+   more_input(buf, sizeof buf);
+   for (char *BP = buf, Ch; (Ch = tolower(*BP)) != '\0'; BP++)
+      if (!isspace(Ch)) {
+         if (Ch == 't') cevent.cflag[j - 1] = true;
+         else if (Ch == 'f') cevent.cflag[j - 1] = false;
+         break;
+      }
    goto L2000;
 // GDT, PAGE 6
 
@@ -614,7 +629,7 @@ L36000:
 // write(outch, Format2, travel(j)); //F
    printf(Format2, exits.travel[j - 1]), fflush(stdout);
 // read(inpch, "%I6", &exits.travel(j)); //F
-   BegInSF(inpch, "(i6)"), DoFio(1, &exits.travel[j - 1], sizeof exits.travel[0]), EndInSF();
+   more_input(buf, sizeof buf), sscanf(buf, "%d", &exits.travel[j - 1]);
    goto L2000;
 
 // AV-- ALTER VILLAINS
@@ -627,7 +642,7 @@ L37000:
 // write(outch, Format2, eqv(j, k)); //F
    printf(Format2, eqv[j - 1 + ((k - 1) << 2)]), fflush(stdout);
 // read(inpch, "%I6", &eqv(j, k)); //F
-   BegInSF(inpch, "(i6)"), DoFio(1, &eqv[j - 1 + ((k - 1) << 2)], sizeof eqv[0]), EndInSF();
+   more_input(buf, sizeof buf), sscanf(buf, "%d", &eqv[j - 1 + ((k - 1) << 2)]);
    goto L2000;
 
 // D2-- DISPLAY ROOM2 LIST
@@ -669,7 +684,7 @@ L40000:
 // write(outch, Format2, switch_(j)); //F
    printf(Format2, switch_[j - 1]), fflush(stdout);
 // read(inpch, "%I6", &switch_(j)); //F
-   BegInSF(inpch, "(i6)"), DoFio(1, &switch_[j - 1], sizeof switch_[0]), EndInSF();
+   more_input(buf, sizeof buf), sscanf(buf, "%d", &switch_[j - 1]);
    goto L2000;
 
 // DM-- DISPLAY MESSAGES
@@ -707,7 +722,7 @@ L43000:
 // write(outch, Format2, here); //F
    printf(Format2, play.here), fflush(stdout);
 // read(inpch, "%I6", &play.here); //F
-   BegInSF(inpch, "(i6)"), DoFio(1, &play.here, sizeof play.here), EndInSF();
+   more_input(buf, sizeof buf), sscanf(buf, "%d", &play.here);
    eqa[0] = play.here;
    goto L2000;
 
@@ -728,7 +743,7 @@ L45000:
    printf(Format2, debug.prsflg), fflush(stdout);
 // 						!TYPE OLD, GET NEW.
 // read(inpch, "%I6", &debug.prsflg); //F
-   BegInSF(inpch, "(i6)"), DoFio(1, &debug.prsflg, sizeof debug.prsflg), EndInSF();
+   more_input(buf, sizeof buf), sscanf(buf, "%d", &debug.prsflg);
    goto L2000;
 
 // DZ--	DISPLAY PUZZLE ROOM
@@ -756,7 +771,7 @@ L47000:
    printf(Format2, puzzle.cpvec[j - 1]), fflush(stdout);
 // 						!OUTPUT OLD,
 // read(inpch, "%I6", &puzzle.cpvec(j)); //F
-   BegInSF(inpch, "(i6)"), DoFio(1, &puzzle.cpvec[j - 1], sizeof puzzle.cpvec[0]), EndInSF();
+   more_input(buf, sizeof buf), sscanf(buf, "%d", &puzzle.cpvec[j - 1]);
    goto L2000;
 #endif
 }

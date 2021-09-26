@@ -8,7 +8,7 @@ LN=ln -sf
 ## Several mechanisms are supported for determining this; the most common one has been left uncommented.
 ## If you have trouble, especially when linking, you may have to select a different option.
 
-LIBS = -lf2c -lm
+LIBS =
 TERMFLAG = -DMORE_NONE
 
 ## End of more options

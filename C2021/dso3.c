@@ -136,13 +136,14 @@ Bool yesno(int q, int y, int n) {
    Bool ret_val;
 
 // Local variables
+   char buf[100];
    char ans;
 
 L100:
    rspeak(q), fflush(stdout);
 // 						!ASK
 // read(inpch, "%A1", &ans); //F
-   BegInSF(inpch, "(a1)"), DoFio(1, &ans, ans), EndInSF();
+   more_input(buf, sizeof buf), ans = buf[0];
 // 						!GET ANSWER
    if (ans == 'Y' || ans == 'y') {
       goto L200;
