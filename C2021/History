@@ -92,3 +92,6 @@ History
 		Elimination of the remainder of ‟F2C.h”, with its merger into ‟extern.h”.
 2021/09/25-26	The rest of the file output I/O from ‟F2C.h” has been nativized and eliminated.
 		The I/O for the story file is now operational.
+2021/09/26	The rest of the file input I/O from ‟F2C.h” has been nativized and eliminated.
+		The libf2c dependency has been eliminated.
+		The I/O for the user input is now operational, but not yet validated (and repaired, if need be).
