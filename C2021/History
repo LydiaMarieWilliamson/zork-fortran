@@ -70,7 +70,7 @@ History
 		This is the reason that ‟Test.in” will produce different results on different runs
 		for the Fortran version (and the 2021 C translation, once a run-time baseline is established).
 		1991: Missing comments from the Fortran original have been restored.
-		2021: Extra commnents from the Fortran original and translator have been removed.
+		2021: Extra comments from the Fortran original and translator have been removed.
 		2021: Removed a bug in rooms.{c,f} arising from ‟TCHBT” being mistyped as ‟CHBT” in rooms.f and mistranslated.
 2021/09/23	Reconciling differences between the adventurer, object and villain tables.
 		The Fortran original split the large arrays {a,o,v}voc[] into tables bundled into common blocks,
@@ -85,8 +85,10 @@ History
 		∙	lifting constant common blocks to enums, constant arrays or constants, wherever possible.
 2021/09/24	Recoding of the (translations of the) Arithmetic IF statements
 2021/09/24	Further simplification and reduction of the I/O-related f2c library routines.
-2021/09/24	Most of the file I/O in ‟F2C.h” has been nativized and eliminated.
+2021/09/24	Most of the file I/O from ‟F2C.h” has been nativized and eliminated.
 		The I/O for the index and save files is now operational.
 		The I/O for the story file is partially operational.
 2021/09/25	Elimination of the remaining non-I/O functions from ‟F2C.h”.
 		Elimination of the remainder of ‟F2C.h”, with its merger into ‟extern.h”.
+2021/09/25-26	The rest of the file output I/O from ‟F2C.h” has been nativized and eliminated.
+		The I/O for the story file is now operational.

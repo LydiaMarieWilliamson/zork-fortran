@@ -35,12 +35,12 @@ L5:
 // 						!SEE WHO TO PROMPT FOR.
 L10:
 // write(outch, " >%$"); //F
-   BegExSF(outch, "(\2 >\2,$)"), EndExSF();
+   printf(" >"), fflush(stdout);
 // 						!PROMPT FOR GAME.
 L90:
 // read(inpch, "%78A1", buffer); //F
-   BegInSF(inpch, "(78a1)"), DoFio(78, buffer + 1, buffer_unit), EndInSF();
-   for (length = 78; length >= 1; --(length)) {
+   BegInSF(inpch, "(78a1)"), DoFio(length, buffer + 1, buffer_unit), EndInSF();
+   for (; length >= 1; --(length)) {
       if (buffer[length] != ' ') {
          goto L250;
       }

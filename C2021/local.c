@@ -1,8 +1,14 @@
 // Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 #include <stdio.h>
 #include <string.h>
+#include <stdarg.h>
 #include "extern.h"
 #include "common.h"
+
+// Dungeon functions which need local definition.
+#ifdef __AMOS__
+#   include <moncal.h>
+#endif
 
 // Check for user violation
 // This routine should be modified if you wish to add system dependent protection against abuse.
@@ -40,6 +46,71 @@ void GetFlags(int Lim, Bool *FlagP, FILE *InF) {
    }
 }
 
+// Terminal support routines for dungeon
+// By Ian Lance Taylor ian@airs.com or uunet!airs!ian
+
+// The dungeon game can often output long strings, more than enough to overwhelm a typical 24 row terminal
+// (I assume that back when dungeon was written people generally used paper terminals (I know I did) so this was not a problem).
+// The functions in this file provide a very simplistic ‟more” facility.
+// They are necessarily somewhat operating system dependent, although I have tried to minimize it as much as I could.
+
+// The following macro definitions may be used to control how these functions work:
+//	MORE_NONE	Don't use the more facility at all
+//	MORE_24		Always assume a 24 row terminal
+//	MORE_TERMCAP	Use termcap routines to get rows of terminal
+//	MORE_TERMINFO	Use terminfo routines to get rows of terminal
+//	MORE_AMOS	Use AMOS monitor calls to get rows of terminal
+// If none of these are defined then this will use termcap routines on unix and AMOS routines on AMOS.
+
+#if defined MORE_NONE || defined MORE_24 || defined MORE_TERMCAP || defined MORE_TERMINFO || defined MORE_AMOS
+#elif defined __AMOS__
+#   define MORE_AMOS
+#elif defined unix
+#   define MORE_TERMCAP
+#else
+#   define MORE_NONE
+#endif
+
+#if defined MORE_TERMCAP
+extern char *getenv(const char *);
+extern void tgetent(char *, const char *);
+extern int tgetnum(const char *);
+#elif defined MORE_TERMINFO
+#   include <cursesX.h>
+#   include <term.h>
+extern void setupterm(const char *, int, int);
+#elif defined MORE_AMOS
+#   include <moncal.h>
+#   include <unistd.h>
+#endif
+
+static int crows, coutput;
+
+// Initialize the more waiting facility (determine how many rows the terminal has).
+void more_init(void) {
+#if defined MORE_NONE
+   crows = 0;
+#elif defined MORE_24
+   crows = 24;
+#elif defined MORE_TERMCAP
+   char buf[0x800];
+   char *term = getenv("TERM");
+   if (term == NULL) crows = 0;
+   else
+      tgetent(buf, term), crows = tgetnum("li");
+#elif defined MORE_TERMINFO
+   int i; setupterm(NULL, 1, &i);
+   crows = i != 1? 0: lines;
+#elif defined MORE_AMOS
+   if (isatty(fileno(stdin)) == 0) crows = 0;
+   else {
+      trm_char st; trmchr(&st, 0), crows = st.row;
+   }
+#else
+#   error This should be impossible
+#endif
+}
+
 // A wrapper for the built-in functions defined in the f2c library.
 // I/O stuff.
 #ifdef f2c_i2
@@ -74,13 +145,21 @@ int EndInSF(void) {
    return e_rsfe();
 }
 
-int BegExSF(int Unit, char *Format) {
-   int s_wsfe(cilist *);
-   cilist L = (cilist){_Err: (Bit)false, _Unit: (Int)Unit, _End: (Bit)false, _Format: Format, _Rec: (Int)0};
-   return s_wsfe(&L);
-}
-
-int EndExSF(void) {
-   int e_wsfe(void);
-   return e_wsfe();
+// The program wants to output a line to the terminal.
+// If Format is not NULL it is a format string which controls the output here;
+// along with additional arguments, like printf();
+// making use of vprintf(), which is part of the C99 library declared in <stdio.h>, and is therefore assumed.
+void more_output(const char *Format, ...) {
+// Pager code remarked out to allow streamed input and output.
+#if 0
+   if (crows > 0 && coutput > crows - 2) {
+      printf("Press return to continue: "), fflush(stdout);
+      while (getchar() != '\n');
+      coutput = 0;
+   }
+#endif
+   if (Format != NULL) {
+      va_list AP; va_start(AP, Format), vfprintf(stdout, Format, AP), va_end(AP);
+   }
+   coutput++;
 }

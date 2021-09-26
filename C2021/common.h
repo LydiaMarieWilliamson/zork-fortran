@@ -314,7 +314,7 @@ enum chanCB {
 //   LOGICAL UNIT NRS: 5=STDIN, 6=STDOUT
    inpch = 5,
 //                                              !TTY INPUT
-   outch = 6
+// extern FILE *stdout;
 };
 extern FILE *StoryF;
 //                                              !DATA BASE.

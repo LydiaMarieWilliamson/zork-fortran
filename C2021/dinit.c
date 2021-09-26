@@ -37,6 +37,8 @@ Bool init(void/*int x*/) {
    FILE *IndexF;
    int mmax, omax, rmax, vmax, amax, cmax, fmax, smax;
 
+   more_init();
+
 // INIT, PAGE 2
 
 // FIRST CHECK FOR PROTECTION VIOLATION
@@ -57,21 +59,18 @@ Bool init(void/*int x*/) {
 //    "commanding voice:%/%/%20X\"You shall not pass.\"%/%/ As ", //F
 //    "he grabs you by the neck all grows dim about you." //F
 // ); //F
-   BegExSF(6,
-      "(\2"
-      " There appears before you a threatening figure clad \2,\2"
-      "all over\2/\2 in heavy black armor.  His legs seem like the \2,\2"
-      "massive trunk\2/\2 of the oak tree.  His broad shoulders and \2,\2"
-      "helmeted head loom\2/\2 high over your own puny frame, and \2,\2"
-      "you realize that his powerful\2/\2 arms could easily crush the \2,\2"
-      "very life from your body.  There\2/\2 hangs from his belt a \2,\2"
-      "veritable arsenal of deadly weapons:\2/\2 sword, mace, ball \2,\2"
-      "and chain, dagger, lance, and trident.\2/\2 He speaks with a \2,\2"
-      "commanding voice:\2//20x,\2\"You shall not pass.\"\2//\2 As \2,\2"
-      "he grabs you by the neck all grows dim about you."
-      "\2)"
-   );
-   EndExSF();
+   more_output(" There appears before you a threatening figure clad all over\n");
+   more_output(" in heavy black armor.  His legs seem like the massive trunk\n");
+   more_output(" of the oak tree.  His broad shoulders and helmeted head loom\n");
+   more_output(" high over your own puny frame, and you realize that his powerful\n");
+   more_output(" arms could easily crush the very life from your body.  There\n");
+   more_output(" hangs from his belt a veritable arsenal of deadly weapons:\n");
+   more_output(" sword, mace, ball and chain, dagger, lance, and trident.\n");
+   more_output(" He speaks with a commanding voice:\n");
+   more_output("\n");
+   more_output("                    \"You shall not pass.\"\n");
+   more_output("\n");
+   more_output(" As he grabs you by the neck all grows dim about you.\n");
    exit_();
 
 // NOW START INITIALIZATION PROPER
@@ -378,24 +377,22 @@ L10000:
 
 L1900:
 // print(" I can't open ",MyIndexFile,"."); //F
-   BegExSF(6, "(\2 I can't open \2,\2" MyIndexFile "\2,\2.\2)"), EndExSF();
+   more_output(" I can't open " MyIndexFile ".\n");
    goto L1975;
 L1925:
-// print(
+// print( //F
 //    " \"" MyIndexFile "\" is version %I1.%I1%A1.%/" //F
 //    "  I require version %I1.%I1%A1.", //F
 //    Maj, Min, Edit, vmaj, vmin, vedit //F
 // ); //F
-   BegExSF(6, "(\2 \"" MyIndexFile "\" is version \2,i1,\2.\2,i1,a1,\2.\2/\2 I require version \2,i1,\2.\2,i1,a1,\2.\2)");
-   DoFio(1, &Maj, sizeof Maj), DoFio(1, &Min, sizeof Min), DoFio(1, &Edit, sizeof Edit);
-{  int EditV = vedit; DoFio(1, &vmaj, sizeof vmaj), DoFio(1, &vmin, sizeof vmin), DoFio(1, &EditV, sizeof EditV); }
-   EndExSF();
+   more_output(" \"" MyIndexFile "\" is version %1d.%1d%c.\n", Maj, Min, Edit);
+   more_output("  I require version %1d.%1d%c.\n", vmaj, vmin, vedit);
    goto L1975;
 L1940:
-   BegExSF(6, "(\2 I can't read \2,\2" MyIndexFile "\2,\2: %I1 errors found.\2)"), DoFio(1, &IOErrs, sizeof IOErrs), EndExSF();
+   more_output(" I can't read " MyIndexFile ": %1d error(s) found.", IOErrs);
 L1950:
 // print(" I can't open ",MyStoryFile,"."); //F
-   BegExSF(6, "(\2 I can't open \2,\2" MyStoryFile "\2,\2.\2)"), EndExSF();
+   more_output(" I can't open " MyStoryFile ".\n");
 L1975:
 // print( //F
 //    " Suddenly a sinister, wraithlike figure appears before ", //F
@@ -404,20 +401,18 @@ L1975:
 //    "and the dungeon%/ cannot be found.  All must now pass away.\"", //F
 //    "  Raising his oaken staff%/ in farewell, he fades into the ", //F
 //    "spreading darkness.  In his place%/ appears a tastefully ", //F
-//    "lettered sign reading:%/%/%23XINITIALIZATION FAILURE%/%/" //F
+//    "lettered sign reading:%/%/%23XINITIALIZATION FAILURE%/%/", //F
 //    " The darkness becomes all encompassing, and your vision fails." //F
 // ); //F
-   BegExSF(6,
-      "(\2"
-      " Suddenly a sinister, wraithlike figure appears before \2,\2"
-      "you,\2/\2 seeming to float in the air.  In a low, sorrowful voice\2,\2"
-      " he says,\2/\2 \"Alas, the very nature of the world has changed, \2,\2"
-      "and the dungeon\2/\2 cannot be found.  All must now pass away.\"\2,\2"
-      "  Raising his oaken staff\2/\2 in farewell, he fades into the \2,\2"
-      "spreading darkness.  In his place\2/\2 appears a tastefully \2,\2"
-      "lettered sign reading:\2//23x,\2INITIALIZATION FAILURE\2//\2"
-      " The darkness becomes all encompassing, and your vision fails."
-      "\2)"
-   ), EndExSF();
+   more_output(" Suddenly a sinister, wraithlike figure appears before you,\n");
+   more_output(" seeming to float in the air.  In a low, sorrowful voice he says,\n");
+   more_output(" \"Alas, the very nature of the world has changed, and the dungeon\n");
+   more_output(" cannot be found.  All must now pass away.\"  Raising his oaken staff\n");
+   more_output(" in farewell, he fades into the spreading darkness.  In his place\n");
+   more_output(" appears a tastefully lettered sign reading:\n");
+   more_output("\n");
+   more_output("                       INITIALIZATION FAILURE\n");
+   more_output("\n");
+   more_output(" The darkness becomes all encompassing, and your vision fails.\n");
    return ret_val;
 }

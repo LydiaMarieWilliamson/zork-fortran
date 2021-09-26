@@ -9,6 +9,7 @@ LN=ln -sf
 ## If you have trouble, especially when linking, you may have to select a different option.
 
 LIBS = -lf2c -lm
+TERMFLAG = -DMORE_NONE
 
 ## End of more options
 
@@ -37,19 +38,22 @@ APP = Zork
 $(APP): $(OBJS)
 	$(CC) $(CFLAGS) -o $(APP) $(OBJS) $(LIBS)
 
+clean:
+	rm -f $(OBJS)
+undat:
+	rm -f dindx.dat
+	rm -f dtext.dat
+clobber: clean undat
+	rm -f $(APP)
+
 ## Temporary expedients.
 dinit.o: dindx.dat dtext.dat
 dindx.dat:
 	$(LN) ../dindx.dat .
 dtext.dat:
 	$(LN) ../dtext.dat .
-undat:
-	rm -f dindx.dat
-	rm -f dtext.dat
 
-clean:
-	rm -f $(OBJS)
-clobber: clean undat
-	rm -f $(APP)
+local.o: local.c
+	$(CC) $(CFLAGS) $(TERMFLAG) -c local.c
 
 $(OBJS): extern.h common.h

@@ -111,21 +111,13 @@ void score(Bool flg) {
 //    write(outch, " Your score would be%$"); //F
 // else //F
 //    write(outch, " Your score is%$"); //F
-   if (flg)
-      BegExSF(outch, "(\2 Your score would be\2,$)");
-   else
-      BegExSF(outch, "(\2 Your score is\2,$)");
-   EndExSF();
 // if (state.moves != 1) //F
-//    write(outch, "%I4 [total of%I4 points], in%I5 moves."); //F
+//    write(outch, "%I4 [total of%I4 points], in%I5 moves.", as, state.mxscor, state.moves); //F
 // else //F
-//    write(outch, "%I4 [total of%I4 points], in%I5 move."); //F
-   if (state.moves != 1)
-      BegExSF(outch, "(i4,\2 [total of\2,i4,\2 points], in\2,i5,\2 moves.\2)");
-   else
-      BegExSF(outch, "(i4,\2 [total of\2,i4,\2 points], in\2,i5,\2 move.\2)");
-   DoFio(1, &as, sizeof as), DoFio(1, &state.mxscor, sizeof state.mxscor), DoFio(1, &state.moves, sizeof state.moves);
-   EndExSF();
+//    write(outch, "%I4 [total of%I4 points], in%I5 move.", as, state.mxscor, state.moves); //F
+   more_output(" Your score %s%4d [total of%4d points], in%5d %s.\n",
+      flg ? "would be" : "is", as, state.mxscor, state.moves, state.moves != 1 ? "moves" : "move"
+   );
 
    for (i = 1; i <= 10; ++i) {
       if (as * 20 / state.mxscor >= rank[i - 1]) {
@@ -143,17 +135,12 @@ L60:
 //    write(outch, " Your score in the endgame would be%$"); //F
 // else //F
 //    write(outch, " Your score in the endgame is%$"); //F
-   if (flg)
-      BegExSF(outch, "(\2 Your score in the endgame would be\2,$)"), EndExSF();
-   else
-      BegExSF(outch, "(\2 Your score in the endgame is\2,$)"), EndExSF();
 // write(outch, "%I4 [total of%I4 points], in%I5 moves.", //F
 //    state.egscor, state.egmxsc, state.moves //F
 // ); //F
-   BegExSF(outch, "(i4,\2 [total of\2,i4,\2 points], in\2,i5,\2 moves.\2)");
-   DoFio(1, &state.egscor, sizeof state.egscor), DoFio(1, &state.egmxsc, sizeof state.egmxsc);
-   DoFio(1, &state.moves, sizeof state.moves);
-   EndExSF();
+   more_output(" Your score in the endgame %s%4d [total of%4d points], in%5d moves.\n",
+      flg? "would be": "is", state.egscor, state.egmxsc, state.moves
+   );
    for (i = 1; i <= 5; ++i) {
       if (state.egscor * 20 / state.egmxsc >= erank[i - 1]) {
          goto L80;

@@ -139,7 +139,7 @@ Bool yesno(int q, int y, int n) {
    char ans;
 
 L100:
-   rspeak(q);
+   rspeak(q), fflush(stdout);
 // 						!ASK
 // read(inpch, "%A1", &ans); //F
    BegInSF(inpch, "(a1)"), DoFio(1, &ans, ans), EndInSF();

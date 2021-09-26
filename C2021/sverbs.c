@@ -241,9 +241,7 @@ L4100:
 
 L5000:
 // write(outch, " V%I1.%I2%A1", vmaj, vmin, vedit); //F
-   BegExSF(outch, "(\2 V\2,i1,\2.\2,i2,a1)");
-   DoFio(1, &vmaj, sizeof vmaj), DoFio(1, &vmin, sizeof vmin), DoFio(1, &vedit, sizeof vedit);
-   EndExSF();
+   more_output(" V%1d.%2d%c\n", vmaj, vmin, vedit);
    play.telflg = true;
    return ret_val;
 
@@ -565,17 +563,14 @@ L21000:
    j = k % 60;
 
 // write(outch, " You have been playing Dungeon for %$"); //F
-   BegExSF(outch, "(\2 You have been playing Dungeon for \2,$)"), EndExSF();
+   printf(" You have been playing Dungeon for "); //F
 // if (i != 0) write(outch, "+%I3 hour%$", i); //F
 // if (i >= 2) write(outch, "+s and %$"); //F
 // if (i == 1) write(outch, "+ and %$"); //F
-   if (i != 0) BegExSF(outch, "(\2+\2,i3,\2 hour\2,$)"), DoFio(1, &i, sizeof i), EndExSF();
-   if (i >= 2) BegExSF(outch, "(\2+s and \2,$)"), EndExSF();
-   if (i == 1) BegExSF(outch, "(\2+ and \2,$)"), EndExSF();
-// if (j == 1) write(outch, "+%I2 minute.", j); //F
-// if (j != 1) write(outch, "+%I2 minutes.", j); //F
-   if (j == 1) BegExSF(outch, "(\2+\2,i2,\2 minute.\2)"), DoFio(1, &j, sizeof j), EndExSF();
-   if (j != 1) BegExSF(outch, "(\2+\2,i2,\2 minutes.\2)"), DoFio(1, &j, sizeof j), EndExSF();
+   if (i >= 1) printf("%3d %s and ", i, i != 1 ? "hours" : "hour");
+// if (j == 1) write(outch, "+%2d minute.", j); //F
+// if (j != 1) write(outch, "+%2d minutes.", j); //F
+   more_output("%2d %s.\n", j, j != 1 ? "minutes" : "minute");
    play.telflg = true;
    return ret_val;
 
@@ -691,8 +686,8 @@ L25000:
 // 						!COMPUTE WAIT.
 
    if (j != 0) {
-//    write(outch, " You will be cured after %I3 moves.", I); //F
-      BegExSF(outch, "(\2 You will be cured after \2,i3,\2 moves.\2)"), DoFio(1, &i, sizeof i), EndExSF();
+//    write(outch, " You will be cured after %I3 moves.", i); //F
+      more_output(" You will be cured after %3d moves.\n", i);
    }
 
    i__1 = k + 478;
@@ -786,9 +781,7 @@ L26400:
 // 						!TELL HIM.
    play.telflg = true;
 // write(outch," A hollow voice replies:  \"%6A1%1X%6A1\".", pp1, ch); //F
-   BegExSF(outch, "(\2 A hollow voice replies:  \"\2,6a1,1x,6a1,\2\".\2)");
-   DoFio(6, pp1, sizeof pp1[0]), DoFio(6, ch, sizeof ch[0]);
-   EndExSF();
+   more_output(" A hollow voice replies:  \"%.6s %.6s\".\n", pp1, ch);
 
    return ret_val;
 

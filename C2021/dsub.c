@@ -3,20 +3,17 @@
 // Written by R. M. Supnik.
 // Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 #include <stdio.h> // Particularly for: SEEK_SET and fseek().
-#include <stdint.h>
 #include "extern.h"
 #include "common.h"
 
-void GetRec(FILE *InF, int X, short *IxP, char Buf[74]) {
+void GetRec(FILE *InF, int X, unsigned *IxP, char *Buf) {
 // read(unit:InUnit, rec:X, IxP, Buf); //F
-   struct {
-      int_least16_t Ix;
-      char Buf[74];
-   } Rec;
-   if (fseek(InF, 76L*(X - 1), SEEK_SET) == EOF) fprintf(stderr, "Error seeking database loc %d\n", X), exit_();
+   struct { char Ix[2], Buf[74]; } Rec;
+   const size_t BufN = sizeof Rec.Buf;
+   if (fseek(InF, (X - 1)*(long)sizeof Rec, SEEK_SET) == EOF) fprintf(stderr, "Error seeking database loc %d\n", X), exit_();
    if (fread(&Rec, sizeof Rec, 1, InF) != 1) fprintf(stderr, "Error reading database loc %d\n", X), exit_();
-   *IxP = Rec.Ix;
-   for (int b = 0; b < 74; b++) Buf[b] = Rec.Buf[b];
+   *IxP = (unsigned)Rec.Ix[0] | (unsigned)Rec.Ix[1] << 8;
+   for (int b = 0; b < BufN; b++) Buf[b] = Rec.Buf[b];
 }
 
 // Resident subroutines for dungeon
@@ -46,7 +43,7 @@ void rspsb2(int n, int s1, int s2) {
    int i, j, x, y, z;
    char b1[74], b2[74], b3[74];
    int k1, k2, x1;
-   short jrec, oldrec, newrec;
+   unsigned jrec, oldrec, newrec;
 
 // CONVERT ALL ARGUMENTS FROM DICTIONARY NUMBERS (IF POSITIVE)
 // TO ABSOLUTE RECORD NUMBERS.
@@ -85,7 +82,6 @@ L100:
       b1[i - 1] = (char)(b1[i - 1] ^ x1);
 // L150:
    }
-
 L200:
    if (y == 0) {
       goto L400;
@@ -110,10 +106,7 @@ L400:
 
 L600:
 // write(outch, "%1X%74A1", (b1[j - 1], j = 1, i)); //F
-   BegExSF(outch, "(1x,74a1)");
-   i__1 = i;
-   for (j = 1; j <= i__1; ++j) DoFio(1, &b1[j - 1], 1*sizeof b1[0]);
-   EndExSF();
+   more_output(" %.*s\n", i, b1);
    ++x;
 // 						!ON TO NEXT RECORD.
 // read(unit:storych, rec:x, &newrec, b1); //F
@@ -235,9 +228,7 @@ void bug(int a, int b) {
 // Local variables
 
 // print(" PROGRAM ERROR %I2, PARAMETER=%I6", a, b); //F
-   BegExSF(6, "(\2 PROGRAM ERROR \2,i2,\2, PARAMETER=\2,i6)");
-   DoFio(1, &a, sizeof a), DoFio(1, &b, sizeof b);
-   EndExSF();
+   more_output(" PROGRAM ERROR %2d, PARAMETER=%6d\n", a, b);
    if (debug.dbgflg != 0) {
       return;
    }
@@ -461,7 +452,7 @@ L1100:
    score(false);
 // 						!TELL SCORE.
 // close(storych); //F
-   fclose(StoryF);
+   (void)fclose(StoryF);
    exit_();
 }
 

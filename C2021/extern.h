@@ -28,11 +28,11 @@ int GetWord(FILE *InF);
 void GetWords(int Lim, int *WordP, FILE *InF);
 void GetFlags(int Lim, Bool *FlagP, FILE *InF);
 
+void more_init(void);
 int DoFio(size_t N, void *X, size_t dN);
 int BegInSF(int Unit, char *Format);
 int EndInSF(void);
-int BegExSF(int Unit, char *Format);
-int EndExSF(void);
+void more_output(const char *, ...);
 // The remnant of f2c.h (end)
 
 // actors.c:

@@ -215,10 +215,7 @@ int blow(int h, int v, int rmk, Bool hflg, int out) {
    ret_val = rmiss;
 // 						!ASSUME NO RESULT.
 // print(" BLOW 10-- %3I7%L7%I7", h, v, rmk, hflg, out); //F
-   BegExSF(6, "(\2 BLOW 10-- \2,3i7,l7,i7)");
-   DoFio(1, &h, sizeof h), DoFio(1, &v, sizeof v), DoFio(1, &rmk, sizeof rmk);
-   DoFio(1, &hflg, sizeof hflg), DoFio(1, &out, sizeof out);
-   EndExSF();
+   more_output(" BLOW 10-- %7d%7d%7d      %c%7d\n", h, v, rmk, hflg ? 'T' : 'F', out);
    if (!(hflg)) {
       goto L1000;
    }
@@ -304,10 +301,7 @@ L1200:
 
 L2000:
 // print(" BLOW 2050-- %5I7", att, oa, def, od, dweap); //F
-   BegExSF(6, "(\2 BLOW 2050-- \2,5i7)");
-   DoFio(1, &att, sizeof att), DoFio(1, &oa, sizeof oa), DoFio(1, &def, sizeof def);
-   DoFio(1, &od, sizeof od), DoFio(1, &dweap, sizeof dweap);
-   EndExSF();
+   more_output(" BLOW 2050-- %7d%7d%7d%7d%7d\n", att, oa, def, od, dweap);
    if (def > 0) {
       goto L2100;
    }
@@ -376,11 +370,9 @@ L2600:
    if (!(hflg) && dweap != 0) {
       j = objcts.odesc2[dweap - 1];
    }
-// print(" BLOW 2650-- %5I7", res, mi, i, j, star_i.mbase); //F
-   BegExSF(6, "(\2 BLOW 2650-- \2,5i7)");
-   DoFio(1, &res, sizeof res), DoFio(1, &mi, sizeof mi), DoFio(1, &i, sizeof i), DoFio(1, &j, sizeof j);
-   DoFio(1, &star.mbase, sizeof star.mbase);
-   EndExSF();
+
+// print(" BLOW 2650-- %5I7", res, mi, i, j, star.mbase); //F
+   more_output(" BLOW 2650-- %7d%7d%7d%7d%7d\n", res, mi, i, j, star.mbase);
    rspsub(i, j);
 // 						!PRESENT RESULT.
 // BLOW, PAGE 5

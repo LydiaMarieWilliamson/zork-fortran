@@ -40,7 +40,7 @@ L100:
    play.telflg = false;
 // 						!ASSUME NOTHING TOLD.
    if (prsvec.prscon <= 1) {
-      rdline(input.inbuf, input.inlnt, 1, sizeof input.inbuf[0]);
+      rdline(input.inbuf, sizeof input.inbuf, 1, sizeof input.inbuf[0]);
    }
 
 #ifdef ALLOW_GDT
@@ -57,7 +57,7 @@ L100:
 
 //L200:
    ++state.moves;
-   prsvec.prswon = parse(input.inbuf, input.inlnt, true/*, sizeof input.inbuf[0]*/);
+   prsvec.prswon = parse(input.inbuf, sizeof input.inbuf, true/*, sizeof input.inbuf[0]*/);
    if (!prsvec.prswon) {
       goto L400;
    }
@@ -102,7 +102,7 @@ L900:
 // IF INPUT IS NOT 'ECHO' OR A DIRECTION, JUST ECHO.
 
 L1000:
-   rdline(input.inbuf, input.inlnt, 0, sizeof input.inbuf[0]);
+   rdline(input.inbuf, sizeof input.inbuf, 0, sizeof input.inbuf[0]);
    ++state.moves;
 // 						!CHARGE FOR MOVES.
    for (i = 1; i <= 4; ++i) {
@@ -136,7 +136,7 @@ L1000:
    goto L400;
 
 L1300:
-   prsvec.prswon = parse(input.inbuf, input.inlnt, false/*, sizeof input.inbuf[0]*/);
+   prsvec.prswon = parse(input.inbuf, sizeof input.inbuf, false/*, sizeof input.inbuf[0]*/);
    if (!prsvec.prswon || prsvec.prsa != WalkW) {
       goto L1400;
    }
@@ -147,10 +147,7 @@ L1300:
 
 L1400:
 // write(outch, "%1X%78A1", (input.inbuf(j), j = 1, input.inlnt)); //F
-   BegExSF(outch, "(1x,78a1)");
-   i__1 = input.inlnt;
-   for (j = 1; j <= i__1; ++j) DoFio(1, input.inbuf + (j - 1), sizeof input.inbuf[0]);
-   EndExSF();
+   more_output(" %*s\n", input.inlnt, input.inbuf);
    play.telflg = true;
 // 						!INDICATE OUTPUT.
    goto L1000;
@@ -178,7 +175,7 @@ L2100:
       goto L2700;
    }
 // 						!ANY INPUT?
-   if (parse(input.inbuf, input.inlnt, true/*, sizeof input.inbuf[0])*/)) {
+   if (parse(input.inbuf, sizeof input.inbuf, true/*, sizeof input.inbuf[0])*/)) {
       goto L2150;
    }
 L2700:

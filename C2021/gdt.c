@@ -24,9 +24,9 @@ void gdt(void) {
 // static char Format0[] = "   RANGE   CONTENTS"; //F
 // static char Format1[] = " Old=%L2%6XNew= %$"; //F
 // static char Format2[] = " Old= %I6%6XNew= %$"; //F
-   static char Format0[] = "(\2   RANGE   CONTENTS\2)";
-   static char Format1[] = "(\2 Old=\2,l2,6x,\2New= \2,$)";
-   static char Format2[] = "(\2 Old= \2,i6,6x,\2New= \2,$)";
+   const char Format0[] = "   RANGE   CONTENTS\n";
+   const char Format1[] = " Old= %c      New= ";
+   const char Format2[] = " Old= %6d      New= ";
 
 // System generated locals
    int i__1, i__2;
@@ -49,7 +49,7 @@ void gdt(void) {
    }
 // 						!IF OK, SKIP.
 // write(outch, " You are not an authorized user."); //F
-   BegExSF(outch, "(\2 You are not an authorized user.\2)"), EndExSF();
+   more_output(" You are not an authorized user.\n");
 // 						!NOT AN IMPLEMENTER.
    return;
 // 						!BOOT HIM OFF
@@ -60,7 +60,7 @@ void gdt(void) {
 
 L2000:
 // write(outch, " GDT>%$"); //F
-   BegExSF(outch, "(\2 GDT>\2,$)"), EndExSF();
+   printf(" GDT>"), fflush(stdout);
 // 						!OUTPUT PROMPT.
 // read(inpch, "%A2", cmd); //F
    BegInSF(inpch, "(a2)"), DoFio(1, cmd, sizeof cmd), EndInSF();
@@ -84,7 +84,7 @@ L2000:
    }
 L2200:
 // write(outch, " ?"); //F
-   BegExSF(outch, "(\2 ?\2)"), EndExSF();
+   more_output(" ?\n");
 // 						!NO, LOSE.
    goto L2000;
 
@@ -111,7 +111,7 @@ L2300:
 
 L2700:
 // write(outch, " Idx,Ary:  %$"); //F
-   BegExSF(outch, "(\2 Idx,Ary:  \2,$)"), EndExSF();
+   printf(" Idx,Ary:  "), fflush(stdout);
 // 						!TYPE 3, REQUEST ARRAY COORDS.
 // read(inpch, "%2I6", &j, &k); //F
    BegInSF(inpch, "(2i6)"), DoFio(1, &j, sizeof j), DoFio(1, &k, sizeof k), EndInSF();
@@ -119,7 +119,7 @@ L2700:
 
 L2600:
 // write(outch, " Limits:   %$"); //F
-   BegExSF(outch, "(\2 Limits:   \2,$)"), EndExSF();
+   printf(" Limits:   "), fflush(stdout);
 // 						!TYPE 2, READ BOUNDS.
 // read(inpch, "%2I6", &j, &k); //F
    BegInSF(inpch, "(2i6)"), DoFio(1, &j, sizeof j), DoFio(1, &k, sizeof k), EndInSF();
@@ -130,7 +130,7 @@ L2600:
 
 L2500:
 // write(outch, " Entry:    %$"); //F
-   BegExSF(outch, "(\2 Entry:    \2,$)"), EndExSF();
+   printf(" Entry:    "), fflush(stdout);
 // 						!TYPE 1, READ ENTRY NO.
 // read(inpch, "%I6", &j); //F
    BegInSF(inpch, "(i6)"), DoFio(1, &j, sizeof j), EndInSF();
@@ -225,14 +225,14 @@ L10000:
    }
 // 						!ARGS VALID?
 // write(outch, " RM#  DESC1  EXITS ACTION  VALUE  FLAGS"); //F
-   BegExSF(outch, "(\2 RM#  DESC1  EXITS ACTION  VALUE  FLAGS\2)"), EndExSF();
+   more_output(" RM#  DESC1  EXITS ACTION  VALUE  FLAGS\n");
 // 						!COL HDRS.
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
 //    write(outch, "%1X%I3%4(1X,I6)%1X%I6", i, (eqr(i, l), l = 1, 5)); //F
-      BegExSF(outch, "(1x,i3,4(1x,i6),1x,i6)"), DoFio(1, &i, sizeof i);
-      for (l = 1; l <= 5; ++l) DoFio(1, &eqr[i - 1 + 200 * (l - 1)], sizeof eqr[0]);
-      EndExSF();
+      printf(" %3d", i);
+      for (int l = 0; l < 5; l++) printf(" %6d", eqr[i - 1 + 200 * l]);
+      more_output("\n");
 // L10100:
    }
    goto L2000;
@@ -245,14 +245,20 @@ L11000:
    }
 // 						!ARGS VALID?
 // write(outch, " OB# DESC1 DESC2 DESCO ACT FLAGS1 FLAGS2 FVL TVL SIZE CAPAC ROOM ADV CON  READ"); //F
-   BegExSF(outch, "(\2 OB# DESC1 DESC2 DESCO ACT FLAGS1 FLAGS2 FVL TVL  SIZE CAPAC ROOM ADV CON  READ\2)"), EndExSF();
+   more_output(" OB# DESC1 DESC2 DESCO ACT FLAGS1 FLAGS2 FVL TVL SIZE CAPAC ROOM ADV CON  READ\n");
 // 						!COL HDRS
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
 //    write(outch, "%1X%I3%3I6%I4%2I7%2I4%2I6%1X%3I4%I6", i, (eqo(i, l), l = 1, 14)); //F
-      BegExSF(outch, "(1x,i3,3i6,i4,2i7,2i4,2i6,1x,3i4,i6)"), DoFio(1, &i, sizeof i);
-      for (l = 1; l <= 14; ++l) DoFio(1, &eqo[i - 1 + 220 * (l - 1)], sizeof eqo[0]);
-      EndExSF();
+      more_output(" %3d%6d%6d%6d%4d%7d%7d%4d%4d%6d%6d %4d%4d%4d%6d\n", i,
+         eqo[i - 1 + 220 * 0], eqo[i - 1 + 220 * 1], eqo[i - 1 + 220 * 2],
+         eqo[i - 1 + 220 * 3], 
+         eqo[i - 1 + 220 * 4], eqo[i - 1 + 220 * 5],
+         eqo[i - 1 + 220 * 6], eqo[i - 1 + 220 * 7], 
+         eqo[i - 1 + 220 * 8], eqo[i - 1 + 220 * 9], 
+         eqo[i - 1 + 220 * 10], eqo[i - 1 + 220 * 11], eqo[i - 1 + 220 * 12], 
+         eqo[i - 1 + 220 * 13]
+      );
 // L11100:
    }
    goto L2000;
@@ -265,13 +271,13 @@ L12000:
    }
 // 						!ARGS VALID?
 // write(outch, " AD#   ROOM  SCORE  VEHIC OBJECT ACTION  STREN  FLAGS"); //F
-   BegExSF(outch, "(\2 AD#   ROOM  SCORE  VEHIC OBJECT ACTION  STREN  FLAGS\2)"), EndExSF();
+   more_output(" AD#   ROOM  SCORE  VEHIC OBJECT ACTION  STREN  FLAGS\n");
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
 //    write(outch, "%1X%I3%6(1X,I6)%1X%I6", i, (eqa(i, l), l = 1, 7)); //F
-      BegExSF(outch, "(1x,i3,6(1x,i6),1x,i6)"), DoFio(1, &i, sizeof i);
-      for (l = 1; l <= 7; ++l) DoFio(1, &eqa[i - 1 + ((l - 1) << 2)], sizeof eqa[0]);
-      EndExSF();
+      printf(" %3d", i);
+      for (l = 0; l < 7; l++) printf(" %6d", eqa[i - 1 + (l << 2)]);
+      more_output("\n");
 // L12100:
    }
    goto L2000;
@@ -284,14 +290,13 @@ L13000:
    }
 // 						!ARGS VALID?
 // write(outch, " CL#   TICK ACTION  FLAG"); //F
-   BegExSF(outch, "(\2 CL#   TICK ACTION  FLAG\2)"), EndExSF();
+   more_output(" CL#   TICK ACTION  FLAG\n");
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
 //    write(outch, "%1X%I3%1X%I6%1X%I6%5X%L1", i, (eqc(i, l), l = 1, 2), cflag(i)); //F
-      BegExSF(outch, "(1x,i3,1x,i6,1x,i6,5x,l1)"), DoFio(1, &i, sizeof i);
-      for (l = 1; l <= 2; ++l) DoFio(1, &eqc[i - 1 + 25 * (l - 1)], sizeof eqc[0]);
-      DoFio(1, &cevent.cflag[i - 1], sizeof cevent.cflag[0]);
-      EndExSF();
+      printf(outch, " %3d", i);
+      for (l = 0; l < 2; l++) printf(outch, " %6d", eqc[i - 1 + 25 * l]);
+      more_output("     %c\n", cevent.cflag[i - 1] ? 'T' : 'F');
 // L13100:
    }
    goto L2000;
@@ -304,7 +309,7 @@ L14000:
    }
 // 						!ARGS VALID?
 // write(outch, Format0); //F
-   BegExSF(outch, Format0), EndExSF();
+   more_output(Format0);
 // 						!COL HDRS.
    i__1 = k;
    for (i = j; i <= i__1; i += 10) {
@@ -314,10 +319,10 @@ L14000:
       l = min(i__2, k);
 // 						!COMPUTE END OF LINE.
 //    write(outch, "%1X%I3-%I3%3X%10I7", i, l, (travel(l1), l1 = i, l)); //F
-      BegExSF(outch, "(1x,i3,\2-\2,i3,3x,10i7)"), DoFio(1, &i, sizeof i), DoFio(1, &l, sizeof l);
+      printf(" %3d-%3d ", i, l);
       i__2 = l;
-      for (l1 = i; l1 <= i__2; ++l1) DoFio(1, &exits.travel[l1 - 1], sizeof exits.travel[0]);
-      EndExSF();
+      for (l1 = i; l1 <= i__2; ++l1) printf("%7d", exits.travel[l1 - 1]);
+      more_output("\n");
 // L14100:
    }
    goto L2000;
@@ -326,24 +331,17 @@ L14000:
 
 L15000:
 // write(outch, " THFPOS=%I6, THFFLG=%L2,THFACT=%L2%/ SWDACT=%L2, SWDSTA=%I2", thfpos, thfflg, thfact, swdact, swdsta); //F
-   BegExSF(outch, "(\2 THFPOS=\2,i6,\2, THFFLG=\2,l2,\2,THFACT=\2,l2/\2 SWDACT=\2,l2,\2, SWDSTA=\2,i2)");
-   DoFio(1, &hack.thfpos, sizeof hack.thfpos), DoFio(1, &hack.thfflg, sizeof hack.thfflg);
-   DoFio(1, &hack.thfact, sizeof hack.thfact);
-   DoFio(1, &hack.swdact, sizeof hack.swdact), DoFio(1, &hack.swdsta, sizeof hack.swdsta);
-   EndExSF();
+   more_output(" THFPOS=%6d, THFFLG= %c,THFACT= %c\n", hack.thfpos, hack.thfflg ? 'T' : 'F', hack.thfact ? 'T' : 'F');
+   more_output(" SWDACT= %c, SWDSTA=%2d\n", hack.swdact ? 'T' : 'F', hack.swdsta);
    goto L2000;
 
 // DL-- DISPLAY LENGTHS
 
 L16000:
 // write(outch, " R=%I6, X=%I6, O=%I6, C=%I6%/ V=%I6, A=%I6, M=%I6, R2=%I5%/ MBASE=%I6, STRBIT=%I6", rlnt, xlnt, olnt, clnt, vlnt, alnt, mlnt, r2lnt, mbase, strbit); //F
-   BegExSF(outch, "(\2 R=\2,i6,\2, X=\2,i6,\2, O=\2,i6,\2, C=\2,i6/\2 V=\2,i6,\2, A=\2,i6,\2, M=\2,i6,\2, R2=\2,i5/\2 MBASE=\2,i6,\2, STRBIT=\2,i6)");
-   DoFio(1, &rooms.rlnt, sizeof rooms.rlnt), DoFio(1, &exits.xlnt, sizeof exits.xlnt);
-   DoFio(1, &objcts.olnt, sizeof objcts.olnt), DoFio(1, &cevent.clnt, sizeof cevent.clnt);
-   DoFio(1, &vill.vlnt, sizeof vill.vlnt), DoFio(1, &advs.alnt, sizeof advs.alnt);
-   DoFio(1, &rmsg.mlnt, sizeof rmsg.mlnt), DoFio(1, &oroom2_.r2lnt, sizeof oroom2_.r2lnt);
-   DoFio(1, &star.mbase, sizeof star.mbase), DoFio(1, &star.strbit, sizeof star.strbit);
-   EndExSF();
+   more_output(" R=%6d, X=%6d, O=%6d, C=%6d\n", rooms.rlnt, exits.xlnt, objcts.olnt, cevent.clnt);
+   more_output(" V=%6d, A=%6d, M=%6d, R2=%5d\n", vill.vlnt, advs.alnt, mlnt, oroom2_.r2lnt);
+   more_output(" MBASE=%6d, STRBIT=%6d\n", star.mbase, star.strbit);
    goto L2000;
 
 // DV-- DISPLAY VILLAINS
@@ -354,14 +352,14 @@ L17000:
    }
 // 						!ARGS VALID?
 // write(outch, " VL# OBJECT   PROB   OPPS   BEST  MELEE"); //F
-   BegExSF(outch, "(\2 VL# OBJECT   PROB   OPPS   BEST  MELEE\2)"), EndExSF();
+   more_output(" VL# OBJECT   PROB   OPPS   BEST  MELEE\n");
 // 						!COL HDRS
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
 //    write(outch, "%1X%I3%5(1X,I6)", i, (eqv(i, l), l = 1, 5)); //F
-      BegExSF(outch, "(1x,i3,5(1x,i6))"), DoFio(1, &i, sizeof i);
-      for (l = 1; l <= 5; ++l) DoFio(1, &eqv[i - 1 + ((l - 1) << 2)], sizeof eqv[0]);
-      EndExSF();
+      printf(" %3d", i);
+      for (l = 0; l < 5; l++) printf(" %6d", eqv[i - 1 + (l << 2)]);
+      more_output("\n");
 // L17100:
    }
    goto L2000;
@@ -376,9 +374,7 @@ L18000:
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
 //    write(outch, " Flag #%I2 = %L1", i, flags(i)); //F
-      BegExSF(outch, "(\2 Flag #\2,i2,\2 = \2,l1)");
-      DoFio(1, &i, sizeof i), DoFio(1, &flags[i - 1], sizeof flags[0]);
-      EndExSF();
+      more_output(" Flag #%2d = %c\n", i, flags[i - 1] ? 'T' : 'F');
 // L18100:
    }
    goto L2000;
@@ -387,30 +383,14 @@ L18000:
 
 L19000:
 // write(outch, " Parse vector=%3(1X,I6)%1X%L6%1X%I6", prsa, prso, prsi, prswon, prscon); //F
-   BegExSF(outch, "(\2 Parse vector=\2,3(1x,i6),1x,l6,1x,i6)");
-   DoFio(1, &prsvec.prsa, sizeof prsvec.prsa), DoFio(1, &prsvec.prso, sizeof prsvec.prso);
-   DoFio(1, &prsvec.prsi, sizeof prsvec.prsi);
-   DoFio(1, &prsvec.prswon, sizeof prsvec.prswon), DoFio(1, &prsvec.prscon, sizeof prsvec.prscon);
-   EndExSF();
+   more_output(" Parse vector= %6d %6d %6d      %c %6d\n", prsvec.prsa, prsvec.prso, prsvec.prsi, prsvec.prswon ? 'T' : 'F', prsvec.prscon);
 // write(outch, " Play vector= %2(1X,I6)%1X%L6", winner, here, telflg); //F
-   BegExSF(outch, "(\2 Play vector= \2,2(1x,i6),1x,l6)");
-   DoFio(1, &play.winner, sizeof play.winner), DoFio(1, &play.here, sizeof play.here);
-   DoFio(1, &play.telflg, sizeof play.telflg);
-   EndExSF();
+   more_output(" Play vector=  %6d %6d      %c\n", play.winner, play.here, play.telflg ? 'T' : 'F');
 // write(outch, " State vector=%9(1X,I6)%/%14X%2(1X,I6)", moves, deaths, rwscor, mxscor, mxload, ltshft, bloc, mungrm, hs, egscor, egmxsc); //F
-   BegExSF(outch, "(\2 State vector=\2,9(1x,i6)/14x,2(1x,i6))");
-   DoFio(1, &state.moves, sizeof state.moves), DoFio(1, &state.deaths, sizeof state.deaths);
-   DoFio(1, &state.rwscor, sizeof state.rwscor), DoFio(1, &state.mxscor, sizeof state.mxscor);
-   DoFio(1, &state.mxload, sizeof state.mxload), DoFio(1, &state.ltshft, sizeof state.ltshft);
-   DoFio(1, &state.bloc, sizeof state.bloc), DoFio(1, &state.mungrm, sizeof state.mungrm);
-   DoFio(1, &state.hs, sizeof state.hs);
-   DoFio(1, &state.egscor, sizeof state.egscor), DoFio(1, &state.egmxsc, sizeof state.egmxsc);
-   EndExSF();
+   more_output(" State vector= %6d %6d %6d %6d %6d %6d %6d %6d %6d\n", state.moves, state.deaths, state.rwscor, state.mxscor, state.mxload, state.ltshft, state.bloc, state.mungrm, state.hs);
+   more_output("               %6d %6d\n", state.egscor, state.egmxsc);
 // write(outch, " Scol vector= %1X%I6%2(1X,I6)", fromdr, scolrm, scolac); //F
-   BegExSF(outch, "(\2 Scol vector= \2,1x,i6,2(1x,i6))");
-   DoFio(1, &screen.fromdr, sizeof screen.fromdr);
-   DoFio(1, &screen.scolrm, sizeof screen.scolrm), DoFio(1, &screen.scolac, sizeof screen.scolac);
-   EndExSF();
+   more_output(" Scol vector=  %6d %6d %6d\n", screen.fromdr, screen.scolrm, screen.scolac);
    goto L2000;
 
 // GDT, PAGE 4
@@ -423,7 +403,7 @@ L20000:
    }
 // 						!ENTRY NO VALID?
 // write(outch, Format1, flags(j)); //F
-   BegExSF(outch, Format1), DoFio(1, &flags[j - 1], sizeof flags[0]), EndExSF();
+   printf(Format1, flags[j - 1] ? 'T' : 'F'), fflush(stdout);
 // 						!TYPE OLD, GET NEW.
 // read(inpch, "%L1", &flags(j)); //F
    BegInSF(inpch, "(l1)"), DoFio(1, &flags[j - 1], sizeof flags[0]), EndInSF();
@@ -448,25 +428,20 @@ L21000:
 //    " RC- Restore cyclops%/"		" RD- Restore deaths%/"		" RR- Restore robber%/" //F
 //    " RT- Restore troll%/"		" TK- Take." //F
 // ); //F
-   BegExSF(outch,
-      "(\2"
-      " Valid commands are:\2/\2"
-      " AA- Alter ADVS\2/\2"		" AC- Alter CEVENT\2/\2"	" AF- Alter FINDEX\2/\2"
-      " AH- Alter HERE\2/\2"		" AN- Alter switches\2/\2"	" AO- Alter OBJCTS\2/\2"
-      " AR- Alter ROOMS\2/\2"		" AV- Alter VILLS\2/\2"		" AX- Alter EXITS\2/\2"
-      " AZ- Alter PUZZLE\2/\2"		" DA- Display ADVS\2/\2"	" DC- Display CEVENT\2/\2"
-      " DF- Display FINDEX\2/\2"	" DH- Display HACKS\2/\2"	" DL- Display lengths\2/\2"
-      " DM- Display RTEXT\2/\2"		" DN- Display switches\2/\2"	" DO- Display OBJCTS\2/\2"
-      " DP- Display parser\2/\2"	" DR- Display ROOMS\2/\2"	" DS- Display state\2/\2"
-      " DT- Display text\2/\2"		" DV- Display VILLS\2/\2"	" DX- Display EXITS\2/\2"
-      " DZ- Display PUZZLE\2/\2"	" D2- Display ROOM2\2/\2"	" EX- Exit\2/\2"
-      " HE- Type this message\2/\2"	" NC- No cyclops\2/\2"		" ND- No deaths\2/\2"
-      " NR- No robber\2/\2"		" NT- No troll\2/\2"		" PD- Program detail\2/\2"
-      " RC- Restore cyclops\2/\2"	" RD- Restore deaths\2/\2"	" RR- Restore robber\2/\2"
-      " RT- Restore troll\2/\2"		" TK- Take."
-      "\2)"
-   );
-   EndExSF();
+   more_output(" Valid commands are:\n");
+   more_output(" AA- Alter ADVS\n");		more_output(" AC- Alter CEVENT\n");	more_output(" AF- Alter FINDEX\n");
+   more_output(" AH- Alter HERE\n");		more_output(" AN- Alter switches\n");	more_output(" AO- Alter OBJCTS\n");
+   more_output(" AR- Alter ROOMS\n");		more_output(" AV- Alter VILLS\n");	more_output(" AX- Alter EXITS\n");
+   more_output(" AZ- Alter PUZZLE\n");		more_output(" DA- Display ADVS\n");	more_output(" DC- Display CEVENT\n");
+   more_output(" DF- Display FINDEX\n");	more_output(" DH- Display HACKS\n");	more_output(" DL- Display lengths\n");
+   more_output(" DM- Display RTEXT\n");		more_output(" DN- Display switches\n");	more_output(" DO- Display OBJCTS\n");
+   more_output(" DP- Display parser\n");	more_output(" DR- Display ROOMS\n");	more_output(" DS- Display state\n");
+   more_output(" DT- Display text\n");		more_output(" DV- Display VILLS\n");	more_output(" DX- Display EXITS\n");
+   more_output(" DZ- Display PUZZLE\n");	more_output(" D2- Display ROOM2\n");	more_output(" EX- Exit\n");
+   more_output(" HE- Type this message\n");	more_output(" NC- No cyclops\n");	more_output(" ND- No deaths\n");
+   more_output(" NR- No robber\n");		more_output(" NT- No troll\n");		more_output(" PD- Program detail\n");
+   more_output(" RC- Restore cyclops\n");	more_output(" RD- Restore deaths\n");	more_output(" RR- Restore robber\n");
+   more_output(" RT- Restore troll\n");		more_output(" TK- Take.\n");
    goto L2000;
 
 // NR-- NO ROBBER
@@ -478,7 +453,7 @@ L22000:
    newsta(ThiefOX, 0, 0, 0, 0);
 // 						!VANISH THIEF.
 // write(outch, " No robber."); //F
-   BegExSF(outch, "(\2 No robber.\2)"), EndExSF();
+   more_output(" No robber.\n");
    goto L2000;
 
 // NT-- NO TROLL
@@ -487,7 +462,7 @@ L23000:
    findex.trollf = true;
    newsta(TrollOX, 0, 0, 0, 0);
 // write(outch, " No troll."); //F
-   BegExSF(outch, "(\2 No troll.\2)"), EndExSF();
+   more_output(" No troll.\n");
    goto L2000;
 
 // NC-- NO CYCLOPS
@@ -496,7 +471,7 @@ L24000:
    findex.cyclof = true;
    newsta(CycloOX, 0, 0, 0, 0);
 // write(outch, " No cyclops."); //F
-   BegExSF(outch, "(\2 No cyclops.\2)"), EndExSF();
+   more_output(" No cyclops.\n");
    goto L2000;
 
 // ND-- IMMORTALITY MODE
@@ -504,7 +479,7 @@ L24000:
 L25000:
    debug.dbgflg = 1;
 // write(outch, " No deaths."); //F
-   BegExSF(outch, "(\2 No deaths.\2)"), EndExSF();
+   more_output(" No deaths.\n");
    goto L2000;
 
 // RR-- RESTORE ROBBER
@@ -512,7 +487,7 @@ L25000:
 L26000:
    hack.thfact = true;
 // write(outch, " Restored robber."); //F
-   BegExSF(outch, "(\2 Restored robber.\2)"), EndExSF();
+   more_output(" Restored robber.\n");
    goto L2000;
 
 // RT-- RESTORE TROLL
@@ -521,7 +496,7 @@ L27000:
    findex.trollf = false;
    newsta(TrollOX, 0, MTrolRX, 0, 0);
 // write(outch, " Restored troll."); //F
-   BegExSF(outch, "(\2 Restored troll.\2)"), EndExSF();
+   more_output(" Restored troll.\n");
    goto L2000;
 
 // RC-- RESTORE CYCLOPS
@@ -531,7 +506,7 @@ L28000:
    findex.magicf = false;
    newsta(CycloOX, 0, MCyclRX, 0, 0);
 // write(outch, " Restored cyclops."); //F
-   BegExSF(outch, "(\2 Restored cyclops.\2)"), EndExSF();
+   more_output(" Restored cyclops.\n");
    goto L2000;
 
 // RD-- MORTAL MODE
@@ -539,7 +514,7 @@ L28000:
 L29000:
    debug.dbgflg = 0;
 // write(outch, " Restored deaths."); //F
-   BegExSF(outch, "(\2 Restored deaths.\2)"), EndExSF();
+   more_output(" Restored deaths.\n");
    goto L2000;
 
 // GDT, PAGE 5
@@ -554,7 +529,7 @@ L30000:
    newsta(j, 0, 0, 0, play.winner);
 // 						!YES, TAKE OBJECT.
 // write(outch, " Taken."); //F
-   BegExSF(outch, "(\2 Taken.\2)"), EndExSF();
+   more_output(" Taken.\n");
 // 						!TELL.
    goto L2000;
 
@@ -572,7 +547,7 @@ L32000:
    }
 // 						!INDICES VALID?
 // write(outch, Format2, eqr(j, k)); //F
-   BegExSF(outch, Format2), DoFio(1, &eqr[j - 1 + 200 * (k - 1)], sizeof eqr[0]), EndExSF();
+   printf(Format2, eqr[j - 1 + 200 * (k - 1)]), fflush(stdout);
 // 						!TYPE OLD, GET NEW.
 // read(inpch, "%I6", &eqr(j, k)); //F
    BegInSF(inpch, "(i6)"), DoFio(1, &eqr[j - 1 + 200 * (k - 1)], sizeof eqr[0]), EndInSF();
@@ -586,7 +561,7 @@ L33000:
    }
 // 						!INDICES VALID?
 // write(outch, Format2, eqo(j, k)); //F
-   BegExSF(outch, Format2), DoFio(1, &eqo[j - 1 + 220 * (k - 1)], sizeof eqo[0]), EndExSF();
+   printf(Format2, eqo[j - 1 + 220 * (k - 1)]), fflush(stdout);
 // read(inpch, "%I6", &eqo(j, k)); //F
    BegInSF(inpch, "(i6)"), DoFio(1, &eqo[j - 1 + 220 * (k - 1)], sizeof eqo[0]), EndInSF();
    goto L2000;
@@ -599,7 +574,7 @@ L34000:
    }
 // 						!INDICES VALID?
 // write(outch, Format2, eqa(j, k)); //F
-   BegExSF(outch, Format2), DoFio(1, &eqa[j - 1 + ((k - 1) << 2)], sizeof eqa[0]), EndExSF();
+   printf(Format2, eqa[j - 1 + ((k - 1) << 2)]), fflush(stdout);
 // read(inpch, "%I6", &eqa(j, k)); //F
    BegInSF(inpch, "(i6)"), DoFio(1, &eqa[j - 1 + ((k - 1) << 2)], sizeof eqa[0]), EndInSF();
    goto L2000;
@@ -616,14 +591,14 @@ L35000:
    }
 // 						!FLAGS ENTRY?
 // write(outch, Format2, eqc(j, k)); //F
-   BegExSF(outch, Format2), DoFio(1, &eqc[j - 1 + 25 * (k - 1)], sizeof eqc[0]), EndExSF();
+   printf(Format2, eqc[j - 1 + 25 * (k - 1)]), fflush(stdout);
 // read(inpch, "%I6", &eqc(j, k)); //F
    BegInSF(inpch, "(i6)"), DoFio(1, &eqc[j - 1 + 25 * (k - 1)], sizeof eqc[0]), EndInSF();
    goto L2000;
 
 L35500:
 // write(outch, Format1, cflag(j)); //F
-   BegExSF(outch, Format1), DoFio(1, &cevent.cflag[j - 1], sizeof cevent.cflag[0]), EndExSF();
+   printf(Format1, cevent.cflag[j - 1] ? 'T' : 'F'), fflush(stdout);
 // read(inpch, "%L1", &cevent.cflag); //F
    BegInSF(inpch, "(l1)"), DoFio(1, &cevent.cflag[j - 1], sizeof cevent.cflag[0]), EndInSF();
    goto L2000;
@@ -637,7 +612,7 @@ L36000:
    }
 // 						!ENTRY NO VALID?
 // write(outch, Format2, travel(j)); //F
-   BegExSF(outch, Format2), DoFio(1, &exits.travel[j - 1], sizeof exits.travel[0]), EndExSF();
+   printf(Format2, exits.travel[j - 1]), fflush(stdout);
 // read(inpch, "%I6", &exits.travel(j)); //F
    BegInSF(inpch, "(i6)"), DoFio(1, &exits.travel[j - 1], sizeof exits.travel[0]), EndInSF();
    goto L2000;
@@ -650,7 +625,7 @@ L37000:
    }
 // 						!INDICES VALID?
 // write(outch, Format2, eqv(j, k)); //F
-   BegExSF(outch, Format2), DoFio(1, &eqv[j - 1 + ((k - 1) << 2)], sizeof eqv[0]), EndExSF();
+   printf(Format2, eqv[j - 1 + ((k - 1) << 2)]), fflush(stdout);
 // read(inpch, "%I6", &eqv(j, k)); //F
    BegInSF(inpch, "(i6)"), DoFio(1, &eqv[j - 1 + ((k - 1) << 2)], sizeof eqv[0]), EndInSF();
    goto L2000;
@@ -664,11 +639,7 @@ L38000:
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
 //    write(outch, " #%I2   Room=%I6   Obj=%I6", i, rroom2(i), oroom2(i)); //F
-      BegExSF(outch, "(\2 #\2,i2,\2   Room=\2,i6,\2   Obj=\2,i6)");
-      DoFio(1, &i, sizeof i);
-      DoFio(1, &oroom2_.rroom2[i - 1], sizeof oroom2_.rroom2[0]);
-      DoFio(1, &oroom2_.oroom2[i - 1], sizeof oroom2_.oroom2[0]);
-      EndExSF();
+      more_output(" #%2d   Room=%6d   Obj=%6d\n", i, oroom2_.rroom2[i - 1], oroom2_.oroom2[i - 1]);
 // L38100:
    }
    goto L2000;
@@ -683,9 +654,7 @@ L39000:
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
 //    write(outch, " Switch #%I2 = %I6", i, switch_(i)); //F
-      BegExSF(outch, "(\2 Switch #\2,i2,\2 = \2,i6)");
-      DoFio(1, &i, sizeof i), DoFio(1, &switch_[i - 1], sizeof switch_[0]);
-      EndExSF();
+      more_output(" Switch #%2d = %6d\n", i, switch_[i - 1]);
 // L39100:
    }
    goto L2000;
@@ -698,7 +667,7 @@ L40000:
    }
 // 						!VALID ENTRY?
 // write(outch, Format2, switch_(j)); //F
-   BegExSF(outch, Format2), DoFio(1, &switch_[j - 1], sizeof switch_[0]), EndExSF();
+   printf(Format2, switch_[j - 1]), fflush(stdout);
 // read(inpch, "%I6", &switch_(j)); //F
    BegInSF(inpch, "(i6)"), DoFio(1, &switch_[j - 1], sizeof switch_[0]), EndInSF();
    goto L2000;
@@ -711,17 +680,17 @@ L41000:
    }
 // 						!VALID LIMITS?
 // write(outch, Format0); //F
-   BegExSF(outch, Format0), EndExSF();
+   more_output(Format0);
    i__1 = k;
    for (i = j; i <= i__1; i += 10) {
 // Computing MIN
       i__2 = i + 9;
       l = min(i__2, k);
 //    write(outch, "%1X%I3"-%I3%3X%10(1X,I6)", i, l, (rtext(l1), l1 = i, l)); //F
-      BegExSF(outch, "(1x,i3,\2-\2,i3,3x,10(1x,i6))"), DoFio(1, &i, sizeof i), DoFio(1, &l, sizeof l);
+      printf(" %3d-%3d   ", i, l);
       i__2 = l;
-      for (l1 = i; l1 <= i__2; ++l1) DoFio(1, &rmsg.rtext[l1 - 1], sizeof rmsg.rtext[0]);
-      EndExSF();
+      for (l1 = i; l1 <= i__2; ++l1) printf(" %6d", rmsg.rtext[l1 - 1]);
+      more_output("\n");
 // L41100:
    }
    goto L2000;
@@ -736,7 +705,7 @@ L42000:
 
 L43000:
 // write(outch, Format2, here); //F
-   BegExSF(outch, Format2), DoFio(1, &play.here, sizeof play.here), EndExSF();
+   printf(Format2, play.here), fflush(stdout);
 // read(inpch, "%I6", &play.here); //F
    BegInSF(inpch, "(i6)"), DoFio(1, &play.here, sizeof play.here), EndInSF();
    eqa[0] = play.here;
@@ -746,17 +715,17 @@ L43000:
 
 L44000:
 // write(outch, " ORPHS= %I7%I7%4I7%/ PV=    %I7%4I7%/ SYN=   %6I7%/%15X%5I7", orp, lastit, pvec, syn); //F
-   BegExSF(outch, "(\2 ORPHS= \2,i7,i7,4i7/\2 PV=    \2,i7,4i7/\2 SYN=   \2,6i7/15x,5i7)");
-   DoFio(5, orp, sizeof orp[0]), DoFio(1, &last.lastit, sizeof last.lastit);
-   DoFio(5, pvec, sizeof pvec[0]), DoFio(11, syn, sizeof syn[0]);
-   EndExSF();
+   more_output(" ORPHS= %7d%7d%7d%7d%7d%7d\n", orp[0], orp[1], orp[2], orp[3], orp[4], last.lastit);
+   more_output(" PV=    %7d%7d%7d%7d%7d\n", pvec[0], pvec[1], pvec[2], pvec[3], pvec[4]);
+   more_output(" SYN=   %7d%7d%7d%7d%7d%7d\n", syn[0], syn[1], syn[2], syn[3], syn[4], syn[5]);
+   more_output("               %7d%7d%7d%7d%7d\n", syn[6], syn[7], syn[8], syn[9], syn[10]);
    goto L2000;
 
 // PD--	PROGRAM DETAIL DEBUG
 
 L45000:
 // write(outch, Format2, prsflg); //F
-   BegExSF(outch, Format2), DoFio(1, &debug.prsflg, sizeof debug.prsflg), EndExSF();
+   printf(Format2, debug.prsflg), fflush(stdout);
 // 						!TYPE OLD, GET NEW.
 // read(inpch, "%I6", &debug.prsflg); //F
    BegInSF(inpch, "(i6)"), DoFio(1, &debug.prsflg, sizeof debug.prsflg), EndInSF();
@@ -768,10 +737,10 @@ L46000:
    for (i = 1; i <= 64; i += 8) {
 // 						!DISPLAY PUZZLE
 //    write(outch, "%2X%8I3", (cpvec(j), j = i, i + 7)); //F
-      BegExSF(outch, "(2x,8i3)");
+      printf("  ");
       i__1 = i + 7;
-      for (j = i; j <= i__1; ++j) DoFio(1, &puzzle.cpvec[j - 1], sizeof puzzle.cpvec[0]);
-      EndExSF();
+      for (j = i; j <= i__1; ++j) printf("%3d", puzzle.cpvec[j - 1]);
+      more_output("\n");
 // L46100:
    }
    goto L2000;
@@ -784,7 +753,7 @@ L47000:
    }
 // 						!VALID ENTRY?
 // write(outch, Format2, cpvec(j)); //F
-   BegExSF(outch, Format2), DoFio(1, &puzzle.cpvec[j - 1], sizeof puzzle.cpvec[0]), EndExSF();
+   printf(Format2, puzzle.cpvec[j - 1]), fflush(stdout);
 // 						!OUTPUT OLD,
 // read(inpch, "%I6", &puzzle.cpvec(j)); //F
    BegInSF(inpch, "(i6)"), DoFio(1, &puzzle.cpvec[j - 1], sizeof puzzle.cpvec[0]), EndInSF();
