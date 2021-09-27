@@ -75,7 +75,7 @@ History
 2021/09/23	Reconciling differences between the adventurer, object and villain tables.
 		The Fortran original split the large arrays {a,o,v}voc[] into tables bundled into common blocks,
 		probably to overcome limitations on table sizes.
-		The 1991 C translation reintegrated the tables and translated then as such, instead of as common blocks.
+		The 1991 C translation reintegrated the tables and translated them as such, instead of as common blocks.
 2021/09/23	Lifting the common blocks {dir,prp,buz}voc, respectively, to constant integer arrays {d,p,b}voc[].
 		This is a bona fide upgrade: it goes beyond the Fortran original and 1991 C translation.
 2021/09/23	Reconciling the remaining differences between the translations of the common blocks (/vers/).
@@ -95,3 +95,7 @@ History
 2021/09/26	The rest of the file input I/O from ‟F2C.h” has been nativized and eliminated.
 		The libf2c dependency has been eliminated.
 		The I/O for the user input is now operational, but not yet validated (and repaired, if need be).
+2021/09/27	The I/O for the user input is now validated.
+		‟make test” requires modification, because output for the Fortran original and 2021 C translation can vary.
+		This feature was present, by design, in the Fortran version but was removed by the 1991 C translation.
+2021/09/27	The 2021 C translation is now operational.

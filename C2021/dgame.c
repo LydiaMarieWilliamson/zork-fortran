@@ -2,6 +2,7 @@
 // All rights reserved, commercial usage strictly prohibited.
 // Written by R. M. Supnik.
 // Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
+#include <string.h>
 #include "extern.h"
 #include "common.h"
 
@@ -17,12 +18,6 @@ void game_(void) {
    Bool f;
    int i, j;
 
-// Initialized data
-   static const char secho[1 * 4] = "E" "C" "H" "O";
-#ifdef ALLOW_GDT
-// Initialized Data
-   static const char gdtstr[1 * 3] = "G" "D" "T";
-#endif
 // GAME, PAGE 2
 
 // START UP, DESCRIBE CURRENT LOCATION.
@@ -40,24 +35,21 @@ L100:
    play.telflg = false;
 // 						!ASSUME NOTHING TOLD.
    if (prsvec.prscon <= 1) {
-      rdline(input.inbuf, sizeof input.inbuf, 1, sizeof input.inbuf[0]);
+      rdline(input.inbuf, sizeof input.inbuf, 1);
    }
 
 #ifdef ALLOW_GDT
-   for (i = 1; i <= 3; i++) {
+   if (strcmp(&input.inbuf[prsvec.prscon - 1], "GDT") == 0) {
 // 						!CALL ON GDT?
-      if (input.inbuf[i + prsvec.prscon - 2] != gdtstr[i - 1]) goto L200;
-// L150: continue;
-   }
-   gdt();
+      gdt();
 // 						!YES, INVOKE.
-   goto L100;
+      goto L100;
 // 						!ONWARD.
+   }
 #endif
 
-//L200:
    ++state.moves;
-   prsvec.prswon = parse(input.inbuf, sizeof input.inbuf, true/*, sizeof input.inbuf[0]*/);
+   prsvec.prswon = parse(input.inbuf, sizeof input.inbuf, true);
    if (!prsvec.prswon) {
       goto L400;
    }
@@ -102,16 +94,11 @@ L900:
 // IF INPUT IS NOT 'ECHO' OR A DIRECTION, JUST ECHO.
 
 L1000:
-   rdline(input.inbuf, sizeof input.inbuf, 0, sizeof input.inbuf[0]);
+   rdline(input.inbuf, sizeof input.inbuf, 0);
    ++state.moves;
 // 						!CHARGE FOR MOVES.
-   for (i = 1; i <= 4; ++i) {
+   if (strcmp(input.inbuf, "ECHO") != 0) goto L1300;
 // 						!INPUT = ECHO?
-      if (input.inbuf[i - 1] != secho[i - 1]) {
-         goto L1300;
-      }
-// L1100:
-   }
 
 //   Note: the following DO loop was changed from DO 1200 I=5,78
 //     The change was necessary because the RDLINE function was changed,
@@ -136,7 +123,7 @@ L1000:
    goto L400;
 
 L1300:
-   prsvec.prswon = parse(input.inbuf, sizeof input.inbuf, false/*, sizeof input.inbuf[0]*/);
+   prsvec.prswon = parse(input.inbuf, sizeof input.inbuf, false);
    if (!prsvec.prswon || prsvec.prsa != WalkW) {
       goto L1400;
    }
@@ -147,7 +134,7 @@ L1300:
 
 L1400:
 // write(outch, "%1X%78A1", (input.inbuf(j), j = 1, input.inlnt)); //F
-   more_output(" %*s\n", input.inlnt, input.inbuf);
+   more_output(" %.*s\n", input.inlnt, input.inbuf);
    play.telflg = true;
 // 						!INDICATE OUTPUT.
    goto L1000;
@@ -175,7 +162,7 @@ L2100:
       goto L2700;
    }
 // 						!ANY INPUT?
-   if (parse(input.inbuf, sizeof input.inbuf, true/*, sizeof input.inbuf[0])*/)) {
+   if (parse(input.inbuf, sizeof input.inbuf, true)) {
       goto L2150;
    }
 L2700:

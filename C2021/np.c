@@ -2,27 +2,17 @@
 // All rights reserved, commercial usage strictly prohibited.
 // Written by R. M. Supnik.
 // Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
+#include <ctype.h>
+#include <stdlib.h> // For system(); // C99 is assumed.
 #include "extern.h"
 #include "common.h"
-#if 0
-#include <stdlib.h> // For system(); // C99 is assumed.
-#endif
 
 static Bool lex(char *, int, int *, int *, Bool/*, size_t*/);
 
 // Read input line
-void rdline(char *buffer, int length, int who, size_t buffer_unit) {
-// System generated locals
-   int i__1;
-
-// Local variables
-#if 0
-   static char sysbuf[1 * 78];
-#endif
-   int i;
-
-// Parameter adjustments
-   --buffer;
+void rdline(char *buffer, size_t length, int who) {
+// Local variable
+   char *zpast;
 
 // Function Body
 L5:
@@ -40,41 +30,36 @@ L10:
 L90:
 // read(inpch, "%78A1", buffer); //F
    if (more_input(buffer, length) == NULL) exit_();
-   for (; length >= 1; --(length)) {
-      if (buffer[length] != ' ') {
-         goto L250;
+   zpast = buffer;
+   for (char *z = buffer; *z != '\0' && *z != '\n'; z++) {
+      if (*z != ' ') {
+         zpast = z + 1;
       }
 // L200:
    }
-   goto L5;
+   *zpast = '\0';
+   if (zpast == buffer) {
+      goto L5;
 // 						!TRY AGAIN.
+   }
 
-L250:
-#if 0
+//L250:
 // 	check for shell escape here before things are
 // 	converted to upper case
 
 // NO SHELL ESCAPE /+TAA+/
-   if (buffer[0] != '!') goto L300;
-   for (j = 2; j <= length; j++) {
-      sysbuf[j - 2] = buffer[j - 1];
-// L275:
+   if (buffer[0] == '!') {
+      system(buffer + 1);
+      goto L5;
    }
-   sysbuf[j - 1] = '\0';
-   system(sysbuf);
-   goto L5;
-#endif
-// CONVERT TO UPPER CASE
+
 //L300:
-   i__1 = length;
-   for (i = 1; i <= i__1; ++i) {
-      if (buffer[i] >= 'a' && buffer[i] <= 'z') {
-         buffer[i] = (char)(buffer[i] - 32);
+// CONVERT TO UPPER CASE
+   for (char *z = buffer; *z != '\0' && *z != '\n'; z++) {
+      if (islower(*z)) {
+         *z = toupper(*z);
       }
 // L400:
-   }
-   if (length == 0) {
-      goto L5;
    }
    prsvec.prscon = 1;
 // 						!RESTART LEX SCAN.
@@ -82,7 +67,7 @@ L250:
 
 // Top level parse routine
 // This routine details on bit 0 of prsflg
-Bool parse(char *inbuf, int inlnt, Bool vbflag/*, size_t inbuf_unit*/) {
+Bool parse(char *inbuf, int inlnt, Bool vbflag) {
 // System generated locals
    int SparseRet;
    Bool ret_val;
@@ -168,7 +153,7 @@ void orphan(int o1, int o2, int o3, int o4, int o5) {
 // This routine details on bit 1 of prsflag
 static Bool lex(char *inbuf, int inlnt, int *outbuf, int *op, Bool vbflag/*, size_t inbuf_unit*/) {
 // Initialized data
-   static const char dlimit[1 * 9] = "A" "Z" "x" "1" "9" "x" "-" "-" "x";
+   static const char dlimit[9] = { 'A', 'Z', 'A' - 1, '1', '9', '1' - 31, '-', '-', '-' - 27 };
 
 // System generated locals
    Bool ret_val;
@@ -204,12 +189,12 @@ L50:
 // 						!CHAR PTR=0.
 
 L200:
-   if (prsvec.prscon > inlnt) {
+   j = inbuf[prsvec.prscon];
+// 						!GET CHARACTER
+   if (j == '\0') {
       goto L1000;
    }
 // 						!END OF INPUT?
-   j = inbuf[prsvec.prscon];
-// 						!NO, GET CHARACTER,
    ++prsvec.prscon;
 // 						!ADVANCE PTR.
    if (j == '.') {
@@ -241,7 +226,7 @@ L200:
 // END OF INPUT, SEE IF PARTIAL WORD AVAILABLE.
 
 L1000:
-   if (prsvec.prscon > inlnt) {
+   if (inbuf[prsvec.prscon] == '\0') {
       prsvec.prscon = 1;
    }
 // 						!FORCE PARSE RESTART.

@@ -24,8 +24,8 @@ extern struct timeCB {
 } time_;
 
 // common /vers/
-extern /*const*/ int vmaj, vmin;
-extern /*const*/ char vedit;
+extern const int vmaj, vmin;
+extern const char vedit;
 
 // common /hyper/
 extern const int hfactr;

@@ -38,12 +38,23 @@ APP = Zork
 $(APP): $(OBJS)
 	$(CC) $(CFLAGS) -o $(APP) $(OBJS) $(LIBS)
 
+test: $(APP) Test.in Test.ex
+	./$(APP) <Test.in >Ex && diff -d Test.ex Ex && rm Ex
+Test.in:
+	$(LN) ../Test.in .
+Test.ex:
+	$(LN) ../Test.ex .
+
 clean:
 	rm -f $(OBJS)
+untest:
+	rm -f Test.in
+	rm -f Test.ex
+	rm -f Ex
 undat:
 	rm -f dindx.dat
 	rm -f dtext.dat
-clobber: clean undat
+clobber: clean untest undat
 	rm -f $(APP)
 
 ## Temporary expedients.

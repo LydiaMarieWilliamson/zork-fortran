@@ -87,7 +87,7 @@ Bool ghere(int, int);
 int mrhere(int);
 
 // dso7.c:
-void encryp(const char *, char * /*, size_t, size_t*/);
+void encryp(const char *, char *);
 void cpgoto(int);
 void cpinfo(int, int);
 
@@ -137,8 +137,8 @@ int schlst(int, int, int, int, int, int);
 Bool synmch(void/*int*/);
 
 // np.c:
-void rdline(char *, int, int, size_t);
-Bool parse(char *, int, Bool/*, size_t*/);
+void rdline(char *, size_t, int);
+Bool parse(char *, int, Bool);
 void orphan(int, int, int, int, int);
 
 // nrooms.c:

@@ -760,7 +760,7 @@ L26300:
    return ret_val;
 
 L26400:
-   encryp(pp1, ch/*, sizeof pp1[0], sizeof ch[0]*/);
+   encryp(pp1, ch);
 // 						!COMPUTE RESPONSE.
    if (pp2[0] != ' ') {
       goto L26600;

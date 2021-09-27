@@ -6,7 +6,7 @@
 #include "common.h"
 
 // Encrypt password
-void encryp(const char *inw, char *outw/*, size_t inw_unit, size_t outw_unit*/) {
+void encryp(const char *inw, char *outw) {
 // Initialized data
    const char keyw[1 * 6] = "E" "C" "O" "R" "M" "S";
 
