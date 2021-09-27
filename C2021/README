@@ -1,9 +1,10 @@
-This is a translation in progress into C of the Fortran source code in this archive,
+This is a translation into C of the Fortran source code in this archive,
 carried out with the aid of version 20190311 of f2c.
 It is contained under C2021.
 
 A separate translation to C had been earlier done in 1991, using a less-developed version of f2c.
-It is being used as a guide and cross-check for this translation.
+It is being used as a guide and cross-check for this translation,
+while also being upgraded and reverse-cross-checked against the new translation and Fortran version.
 It is now included here as the sub-module C1991.
 
 The history of the translation process may be found in the ‟History”.
