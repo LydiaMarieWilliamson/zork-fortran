@@ -105,12 +105,12 @@ C
 80	CALL RSPEAK(786+I)
 	RETURN
 
-100	FORMAT(' Your score would be',$)
-110	FORMAT(' Your score is',$)
+100	FORMAT('Your score would be',$)
+110	FORMAT('Your score is',$)
 120	FORMAT(I4,' [total of',I4,' points], in',I5,' moves.')
 130	FORMAT(I4,' [total of',I4,' points], in',I5,' move.')
-140	FORMAT(' Your score in the endgame would be',$)
-150	FORMAT(' Your score in the endgame is',$)
+140	FORMAT('Your score in the endgame would be',$)
+150	FORMAT('Your score in the endgame is',$)
 	END
 C
 C Update winner's score

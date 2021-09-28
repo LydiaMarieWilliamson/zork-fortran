@@ -67,7 +67,7 @@ C						!NOT AN IMPLEMENTER.
 	RETURN
 C						!BOOT HIM OFF
 C
-100	FORMAT(' You are not an authorized user.')
+100	FORMAT('You are not an authorized user.')
 c GDT, PAGE 2A
 C
 C HERE TO GET NEXT COMMAND
@@ -89,14 +89,14 @@ C	  check for lower case command, as well
 C						!NO, LOSE.
 	GO TO 2000
 C
-200	FORMAT(' GDT>',$)
+200	FORMAT('GDT>',$)
 210	FORMAT(A2)
-220	FORMAT(' ?')
+220	FORMAT('?')
 230	FORMAT(2I6)
 240	FORMAT(I6)
-225	FORMAT(' Limits:   ',$)
-235	FORMAT(' Entry:    ',$)
-245	FORMAT(' Idx,Ary:  ',$)
+225	FORMAT('Limits:   ',$)
+235	FORMAT('Entry:    ',$)
+245	FORMAT('Idx,Ary:  ',$)
 c
 2300	GO TO (2400,2500,2600,2700),ARGTYP(I)+1
 C						!BRANCH ON ARG TYPE.
@@ -136,8 +136,8 @@ C						!COL HDRS.
 10100	CONTINUE
 	GO TO 2000
 C
-300	FORMAT(' RM#  DESC1  EXITS ACTION  VALUE  FLAGS')
-310	FORMAT(1X,I3,4(1X,I6),1X,I6)
+300	FORMAT('RM#  DESC1  EXITS ACTION  VALUE  FLAGS')
+310	FORMAT(I3,4(1X,I6),1X,I6)
 C
 C DO-- DISPLAY OBJECTS
 C
@@ -150,9 +150,9 @@ C						!COL HDRS
 11100	CONTINUE
 	GO TO 2000
 C
-320	FORMAT(' OB# DESC1 DESC2 DESCO ACT FLAGS1 FLAGS2 FVL TVL
+320	FORMAT('OB# DESC1 DESC2 DESCO ACT FLAGS1 FLAGS2 FVL TVL
      &  SIZE CAPAC ROOM ADV CON  READ')
-330	FORMAT(1X,I3,3I6,I4,2I7,2I4,2I6,1X,3I4,I6)
+330	FORMAT(I3,3I6,I4,2I7,2I4,2I6,1X,3I4,I6)
 C
 C DA-- DISPLAY ADVENTURERS
 C
@@ -164,8 +164,8 @@ C						!ARGS VALID?
 12100	CONTINUE
 	GO TO 2000
 C
-340	FORMAT(' AD#   ROOM  SCORE  VEHIC OBJECT ACTION  STREN  FLAGS')
-350	FORMAT(1X,I3,6(1X,I6),1X,I6)
+340	FORMAT('AD#   ROOM  SCORE  VEHIC OBJECT ACTION  STREN  FLAGS')
+350	FORMAT(I3,6(1X,I6),1X,I6)
 C
 C DC-- DISPLAY CLOCK EVENTS
 C
@@ -177,8 +177,8 @@ C						!ARGS VALID?
 13100	CONTINUE
 	GO TO 2000
 C
-360	FORMAT(' CL#   TICK ACTION  FLAG')
-370	FORMAT(1X,I3,1X,I6,1X,I6,5X,L1)
+360	FORMAT('CL#   TICK ACTION  FLAG')
+370	FORMAT(I3,1X,I6,1X,I6,5X,L1)
 C
 C DX-- DISPLAY EXITS
 C
@@ -194,16 +194,16 @@ C						!COMPUTE END OF LINE.
 14100	CONTINUE
 	GO TO 2000
 C
-380	FORMAT('   RANGE   CONTENTS')
-390	FORMAT(1X,I3,'-',I3,3X,10I7)
+380	FORMAT('  RANGE   CONTENTS')
+390	FORMAT(I3,'-',I3,3X,10I7)
 C
 C DH-- DISPLAY HACKS
 C
 15000	WRITE(OUTCH,400) THFPOS,THFFLG,THFACT,SWDACT,SWDSTA
 	GO TO 2000
 C
-400	FORMAT(' THFPOS=',I6,', THFFLG=',L2,',THFACT=',L2/
-     &' SWDACT=',L2,', SWDSTA=',I2)
+400	FORMAT('THFPOS=',I6,', THFFLG=',L2,',THFACT=',L2/
+     &'SWDACT=',L2,', SWDSTA=',I2)
 C
 C DL-- DISPLAY LENGTHS
 C
@@ -211,9 +211,9 @@ C
      &	MBASE,STRBIT
 	GO TO 2000
 C
-410	FORMAT(' R=',I6,', X=',I6,', O=',I6,', C=',I6/
-     &' V=',I6,', A=',I6,', M=',I6,', R2=',I5/
-     &' MBASE=',I6,', STRBIT=',I6)
+410	FORMAT('R=',I6,', X=',I6,', O=',I6,', C=',I6/
+     &'V=',I6,', A=',I6,', M=',I6,', R2=',I5/
+     &'MBASE=',I6,', STRBIT=',I6)
 C
 C DV-- DISPLAY VILLAINS
 C
@@ -226,8 +226,8 @@ C						!COL HDRS
 17100	CONTINUE
 	GO TO 2000
 C
-420	FORMAT(' VL# OBJECT   PROB   OPPS   BEST  MELEE')
-430	FORMAT(1X,I3,5(1X,I6))
+420	FORMAT('VL# OBJECT   PROB   OPPS   BEST  MELEE')
+430	FORMAT(I3,5(1X,I6))
 C
 C DF-- DISPLAY FLAGS
 C
@@ -238,7 +238,7 @@ C						!ARGS VALID?
 18100	CONTINUE
 	GO TO 2000
 C
-440	FORMAT(' Flag #',I2,' = ',L1)
+440	FORMAT('Flag #',I2,' = ',L1)
 C
 C DS-- DISPLAY STATE
 C
@@ -249,10 +249,10 @@ C
 	WRITE(OUTCH,475) FROMDR,SCOLRM,SCOLAC
 	GO TO 2000
 C
-450	FORMAT(' Parse vector=',3(1X,I6),1X,L6,1X,I6)
-460	FORMAT(' Play vector= ',2(1X,I6),1X,L6)
-470	FORMAT(' State vector=',9(1X,I6)/14X,2(1X,I6))
-475	FORMAT(' Scol vector= ',1X,I6,2(1X,I6))
+450	FORMAT('Parse vector=',3(1X,I6),1X,L6,1X,I6)
+460	FORMAT('Play vector= ',2(1X,I6),1X,L6)
+470	FORMAT('State vector=',9(1X,I6)/14X,2(1X,I6))
+475	FORMAT('Scol vector= ',1X,I6,2(1X,I6))
 C GDT, PAGE 4
 C
 C AF-- ALTER FLAGS
@@ -264,7 +264,7 @@ C						!TYPE OLD, GET NEW.
 	READ(INPCH,490) FLAGS(J)
 	GO TO 2000
 C
-480	FORMAT(' Old=',L2,6X,'New= ',$)
+480	FORMAT('Old=',L2,6X,'New= ',$)
 490	FORMAT(L1)
 C
 C 21000-- HELP
@@ -272,22 +272,22 @@ C
 21000	WRITE(OUTCH,900)
 	GO TO 2000
 C
-900	FORMAT(' Valid commands are:'/' AA- Alter ADVS'/
-     &' AC- Alter CEVENT'/' AF- Alter FINDEX'/' AH- Alter HERE'/
-     &' AN- Alter switches'/' AO- Alter OBJCTS'/' AR- Alter ROOMS'/
-     &' AV- Alter VILLS'/' AX- Alter EXITS'/
-     &' AZ- Alter PUZZLE'/' DA- Display ADVS'/
-     &' DC- Display CEVENT'/' DF- Display FINDEX'/' DH- Display HACKS'/
-     &' DL- Display lengths'/' DM- Display RTEXT'/
-     &' DN- Display switches'/
-     &' DO- Display OBJCTS'/' DP- Display parser'/
-     &' DR- Display ROOMS'/' DS- Display state'/' DT- Display text'/
-     &' DV- Display VILLS'/' DX- Display EXITS'/' DZ- Display PUZZLE'/
-     &' D2- Display ROOM2'/' EX- Exit'/' HE- Type this message'/
-     &' NC- No cyclops'/' ND- No deaths'/' NR- No robber'/
-     &' NT- No troll'/' PD- Program detail'/
-     &' RC- Restore cyclops'/' RD- Restore deaths'/
-     &' RR- Restore robber'/' RT- Restore troll'/' TK- Take.')
+900	FORMAT('Valid commands are:'/'AA- Alter ADVS'/
+     &'AC- Alter CEVENT'/'AF- Alter FINDEX'/'AH- Alter HERE'/
+     &'AN- Alter switches'/'AO- Alter OBJCTS'/'AR- Alter ROOMS'/
+     &'AV- Alter VILLS'/'AX- Alter EXITS'/
+     &'AZ- Alter PUZZLE'/'DA- Display ADVS'/
+     &'DC- Display CEVENT'/'DF- Display FINDEX'/'DH- Display HACKS'/
+     &'DL- Display lengths'/'DM- Display RTEXT'/
+     &'DN- Display switches'/
+     &'DO- Display OBJCTS'/'DP- Display parser'/
+     &'DR- Display ROOMS'/'DS- Display state'/'DT- Display text'/
+     &'DV- Display VILLS'/'DX- Display EXITS'/'DZ- Display PUZZLE'/
+     &'D2- Display ROOM2'/'EX- Exit'/'HE- Type this message'/
+     &'NC- No cyclops'/'ND- No deaths'/'NR- No robber'/
+     &'NT- No troll'/'PD- Program detail'/
+     &'RC- Restore cyclops'/'RD- Restore deaths'/
+     &'RR- Restore robber'/'RT- Restore troll'/'TK- Take.')
 C
 C NR-- NO ROBBER
 C
@@ -299,7 +299,7 @@ C						!VANISH THIEF.
 	WRITE(OUTCH,500)
 	GO TO 2000
 C
-500	FORMAT(' No robber.')
+500	FORMAT('No robber.')
 C
 C NT-- NO TROLL
 C
@@ -308,7 +308,7 @@ C
 	WRITE(OUTCH,510)
 	GO TO 2000
 C
-510	FORMAT(' No troll.')
+510	FORMAT('No troll.')
 C
 C NC-- NO CYCLOPS
 C
@@ -317,7 +317,7 @@ C
 	WRITE(OUTCH,520)
 	GO TO 2000
 C
-520	FORMAT(' No cyclops.')
+520	FORMAT('No cyclops.')
 C
 C ND-- IMMORTALITY MODE
 C
@@ -325,7 +325,7 @@ C
 	WRITE(OUTCH,530)
 	GO TO 2000
 C
-530	FORMAT(' No deaths.')
+530	FORMAT('No deaths.')
 C
 C RR-- RESTORE ROBBER
 C
@@ -333,7 +333,7 @@ C
 	WRITE(OUTCH,540)
 	GO TO 2000
 C
-540	FORMAT(' Restored robber.')
+540	FORMAT('Restored robber.')
 C
 C RT-- RESTORE TROLL
 C
@@ -342,7 +342,7 @@ C
 	WRITE(OUTCH,550)
 	GO TO 2000
 C
-550	FORMAT(' Restored troll.')
+550	FORMAT('Restored troll.')
 C
 C RC-- RESTORE CYCLOPS
 C
@@ -352,7 +352,7 @@ C
 	WRITE(OUTCH,560)
 	GO TO 2000
 C
-560	FORMAT(' Restored cyclops.')
+560	FORMAT('Restored cyclops.')
 C
 C RD-- MORTAL MODE
 C
@@ -360,7 +360,7 @@ C
 	WRITE(OUTCH,570)
 	GO TO 2000
 C
-570	FORMAT(' Restored deaths.')
+570	FORMAT('Restored deaths.')
 C GDT, PAGE 5
 C
 C TK-- TAKE
@@ -373,7 +373,7 @@ C						!YES, TAKE OBJECT.
 C						!TELL.
 	GO TO 2000
 C
-580	FORMAT(' Taken.')
+580	FORMAT('Taken.')
 C
 C EX-- GOODBYE
 C
@@ -389,7 +389,7 @@ C						!TYPE OLD, GET NEW.
 	READ(INPCH,600) EQR(J,K)
 	GO TO 2000
 C
-590	FORMAT(' Old= ',I6,6X,'New= ',$)
+590	FORMAT('Old= ',I6,6X,'New= ',$)
 600	FORMAT(I6)
 C
 C AO-- ALTER OBJECT ENTRY
@@ -431,7 +431,7 @@ C						!ENTRY NO VALID?
 	READ(INPCH,620) TRAVEL(J)
 	GO TO 2000
 C
-610	FORMAT(' Old= ',I6,6X,'New= ',$)
+610	FORMAT('Old= ',I6,6X,'New= ',$)
 620	FORMAT(I6)
 C
 C AV-- ALTER VILLAINS
@@ -450,7 +450,7 @@ C
 38100	CONTINUE
 	GO TO 2000
 C
-630	FORMAT(' #',I2,'   Room=',I6,'   Obj=',I6)
+630	FORMAT('#',I2,'   Room=',I6,'   Obj=',I6)
 C
 C DN-- DISPLAY SWITCHES
 C
@@ -461,7 +461,7 @@ C						!VALID?
 39100	CONTINUE
 	GO TO 2000
 C
-640	FORMAT(' Switch #',I2,' = ',I6)
+640	FORMAT('Switch #',I2,' = ',I6)
 C
 C AN-- ALTER SWITCHES
 C
@@ -482,7 +482,7 @@ C						!VALID LIMITS?
 41100	CONTINUE
 	GO TO 2000
 C
-650	FORMAT(1X,I3,'-',I3,3X,10(1X,I6))
+650	FORMAT(I3,'-',I3,3X,10(1X,I6))
 C
 C DT-- DISPLAY TEXT
 C
@@ -501,8 +501,8 @@ C
 44000	WRITE(OUTCH,660) ORP,LASTIT,PVEC,SYN
 	GO TO 2000
 C
-660	FORMAT(' ORPHS= ',I7,I7,4I7/
-     &' PV=    ',I7,4I7/' SYN=   ',6I7/15X,5I7)
+660	FORMAT('ORPHS= ',I7,I7,4I7/
+     &'PV=    ',I7,4I7/'SYN=   ',6I7/14X,5I7)
 C
 C PD--	PROGRAM DETAIL DEBUG
 C
@@ -519,7 +519,7 @@ C						!DISPLAY PUZZLE
 46100	CONTINUE
 	GO TO 2000
 C
-670	FORMAT(2X,8I3)
+670	FORMAT(1X,8I3)
 C
 C AZ--	ALTER PUZZLE ROOM
 C

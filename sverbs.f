@@ -174,7 +174,7 @@ C
 C V74--	VERSION.  PRINT INFO.
 C
 5000	WRITE(OUTCH,5010) VMAJ,VMIN,VEDIT
-5010	FORMAT(' V',I1,'.',I2,A1)
+5010	FORMAT('V',I1,'.',I2,A1)
 	TELFLG=.TRUE.
 	RETURN
 C
@@ -421,7 +421,7 @@ C
 	TELFLG=.TRUE.
 	RETURN
 C
-21010	FORMAT(' You have been playing Dungeon for ',$)
+21010	FORMAT('You have been playing Dungeon for ',$)
 21011	FORMAT('+',I3,' hour',$)
 21012	FORMAT('+s and ',$)
 21013	FORMAT('+ and ',$)
@@ -507,7 +507,7 @@ C						!DESCRIBE HEALTH.
 C						!COMPUTE WAIT.
 C
  	IF(J.NE.0) WRITE(OUTCH,25100) I
-25100	FORMAT(' You will be cured after ',I3,' moves.')
+25100	FORMAT('You will be cured after ',I3,' moves.')
 C
 	CALL RSPEAK(478+K)
 C						!HOW MUCH MORE?
@@ -564,7 +564,7 @@ C	IF(IAND(RFLAG(TSTRS),RSEEN).EQ.0) GO TO 26575
 C						!TELL HIM.
 	TELFLG=.TRUE.
  	WRITE(OUTCH,26510) P1,CH
-26510	FORMAT(' A hollow voice replies:  "',6A1,1X,6A1,'".')
+26510	FORMAT('A hollow voice replies:  "',6A1,1X,6A1,'".')
 C
 	RETURN
 C
