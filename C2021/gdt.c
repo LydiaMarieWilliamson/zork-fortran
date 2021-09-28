@@ -10,23 +10,23 @@ void gdt(void) {
 #ifdef ALLOW_GDT
 // Initialized data
    const int cmdmax = 38;
-   static char dbgcmd[2 * 38] =
+   const char dbgcmd[2 * 38] =
       "DR" "DO" "DA" "DC" "DX" "DH" "DL" "DV" "DF" "DS" "AF" "HE" "NR" "NT" "NC" "ND" "RR" "RT" "RC"
       "RD" "TK" "EX" "AR" "AO" "AA" "AC" "AX" "AV" "D2" "DN" "AN" "DM" "DT" "AH" "DP" "PD" "DZ" "AZ";
-   static char ldbgcmd[2 * 38] =
+   const char ldbgcmd[2 * 38] =
       "dr" "do" "da" "dc" "dx" "dh" "dl" "dv" "df" "ds" "af" "he" "nr" "nt" "nc" "nd" "rr" "rt" "rc"
       "rd" "tk" "ex" "ar" "ao" "aa" "ac" "ax" "av" "d2" "dn" "an" "dm" "dt" "ah" "dp" "pd" "dz" "az";
-   static const int argtyp[38] = {
+   const int argtyp[38] = {
       2, 2, 2, 2, 2, 0, 0, 2, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 1, 0, 3, 3, 3, 3, 1, 3, 2, 2, 1, 2, 1, 0, 0, 0, 0, 1
    };
 
-// static char Format0[] = "   RANGE   CONTENTS"; //F
-// static char Format1[] = " Old=%L2%6XNew= %$"; //F
-// static char Format2[] = " Old= %I6%6XNew= %$"; //F
-   const char Format0[] = "   RANGE   CONTENTS\n";
-   const char Format1[] = " Old= %c      New= ";
-   const char Format2[] = " Old= %6d      New= ";
+// const char Format0[] = "  RANGE   CONTENTS"; //F
+// const char Format1[] = "Old=%L2%6XNew= %$"; //F
+// const char Format2[] = "Old= %I6%6XNew= %$"; //F
+   const char Format0[] = "  RANGE   CONTENTS\n";
+   const char Format1[] = "Old= %c      New= ";
+   const char Format2[] = "Old= %6d      New= ";
 
 // System generated locals
    int i__1, i__2;
@@ -49,8 +49,8 @@ void gdt(void) {
       goto L2000;
    }
 // 						!IF OK, SKIP.
-// write(outch, " You are not an authorized user."); //F
-   more_output(" You are not an authorized user.\n");
+// write(outch, "You are not an authorized user."); //F
+   more_output("You are not an authorized user.\n");
 // 						!NOT AN IMPLEMENTER.
    return;
 // 						!BOOT HIM OFF
@@ -60,8 +60,8 @@ void gdt(void) {
 // HERE TO GET NEXT COMMAND
 
 L2000:
-// write(outch, " GDT>%$"); //F
-   printf(" GDT>"), fflush(stdout);
+// write(outch, "GDT>%$"); //F
+   printf("GDT>"), fflush(stdout);
 // 						!OUTPUT PROMPT.
 // read(inpch, "%A2", cmd); //F
    more_input(buf, sizeof buf), strncpy(cmd, buf, sizeof cmd);
@@ -84,8 +84,8 @@ L2000:
 // L2100:
    }
 L2200:
-// write(outch, " ?"); //F
-   more_output(" ?\n");
+// write(outch, "?"); //F
+   more_output("?\n");
 // 						!NO, LOSE.
    goto L2000;
 
@@ -111,8 +111,8 @@ L2300:
 // 						!ILLEGAL TYPE.
 
 L2700:
-// write(outch, " Idx,Ary:  %$"); //F
-   printf(" Idx,Ary:  "), fflush(stdout);
+// write(outch, "Idx,Ary:  %$"); //F
+   printf("Idx,Ary:  "), fflush(stdout);
 // 						!TYPE 3, REQUEST ARRAY COORDS.
 // read(inpch, "%2I6", &j, &k); //F
    more_input(buf, sizeof buf); for (char *BP = buf; *BP != '\0'; BP++) if (*BP == ',') *BP = ' ';
@@ -120,8 +120,8 @@ L2700:
    goto L2400;
 
 L2600:
-// write(outch, " Limits:   %$"); //F
-   printf(" Limits:   "), fflush(stdout);
+// write(outch, "Limits:   %$"); //F
+   printf("Limits:   "), fflush(stdout);
 // 						!TYPE 2, READ BOUNDS.
 // read(inpch, "%2I6", &j, &k); //F
    more_input(buf, sizeof buf); for (char *BP = buf; *BP != '\0'; BP++) if (*BP == ',') *BP = ' ';
@@ -132,8 +132,8 @@ L2600:
    goto L2400;
 
 L2500:
-// write(outch, " Entry:    %$"); //F
-   printf(" Entry:    "), fflush(stdout);
+// write(outch, "Entry:    %$"); //F
+   printf("Entry:    "), fflush(stdout);
 // 						!TYPE 1, READ ENTRY NO.
 // read(inpch, "%I6", &j); //F
    more_input(buf, sizeof buf), j = 0, sscanf(buf, "%d", &j);
@@ -227,13 +227,13 @@ L10000:
       goto L2200;
    }
 // 						!ARGS VALID?
-// write(outch, " RM#  DESC1  EXITS ACTION  VALUE  FLAGS"); //F
-   more_output(" RM#  DESC1  EXITS ACTION  VALUE  FLAGS\n");
+// write(outch, "RM#  DESC1  EXITS ACTION  VALUE  FLAGS"); //F
+   more_output("RM#  DESC1  EXITS ACTION  VALUE  FLAGS\n");
 // 						!COL HDRS.
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
-//    write(outch, "%1X%I3%4(1X,I6)%1X%I6", i, (eqr(i, l), l = 1, 5)); //F
-      printf(" %3d", i);
+//    write(outch, "%I3%4(1X,I6)%1X%I6", i, (eqr(i, l), l = 1, 5)); //F
+      printf("%3d", i);
       for (int l = 0; l < 5; l++) printf(" %6d", eqr[i - 1 + 200 * l]);
       more_output("\n");
 // L10100:
@@ -247,19 +247,19 @@ L11000:
       goto L2200;
    }
 // 						!ARGS VALID?
-// write(outch, " OB# DESC1 DESC2 DESCO ACT FLAGS1 FLAGS2 FVL TVL SIZE CAPAC ROOM ADV CON  READ"); //F
-   more_output(" OB# DESC1 DESC2 DESCO ACT FLAGS1 FLAGS2 FVL TVL SIZE CAPAC ROOM ADV CON  READ\n");
+// write(outch, "OB# DESC1 DESC2 DESCO ACT FLAGS1 FLAGS2 FVL TVL SIZE CAPAC ROOM ADV CON  READ"); //F
+   more_output("OB# DESC1 DESC2 DESCO ACT FLAGS1 FLAGS2 FVL TVL SIZE CAPAC ROOM ADV CON  READ\n");
 // 						!COL HDRS
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
-//    write(outch, "%1X%I3%3I6%I4%2I7%2I4%2I6%1X%3I4%I6", i, (eqo(i, l), l = 1, 14)); //F
-      more_output(" %3d%6d%6d%6d%4d%7d%7d%4d%4d%6d%6d %4d%4d%4d%6d\n", i,
+//    write(outch, "%I3%3I6%I4%2I7%2I4%2I6%1X%3I4%I6", i, (eqo(i, l), l = 1, 14)); //F
+      more_output("%3d%6d%6d%6d%4d%7d%7d%4d%4d%6d%6d %4d%4d%4d%6d\n", i,
          eqo[i - 1 + 220 * 0], eqo[i - 1 + 220 * 1], eqo[i - 1 + 220 * 2],
-         eqo[i - 1 + 220 * 3], 
+         eqo[i - 1 + 220 * 3],
          eqo[i - 1 + 220 * 4], eqo[i - 1 + 220 * 5],
-         eqo[i - 1 + 220 * 6], eqo[i - 1 + 220 * 7], 
-         eqo[i - 1 + 220 * 8], eqo[i - 1 + 220 * 9], 
-         eqo[i - 1 + 220 * 10], eqo[i - 1 + 220 * 11], eqo[i - 1 + 220 * 12], 
+         eqo[i - 1 + 220 * 6], eqo[i - 1 + 220 * 7],
+         eqo[i - 1 + 220 * 8], eqo[i - 1 + 220 * 9],
+         eqo[i - 1 + 220 * 10], eqo[i - 1 + 220 * 11], eqo[i - 1 + 220 * 12],
          eqo[i - 1 + 220 * 13]
       );
 // L11100:
@@ -273,12 +273,12 @@ L12000:
       goto L2200;
    }
 // 						!ARGS VALID?
-// write(outch, " AD#   ROOM  SCORE  VEHIC OBJECT ACTION  STREN  FLAGS"); //F
-   more_output(" AD#   ROOM  SCORE  VEHIC OBJECT ACTION  STREN  FLAGS\n");
+// write(outch, "AD#   ROOM  SCORE  VEHIC OBJECT ACTION  STREN  FLAGS"); //F
+   more_output("AD#   ROOM  SCORE  VEHIC OBJECT ACTION  STREN  FLAGS\n");
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
-//    write(outch, "%1X%I3%6(1X,I6)%1X%I6", i, (eqa(i, l), l = 1, 7)); //F
-      printf(" %3d", i);
+//    write(outch, "%I3%6(1X,I6)%1X%I6", i, (eqa(i, l), l = 1, 7)); //F
+      printf("%3d", i);
       for (l = 0; l < 7; l++) printf(" %6d", eqa[i - 1 + (l << 2)]);
       more_output("\n");
 // L12100:
@@ -292,12 +292,12 @@ L13000:
       goto L2200;
    }
 // 						!ARGS VALID?
-// write(outch, " CL#   TICK ACTION  FLAG"); //F
-   more_output(" CL#   TICK ACTION  FLAG\n");
+// write(outch, "CL#   TICK ACTION  FLAG"); //F
+   more_output("CL#   TICK ACTION  FLAG\n");
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
-//    write(outch, "%1X%I3%1X%I6%1X%I6%5X%L1", i, (eqc(i, l), l = 1, 2), cflag(i)); //F
-      printf(outch, " %3d", i);
+//    write(outch, "%I3%1X%I6%1X%I6%5X%L1", i, (eqc(i, l), l = 1, 2), cflag(i)); //F
+      printf(outch, "%3d", i);
       for (l = 0; l < 2; l++) printf(outch, " %6d", eqc[i - 1 + 25 * l]);
       more_output("     %c\n", cevent.cflag[i - 1] ? 'T' : 'F');
 // L13100:
@@ -321,8 +321,8 @@ L14000:
       i__2 = i + 9;
       l = min(i__2, k);
 // 						!COMPUTE END OF LINE.
-//    write(outch, "%1X%I3-%I3%3X%10I7", i, l, (travel(l1), l1 = i, l)); //F
-      printf(" %3d-%3d ", i, l);
+//    write(outch, "%I3-%I3%3X%10I7", i, l, (travel(l1), l1 = i, l)); //F
+      printf("%3d-%3d   ", i, l);
       i__2 = l;
       for (l1 = i; l1 <= i__2; ++l1) printf("%7d", exits.travel[l1 - 1]);
       more_output("\n");
@@ -333,18 +333,18 @@ L14000:
 // DH-- DISPLAY HACKS
 
 L15000:
-// write(outch, " THFPOS=%I6, THFFLG=%L2,THFACT=%L2%/ SWDACT=%L2, SWDSTA=%I2", thfpos, thfflg, thfact, swdact, swdsta); //F
-   more_output(" THFPOS=%6d, THFFLG= %c,THFACT= %c\n", hack.thfpos, hack.thfflg ? 'T' : 'F', hack.thfact ? 'T' : 'F');
-   more_output(" SWDACT= %c, SWDSTA=%2d\n", hack.swdact ? 'T' : 'F', hack.swdsta);
+// write(outch, "THFPOS=%I6, THFFLG=%L2, THFACT=%L2%/SWDACT=%L2, SWDSTA=%I2", thfpos, thfflg, thfact, swdact, swdsta); //F
+   more_output("THFPOS= %d, THFFLG= %c, THFACT= %c\n", hack.thfpos, hack.thfflg ? 'T' : 'F', hack.thfact ? 'T' : 'F');
+   more_output("SWDACT= %c, SWDSTA= %d\n", hack.swdact ? 'T' : 'F', hack.swdsta);
    goto L2000;
 
 // DL-- DISPLAY LENGTHS
 
 L16000:
-// write(outch, " R=%I6, X=%I6, O=%I6, C=%I6%/ V=%I6, A=%I6, M=%I6, R2=%I5%/ MBASE=%I6, STRBIT=%I6", rlnt, xlnt, olnt, clnt, vlnt, alnt, mlnt, r2lnt, mbase, strbit); //F
-   more_output(" R=%6d, X=%6d, O=%6d, C=%6d\n", rooms.rlnt, exits.xlnt, objcts.olnt, cevent.clnt);
-   more_output(" V=%6d, A=%6d, M=%6d, R2=%5d\n", vill.vlnt, advs.alnt, mlnt, oroom2_.r2lnt);
-   more_output(" MBASE=%6d, STRBIT=%6d\n", star.mbase, star.strbit);
+// write(outch, "R=%I6, X=%I6, O=%I6, C=%I6%/V=%I6, A=%I6, M=%I6, R2=%I5%/MBASE=%I6, STRBIT=%I6", rlnt, xlnt, olnt, clnt, vlnt, alnt, mlnt, r2lnt, mbase, strbit); //F
+   more_output("R=%d, X=%d, O=%d, C=%d\n", rooms.rlnt, exits.xlnt, objcts.olnt, cevent.clnt);
+   more_output("V=%d, A=%d, M=%d, R2=%d\n", vill.vlnt, advs.alnt, rmsg.mlnt, oroom2_.r2lnt);
+   more_output("MBASE=%d, STRBIT=%d\n", star.mbase, star.strbit);
    goto L2000;
 
 // DV-- DISPLAY VILLAINS
@@ -354,13 +354,13 @@ L17000:
       goto L2200;
    }
 // 						!ARGS VALID?
-// write(outch, " VL# OBJECT   PROB   OPPS   BEST  MELEE"); //F
-   more_output(" VL# OBJECT   PROB   OPPS   BEST  MELEE\n");
+// write(outch, "VL# OBJECT   PROB   OPPS   BEST  MELEE"); //F
+   more_output("VL# OBJECT   PROB   OPPS   BEST  MELEE\n");
 // 						!COL HDRS
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
-//    write(outch, "%1X%I3%5(1X,I6)", i, (eqv(i, l), l = 1, 5)); //F
-      printf(" %3d", i);
+//    write(outch, "%I3%5(1X,I6)", i, (eqv(i, l), l = 1, 5)); //F
+      printf("%3d", i);
       for (l = 0; l < 5; l++) printf(" %6d", eqv[i - 1 + (l << 2)]);
       more_output("\n");
 // L17100:
@@ -376,8 +376,8 @@ L18000:
 // 						!ARGS VALID?
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
-//    write(outch, " Flag #%I2 = %L1", i, flags(i)); //F
-      more_output(" Flag #%2d = %c\n", i, flags[i - 1] ? 'T' : 'F');
+//    write(outch, "Flag #%I2 = %L1", i, flags(i)); //F
+      more_output("Flag #%-2d = %c\n", i, flags[i - 1] ? 'T' : 'F');
 // L18100:
    }
    goto L2000;
@@ -385,15 +385,15 @@ L18000:
 // DS-- DISPLAY STATE
 
 L19000:
-// write(outch, " Parse vector=%3(1X,I6)%1X%L6%1X%I6", prsa, prso, prsi, prswon, prscon); //F
-   more_output(" Parse vector= %6d %6d %6d      %c %6d\n", prsvec.prsa, prsvec.prso, prsvec.prsi, prsvec.prswon ? 'T' : 'F', prsvec.prscon);
-// write(outch, " Play vector= %2(1X,I6)%1X%L6", winner, here, telflg); //F
-   more_output(" Play vector=  %6d %6d      %c\n", play.winner, play.here, play.telflg ? 'T' : 'F');
-// write(outch, " State vector=%9(1X,I6)%/%14X%2(1X,I6)", moves, deaths, rwscor, mxscor, mxload, ltshft, bloc, mungrm, hs, egscor, egmxsc); //F
-   more_output(" State vector= %6d %6d %6d %6d %6d %6d %6d %6d %6d\n", state.moves, state.deaths, state.rwscor, state.mxscor, state.mxload, state.ltshft, state.bloc, state.mungrm, state.hs);
-   more_output("               %6d %6d\n", state.egscor, state.egmxsc);
-// write(outch, " Scol vector= %1X%I6%2(1X,I6)", fromdr, scolrm, scolac); //F
-   more_output(" Scol vector=  %6d %6d %6d\n", screen.fromdr, screen.scolrm, screen.scolac);
+// write(outch, "Parse vector=%3(1X,I6)%1X%L6%1X%I6", prsa, prso, prsi, prswon, prscon); //F
+   more_output("Parse vector= %6d %6d %6d      %c %6d\n", prsvec.prsa, prsvec.prso, prsvec.prsi, prsvec.prswon ? 'T' : 'F', prsvec.prscon);
+// write(outch, "Play vector= %2(1X,I6)%1X%L6", winner, here, telflg); //F
+   more_output("Play vector=  %6d %6d      %c\n", play.winner, play.here, play.telflg ? 'T' : 'F');
+// write(outch, "State vector=%9(1X,I6)%/%14X%2(1X,I6)", moves, deaths, rwscor, mxscor, mxload, ltshft, bloc, mungrm, hs, egscor, egmxsc); //F
+   more_output("State vector= %6d %6d %6d %6d %6d %6d %6d %6d %6d\n", state.moves, state.deaths, state.rwscor, state.mxscor, state.mxload, state.ltshft, state.bloc, state.mungrm, state.hs);
+   more_output("              %6d %6d\n", state.egscor, state.egmxsc);
+// write(outch, "Scol vector= %1X%I6%2(1X,I6)", fromdr, scolrm, scolac); //F
+   more_output("Scol vector=  %6d %6d %6d\n", screen.fromdr, screen.scolrm, screen.scolac);
    goto L2000;
 
 // GDT, PAGE 4
@@ -409,7 +409,7 @@ L20000:
    printf(Format1, flags[j - 1] ? 'T' : 'F'), fflush(stdout);
 // 						!TYPE OLD, GET NEW.
 // read(inpch, "%L1", &flags(j)); //F
-   more_input(buf, sizeof buf)
+   more_input(buf, sizeof buf);
    for (char *BP = buf, Ch; (Ch = tolower(*BP)) != '\0'; BP++)
       if (!isspace(Ch)) {
          if (Ch == 't') flags[j - 1] = true;
@@ -422,35 +422,35 @@ L20000:
 
 L21000:
 // write(outch, //F
-//    " Valid commands are:%/" //F
-//    " AA- Alter ADVS%/"		" AC- Alter CEVENT%/"		" AF- Alter FINDEX%/" //F
-//    " AH- Alter HERE%/"		" AN- Alter switches%/"		" AO- Alter OBJCTS%/" //F
-//    " AR- Alter ROOMS%/"		" AV- Alter VILLS%/"		" AX- Alter EXITS%/" //F
-//    " AZ- Alter PUZZLE%/"		" DA- Display ADVS%/"		" DC- Display CEVENT%/" //F
-//    " DF- Display FINDEX%/"		" DH- Display HACKS%/"		" DL- Display lengths%/" //F
-//    " DM- Display RTEXT%/"		" DN- Display switches%/"	" DO- Display OBJCTS%/" //F
-//    " DP- Display parser%/"		" DR- Display ROOMS%/"		" DS- Display state%/" //F
-//    " DT- Display text%/"		" DV- Display VILLS%/"		" DX- Display EXITS%/" //F
-//    " DZ- Display PUZZLE%/"		" D2- Display ROOM2%/"		" EX- Exit%/" //F
-//    " HE- Type this message%/"	" NC- No cyclops%/"		" ND- No deaths%/" //F
-//    " NR- No robber%/"		" NT- No troll%/"		" PD- Program detail%/" //F
-//    " RC- Restore cyclops%/"		" RD- Restore deaths%/"		" RR- Restore robber%/" //F
-//    " RT- Restore troll%/"		" TK- Take." //F
+//    "Valid commands are:%/" //F
+//    "AA- Alter ADVS%/"		"AC- Alter CEVENT%/"		"AF- Alter FINDEX%/" //F
+//    "AH- Alter HERE%/"		"AN- Alter switches%/"		"AO- Alter OBJCTS%/" //F
+//    "AR- Alter ROOMS%/"		"AV- Alter VILLS%/"		"AX- Alter EXITS%/" //F
+//    "AZ- Alter PUZZLE%/"		"DA- Display ADVS%/"		"DC- Display CEVENT%/" //F
+//    "DF- Display FINDEX%/"		"DH- Display HACKS%/"		"DL- Display lengths%/" //F
+//    "DM- Display RTEXT%/"		"DN- Display switches%/"	"DO- Display OBJCTS%/" //F
+//    "DP- Display parser%/"		"DR- Display ROOMS%/"		"DS- Display state%/" //F
+//    "DT- Display text%/"		"DV- Display VILLS%/"		"DX- Display EXITS%/" //F
+//    "DZ- Display PUZZLE%/"		"D2- Display ROOM2%/"		"EX- Exit%/" //F
+//    "HE- Type this message%/"		"NC- No cyclops%/"		"ND- No deaths%/" //F
+//    "NR- No robber%/"			"NT- No troll%/"		"PD- Program detail%/" //F
+//    "RC- Restore cyclops%/"		"RD- Restore deaths%/"		"RR- Restore robber%/" //F
+//    "RT- Restore troll%/"		"TK- Take." //F
 // ); //F
-   more_output(" Valid commands are:\n");
-   more_output(" AA- Alter ADVS\n");		more_output(" AC- Alter CEVENT\n");	more_output(" AF- Alter FINDEX\n");
-   more_output(" AH- Alter HERE\n");		more_output(" AN- Alter switches\n");	more_output(" AO- Alter OBJCTS\n");
-   more_output(" AR- Alter ROOMS\n");		more_output(" AV- Alter VILLS\n");	more_output(" AX- Alter EXITS\n");
-   more_output(" AZ- Alter PUZZLE\n");		more_output(" DA- Display ADVS\n");	more_output(" DC- Display CEVENT\n");
-   more_output(" DF- Display FINDEX\n");	more_output(" DH- Display HACKS\n");	more_output(" DL- Display lengths\n");
-   more_output(" DM- Display RTEXT\n");		more_output(" DN- Display switches\n");	more_output(" DO- Display OBJCTS\n");
-   more_output(" DP- Display parser\n");	more_output(" DR- Display ROOMS\n");	more_output(" DS- Display state\n");
-   more_output(" DT- Display text\n");		more_output(" DV- Display VILLS\n");	more_output(" DX- Display EXITS\n");
-   more_output(" DZ- Display PUZZLE\n");	more_output(" D2- Display ROOM2\n");	more_output(" EX- Exit\n");
-   more_output(" HE- Type this message\n");	more_output(" NC- No cyclops\n");	more_output(" ND- No deaths\n");
-   more_output(" NR- No robber\n");		more_output(" NT- No troll\n");		more_output(" PD- Program detail\n");
-   more_output(" RC- Restore cyclops\n");	more_output(" RD- Restore deaths\n");	more_output(" RR- Restore robber\n");
-   more_output(" RT- Restore troll\n");		more_output(" TK- Take.\n");
+   more_output("Valid commands are:\n");
+   more_output("AA- Alter ADVS\n");		more_output("AC- Alter CEVENT\n");	more_output("AF- Alter FINDEX\n");
+   more_output("AH- Alter HERE\n");		more_output("AN- Alter switches\n");	more_output("AO- Alter OBJCTS\n");
+   more_output("AR- Alter ROOMS\n");		more_output("AV- Alter VILLS\n");	more_output("AX- Alter EXITS\n");
+   more_output("AZ- Alter PUZZLE\n");		more_output("DA- Display ADVS\n");	more_output("DC- Display CEVENT\n");
+   more_output("DF- Display FINDEX\n");		more_output("DH- Display HACKS\n");	more_output("DL- Display lengths\n");
+   more_output("DM- Display RTEXT\n");		more_output("DN- Display switches\n");	more_output("DO- Display OBJCTS\n");
+   more_output("DP- Display parser\n");		more_output("DR- Display ROOMS\n");	more_output("DS- Display state\n");
+   more_output("DT- Display text\n");		more_output("DV- Display VILLS\n");	more_output("DX- Display EXITS\n");
+   more_output("DZ- Display PUZZLE\n");		more_output("D2- Display ROOM2\n");	more_output("EX- Exit\n");
+   more_output("HE- Type this message\n");	more_output("NC- No cyclops\n");	more_output("ND- No deaths\n");
+   more_output("NR- No robber\n");		more_output("NT- No troll\n");		more_output("PD- Program detail\n");
+   more_output("RC- Restore cyclops\n");	more_output("RD- Restore deaths\n");	more_output("RR- Restore robber\n");
+   more_output("RT- Restore troll\n");		more_output("TK- Take.\n");
    goto L2000;
 
 // NR-- NO ROBBER
@@ -461,8 +461,8 @@ L22000:
    hack.thfact = false;
    newsta(ThiefOX, 0, 0, 0, 0);
 // 						!VANISH THIEF.
-// write(outch, " No robber."); //F
-   more_output(" No robber.\n");
+// write(outch, "No robber."); //F
+   more_output("No robber.\n");
    goto L2000;
 
 // NT-- NO TROLL
@@ -470,8 +470,8 @@ L22000:
 L23000:
    findex.trollf = true;
    newsta(TrollOX, 0, 0, 0, 0);
-// write(outch, " No troll."); //F
-   more_output(" No troll.\n");
+// write(outch, "No troll."); //F
+   more_output("No troll.\n");
    goto L2000;
 
 // NC-- NO CYCLOPS
@@ -479,24 +479,24 @@ L23000:
 L24000:
    findex.cyclof = true;
    newsta(CycloOX, 0, 0, 0, 0);
-// write(outch, " No cyclops."); //F
-   more_output(" No cyclops.\n");
+// write(outch, "No cyclops."); //F
+   more_output("No cyclops.\n");
    goto L2000;
 
 // ND-- IMMORTALITY MODE
 
 L25000:
    debug.dbgflg = 1;
-// write(outch, " No deaths."); //F
-   more_output(" No deaths.\n");
+// write(outch, "No deaths."); //F
+   more_output("No deaths.\n");
    goto L2000;
 
 // RR-- RESTORE ROBBER
 
 L26000:
    hack.thfact = true;
-// write(outch, " Restored robber."); //F
-   more_output(" Restored robber.\n");
+// write(outch, "Restored robber."); //F
+   more_output("Restored robber.\n");
    goto L2000;
 
 // RT-- RESTORE TROLL
@@ -504,8 +504,8 @@ L26000:
 L27000:
    findex.trollf = false;
    newsta(TrollOX, 0, MTrolRX, 0, 0);
-// write(outch, " Restored troll."); //F
-   more_output(" Restored troll.\n");
+// write(outch, "Restored troll."); //F
+   more_output("Restored troll.\n");
    goto L2000;
 
 // RC-- RESTORE CYCLOPS
@@ -514,16 +514,16 @@ L28000:
    findex.cyclof = false;
    findex.magicf = false;
    newsta(CycloOX, 0, MCyclRX, 0, 0);
-// write(outch, " Restored cyclops."); //F
-   more_output(" Restored cyclops.\n");
+// write(outch, "Restored cyclops."); //F
+   more_output("Restored cyclops.\n");
    goto L2000;
 
 // RD-- MORTAL MODE
 
 L29000:
    debug.dbgflg = 0;
-// write(outch, " Restored deaths."); //F
-   more_output(" Restored deaths.\n");
+// write(outch, "Restored deaths."); //F
+   more_output("Restored deaths.\n");
    goto L2000;
 
 // GDT, PAGE 5
@@ -537,8 +537,8 @@ L30000:
 // 						!VALID OBJECT?
    newsta(j, 0, 0, 0, play.winner);
 // 						!YES, TAKE OBJECT.
-// write(outch, " Taken."); //F
-   more_output(" Taken.\n");
+// write(outch, "Taken."); //F
+   more_output("Taken.\n");
 // 						!TELL.
    goto L2000;
 
@@ -653,8 +653,8 @@ L38000:
    }
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
-//    write(outch, " #%I2   Room=%I6   Obj=%I6", i, rroom2(i), oroom2(i)); //F
-      more_output(" #%2d   Room=%6d   Obj=%6d\n", i, oroom2_.rroom2[i - 1], oroom2_.oroom2[i - 1]);
+//    write(outch, "#%I2   Room=%I6   Obj=%I6", i, rroom2(i), oroom2(i)); //F
+      more_output("#%2d   Room=%6d   Obj=%6d\n", i, oroom2_.rroom2[i - 1], oroom2_.oroom2[i - 1]);
 // L38100:
    }
    goto L2000;
@@ -668,8 +668,8 @@ L39000:
 // 						!VALID?
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
-//    write(outch, " Switch #%I2 = %I6", i, switch_(i)); //F
-      more_output(" Switch #%2d = %6d\n", i, switch_[i - 1]);
+//    write(outch, "Switch #%I2 = %I6", i, switch_(i)); //F
+      more_output("Switch #%-2d = %d\n", i, switch_[i - 1]);
 // L39100:
    }
    goto L2000;
@@ -701,8 +701,8 @@ L41000:
 // Computing MIN
       i__2 = i + 9;
       l = min(i__2, k);
-//    write(outch, "%1X%I3"-%I3%3X%10(1X,I6)", i, l, (rtext(l1), l1 = i, l)); //F
-      printf(" %3d-%3d   ", i, l);
+//    write(outch, "%I3"-%I3%3X%10(1X,I6)", i, l, (rtext(l1), l1 = i, l)); //F
+      printf("%3d-%3d   ", i, l);
       i__2 = l;
       for (l1 = i; l1 <= i__2; ++l1) printf(" %6d", rmsg.rtext[l1 - 1]);
       more_output("\n");
@@ -729,11 +729,11 @@ L43000:
 // DP--	DISPLAY PARSER STATE
 
 L44000:
-// write(outch, " ORPHS= %I7%I7%4I7%/ PV=    %I7%4I7%/ SYN=   %6I7%/%15X%5I7", orp, lastit, pvec, syn); //F
-   more_output(" ORPHS= %7d%7d%7d%7d%7d%7d\n", orp[0], orp[1], orp[2], orp[3], orp[4], last.lastit);
-   more_output(" PV=    %7d%7d%7d%7d%7d\n", pvec[0], pvec[1], pvec[2], pvec[3], pvec[4]);
-   more_output(" SYN=   %7d%7d%7d%7d%7d%7d\n", syn[0], syn[1], syn[2], syn[3], syn[4], syn[5]);
-   more_output("               %7d%7d%7d%7d%7d\n", syn[6], syn[7], syn[8], syn[9], syn[10]);
+// write(outch, "ORPHS= %I7%I7%4I7%/PV=    %I7%4I7%/SYN=   %6I7%/%14X%5I7", orp, lastit, pvec, syn); //F
+   more_output("ORPHS= %7d%7d%7d%7d%7d%7d\n", orp[0], orp[1], orp[2], orp[3], orp[4], last.lastit);
+   more_output("PV=    %7d%7d%7d%7d%7d\n", pvec[0], pvec[1], pvec[2], pvec[3], pvec[4]);
+   more_output("SYN=   %7d%7d%7d%7d%7d%7d\n", syn[0], syn[1], syn[2], syn[3], syn[4], syn[5]);
+   more_output("              %7d%7d%7d%7d%7d\n", syn[6], syn[7], syn[8], syn[9], syn[10]);
    goto L2000;
 
 // PD--	PROGRAM DETAIL DEBUG
@@ -751,8 +751,8 @@ L45000:
 L46000:
    for (i = 1; i <= 64; i += 8) {
 // 						!DISPLAY PUZZLE
-//    write(outch, "%2X%8I3", (cpvec(j), j = i, i + 7)); //F
-      printf("  ");
+//    write(outch, "%1X%8I3", (cpvec(j), j = i, i + 7)); //F
+      printf(" ");
       i__1 = i + 7;
       for (j = i; j <= i__1; ++j) printf("%3d", puzzle.cpvec[j - 1]);
       more_output("\n");

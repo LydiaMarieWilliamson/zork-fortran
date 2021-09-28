@@ -105,8 +105,8 @@ L400:
    }
 
 L600:
-// write(outch, "%1X%74A1", (b1[j - 1], j = 1, i)); //F
-   more_output(" %.*s\n", i, b1);
+// write(outch, "%74A1", (b1[j - 1], j = 1, i)); //F
+   more_output("%.*s\n", i, b1);
    ++x;
 // 						!ON TO NEXT RECORD.
 // read(unit:storych, rec:x, &newrec, b1); //F
@@ -227,8 +227,8 @@ L200:
 void bug(int a, int b) {
 // Local variables
 
-// print(" PROGRAM ERROR %I2, PARAMETER=%I6", a, b); //F
-   more_output(" PROGRAM ERROR %2d, PARAMETER=%6d\n", a, b);
+// print("PROGRAM ERROR %I2, PARAMETER=%I6", a, b); //F
+   more_output("PROGRAM ERROR %d, PARAMETER=%d\n", a, b);
    if (debug.dbgflg != 0) {
       return;
    }

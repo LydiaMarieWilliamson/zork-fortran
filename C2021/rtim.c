@@ -4,7 +4,7 @@
 // Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 // C99 is now locked in and assumed.
 #include <time.h> // For time() and localtime().
-#include <stdlib.h> // For exit().
+#include <stdlib.h> // For exit() and rand().
 #include "extern.h"
 #include "common.h"
 

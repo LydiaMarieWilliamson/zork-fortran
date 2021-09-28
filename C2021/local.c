@@ -37,7 +37,7 @@ void GetWords(int Lim, int *WordP, FILE *InF) {
    while (Lim-- > 0) *WordP++ = GetWord(InF);
 }
 
-// Read a number of boolean valies from separate lines in the index file
+// Read a number of boolean values from separate lines in the index file
 void GetFlags(int Lim, Bool *FlagP, FILE *InF) {
    while (Lim-- > 0) {
       char Ch = '\0'; int n = fscanf(InF, " %c\n", &Ch);

@@ -1,6 +1,6 @@
 Fallback Functions
 ━━━━━━━━━━━━━━━━━━
-rtim.c:		ITime() for itime()
+rtim.c:		ITime() for itime(); renamed to itime(), following the elimination of libf2c.
 
 Wrapper Functions
 ━━━━━━━━━━━━━━━━━

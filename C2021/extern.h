@@ -127,7 +127,7 @@ Bool lightp(int);
 Bool nobjs(int/*, int*/);
 
 // np1.c:
-int sparse(int *, int, Bool);
+int sparse(const int *, int, Bool);
 
 // np2.c:
 int getobj(int, int, int);

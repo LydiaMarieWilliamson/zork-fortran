@@ -48,29 +48,29 @@ Bool init(void/*int x*/) {
    }
 // 						!PROTECTION VIOLATION?
 // print( //F
-//    " There appears before you a threatening figure clad ", //F
-//    "all over%/ in heavy black armor.  His legs seem like the ", //F
-//    "massive trunk%/ of the oak tree.  His broad shoulders and ", //F
-//    "helmeted head loom%/ high over your own puny frame, and ", //F
-//    "you realize that his powerful%/ arms could easily crush the ", //F
-//    "very life from your body.  There%/ hangs from his belt a ", //F
-//    "veritable arsenal of deadly weapons:%/ sword, mace, ball ", //F
-//    "and chain, dagger, lance, and trident.%/ He speaks with a ", //F
-//    "commanding voice:%/%/%20X\"You shall not pass.\"%/%/ As ", //F
+//    "There appears before you a threatening figure clad ", //F
+//    "all over%/in heavy black armor.  His legs seem like the ", //F
+//    "massive trunk%/of the oak tree.  His broad shoulders and ", //F
+//    "helmeted head loom%/high over your own puny frame, and ", //F
+//    "you realize that his powerful%/arms could easily crush the ", //F
+//    "very life from your body.  There%/hangs from his belt a ", //F
+//    "veritable arsenal of deadly weapons:%/sword, mace, ball ", //F
+//    "and chain, dagger, lance, and trident.%/He speaks with a ", //F
+//    "commanding voice:%/%/%20X\"You shall not pass.\"%/%/As ", //F
 //    "he grabs you by the neck all grows dim about you." //F
 // ); //F
-   more_output(" There appears before you a threatening figure clad all over\n");
-   more_output(" in heavy black armor.  His legs seem like the massive trunk\n");
-   more_output(" of the oak tree.  His broad shoulders and helmeted head loom\n");
-   more_output(" high over your own puny frame, and you realize that his powerful\n");
-   more_output(" arms could easily crush the very life from your body.  There\n");
-   more_output(" hangs from his belt a veritable arsenal of deadly weapons:\n");
-   more_output(" sword, mace, ball and chain, dagger, lance, and trident.\n");
-   more_output(" He speaks with a commanding voice:\n");
+   more_output("There appears before you a threatening figure clad all over\n");
+   more_output("in heavy black armor.  His legs seem like the massive trunk\n");
+   more_output("of the oak tree.  His broad shoulders and helmeted head loom\n");
+   more_output("high over your own puny frame, and you realize that his powerful\n");
+   more_output("arms could easily crush the very life from your body.  There\n");
+   more_output("hangs from his belt a veritable arsenal of deadly weapons:\n");
+   more_output("sword, mace, ball and chain, dagger, lance, and trident.\n");
+   more_output("He speaks with a commanding voice:\n");
    more_output("\n");
    more_output("                    \"You shall not pass.\"\n");
    more_output("\n");
-   more_output(" As he grabs you by the neck all grows dim about you.\n");
+   more_output("As he grabs you by the neck all grows dim about you.\n");
    exit_();
 
 // NOW START INITIALIZATION PROPER
@@ -279,7 +279,7 @@ L10000:
 // open(unit:storych, file:MyStoryFile, status:"old", form:"unformatted", access:"direct", recl:76, err:L1950); //F
    if ((StoryF = OpenInF(MyStoryFile, "rb")) == NULL && (StoryF = OpenInF(StoryFile, "rb")) == NULL) goto L1950;
 #ifdef ALLOW_GDT
-// print(" RESTORING FROM \"" IndexFile "\""); //F
+// print("RESTORING FROM \"" IndexFile "\""); //F
 #endif
 // // const char *Fmt = "%I8"; //F
 // const char *Fmt = "%I6"; //F
@@ -355,15 +355,15 @@ L10000:
 
 #ifdef ALLOW_GDT
 // print( //F
-//    " USED:%/" //F
-//    "%1X%I5 OF%I5 ROOMS%/"	"%1X%I5 OF%I5 EXITS%/"		"%1X%I5 OF%I5 OBJECTS%/"	"%1X%I5 OF%I5 MESSAGES%/" //F
-//    "%1X%I5 OF%I5 VILLAINS%/"	"%1X%I5 OF%I5 ADVENTURERS%/"	"%1X%I5 OF%I5 CLOCK EVENTS%/"	"%1X%I5 OF%I5 ROOM2 SLOTS", //F
+//    "USED:%/" //F
+//    "%I5 OF%I5 ROOMS%/"	"%I5 OF%I5 EXITS%/"		"%I5 OF%I5 OBJECTS%/"		"%I5 OF%I5 MESSAGES%/" //F
+//    "%I5 OF%I5 VILLAINS%/"	"%I5 OF%I5 ADVENTURERS%/"	"%I5 OF%I5 CLOCK EVENTS%/"	"%I5 OF%I5 ROOM2 SLOTS", //F
 //    rooms.rlnt, rmax,	exits.xlnt, xmax,		objcts.olnt, omax,		rmsg.mlnt, mmax, //F
 //    vill.vlnt, vmax,	advs.alnt, amax,		cevent.clnt, cmax,		oroom2_.r2lnt, r2max //F
 // ); //F
 // print( //F
-//    " MAX SCORE=%I5%/"	" EG SCORE=%I5%/"	" MAX RECNO=%I5%/" //F
-//    " RDESC2 BASE=%I5%/"	" MELEE START=%I5%/"	" STAR MASK=%I7", //F
+//    "MAX SCORE=%I5%/"		"EG SCORE=%I5%/"	"MAX RECNO=%I5%/" //F
+//    "RDESC2 BASE=%I5%/"	"MELEE START=%I5%/"	"STAR MASK=%I7", //F
 //    state.mxscor,		state.egmxsc,		recno, //F
 //    rooms.rdesc2,		star.mbase,		star.strbit //F
 // ); //F
@@ -376,43 +376,43 @@ L10000:
 // ERRORS-- INIT FAILS.
 
 L1900:
-// print(" I can't open ",MyIndexFile,"."); //F
-   more_output(" I can't open " MyIndexFile ".\n");
+// print("I can't open ",MyIndexFile,"."); //F
+   more_output("I can't open " MyIndexFile ".\n");
    goto L1975;
 L1925:
 // print( //F
-//    " \"" MyIndexFile "\" is version %I1.%I1%A1.%/" //F
-//    "  I require version %I1.%I1%A1.", //F
+//    "\"" MyIndexFile "\" is version %I1.%I1%A1.%/" //F
+//    "I require version %I1.%I1%A1.", //F
 //    Maj, Min, Edit, vmaj, vmin, vedit //F
 // ); //F
-   more_output(" \"" MyIndexFile "\" is version %1d.%1d%c.\n", Maj, Min, Edit);
-   more_output("  I require version %1d.%1d%c.\n", vmaj, vmin, vedit);
+   more_output("\"" MyIndexFile "\" is version %1d.%1d%c.\n", Maj, Min, Edit);
+   more_output("I require version %1d.%1d%c.\n", vmaj, vmin, (int)vedit);
    goto L1975;
 L1940:
-   more_output(" I can't read " MyIndexFile ": %1d error(s) found.", IOErrs);
+   more_output("I can't read " MyIndexFile ": %1d error(s) found.", IOErrs);
 L1950:
-// print(" I can't open ",MyStoryFile,"."); //F
-   more_output(" I can't open " MyStoryFile ".\n");
+// print("I can't open ", MyStoryFile, "."); //F
+   more_output("I can't open " MyStoryFile ".\n");
 L1975:
 // print( //F
-//    " Suddenly a sinister, wraithlike figure appears before ", //F
-//    "you,%/ seeming to float in the air.  In a low, sorrowful voice", //F
-//    " he says,%/ \"Alas, the very nature of the world has changed, ", //F
-//    "and the dungeon%/ cannot be found.  All must now pass away.\"", //F
-//    "  Raising his oaken staff%/ in farewell, he fades into the ", //F
-//    "spreading darkness.  In his place%/ appears a tastefully ", //F
+//    "Suddenly a sinister, wraithlike figure appears before ", //F
+//    "you,%/seeming to float in the air.  In a low, sorrowful voice", //F
+//    " he says,%/\"Alas, the very nature of the world has changed, ", //F
+//    "and the dungeon%/cannot be found.  All must now pass away.\"", //F
+//    "  Raising his oaken staff%/in farewell, he fades into the ", //F
+//    "spreading darkness.  In his place%/appears a tastefully ", //F
 //    "lettered sign reading:%/%/%23XINITIALIZATION FAILURE%/%/", //F
-//    " The darkness becomes all encompassing, and your vision fails." //F
+//    "The darkness becomes all encompassing, and your vision fails." //F
 // ); //F
-   more_output(" Suddenly a sinister, wraithlike figure appears before you,\n");
-   more_output(" seeming to float in the air.  In a low, sorrowful voice he says,\n");
-   more_output(" \"Alas, the very nature of the world has changed, and the dungeon\n");
-   more_output(" cannot be found.  All must now pass away.\"  Raising his oaken staff\n");
-   more_output(" in farewell, he fades into the spreading darkness.  In his place\n");
-   more_output(" appears a tastefully lettered sign reading:\n");
+   more_output("Suddenly a sinister, wraithlike figure appears before you,\n");
+   more_output("seeming to float in the air.  In a low, sorrowful voice he says,\n");
+   more_output("\"Alas, the very nature of the world has changed, and the dungeon\n");
+   more_output("cannot be found.  All must now pass away.\"  Raising his oaken staff\n");
+   more_output("in farewell, he fades into the spreading darkness.  In his place\n");
+   more_output("appears a tastefully lettered sign reading:\n");
    more_output("\n");
    more_output("                       INITIALIZATION FAILURE\n");
    more_output("\n");
-   more_output(" The darkness becomes all encompassing, and your vision fails.\n");
+   more_output("The darkness becomes all encompassing, and your vision fails.\n");
    return ret_val;
 }

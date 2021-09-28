@@ -2,7 +2,7 @@
 // All rights reserved, commercial usage strictly prohibited.
 // Written by R. M. Supnik.
 // Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
-#include <string.h>
+#include <string.h> // For strcmp().
 #include "extern.h"
 #include "common.h"
 
@@ -16,7 +16,7 @@ void game_(void) {
 
 // Local variables
    Bool f;
-   int i, j;
+   int i;
 
 // GAME, PAGE 2
 
@@ -100,8 +100,8 @@ L1000:
    if (strcmp(input.inbuf, "ECHO") != 0) goto L1300;
 // 						!INPUT = ECHO?
 
-//   Note: the following DO loop was changed from DO 1200 I=5,78
-//     The change was necessary because the RDLINE function was changed,
+//   Note: the following DO loop was changed from for (i = 5; i <= 78; ++i)
+//     The change was necessary because the rdline() function was changed,
 //      and no longer provides a 78 character buffer padded with blanks.
 
    i__1 = input.inlnt;
@@ -133,8 +133,8 @@ L1300:
 // 						!VALID EXIT?
 
 L1400:
-// write(outch, "%1X%78A1", (input.inbuf(j), j = 1, input.inlnt)); //F
-   more_output(" %.*s\n", input.inlnt, input.inbuf);
+// write(outch, "%78A1", (input.inbuf(j), j = 1, input.inlnt)); //F
+   more_output("%.*s\n", input.inlnt, input.inbuf);
    play.telflg = true;
 // 						!INDICATE OUTPUT.
    goto L1000;

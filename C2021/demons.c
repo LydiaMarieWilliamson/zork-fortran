@@ -215,8 +215,8 @@ int blow(int h, int v, int rmk, Bool hflg, int out) {
    ret_val = rmiss;
 // 						!ASSUME NO RESULT.
 #if ALLOW_GDT
-// print(" BLOW 10-- %3I7%L7%I7", h, v, rmk, hflg, out); //F
-   more_output(" BLOW 10-- %7d%7d%7d      %c%7d\n", h, v, rmk, hflg ? 'T' : 'F', out);
+// print("BLOW 10-- %3I7%L7%I7", h, v, rmk, hflg, out); //F
+   more_output("BLOW 10-- %7d%7d%7d      %c%7d\n", h, v, rmk, hflg ? 'T' : 'F', out);
 #endif
    if (!(hflg)) {
       goto L1000;
@@ -303,8 +303,8 @@ L1200:
 
 L2000:
 #if ALLOW_GDT
-// print(" BLOW 2050-- %5I7", att, oa, def, od, dweap); //F
-   more_output(" BLOW 2050-- %7d%7d%7d%7d%7d\n", att, oa, def, od, dweap);
+// print("BLOW 2050-- %5I7", att, oa, def, od, dweap); //F
+   more_output("BLOW 2050-- %7d%7d%7d%7d%7d\n", att, oa, def, od, dweap);
 #endif
    if (def > 0) {
       goto L2100;
@@ -376,8 +376,8 @@ L2600:
    }
 
 #if ALLOW_GDT
-// print(" BLOW 2650-- %5I7", res, mi, i, j, star.mbase); //F
-   more_output(" BLOW 2650-- %7d%7d%7d%7d%7d\n", res, mi, i, j, star.mbase);
+// print("BLOW 2650-- %5I7", res, mi, i, j, star.mbase); //F
+   more_output("BLOW 2650-- %7d%7d%7d%7d%7d\n", res, mi, i, j, star.mbase);
 #endif
    rspsub(i, j);
 // 						!PRESENT RESULT.

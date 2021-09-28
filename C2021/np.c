@@ -7,7 +7,7 @@
 #include "extern.h"
 #include "common.h"
 
-static Bool lex(char *, int, int *, int *, Bool/*, size_t*/);
+static Bool lex(char *, int, int *, int *, Bool);
 
 // Read input line
 void rdline(char *buffer, size_t length, int who) {
@@ -24,8 +24,8 @@ L5:
    }
 // 						!SEE WHO TO PROMPT FOR.
 L10:
-// write(outch, " >%$"); //F
-   printf(" >"), fflush(stdout);
+// write(outch, ">%$"); //F
+   printf(">"), fflush(stdout);
 // 						!PROMPT FOR GAME.
 L90:
 // read(inpch, "%78A1", buffer); //F
@@ -93,7 +93,7 @@ Bool parse(char *inbuf, int inlnt, Bool vbflag) {
    prsvec.prsi = 0;
    prsvec.prso = 0;
 
-   if (!lex(inbuf + 1, inlnt, outbuf, &outlnt, vbflag/*, inbuf_unit*/)) {
+   if (!lex(inbuf + 1, inlnt, outbuf, &outlnt, vbflag)) {
       goto L100;
    }
    SparseRet = sparse(outbuf, outlnt, vbflag);
@@ -124,7 +124,7 @@ L350:
 // 						!CLEAR ORPHANS.
 #ifdef ALLOW_GDT
 // if (dflag) write(0, *, "parse good"); //F
-// if (dflag) print(" PARSE RESULTS- %L7%3I7", ret_val, prsvec.prsa, prsvec.prso, prsvec.prsi); //F
+// if (dflag) print("PARSE RESULTS- %L7%3I7", ret_val, prsvec.prsa, prsvec.prso, prsvec.prsi); //F
 #endif
    return ret_val;
 
@@ -134,7 +134,7 @@ L100:
    prsvec.prscon = 1;
 #ifdef ALLOW_GDT
 // if (dflag) write(0, *, "parse failed"); //F
-// if (dflag) print(" PARSE RESULTS- %L7%3I7", ret_val, prsvec.prsa, prsvec.prso, prsvec.prsi); //F
+// if (dflag) print("PARSE RESULTS- %L7%3I7", ret_val, prsvec.prsa, prsvec.prso, prsvec.prsi); //F
 #endif
    return ret_val;
 }
@@ -151,7 +151,7 @@ void orphan(int o1, int o2, int o3, int o4, int o5) {
 
 // Lexical analyzer
 // This routine details on bit 1 of prsflag
-static Bool lex(char *inbuf, int inlnt, int *outbuf, int *op, Bool vbflag/*, size_t inbuf_unit*/) {
+static Bool lex(char *inbuf, int inlnt, int *outbuf, int *op, Bool vbflag) {
 // Initialized data
    static const char dlimit[9] = { 'A', 'Z', 'A' - 1, '1', '9', '1' - 31, '-', '-', '-' - 27 };
 
@@ -239,7 +239,7 @@ L1000:
 // 						!ANY LAST WORD?
    ret_val = true;
 #ifdef ALLOW_GDT
-// if (dflag) print(" LEX RESULTS- %3I7%/%1X%10I7", cp, *op, prsvec.prscon, (outbuf[i - 1], i = 1, *op + 1)); //F
+// if (dflag) print("LEX RESULTS- %3I7%/%1X%10I7", cp, *op, prsvec.prscon, (outbuf[i - 1], i = 1, *op + 1)); //F
 #endif
    return ret_val;
 
@@ -248,7 +248,7 @@ L1000:
 L4000:
    j1 = j - dlimit[i + 1];
 #ifdef ALLOW_GDT
-// if (dflag) print(" LEX- CHAR= %A1%2I7", j, j1, cp); //F
+// if (dflag) print("LEX- CHAR= %A1%2I7", j, j1, cp); //F
 #endif
    if (cp >= 6) {
       goto L200;

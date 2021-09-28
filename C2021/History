@@ -1,5 +1,32 @@
 History
+━━━━━━━
+MDL
+───
+1978/03/04	V1.0A Debugging version.
+1978/06/14	V1.1A Public version with parser.
+1978/08/10	V1.1B DECUS version.
+1978/09/10	V2.0A Endgame.
+1978/10/10	V2.1A Puzzle Room.
+1979/01/18	V2.2A Revised DECUS version.
+1979/11/15	V2.3A Bug fixes.
+1980/02/28	V2.4A Compressed text file.
+1980/07/18	V2.5A Transportable data base file.
+
+Fortran
 ───────
+1987/02/11	V2.6A Converted to f77/Unix.
+1987/09/14	V2.6B Converted to f77/Unix for pdps and Vaxen.
+
+ANSI C (C1991)
+──────────────
+1991/03/11	V2.7A Converted to C (based on V2.6B).
+
+C99 (C2021)
+───────────
+2021/09/27	V2.8 Converted to C99 (based on V2.6A).
+
+C99 (C2021) Translation & Upgrades
+──────────────────────────────────
 2021/09/14	The raw translation of the Fortran source into C, using f2c (version 20190311).
 		Common Blocks are translated incorrectly and #include's are inserted in-line.
 		All of that has to be fixed and undone.
@@ -99,3 +126,5 @@ History
 		‟make test” requires modification, because output for the Fortran original and 2021 C translation can vary.
 		This feature was present, by design, in the Fortran version but was removed by the 1991 C translation.
 2021/09/27	The 2021 C translation is now operational.
+2021/09/27	Version change provisionally to 2.8; pending final decisions to be made on future version numbering.
+2021/09/27	Removing the leading spaces put on each line of the game output; to bring it in line with the 1991 C translation.

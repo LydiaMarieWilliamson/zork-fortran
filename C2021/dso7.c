@@ -86,9 +86,8 @@ void cpinfo(int rmk, int st) {
    char dgm[1 * 8];
 
 // Initialized data
-   static const int dgmoft[8] = { -9, -8, -7, -1, 1, 7, 8, 9 };
-   static const char pict[1 * 5] = "S" "S" "S" " " "M";
-   static const char qmk[1] = "?";
+   const int dgmoft[8] = { -9, -8, -7, -1, 1, 7, 8, 9 };
+   const char pict[1 * 5] = "S" "S" "S" " " "M";
 
 // CPINFO, PAGE 2
 
@@ -107,7 +106,7 @@ void cpinfo(int rmk, int st) {
 // 						!GET ORTHO DIR.
       l = j - k;
       if (puzzle.cpvec[st + k - 1] != 0 && puzzle.cpvec[st + l - 1] != 0) {
-         dgm[i - 1] = qmk[0];
+         dgm[i - 1] = '?';
       }
    L100:
       ;
