@@ -18,13 +18,10 @@ Bool sverbs(int ri) {
    static const int answer[14] = {
       0, 1, 2, 3, 4, 4, 4, 4, 5, 5, 5, 6, 7, 7
    };
-   static const int answern[14] = {
-      6, 6, 5, 5, 3, 6, 6, 5, 5, 4, 6, 10, 4, 6
+   static const char *const ansstr[14] = {
+      "TEMPLE", "FOREST", "30003", "FLASK", "RUB", "FONDLE", "CARRES",
+      "TOUCH", "BONES", "BODY", "SKELE", "RUSTYKNIFE", "NONE", "NOWHER"
    };
-   static const char ansstr[1 * 78] =
-      "TEMPLE" "FOREST" "30003" "FLASK" "RUB" "FONDLE" "CARRES"
-      "TOUCH" "BONES" "BODY" "SKELET" "RUSTYKNIFE" "NONE" "NOWHER"
-      "\000";
 
 // System generated locals
    int i__1, i__2;
@@ -821,33 +818,16 @@ L27000:
    return ret_val;
 
 L27100:
-   k = 1;
-// 						!POINTER INTO ANSSTR.
    for (j = 1; j <= 14; j++) {
-      int oldk = k;
 // 						!CHECK ANSWERS.
-      k += answern[j - 1];
-// 						!COMPUTE NEXT K.
-      if (findex.quesno != answer[j - 1]) {
-         goto L27300;
-      }
+      if (findex.quesno != answer[j - 1]) goto L27300;
 // 						!ONLY CHECK PROPER ANS.
-      i = prsvec.prscon - 1;
-// 						!SCAN ANSWER.
-      for (l = oldk; l <= k - 1; ++l) {
-      L27150:
-         ++i;
+      for (const char *z = ansstr[j - 1], *z2 = input.inbuf + prsvec.prscon - 1; *z != '\0'; z++, z2++) {
+         for (; *z2 == ' '; z2++);
 // 						!SKIP INPUT BLANKS.
-         if (i > input.inlnt) {
-            goto L27300;
-         }
+         if (*z2 == '\0') goto L27300;
 // 						!END OF INPUT? LOSE.
-         if (input.inbuf[i - 1] == ' ') {
-            goto L27150;
-         }
-         if (input.inbuf[i - 1] != ansstr[l - 1]) {
-            goto L27300;
-         }
+	 else if (*z2 != *z) goto L27300;
    // L27200:
       }
       goto L27500;
