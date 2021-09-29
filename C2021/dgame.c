@@ -11,9 +11,6 @@ static Bool xvehic(int);
 
 // Main command loop for dungeon
 void game_(void) {
-// System generated locals
-   int i__1;
-
 // Local variables
    Bool f;
    int i;
@@ -49,7 +46,7 @@ L100:
 #endif
 
    ++state.moves;
-   prsvec.prswon = parse(input.inbuf, sizeof input.inbuf, true);
+   prsvec.prswon = parse(input.inbuf, true);
    if (!prsvec.prswon) {
       goto L400;
    }
@@ -100,17 +97,17 @@ L1000:
    if (strcmp(input.inbuf, "ECHO") != 0) goto L1300;
 // 						!INPUT = ECHO?
 
-//   Note: the following DO loop was changed from for (i = 5; i <= 78; ++i)
-//     The change was necessary because the rdline() function was changed,
-//      and no longer provides a 78 character buffer padded with blanks.
-
-   i__1 = input.inlnt;
-   for (i = 5; i <= i__1; ++i) {
+#if 1
+// Note:
+// ∙	The upper for loop was bound changed from 78 to input.inlnt,
+//	because rdline() no longer provides a 78 character buffer padded with blanks.
+   for (i = 5; i <= input.inlnt; ++i) {
       if (input.inbuf[i - 1] != ' ') {
          goto L1300;
       }
 // L1200:
    }
+#endif
 
    rspeak(571);
 // 						!KILL THE ECHO.
@@ -123,7 +120,7 @@ L1000:
    goto L400;
 
 L1300:
-   prsvec.prswon = parse(input.inbuf, sizeof input.inbuf, false);
+   prsvec.prswon = parse(input.inbuf, false);
    if (!prsvec.prswon || prsvec.prsa != WalkW) {
       goto L1400;
    }
@@ -134,7 +131,11 @@ L1300:
 
 L1400:
 // write(outch, "%78A1", (input.inbuf(j), j = 1, input.inlnt)); //F
+#if 1
    more_output("%.*s\n", input.inlnt, input.inbuf);
+#else
+   more_output("%s\n", input.inbuf);
+#endif
    play.telflg = true;
 // 						!INDICATE OUTPUT.
    goto L1000;
@@ -162,7 +163,7 @@ L2100:
       goto L2700;
    }
 // 						!ANY INPUT?
-   if (parse(input.inbuf, sizeof input.inbuf, true)) {
+   if (parse(input.inbuf, true)) {
       goto L2150;
    }
 L2700:

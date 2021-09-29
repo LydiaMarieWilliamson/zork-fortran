@@ -2,6 +2,7 @@
 // All rights reserved, commercial usage strictly prohibited.
 // Written by R. M. Supnik.
 // Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
+#include <string.h>
 #include "extern.h"
 #include "common.h"
 
@@ -66,7 +67,7 @@ L2000:
 // read(inpch, "%A2", cmd); //F
    more_input(buf, sizeof buf), strncpy(cmd, buf, sizeof cmd);
 // 						!GET COMMAND.
-   if (strncmp(cmd, "  ", sizeof cmd) == 0) {
+   if (cmd[0] == '\0' || strncmp(cmd, "  ", sizeof cmd) == 0) {
       goto L2000;
    }
 // 						!IGNORE BLANKS.
@@ -234,7 +235,7 @@ L10000:
    for (i = j; i <= i__1; ++i) {
 //    write(outch, "%I3%4(1X,I6)%1X%I6", i, (eqr(i, l), l = 1, 5)); //F
       printf("%3d", i);
-      for (int l = 0; l < 5; l++) printf(" %6d", eqr[i - 1 + 200 * l]);
+      for (l = 0; l < 5; l++) printf(" %6d", eqr[i - 1 + 200 * l]);
       more_output("\n");
 // L10100:
    }
@@ -323,8 +324,7 @@ L14000:
 // 						!COMPUTE END OF LINE.
 //    write(outch, "%I3-%I3%3X%10I7", i, l, (travel(l1), l1 = i, l)); //F
       printf("%3d-%3d   ", i, l);
-      i__2 = l;
-      for (l1 = i; l1 <= i__2; ++l1) printf("%7d", exits.travel[l1 - 1]);
+      for (l1 = i; l1 <= l; ++l1) printf("%7d", exits.travel[l1 - 1]);
       more_output("\n");
 // L14100:
    }
@@ -703,8 +703,7 @@ L41000:
       l = min(i__2, k);
 //    write(outch, "%I3"-%I3%3X%10(1X,I6)", i, l, (rtext(l1), l1 = i, l)); //F
       printf("%3d-%3d   ", i, l);
-      i__2 = l;
-      for (l1 = i; l1 <= i__2; ++l1) printf(" %6d", rmsg.rtext[l1 - 1]);
+      for (l1 = i; l1 <= l; ++l1) printf(" %6d", rmsg.rtext[l1 - 1]);
       more_output("\n");
 // L41100:
    }
@@ -753,8 +752,7 @@ L46000:
 // 						!DISPLAY PUZZLE
 //    write(outch, "%1X%8I3", (cpvec(j), j = i, i + 7)); //F
       printf(" ");
-      i__1 = i + 7;
-      for (j = i; j <= i__1; ++j) printf("%3d", puzzle.cpvec[j - 1]);
+      for (j = i; j <= i + 7; ++j) printf("%3d", puzzle.cpvec[j - 1]);
       more_output("\n");
 // L46100:
    }

@@ -1,5 +1,7 @@
+// Copyright (c) 1980, InfoCom Computers and Communications, Cambridge MA 02142
+// All rights reserved, commercial usage strictly prohibited.
+// Written by R. M. Supnik.
 // Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
-#include <stdio.h>
 #include <string.h>
 #include <stdarg.h>
 #include "extern.h"
@@ -21,7 +23,31 @@ Bool protct(void/*int x*/) {
    return ret_val;
 }
 
-FILE *OpenInF(const char *File, const char *Mode) { return fopen((File), (Mode)); }
+#ifdef ALLOW_GDT
+// This function should return true if the user is allowed to invoke the game debugging tool by typing "gdt".
+// This isn't very useful without the source code, and it's mainly for people trying to debug the game.
+// You can define WIZARDID to specify a user id on a UNIX system.
+// On a non AMOS, non unix system this function will have to be changed if you want to use gdt.
+#   ifndef WIZARDID
+#      define WIZARDID (0)
+#   endif
+Bool wizard(void) {
+#   if 1
+// 	Changed by TAA so that always in wizard ID
+   return true;
+#   elif defined __AMOS__
+   return jobidx()->jobusr == 0x102;
+#   elif defined unix
+   return getuid() == 0 || getuid() == WIZARDID;
+#   else
+   return true;
+#   endif
+}
+#endif
+
+// Support routines for dungeon: in place of the f2c library functions.
+// C99 is assumed and locked in.
+FILE *OpenInF(const char *File, const char *Mode) { return fopen(File, Mode); }
 
 unsigned IOErrs = 0U;
 

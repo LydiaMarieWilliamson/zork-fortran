@@ -20,6 +20,7 @@ typedef int Bool; // Logical.
 
 // local.c:
 Bool protct(void/*int*/);
+Bool wizard(void);
 
 // The remnant of f2c.h (begin)
 extern unsigned IOErrs;
@@ -138,7 +139,7 @@ Bool synmch(void/*int*/);
 
 // np.c:
 void rdline(char *, size_t, int);
-Bool parse(char *, int, Bool);
+Bool parse(char *, Bool);
 void orphan(int, int, int, int, int);
 
 // nrooms.c:

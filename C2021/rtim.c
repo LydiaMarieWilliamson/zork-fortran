@@ -2,27 +2,20 @@
 // All rights reserved, commercial usage strictly prohibited.
 // Written by R. M. Supnik.
 // Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
+
+// Support routines for dungeon.
 // C99 is now locked in and assumed.
 #include <time.h> // For time() and localtime().
 #include <stdlib.h> // For exit() and rand().
 #include "extern.h"
 #include "common.h"
 
-//(@) Cheat, cheat! We make a ‟fallback” for ‟itime” using a hack from the other repository.
-static void itime(int HMS[3]) {
+// Get the time in hours, minutes and seconds.
+void intime(int *HourP, int *MinuteP, int *SecondP) {
+// gettim(*HourP, *MinuteP, *SecondP, Hundredths);
    time_t Now; time(&Now);
    struct tm *HereNow = localtime(&Now);
-   HMS[0] = HereNow->tm_hour, HMS[1] = HereNow->tm_min, HMS[2] = HereNow->tm_sec;
-}
-
-void intime(int *hours, int *minutes, int *seconds) {
-   int tarray[3];
-
-// gettim(*hours, *minutes, *seconds, hundredths);
-   itime(tarray);
-   *hours = tarray[0];
-   *minutes = tarray[1];
-   *seconds = tarray[2];
+   *HourP = HereNow->tm_hour, *MinuteP = HereNow->tm_min, *SecondP = HereNow->tm_sec;
 }
 
 // common /random/
@@ -36,6 +29,7 @@ void inirnd(int seed) {
 #endif
 }
 
+// Random number generator.
 int rnd(int maxval) {
 #if 0
    seedy = seedy * 1059 + 17 & 2147483647;
@@ -45,6 +39,7 @@ int rnd(int maxval) {
 #endif
 }
 
+// Terminate the game.
 void exit_(void) {
 // NO "CALL EXIT" HERE
 // stop(); //F

@@ -6,17 +6,19 @@
 #include "extern.h"
 #include "common.h"
 
-void GetRec(FILE *InF, int X, unsigned *IxP, char *Buf) {
+// Resident subroutines for dungeon
+unsigned GetRec(FILE *InF, int X, unsigned Ix, char *Buf) {
 // read(unit:InUnit, rec:X, IxP, Buf); //F
    struct { char Ix[2], Buf[74]; } Rec;
    const size_t BufN = sizeof Rec.Buf;
    if (fseek(InF, (X - 1)*(long)sizeof Rec, SEEK_SET) == EOF) fprintf(stderr, "Error seeking database loc %d\n", X), exit_();
    if (fread(&Rec, sizeof Rec, 1, InF) != 1) fprintf(stderr, "Error reading database loc %d\n", X), exit_();
-   *IxP = (unsigned)Rec.Ix[0] | (unsigned)Rec.Ix[1] << 8;
    for (int b = 0; b < BufN; b++) Buf[b] = Rec.Buf[b];
+   int NewIx = (unsigned)Rec.Ix[0] | (unsigned)Rec.Ix[1] << 8;
+// Decrypt, if it is the first record or a continuation record.
+   if (Ix == 0U || NewIx == Ix) for (int b = 0; b < BufN; b++) Buf[b] = (char)(Buf[b] ^ (X & 31) + b + 1);
+   return NewIx;
 }
-
-// Resident subroutines for dungeon
 
 // Output random message routine
 // Called as:
@@ -36,13 +38,10 @@ void rspsub(int n, int s1) {
 // Called as:
 // 	rspsb2(MsgNum, SubNum1, SubNum2);
 void rspsb2(int n, int s1, int s2) {
-// System generated locals
-   int i__1;
-
 // Local variables
    int i, j, x, y, z;
    char b1[74], b2[74], b3[74];
-   int k1, k2, x1;
+   int k1, k2;
    unsigned jrec, oldrec, newrec;
 
 // CONVERT ALL ARGUMENTS FROM DICTIONARY NUMBERS (IF POSITIVE)
@@ -74,14 +73,8 @@ void rspsb2(int n, int s1, int s2) {
 // 						!SAID SOMETHING.
 
 // read(unit:storych, rec:x, &oldrec, b1); //F
-   GetRec(StoryF, x, &oldrec, b1);
+   oldrec = GetRec(StoryF, x, 0U, b1);
 
-L100:
-   for (i = 1; i <= 74; ++i) {
-      x1 = (x & 31) + i;
-      b1[i - 1] = (char)(b1[i - 1] ^ x1);
-// L150:
-   }
 L200:
    if (y == 0) {
       goto L400;
@@ -110,9 +103,9 @@ L600:
    ++x;
 // 						!ON TO NEXT RECORD.
 // read(unit:storych, rec:x, &newrec, b1); //F
-   GetRec(StoryF, x, &newrec, b1);
+   newrec = GetRec(StoryF, x, oldrec, b1);
    if (oldrec == newrec) {
-      goto L100;
+      goto L200;
    }
 // 						!CONTINUATION?
    return;
@@ -143,12 +136,7 @@ L1000:
 //   READ SUBSTITUTE STRING INTO B3, AND DECRYPT IT:
 
 // read(unit:storych, rec:y, &jrec, b3); //F
-   GetRec(StoryF, y, &jrec, b3);
-   for (k1 = 1; k1 <= 74; ++k1) {
-      x1 = (y & 31) + k1;
-      b3[k1 - 1] = (char)(b3[k1 - 1] ^ x1);
-// L1150:
-   }
+   jrec = GetRec(StoryF, y, 0U, b3);
 
 //   FILL REMAINDER OF B1 WITH CHARACTERS FROM B3:
 

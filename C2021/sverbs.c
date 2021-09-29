@@ -15,9 +15,11 @@ Bool sverbs(int ri) {
       4, 5, 3, 304, 305, 306, 307, 308, 309, 310, 311, 312,
       313, 5314, 5319, 324, 325, 883, 884, 120, 120, 0, 0, 0, 0
    };
-   static const int answer[28] = {
-      0, 6, 1, 6, 2, 5, 3, 5, 4, 3, 4, 6, 4, 6,
-      4, 5, 5, 5, 5, 4, 5, 6, 6, 10, 7, 4, 7, 6
+   static const int answer[14] = {
+      0, 1, 2, 3, 4, 4, 4, 4, 5, 5, 5, 6, 7, 7
+   };
+   static const int answern[14] = {
+      6, 6, 5, 5, 3, 6, 6, 5, 5, 4, 6, 10, 4, 6
    };
    static const char ansstr[1 * 78] =
       "TEMPLE" "FOREST" "30003" "FLASK" "RUB" "FONDLE" "CARRES"
@@ -37,7 +39,6 @@ Bool sverbs(int ri) {
    int cp, wp;
    char pp1[1 * 6], pp2[1 * 6];
    int odi2 = 0, odo2 = 0;
-   int newk;
 
 // SVERBS, PAGE 2
 
@@ -717,14 +718,13 @@ L26000:
    if (prsvec.prscon <= 1) {
       goto L26300;
    }
-   i__1 = input.inlnt;
-   for (i = prsvec.prscon; i <= i__1; ++i) {
+   for (const char *z = input.inbuf + prsvec.prscon - 1; *z != '\0'; z++) {
 // 						!PARSE INPUT
-      if (input.inbuf[i - 1] == ',') {
+      if (*z == ',') {
          goto L26300;
       }
 // 						!END OF PHRASE?
-      if (input.inbuf[i - 1] != ' ') {
+      if (*z != ' ') {
          goto L26150;
       }
 // 						!SPACE?
@@ -735,11 +735,11 @@ L26000:
       goto L26200;
    L26150:
       if (wp == 1) {
-         pp1[cp - 1] = input.inbuf[i - 1];
+         pp1[cp - 1] = *z;
       }
 // 						!STUFF INTO HOLDER.
       if (wp == 2) {
-         pp2[cp - 1] = input.inbuf[i - 1];
+         pp2[cp - 1] = *z;
       }
 // Computing MIN
       i__2 = cp + 1;
@@ -833,9 +833,10 @@ L27000:
 L27100:
    k = 1;
 // 						!POINTER INTO ANSSTR.
-   for (j = 1; j <= 28; j += 2) {
+   for (j = 1; j <= 14; j++) {
+      int oldk = k;
 // 						!CHECK ANSWERS.
-      newk = k + answer[j];
+      k += answern[j - 1];
 // 						!COMPUTE NEXT K.
       if (findex.quesno != answer[j - 1]) {
          goto L27300;
@@ -843,8 +844,7 @@ L27100:
 // 						!ONLY CHECK PROPER ANS.
       i = prsvec.prscon - 1;
 // 						!SCAN ANSWER.
-      i__1 = newk - 1;
-      for (l = k; l <= i__1; ++l) {
+      for (l = oldk; l <= k - 1; ++l) {
       L27150:
          ++i;
 // 						!SKIP INPUT BLANKS.
@@ -863,7 +863,7 @@ L27100:
       goto L27500;
 // 						!RIGHT ANSWER.
    L27300:
-      k = newk;
+      ;
    }
 
    prsvec.prscon = 1;

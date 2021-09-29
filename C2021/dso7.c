@@ -32,7 +32,6 @@ void encryp(const char *inw, char *outw) {
       if (inw[j] <= '@') {
          j = 1;
       }
-//    uinw[i - 1] = (char)(inw[j]) - 64)
       uinw[i - 1] = inw[j] - 64;
       ukeyws += ukeyw[i - 1];
       uinws += uinw[i - 1];

@@ -253,8 +253,7 @@ L10000:
 // this way, the wizard doesn't have to recompile to use gdt
 
 #ifdef ALLOW_GDT
-// 	Changed by TAA so that always in wizard ID
-   debug.gdtflg = 1;
+   debug.gdtflg = wizard();
 #else
    debug.gdtflg = 0;
 #endif
@@ -340,9 +339,9 @@ L10000:
 // L1025:
    intime(&time_.shour, &time_.smin, &time_.ssec);
 // 						!GET TIME AND DATE.
-// idate(I,J,K)
-// idate(datarry[0])
-// inirnd(datarry[0] | datarry[1] | datarry[2], shour | smin | ssec)
+// Day: datarry[0], Month: datarry[1], Year: datarry[2].
+// idate(datarry);
+// inirnd(datarry[0] | datarry[1] | datarry[2] | shour | smin | ssec);
 // 	NEW WAY TO INITIALIZE /+TAA+/
    inirnd(time_.shour * 3600 + time_.smin * 60 + time_.ssec);
 

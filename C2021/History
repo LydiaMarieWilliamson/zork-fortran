@@ -128,3 +128,5 @@ C99 (C2021) Translation & Upgrades
 2021/09/27	The 2021 C translation is now operational.
 2021/09/27	Version change provisionally to 2.8; pending final decisions to be made on future version numbering.
 2021/09/27	Removing the leading spaces put on each line of the game output; to bring it in line with the 1991 C translation.
+2021/09/28	Reconciliation between the two C translations with minor recoding in various places.
+		Reconciliation involving recoding that requires structural changes is being deferred.

@@ -7,7 +7,7 @@
 #include "extern.h"
 #include "common.h"
 
-static Bool lex(char *, int, int *, int *, Bool);
+static Bool lex(char *, int *, int *, Bool);
 
 // Read input line
 void rdline(char *buffer, size_t length, int who) {
@@ -67,7 +67,7 @@ L90:
 
 // Top level parse routine
 // This routine details on bit 0 of prsflg
-Bool parse(char *inbuf, int inlnt, Bool vbflag) {
+Bool parse(char *inbuf, Bool vbflag) {
 // System generated locals
    int SparseRet;
    Bool ret_val;
@@ -82,9 +82,6 @@ Bool parse(char *inbuf, int inlnt, Bool vbflag) {
 // dflag = (debug.prsflg & 1) != 0; //F
 #endif
 
-// Parameter adjustments
-   --inbuf;
-
 // Function Body
    ret_val = false;
 // 						!ASSUME FAILS.
@@ -93,7 +90,7 @@ Bool parse(char *inbuf, int inlnt, Bool vbflag) {
    prsvec.prsi = 0;
    prsvec.prso = 0;
 
-   if (!lex(inbuf + 1, inlnt, outbuf, &outlnt, vbflag)) {
+   if (!lex(inbuf, outbuf, &outlnt, vbflag)) {
       goto L100;
    }
    SparseRet = sparse(outbuf, outlnt, vbflag);
@@ -151,7 +148,7 @@ void orphan(int o1, int o2, int o3, int o4, int o5) {
 
 // Lexical analyzer
 // This routine details on bit 1 of prsflag
-static Bool lex(char *inbuf, int inlnt, int *outbuf, int *op, Bool vbflag) {
+static Bool lex(char *inbuf, int *outbuf, int *op, Bool vbflag) {
 // Initialized data
    static const char dlimit[9] = { 'A', 'Z', 'A' - 1, '1', '9', '1' - 31, '-', '-', '-' - 27 };
 
