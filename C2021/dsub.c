@@ -8,7 +8,6 @@
 
 // Resident subroutines for dungeon
 unsigned GetRec(FILE *InF, int X, unsigned Ix, char *Buf) {
-// read(unit:InUnit, rec:X, IxP, Buf); //F
    struct { char Ix[2], Buf[74]; } Rec;
    const size_t BufN = sizeof Rec.Buf;
    if (fseek(InF, (X - 1)*(long)sizeof Rec, SEEK_SET) == EOF) fprintf(stderr, "Error seeking database loc %d\n", X), exit_();
@@ -72,7 +71,6 @@ void rspsb2(int n, int s1, int s2) {
    play.telflg = true;
 // 						!SAID SOMETHING.
 
-// read(unit:storych, rec:x, &oldrec, b1); //F
    oldrec = GetRec(StoryF, x, 0U, b1);
 
 L200:
@@ -98,11 +96,9 @@ L400:
    }
 
 L600:
-// write(outch, "%74A1", (b1[j - 1], j = 1, i)); //F
    more_output("%.*s\n", i, b1);
    ++x;
 // 						!ON TO NEXT RECORD.
-// read(unit:storych, rec:x, &newrec, b1); //F
    newrec = GetRec(StoryF, x, oldrec, b1);
    if (oldrec == newrec) {
       goto L200;
@@ -135,7 +131,6 @@ L1000:
 
 //   READ SUBSTITUTE STRING INTO B3, AND DECRYPT IT:
 
-// read(unit:storych, rec:y, &jrec, b3); //F
    jrec = GetRec(StoryF, y, 0U, b3);
 
 //   FILL REMAINDER OF B1 WITH CHARACTERS FROM B3:
@@ -215,7 +210,6 @@ L200:
 void bug(int a, int b) {
 // Local variables
 
-// print("PROGRAM ERROR %I2, PARAMETER=%I6", a, b); //F
    more_output("PROGRAM ERROR %d, PARAMETER=%d\n", a, b);
    if (debug.dbgflg != 0) {
       return;
@@ -439,7 +433,6 @@ L1000:
 L1100:
    score(false);
 // 						!TELL SCORE.
-// close(storych); //F
    (void)fclose(StoryF);
    exit_();
 }

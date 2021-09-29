@@ -130,3 +130,4 @@ C99 (C2021) Translation & Upgrades
 2021/09/27	Removing the leading spaces put on each line of the game output; to bring it in line with the 1991 C translation.
 2021/09/28	Reconciliation between the two C translations with minor recoding in various places.
 		Reconciliation involving recoding that requires structural changes is being deferred.
+2021/09/29	Removal of the translation-related comments.
