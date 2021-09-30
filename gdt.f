@@ -272,22 +272,20 @@ C
 21000	WRITE(OUTCH,900)
 	GO TO 2000
 C
-900	FORMAT('Valid commands are:'/'AA- Alter ADVS'/
-     &'AC- Alter CEVENT'/'AF- Alter FINDEX'/'AH- Alter HERE'/
-     &'AN- Alter switches'/'AO- Alter OBJCTS'/'AR- Alter ROOMS'/
-     &'AV- Alter VILLS'/'AX- Alter EXITS'/
-     &'AZ- Alter PUZZLE'/'DA- Display ADVS'/
-     &'DC- Display CEVENT'/'DF- Display FINDEX'/'DH- Display HACKS'/
-     &'DL- Display lengths'/'DM- Display RTEXT'/
-     &'DN- Display switches'/
-     &'DO- Display OBJCTS'/'DP- Display parser'/
-     &'DR- Display ROOMS'/'DS- Display state'/'DT- Display text'/
-     &'DV- Display VILLS'/'DX- Display EXITS'/'DZ- Display PUZZLE'/
-     &'D2- Display ROOM2'/'EX- Exit'/'HE- Type this message'/
-     &'NC- No cyclops'/'ND- No deaths'/'NR- No robber'/
-     &'NT- No troll'/'PD- Program detail'/
-     &'RC- Restore cyclops'/'RD- Restore deaths'/
-     &'RR- Restore robber'/'RT- Restore troll'/'TK- Take.')
+900	FORMAT('Valid commands are:'/
+     &'AA- Alter ADVS        AC- Alter CEVENT      AF- Alter FINDEX'/
+     &'AH- Alter HERE        AN- Alter switches    AO- Alter OBJCTS'/
+     &'AR- Alter ROOMS       AV- Alter VILLS       AX- Alter EXITS'/
+     &'AZ- Alter PUZZLE      DA- Display ADVS      DC- Display CEVENT'/
+     &'DF- Display FINDEX    DH- Display HACKS     DL- Display lengths'/
+     &'DM- Display RTEXT     DN- Display switches  DO- Display OBJCTS'/
+     &'DP- Display parser    DR- Display ROOMS     DS- Display state'/
+     &'DT- Display text      DV- Display VILLS     DX- Display EXITS'/
+     &'DZ- Display PUZZLE    D2- Display ROOM2     EX- Exit'/
+     &'HE- Type this message NC- No cyclops        ND- No deaths'/
+     &'NR- No robber         NT- No troll          PD- Program detail'/
+     &'RC- Restore cyclops   RD- Restore deaths    RR- Restore robber'/
+     &'RT- Restore troll     TK- Take.')
 C
 C NR-- NO ROBBER
 C
