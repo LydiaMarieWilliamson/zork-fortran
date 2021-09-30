@@ -11,7 +11,7 @@ Addenda (2021/09/17-2021/09/18):
 	which comprise the digits of the MOD40 representation of base-40 numerals;
 	a version of RADIX50 specialized for PDP-11/VAX. https://en.wikipedia.org/wiki/DEC_RADIX_50#16-bit_systems
 
-	In blkdata.f, there are mismatches in the following places:
+	In blkdata.f, there were mismatches in the following places:
 	∙	(1RS, 29560): Mismatched value (it should be 30400); 29560 corresponds to 2RRS.
 	∙	(3RPAP, 256656): Mismatched value (it should be 25656).
 	∙	(1RO, 0): Mismatched value (it should be 24000).
@@ -19,14 +19,14 @@ Addenda (2021/09/17-2021/09/18):
 	∙	(3RMIN, 21175): Mismatched value (it should be 21174).
 
 	The first two of these inconsistencies were corrected by the 1991 translation to C,
-	and have been repaired here - both in the Fortran original and the new C translatin.
+	and have been repaired here - both in the Fortran original and the new C translation.
 	The ‟1RS” in (1RS, 29560) was already changed to ‟2RRS”.
 	This involved words starting in ‟HOURS⋯”, but did not affect them, since the mistake was in the comment, not the code.
 	The 256656 in (3RPAP, 256656) was already changed to 25656, is for words beginning in ‟PAPER⋯” and affects the code.
 
 	The remaining inconsistencies, which affect words that start in ‟INTO⋯”, ‟CLAY⋯”, ‟CRIMIN⋯”, respectively,
 	and have all been inherited by the translations of Zork into C.
-	They will be repaired in a later revision.
+	They were repaired in a later revision (2021/09/30).
 
 The following note (up to layout changes) was inserted by f2c into the translated files, but has been moved here:
 

@@ -23,7 +23,7 @@ ANSI C (C1991)
 
 C99 (C2021)
 ───────────
-2021/09/27	V2.8 Converted to C99 (based on V2.6A).
+2021/09/27	V2.8A Converted to C99 (based on V2.6A and partly also on V2.7A).
 
 C99 (C2021) Translation & Upgrades
 ──────────────────────────────────
@@ -133,3 +133,6 @@ C99 (C2021) Translation & Upgrades
 2021/09/29	Removal of the translation-related comments.
 		(Belatedly) removing redundant arithmetic generated originally by the f2c translator.
 		Reconciliation involving minor structural changes.
+2021/09/30	The remaining bugs in the data block initialization were repaired in both the C99 and Fortran 2018 versions.
+		The remaining inconsistencies affected words that start in ‟INTO⋯”, ‟CLAY⋯”, ‟CRIMIN⋯”.
+		The other inconsistencies that affected words starting in ‟HOURS⋯” and ‟PAPER⋯” were already repaired (2021/09/17).
