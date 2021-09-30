@@ -26,7 +26,8 @@ L100:
    i = exits.travel[xi - 1];
 // 						!GET ENTRY.
    curxt.xroom1 = i & xpars.xrmask;
-   curxt.xtype = ((i & 32767) / xpars.xfshft & xpars.xfmask) + 1;
+// mask to 16-bits to get rid of sign extension problems with 32-bit ints 
+   curxt.xtype = ((i & ~xpars.xlflag & 0xffff) / xpars.xfshft & xpars.xfmask) + 1;
    switch (curxt.xtype) {
       case 1:
          goto L110;

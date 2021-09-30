@@ -2,6 +2,7 @@
 // All rights reserved, commercial usage strictly prohibited.
 // Written by R. M. Supnik.
 // Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
+#include <ctype.h>
 #include <string.h>
 #include "extern.h"
 #include "common.h"
@@ -14,9 +15,6 @@ void gdt(void) {
    const char dbgcmd[2 * 38] =
       "DR" "DO" "DA" "DC" "DX" "DH" "DL" "DV" "DF" "DS" "AF" "HE" "NR" "NT" "NC" "ND" "RR" "RT" "RC"
       "RD" "TK" "EX" "AR" "AO" "AA" "AC" "AX" "AV" "D2" "DN" "AN" "DM" "DT" "AH" "DP" "PD" "DZ" "AZ";
-   const char ldbgcmd[2 * 38] =
-      "dr" "do" "da" "dc" "dx" "dh" "dl" "dv" "df" "ds" "af" "he" "nr" "nt" "nc" "nd" "rr" "rt" "rc"
-      "rd" "tk" "ex" "ar" "ao" "aa" "ac" "ax" "av" "d2" "dn" "an" "dm" "dt" "ah" "dp" "pd" "dz" "az";
    const int argtyp[38] = {
       2, 2, 2, 2, 2, 0, 0, 2, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 1, 0, 3, 3, 3, 3, 1, 3, 2, 2, 1, 2, 1, 0, 0, 0, 0, 1
@@ -65,6 +63,11 @@ L2000:
       goto L2000;
    }
 // 						!IGNORE BLANKS.
+// 	  check for lower case command, as well
+   if (islower(cmd[0]))
+      cmd[0] = toupper(cmd[0]);
+   if (islower(cmd[1]))
+      cmd[1] = toupper(cmd[1]);
    i__1 = cmdmax;
    for (i = 1; i <= i__1; ++i) {
 // 						!LOOK IT UP.
@@ -72,10 +75,6 @@ L2000:
          goto L2300;
       }
 // 						!FOUND?
-// 	  check for lower case command, as well
-      if (strncmp(cmd, &ldbgcmd[i - 1 << 1], sizeof cmd) == 0) {
-         goto L2300;
-      }
 // L2100:
    }
 L2200:
@@ -277,8 +276,8 @@ L13000:
    more_output("CL#   TICK ACTION  FLAG\n");
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
-      printf(outch, "%3d", i);
-      for (l = 0; l < 2; l++) printf(outch, " %6d", eqc[i - 1 + 25 * l]);
+      printf("%3d", i);
+      for (l = 0; l < 2; l++) printf(" %6d", eqc[i - 1 + 25 * l]);
       more_output("     %c\n", cevent.cflag[i - 1] ? 'T' : 'F');
 // L13100:
    }
@@ -388,19 +387,19 @@ L20000:
 
 L21000:
    more_output("Valid commands are:\n");
-   more_output("AA- Alter ADVS\n");		more_output("AC- Alter CEVENT\n");	more_output("AF- Alter FINDEX\n");
-   more_output("AH- Alter HERE\n");		more_output("AN- Alter switches\n");	more_output("AO- Alter OBJCTS\n");
-   more_output("AR- Alter ROOMS\n");		more_output("AV- Alter VILLS\n");	more_output("AX- Alter EXITS\n");
-   more_output("AZ- Alter PUZZLE\n");		more_output("DA- Display ADVS\n");	more_output("DC- Display CEVENT\n");
-   more_output("DF- Display FINDEX\n");		more_output("DH- Display HACKS\n");	more_output("DL- Display lengths\n");
-   more_output("DM- Display RTEXT\n");		more_output("DN- Display switches\n");	more_output("DO- Display OBJCTS\n");
-   more_output("DP- Display parser\n");		more_output("DR- Display ROOMS\n");	more_output("DS- Display state\n");
-   more_output("DT- Display text\n");		more_output("DV- Display VILLS\n");	more_output("DX- Display EXITS\n");
-   more_output("DZ- Display PUZZLE\n");		more_output("D2- Display ROOM2\n");	more_output("EX- Exit\n");
-   more_output("HE- Type this message\n");	more_output("NC- No cyclops\n");	more_output("ND- No deaths\n");
-   more_output("NR- No robber\n");		more_output("NT- No troll\n");		more_output("PD- Program detail\n");
-   more_output("RC- Restore cyclops\n");	more_output("RD- Restore deaths\n");	more_output("RR- Restore robber\n");
-   more_output("RT- Restore troll\n");		more_output("TK- Take.\n");
+   more_output("AA- Alter ADVS        AC- Alter CEVENT      AF- Alter FINDEX\n");
+   more_output("AH- Alter HERE        AN- Alter switches    AO- Alter OBJCTS\n");
+   more_output("AR- Alter ROOMS       AV- Alter VILLS       AX- Alter EXITS\n");
+   more_output("AZ- Alter PUZZLE      DA- Display ADVS      DC- Display CEVENT\n");
+   more_output("DF- Display FINDEX    DH- Display HACKS     DL- Display lengths\n");
+   more_output("DM- Display RTEXT     DN- Display switches  DO- Display OBJCTS\n");
+   more_output("DP- Display parser    DR- Display ROOMS     DS- Display state\n");
+   more_output("DT- Display text      DV- Display VILLS     DX- Display EXITS\n");
+   more_output("DZ- Display PUZZLE    D2- Display ROOM2     EX- Exit\n");
+   more_output("HE- Type this message NC- No cyclops        ND- No deaths\n");
+   more_output("NR- No robber         NT- No troll          PD- Program detail\n");
+   more_output("RC- Restore cyclops   RD- Restore deaths    RR- Restore robber\n");
+   more_output("RT- Restore troll     TK- Take.\n");
    goto L2000;
 
 // NR-- NO ROBBER

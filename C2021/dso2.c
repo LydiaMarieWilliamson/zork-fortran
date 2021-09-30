@@ -101,7 +101,7 @@ void score(Bool flg) {
 
 // SCORE, PAGE 2
 
-   as = advs.ascore[(play.winner - 1 << 2) / 4];
+   as = advs.ascore[play.winner - 1];
 
    if (findex.endgmf) {
       goto L60;
