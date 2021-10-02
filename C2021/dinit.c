@@ -32,7 +32,7 @@ Bool init(void/*int x*/) {
    Bool ret_val;
 
 // Local variables
-   int xmax, r2max, dirmax, recno;
+   int xmax, r2max;
    int Maj, Min, Edit;
    FILE *IndexF;
    int mmax, omax, rmax, vmax, amax, cmax, fmax, smax;
@@ -77,7 +77,6 @@ L10000:
    smax = 22;
    xmax = 900;
    r2max = 20;
-   dirmax = 15;
 
    rmsg.mlnt = 0;
 // 						!INIT ARRAY COUNTERS.
@@ -121,8 +120,6 @@ L10000:
    hack.swdsta = 0;
 // 						!SWORD IS OFF.
 
-   recno = 1;
-// 						!INIT DB FILE POINTER.
    star.mbase = 0;
 // 						!INIT MELEE BASE.
 // INIT, PAGE 3
@@ -334,17 +331,15 @@ L10000:
    more_output("%5d OF%5d VILLAINS\n", vill.vlnt, vmax);
    more_output("%5d OF%5d ADVENTURERS\n", advs.alnt, amax);
    more_output("%5d OF%5d CLOCK EVENTS\n", cevent.clnt, cmax);
-   more_output("%5d OF%5d ROOM2 SLOTS", oroom2_.r2lnt, r2max);
-   more_output(
-      "MAX SCORE=%I5\n"		"EG SCORE=%I5\n"	"MAX RECNO=%I5\n"
-      "RDESC2 BASE=%I5\n"	"MELEE START=%I5\n"	"STAR MASK=%I7\n",
-      state.mxscor,		state.egmxsc,		recno,
-      rooms.rdesc2,		star.mbase,		star.strbit
-   );
+   more_output("%5d OF%5d ROOM2 SLOTS\n", oroom2_.r2lnt, r2max);
+   more_output("MAX SCORE=%5d\n", state.mxscor);
+   more_output("EG SCORE=%5d\n", state.egmxsc);
+   more_output("RDESC2 BASE=%5d\n", rooms.rdesc2);
+   more_output("MELEE START=%5d\n", star.mbase);
+   more_output("STAR MASK=%7d\n", star.strbit);
 // Pause
    printf("Press enter to continue:"), fflush(stdout);
-   for (int Ch; (Ch = getchar()) != '\n' && Ch != EOF; );
-   if (Ch == EOF) exit(1);
+   for (int Ch; (Ch = getchar()) != '\n'; ) if (Ch == EOF) exit(1);
 #endif
 
    return ret_val;
@@ -361,6 +356,7 @@ L1925:
    goto L1975;
 L1940:
    more_output("I can't read " MyIndexFile ": %1d error(s) found.", IOErrs);
+   goto L1975;
 L1950:
    more_output("I can't open " MyStoryFile ".\n");
 L1975:
