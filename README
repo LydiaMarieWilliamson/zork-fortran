@@ -1,7 +1,9 @@
 This is a Fortran version of the source code for Zork, based ultimately on the original translation to Fortran from MDL.
+It has been updated to make it compatible with Fortran 2018 and to remove some of its bugs.
 Further details on this may be found in ‟History”.
 
-In addition, the beginnings of a translation to C (separate from that described in ‟History”) are in the C subdirectory.
+In addition, a new translation into C99, separate from the 1991 C translation described in ‟History”, is in the C2021 subdirectory,
+an update of the 1991 C translation is under C1991, with some of the bugs, that it inherited from the Fortran version, removed.
 
 The Makefile provided here (which subsumes the one described below) is set up for a linux::gfortran configuration.
 No additional measures have yet been added for the ‟GDB” in-program debugger, and it's possible that none may be.
