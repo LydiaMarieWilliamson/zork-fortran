@@ -119,7 +119,7 @@ C						!SET UP NEW ORPHANS.
 	END
 C
 C Lexical analyzer
-C This routine details on bit 1 of PRSFLAG
+C This routine details on bit 1 of PRSFLG
 	LOGICAL FUNCTION LEX(INBUF,INLNT,OUTBUF,OP,VBFLAG)
 	IMPLICIT INTEGER(A-Z)
 	CHARACTER INBUF(78),J,DLIMIT(9)
