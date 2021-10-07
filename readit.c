@@ -44,6 +44,9 @@ int main(void) {
    int mxscor = GetWord(IndexF), strbit = GetWord(IndexF), egmxsc = GetWord(IndexF), bloc = 0;
    printf("/state/: Max Score = %d, Eg Score = %d\n", mxscor, egmxsc);
 // /rooms/: (eqr)
+   printf("\n");
+   printf("Room Table\n");
+   printf("──────────\n");
    const int rmax = 200;
    int rlnt = GetWord(IndexF);
    int rdesc2 = GetWord(IndexF);
@@ -53,6 +56,9 @@ int main(void) {
    printf("%d of %d rooms { desc1, exit, actio, val, flag; }\n", rlnt, rmax);
    for (int r = 0; r < rlnt; r++) printf("{ "), PutMsg(rdesc1[r]), printf(", %3d, %2d, %2d, 0x%04x },\n", rexit[r], ractio[r], rval[r], rflag[r]);
 // /exits/:
+   printf("\n");
+   printf("Exit Table\n");
+   printf("──────────\n");
    const int xmax = 900;
    int xlnt = GetWord(IndexF);
    int travel[900];
@@ -60,6 +66,9 @@ int main(void) {
    printf("/exits/: %d of %d exits { travel; }\n", xlnt, xmax);
    for (int x = 0; x < xlnt; x++) printf("%3u<<8|%3u,\n", ((unsigned)travel[x]&0xffff)>>8, (unsigned)travel[x]&0xff);
 // /objcts/: (eqo)
+   printf("\n");
+   printf("Object Table\n");
+   printf("────────────\n");
    const int omax = 220;
    int olnt = GetWord(IndexF);
    int odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220], oroom[220], oadv[220], ocan[220], oread[220];
@@ -70,6 +79,9 @@ int main(void) {
    bloc = oroom[BalloOX - 1];
    printf("/state/ bloc: %3d = oroom[%d]\n", bloc, BalloOX);
 // /oroom2/:
+   printf("\n");
+   printf("Room 2 Table\n");
+   printf("────────────\n");
    const int r2max = 20;
    int r2lnt = GetWord(IndexF);
    int oroom2[20], rroom2[20];
@@ -77,6 +89,9 @@ int main(void) {
    printf("/oroom2/: %d of %d room2 slots { o, r; }\n", r2lnt, r2max);
    for (int r2 = 0; r2 < r2lnt; r2++) printf("{ %3d, %3d },\n", oroom2[r2], rroom2[r2]);
 // /cevent/:
+   printf("\n");
+   printf("Clock Table\n");
+   printf("───────────\n");
    const int cmax = 25;
    int clnt = GetWord(IndexF);
    int ctick[25], cactio[25]; bool cflag[25];
@@ -84,6 +99,9 @@ int main(void) {
    printf("/cevent/: %d of %d clock events { tick, actio, flag; }\n", clnt, cmax);
    for (int c = 0; c < clnt; c++) printf("{ %3d, %2d, %5s },\n", ctick[c], cactio[c], cflag[c]? "true": "false");
 // /vill/:
+   printf("\n");
+   printf("Villain Table\n");
+   printf("─────────────\n");
    const int vmax = 4;
    int vlnt = GetWord(IndexF);
    int villns[4], vprob[4], vopps[4], vbest[4], vmelee[4];
@@ -91,6 +109,9 @@ int main(void) {
    printf("/vill/: %d of %d villains { villns, prob, opps, best, melee; }\n", vlnt, vmax);
    for (int v = 0; v < vlnt; v++) printf("{ %2d, %d, %d, %2d, %d },\n", villns[v], vprob[v], vopps[v], vbest[v], vmelee[v]);
 // /advs/:
+   printf("\n");
+   printf("Adventurer Table\n");
+   printf("────────────────\n");
    const int amax = 4;
    int alnt = GetWord(IndexF);
    int aroom[4], ascore[4], avehic[4], aobj[4], aactio[4], astren[4], aflag[4];
@@ -101,6 +122,9 @@ int main(void) {
    int mbase = GetWord(IndexF);
    printf("/star/: Star Mask = %d, Melee Start = %d\n", strbit, mbase);
 // /rmsg/:
+   printf("\n");
+   printf("Message Table\n");
+   printf("─────────────\n");
    const int mmax = 1820;
    int mlnt = GetWord(IndexF);
    int rtext[1820];
