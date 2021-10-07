@@ -217,7 +217,7 @@ L4500:
    if ((objcts.oflag2[DoorOX - 1] & OpenO + TChO) != OpenO) {
       return ret_val;
    }
-   objcts.oflag2[DoorOX - 1] = objcts.oflag2[DoorOX - 1] & TChO & ~OpenO;
+   objcts.oflag2[DoorOX - 1] = (objcts.oflag2[DoorOX - 1] | TChO) & ~OpenO;
    rspeak(22);
 // 						!SLAM AND BOLT DOOR.
    return ret_val;
