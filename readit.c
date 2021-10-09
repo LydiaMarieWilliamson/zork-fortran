@@ -51,7 +51,7 @@ int main(void) {
    int rlnt = GetWord(IndexF);
    int rdesc2 = GetWord(IndexF);
    int rdesc1[200], rexit[200], ractio[200], rval[200], rflag[200];
-   GetWords(rmax, rdesc1, IndexF), GetWords(rmax, rexit, IndexF), GetWords(rmax, ractio, IndexF), GetWords(rmax, rval, IndexF), GetWords(rmax, rflag, IndexF);
+   GetWords(rlnt, rdesc1, IndexF), GetWords(rlnt, rexit, IndexF), GetWords(rlnt, ractio, IndexF), GetWords(rlnt, rval, IndexF), GetWords(rlnt, rflag, IndexF);
    printf("/rooms/: rdesc2 base = "), PutMsg(rdesc2 - 1), putchar('\n');
    printf("%d of %d rooms { desc1, exit, actio, val, flag; }\n", rlnt, rmax);
    for (int r = 0; r < rlnt; r++) printf("{ "), PutMsg(rdesc1[r]), printf(", %3d, %2d, %2d, 0x%04x },\n", rexit[r], ractio[r], rval[r], rflag[r]);
@@ -62,7 +62,7 @@ int main(void) {
    const int xmax = 900;
    int xlnt = GetWord(IndexF);
    int travel[900];
-   GetWords(xmax, travel, IndexF);
+   GetWords(xlnt, travel, IndexF);
    printf("/exits/: %d of %d exits { travel; }\n", xlnt, xmax);
    for (int x = 0; x < xlnt; x++) printf("%3u<<8|%3u,\n", ((unsigned)travel[x]&0xffff)>>8, (unsigned)travel[x]&0xff);
 // /objcts/: (eqo)
@@ -72,7 +72,7 @@ int main(void) {
    const int omax = 220;
    int olnt = GetWord(IndexF);
    int odesc1[220], odesc2[220], odesco[220], oactio[220], oflag1[220], oflag2[220], ofval[220], otval[220], osize[220], ocapac[220], oroom[220], oadv[220], ocan[220], oread[220];
-   GetWords(omax, odesc1, IndexF), GetWords(omax, odesc2, IndexF), GetWords(omax, odesco, IndexF), GetWords(omax, oactio, IndexF), GetWords(omax, oflag1, IndexF), GetWords(omax, oflag2, IndexF), GetWords(omax, ofval, IndexF), GetWords(omax, otval, IndexF), GetWords(omax, osize, IndexF), GetWords(omax, ocapac, IndexF), GetWords(omax, oroom, IndexF), GetWords(omax, oadv, IndexF), GetWords(omax, ocan, IndexF), GetWords(omax, oread, IndexF);
+   GetWords(olnt, odesc1, IndexF), GetWords(olnt, odesc2, IndexF), GetWords(olnt, odesco, IndexF), GetWords(olnt, oactio, IndexF), GetWords(olnt, oflag1, IndexF), GetWords(olnt, oflag2, IndexF), GetWords(olnt, ofval, IndexF), GetWords(olnt, otval, IndexF), GetWords(olnt, osize, IndexF), GetWords(olnt, ocapac, IndexF), GetWords(olnt, oroom, IndexF), GetWords(olnt, oadv, IndexF), GetWords(olnt, ocan, IndexF), GetWords(olnt, oread, IndexF);
    printf("/objcts/: %d of %d objects { desc1, desc2, desco, actio, flag1, flag2, fval, tval, size, capac, room, adv, can, read; }\n", olnt, omax);
    for (int o = 0; o < olnt; o++)
       printf("{ "), PutMsg(odesc1[o]), printf(", "), PutMsg(odesc2[o]), printf(", "), PutMsg(odesco[o]), printf(", %3d, 0x%04x, 0x%04x, %2d, %2d, %5d, %5d, %5d, %d, %3d, ", oactio[o], (unsigned)oflag1[o]&0xffff, (unsigned)oflag2[o]&0xffff, ofval[o], otval[o], osize[o], ocapac[o], oroom[o], oadv[o], ocan[o]), PutMsg(oread[o]), printf(" },\n");
@@ -85,7 +85,7 @@ int main(void) {
    const int r2max = 20;
    int r2lnt = GetWord(IndexF);
    int oroom2[20], rroom2[20];
-   GetWords(r2max, oroom2, IndexF), GetWords(r2max, rroom2, IndexF);
+   GetWords(r2lnt, oroom2, IndexF), GetWords(r2lnt, rroom2, IndexF);
    printf("/oroom2/: %d of %d room2 slots { o, r; }\n", r2lnt, r2max);
    for (int r2 = 0; r2 < r2lnt; r2++) printf("{ %3d, %3d },\n", oroom2[r2], rroom2[r2]);
 // /cevent/:
@@ -95,7 +95,7 @@ int main(void) {
    const int cmax = 25;
    int clnt = GetWord(IndexF);
    int ctick[25], cactio[25]; bool cflag[25];
-   GetWords(cmax, ctick, IndexF), GetWords(cmax, cactio, IndexF), GetFlags(cmax, cflag, IndexF);
+   GetWords(clnt, ctick, IndexF), GetWords(clnt, cactio, IndexF), GetFlags(clnt, cflag, IndexF);
    printf("/cevent/: %d of %d clock events { tick, actio, flag; }\n", clnt, cmax);
    for (int c = 0; c < clnt; c++) printf("{ %3d, %2d, %5s },\n", ctick[c], cactio[c], cflag[c]? "true": "false");
 // /vill/:
@@ -105,7 +105,7 @@ int main(void) {
    const int vmax = 4;
    int vlnt = GetWord(IndexF);
    int villns[4], vprob[4], vopps[4], vbest[4], vmelee[4];
-   GetWords(vmax, villns, IndexF), GetWords(vmax, vprob, IndexF), GetWords(vmax, vopps, IndexF), GetWords(vmax, vbest, IndexF), GetWords(vmax, vmelee, IndexF);
+   GetWords(vlnt, villns, IndexF), GetWords(vlnt, vprob, IndexF), GetWords(vlnt, vopps, IndexF), GetWords(vlnt, vbest, IndexF), GetWords(vlnt, vmelee, IndexF);
    printf("/vill/: %d of %d villains { villns, prob, opps, best, melee; }\n", vlnt, vmax);
    for (int v = 0; v < vlnt; v++) printf("{ %2d, %d, %d, %2d, %d },\n", villns[v], vprob[v], vopps[v], vbest[v], vmelee[v]);
 // /advs/:
@@ -115,7 +115,7 @@ int main(void) {
    const int amax = 4;
    int alnt = GetWord(IndexF);
    int aroom[4], ascore[4], avehic[4], aobj[4], aactio[4], astren[4], aflag[4];
-   GetWords(amax, aroom, IndexF), GetWords(amax, ascore, IndexF), GetWords(amax, avehic, IndexF), GetWords(amax, aobj, IndexF), GetWords(amax, aactio, IndexF), GetWords(amax, astren, IndexF), GetWords(amax, aflag, IndexF);
+   GetWords(alnt, aroom, IndexF), GetWords(alnt, ascore, IndexF), GetWords(alnt, avehic, IndexF), GetWords(alnt, aobj, IndexF), GetWords(alnt, aactio, IndexF), GetWords(alnt, astren, IndexF), GetWords(alnt, aflag, IndexF);
    printf("/advs/: %d of %d adventurers { room, score, vehic, obj, actio, stren, flag; }\n", alnt, amax);
    for (int a = 0; a < alnt; a++) printf("{ %3d, %d, %d, %3d, %d, %d, 0x%02x },\n", aroom[a], ascore[a], avehic[a], aobj[a], aactio[a], astren[a], (unsigned)aflag[a]);
 // /star/: strbit was set, up above.
@@ -128,7 +128,7 @@ int main(void) {
    const int mmax = 1820;
    int mlnt = GetWord(IndexF);
    int rtext[1820];
-   GetWords(mmax, rtext, IndexF);
+   GetWords(mlnt, rtext, IndexF);
    printf("/rmsg/: %d of %d messages { text; }\n", mlnt, mmax);
    for (int m = 0; m < mlnt; m++) PutMsg(rtext[m]), printf(",\n");
 // Initialization done.
