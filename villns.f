@@ -4,7 +4,7 @@ C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
 C Troll function
-	LOGICAL FUNCTION TROLLP(ARG)
+	LOGICAL FUNCTION TROLLP()
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL QHERE,PROB
 	include 'parser.h'
@@ -116,7 +116,7 @@ C						!COULDNT HANDLE IT.
 	END
 C
 C Cyclops function
-	LOGICAL FUNCTION CYCLOP(ARG)
+	LOGICAL FUNCTION CYCLOP()
 	IMPLICIT INTEGER (A-Z)
 	include 'parser.h'
 	include 'gamestat.h'
@@ -201,7 +201,7 @@ C						!SEE IF HANDLED.
 	END
 C
 C Thief function
-	LOGICAL FUNCTION THIEFP(ARG)
+	LOGICAL FUNCTION THIEFP()
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL QHERE,PROB
 	include 'parser.h'

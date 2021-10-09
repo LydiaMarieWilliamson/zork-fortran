@@ -4,7 +4,7 @@ C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
 C Dungeon initialization subroutine
-	LOGICAL FUNCTION INIT(X)
+	LOGICAL FUNCTION INIT()
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL PROTCT
 	INTEGER DATARRY(3)
@@ -39,7 +39,7 @@ C INIT, PAGE 2
 C
 C FIRST CHECK FOR PROTECTION VIOLATION
 C
-	IF(PROTCT(X)) GO TO 10000
+	IF(PROTCT()) GO TO 10000
 C						!PROTECTION VIOLATION?
 	PRINT 10100
 10100	FORMAT('There appears before you a threatening figure clad ',
@@ -343,7 +343,7 @@ C This routine should be modified if you wish to add system
 C dependent protection against abuse.
 C
 C At the moment, play is permitted under all circumstances.
-	LOGICAL FUNCTION PROTCT(X)
+	LOGICAL FUNCTION PROTCT()
 	IMPLICIT INTEGER(A-Z)
 C
 	PROTCT=.TRUE.

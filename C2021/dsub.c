@@ -173,7 +173,7 @@ L1300:
 }
 
 // Apply objects from parse vector
-bool objact(/*int x*/) {
+bool objact(void) {
 // System generated locals
    bool ret_val;
 

@@ -6,7 +6,7 @@ C
 C New objects processor
 C	Objects in this module cannot call RMINFO, JIGSUP,
 C	major verbs, or other non-resident subroutines
-	LOGICAL FUNCTION NOBJS(RI,ARG)
+	LOGICAL FUNCTION NOBJS(RI)
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL QOPEN,MOVETO,F
 	LOGICAL QHERE,OPNCLS,MIRPAN

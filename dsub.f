@@ -149,7 +149,7 @@ C						!RECHECK LINE.
 	END
 C
 C Apply objects from parse vector
-	LOGICAL FUNCTION OBJACT(X)
+	LOGICAL FUNCTION OBJACT()
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL OAPPLI
 	include 'parser.h'
