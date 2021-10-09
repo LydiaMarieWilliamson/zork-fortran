@@ -8,6 +8,8 @@
 #ifndef StoryFile
 #   if defined unix
 #      define StoryFile "/usr/share/games/dungeon/dtext.dat"
+#   elif defined __AMOS__
+#      define StoryFile "lib:dtext.dat"
 #   else
 #      error I need a definition for StoryFile
 #   endif
@@ -15,6 +17,8 @@
 #ifndef IndexFile
 #   if defined unix
 #      define IndexFile "/usr/share/games/dungeon/dindx.dat"
+#   elif defined __AMOS__
+#      define IndexFile "lib:dindx.dat"
 #   else
 #      error I need a definition for IndexFile
 #   endif
