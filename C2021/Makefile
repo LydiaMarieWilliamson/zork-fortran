@@ -93,14 +93,13 @@ clobber: clean untest undat
 	rm -f $(APP)
 
 ## Temporary expedients.
-dinit.o: dindx.dat dtext.dat
 dindx.dat:
 	$(LN) ../dindx.dat .
 dtext.dat:
 	$(LN) ../dtext.dat .
 
 dinit.o: dinit.c dindx.dat dtext.dat
-	$(CC) $(CFLAGS) $(GDTFLAG) -c dinit.c
+	$(CC) $(CFLAGS) $(GDTFLAG) -DIndexFile="\$(LIBDIR)/dindx.dat\" -DStoryFile=\"$(LIBDIR)/dtext.dat\" -c dinit.c
 dgame.o: dgame.c
 	$(CC) $(CFLAGS) $(GDTFLAG) -c dgame.c
 gdt.o: gdt.c
