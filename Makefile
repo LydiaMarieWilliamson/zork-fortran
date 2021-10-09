@@ -37,6 +37,7 @@ test: $(APP)
 
 clean:
 	rm -f $(APP)
+	rm -f core dsave.dat *~
 clobber: clean
 	rm -f Ex
 

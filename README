@@ -90,6 +90,7 @@ The original source, however, is copyright.
 	1987/02/09
 
 Dungeon consists of the following files:
+(0 = contained in the original versions only, 1 = contained in the current version only)
 	dmain.f			-program root
 	dgame.f			-main routine
 	dsub.f			-resident subroutines
@@ -121,44 +122,52 @@ Dungeon consists of the following files:
 	dso5.f			-overlaid subroutines, part 5
 	dso6.f			-overlaid subroutines, part 6
 	dso7.f			-overlaid subroutines, part 7
-	advers.h		-header file
-	clock.h			-header file
-	curxt.h			-header file
-	debug.h			-header file
-	exits.h			-header file
-	files.h			-header file for directory paths
-	flags.h			-header file
-	gamestate.h		-header file
-	io.h			-header file
-	objects.h		-header file
-	oflags.h		-header file
-	oindex.h		-header file
-	parser.h		-header file
-	puzzle.h		-header file
-	rflag.h			-header file
-	rindex.h		-header file
-	rooms.h			-header file
-	screen.h		-header file
-	state.h			-header file
-	verbs.h			-header file
-	villians.h		-header file
-	vocab.h			-header file
-	xpars.h			-header file
-	xsrch.h			-header file
-	cinit.c			-C routine to initialize game [pdp ver]
-	cio.c			-C routine for misc i/o [pdp version]
-	rtim.c			-C routines for system dependent functions
-	listen.c		-C co-process for reading keyboard [pdp]
-	cspeak.c		-C co-process for displaying messages [pdp]
-	speak.f			-lookup messages for speak process [pdp]
-	decode.c		-C routine to decode binary text file [debug]
+1	blkdata.f		-block data initializations
+1	mindex.h		-header file for the Message Table
+0	files.h			-header file for directory paths
+	advers.h		-header file for the Adventurers
+	clock.h			-header file for the Clock Interrupts
+	curxt.h			-header file for the Current Exits
+	debug.h			-header file for debug mode
+	exits.h			-header file for Exits
+	flags.h			-header file for Flags
+	gamestat.h		-header file for the Game State
+	io.h			-header file for I/O Variables
+	objects.h		-header file for the Objects Table
+	oflags.h		-header file for Object Flags
+	oindex.h		-header file for Object Labels
+	parser.h		-header file for the Parser State and Parser Output
+	puzzle.h		-header file for the Puzzle Room State
+	rflag.h			-header file for Room Flags
+	rindex.h		-header file for Room Labels
+	rooms.h			-header file for the Rooms Table
+	screen.h		-header file for the Screen Of Light
+	state.h			-header file for the Play State
+	verbs.h			-header file for the Verbs Table
+	villians.h		-header file for the Villians and Demons
+	vocab.h			-header file for the Vocabularies
+	xpars.h			-header file for the Directions/Exits Parser
+	xsrch.h			-header file for the Directions/Exits Labels
+1	rtim.f			-Fortran routines for system-dependent functions
+0	rtim.c			-C routines for system-dependent functions
+1	readit.c		-C routine to decompile the database files dindx.dat and dtext.dat
+0	decode.c		-C routine to decode binary text file [debug]
 	dindx.dat		-initialization data base
 	dtext.dat		-main data base [binary file]
-	rtext.dat		-message index file [pdp version]
-	dungeon.sh		-shell script to invoke pdp version
-	dungeon.doc		-original documentation file
-	dungeon.6		-man page abstracted from dungeon.doc
+0	dungeon.doc		-original documentation file
+0	dungeon.6		-man page abstracted from dungeon.doc
+0	dungeon.sh		-shell script to invoke pdp version
 	Makefile		-Makefile for making pdp or vax versions
 	History			-Some revision history notes
-	PDP.doc			-Notes on the PDP-11/Unix conversion
+0	PDP.doc			-Notes on the PDP-11/Unix conversion
 	README			-This file
+1	DB.txt			-Decompilation of the database.
+1	Make.log		-Compilation notes
+1	Test.in			-Test input.
+1	Test.ex			-Test output.
+0	cinit.c			-C routine to initialize game [pdp ver]
+0	cio.c			-C routine for misc i/o [pdp version]
+0	listen.c		-C co-process for reading keyboard [pdp]
+0	cspeak.c		-C co-process for displaying messages [pdp]
+0	speak.f			-lookup messages for speak process [pdp]
+0	rtext.dat		-message index file [pdp version]
