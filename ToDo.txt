@@ -12,4 +12,4 @@ Pending recoding ― for both the C and Fortran versions:
 ∙	Removal of system-generated locals.
 ∙	Synthesis of control-flow structures (note to The Translator: Fortran 77 has control-flow, e.g. SELECT CASE).
 ∙	Synthesis of data structures for the tables (note to The Translator: Fortran 77 has STRUCTURE).
-∙	Lifting of structure indexes to structure pointers (note to The Translator: Fortran has POINTER).
+∙	Lifting of structure indexes to structure pointers (note to The Translator: Fortran 77 has POINTER).
