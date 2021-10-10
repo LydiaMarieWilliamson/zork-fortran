@@ -1,0 +1,15 @@
+Pending reconciliations:
+∙	message *rdesc2[] versus message (*rdesc)[]: common.c, common.h, dinit.c, dsub.c, gdt.c, sverbs.c, readit.c.
+∙	rtext[] size, mmax: common.c, common.h, dinit.c, readit.c.
+∙	Enabling flags: demons.c, dgame.c, dinit.c, dsub.c, Makefile, rtim.c, sverbs.c.
+∙	The format of dindx.txt: dinit.c, extern.h, local.c.
+∙	The version numbering & game messages: dmain.c, rtim.c, Test.ex, Test.ex0, dtext.dat.
+∙	The messaging routine: dsub.c
+∙	The documentation: README
+∙	Command-line arguments & settable random number seeds: Test.in, Test.ex, Test.ex0, Makefile
+Pending recoding ― for both the C and Fortran versions:
+∙	Integration of Fortran version 3.2.
+∙	Removal of system-generated locals.
+∙	Synthesis of control-flow structures (note to The Translator: Fortran 77 has control-flow, e.g. SELECT CASE).
+∙	Synthesis of data structures for the tables (note to The Translator: Fortran 77 has STRUCTURE).
+∙	Lifting of structure indexes to structure pointers (note to The Translator: Fortran has POINTER).
