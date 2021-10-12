@@ -214,12 +214,12 @@ L10000:
       goto L2200;
    }
 // 						!ARGS VALID?
-   more_output("RM#  DESC1  EXITS ACTION  VALUE  FLAGS\n");
+   more_output("RM#  DESC1  DESC2  EXITS ACTION  VALUE  FLAGS\n");
 // 						!COL HDRS.
    i__1 = k;
    for (i = j; i <= i__1; ++i) {
       printf("%3d", i);
-      for (l = 0; l < 5; l++) printf(" %6d", eqr[i - 1 + 200 * l]);
+      for (l = 0; l < 6; l++) printf(" %6d", eqr[i - 1 + 200 * l]);
       more_output("\n");
 // L10100:
    }

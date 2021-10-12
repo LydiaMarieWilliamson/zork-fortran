@@ -532,7 +532,7 @@ L300:
       goto L600;
    }
 // 						!OBJ ONLY?
-   i = rooms.rdesc2 - play.here;
+   i = rooms.rdesc2[play.here - 1];
 // 						!ASSUME SHORT DESC.
 // The following comment, in the 1991 C translation, was inherited from a later version of the original Fortran source.
 // 2021/09/22 Darth Spectra

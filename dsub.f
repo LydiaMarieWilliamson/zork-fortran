@@ -431,7 +431,7 @@ C
 C						!GET ROOM ACTION.
 	IF(FULL.EQ.1) GO TO 600
 C						!OBJ ONLY?
-	I=RDESC2-HERE
+	I=RDESC2(HERE)
 C						!ASSUME SHORT DESC.
 C 2021/09/21 Darth Spectra (Lydia Marie Williamson):
 C The following comment, referring to the .OR.PROB(80,80) below,

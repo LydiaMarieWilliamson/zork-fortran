@@ -114,9 +114,9 @@ extern struct playCB {
 // Rooms
 // common /rooms/
 extern struct roomsCB {
-   int rlnt, rdesc2, rdesc1[200], rexit[200], ractio[200], rval[200], rflag[200];
+   int rlnt, rdesc1[200], rdesc2[200], rexit[200], ractio[200], rval[200], rflag[200];
 } rooms;
-#define eqr ((int *)&rooms + 2) // int eqr[5][200]; equivalence(rdesc1, eqr);
+#define eqr ((int *)&rooms + 1) // int eqr[6][200]; equivalence(rdesc1, eqr);
 #define rrand (rooms.rval) // int rrand[200]; equivalence(rval, rrand);
 
 // rflag.h:

@@ -174,7 +174,7 @@ L66000:
 // V67--	RNAME
 
 L67000:
-   i__1 = rooms.rdesc2 - play.here;
+   i__1 = rooms.rdesc2[play.here - 1];
    rspeak(i__1);
 // 						!SHORT ROOM NAME.
    return ret_val;

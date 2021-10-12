@@ -49,12 +49,10 @@ int main(void) {
    printf("──────────\n");
    const int rmax = 200;
    int rlnt = GetWord(IndexF);
-   int rdesc2 = GetWord(IndexF);
-   int rdesc1[200], rexit[200], ractio[200], rval[200], rflag[200];
-   GetWords(rlnt, rdesc1, IndexF), GetWords(rlnt, rexit, IndexF), GetWords(rlnt, ractio, IndexF), GetWords(rlnt, rval, IndexF), GetWords(rlnt, rflag, IndexF);
-   printf("/rooms/: rdesc2 base = "), PutMsg(rdesc2 - 1), putchar('\n');
-   printf("%d of %d rooms { desc1, exit, actio, val, flag; }\n", rlnt, rmax);
-   for (int r = 0; r < rlnt; r++) printf("{ "), PutMsg(rdesc1[r]), printf(", %3d, %2d, %2d, 0x%04x },\n", rexit[r], ractio[r], rval[r], rflag[r]);
+   int rdesc1[200], rdesc2[200], rexit[200], ractio[200], rval[200], rflag[200];
+   GetWords(rlnt, rdesc1, IndexF), GetWords(rlnt, rdesc2, IndexF), GetWords(rlnt, rexit, IndexF), GetWords(rlnt, ractio, IndexF), GetWords(rlnt, rval, IndexF), GetWords(rlnt, rflag, IndexF);
+   printf("%d of %d rooms { desc1, desc2, exit, actio, val, flag; }\n", rlnt, rmax);
+   for (int r = 0; r < rlnt; r++) printf("{ "), PutMsg(rdesc1[r]), printf(", "), PutMsg(rdesc2[r]), printf(", %3d, %2d, %2d, 0x%04x },\n", rexit[r], ractio[r], rval[r], rflag[r]);
 // /exits/:
    printf("\n");
    printf("Exit Table\n");

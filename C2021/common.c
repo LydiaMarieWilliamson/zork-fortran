@@ -53,7 +53,7 @@ struct playCB play;
 
 // rooms.h:
 // common /rooms/
-// int rlnt, rdesc2, rdesc1[200], rexit[200], ractio[200], rval[200], rflag[200];
+// int rlnt, rdesc1[200], rdesc2[200], rexit[200], ractio[200], rval[200], rflag[200];
 struct roomsCB rooms;
 
 // objects.h:

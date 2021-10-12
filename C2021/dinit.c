@@ -205,11 +205,10 @@ L10000:
 // L40:
    }
 
-   rooms.rdesc2 = 0;
-// 						!CLEAR DESC BASE PTR.
    for (int r = 0; r < rmax; r++) {
 // 						!CLEAR ROOM ARRAYS.
       rooms.rdesc1[r] = 0;
+      rooms.rdesc2[r] = 0;
       rooms.ractio[r] = 0;
       rooms.rflag[r] = 0;
       rooms.rval[r] = 0;
@@ -268,7 +267,7 @@ L10000:
 #endif
    state.mxscor = GetWord(IndexF), star.strbit = GetWord(IndexF), state.egmxsc = GetWord(IndexF);
    rooms.rlnt = GetWord(IndexF);
-   rooms.rdesc2 = GetWord(IndexF), GetWords(rooms.rlnt, rooms.rdesc1, IndexF);
+   GetWords(rooms.rlnt, rooms.rdesc1, IndexF), GetWords(rooms.rlnt, rooms.rdesc2, IndexF);
    GetWords(rooms.rlnt, rooms.rexit, IndexF), GetWords(rooms.rlnt, rooms.ractio, IndexF);
    GetWords(rooms.rlnt, rooms.rval, IndexF), GetWords(rooms.rlnt, rooms.rflag, IndexF);
    exits.xlnt = GetWord(IndexF), GetWords(exits.xlnt, exits.travel, IndexF);
@@ -338,7 +337,6 @@ L10000:
    more_output("%5d OF%5d ROOM2 SLOTS\n", oroom2_.r2lnt, r2max);
    more_output("MAX SCORE=%5d\n", state.mxscor);
    more_output("EG SCORE=%5d\n", state.egmxsc);
-   more_output("RDESC2 BASE=%5d\n", rooms.rdesc2);
    more_output("MELEE START=%5d\n", star.mbase);
    more_output("STAR MASK=%7d\n", star.strbit);
 // Pause
