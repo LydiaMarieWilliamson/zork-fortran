@@ -70,7 +70,7 @@ bool init(void) {
 L10000:
    ret_val = false;
 // 						!ASSUME INIT FAILS.
-   mmax = 1820;
+   mmax = 1050;
 // 						!SET UP ARRAY LIMITS.
    omax = 220;
    rmax = 200;

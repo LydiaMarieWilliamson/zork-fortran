@@ -1,22 +1,22 @@
 Pending reconciliations:
-∙	rtext[] size, mmax: common.c, common.h, dinit.c, readit.c.
 ∙	Enabling flags: demons.c, dgame.c, dinit.c, dsub.c, Makefile, rtim.c, sverbs.c.
-∙	The format of dindx.dat: dinit.c, extern.h, local.c, dindx.dat.
+∙	Normalizing the format of dindx.dat: dinit.c, extern.h, local.c, dindx.dat.
 ∙	The version numbering & game messages: dmain.c, rtim.c, Test.ex, Test.ex0, dtext.dat.
-∙	The format of dtext.dat and the messaging routine: dsub.c, dtext.dat.
+∙	Normalizing the format of dtext.dat and rewriting the messaging routine: dsub.c, dtext.dat.
 ∙	The documentation: README
 ∙	Command-line arguments & settable random number seeds: Test.in, Test.ex, Test.ex0, Makefile, dinit.c (call to inirnd()).
+∙	Inclusion of a more comprehensive test suite: Test.*, Makefile.
 Pending recoding ― for both the C and Fortran versions:
 ∙	Integration of Fortran version 3.2.
 ∙	Removal of system-generated locals.
 ∙	Synthesis of control-flow structures (note to The Translator: Fortran 77 has control-flow, e.g. SELECT CASE).
 ∙	Synthesis of data structures for the tables (note to The Translator: Fortran 77 has STRUCTURE).
 ∙	Lifting of structure indexes to structure pointers (note to The Translator: Fortran 77 has POINTER).
-∙	Inclusion of a more comprehensive test suite.
 ∙	Inclusion of maps and other paraphenilia.
 Longer-term items:
 ∙	Further translation to C++, so that equivalences can be more directly handled.
 ∙	Re-fitting of the terminal I/O to GUI I/O (possibly with QT ... which uses C++).
+∙	Integration of maps and graphics.
 ∙	Expansion and generalization of the natural language I/O.
 ∙	Translation to other languages.
-∙	Dynamic worlds.
+∙	Dynamic worlds & possibly also parallel worlds.
