@@ -1,9 +1,9 @@
-/edit/: 2.8.8257
+/edit/: 2.8.65
 /state/: Max Score = 585, Eg Score = 100
 
 Room Table
 ──────────
-190 of 200 rooms { desc1, desc2, exit, actio, val, flag; }
+/rooms/: 190 of 200 rooms { desc1, desc2, exit, actio, val, flag; }
 { #1613, #1995,   1,  0,  5, 0x2000 },
 { #1615, #1996,   5,  0,  0, 0x6420 },
 { #1617, #1997,  10,  0,  0, 0x6420 },

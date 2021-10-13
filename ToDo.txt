@@ -1,10 +1,9 @@
 Pending reconciliations:
-∙	Enabling flags: demons.c, dgame.c, dinit.c, dsub.c, Makefile, rtim.c, sverbs.c.
-∙	Normalizing the format of dindx.dat: dinit.c, extern.h, local.c, dindx.dat.
-∙	The version numbering & game messages: dmain.c, rtim.c, Test.ex, Test.ex0, dtext.dat.
 ∙	Normalizing the format of dtext.dat and rewriting the messaging routine: dsub.c, dtext.dat.
-∙	The documentation: README
+∙	The version numbering & game messages: rtim.c, Test.ex, Test.ex0, dtext.dat.
 ∙	Command-line arguments & settable random number seeds: Test.in, Test.ex, Test.ex0, Makefile, dinit.c (call to inirnd()).
+∙	Enabling flags: demons.c, dgame.c, dinit.c, dsub.c, Makefile, rtim.c, sverbs.c.
+∙	The documentation: README
 ∙	Inclusion of a more comprehensive test suite: Test.*, Makefile.
 Pending recoding ― for both the C and Fortran versions:
 ∙	Integration of Fortran version 3.2.

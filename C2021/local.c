@@ -53,7 +53,7 @@ unsigned IOErrs = 0U;
 
 // Read an integer from a line in the index file
 int GetWord(FILE *InF) {
-   int A = 0, n = fscanf(InF, "%6d\n", &A);
+   int A = 0, n = fscanf(InF, "%d", &A);
    if (n < 1) IOErrs++;
    return A;
 }
@@ -64,11 +64,11 @@ void GetWords(int Lim, int *WordP, FILE *InF) {
 }
 
 // Read a number of boolean values from separate lines in the index file
-void GetFlags(int Lim, Bool *FlagP, FILE *InF) {
+void GetFlags(int Lim, bool *FlagP, FILE *InF) {
    while (Lim-- > 0) {
-      char Ch = '\0'; int n = fscanf(InF, " %c\n", &Ch);
-      if (n < 1 || (Ch != 'T' && Ch != 'F')) IOErrs++;
-      *FlagP++ = Ch == 'T';
+      int Ch = '\0'; int n = fscanf(InF, " %c", &Ch);
+      if (n < 1 || (Ch != 'F' && Ch != 'T')) IOErrs++;
+      *FlagP++ = Ch != 'F';
    }
 }
 

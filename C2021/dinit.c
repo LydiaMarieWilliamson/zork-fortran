@@ -265,7 +265,7 @@ L10000:
 #if defined ALLOW_GDT && 0
    more_output("RESTORING FROM \"" IndexFile "\"\n");
 #endif
-   state.mxscor = GetWord(IndexF), star.strbit = GetWord(IndexF), state.egmxsc = GetWord(IndexF);
+   state.mxscor = GetWord(IndexF), state.egmxsc = GetWord(IndexF);
    rooms.rlnt = GetWord(IndexF);
    GetWords(rooms.rlnt, rooms.rdesc1, IndexF), GetWords(rooms.rlnt, rooms.rdesc2, IndexF);
    GetWords(rooms.rlnt, rooms.rexit, IndexF), GetWords(rooms.rlnt, rooms.ractio, IndexF);
@@ -291,7 +291,7 @@ L10000:
    GetWords(advs.alnt, advs.ascore, IndexF), GetWords(advs.alnt, advs.avehic, IndexF);
    GetWords(advs.alnt, advs.aobj, IndexF), GetWords(advs.alnt, advs.aactio, IndexF);
    GetWords(advs.alnt, advs.astren, IndexF), GetWords(advs.alnt, advs.aflag, IndexF);
-   star.mbase = GetWord(IndexF);
+   star.strbit = GetWord(IndexF), star.mbase = GetWord(IndexF);
    rmsg.mlnt = GetWord(IndexF), GetWords(rmsg.mlnt, rmsg.rtext, IndexF);
 
    fclose(IndexF);
@@ -337,8 +337,8 @@ L10000:
    more_output("%5d OF%5d ROOM2 SLOTS\n", oroom2_.r2lnt, r2max);
    more_output("MAX SCORE=%5d\n", state.mxscor);
    more_output("EG SCORE=%5d\n", state.egmxsc);
-   more_output("MELEE START=%5d\n", star.mbase);
    more_output("STAR MASK=%7d\n", star.strbit);
+   more_output("MELEE START=%5d\n", star.mbase);
 // Pause
    printf("Press enter to continue:"), fflush(stdout);
    for (int Ch; (Ch = getchar()) != '\n'; ) if (Ch == EOF) exit(1);

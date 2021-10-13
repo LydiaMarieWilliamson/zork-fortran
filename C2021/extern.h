@@ -27,7 +27,7 @@ extern unsigned IOErrs;
 FILE *OpenInF(const char *File, const char *Mode);
 int GetWord(FILE *InF);
 void GetWords(int Lim, int *WordP, FILE *InF);
-void GetFlags(int Lim, Bool *FlagP, FILE *InF);
+void GetFlags(int Lim, bool *FlagP, FILE *InF);
 
 void more_init(void);
 char *more_input(char *, size_t);
