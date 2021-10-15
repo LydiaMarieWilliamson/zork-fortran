@@ -7,15 +7,15 @@
 #include "common.h"
 
 // Resident subroutines for dungeon
-unsigned GetRec(FILE *InF, int X, unsigned Ix, char *Buf) {
+unsigned GetRec(FILE *InF, long X, unsigned Ix, char *Buf) {
    struct { char Ix[2], Buf[74]; } Rec;
    const size_t BufN = sizeof Rec.Buf;
-   if (fseek(InF, (X - 1)*(long)sizeof Rec, SEEK_SET) == EOF) fprintf(stderr, "Error seeking database loc %d\n", X), exit_();
+   if (fseek(InF, (X - 1)*sizeof Rec, SEEK_SET) == EOF) fprintf(stderr, "Error seeking database loc %d\n", X), exit_();
    if (fread(&Rec, sizeof Rec, 1, InF) != 1) fprintf(stderr, "Error reading database loc %d\n", X), exit_();
    for (int b = 0; b < BufN; b++) Buf[b] = Rec.Buf[b];
    int NewIx = (unsigned)Rec.Ix[0] | (unsigned)Rec.Ix[1] << 8;
 // Decrypt, if it is the first record or a continuation record.
-   if (Ix == 0U || NewIx == Ix) for (int b = 0; b < BufN; b++) Buf[b] = (char)(Buf[b] ^ (X & 31) + b + 1);
+   if (Ix == 0U || NewIx == Ix) for (int b = 0; b < BufN; b++) Buf[b] = (char)(Buf[b] ^ (X & 0x1f) + b + 1);
    return NewIx;
 }
 

@@ -560,7 +560,7 @@ C
 	IF(SPELLF) GO TO 26550
 C						!HE'S TRYING TO LEARN.
 C The following line fixes a nice bug in the UNIX version! /* TAA */
-C	IF(IAND(RFLAG(TSTRS),RSEEN).EQ.0) GO TO 26575
+ 	IF(IAND(RFLAG(TSTRS),RSEEN).EQ.0) GO TO 26575
 	SPELLF=.TRUE.
 C						!TELL HIM.
 	TELFLG=.TRUE.
