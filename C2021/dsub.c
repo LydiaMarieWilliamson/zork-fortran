@@ -19,51 +19,49 @@ unsigned GetRec(FILE *InF, long X, unsigned Ix, char *Buf) {
    return NewIx;
 }
 
+// CONVERT ARGUMENT FROM DICTIONARY NUMBER (IF POSITIVE)
+// TO ABSOLUTE RECORD NUMBER.
+static long DeRef(int N) {
+   long X = N;
+// 						!SET UP WORK VARIABLE.
+   if (X > 0) {
+      X = rmsg.rtext[X - 1];
+   }
+// 						!IF >0, LOOK UP IN RTEXT.
+   return abs(X);
+// 						!TAKE ABS VALUE.
+}
+
+static void rspeak2(long, long, long);
+
 // Output random message routine
 // Called as:
 // 	rspeak(MsgNum);
 void rspeak(int n) {
-   rspsb2(n, 0, 0);
+   rspeak2(DeRef(n), 0, 0);
 }
 
 // Output random message with substitutable argument
 // Called as:
 // 	rspsub(MsgNum, SubNum);
 void rspsub(int n, int s1) {
-   rspsb2(n, s1, 0);
+   rspeak2(DeRef(n), DeRef(s1), 0);
 }
 
 // Output random message with up to two substitutable arguments
 // Called as:
 // 	rspsb2(MsgNum, SubNum1, SubNum2);
 void rspsb2(int n, int s1, int s2) {
+   rspeak2(DeRef(n), DeRef(s1), DeRef(s2));
+}
+
+static void rspeak2(long x, long y, long z) {
 // Local variables
-   int i, j, x, y, z;
+   int i, j;
    char b1[74], b2[74], b3[74];
    int k1, k2;
    unsigned jrec, oldrec, newrec;
 
-// CONVERT ALL ARGUMENTS FROM DICTIONARY NUMBERS (IF POSITIVE)
-// TO ABSOLUTE RECORD NUMBERS.
-
-   x = n;
-// 						!SET UP WORK VARIABLES.
-   y = s1;
-   z = s2;
-   if (x > 0) {
-      x = rmsg.rtext[x - 1];
-   }
-// 						!IF >0, LOOK UP IN RTEXT.
-   if (y > 0) {
-      y = rmsg.rtext[y - 1];
-   }
-   if (z > 0) {
-      z = rmsg.rtext[z - 1];
-   }
-   x = abs(x);
-// 						!TAKE ABS VALUE.
-   y = abs(y);
-   z = abs(z);
    if (x == 0) {
       return;
    }
