@@ -308,7 +308,7 @@ L10000:
 // L1025:
 #if 0
 // Day: datarry[0], Month: datarry[1], Year: datarry[2].
-// idate(datarry);
+   idate(datarry);
    inirnd(datarry[0] | datarry[1] | datarry[2] | time_.shour | time_.smin | time_.ssec);
 #else
    intime(&time_.shour, &time_.smin, &time_.ssec);
