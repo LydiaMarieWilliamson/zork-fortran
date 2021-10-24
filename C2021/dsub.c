@@ -315,14 +315,14 @@ L100:
       goto L900;
    }
 // 						!NO RECOVERY IN END GAME.
-#if 0
-// always exit for plopbot's purposes
-   goto L1000;
-#else
+#if 1
    if (state.deaths >= 2) {
       goto L1000;
    }
 // 						!DEAD TWICE? KICK HIM OFF.
+#else
+// always exit for plopbot's purposes
+   goto L1000;
 #endif
    if (!yesno(10, 9, 8)) {
       goto L1100;
