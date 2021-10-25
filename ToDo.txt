@@ -1,38 +1,44 @@
-Pending architectural reconciliations:
-There are significant architectural differences between C1991 and C2021 / Fortran version:
-∙	Time/Date functions:
-	―	Converted to seconds: dinit.c, dso5.c, dverb2.c, rtim.c, sverbs.c.
-	Reconciliations/Upgrades:
-	―	Modified time/date function used with the random number seed: dinit.c.
-	―	Modified routine and messaging for game-time elapsed: sverbs.c.
-∙	Command-Line Arguments:
+Pending architectural reconciliations between the C1991 and C2021 / Fortran versions:
+∙	Testing / Command-Line Arguments:
 	―	To remove variability in the test outputs, random number seeds need to be specified by the test routines.
 	Reconciliations/Upgrades:
-	―	Command-line arguments (to set the random number seed): Test.in, Test.ex, Test.ex0, Makefile, dinit.c
+	―	Command-line arguments (to set the random number seed): Test.in, Test.ex, Test.ex0, Makefile, dinit.c.
+	―	In Fortran 2003: COMMAND_ARGUMENT_COUNT(), GET_COMMAND_ARGUMENT()
+∙	Index File:
+	―	C1991 and Fortran / C2021 use absolute locations to the Story File in the Index File.
+	Reconciliations/Upgrades:
+	―	Replace absolute location references in the index file by string indices: dindx.dat, readit.c, dinit.c, DB.txt.
 ∙	Story File:
+	―	Duplicate strings occur in Fortran / C2021.
 	―	C1991 uses non-sequential files with effective record length 8 bytes, but no buffered I/O.
 		The C1991 architecture cannot be directly implemented in Fortran 1977 (nor in Fortran 1990).
 	―	C2021/Fortran uses buffered non-sequential files with record length 2+74 bytes.
 	―	Version 3 of the Fortran source uses buffered non-sequential files with record length 4+76 bytes.
 	―	The desired revision is with direct access stream files, which is present in Fortran 2003.
 	Reconciliations/Upgrades:
-	―	Normalizing the format of dtext.dat and rewriting the messaging routine: dsub.c, dgame.c, dtext.dat.
-	―	The version numbering: Test.ex, Test.ex0, dtext.dat.
+	―	Re-index the strings in Fortran / C2021: dindx.dat, readit.c, dtext.dat, DB.txt.
+	―	Normalizing the format of dtext.dat and rewriting the messaging routine: dsub.c, dgame.c, dtext.dat, DB.txt.
+	―	The version numbering and history: Test.ex, Test.ex0, dtext.dat, DB.txt.
 
 Other pending reconciliations:
 ∙	Enabling flags: Makefile.
 ∙	The documentation: README
 ∙	Inclusion of a more comprehensive test suite: Test.*, Makefile.
+∙	Merge C1991 and C2021 - which may require first splitting off C2021.
 
 Pending recoding ― for both the C and Fortran versions:
-∙	Integration of Fortran version 3.2.
 ∙	Removal of system-generated locals.
+∙	Integration of Fortran version 3.2.
+	This may require moving the Fortran files into F1987 and adding F1994 for version 3.2 as a sub-module.
+∙	A compiler for and inverse of readit.c,
+	using the specification file and compiler in version 3 of the Fortran source as a guide.
 ∙	Synthesis of control-flow structures (e.g. Fortran 1990 has SELECT CASE & CASE, Fortran 1977 has IF & END IF).
 ∙	Synthesis of data structures for the tables (Fortran 1990 has structured TYPE's).
 ∙	Synthesis of enum types (Fortran 2003 has ENUMERATOR & ENUM)
 ∙	Synthesis of constants (Fortran 1977 has PARAMETER)
 ∙	Lifting of structure indexes to structure pointers (Fortran 1990 has POINTER).
 ∙	Inclusion of maps and other paraphenilia.
+
 Longer-term items:
 ∙	Further translation to C++, so that equivalences can be more directly handled.
 ∙	Re-fitting of the terminal I/O to GUI I/O (possibly with QT ... which uses C++).

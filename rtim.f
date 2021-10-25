@@ -3,14 +3,40 @@ C All rights reserved, commercial usage strictly prohibited.
 C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
-        SUBROUTINE INTIME(HOURS, MINUTES, SECONDS)
-	IMPLICIT INTEGER (A-Z)
-	DIMENSION TARRAY(3)
-C	CALL GETTIM(HOURS, MINUTES, SECONDS, HUNDREDTHS)
-	CALL ITIME(TARRAY)
-	HOURS = TARRAY(1)
-	MINUTES = TARRAY(2)
-	SECONDS = TARRAY(3)
+C The time since 2001, in seconds.
+	INTEGER*4 FUNCTION TIME2001()
+	   INTEGER DT(8)
+	   INTEGER Y,M,D,TZ,HR,MN,SC!,CN
+	   INTEGER*4 T
+	   PARAMETER (LEAP2000=2000/4-2000/100+2000/100)
+	   CALL DATE_AND_TIME(VALUES=DT)
+	   Y=DT(1)
+	   M=DT(2)
+	   D=DT(3)
+	   TZ=DT(4)
+	   HR=DT(5)
+	   MN=DT(6)
+	   SC=DT(7)
+C	   CN=DT(8)
+	   T=365*(M-1)/12
+	   IF(M.LT.8)T=T-1
+	   IF(M.LT.3)THEN
+	      T=T+M
+	   ELSE
+	      IF(
+     &	         (MOD(Y,4).EQ.0).AND.(
+     &	            (MOD(Y,100).NE.0).OR.(MOD(Y,400).EQ.0)
+     &	         )
+     &	      )T=T+1
+C	      IF(MOD(Y,4).EQ.0)T=T+1
+C	      IF(MOD(Y,100).EQ.0)T=T-1
+C	      IF(MOD(Y,400).EQ.0)T=T+1
+	   ENDIF
+	   T=T+D-1
+	   Y=Y-1
+	   T=T+365*(Y-2000)+Y/4-Y/100+Y/400-LEAP2000
+	   TIME2001=60*(60*(24*T+HR)+MN-TZ)+SC
+	   RETURN
 	END
 
 	SUBROUTINE RANDS(S0,S1)
@@ -70,7 +96,7 @@ C is used, here, to initialize the seed.
 
 C A random integer in [0,MAXVAL-1].
 	INTEGER FUNCTION RND(MAXVAL)
-        INTEGER*4 RANDZ
+	INTEGER*4 RANDZ
 	INTEGER MAXVAL
 	RND=MOD(RANDZ(),MAXVAL)
 	RETURN
