@@ -8,12 +8,14 @@ Pending architectural reconciliations between the C1991 and C2021 / Fortran vers
 	―	C1991 uses non-sequential files with effective record length 8 bytes, but no buffered I/O.
 		The C1991 architecture cannot be directly implemented in Fortran 1977 (nor in Fortran 1990).
 	―	C2021/Fortran uses buffered non-sequential files with record length 2+74 bytes.
+	―	The contents of the story files disagree: version information, history and corrections.
 	―	Version 3 of the Fortran source uses buffered non-sequential files with record length 4+76 bytes.
 	―	The desired revision is with direct access stream files, which is present in Fortran 2003.
 	Reconciliations/Upgrades:
 	―	Re-index the strings in Fortran / C2021: dindx.dat, readit.c, dtext.dat, DB.txt.
-	―	Normalizing the format of dtext.dat and rewriting the messaging routine: dsub.c, dgame.c, dtext.dat, DB.txt.
-	―	The version numbering and history: Test*.ex, dtext.dat, DB.txt.
+	―	Normalize the format of dtext.dat and rewrite the messaging routine: dsub.c, dgame.c, dtext.dat, DB.txt.
+	―	Update the version numbering and history: Test*.ex, dtext.dat, DB.txt.
+	―	Other corrections to the strings file: dtext.dat, DB.txt.
 
 Other pending reconciliations:
 ∙	Enabling flags: Makefile.
