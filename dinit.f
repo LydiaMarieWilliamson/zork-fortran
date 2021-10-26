@@ -8,7 +8,6 @@ C Dungeon initialization subroutine
 	IMPLICIT INTEGER (A-Z)
 	LOGICAL PROTCT
 	INTEGER*4 TIME2001
-	INTEGER DATARRY(3)
 	include 'parser.h'
 	include 'gamestat.h'
 	include 'state.h'
@@ -17,6 +16,9 @@ C Dungeon initialization subroutine
 C
 C MISCELLANEOUS VARIABLES
 C
+	INTEGER AC
+	CHARACTER(100) SEEDS
+	INTEGER*4 SEED
         CHARACTER VEDIT
 	INTEGER*4 PLTIME,STIME
 	COMMON /STAR/ MBASE,STRBIT
@@ -285,7 +287,19 @@ C SET UP TO PLAY THE GAME.
 C
 1025	STIME=TIME2001()
 C						!GET TIMESTAMP.
-	CALL INIRND(STIME)
+C	https://riptutorial.com/fortran/example/26615/passing-command-line-arguments
+C	Check for the number of inputs.
+	AC=COMMAND_ARGUMENT_COUNT()
+	IF(AC.LT.1)THEN
+	   SEED=STIME
+	ELSEIF(AC.LT.2)THEN
+C	Read in the and convert it to a long integer.
+	   CALL GET_COMMAND_ARGUMENT(1,SEEDS)
+	   READ(SEEDS,*,ERR=1850)SEED
+	ELSE
+	   GO TO 1875
+	ENDIF
+	CALL INIRND(SEED)
 C
 	WINNER=PLAYER
 	LASTIT=AOBJ(PLAYER)
@@ -314,6 +328,11 @@ C INIT, PAGE 6
 C
 C ERRORS-- INIT FAILS.
 C
+1850	WRITE(*,*)'Invalid random number seed: ',SEEDS,'.'
+	GO TO 1975
+1875	WRITE(*,*)'Too many command line arguments ',AC,'.'
+	WRITE(*,*)'Usage: dungeon [Seed].'
+	GO TO 1975
 1900	PRINT 910
 	GO TO 1975
 1925	PRINT 920,I,J,K,VMAJ,VMIN,VEDIT
