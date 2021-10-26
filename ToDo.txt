@@ -1,8 +1,4 @@
 Pending architectural reconciliations between the C1991 and C2021 / Fortran versions:
-∙	Index File:
-	―	C1991 and Fortran / C2021 use absolute locations to the Story File in the Index File.
-	Reconciliations/Upgrades:
-	―	Replace absolute location references in the index file by string indices: dindx.dat, readit.c, dinit.c, DB.txt.
 ∙	Story File:
 	―	Duplicate strings occur in Fortran / C2021.
 	―	C1991 uses non-sequential files with effective record length 8 bytes, but no buffered I/O.
@@ -13,6 +9,8 @@ Pending architectural reconciliations between the C1991 and C2021 / Fortran vers
 	―	The desired revision is with direct access stream files, which is present in Fortran 2003.
 	Reconciliations/Upgrades:
 	―	Re-index the strings in Fortran / C2021: dindx.dat, readit.c, dtext.dat, DB.txt.
+		Not all duplicates were removed in C1991: some were in the core message table, indexes hard-coded in the source.
+		Removing all duplicates requires extracting all string indexes, which requires detailed analysis of the source code.
 	―	Normalize the format of dtext.dat and rewrite the messaging routine: dsub.c, dgame.c, dtext.dat, DB.txt.
 	―	Update the version numbering and history: Test*.ex, dtext.dat, DB.txt.
 	―	Other corrections to the strings file: dtext.dat, DB.txt.
@@ -34,6 +32,7 @@ Pending recoding ― for both the C and Fortran versions:
 ∙	Synthesis of enum types (Fortran 2003 has ENUMERATOR & ENUM)
 ∙	Synthesis of constants (Fortran 1977 has PARAMETER)
 ∙	Lifting of structure indexes to structure pointers (Fortran 1990 has POINTER).
+	This step can only be applied for indexes into static tables and is blocked for indexes into dynamic tables.
 ∙	Inclusion of maps and other paraphenilia.
 
 Longer-term items:
@@ -41,5 +40,9 @@ Longer-term items:
 ∙	Re-fitting of the terminal I/O to GUI I/O (possibly with QT ... which uses C++).
 ∙	Integration of maps and graphics.
 ∙	Expansion and generalization of the natural language I/O.
+	Lexicon: https://ai.googleblog.com/2006/08/all-our-n-gram-are-belong-to-you.html
+	Parsers: GLR/Tomita.
 ∙	Translation to other languages.
+	The files blkdata.{c,f}, np*.{c,f} and *verb*.{c,f} are the core of a semantic-processing engine,
+	but have Englishisms hard-coded in them.
 ∙	Dynamic worlds & possibly also parallel worlds.
