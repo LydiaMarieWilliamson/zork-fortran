@@ -8,7 +8,7 @@ C The time since 2001, in seconds.
 	   INTEGER DT(8)
 	   INTEGER Y,M,D,TZ,HR,MN,SC!,CN
 	   INTEGER*4 T
-	   PARAMETER (LEAP2000=2000/4-2000/100+2000/100)
+	   PARAMETER (LEAP2000=2000/4-2000/100+2000/400)
 	   CALL DATE_AND_TIME(VALUES=DT)
 	   Y=DT(1)
 	   M=DT(2)
@@ -72,7 +72,7 @@ C       *	(M0-1)/2 and (M1-1)/2 be relatively prime,
 C       *	A0^2 < M0 and A1^2 < M1,
 C       *	0 <= SEED0 < M0, 0 <= SEED1 < M1.
 C       Under these conditions, the following is equivalent to:
-C       *	SEED0=A0*MOD(SEED0,M0),SEED1=A1*MOD(SEED1,M1);
+C       *	SEED0=MOD(A0*SEED0,M0),SEED1=MOD(A1*SEED1,M1);
 C       and 0 <= SEED0 < M0, 0 <= SEED1 < M1 continues to hold.
 	K0=SEED0/Q0;
 	SEED0=A0*(SEED0-K0*Q0)-K0*R0;
