@@ -1,10 +1,18 @@
 Pending architectural reconciliations between the C1991 and C2021 / Fortran versions:
-∙	Story File:
-	―	Duplicate strings occur in Fortran / C2021.
+∙	Index File Contents:
+	―	The contents of the tables differ slightly between the C1991 and C2021 versions.
+		The oflag1 flags disagree for several objects, in the object table.
+	Reconciliations/Upgrades:
+	―	Arbitrate between the two, using version 3.2B of the Fortran source as a guide: dindx.dat, DB.txt.
+∙	Story File Contents:
+	―	There are a few layout differences and corrections in the story files between the C1991 and C2021 versions.
+	Reconciliations/Upgrades:
+	―	Make adjustments and corrections to the strings file: dtext.dat, DB.txt.
+∙	Story File Format:
 	―	C1991 uses non-sequential files with effective record length 8 bytes, but no buffered I/O.
 		The C1991 architecture cannot be directly implemented in Fortran 1977 (nor in Fortran 1990).
 	―	C2021/Fortran uses buffered non-sequential files with record length 2+74 bytes.
-	―	The contents of the story files disagree: version information, history and corrections.
+	―	The contents of the story files disagree: version information, history, corrections and revised layout.
 	―	Version 3 of the Fortran source uses buffered non-sequential files with record length 4+76 bytes.
 	―	The desired revision is with direct access stream files, which is present in Fortran 2003.
 	Reconciliations/Upgrades:
@@ -12,8 +20,6 @@ Pending architectural reconciliations between the C1991 and C2021 / Fortran vers
 		Not all duplicates were removed in C1991: some were in the core message table, indexes hard-coded in the source.
 		Removing all duplicates requires extracting all string indexes, which requires detailed analysis of the source code.
 	―	Normalize the format of dtext.dat and rewrite the messaging routine: dsub.c, dgame.c, dtext.dat, DB.txt.
-	―	Update the version numbering and history: Test*.ex, dtext.dat, DB.txt.
-	―	Other corrections to the strings file: dtext.dat, DB.txt.
 
 Other pending reconciliations:
 ∙	Enabling flags: Makefile.
@@ -27,6 +33,27 @@ Pending recoding ― for both the C and Fortran versions:
 	This may require moving the Fortran files into F1987 and adding F1994 for version 3.2 as a sub-module.
 ∙	A compiler for the database files and inverse of readit.c,
 	using the specification file and compiler in version 3 of the Fortran source as a guide.
+∙	Extract the indexes of the core of the message string table out from the source and remove the remaining duplicates.
+	The requires detailed analysis of the source code and untangling values, variables, parameters and structures.
+	Some integer variables, parameters or tables are mixed use (e.g. in litint() in clockr.c).
+	The remaining indices to duplicate strings in the core story table:
+	―	?0101 ?0103: The way to the south is blocked by rubble.
+	―	?0331 ?0632: I don't really see how.
+	―	?0485 ?0791: This gives you the rank of Cheater.
+	―	?0888 ?0910: You charge, but the # jumps nimbly aside.
+	―	?0890 ?0912: A good stroke, but it's too slow, the # dodges.
+	―	?0896 ?0918: The # takes a final blow and slumps to the floor dead.
+	―	?0899 ?0921: Your stroke lands, but it was only the flat of the blade.
+	―	?0900 ?0922: The blow lands, making a shallow gash in the #'s arm.
+	―	?0901 ?0923: The # receives a deep gash in his side.
+	There are currently 1660 distinct clips:
+	∙	1022 messages are contained in them.
+	∙	1473 clips have 0 parameters,
+	∙	175 clips each have 1 parameter,
+	∙	12 clips each have 2 parameters.
+∙	Compact the table, further, by abstracting out nearly-duplicate strings by synthesizing new parameters.
+	This is the nascent form of syntax-based natural language synthesis.
+	The abstraction process is an application of ‟anti-unification”.
 ∙	Synthesis of control-flow structures (e.g. Fortran 1990 has SELECT CASE & CASE, Fortran 1977 has IF & END IF).
 ∙	Synthesis of data structures for the tables (Fortran 1990 has structured TYPE's).
 ∙	Synthesis of enum types (Fortran 2003 has ENUMERATOR & ENUM)

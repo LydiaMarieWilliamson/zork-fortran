@@ -67,7 +67,7 @@ C	(M0-1)(M1-1)/2 = 2*3*7*19*31*631*1019*1789*81031 = 2^61-360777242114
 	COMMON /RANDOM/ M0,A0,Q0,R0,SEED0
 	COMMON /RANDOM/ M1,A1,Q1,R1,SEED1
 	INTEGER K0,K1
-C       This requires:
+C       This requires that:
 C       *	(M0-1)/2 and (M1-1)/2 be relatively prime,
 C       *	A0^2 < M0 and A1^2 < M1,
 C       *	0 <= SEED0 < M0, 0 <= SEED1 < M1.
