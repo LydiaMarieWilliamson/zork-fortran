@@ -19,7 +19,7 @@ Pending architectural reconciliations between the C1991 and C2021 / Fortran vers
 	―	Re-index the strings in Fortran / C2021: dindx.dat, readit.c, dtext.dat, DB.txt.
 		Not all duplicates were removed in C1991: some were in the core message table, indexes hard-coded in the source.
 		Removing all duplicates requires extracting all string indexes, which requires detailed analysis of the source code.
-	―	Normalize the format of dtext.dat and rewrite the messaging routine: dsub.c, dgame.c, dtext.dat, DB.txt.
+	―	Normalize the format of dtext.dat and rewrite the messaging routine: dsub.c, dtext.dat, DB.txt.
 
 Other pending reconciliations:
 ∙	Enabling flags: Makefile.
