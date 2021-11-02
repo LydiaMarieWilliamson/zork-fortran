@@ -3,6 +3,7 @@
 // Written by R. M. Supnik.
 // Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 #include <stdio.h> // Particularly for: SEEK_SET and fseek().
+#include <string.h> // For memcpy().
 #include "extern.h"
 #include "common.h"
 
@@ -58,9 +59,8 @@ void rspsb2(int n, int s1, int s2) {
 static void rspeak2(long x, long y, long z) {
 // Local variables
    int i, j;
-   char b1[74], b2[74], b3[74];
-   int k1, k2;
-   unsigned jrec, oldrec, newrec;
+   char b1[74*2], b2[74];
+   unsigned jrec, oldrec;
 
    if (x == 0) {
       return;
@@ -71,103 +71,67 @@ static void rspeak2(long x, long y, long z) {
 
    oldrec = GetRec(StoryF, x, 0U, b1);
 
+   do {
 L200:
-   if (y == 0) {
-      goto L400;
-   }
+      i = 74;
+      if (y != 0) {
 // 						!ANY SUBSTITUTABLE?
-   for (i = 1; i <= 74; ++i) {
+         for (i = 0; i < 74; i++) {
 // 						!YES, LOOK FOR #.
-      if (b1[i - 1] == '#') {
-         goto L1000;
+            if (b1[i] == '#') {
+               break;
+            }
+         }
       }
-// L300:
-   }
+      if (i < 74) {
+//       SUBSTITUTION WITH SUBSTITUTABLE AVAILABLE.
+//          I IS INDEX OF # IN B1.
+//          Y IS NUMBER OF RECORD TO SUBSTITUTE.
 
-L400:
-   for (i = 74; i >= 1; --i) {
-// 						!BACKSCAN FOR BLANKS.
-      if (b1[i - 1] != ' ') {
-         goto L600;
-      }
-// L500:
-   }
+//       PROCEDURE:
+//          1) COPY REST OF B1 TO B2
+//          2) READ SUBSTITUTABLE OVER B1
+//          3) RESTORE TAIL OF ORIGINAL B1
 
-L600:
-   more_output("%.*s\n", i, b1);
-   ++x;
-// 						!ON TO NEXT RECORD.
-   newrec = GetRec(StoryF, x, oldrec, b1);
-   if (oldrec == newrec) {
-      goto L200;
-   }
-// 						!CONTINUATION?
-   return;
-// 						!NO, EXIT.
+//       THE IMPLICIT ASSUMPTION HERE IS THAT THE SUBSTITUTABLE STRING
+//       IS VERY SHORT (i.e. MUCH LESS THAN ONE RECORD).
 
-// SUBSTITUTION WITH SUBSTITUTABLE AVAILABLE.
-// I IS INDEX OF # IN B1.
-// Y IS NUMBER OF RECORD TO SUBSTITUTE.
-
-// PROCEDURE:
-//   1) COPY REST OF B1 TO B2
-//   2) READ SUBSTITUTABLE OVER B1
-//   3) RESTORE TAIL OF ORIGINAL B1
-
-// THE IMPLICIT ASSUMPTION HERE IS THAT THE SUBSTITUTABLE STRING
-// IS VERY SHORT (i.e. MUCH LESS THAN ONE RECORD).
-
-L1000:
-   k2 = 1;
-// 						!TO
-   for (k1 = i + 1; k1 <= 74; ++k1) {
-// 						!COPY REST OF B1.
-      b2[k2 - 1] = b1[k1 - 1];
-      ++k2;
-// L1100:
-   }
-
-//   READ SUBSTITUTE STRING INTO B3, AND DECRYPT IT:
-
-   jrec = GetRec(StoryF, y, 0U, b3);
-
-//   FILL REMAINDER OF B1 WITH CHARACTERS FROM B3:
-
-   k2 = 1;
-   for (k1 = i; k1 <= 74; ++k1) {
-      b1[k1 - 1] = b3[k2 - 1];
-      ++k2;
-// L1180:
-   }
-
-//   FIND END OF SUBSTITUTE STRING IN B1:
-
-   for (j = 74; j >= 1; --j) {
+         memcpy(b2, b1 + i + 1, 74 - i - 1);
+// 						!COPY REST OF B1 TO B2.
+//       READ SUBSTITUTE STRING INTO REMAINDER OF B1, AND DECRYPT IT:
+         jrec = GetRec(StoryF, y, 0U, b1 + i);
+//       FIND END OF SUBSTITUTE STRING IN B1:
+         j = 74;
+         while (--j >= 0) {
 // 						!ELIM TRAILING BLANKS.
-      if (b1[j - 1] != ' ') {
-         goto L1300;
-      }
-// L1200:
-   }
-
-//   PUT TAIL END OF B1 (NOW IN B2) BACK INTO B1 AFTER SUBSTITUTE STRING:
-
-L1300:
-   k1 = 1;
-// 						!FROM
-   for (k2 = j + 1; k2 <= 74; ++k2) {
-// 						!COPY REST OF B1 BACK.
-      b1[k2 - 1] = b2[k1 - 1];
-      ++k1;
-// L1400:
-   }
-
-   y = z;
+            if (b1[j] != ' ') {
+               break;
+            }
+         }
+//       PUT TAIL END OF B1 (NOW IN B2) BACK INTO B1 AFTER SUBSTITUTE STRING:
+         memcpy(b1 + j + 1, b2, 74 - j - 1);
+// 						!COPY REST OF B1 BACK FROM B2.
+         y = z;
 // 						!SET UP FOR NEXT
-   z = 0;
+         z = 0;
 // 						!SUBSTITUTION AND
-   goto L200;
+         goto L200;
 // 						!RECHECK LINE.
+      }
+
+      while (--i >= 0) {
+// 						!BACKSCAN FOR BLANKS.
+         if (b1[i] != ' ') {
+            break;
+         }
+      }
+
+      more_output("%.*s\n", i + 1, b1);
+      ++x;
+// 						!ON TO NEXT RECORD.
+   } while (oldrec == GetRec(StoryF, x, oldrec, b1));
+// 						!CONTINUATION?
+// 						!NO, EXIT.
 }
 
 // Apply objects from parse vector

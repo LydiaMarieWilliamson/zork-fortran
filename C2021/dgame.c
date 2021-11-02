@@ -97,7 +97,7 @@ L1000:
    if (strcmp(input.inbuf, "ECHO") != 0) goto L1300;
 // 						!INPUT = ECHO?
 
-#if 1
+#if 0
 // Note:
 // ∙	The upper for loop was bound changed from 78 to input.inlnt,
 //	because rdline() no longer provides a 78 character buffer padded with blanks.
@@ -130,7 +130,7 @@ L1300:
 // 						!VALID EXIT?
 
 L1400:
-#if 1
+#if 0
    more_output("%.*s\n", input.inlnt, input.inbuf);
 #else
    more_output("%s\n", input.inbuf);
