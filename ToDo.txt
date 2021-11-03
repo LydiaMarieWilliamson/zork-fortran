@@ -16,8 +16,7 @@ Pending architectural reconciliations between the C1991 and C2021 / Fortran vers
 	―	Version 3 of the Fortran source uses buffered non-sequential files with record length 4+76 bytes.
 	―	The desired revision is with direct access stream files, which is present in Fortran 2003.
 	Reconciliations/Upgrades:
-	―	Re-index the strings in Fortran / C2021: dindx.dat, readit.c, dtext.dat, DB.txt.
-		Not all duplicates were removed in C1991: some were in the core message table, indexes hard-coded in the source.
+	―	Not all duplicates were removed in C1991: some were in the core message table, indexes hard-coded in the source.
 		Removing all duplicates requires extracting all string indexes, which requires detailed analysis of the source code.
 	―	Normalize the format of dtext.dat and rewrite the messaging routine: dsub.c, dtext.dat, DB.txt.
 
