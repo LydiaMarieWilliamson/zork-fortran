@@ -86,6 +86,9 @@ test: $(APP)
 	./$(APP) 655596594 <Test.in > Ex4 && diff -d Test4.ex Ex4 && rm Ex4 && \
 	./$(APP) 655596596 <Test.in > Ex5 && diff -d Test5.ex Ex5 && rm Ex5 && \
 	./$(APP) 655600000 <TestA.in > Ex6 && diff -d Test6.ex Ex6 && rm Ex6 && \
+	./$(APP) 657577982 <Test.in > ExB && diff -d TestB.ex ExB && rm ExB && \
+	./$(APP) 657577797 <Test.in > ExC && diff -d TestC.ex ExC && rm ExC && \
+	./$(APP) 657578356 <Test2.in > ExD && diff -d TestD.ex ExD && rm ExD && \
 	echo "Tests passed."
 
 clean:
