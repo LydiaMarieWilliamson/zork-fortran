@@ -2,7 +2,11 @@
 
 ## The system link command (or else copy).
 #LN=cp
-LN=ln -sf
+#LN=ln -sf
+
+## The system remove command.
+#RM=del
+RM=rm -f
 
 ## Where to install the program
 BINDIR = /usr/games
@@ -45,7 +49,7 @@ TERMFLAG = -DMORE_NONE
 ## Uncomment the following line if you want to have access to the game debugging tool.
 ## This is invoked by typing ‟gdt”.
 ## It is not much use except for debugging.
-#GDTFLAG = -DALLOW_GDT
+GDTFLAG = -DALLOW_GDT
 
 ## Compilation flags
 ## Development
@@ -75,40 +79,31 @@ install: $(APP)
 	cp $(APP) $(BINDIR)
 	cp dindx.dat $(LIBDIR)
 	cp dtext.dat $(LIBDIR)
-#	mkdir -p $(BINDIR) $(LIBDIR) $(MANDIR)/man6
-#	cp $(APP).6 $(MANDIR)/man6/
+	mkdir -p $(BINDIR) $(LIBDIR) $(MANDIR)/man6
+	cp $(APP).6 $(MANDIR)/man6/
 
 test: $(APP)
-	@./$(APP) 655596513 <Test.in > Ex0 && diff -d Test0.ex Ex0 && rm Ex0 && \
-	./$(APP) 655596508 <Test.in > Ex1 && diff -d Test1.ex Ex1 && rm Ex1 && \
-	./$(APP) 655596587 <Test.in > Ex2 && diff -d Test2.ex Ex2 && rm Ex2 && \
-	./$(APP) 655596590 <Test.in > Ex3 && diff -d Test3.ex Ex3 && rm Ex3 && \
-	./$(APP) 655596594 <Test.in > Ex4 && diff -d Test4.ex Ex4 && rm Ex4 && \
-	./$(APP) 655596596 <Test.in > Ex5 && diff -d Test5.ex Ex5 && rm Ex5 && \
-	./$(APP) 655600000 <TestA.in > Ex6 && diff -d Test6.ex Ex6 && rm Ex6 && \
-	./$(APP) 657577982 <Test.in > ExB && diff -d TestB.ex ExB && rm ExB && \
-	./$(APP) 657577797 <Test.in > ExC && diff -d TestC.ex ExC && rm ExC && \
-	./$(APP) 657578356 <Test2.in > ExD && diff -d TestD.ex ExD && rm ExD && \
+	@./$(APP) 655600000 <Test0.in > Ex0 && diff -d Test0.ex Ex0 && rm Ex0 && \
+	./$(APP) 657578356 <Test1.in > Ex1 && diff -d Test1.ex Ex1 && rm Ex1 && \
+	./$(APP) 655596513 <Test2.in > Ex2 && diff -d Test2.ex Ex2 && rm Ex2 && \
+	./$(APP) 655596508 <Test2.in > Ex3 && diff -d Test3.ex Ex3 && rm Ex3 && \
+	./$(APP) 655596587 <Test2.in > Ex4 && diff -d Test4.ex Ex4 && rm Ex4 && \
+	./$(APP) 655596590 <Test2.in > Ex5 && diff -d Test5.ex Ex5 && rm Ex5 && \
+	./$(APP) 655596594 <Test2.in > Ex6 && diff -d Test6.ex Ex6 && rm Ex6 && \
+	./$(APP) 655596596 <Test2.in > Ex7 && diff -d Test7.ex Ex7 && rm Ex7 && \
+	./$(APP) 657577982 <Test2.in > Ex8 && diff -d Test8.ex Ex8 && rm Ex8 && \
+	./$(APP) 657577797 <Test2.in > Ex9 && diff -d Test9.ex Ex9 && rm Ex9 && \
 	echo "Tests passed."
 
 clean:
-	rm -f $(OBJS)
-	rm -f core dsave.dat *~
+	$(RM) $(OBJS)
+	$(RM) core dsave.dat *~
 untest:
-	rm -f Ex
-undat:
-	rm -f dindx.dat
-	rm -f dtext.dat
-clobber: clean untest undat
-	rm -f $(APP)
+	$(RM) Ex*
+clobber: clean untest
+	$(RM) $(APP)
 
-## Temporary expedients.
-dindx.dat:
-	$(LN) ../dindx.dat .
-dtext.dat:
-	$(LN) ../dtext.dat .
-
-dinit.o: dinit.c dindx.dat dtext.dat
+dinit.o: dinit.c
 	$(CC) $(CFLAGS) $(GDTFLAG) -DIndexFile=\"$(LIBDIR)/dindx.dat\" -DStoryFile=\"$(LIBDIR)/dtext.dat\" -c dinit.c
 dgame.o: dgame.c
 	$(CC) $(CFLAGS) $(GDTFLAG) -c dgame.c
