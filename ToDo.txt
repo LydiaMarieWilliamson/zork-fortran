@@ -1,23 +1,17 @@
 Pending reconciliations between the C1991 and C2021 / Fortran versions:
-∙	Index File Contents:
-	―	The contents of the tables differ slightly between the C1991 and C2021 versions.
-		The oflag1 flags disagree for several objects, in the object table.
-	Reconciliations/Upgrades:
-	―	Arbitrate between the two, using version 3.2B of the Fortran source as a guide: dindx.dat, DB.txt.
 ∙	Story File Format:
 	―	C1991 uses non-sequential files with effective record length 8 bytes, but no buffered I/O.
 		The C1991 architecture cannot be directly implemented in Fortran 1977 (nor in Fortran 1990).
 	―	C2021/Fortran uses buffered non-sequential files with record length 2+74 bytes.
-	―	The contents of the story files disagree: version information, history, corrections and revised layout.
 	―	Version 3 of the Fortran source uses buffered non-sequential files with record length 4+76 bytes.
 	―	The desired revision is with direct access stream files, which is present in Fortran 2003.
 	Reconciliations/Upgrades:
-	―	Normalize the format of dtext.dat and rewrite the messaging routine: dsub.c, dtext.dat, DB.txt.
+	―	Normalize the format of dtext.dat and rewrite the messaging routine: dsub.{c,f}, d{indx,text}.dat, DB.txt, readit.{c,f}.
 ∙	The README.
-∙	Inclusion of a more comprehensive test suite: Test.*, Makefile.
 ∙	Merge C1991 and C2021 - which may require first splitting off C2021.
 
 Pending recoding ― for both the C and Fortran versions:
+∙	Inclusion of a more comprehensive test suite: Test.*, Makefile.
 ∙	Removal of system-generated locals.
 ∙	Integration of Fortran version 3.2.
 	This may require moving the Fortran files into F1987 and adding F1994 for version 3.2 as a sub-module.
