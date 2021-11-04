@@ -5,7 +5,7 @@ There is a small mailbox here.
 >Opening the mailbox reveals:
   A leaflet.
 >Taken.
-      Welcome to Dungeon!
+		    Welcome to Dungeon!
 
    Dungeon is a game of adventure, danger, and low cunning.  In it
 you will explore some of the most amazing territory ever seen by mortal
@@ -25,7 +25,8 @@ Daniels, and Dave Lebling.  It was inspired by the Adventure game of
 Crowther and Woods, and the Dungeons and Dragons game of Gygax
 and Arneson.  The original version was written in MDL (alias MUDDLE).
 The current version was translated from MDL into FORTRAN IV by
-a somewhat paranoid DEC engineer who prefers to remain anonymous.
+a somewhat paranoid DEC engineer who prefers to remain anonymous,
+and was later translated to C and then updated to C99.
 
    On-line information may be obtained with the commands HELP and INFO.
 >Closed.
