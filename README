@@ -150,21 +150,18 @@ Dungeon consists of the following files:
 	xsrch.h			-header file for the Directions/Exits Labels
 1	rtim.f			-Fortran routines for system-dependent functions
 0	rtim.c			-C routines for system-dependent functions
-1	readit.c		-C routine to decompile the database files dindx.dat and dtext.dat
-0	decode.c		-C routine to decode binary text file [debug]
-	dindx.dat		-initialization data base
-	dtext.dat		-main data base [binary file]
+1	readit.f		-C routine to decompile the database file dtext.dat
+	C2021/dindx.dat		-initialization data base
+	C2021/dtext.dat		-main data base [binary file]
 0	dungeon.doc		-original documentation file
 0	dungeon.6		-man page abstracted from dungeon.doc
+1	C2021/Zork.6		-man page abstracted from dungeon.doc
 0	dungeon.sh		-shell script to invoke pdp version
 	Makefile		-Makefile for making pdp or vax versions
 	History			-Some revision history notes
 0	PDP.doc			-Notes on the PDP-11/Unix conversion
 	README			-This file
-1	DB.txt			-Decompilation of the database.
 1	Make.log		-Compilation notes
-1	Test.in			-Test input.
-1	Test.ex			-Test output.
 0	cinit.c			-C routine to initialize game [pdp ver]
 0	cio.c			-C routine for misc i/o [pdp version]
 0	listen.c		-C co-process for reading keyboard [pdp]
