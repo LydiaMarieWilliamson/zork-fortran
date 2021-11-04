@@ -11,6 +11,6 @@ There is a small mailbox here.
 >Taken.
 >I don't think that the leaflet would agree with you.
 >Closed.
->Your score would be   0 [total of 585 points], in    9 moves.
+>Your score would be 0 [total of 585 points], in 9 moves.
 This gives you the rank of Beginner.
 Do you wish to leave the game?
