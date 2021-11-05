@@ -126,11 +126,11 @@ C
 C
 C           FIND END OF SUBSTITUTE STRING IN B1:
 C
-	    J=74
-	    DO WHILE (J.GE.1)
+	    J=74+I
+	    DO WHILE (J.GT.I)
 C						!ELIM TRAILING BLANKS.
-	      IF(B1(J:J).NE.' ') EXIT
 	      J=J-1
+	      IF(B1(J:J).NE.' ') EXIT
 	    END DO
 C
 C           PUT TAIL END OF B1 (NOW IN B2) BACK INTO B1 AFTER SUBSTITUTE STRING:

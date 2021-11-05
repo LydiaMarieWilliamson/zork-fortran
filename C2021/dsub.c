@@ -101,8 +101,8 @@ L200:
 //       READ SUBSTITUTE STRING INTO REMAINDER OF B1, AND DECRYPT IT:
          jrec = GetRec(StoryF, y, 0U, b1 + i);
 //       FIND END OF SUBSTITUTE STRING IN B1:
-         j = 74;
-         while (--j >= 0) {
+         j = i + 74;
+         while (--j >= i) {
 // 						!ELIM TRAILING BLANKS.
             if (b1[j] != ' ') {
                break;

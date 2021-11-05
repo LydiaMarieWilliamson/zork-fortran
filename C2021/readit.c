@@ -37,7 +37,7 @@ void PutMsg(int X) {
 int main(void) {
    const char *MyIndexFile = "dindx.dat", *MyStoryFile = "dtext.dat";
 // Now, restore from the existing index file.
-   FILE *IndexF = fopen(MyIndexFile, "r"); if (IndexF == NULL) { printf("I can't open %s.\n", MyIndexFile); return 1; }
+   FILE *IndexF = fopen(MyIndexFile, "r"); if (IndexF == NULL) { printf("I can't open %s.\n", MyIndexFile); return EXIT_FAILURE; }
 // /edit/:
    int Maj = GetWord(IndexF), Min = GetWord(IndexF), Edit = GetWord(IndexF);
    printf("/edit/: %1d.%1d.%1d\n", Maj, Min, Edit);
@@ -152,8 +152,8 @@ int main(void) {
    for (int m = 0; m < mlnt; m++) PutMsg(rtext[m]), printf(",\n");
 // Initialization done.
    fclose(IndexF);
-   if (IOErrs > 0) { printf("I can't read %s: %d error(s) found.", MyIndexFile, IOErrs); return 1; }
-   FILE *StoryF = fopen(MyStoryFile, "rb"); if (StoryF == NULL) { printf("I can't open %s.\n", MyStoryFile); return 1; }
+   if (IOErrs > 0) { printf("I can't read %s: %d error(s) found.", MyIndexFile, IOErrs); return EXIT_FAILURE; }
+   FILE *StoryF = fopen(MyStoryFile, "rb"); if (StoryF == NULL) { printf("I can't open %s.\n", MyStoryFile); return EXIT_FAILURE; }
    printf("Message Table:\n");
    struct frec {
       char ix[2], buf[74];
@@ -171,5 +171,5 @@ int main(void) {
       printf(":%s\n", buf);
    }
    fclose(StoryF);
-   return 0;
+   return EXIT_SUCCESS;
 }

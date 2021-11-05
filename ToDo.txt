@@ -58,3 +58,4 @@ Longer-term items:
 	The files blkdata.{c,f}, np*.{c,f} and *verb*.{c,f} are the core of a semantic-processing engine,
 	but have Englishisms hard-coded in them.
 ∙	Dynamic worlds & possibly also parallel worlds.
+∙	Upgrading the encryption (e.g. to [[X]X]TEA or something stronger), if the need is justified.
