@@ -250,8 +250,7 @@ C						!GET VERSION.
 
 C	OPEN(UNIT=STORYCH,file='/usr/share/games/dungeon/dtext.dat',
 	OPEN(UNIT=STORYCH,file='dtext.dat',
-     &	status='OLD',FORM='UNFORMATTED',ACCESS='DIRECT',
-     &	recl=76,ERR=1950)
+     &	STATUS='OLD',ACCESS='STREAM',ERR=1950)
 
 D	PRINT 150
 D150	FORMAT('RESTORING FROM "dindx.dat"')

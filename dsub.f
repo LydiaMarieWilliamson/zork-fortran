@@ -4,21 +4,73 @@ C Written by R. M. Supnik.
 C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
 C
 C Resident subroutines for dungeon
-
-	INTEGER FUNCTION GETREC(CH,X,IX,BUF)
+	LOGICAL FUNCTION GETREC(INCH,LOC,N,BUF)
 	IMPLICIT INTEGER(A-Z)
-	CHARACTER*74 BUF
-	INTEGER*2 IX, NEWIX
-	READ(UNIT=CH,REC=X) NEWIX, BUF
-C Decrypt, if it is the first record or a continuation record.
-	IF((IX.EQ.0).OR.(NEWIX.EQ.IX)) THEN
-	   DO 100 I=1,74
-	      X1=IAND(X,31)+I
-	      BUF(I:I)=CHAR(IEOR(ICHAR(BUF(I:I)),X1))
-100	   CONTINUE
-	ENDIF
-	GETREC = NEWIX
+	PARAMETER (TEXLNT=INT(Z'80'))
+	PARAMETER (LASTMASK=INT(Z'80'))
+	PARAMETER (KEYMASK=INT(Z'FF'))
+	INTEGER*4 LOC
+	CHARACTER BUF(TEXLNT)
+	CHARACTER IX
+	INTEGER KEY(2*TEXLNT)
+C	Seed: (3789712696) 0xe1e26d38: 1984-12-28 03:30 UTC
+C	CALL INIRND(Z'E1E26D38')
+C	DO 1 X=1,INT(Z'100')
+C	  KEY(X) = RND(INT(Z'100'))
+C1:	CONTINUE
+	DATA KEY/
+     &	  Z'31',Z'5F',Z'58',Z'D7',Z'99',Z'0E',Z'C2',Z'79',
+     &	  Z'F5',Z'A1',Z'CF',Z'23',Z'B6',Z'7E',Z'E4',Z'86',
+     &	  Z'DB',Z'3E',Z'65',Z'09',Z'A0',Z'C3',Z'DD',Z'D5',
+     &	  Z'EE',Z'3C',Z'B5',Z'E6',Z'1C',Z'5C',Z'04',Z'3A',
+     &	  Z'62',Z'CF',Z'19',Z'5E',Z'34',Z'61',Z'18',Z'8F',
+     &	  Z'A7',Z'08',Z'BC',Z'57',Z'8C',Z'64',Z'D8',Z'12',
+     &	  Z'7D',Z'A0',Z'FA',Z'F7',Z'3E',Z'D5',Z'84',Z'91',
+     &	  Z'A0',Z'88',Z'BD',Z'48',Z'D4',Z'EF',Z'6B',Z'F8',
+     &	  Z'F8',Z'2F',Z'E4',Z'82',Z'2A',Z'08',Z'D3',Z'DD',
+     &	  Z'A1',Z'8A',Z'C8',Z'D8',Z'FD',Z'78',Z'76',Z'73',
+     &	  Z'F5',Z'98',Z'12',Z'7F',Z'C6',Z'69',Z'36',Z'28',
+     &	  Z'C7',Z'B9',Z'0F',Z'E0',Z'BD',Z'26',Z'DB',Z'5E',
+     &	  Z'D2',Z'4B',Z'4E',Z'2E',Z'8A',Z'FA',Z'03',Z'82',
+     &	  Z'07',Z'6C',Z'25',Z'7D',Z'70',Z'DA',Z'5C',Z'52',
+     &	  Z'B0',Z'6D',Z'82',Z'2A',Z'0A',Z'2F',Z'2D',Z'5C',
+     &	  Z'5D',Z'D3',Z'C9',Z'4D',Z'E5',Z'9E',Z'EF',Z'4D',
+     &	  Z'6B',Z'D6',Z'41',Z'E3',Z'E6',Z'95',Z'E9',Z'E8',
+     &	  Z'4D',Z'49',Z'AF',Z'FC',Z'81',Z'25',Z'17',Z'EC',
+     &	  Z'77',Z'60',Z'E0',Z'C3',Z'40',Z'B7',Z'E7',Z'B9',
+     &	  Z'BA',Z'6C',Z'AD',Z'D1',Z'15',Z'8B',Z'29',Z'A5',
+     &	  Z'70',Z'18',Z'F6',Z'29',Z'3C',Z'D3',Z'5C',Z'1C',
+     &	  Z'E3',Z'46',Z'53',Z'C6',Z'C8',Z'D3',Z'5B',Z'A1',
+     &	  Z'E2',Z'0C',Z'8D',Z'0A',Z'2C',Z'2D',Z'39',Z'CF',
+     &	  Z'CD',Z'26',Z'EC',Z'88',Z'0D',Z'AB',Z'B7',Z'CD',
+     &	  Z'67',Z'8E',Z'F5',Z'7C',Z'7B',Z'17',Z'12',Z'FF',
+     &	  Z'CC',Z'81',Z'63',Z'F7',Z'C9',Z'EC',Z'3D',Z'3A',
+     &	  Z'AC',Z'31',Z'44',Z'8B',Z'32',Z'AD',Z'AC',Z'59',
+     &	  Z'5D',Z'52',Z'96',Z'A9',Z'6D',Z'80',Z'B5',Z'1F',
+     &	  Z'07',Z'5F',Z'00',Z'6A',Z'51',Z'6C',Z'FB',Z'C7',
+     &	  Z'DA',Z'C5',Z'88',Z'A9',Z'0B',Z'2D',Z'E2',Z'96',
+     &	  Z'BA',Z'6E',Z'EC',Z'EF',Z'41',Z'56',Z'92',Z'C4',
+     &	  Z'0D',Z'1A',Z'0D',Z'9C',Z'CA',Z'0B',Z'95',Z'AA'
+     &	/
+	READ(INCH,POS=LOC,ERR=200)IX
+        N=ICHAR(IX)
+	GETREC=.FALSE.
+	IF(AND(N,LASTMASK).NE.0)GETREC=.TRUE.
+	N=AND(N,NOT(LASTMASK))
+	READ(INCH,POS=LOC+1,ERR=300)BUF(1:N)
+	DO 100 I=1,N
+	  BUF(I)=CHAR(XOR(ICHAR(BUF(I)),KEY(1+AND(INT(LOC),KEYMASK))))
+	  LOC=LOC+1
+100	CONTINUE
+	LOC=LOC+1
+	BUF(N+1)=CHAR(0)
 	RETURN
+200	WRITE(OUTCH,201)LOC
+201	FORMAT('Error reading string size at #I0')
+	CALL EXIT
+300	WRITE(OUTCH,301)LOC
+301	FORMAT('Error reading string line at #I0')
+	CALL EXIT
 	END
 
 C
@@ -72,90 +124,73 @@ C	CALL RSPSB2(MSGNUM,SUBNUM1,SUBNUM2)
 	RETURN
 	END
 
+C Display a substitutable message.
 	SUBROUTINE    RSPEAK2(X,Y,Z)
 	IMPLICIT      INTEGER(A-Z)
-	INTEGER       X,Y,Z
-	CHARACTER*148 B1
-	CHARACTER*74  B2
-	INTEGER*2     ZERO,OLDREC,NEWREC,JREC
+	PARAMETER     (TEXLNT=INT(Z'80'))
+	INTEGER*4     X,Y,Z
+	CHARACTER*256 B1
+	CHARACTER*128 B2
+	LOGICAL       LAST,JLAST,GETREC
 C
 	include 'gamestat.h'
 C
 	include 'mindex.h'
 	include 'io.h'
-        ZERO=0
+	LAST=.FALSE.
 	IF(X.EQ.0) RETURN
 C						!ANYTHING TO DO?
 	TELFLG=.TRUE.
 C						!SAID SOMETHING.
-C
-   	OLDREC=GETREC(STORYCH,X,ZERO,B1(1:74))
-C
-	DO WHILE (.TRUE.)
-200	  I=74+1
-	  IF(Y.NE.0) THEN
+	DO WHILE(.NOT.LAST)
+	  LAST=GETREC(STORYCH,X,N1,B1(1:TEXLNT))
+200	  IF(Y.NE.0) THEN
 C						!ANY SUBSTITUTABLE?
-	    I=1
-	    DO WHILE (I.LE.74)
+	  I3=INDEX(B1,'#')
 C						!YES, LOOK FOR #.
-	      IF(B1(I:I).EQ.'#') EXIT
-	      I=I+1
-	    END DO
-C
-	  ENDIF
-	  IF (I.LE.74) THEN
+	  IF (I3.GT.0) THEN
 C
 C           SUBSTITUTION WITH SUBSTITUTABLE AVAILABLE.
-C             I IS INDEX OF # IN B1.
-C             Y IS NUMBER OF RECORD TO SUBSTITUTE.
+C             I3 IS INDEX OF # IN B1.
+C             Y IS LOCATION OF RECORD TO SUBSTITUTE.
 C
 C           PROCEDURE:
 C             1) COPY REST OF B1 TO B2
-C             2) READ SUBSTITUTABLE OVER B1
+C             2) READ SUBSTITUTABLE OVER B1 AT I3
 C             3) RESTORE TAIL OF ORIGINAL B1
 C
 C           THE IMPLICIT ASSUMPTION HERE IS THAT THE SUBSTITUTABLE STRING
 C           IS VERY SHORT (i.e. MUCH LESS THAN ONE RECORD).
 C
-	    B2(1:74-I)=B1(I+1:74)
-C						!COPY REST OF B1 TO B2.
+	    N2=N1-I3
+	    B2(1:N2+1)=B1(I3+1:N1+1)
+C                                               !COPY REST OF B1 TO B2.
 C
 C           READ SUBSTITUTE STRING INTO REMAINDER OF B1, AND DECRYPT IT:
 C
-	    JREC=GETREC(STORYCH,Y,ZERO,B1(I:I+74-1))
+            JLAST=GETREC(STORYCH,Y,N3,B1(I3:I3+TEXLNT-1))
 C
 C           FIND END OF SUBSTITUTE STRING IN B1:
 C
-	    J=74+I
-	    DO WHILE (J.GT.I)
-C						!ELIM TRAILING BLANKS.
-	      J=J-1
-	      IF(B1(J:J).NE.' ') EXIT
-	    END DO
+	    I3=I3+N3
 C
 C           PUT TAIL END OF B1 (NOW IN B2) BACK INTO B1 AFTER SUBSTITUTE STRING:
 C
-	    B1(J+1:74)=B2(1:74-J)
-C						!COPY REST OF B1 BACK FROM B2.
+	    N1=I3+N2-1
+            B1(I3:N1+1)=B2(1:N2+1)
+C                                               !COPY REST OF B1 BACK FROM B2.
 C
-	    Y=Z
+	      Y=Z
 C						!SET UP FOR NEXT
-	    Z=0
+	      Z=0
 C						!SUBSTITUTION AND
-	    GO TO 200
+	      GO TO 200
 C						!RECHECK LINE.
+          END IF
 	  END IF
-	  DO WHILE (I.GT.1)
-C						!BACKSCAN FOR BLANKS.
-	    I=I-1
-	    IF(B1(I:I).NE.' ') EXIT
-	  END DO
-C
-	  WRITE(OUTCH,650) (B1(J:J),J=1,I)
-650	  FORMAT(74A1)
-	  X=X+1
+          WRITE(OUTCH,650) (B1(J:J),J=1,N1)
+650       FORMAT(128A1)
 C						!ON TO NEXT RECORD.
-	  IF(OLDREC.NE.GETREC(STORYCH,X,OLDREC,B1)) EXIT
 	END DO
 C						!CONTINUATION?
 	RETURN

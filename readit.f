@@ -1,3 +1,5 @@
+C	NOTE: This hasn't yet been updated
+C       to read the current version of 'dtext.dat'
 	PROGRAM StreamIO
 	IMPLICIT NONE
 	INTEGER*2 :: N,EXN

@@ -1,13 +1,5 @@
 Pending reconciliations between the C1991 and C2021 / Fortran versions:
-∙	Story File Format:
-	―	C1991 uses non-sequential files with effective record length 8 bytes, but no buffered I/O.
-		The C1991 architecture cannot be directly implemented in Fortran 1977 (nor in Fortran 1990).
-	―	C2021/Fortran uses buffered non-sequential files with record length 2+74 bytes.
-	―	Version 3 of the Fortran source uses buffered non-sequential files with record length 4+76 bytes.
-	―	The desired revision is with direct access stream files, which is present in Fortran 2003.
-	Reconciliations/Upgrades:
-	―	Normalize the format of dtext.dat and rewrite the messaging routine: dsub.{c,f}, d{indx,text}.dat, DB.txt, readit.{c,f}.
-∙	The README.
+∙	Update the Fortran version of the story database decompiler ‛readit.f’.
 ∙	Merge C1991 and C2021 - which may require first splitting off C2021.
 
 Pending recoding ― for both the C and Fortran versions:
