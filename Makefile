@@ -15,7 +15,7 @@ RM=rm -f
 FC = gfortran
 
 ifeq ($(DEBUG),1)
-GDT = gdt.f
+gdt = gdt
 DLINE = -fd-lines-as-code
 else
 DLINE = -fd-lines-as-comments
@@ -26,19 +26,26 @@ APP = dungeon
 #BINDIR = $(DESTDIR)/usr/bin
 #APPDIR = $(DESTDIR)/usr/share/games/$(APP)
 ## Where it's going now, for the time being.
-BINDIR=.
-APPDIR=.
+BINDIR = .
+APPDIR = .
 
-FORS =  actors.f ballop.f clockr.f demons.f \
-	dgame.f dinit.f dmain.f dso1.f dso2.f \
-	dso3.f dso4.f dso5.f dso6.f dso7.f \
-	dsub.f dverb1.f dverb2.f lightp.f \
-	nobjs.f np.f np2.f np3.f nrooms.f objcts.f \
-	rooms.f sobjs.f sverbs.f verbs.f villns.f \
-	np1.f blkdata.f rtim.f $(GDT)
+## The modules - grouped together as they appear in version 3.2.
+dungeon = dmain
+game = dgame dinit
+objects = lightp objcts sobjs nobjs ballop villns
+parser = np blkdata np1 np2 np3
+rooms = rooms nrooms
+subr = dsub dso1 dso2 dso3 dso4 dso5 dso6 dso7 rtim
+timefnc = clockr demons actors
+verbs = sverbs verbs dverb1 dverb2
+MODS = $(dungeon) $(game) $(objects) $(parser) $(rooms) $(subr) $(timefnc) $(verbs) $(gdt)
+OBJS = $(MODS:%=%.o)
 
-$(APP): $(FORS) dindx.dat dtext.dat
-	$(FC) $(FFLAGS) -fbackslash $(DLINE) -o $(APP) $(FORS)
+.f.o:
+	$(FC) $(FFLAGS) -fbackslash $(DLINE) -c $<
+
+$(APP): $(OBJS) dindx.dat dtext.dat
+	$(FC) $(OBJS) -o $@
 
 test: $(APP) Test0.in Test1.in Test2.in
 	@./$(APP) 655600000 <Test0.in > Ex0 && diff -d Test0.ex Ex0 && rm Ex0 && \
@@ -54,6 +61,7 @@ test: $(APP) Test0.in Test1.in Test2.in
 	echo "Tests passed."
 
 clean:
+	$(RM) $(OBJS)
 	$(RM) core dsave.dat *~
 untest:
 	$(RM) Ex*

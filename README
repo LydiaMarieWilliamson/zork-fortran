@@ -9,8 +9,6 @@ The Makefile provided here (which subsumes the one described below) is set up fo
 No additional measures have yet been added for the ‟GDB” in-program debugger, and it's possible that none may be.
 Script file inputs and outputs may be added to be used for regression testing.
 
-In addition, the readit.c program (described below) may be replaced by an actual glossary listing
-and/or (de)compiler for the *.dat files.
 As with other games, this contains the architecture of an entire world in it ...
 but also some fixed parameters that best belong in the source code files, instead.
 
@@ -46,7 +44,7 @@ Changes made:
 
 All pretty trivial.
 
-Also, the program readit (compiled from readit.c) will allow printing out all the text strings in the game.
+The program readit (compiled from readit.f or readit.c) will decompile the database files ‟dindx.dat” and ‟dtext.dat”.
 This is useful for the cheaters among you, particularly those compiling in the GDT command. :-)
 
 The original README
@@ -148,11 +146,12 @@ Dungeon consists of the following files:
 	vocab.h			-header file for the Vocabularies
 	xpars.h			-header file for the Directions/Exits Parser
 	xsrch.h			-header file for the Directions/Exits Labels
-1	rtim.f			-Fortran routines for system-dependent functions
-0	rtim.c			-C routines for system-dependent functions
-1	readit.f		-C routine to decompile the database file dtext.dat
-	C2021/dindx.dat		-initialization data base
-	C2021/dtext.dat		-main data base [binary file]
+	readit.f		-Fortran routine to decompile the database files dindx.dat and dtext.dat
+	rtim.f			-Fortran routines for system-dependent functions
+	C2021/readit.c		-C routine to decompile the database files dindx.dat and dtext.dat
+	C2021/rtim.c		-C routines for system-dependent functions
+	C2021/dindx.dat		-the database index file: for initializing parameters and tables
+	C2021/dtext.dat		-the database story file: for the text strings [a binary file with XOR-encrypted strings]
 0	dungeon.doc		-original documentation file
 0	dungeon.6		-man page abstracted from dungeon.doc
 1	C2021/Zork.6		-man page abstracted from dungeon.doc

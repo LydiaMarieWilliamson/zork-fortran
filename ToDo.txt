@@ -1,5 +1,4 @@
-Pending reconciliations between the C1991 and C2021 / Fortran versions:
-∙	Update the Fortran version of the story database decompiler ‛readit.f’.
+The C1991 and C2021 / Fortran versions are now fully reconciled.
 ∙	Merge C1991 and C2021 - which may require first splitting off C2021.
 
 Pending recoding ― for both the C and Fortran versions:

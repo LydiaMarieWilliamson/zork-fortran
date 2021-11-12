@@ -1,30 +1,474 @@
-C	NOTE: This hasn't yet been updated
-C       to read the current version of 'dtext.dat'
-	PROGRAM StreamIO
-	IMPLICIT NONE
-	INTEGER*2 :: N,EXN
-	INTEGER :: I,J,STORYCH
-	PARAMETER(STORYCH=1)
-	CHARACTER(74) :: Buf
-	OPEN(STORYCH,FILE="dtext.dat",STATUS="OLD",ACCESS="STREAM")
-	I=0
-	EXN=0
-	DO WHILE (.TRUE.)
-           READ(STORYCH,POS=76*I+1,END=100)N,Buf
-           DO 110 J=1,74
-              Buf(J:J)=CHAR(XOR(ICHAR(Buf(J:J)),AND(I+1,Z'1F')+J))
-110	   CONTINUE
-	   IF (N.EQ.EXN) THEN
-	      WRITE(*,130)
-	   ELSE
-	      WRITE(*,120)N
-	   ENDIF
-	   WRITE(*,140)Buf
-	   EXN=N
-	   I=I+1
+C Copyright (c) 1980, InfoCom Computers and Communications, Cambridge MA 02142
+C All rights reserved, commercial usage strictly prohibited.
+C Written by R. M. Supnik.
+C Revisions Copyright (c) 2021, Darth Spectra (Lydia Marie Williamson).
+C
+C Taken out of rtim.f:
+	SUBROUTINE EXIT
+C NO "CALL EXIT" HERE
+	STOP
+	END
+C Taken out of dsub.f:
+	LOGICAL FUNCTION GETREC(INCH,LOC,N,BUF)
+	IMPLICIT INTEGER(A-Z)
+	PARAMETER (TEXLNT=INT(Z'80'))
+	PARAMETER (LASTMASK=INT(Z'80'))
+	PARAMETER (KEYMASK=INT(Z'FF'))
+	INTEGER*4 LOC
+	CHARACTER BUF(TEXLNT)
+	CHARACTER IX
+	INTEGER KEY(2*TEXLNT)
+C	Seed: (3789712696) 0xe1e26d38: 1984-12-28 03:30 UTC
+C	CALL INIRND(Z'E1E26D38')
+C	DO 1 X=1,INT(Z'100')
+C	  KEY(X) = RND(INT(Z'100'))
+C1:	CONTINUE
+	DATA KEY/
+     &	  Z'31',Z'5F',Z'58',Z'D7',Z'99',Z'0E',Z'C2',Z'79',
+     &	  Z'F5',Z'A1',Z'CF',Z'23',Z'B6',Z'7E',Z'E4',Z'86',
+     &	  Z'DB',Z'3E',Z'65',Z'09',Z'A0',Z'C3',Z'DD',Z'D5',
+     &	  Z'EE',Z'3C',Z'B5',Z'E6',Z'1C',Z'5C',Z'04',Z'3A',
+     &	  Z'62',Z'CF',Z'19',Z'5E',Z'34',Z'61',Z'18',Z'8F',
+     &	  Z'A7',Z'08',Z'BC',Z'57',Z'8C',Z'64',Z'D8',Z'12',
+     &	  Z'7D',Z'A0',Z'FA',Z'F7',Z'3E',Z'D5',Z'84',Z'91',
+     &	  Z'A0',Z'88',Z'BD',Z'48',Z'D4',Z'EF',Z'6B',Z'F8',
+     &	  Z'F8',Z'2F',Z'E4',Z'82',Z'2A',Z'08',Z'D3',Z'DD',
+     &	  Z'A1',Z'8A',Z'C8',Z'D8',Z'FD',Z'78',Z'76',Z'73',
+     &	  Z'F5',Z'98',Z'12',Z'7F',Z'C6',Z'69',Z'36',Z'28',
+     &	  Z'C7',Z'B9',Z'0F',Z'E0',Z'BD',Z'26',Z'DB',Z'5E',
+     &	  Z'D2',Z'4B',Z'4E',Z'2E',Z'8A',Z'FA',Z'03',Z'82',
+     &	  Z'07',Z'6C',Z'25',Z'7D',Z'70',Z'DA',Z'5C',Z'52',
+     &	  Z'B0',Z'6D',Z'82',Z'2A',Z'0A',Z'2F',Z'2D',Z'5C',
+     &	  Z'5D',Z'D3',Z'C9',Z'4D',Z'E5',Z'9E',Z'EF',Z'4D',
+     &	  Z'6B',Z'D6',Z'41',Z'E3',Z'E6',Z'95',Z'E9',Z'E8',
+     &	  Z'4D',Z'49',Z'AF',Z'FC',Z'81',Z'25',Z'17',Z'EC',
+     &	  Z'77',Z'60',Z'E0',Z'C3',Z'40',Z'B7',Z'E7',Z'B9',
+     &	  Z'BA',Z'6C',Z'AD',Z'D1',Z'15',Z'8B',Z'29',Z'A5',
+     &	  Z'70',Z'18',Z'F6',Z'29',Z'3C',Z'D3',Z'5C',Z'1C',
+     &	  Z'E3',Z'46',Z'53',Z'C6',Z'C8',Z'D3',Z'5B',Z'A1',
+     &	  Z'E2',Z'0C',Z'8D',Z'0A',Z'2C',Z'2D',Z'39',Z'CF',
+     &	  Z'CD',Z'26',Z'EC',Z'88',Z'0D',Z'AB',Z'B7',Z'CD',
+     &	  Z'67',Z'8E',Z'F5',Z'7C',Z'7B',Z'17',Z'12',Z'FF',
+     &	  Z'CC',Z'81',Z'63',Z'F7',Z'C9',Z'EC',Z'3D',Z'3A',
+     &	  Z'AC',Z'31',Z'44',Z'8B',Z'32',Z'AD',Z'AC',Z'59',
+     &	  Z'5D',Z'52',Z'96',Z'A9',Z'6D',Z'80',Z'B5',Z'1F',
+     &	  Z'07',Z'5F',Z'00',Z'6A',Z'51',Z'6C',Z'FB',Z'C7',
+     &	  Z'DA',Z'C5',Z'88',Z'A9',Z'0B',Z'2D',Z'E2',Z'96',
+     &	  Z'BA',Z'6E',Z'EC',Z'EF',Z'41',Z'56',Z'92',Z'C4',
+     &	  Z'0D',Z'1A',Z'0D',Z'9C',Z'CA',Z'0B',Z'95',Z'AA'
+     &	/
+	READ(INCH,POS=LOC,ERR=200)IX
+        N=ICHAR(IX)
+	GETREC=AND(N,LASTMASK).NE.0
+	N=AND(N,NOT(LASTMASK))
+	READ(INCH,POS=LOC+1,ERR=300)BUF(1:N)
+	DO 100 I=1,N
+	  BUF(I)=CHAR(XOR(ICHAR(BUF(I)),KEY(1+AND(INT(LOC),KEYMASK))))
+	  LOC=LOC+1
+100	CONTINUE
+	LOC=LOC+1
+	BUF(N+1)=CHAR(0)
+	RETURN
+200	WRITE(OUTCH,201)LOC
+201	FORMAT('Error reading string size at #I0')
+	CALL EXIT
+300	WRITE(OUTCH,301)LOC
+301	FORMAT('Error reading string line at #I0')
+	CALL EXIT
+	END
+C
+	SUBROUTINE PUTMSG(X)
+	INTEGER*4 X
+	  IF(X.LT.0) THEN
+	    PRINT 1000,-X
+	  ELSE IF(X.GT.0) THEN
+	    PRINT 1001,X
+	  ELSE
+	    PRINT 1002
+	  ENDIF
+1000	  FORMAT('#',I6.6,$)
+1001	  FORMAT('?',I4.4,$)
+1002	  FORMAT('-----',$)
+	RETURN
+	END
+C
+C Dungeon initialization subroutine
+	PROGRAM READIT
+	IMPLICIT INTEGER(A-Z)
+	INTEGER*4 X,EXX
+	PARAMETER (TEXLNT=INT(Z'80'))
+	CHARACTER BUF(TEXLNT)
+C	include 'io.h'
+	INTEGER INDEXCH,STORYCH
+	PARAMETER(INDEXCH=1)
+	PARAMETER(STORYCH=2)
+C	COMMON /CHAN/ ⋯,INDEXCH,STORYCH
+C						!DATA BASE.
+	INTEGER VMAJ,VMIN
+C	COMMON /VERS/ VMAJ,VMIN,VEDIT
+C	include 'state.h'
+	INTEGER MXSCOR,BLOC,EGMXSC
+C	COMMON /STATE/ ⋯,MXSCOR,⋯,BLOC,⋯,EGMXSC
+C	include 'rooms.h'
+	INTEGER RMAX,RLNT
+	PARAMETER(RMAX=200)
+	INTEGER RDESC1(200),RDESC2(200),REXIT(200)
+	INTEGER RACTIO(200),RVAL(200),RFLAG(200)
+C	COMMON /ROOMS/ RLNT,RDESC1(200),RDESC2(200),REXIT(200),
+C    &		RACTIO(200),RVAL(200),RFLAG(200)
+C	include 'exits.h'
+	INTEGER XMAX,XLNT
+	PARAMETER(XMAX=900)
+	INTEGER TRAVEL(900)
+C	COMMON /EXITS/ XLNT,TRAVEL(900)
+	LOGICAL FIRST,LAST,GETREC
+C	include 'oindex.h'
+	INTEGER BALLO
+	PARAMETER(BALLO=98)
+C	include 'objects.h'
+	INTEGER OMAX,OLNT
+	PARAMETER(OMAX=220)
+	INTEGER ODESC1(220),ODESC2(220),ODESCO(220)
+	INTEGER OACTIO(220),OFLAG1(220),OFLAG2(220)
+	INTEGER OFVAL(220),OTVAL(220),OSIZE(220),OCAPAC(220)
+	INTEGER OROOM(220),OADV(220),OCAN(220),OREAD(220)
+C	COMMON /OBJCTS/ OLNT,
+C    &	ODESC1(220),ODESC2(220),ODESCO(220),
+C    &	OACTIO(220),OFLAG1(220),OFLAG2(220),
+C    &	OFVAL(220),OTVAL(220),OSIZE(220),OCAPAC(220),
+C    &	OROOM(220),OADV(220),OCAN(220),OREAD(220)
+	INTEGER R2MAX,R2LNT
+	PARAMETER(R2MAX=20)
+	INTEGER OROOM2(20),RROOM2(20)
+C	COMMON /OROOM2/ R2LNT,OROOM2(20),RROOM2(20)
+C	include 'clock.h'
+	INTEGER CMAX,CLNT
+	PARAMETER(CMAX=25)
+	INTEGER CTICK(25),CACTIO(25)
+	LOGICAL CFLAG(25)
+C	COMMON /CEVENT/ CLNT,CTICK(25),CACTIO(25),CFLAG(25)
+C	include 'villians.h'
+	INTEGER VMAX,VLNT
+	PARAMETER(VMAX=4)
+	INTEGER VILLNS(4),VPROB(4),VOPPS(4),VBEST(4),VMELEE(4)
+C	COMMON /VILL/ VLNT,VILLNS(4),VPROB(4),VOPPS(4),VBEST(4),VMELEE(4)
+C	include 'advers.h'
+	INTEGER AMAX,ALNT
+	PARAMETER(AMAX=4)
+	INTEGER AROOM(4),ASCORE(4),AVEHIC(4)
+	INTEGER AOBJ(4),AACTIO(4),ASTREN(4),AFLAG(4)
+C	COMMON /ADVS/ ALNT,AROOM(4),ASCORE(4),AVEHIC(4),
+C     &	AOBJ(4),AACTIO(4),ASTREN(4),AFLAG(4)
+	INTEGER MBASE,STRBIT
+C	COMMON /STAR/ MBASE,STRBIT
+C	include 'mindex.h'
+	INTEGER MMAX,MLNT
+	PARAMETER(MMAX=1700)
+	INTEGER*4 RTEXT(1700)
+C	COMMON /RMSG/ MLNT,RTEXT(1700)
+C Decompile the story file.
+C NOW RESTORE FROM EXISTING INDEX FILE.
+C	OPEN(UNIT=INDEXCH,file='/usr/share/games/dungeon/dindx.dat',
+	OPEN(UNIT=INDEXCH,file='dindx.dat',
+     &	status='OLD',FORM='FORMATTED',ACCESS='SEQUENTIAL',ERR=900)
+	READ(INDEXCH,*) VMAJ,VMIN,VEDIT
+C /vers/:
+	PRINT 1030,VMAJ,VMIN,CHAR(VEDIT)
+C /state/: (BLOC will be set later).
+	READ(INDEXCH,*) MXSCOR,EGMXSC
+	PRINT 1031,MXSCOR,EGMXSC
+C /rooms/: (EQR)
+	PRINT 1000
+	PRINT 1010
+	PRINT 1020
+	RLNT=0
+C
+	DO 100 R=1,RMAX
+C						!CLEAR ROOM ARRAYS.
+	  RDESC1(R)=0
+	  RDESC2(R)=0
+	  RACTIO(R)=0
+	  RFLAG(R)=0
+	  RVAL(R)=0
+	  REXIT(R)=0
+100	CONTINUE
+	READ(INDEXCH,*) RLNT,RDESC1(1:RLNT),RDESC2(1:RLNT),REXIT(1:RLNT),
+     &	RACTIO(1:RLNT),RVAL(1:RLNT),RFLAG(1:RLNT)
+	PRINT 1032,RLNT,RMAX
+	DO 101 R=1,RLNT
+	  PRINT 1050
+	  CALL PUTMSG(RDESC1(R))
+	  PRINT 1060
+	  CALL PUTMSG(RDESC2(R))
+	  PRINT 1063,REXIT(R),RACTIO(R),RVAL(R),RFLAG(R)
+101	CONTINUE
+C /exits/:
+	PRINT 1000
+	PRINT 1011
+	PRINT 1020
+C
+	DO 110 X=1,XMAX
+C						!CLEAR TRAVEL ARRAY.
+	  TRAVEL(X)=0
+110	CONTINUE
+	READ(INDEXCH,*) XLNT,TRAVEL(1:XLNT)
+	PRINT 1033,XLNT,XMAX
+C travel[x+0]: last:1, direction:5, type-1:2, room:8 (type in {1,2,3,4})
+C travel[x+1]: message (type in {2,3,4})
+C travel[x+2]: action:8, object:8 (type in {3,4})
+	X=1
+	DO WHILE (X.LE.XLNT)
+	  T=TRAVEL(X)
+	  LASTX=IAND(RSHIFT(T,15),1)
+	  DIRECTION=IAND(RSHIFT(T,10),INT(Z'1F'))
+	  TYPE=1+IAND(RSHIFT(T,8),3)
+	  ROOM=IAND(T,INT(Z'FF'))
+          IF ((TYPE.GT.2).AND.(X.GT.XLNT-3)
+     &	  .OR.(TYPE.GT.1).AND.(X.GT.XLNT-2)) THEN
+	    PRINT 1080
+	    CALL EXIT
+	  END IF
+	  X=X+1
+	  PRINT 1051,LASTX,DIRECTION,TYPE,ROOM
+	  IF (TYPE.GT.1) THEN
+	    PRINT 1060
+	    CALL PUTMSG(TRAVEL(X))
+	    X=X+1
+	  END IF
+	  IF (TYPE.GT.2) THEN
+	    T=TRAVEL(X)
+	    X=X+1
+	    PRINT 1081,IAND(RSHIFT(T,8),INT(Z'FF')),IAND(T,INT(Z'FF'))
+	  END IF
+	  PRINT 1070
 	END DO
-100	CLOSE(STORYCH)
-120	FORMAT('#',I4.4,$)
-130	FORMAT('     ',$)
-140	FORMAT(':',A74)
+C /objcts/: (EQO)
+	PRINT 1000
+	PRINT 1012
+	PRINT 1022
+C
+	DO 120 O=1,OMAX
+C						!CLEAR OBJECT ARRAYS.
+	  ODESC1(O)=0
+	  ODESC2(O)=0
+	  ODESCO(O)=0
+	  OACTIO(O)=0
+	  OFLAG1(O)=0
+	  OFLAG2(O)=0
+	  OFVAL(O)=0
+	  OTVAL(O)=0
+	  OSIZE(O)=0
+	  OCAPAC(O)=0
+	  OROOM(O)=0
+	  OADV(O)=0
+	  OCAN(O)=0
+	  OREAD(O)=0
+120	CONTINUE
+	READ(INDEXCH,*) OLNT,
+     &	ODESC1(1:OLNT),ODESC2(1:OLNT),ODESCO(1:OLNT),
+     &	OACTIO(1:OLNT),OFLAG1(1:OLNT),OFLAG2(1:OLNT),
+     &	OFVAL(1:OLNT),OTVAL(1:OLNT),OSIZE(1:OLNT),OCAPAC(1:OLNT),
+     &	OROOM(1:OLNT),OADV(1:OLNT),OCAN(1:OLNT),OREAD(1:OLNT)
+	PRINT 1034,OLNT,OMAX
+	DO 121 O=1,OLNT
+	  OFLAG1(O)=IAND(OFLAG1(O),INT(Z'FFFF'))
+	  OFLAG2(O)=IAND(OFLAG2(O),INT(Z'FFFF'))
+	  PRINT 1050
+	  CALL PUTMSG(ODESC1(O))
+	  PRINT 1060
+	  CALL PUTMSG(ODESC2(O))
+	  PRINT 1060
+	  CALL PUTMSG(ODESCO(O))
+	  PRINT 1061,OACTIO(O),OFLAG1(O),OFLAG2(O)
+	  PRINT 1062,OFVAL(O),OTVAL(O),OSIZE(O),OCAPAC(O)
+	  PRINT 1065,OROOM(O),OADV(O),OCAN(O)
+	  CALL PUTMSG(OREAD(O))
+	  PRINT 1070
+121	CONTINUE
+	BLOC=OROOM(BALLO)
+	PRINT 1035,BLOC,BALLO
+C /oroom2/:
+	PRINT 1000
+	PRINT 1013
+	PRINT 1022
+C
+	DO 130 R2=1,R2MAX
+C						!CLEAR ROOM 2 ARRAY.
+	  RROOM2(R2)=0
+	  OROOM2(R2)=0
+130	CONTINUE
+	READ(INDEXCH,*) R2LNT,OROOM2(1:R2LNT),RROOM2(1:R2LNT)
+	PRINT 1036,R2LNT,R2MAX
+	DO 131 R2=1,R2LNT
+	  PRINT 1052,OROOM2(R2),RROOM2(R2)
+131	CONTINUE
+C /cevent/:
+	PRINT 1000
+	PRINT 1015
+	PRINT 1021
+C
+	DO 140 C=1,CMAX
+C						!CLEAR CLOCK EVENTS
+	  CFLAG(C)=.FALSE.
+	  CTICK(C)=0
+	  CACTIO(C)=0
+140	CONTINUE
+	READ(INDEXCH,*) CLNT,CTICK(1:CLNT),CACTIO(1:CLNT)
+	READ(INDEXCH,*) CFLAG(1:CLNT)
+	PRINT 1037,CLNT,CMAX
+	DO 141 C=1,CLNT
+	  PRINT 1053,CTICK(C),CACTIO(C),CFLAG(C)
+141	CONTINUE
+C /vill/:
+	PRINT 1000
+	PRINT 1016
+	PRINT 1023
+C
+	DO 150 V=1,VMAX
+C						!CLEAR VILLAINS ARRAYS.
+	  VOPPS(V)=0
+	  VPROB(V)=0
+	  VILLNS(V)=0
+	  VBEST(V)=0
+	  VMELEE(V)=0
+150	CONTINUE
+	READ(INDEXCH,*) VLNT,VILLNS(1:VLNT),VPROB(1:VLNT),VOPPS(1:VLNT),
+     &	VBEST(1:VLNT),VMELEE(1:VLNT)
+	PRINT 1038,VLNT,VMAX
+	DO 151 V=1,VLNT
+	  PRINT 1054,VILLNS(V),VPROB(V),VOPPS(V),VBEST(V),VMELEE(V)
+151	CONTINUE
+C /advs/:
+	PRINT 1000
+	PRINT 1017
+	PRINT 1024
+C
+	DO 160 A=1,AMAX
+C						!CLEAR ADVENTURER'S ARRAYS.
+	  AROOM(A)=0
+	  ASCORE(A)=0
+	  AVEHIC(A)=0
+	  AOBJ(A)=0
+	  AACTIO(A)=0
+	  ASTREN(A)=0
+	  AFLAG(A)=0
+160	CONTINUE
+	READ(INDEXCH,*) ALNT,AROOM(1:ALNT),ASCORE(1:ALNT),AVEHIC(1:ALNT),
+     &	AOBJ(1:ALNT),AACTIO(1:ALNT),ASTREN(1:ALNT),AFLAG(1:ALNT)
+	PRINT 1039,ALNT,AMAX
+	DO 161 A=1,ALNT
+	  PRINT 1055,AROOM(A),ASCORE(A),AVEHIC(A)
+	  PRINT 1064,AOBJ(A),AACTIO(A),ASTREN(A),AFLAG(A)
+161	CONTINUE
+C /star/:
+	READ(INDEXCH,*) STRBIT,MBASE
+	PRINT 1040,STRBIT,MBASE
+C /rmsg/:
+	PRINT 1000
+	PRINT 1018
+	PRINT 1023
+C
+	DO 170 M=1,MMAX
+C						!CLEAR MESSAGE DIRECTORY.
+	  RTEXT(M)=0
+170	CONTINUE
+	READ(INDEXCH,*) MLNT,RTEXT(1:MLNT)
+	PRINT 1041,MLNT,MMAX
+	DO 171 M=1,MLNT
+	  CALL PUTMSG(RTEXT(M))
+	  PRINT 1071
+171	CONTINUE
+	CLOSE(INDEXCH)
+C Decompile the story file.
+C	OPEN(UNIT=STORYCH,file='/usr/share/games/dungeon/dtext.dat',
+	OPEN(UNIT=STORYCH,file='dtext.dat',
+     &	STATUS='OLD',ACCESS='STREAM',ERR=901)
+C
+	PRINT 1000
+	PRINT 1019
+	PRINT 1022
+C
+	EXX=0
+	DO 180 M=1,MLNT
+	  X=RTEXT(M)
+          IF (X.GE.EXX) GOTO 180
+          EXX=X
+          X=-X
+          FIRST=.TRUE.
+          LAST=.FALSE.
+	  DO WHILE (.NOT.LAST)
+            IF(FIRST)THEN
+              PRINT 1101,X
+              FIRST=.FALSE.
+            ELSE
+              PRINT 1100
+            END IF
+            LAST=GETREC(STORYCH,X,N,BUF)
+            WRITE(*,1102)(Buf(J:J),J=1,N)
+          END DO
+180	CONTINUE
+200	CLOSE(STORYCH)
+	CALL EXIT
+C ERRORS-- INIT FAILS.
+900	PRINT 1090
+	CALL EXIT
+901	PRINT 1091
+	CALL EXIT
+C PRINT FORMATS
+1000	FORMAT('')
+1010	FORMAT('Room Table')
+1011	FORMAT('Exit Table')
+1012	FORMAT('Object Table')
+1013	FORMAT('Room 2 Table')
+1015	FORMAT('Clock Table')
+1016	FORMAT('Villain Table')
+1017	FORMAT('Adventurer Table')
+1018	FORMAT('Message Table')
+1019	FORMAT('String Table')
+1020	FORMAT('──────────')
+1021	FORMAT('───────────')
+1022	FORMAT('────────────')
+1023	FORMAT('─────────────')
+1024	FORMAT('────────────────')
+1030	FORMAT('/vers/: ',I0,'.',I0,A1)
+1031	FORMAT('/state/: Max Score = ',I0,', Eg Score = ',I0)
+1032	FORMAT('/rooms/: ',I0,' of ',I0,' rooms',
+     &	' { desc1, desc2, exit, actio, val, flag; }')
+1033	FORMAT('/exits/: ',I0,' of ',I0,' exits (travel)'
+     &	' { lastx:1, direction:5, type-1:2,',
+     &	' room:8, message, action:8, object:8; }')
+1034	FORMAT('/objcts/: ',I0,' of ',I0,' objects',
+     &	' { desc1, desc2, desco, actio, flag1, flag2,'
+     &	' fval, tval, size, capac, room, adv, can, read; }')
+1035	FORMAT('/state/ bloc: ',I0,' = OROOM(',I0,')')
+1036	FORMAT('/oroom2/: ',I0,' of ',I0,' room2 slots { o, r; }')
+1037	FORMAT('/cevent/: ',I0,' of ',I0,' clock events',
+     &	' { tick, actio, flag; }')
+1038	FORMAT('/vill/: ',I0,' of ',I0,' villains',
+     &	' { villns, prob, opps, best, melee; }')
+1039	FORMAT('/advs/: ',I0,' of ',I0,' adventurers',
+     &	' { room, score, vehic, obj, actio, stren, flag; }')
+1040	FORMAT('/star/: Star Mask = ',I0,', Melee Start = ',I0)
+1041	FORMAT('/rmsg/: ',I0,' of ',I0,' messages { text; }')
+1050	FORMAT('{ ',$)
+1051	FORMAT('{ ',I1,', ',I2,', ',I1,', ',I3,$)
+1052	FORMAT('{ ',I3,', ',I3,' },')
+1053	FORMAT('{ ',I3,', ',I2,', ',L5,' },')
+1054	FORMAT('{ ',I2,', ',I1,', ',I1,', ',I2,', ',I1,' },')
+1055	FORMAT('{ ',I3,', ',I1,', ',I1,$)
+1060	FORMAT(', ',$)
+1061	FORMAT(', ',I3,', 0x',Z4.4,', 0x',Z4.4,$)
+1062	FORMAT(', ',I2,', ',I2,', ',I5,', ',I5,$)
+1063	FORMAT(', ',I3,', ',I2,', ',I2,', 0x',Z4.4,' },')
+1064	FORMAT(', ',I3,', ',I1,', ',I1,', 0x',Z2.2,' },')
+1065	FORMAT(', ',I5,', ',I1,', ',I3,', ',$)
+1070	FORMAT(' },')
+1071	FORMAT(',')
+1080	FORMAT('Format error.')
+1081	FORMAT(', ',I2,', ',I3,$)
+1090	FORMAT('I can''t open ','dindx.dat','.')
+1091	FORMAT('I can''t open ','dtext.dat','.')
+1100	FORMAT('       ',$)
+1101	FORMAT('#',I6.6,$)
+1102	FORMAT(':',128A1)
 	END
