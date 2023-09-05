@@ -95,7 +95,7 @@ static void rspeak2(long x, long y, long z) {
 // 						!ANY SUBSTITUTABLE?
 //    L200:
 // 						!YES, LOOK FOR #.
-      while (y != 0L && (b3 = index(b1, '#')) != NULL) {
+      while (y != 0L && (b3 = strchr(b1, '#')) != NULL) {
 //       SUBSTITUTION WITH SUBSTITUTABLE AVAILABLE.
 //          B3 IS LOCATION OF # IN B1.
 //          Y IS LOCATION OF RECORD TO SUBSTITUTE.
